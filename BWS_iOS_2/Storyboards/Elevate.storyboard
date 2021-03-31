@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="n4o-if-bI3">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Elevate-->
+        <scene sceneID="Bp2-4R-2yj">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="n4o-if-bI3" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Elevate" image="elevate_tab" id="z96-5h-dE4"/>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="CF9-HP-Ohh">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="4Vn-bu-4CR" kind="relationship" relationship="rootViewController" id="UUx-Rw-vUs"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dqi-RT-mKI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="316" y="116.74876847290641"/>
+        </scene>
+        <!--ElevateVC-->
+        <scene sceneID="qwd-cu-P9F">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I1Y-R3-wqe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="ElevateVC" id="4Vn-bu-4CR" customClass="ElevateVC" customModule="BWS_2_Staging" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Fxa-vW-Y7N">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="ye5-RD-rvf"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Zfy-zh-kBb"/>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1132" y="117"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="elevate_tab" width="26" height="26"/>
+    </resources>
+</document>

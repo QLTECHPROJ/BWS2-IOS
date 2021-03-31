@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ken-F6-g1g">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Wellness-->
+        <scene sceneID="VLO-bt-UX2">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="Ken-F6-g1g" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Wellness" image="wellness_tab" id="YI3-jw-Ifj"/>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="kwb-qk-WgB">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="yYi-Ce-f6X" kind="relationship" relationship="rootViewController" id="WuX-tc-ZtU"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mlt-fE-oFf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="316" y="116.74876847290641"/>
+        </scene>
+        <!--WellnessVC-->
+        <scene sceneID="cw3-uN-99Z">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sdJ-a0-OE9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="WellnessVC" id="yYi-Ce-f6X" customClass="WellnessVC" customModule="BWS_2_Staging" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2d4-dG-jz4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="anw-zy-nox"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Vp9-Bo-69n"/>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1132" y="117"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="wellness_tab" width="26" height="23"/>
+    </resources>
+</document>

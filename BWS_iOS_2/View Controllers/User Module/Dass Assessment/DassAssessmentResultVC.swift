@@ -1,0 +1,141 @@
+//
+//  DassAssessmentResultVC.swift
+//  BWS_iOS_2
+//
+//  Created by Dhruvit on 16/03/21.
+//  Copyright © 2021 Dhruvit. All rights reserved.
+//
+
+import UIKit
+
+class DassAssessmentResultVC: BaseViewController {
+    
+    // MARK:- OUTLETS
+    @IBOutlet weak var lblSubTitle : UILabel!
+    @IBOutlet weak var indexScoreView : UIView!
+    @IBOutlet weak var indexScoreLabelView : UIView!
+    
+    @IBOutlet weak var lblScore : UILabel!
+    
+    // MARK:- VARIABLES
+    var totalAngle: CGFloat = 180
+    var rotation: CGFloat = -90
+    
+    var needleColor = UIColor.black
+    var needleWidth: CGFloat = 15
+    let needle = UIImageView()
+    
+    var indexScore = 0
+    
+    var value: Int = 0 {
+        didSet {
+            // figure out where the needle is, between 0 and 1
+            let needlePosition = CGFloat(value) / 100
+            
+            // create a lerp from the start angle (rotation) through to the end angle (rotation + totalAngle)
+            let lerpFrom = rotation
+            let lerpTo = rotation + totalAngle
+            
+            // lerp from the start to the end position, based on the needle's position
+            let needleRotation = lerpFrom + (lerpTo - lerpFrom) * needlePosition
+            needle.transform = CGAffineTransform(rotationAngle: deg2rad(needleRotation))
+        }
+    }
+    
+    // MARK:- VIEW LIFE CYCLE
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+        
+        let normalString = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut"
+        lblSubTitle.attributedText = normalString.attributedString(alignment: .center, lineSpacing: 10)
+        
+        indexScoreLabelView.isHidden = true
+        indexScoreLabelView.cornerRadius = indexScoreLabelView.frame.size.height / 2
+        indexScoreLabelView.clipsToBounds = true
+        
+        indexScore = 35
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        indexScoreLabelView.cornerRadius = indexScoreLabelView.frame.size.height / 2
+        indexScoreLabelView.clipsToBounds = true
+        indexScoreLabelView.isHidden = false
+        
+        setupUI()
+        setupData()
+    }
+    
+    
+    // MARK:- FUNCTIONS
+    override func setupUI() {
+        needle.clipsToBounds = true
+        needle.image = UIImage(named: "arrowIndexScore")
+        needle.contentMode = .scaleAspectFit
+        needle.backgroundColor = UIColor.clear // needleColor
+        // needle.translatesAutoresizingMaskIntoConstraints = false
+        
+        // make the needle a third of our height
+        needle.bounds = CGRect(x: 0, y: 0, width: needleWidth, height: (indexScoreView.bounds.height * 0.65))
+        
+        // align it so that it is positioned and rotated from the bottom center
+        needle.layer.anchorPoint = CGPoint(x: 0.5, y: 1)
+        
+        // now center the needle over our center point
+        needle.center = CGPoint(x: indexScoreLabelView.frame.midX, y: indexScoreLabelView.frame.midY)
+        indexScoreView.addSubview(needle)
+    }
+    
+    override func setupData() {
+        self.value = 0
+        self.lblScore.text = "\(self.value)"
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            UIView.animate(withDuration: 1) {
+                self.value = self.indexScore
+                self.lblScore.text = "\(self.value)"
+            }
+        }
+    }
+    
+    func deg2rad(_ number: CGFloat) -> CGFloat {
+        return number * .pi / 180
+    }
+    
+    override func goNext() {
+        let aVC = AppStoryBoard.main.viewController(viewControllerClass:ManagePlanListVC.self)
+        let navVC = UINavigationController(rootViewController: aVC)
+        navVC.isNavigationBarHidden = true
+        navVC.modalPresentationStyle = .overFullScreen
+        self.navigationController?.present(navVC, animated: true, completion: nil)
+    }
+    
+    func handleNavigation() {
+        let aVC = AppStoryBoard.main.viewController(viewControllerClass: ManageStartVC.self)
+        aVC.strTitle = "You are Doing Good"
+        aVC.strSubTitle = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut"
+        aVC.imageMain = UIImage(named: "manageStartWave")
+        aVC.continueClicked = {
+            self.goNext()
+        }
+        aVC.modalPresentationStyle = .overFullScreen
+        self.present(aVC, animated: true, completion: nil)
+    }
+    
+    // MARK:- ACTIONS
+    @IBAction func continueClicked(sender : UIButton) {
+        let aVC = AppStoryBoard.main.viewController(viewControllerClass: StepVC.self)
+        aVC.strTitle = "Step 3"
+        aVC.strSubTitle = "we're analysing your inputs"
+        aVC.imageMain = UIImage(named: "analyze")
+        aVC.hideTapAnywhere = true
+        aVC.viewTapped = {
+            self.handleNavigation()
+        }
+        aVC.modalPresentationStyle = .overFullScreen
+        self.present(aVC, animated: true, completion: nil)
+    }
+    
+}

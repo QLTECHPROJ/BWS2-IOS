@@ -1,0 +1,6 @@
+framework module Pods_BWS_iOS_2_Staging {
+  umbrella header "Pods-BWS_iOS_2_Staging-umbrella.h"
+
+  export *
+  module * { export * }
+}

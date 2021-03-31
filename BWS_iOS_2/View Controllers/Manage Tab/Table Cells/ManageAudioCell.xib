@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Bold.ttf">
+            <string>Montserrat-Bold</string>
+        </array>
+        <array key="Montserrat-Regular.ttf">
+            <string>Montserrat-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ManageAudioCell" rowHeight="295" id="SEZ-wf-XYP" customClass="ManageAudioCell" customModule="BWS_2_Staging" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="280"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SEZ-wf-XYP" id="Lsh-LO-ebB">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="280"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recommended audio" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="s8M-oe-U7x">
+                        <rect key="frame" x="16" y="8" width="275" height="28"/>
+                        <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="15"/>
+                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U27-iR-mha">
+                        <rect key="frame" x="299" y="8" width="60" height="28"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="60" id="Agg-Bh-oHL"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="13"/>
+                        <state key="normal" title="View all">
+                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </state>
+                    </button>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="7et-0a-Etl">
+                        <rect key="frame" x="0.0" y="44" width="375" height="228"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="2NP-sQ-z9N">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="16" minY="5" maxX="16" maxY="5"/>
+                        </collectionViewFlowLayout>
+                        <connections>
+                            <outlet property="dataSource" destination="SEZ-wf-XYP" id="Hbm-ww-i3q"/>
+                            <outlet property="delegate" destination="SEZ-wf-XYP" id="gcX-dx-iiv"/>
+                        </connections>
+                    </collectionView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="7et-0a-Etl" secondAttribute="trailing" id="13x-qi-JHm"/>
+                    <constraint firstItem="7et-0a-Etl" firstAttribute="leading" secondItem="Lsh-LO-ebB" secondAttribute="leading" id="4Cc-ZZ-HjH"/>
+                    <constraint firstItem="s8M-oe-U7x" firstAttribute="bottom" secondItem="U27-iR-mha" secondAttribute="bottom" id="Ah1-Fa-RJg"/>
+                    <constraint firstItem="7et-0a-Etl" firstAttribute="top" secondItem="U27-iR-mha" secondAttribute="bottom" constant="8" id="E5l-dm-GcU"/>
+                    <constraint firstItem="s8M-oe-U7x" firstAttribute="top" secondItem="U27-iR-mha" secondAttribute="top" id="FOA-1q-kam"/>
+                    <constraint firstAttribute="trailing" secondItem="U27-iR-mha" secondAttribute="trailing" constant="16" id="KoU-Zp-Xko"/>
+                    <constraint firstAttribute="bottom" secondItem="7et-0a-Etl" secondAttribute="bottom" constant="8" id="M1v-PW-n9o"/>
+                    <constraint firstItem="U27-iR-mha" firstAttribute="top" secondItem="Lsh-LO-ebB" secondAttribute="top" constant="8" id="bH5-0f-9BO"/>
+                    <constraint firstItem="s8M-oe-U7x" firstAttribute="leading" secondItem="Lsh-LO-ebB" secondAttribute="leading" constant="16" id="hQ0-gD-yO0"/>
+                    <constraint firstItem="U27-iR-mha" firstAttribute="leading" secondItem="s8M-oe-U7x" secondAttribute="trailing" constant="8" id="lBn-nz-E3J"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <viewLayoutGuide key="safeArea" id="IUI-9U-Sei"/>
+            <connections>
+                <outlet property="btnViewAll" destination="U27-iR-mha" id="ZCf-A7-89a"/>
+                <outlet property="collectionView" destination="7et-0a-Etl" id="Oya-8R-46m"/>
+                <outlet property="lblTitle" destination="s8M-oe-U7x" id="sVz-ui-0ke"/>
+            </connections>
+            <point key="canvasLocation" x="78.985507246376812" y="67.633928571428569"/>
+        </tableViewCell>
+    </objects>
+</document>
