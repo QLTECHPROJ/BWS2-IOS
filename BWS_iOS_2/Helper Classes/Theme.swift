@@ -189,6 +189,7 @@ struct AppColors {
     
     let gray_DDDDDD = UIColor(hex: "DDDDDD")
     let gray_7E7E7E = UIColor(hex: "7E7E7E")
+    let gray_707070 = UIColor(hex: "707070")
     let gray_999999 = UIColor(hex: "999999")
     let gray_EEEEEE = UIColor(hex: "EEEEEE")
     let gray_CDD4D9 = UIColor(hex: "CDD4D9")

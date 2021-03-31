@@ -27,10 +27,10 @@ class StartingVC: BaseViewController {
     
     // MARK:- ACTIONS
     @IBAction func onTappedGetStarted(_ sender: UIButton) {
-        APPDELEGATE.window?.rootViewController = AppStoryBoard.main.viewController(viewControllerClass: NavigationClass.self)
+        // APPDELEGATE.window?.rootViewController = AppStoryBoard.main.viewController(viewControllerClass: NavigationClass.self)
         
-        // let aVC = AppStoryBoard.main.viewController(viewControllerClass:SignUpVC.self)
-        // self.navigationController?.pushViewController(aVC, animated: true)
+        let aVC = AppStoryBoard.main.viewController(viewControllerClass:SignUpVC.self)
+        self.navigationController?.pushViewController(aVC, animated: true)
     }
     
     @IBAction func onTappedSignUp(_ sender: UIButton) {

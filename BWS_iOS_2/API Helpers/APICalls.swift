@@ -108,8 +108,10 @@ extension ForgotPassVC {
                 self.lblErrorEmail.isHidden = false
                 self.txtFEmailAdd.text = ""
                 
-                let aVC = AppStoryBoard.main.viewController(viewControllerClass: DescPopUpVC.self)
+                let aVC = AppStoryBoard.main.viewController(viewControllerClass: DescriptionPopupVC.self)
                 aVC.strDesc = response.ResponseMessage
+                aVC.isOkButtonHidden = false
+                aVC.descFont = Theme.fonts.montserratFont(ofSize: 10, weight: .regular)
                 aVC.modalPresentationStyle = .overFullScreen
                 self.present(aVC, animated: false, completion: nil)
             } else {
