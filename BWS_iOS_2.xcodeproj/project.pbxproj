@@ -51,6 +51,20 @@
 		28252FA525FF357C00C2EB50 /* DoDassAssessmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28252FA125FF355900C2EB50 /* DoDassAssessmentVC.swift */; };
 		28252FA925FF4CA200C2EB50 /* DassAssessmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28252FA825FF4CA200C2EB50 /* DassAssessmentVC.swift */; };
 		28252FAA25FF4CB600C2EB50 /* DassAssessmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28252FA825FF4CA200C2EB50 /* DassAssessmentVC.swift */; };
+		283153B326143F74004001CE /* PlaylistCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283153B126143F74004001CE /* PlaylistCollectionCell.swift */; };
+		283153B426143F74004001CE /* PlaylistCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283153B126143F74004001CE /* PlaylistCollectionCell.swift */; };
+		283153B526143F74004001CE /* PlaylistCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 283153B226143F74004001CE /* PlaylistCollectionCell.xib */; };
+		283153B626143F74004001CE /* PlaylistCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 283153B226143F74004001CE /* PlaylistCollectionCell.xib */; };
+		283153B92614401E004001CE /* ManagePlaylistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283153B72614401E004001CE /* ManagePlaylistCell.swift */; };
+		283153BA2614401E004001CE /* ManagePlaylistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283153B72614401E004001CE /* ManagePlaylistCell.swift */; };
+		283153BB2614401E004001CE /* ManagePlaylistCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 283153B82614401E004001CE /* ManagePlaylistCell.xib */; };
+		283153BC2614401E004001CE /* ManagePlaylistCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 283153B82614401E004001CE /* ManagePlaylistCell.xib */; };
+		283153BE2614489E004001CE /* PlaylistCategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283153BD2614489E004001CE /* PlaylistCategoryVC.swift */; };
+		283153BF2614489E004001CE /* PlaylistCategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283153BD2614489E004001CE /* PlaylistCategoryVC.swift */; };
+		283153C1261448C9004001CE /* CreatePlaylistVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283153C0261448C9004001CE /* CreatePlaylistVC.swift */; };
+		283153C2261448C9004001CE /* CreatePlaylistVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283153C0261448C9004001CE /* CreatePlaylistVC.swift */; };
+		283153C4261455E0004001CE /* AlertPopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283153C3261455E0004001CE /* AlertPopUpVC.swift */; };
+		283153C5261455E0004001CE /* AlertPopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283153C3261455E0004001CE /* AlertPopUpVC.swift */; };
 		28346E19260B0C6B00DD41BE /* PlanListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2880EEE3260A32C300D0B6A7 /* PlanListCell.xib */; };
 		28346E22260B5A5900DD41BE /* FAQCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28346E20260B5A5900DD41BE /* FAQCell.swift */; };
 		28346E23260B5A5900DD41BE /* FAQCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28346E20260B5A5900DD41BE /* FAQCell.swift */; };
@@ -318,6 +332,13 @@
 		28252FA125FF355900C2EB50 /* DoDassAssessmentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoDassAssessmentVC.swift; sourceTree = "<group>"; };
 		28252FA825FF4CA200C2EB50 /* DassAssessmentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DassAssessmentVC.swift; sourceTree = "<group>"; };
 		282F8A2325FB38B700E81153 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		283153B126143F74004001CE /* PlaylistCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistCollectionCell.swift; sourceTree = "<group>"; };
+		283153B226143F74004001CE /* PlaylistCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaylistCollectionCell.xib; sourceTree = "<group>"; };
+		283153B72614401E004001CE /* ManagePlaylistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagePlaylistCell.swift; sourceTree = "<group>"; };
+		283153B82614401E004001CE /* ManagePlaylistCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ManagePlaylistCell.xib; sourceTree = "<group>"; };
+		283153BD2614489E004001CE /* PlaylistCategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistCategoryVC.swift; sourceTree = "<group>"; };
+		283153C0261448C9004001CE /* CreatePlaylistVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePlaylistVC.swift; sourceTree = "<group>"; };
+		283153C3261455E0004001CE /* AlertPopUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPopUpVC.swift; sourceTree = "<group>"; };
 		28346E20260B5A5900DD41BE /* FAQCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQCell.swift; sourceTree = "<group>"; };
 		28346E21260B5A5900DD41BE /* FAQCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FAQCell.xib; sourceTree = "<group>"; };
 		283529A02609DA1A009AB2AA /* OrderSummaryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderSummaryVC.swift; sourceTree = "<group>"; };
@@ -717,6 +738,9 @@
 				28E809562613591C00CD80F7 /* CollectionCells */,
 				28E80949261349BE00CD80F7 /* Table Cells */,
 				28E8093726130A8800CD80F7 /* ManageVC.swift */,
+				283153BD2614489E004001CE /* PlaylistCategoryVC.swift */,
+				283153C0261448C9004001CE /* CreatePlaylistVC.swift */,
+				283153C3261455E0004001CE /* AlertPopUpVC.swift */,
 			);
 			path = "Manage Tab";
 			sourceTree = "<group>";
@@ -758,6 +782,8 @@
 			children = (
 				28E8094A26134A0700CD80F7 /* ManageAudioCell.swift */,
 				28E8094B26134A0700CD80F7 /* ManageAudioCell.xib */,
+				283153B72614401E004001CE /* ManagePlaylistCell.swift */,
+				283153B82614401E004001CE /* ManagePlaylistCell.xib */,
 			);
 			path = "Table Cells";
 			sourceTree = "<group>";
@@ -767,6 +793,8 @@
 			children = (
 				28E809502613591400CD80F7 /* AudioCollectionCell.swift */,
 				28E809512613591400CD80F7 /* AudioCollectionCell.xib */,
+				283153B126143F74004001CE /* PlaylistCollectionCell.swift */,
+				283153B226143F74004001CE /* PlaylistCollectionCell.xib */,
 			);
 			path = CollectionCells;
 			sourceTree = "<group>";
@@ -989,6 +1017,7 @@
 				280DFCE1260DA03E00479EE6 /* RecommendedCategoryHeaderCell.xib in Resources */,
 				28B53541260C781400BD8147 /* AreaOfFocusCell.xib in Resources */,
 				28ED2F8E25FB58E000E59C56 /* Montserrat-Light.ttf in Resources */,
+				283153BC2614401E004001CE /* ManagePlaylistCell.xib in Resources */,
 				2870B43825FB41A10014A4F6 /* DJPageMenuCell.xib in Resources */,
 				28346E25260B5A5900DD41BE /* FAQCell.xib in Resources */,
 				28ED2F9625FB58E000E59C56 /* Montserrat-Italic.ttf in Resources */,
@@ -1012,6 +1041,7 @@
 				2870B35F25FB3A570014A4F6 /* Assets.xcassets in Resources */,
 				28E809332613091800CD80F7 /* Account.storyboard in Resources */,
 				28B5354D260CC2B800BD8147 /* CategoryCollectionCell.xib in Resources */,
+				283153B626143F74004001CE /* PlaylistCollectionCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1025,6 +1055,7 @@
 				280DFCE0260DA03E00479EE6 /* RecommendedCategoryHeaderCell.xib in Resources */,
 				28B53540260C781400BD8147 /* AreaOfFocusCell.xib in Resources */,
 				282441632609CB4E0060292E /* GoogleService-Info.plist in Resources */,
+				283153BB2614401E004001CE /* ManagePlaylistCell.xib in Resources */,
 				28ED2F9525FB58E000E59C56 /* Montserrat-Italic.ttf in Resources */,
 				28346E24260B5A5900DD41BE /* FAQCell.xib in Resources */,
 				28ED2FC125FB931800E59C56 /* OptionsCell.xib in Resources */,
@@ -1048,6 +1079,7 @@
 				28F812AF25FB337000DC6AF6 /* Assets.xcassets in Resources */,
 				28E809322613091800CD80F7 /* Account.storyboard in Resources */,
 				28B5354C260CC2B800BD8147 /* CategoryCollectionCell.xib in Resources */,
+				283153B526143F74004001CE /* PlaylistCollectionCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1211,6 +1243,7 @@
 				2870B43E25FB41A10014A4F6 /* UITableView+Reorder.swift in Sources */,
 				2870B35825FB3A570014A4F6 /* BWS_iOS_2.xcdatamodeld in Sources */,
 				2880EEE6260A32C700D0B6A7 /* PlanListCell.swift in Sources */,
+				283153B426143F74004001CE /* PlaylistCollectionCell.swift in Sources */,
 				2824415B2609AD4E0060292E /* StepVC.swift in Sources */,
 				282441612609AD620060292E /* DescPopUpVC.swift in Sources */,
 				2870B3D425FB41A10014A4F6 /* DJPickerView.swift in Sources */,
@@ -1221,6 +1254,8 @@
 				28ED2FC025FB931800E59C56 /* OptionsCell.swift in Sources */,
 				2870B43A25FB41A10014A4F6 /* DJPageMenuCell.swift in Sources */,
 				2870B36E25FB401F0014A4F6 /* APIManager.swift in Sources */,
+				283153BA2614401E004001CE /* ManagePlaylistCell.swift in Sources */,
+				283153C2261448C9004001CE /* CreatePlaylistVC.swift in Sources */,
 				28E8093F26130AA500CD80F7 /* ElevateVC.swift in Sources */,
 				2870B3EC25FB41A10014A4F6 /* UINavigationBar+Extension.swift in Sources */,
 				282441582609AD440060292E /* ContinueVC.swift in Sources */,
@@ -1232,6 +1267,7 @@
 				2870B3D825FB41A10014A4F6 /* NSAttributedString+Extension.swift in Sources */,
 				2870B3D225FB41A10014A4F6 /* DJTextField.swift in Sources */,
 				28E8093926130A8800CD80F7 /* ManageVC.swift in Sources */,
+				283153BF2614489E004001CE /* PlaylistCategoryVC.swift in Sources */,
 				2870B3E625FB41A10014A4F6 /* ImagePicker.swift in Sources */,
 				28B5353B260C706200BD8147 /* AreaOfFocusVC.swift in Sources */,
 				2870B3FA25FB41A10014A4F6 /* ExpandableLabel.swift in Sources */,
@@ -1252,6 +1288,7 @@
 				2870B3F625FB41A10014A4F6 /* UITableView+Extension.swift in Sources */,
 				2870B3F425FB41A10014A4F6 /* NSDate+Extension.swift in Sources */,
 				2870B37D25FB40830014A4F6 /* Reachability.swift in Sources */,
+				283153C5261455E0004001CE /* AlertPopUpVC.swift in Sources */,
 				2870B36725FB3AEF0014A4F6 /* Constants.swift in Sources */,
 				2870B3F225FB41A10014A4F6 /* UISearchBar+Extension.swift in Sources */,
 				28ED2F9825FB58E000E59C56 /* Font.swift in Sources */,
@@ -1329,6 +1366,7 @@
 				28F812AD25FB336F00DC6AF6 /* BWS_iOS_2.xcdatamodeld in Sources */,
 				2880EEE4260A32C300D0B6A7 /* PlanListCell.swift in Sources */,
 				2824415A2609AD4E0060292E /* StepVC.swift in Sources */,
+				283153B326143F74004001CE /* PlaylistCollectionCell.swift in Sources */,
 				282441602609AD620060292E /* DescPopUpVC.swift in Sources */,
 				2870B3D325FB41A10014A4F6 /* DJPickerView.swift in Sources */,
 				2824413A2609AB9A0060292E /* CountryListVC.swift in Sources */,
@@ -1339,6 +1377,8 @@
 				2870B3ED25FB41A10014A4F6 /* DJValidation.swift in Sources */,
 				2870B43925FB41A10014A4F6 /* DJPageMenuCell.swift in Sources */,
 				2870B36D25FB401C0014A4F6 /* APIManager.swift in Sources */,
+				283153B92614401E004001CE /* ManagePlaylistCell.swift in Sources */,
+				283153C1261448C9004001CE /* CreatePlaylistVC.swift in Sources */,
 				28E8093E26130AA500CD80F7 /* ElevateVC.swift in Sources */,
 				282441382609AB6E0060292E /* SignUpVC.swift in Sources */,
 				282441572609AD440060292E /* ContinueVC.swift in Sources */,
@@ -1350,6 +1390,7 @@
 				2870B44125FB41A10014A4F6 /* ReorderController.swift in Sources */,
 				2870B3D725FB41A10014A4F6 /* NSAttributedString+Extension.swift in Sources */,
 				28E8093826130A8800CD80F7 /* ManageVC.swift in Sources */,
+				283153BE2614489E004001CE /* PlaylistCategoryVC.swift in Sources */,
 				2870B3D125FB41A10014A4F6 /* DJTextField.swift in Sources */,
 				28B5353A260C706200BD8147 /* AreaOfFocusVC.swift in Sources */,
 				2870B3E525FB41A10014A4F6 /* ImagePicker.swift in Sources */,
@@ -1370,6 +1411,7 @@
 				2870B3E325FB41A10014A4F6 /* DJContants.swift in Sources */,
 				2870B3F525FB41A10014A4F6 /* UITableView+Extension.swift in Sources */,
 				2870B3F325FB41A10014A4F6 /* NSDate+Extension.swift in Sources */,
+				283153C4261455E0004001CE /* AlertPopUpVC.swift in Sources */,
 				2870B37C25FB40830014A4F6 /* Reachability.swift in Sources */,
 				28F812C325FB36CF00DC6AF6 /* Constants.swift in Sources */,
 				28ED2F9725FB58E000E59C56 /* Font.swift in Sources */,

@@ -334,3 +334,32 @@ public class AudioDetailsDataModel: EVObject {
     // For Add to Playlist button
     var isSelected = false
 }
+
+
+/**** Playlist Home Model ****/
+
+class PlaylistDetailsModel: EVObject {
+    var PlaylistID = ""
+    var PlaylistName = ""
+    var PlaylistDesc = ""
+    var PlaylistMastercat = ""
+    var PlaylistSubcat = ""
+    var PlaylistImage = ""
+    var TotalAudio = ""
+    var TotalDuration = ""
+    var Totalhour = ""
+    var Totalminute = ""
+    var Created = ""
+    var Download = ""
+    var IsLock = ""
+    var IsReminder = ""
+    var ReminderTime = ""
+    var ReminderDay = ""
+    var PlaylistImageDetail = ""
+    var Like  = ""
+    var PlaylistSongs : [AudioDetailsDataModel]?
+    
+    var sectionName = ""
+    var selfCreated = ""
+    var isSelected = false
+}
