@@ -42,12 +42,10 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="DbW-dw-31I">
-                        <rect key="frame" x="10" y="149" width="131" height="21"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="21" id="JRN-G6-uAM"/>
-                        </constraints>
-                        <string key="text">Create 
-New Playlist</string>
+                        <rect key="frame" x="10" y="133" width="131" height="37"/>
+                        <string key="text">Ultimate 
+Communication 
+Bundle</string>
                         <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="10"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>

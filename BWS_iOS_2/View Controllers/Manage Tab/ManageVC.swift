@@ -52,6 +52,12 @@ class ManageVC: BaseViewController {
         self.navigationController?.pushViewController(aVC, animated: true)
     }
     
+    @IBAction func setReminderClicked(sender : UIButton) {
+        let aVC = AppStoryBoard.manage.viewController(viewControllerClass: ViewAllAudioVC.self)
+        aVC.libraryTitle = "Recommended audio"
+        self.navigationController?.pushViewController(aVC, animated: true)
+    }
+    
     @IBAction func playClicked(sender : UIButton) {
         
     }

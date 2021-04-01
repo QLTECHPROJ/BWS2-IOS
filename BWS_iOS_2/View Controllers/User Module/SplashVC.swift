@@ -20,22 +20,15 @@ class SplashVC: BaseViewController {
     
     // MARK:- FUNCTIONS
     override func goNext() {
+        APPDELEGATE.window?.rootViewController = AppStoryBoard.main.viewController(viewControllerClass: NavigationClass.self)
+        
+        /*
         if checkInternet() == false {
             handleRedirection()
             showAlertToast(message: Theme.strings.alert_check_internet)
         }
         else {
             callAppVersionAPI()
-        }
-        
-        /*
-        if ProfileFormModel.shared.isProfileCompleted {
-            let aVC = AppStoryBoard.main.viewController(viewControllerClass: DoDassAssessmentVC.self)
-            self.navigationController?.pushViewController(aVC, animated: true)
-        }
-        else {
-            let aVC = AppStoryBoard.main.viewController(viewControllerClass: ProfileFormStartVC.self)
-            self.navigationController?.pushViewController(aVC, animated: true)
         }
          */
     }

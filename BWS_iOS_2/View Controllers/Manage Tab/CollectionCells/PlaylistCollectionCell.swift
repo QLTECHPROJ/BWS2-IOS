@@ -21,12 +21,11 @@ class PlaylistCollectionCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         btnAddtoPlaylist.isHidden = true
-        imageView.applyGradient(with: [UIColor.clear,UIColor.clear,Theme.colors.greenColor])
+        imageView.applyGradient(with: [UIColor.clear,Theme.colors.greenColor.withAlphaComponent(0.5),Theme.colors.greenColor])
     }
     
     
     // MARK:- FUNCTIONS
-    // Configure Cell
     func configureCell(playlistData : PlaylistDetailsModel, homeData : PlaylistHomeDataModel) {
         if homeData.IsLock == "1" || homeData.IsLock == "2" {
             imgLock.isHidden = false
@@ -43,6 +42,35 @@ class PlaylistCollectionCell: UICollectionViewCell {
         lblName.text = playlistData.PlaylistName
         
         if homeData.IsLock == "1" || homeData.IsLock == "2" || homeData.View == "Top Categories" || playlistData.isSelected == false {
+            btnAddtoPlaylist.isHidden = true
+            btnAddtoPlaylist.isUserInteractionEnabled = false
+        } else {
+            btnAddtoPlaylist.isHidden = false
+            btnAddtoPlaylist.setBackgroundImage(UIImage(named: "AddtoBack"), for: .normal)
+            btnAddtoPlaylist.isUserInteractionEnabled = true
+        }
+    }
+    
+    func configureCell(audioData : AudioDetailsDataModel, homeData : AudioHomeDataModel) {
+        if homeData.IsLock == "1" || homeData.IsLock == "2" {
+            if audioData.IsPlay == "1" {
+                imgLock.isHidden = true
+            } else {
+                imgLock.isHidden = false
+            }
+        } else {
+            imgLock.isHidden = true
+        }
+        
+        if let imgUrl = URL(string: audioData.ImageFile.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+            imageView.sd_setImage(with: imgUrl, completed: nil)
+        }
+        
+        imageView.applyGradient(with: [UIColor.clear,UIColor.clear,Theme.colors.greenColor])
+        
+        lblName.text = audioData.Name
+        
+        if homeData.IsLock == "1" || homeData.IsLock == "2" || homeData.View == "Top Categories" || audioData.isSelected == false {
             btnAddtoPlaylist.isHidden = true
             btnAddtoPlaylist.isUserInteractionEnabled = false
         } else {

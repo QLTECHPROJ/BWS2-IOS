@@ -147,7 +147,7 @@ extension PinVC {
     // Verify Pin API Call
     func callVerifyPinAPI() {
         let strCode = txtFPin1.text! + txtFPin2.text! + txtFPin3.text! + txtFPin4.text!
-        let parameters = ["UserID":LoginDataModel.currentUser?.ID ?? "",
+        let parameters = ["UserID":selectedUser.CoUserId,
                           "Pin":strCode]
         
         APICallManager.sharedInstance.callAPI(router: APIRouter.verifypin(parameters)) { (response : GeneralModel) in
@@ -156,8 +156,7 @@ extension PinVC {
                 APPDELEGATE.window?.rootViewController = AppStoryBoard.main.viewController(viewControllerClass: NavigationClass.self)
             }
             else {
-                self.dismiss(animated: false, completion: nil)
-                APPDELEGATE.window?.rootViewController = AppStoryBoard.main.viewController(viewControllerClass: NavigationClass.self)
+                showAlertToast(message: response.ResponseMessage)
             }
         }
     }
