@@ -17,10 +17,10 @@ class ManagePlaylistCell: UITableViewCell {
     
     
     // MARK:- VARIABLES
-    var arrayAudioDetails : [AudioDetailsDataModel]?
-    var homeData = AudioHomeDataModel()
+    var arrayPlaylistDetails : [PlaylistDetailsModel]?
+    var homeData = PlaylistHomeDataModel()
     
-    var didSelectAudioAtIndex : ((Int) -> Void)?
+    var didSelectPlaylistAtIndex : ((Int) -> Void)?
     var didClickAddToPlaylistAtIndex : ((Int) -> Void)?
     var didLongPressAtIndex : ((Int) -> Void)?
     
@@ -39,20 +39,20 @@ class ManagePlaylistCell: UITableViewCell {
     
     // MARK:- FUNCTIONS
     // Configure Cell
-    func configureCell(data : AudioHomeDataModel) {
+    func configureCell(data : PlaylistHomeDataModel) {
         btnViewAll.clipsToBounds = true
         self.clipsToBounds = true
         
         homeData = data
-        if data.Details?.count ?? 0 > 0 {
+        if data.Details.count > 0 {
             lblTitle.text = data.View
         } else {
             lblTitle.text = ""
         }
         
-        arrayAudioDetails = data.Details
+        arrayPlaylistDetails = data.Details
         
-        let count = arrayAudioDetails?.count ?? 0
+        let count = arrayPlaylistDetails?.count ?? 0
         
         if homeData.View == "Recently Played" || homeData.View == "My Downloads" || homeData.View == "Popular" {
             if (count > 6) {
@@ -103,7 +103,7 @@ extension ManagePlaylistCell : UICollectionViewDelegate, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 10
         
-        var count = arrayAudioDetails?.count ?? 0
+        var count = arrayPlaylistDetails?.count ?? 0
         
         if homeData.View == "Top Categories" {
             return count
@@ -123,8 +123,8 @@ extension ManagePlaylistCell : UICollectionViewDelegate, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withClass: PlaylistCollectionCell.self, for: indexPath)
         
-        // let audioData = arrayAudioDetails![indexPath.row]
-        // cell.configureCell(audioData: audioData, homeData: homeData)
+        // let playlistData = arrayPlaylistDetails![indexPath.row]
+        // cell.configureCell(playlistData: playlistData, homeData: homeData)
         
         cell.btnAddtoPlaylist.tag = indexPath.row
         cell.btnAddtoPlaylist.addTarget(self, action: #selector(clickAddtoPlaylist(sender:)), for: .touchUpInside)
@@ -138,24 +138,12 @@ extension ManagePlaylistCell : UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if homeData.View == "Top Categories" {
-            didSelectAudioAtIndex?(indexPath.row)
+        if homeData.IsLock == "1" {
+            // Membership Module Remove
+        } else if homeData.IsLock == "2" {
+            showAlertToast(message: "Please re-activate your membership plan")
         } else {
-            if homeData.IsLock == "1" {
-                if arrayAudioDetails![indexPath.row].IsPlay == "1" {
-                    didSelectAudioAtIndex?(indexPath.row)
-                } else {
-                    // Membership Module Remove
-                }
-            } else if homeData.IsLock == "2" {
-                if arrayAudioDetails![indexPath.row].IsPlay == "1" {
-                    didSelectAudioAtIndex?(indexPath.row)
-                } else {
-                    showAlertToast(message: "Please re-activate your membership plan")
-                }
-            } else {
-                didSelectAudioAtIndex?(indexPath.row)
-            }
+            didSelectPlaylistAtIndex?(indexPath.row)
         }
     }
     

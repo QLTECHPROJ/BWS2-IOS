@@ -37,6 +37,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    func logout() {
+        let aVC = AppStoryBoard.main.viewController(viewControllerClass: StartingVC.self)
+        let navVC = UINavigationController(rootViewController: aVC)
+        navVC.isNavigationBarHidden = true
+        window?.rootViewController = navVC
+    }
+    
     func registerForPushNotification() {
         if #available(iOS 10.0, *) {
             let center  = UNUserNotificationCenter.current()

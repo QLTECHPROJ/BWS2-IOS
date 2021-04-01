@@ -21,47 +21,28 @@ class PlaylistCollectionCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         btnAddtoPlaylist.isHidden = true
+        imageView.applyGradient(with: [UIColor.clear,UIColor.clear,Theme.colors.greenColor])
     }
     
     
     // MARK:- FUNCTIONS
     // Configure Cell
-    func configureCell(audioData : AudioDetailsDataModel, homeData : AudioHomeDataModel) {
-        if homeData.View == "Top Categories" {
-            imgLock.isHidden = true
-            
-            if let imgUrl = URL(string: audioData.CatImage.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
-                imageView.sd_setImage(with: imgUrl, completed: nil)
-            }
-            
-            DispatchQueue.main.async {
-                self.imageView.cornerRadius = self.imageView.frame.height / 2
-                self.imageView.clipsToBounds = true
-            }
-            
-            lblName.text = audioData.CategoryName
+    func configureCell(playlistData : PlaylistDetailsModel, homeData : PlaylistHomeDataModel) {
+        if homeData.IsLock == "1" || homeData.IsLock == "2" {
+            imgLock.isHidden = false
         } else {
-            if homeData.IsLock == "1" || homeData.IsLock == "2" {
-                if audioData.IsPlay == "1" {
-                    imgLock.isHidden = true
-                } else {
-                    imgLock.isHidden = false
-                }
-            } else {
-                imgLock.isHidden = true
-            }
-            
-            if let imgUrl = URL(string: audioData.ImageFile.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
-                imageView.sd_setImage(with: imgUrl, completed: nil)
-            }
-            
-            imageView.cornerRadius = 8
-            imageView.clipsToBounds = true
-            
-            lblName.text = audioData.Name
+            imgLock.isHidden = true
         }
         
-        if homeData.IsLock == "1" || homeData.IsLock == "2" || homeData.View == "Top Categories" || audioData.isSelected == false {
+        if let imgUrl = URL(string: playlistData.PlaylistImage.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+            imageView.sd_setImage(with: imgUrl, completed: nil)
+        }
+        
+        imageView.applyGradient(with: [UIColor.clear,UIColor.clear,Theme.colors.greenColor])
+        
+        lblName.text = playlistData.PlaylistName
+        
+        if homeData.IsLock == "1" || homeData.IsLock == "2" || homeData.View == "Top Categories" || playlistData.isSelected == false {
             btnAddtoPlaylist.isHidden = true
             btnAddtoPlaylist.isUserInteractionEnabled = false
         } else {

@@ -4,9 +4,15 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Medium.ttf">
+            <string>Montserrat-Medium</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Profile-->
         <scene sceneID="pzS-WQ-uac">
@@ -30,21 +36,45 @@
         <!--AccountVC-->
         <scene sceneID="w2h-46-r3V">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="tS3-a7-oIA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="AccountVC" id="YK1-2U-cGe" customClass="AccountVC" customModule="BWS_2_Staging" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pMZ-dI-wa3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t3h-Nn-Kxg">
+                                <rect key="frame" x="37.666666666666657" y="629" width="300" height="50"/>
+                                <color key="backgroundColor" name="greenColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="vPY-Zn-ujP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="15"/>
+                                <state key="normal" title="Log Out">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="logoutClickedWithSender:" destination="YK1-2U-cGe" eventType="touchUpInside" id="U5N-gh-7RD"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="ztN-o6-wI2" firstAttribute="bottom" secondItem="t3h-Nn-Kxg" secondAttribute="bottom" constant="50" id="GXK-60-5lv"/>
+                            <constraint firstItem="t3h-Nn-Kxg" firstAttribute="width" secondItem="pMZ-dI-wa3" secondAttribute="width" multiplier="300:375" id="f5x-GY-hP0"/>
+                            <constraint firstItem="t3h-Nn-Kxg" firstAttribute="centerX" secondItem="pMZ-dI-wa3" secondAttribute="centerX" id="jrA-Ta-SZy"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="ztN-o6-wI2"/>
                     </view>
                     <navigationItem key="navigationItem" id="Yrn-hd-p4Z"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tS3-a7-oIA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1132" y="117"/>
         </scene>
     </scenes>
     <resources>
         <image name="profile_tab" width="26.333333969116211" height="29"/>
+        <namedColor name="greenColor">
+            <color red="0.0" green="0.53333333333333333" blue="0.5725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

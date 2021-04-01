@@ -142,6 +142,28 @@ extension UserListVC {
     
 }
 
+extension PinVC {
+    
+    // Verify Pin API Call
+    func callVerifyPinAPI() {
+        let strCode = txtFPin1.text! + txtFPin2.text! + txtFPin3.text! + txtFPin4.text!
+        let parameters = ["UserID":LoginDataModel.currentUser?.ID ?? "",
+                          "Pin":strCode]
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.verifypin(parameters)) { (response : GeneralModel) in
+            if response.ResponseCode == "200" {
+                self.dismiss(animated: false, completion: nil)
+                APPDELEGATE.window?.rootViewController = AppStoryBoard.main.viewController(viewControllerClass: NavigationClass.self)
+            }
+            else {
+                self.dismiss(animated: false, completion: nil)
+                APPDELEGATE.window?.rootViewController = AppStoryBoard.main.viewController(viewControllerClass: NavigationClass.self)
+            }
+        }
+    }
+    
+}
+
 extension AddProfileVC {
     
     // Add User Profile API Call

@@ -18,7 +18,7 @@ class ManageAudioCell: UITableViewCell {
     
     
     // MARK:- VARIABLES
-    var arrayAudioDetails : [AudioDetailsDataModel]?
+    var arrayAudioDetails = [AudioDetailsDataModel]()
     var homeData = AudioHomeDataModel()
     
     var didSelectAudioAtIndex : ((Int) -> Void)?
@@ -45,7 +45,7 @@ class ManageAudioCell: UITableViewCell {
         self.clipsToBounds = true
         
         homeData = data
-        if data.Details?.count ?? 0 > 0 {
+        if data.Details.count > 0 {
             lblTitle.text = data.View
         } else {
             lblTitle.text = ""
@@ -53,7 +53,7 @@ class ManageAudioCell: UITableViewCell {
         
         arrayAudioDetails = data.Details
         
-        let count = arrayAudioDetails?.count ?? 0
+        let count = arrayAudioDetails.count
         
         if homeData.View == "Recently Played" || homeData.View == "My Downloads" || homeData.View == "Popular" {
             if (count > 6) {
@@ -104,7 +104,7 @@ extension ManageAudioCell : UICollectionViewDelegate, UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 10
         
-        var count = arrayAudioDetails?.count ?? 0
+        var count = arrayAudioDetails.count
         
         if homeData.View == "Top Categories" {
             return count
@@ -144,13 +144,13 @@ extension ManageAudioCell : UICollectionViewDelegate, UICollectionViewDataSource
             didSelectAudioAtIndex?(indexPath.row)
         } else {
             if homeData.IsLock == "1" {
-                if arrayAudioDetails![indexPath.row].IsPlay == "1" {
+                if arrayAudioDetails[indexPath.row].IsPlay == "1" {
                     didSelectAudioAtIndex?(indexPath.row)
                 } else {
                     // Membership Module Remove
                 }
             } else if homeData.IsLock == "2" {
-                if arrayAudioDetails![indexPath.row].IsPlay == "1" {
+                if arrayAudioDetails[indexPath.row].IsPlay == "1" {
                     didSelectAudioAtIndex?(indexPath.row)
                 } else {
                     showAlertToast(message: "Please re-activate your membership plan")

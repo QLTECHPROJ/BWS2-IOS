@@ -127,9 +127,8 @@ class PinVC: BaseViewController {
             lblLine2.isHidden = true
             lblLine3.isHidden = true
             lblLine4.isHidden = true
-            self.dismiss(animated: true, completion: nil)
-            let aVC = AppStoryBoard.main.viewController(viewControllerClass:ContinueVC.self)
-            self.navigationController?.pushViewController(aVC, animated: true)
+            
+            callVerifyPinAPI()
         }
     }
     

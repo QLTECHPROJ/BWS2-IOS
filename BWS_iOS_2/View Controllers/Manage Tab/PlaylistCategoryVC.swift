@@ -59,6 +59,12 @@ extension PlaylistCategoryVC : UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let aVC = AppStoryBoard.manage.viewController(viewControllerClass: ViewAllPlaylistVC.self)
+        aVC.libraryTitle = "Popular Playlist"
+        self.navigationController?.pushViewController(aVC, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         var height = (tableView.frame.width - 48) / 2
         height = height + 68

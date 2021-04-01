@@ -229,7 +229,7 @@ class CoUserModel : EVObject {
 }
 
 class CoUserDataModel : EVObject {
-    var ID = ""
+    var UserID = ""
     var CoUserId = ""
     var Name = ""
     var Email = ""
@@ -287,7 +287,7 @@ class UserListDataModel : EVObject {
 
 // MARK:- Home Screen Audio API Models
 class AudioHomeModel: EVObject {
-    var ResponseData : [AudioHomeDataModel]?
+    var ResponseData = [AudioHomeDataModel]()
     var ResponseCode = ""
     var ResponseMessage = ""
     var ResponseStatus = ""
@@ -304,7 +304,7 @@ class AudioHomeDataModel: EVObject {
     var HomeID = ""
     var View = ""
     var UserID = ""
-    var Details : [AudioDetailsDataModel]?
+    var Details = [AudioDetailsDataModel]()
     var IsLock = ""
     var expireDate = ""
 }
@@ -354,6 +354,28 @@ public class AudioDetailsDataModel: EVObject {
 
 
 // MARK:- Playlist Home API Models
+class PlaylistHomeModel: EVObject {
+    var ResponseData = [PlaylistHomeDataModel]()
+    var ResponseCode = ""
+    var ResponseMessage = ""
+    var ResponseStatus = ""
+}
+
+class PlaylistLibraryModel: EVObject {
+    var ResponseData : PlaylistHomeDataModel?
+    var ResponseCode = ""
+    var ResponseMessage = ""
+    var ResponseStatus = ""
+}
+
+class PlaylistHomeDataModel: EVObject {
+    var GetLibraryID = ""
+    var View = ""
+    var UserID = ""
+    var Details = [PlaylistDetailsModel]()
+    var IsLock = ""
+}
+
 class PlaylistDetailsModel: EVObject {
     var PlaylistID = ""
     var PlaylistName = ""
@@ -373,9 +395,31 @@ class PlaylistDetailsModel: EVObject {
     var ReminderDay = ""
     var PlaylistImageDetail = ""
     var Like  = ""
-    var PlaylistSongs : [AudioDetailsDataModel]?
+    var PlaylistSongs = [AudioDetailsDataModel]()
     
     var sectionName = ""
     var selfCreated = ""
     var isSelected = false
+}
+
+/**** Create Playlist Model ****/
+
+class CreatePlaylistModel: EVObject {
+    var ResponseData : CreatePlaylistDataModel?
+    var ResponseCode = ""
+    var ResponseMessage = ""
+    var ResponseStatus = ""
+}
+
+class CreatePlaylistDataModel: EVObject {
+    var id = ""
+    var name = ""
+}
+
+/**** Playlist Details API Model ****/
+class PlaylistDetailsAPIModel: EVObject {
+    var ResponseData : PlaylistDetailsModel?
+    var ResponseCode = ""
+    var ResponseMessage = ""
+    var ResponseStatus = ""
 }
