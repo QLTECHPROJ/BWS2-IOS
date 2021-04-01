@@ -20,6 +20,7 @@ enum APIRouter: URLRequestConvertible {
     case login([String:String])
     case forgotpass([String:String])
     case addcouser([String:String])
+    case userlist([String:String])
     
     var route: APIRoute {
         switch self {
@@ -35,6 +36,8 @@ enum APIRouter: URLRequestConvertible {
             return APIRoute(path: "forgotpass", method: .post, data: data)
         case .addcouser(let data):
             return APIRoute(path: "addcouser", method: .post, data: data)
+        case .userlist(let data):
+            return APIRoute(path: "userlist", method: .post, data: data)
         }
     }
     

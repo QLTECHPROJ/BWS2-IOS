@@ -125,6 +125,23 @@ extension ForgotPassVC {
     
 }
 
+extension UserListVC {
+    
+    // User List API Call
+    func callUserListAPI() {
+        let parameters = ["UserID":LoginDataModel.currentUser?.ID ?? ""]
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.userlist(parameters)) { (response : UserListModel) in
+            if response.ResponseCode == "200" {
+                self.arrayUsers = response.ResponseData
+                self.tableView.reloadData()
+                self.buttonEnableDisable()
+            }
+        }
+    }
+    
+}
+
 extension AddProfileVC {
     
     // Add User Profile API Call

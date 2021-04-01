@@ -9,16 +9,26 @@
 import UIKit
 
 class UserListCell: UITableViewCell {
-
+    
+    @IBOutlet weak var imgView : UIImageView!
+    @IBOutlet weak var lblName : UILabel!
+    @IBOutlet weak var btnSelect : UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    // Configure Cell
+    func configureCell(data : UserListDataModel) {
+        lblName.text = data.Name
+        
+        if data.isSelected {
+            btnSelect.setImage(UIImage(named: "UserSelect"), for: .normal)
+        }
+        else {
+            btnSelect.setImage(nil, for: .normal)
+        }
+        
     }
     
 }

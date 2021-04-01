@@ -45,8 +45,7 @@ class ForgotPassVC: BaseViewController {
             lblErrorEmail.isHidden = false
             lblErrorEmail.text = Theme.strings.alert_blank_email_error
             return false
-        }
-        else if !txtFEmailAdd.text!.isValidEmail {
+        } else if !txtFEmailAdd.text!.isValidEmail {
             lblErrorEmail.isHidden = false
             lblErrorEmail.text = Theme.strings.alert_invalid_email_error
             return false

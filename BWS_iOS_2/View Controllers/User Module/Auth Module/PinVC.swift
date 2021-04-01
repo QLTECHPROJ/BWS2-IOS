@@ -35,6 +35,7 @@ class PinVC: BaseViewController {
     
     
     // MARK:- VARIABLES
+    var selectedUser : UserListDataModel?
     var textFields: [BackspaceTextField] {
         return [txtFPin1, txtFPin2, txtFPin3, txtFPin4]
     }
@@ -61,6 +62,7 @@ class PinVC: BaseViewController {
         for textfield in textFields {
             textfield.tintColor = UIColor.clear
             textfield.delegate = self
+            textfield.backspaceTextFieldDelegate = self
         }
         
         for label in bottomLabels {
@@ -113,6 +115,10 @@ class PinVC: BaseViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    func isStringContainsOnlyNumbers(string: String) -> Bool {
+        return string.rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) == nil
+    }
+    
     
     // MARK:- ACTIONS
     @IBAction func onTappedDone(_ sender: UIButton) {
@@ -156,8 +162,7 @@ extension PinVC : UITextFieldDelegate, BackspaceTextFieldDelegate {
             shadowRemove(view: viewCard2)
             shadowRemove(view: viewCard3)
             shadowRemove(view: viewCard4)
-        }
-        else if textField == txtFPin2 {
+        } else if textField == txtFPin2 {
             lblLine1.isHidden = true
             lblLine2.isHidden = false
             lblLine3.isHidden = true
@@ -166,8 +171,7 @@ extension PinVC : UITextFieldDelegate, BackspaceTextFieldDelegate {
             shadowRemove(view: viewCard1)
             shadowRemove(view: viewCard3)
             shadowRemove(view: viewCard4)
-        }
-        else  if textField == txtFPin3 {
+        } else  if textField == txtFPin3 {
             lblLine1.isHidden = true
             lblLine2.isHidden = true
             lblLine3.isHidden = false
@@ -176,8 +180,7 @@ extension PinVC : UITextFieldDelegate, BackspaceTextFieldDelegate {
             shadowRemove(view: viewCard2)
             shadowRemove(view: viewCard1)
             shadowRemove(view: viewCard4)
-        }
-        else if textField == txtFPin4 {
+        } else if textField == txtFPin4 {
             lblLine1.isHidden = true
             lblLine2.isHidden = true
             lblLine3.isHidden = true
@@ -190,6 +193,11 @@ extension PinVC : UITextFieldDelegate, BackspaceTextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        if isStringContainsOnlyNumbers(string: string) == false {
+            return false
+        }
+        
         let text = textField.text
         let textRange = Range(range, in:text!)
         let updatedText = text!.replacingCharacters(in: textRange!, with: string).trim
@@ -224,6 +232,15 @@ extension PinVC : UITextFieldDelegate, BackspaceTextFieldDelegate {
             return false
         }
         else if (textField.text?.count)! >= 1 {
+            if textField == txtFPin1 {
+                txtFPin2.becomeFirstResponder()
+            }
+            if textField == txtFPin2 {
+                txtFPin3.becomeFirstResponder()
+            }
+            if textField == txtFPin3 {
+                txtFPin4.becomeFirstResponder()
+            }
             textField.text = string
             return false
         }

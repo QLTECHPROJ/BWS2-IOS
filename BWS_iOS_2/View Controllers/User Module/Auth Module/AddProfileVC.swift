@@ -50,6 +50,9 @@ class AddProfileVC: BaseViewController {
             btnSendPin.setTitle("SEND NEW PIN", for: .normal)
         }
         
+        imgCheckMobile.isHidden = !isMobileNumberValid(strMobile: txtFMobileNo.text?.trim ?? "")
+        imgCheckEmail.isHidden = !isEmailAddressValid(strEmail: txtFEmailAdd.text?.trim ?? "")
+        
         lblErrName.isHidden = true
         lblErrMobileNo.isHidden = true
         lblErrEmailAdd.isHidden = true
@@ -69,9 +72,11 @@ class AddProfileVC: BaseViewController {
     
     func checkValidation() -> Bool {
         var isValid = true
+        let strName = txtFName.text?.trim ?? ""
         let strMobile = txtFMobileNo.text?.trim ?? ""
+        let strEmail = txtFEmailAdd.text?.trim ?? ""
         
-        if txtFName.text?.count == 0 {
+        if strName.count == 0 {
             isValid = false
             lblErrName.isHidden = false
             lblErrName.text = Theme.strings.alert_blank_fullname_error
@@ -91,11 +96,11 @@ class AddProfileVC: BaseViewController {
             lblErrMobileNo.text = Theme.strings.alert_invalid_mobile_error
         }
         
-        if txtFEmailAdd.text?.trim.count == 0 {
+        if strEmail.count == 0 {
             isValid = false
             lblErrEmailAdd.isHidden = false
             lblErrEmailAdd.text = Theme.strings.alert_blank_email_error
-        } else if !txtFEmailAdd.text!.isValidEmail {
+        } else if strEmail.isValidEmail == false {
             isValid = false
             lblErrEmailAdd.isHidden = false
             lblErrEmailAdd.text = Theme.strings.alert_invalid_email_error
@@ -104,6 +109,27 @@ class AddProfileVC: BaseViewController {
         return isValid
     }
     
+    func isMobileNumberValid(strMobile : String) -> Bool {
+        if strMobile.count == 0 {
+            return false
+        } else if strMobile.count < 8 || strMobile.count > 10 {
+            return false
+        } else if strMobile.isPhoneNumber == false {
+            return false
+        }
+        
+        return true
+    }
+    
+    func isEmailAddressValid(strEmail : String) -> Bool {
+        if strEmail.count == 0 {
+            return false
+        } else if strEmail.isValidEmail == false {
+            return false
+        }
+        
+        return true
+    }
     
     // MARK:- ACTIONS
     @IBAction func onTappedBack(_ sender: UIButton) {
@@ -154,6 +180,10 @@ extension AddProfileVC : UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
+        
+        imgCheckMobile.isHidden = !isMobileNumberValid(strMobile: txtFMobileNo.text?.trim ?? "")
+        imgCheckEmail.isHidden = !isEmailAddressValid(strEmail: txtFEmailAdd.text?.trim ?? "")
+        
         if txtFEmailAdd.text?.trim.count == 0 || txtFName.text?.trim.count == 0 || txtFMobileNo.text?.trim.count == 0 {
             btnSendPin.isUserInteractionEnabled = false
             btnSendPin.backgroundColor = #colorLiteral(red: 0.4941176471, green: 0.4941176471, blue: 0.4941176471, alpha: 1)

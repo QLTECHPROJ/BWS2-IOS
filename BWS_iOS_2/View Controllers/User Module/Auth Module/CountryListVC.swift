@@ -107,10 +107,10 @@ extension CountryListVC : UITextFieldDelegate {
             if updatedText.trim.count == 0 {
                 arrayCountrySearch = arrayCountry
             }
+            
             if arrayCountrySearch.count > 0 {
                 lblNoData.isHidden = true
-            }
-            else {
+            } else {
                 lblNoData.isHidden = false
                 lblNoData.text = "Couldn't find " + updatedText + " Try searching again"
             }

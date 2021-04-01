@@ -1932,7 +1932,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="343" height="66"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HWa-J7-pnL" customClass="JVFloatLabeledTextField">
-                                                                <rect key="frame" x="16" y="8" width="319" height="50"/>
+                                                                <rect key="frame" x="16" y="8" width="319" height="19"/>
                                                                 <color key="textColor" name="DarkBlack"/>
                                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
                                                                 <textInputTraits key="textInputTraits"/>
@@ -1980,7 +1980,7 @@
                                                         <rect key="frame" x="0.0" y="106" width="343" height="66"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Twq-oz-S0e">
-                                                                <rect key="frame" x="8" y="8" width="80" height="50"/>
+                                                                <rect key="frame" x="8" y="8" width="80" height="31"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="80" id="rhN-C4-qw7"/>
                                                                 </constraints>
@@ -1993,7 +1993,7 @@
                                                                 </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K92-h8-Ed3">
-                                                                <rect key="frame" x="96" y="8" width="1" height="50"/>
+                                                                <rect key="frame" x="96" y="8" width="1" height="0.0"/>
                                                                 <color key="backgroundColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="1" id="HCT-2H-ezn"/>
@@ -2003,7 +2003,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mobile number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5qa-j8-Pag" customClass="JVFloatLabeledTextField">
-                                                                <rect key="frame" x="105" y="8" width="230" height="50"/>
+                                                                <rect key="frame" x="105" y="8" width="230" height="19"/>
                                                                 <color key="textColor" name="DarkBlack"/>
                                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
                                                                 <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
@@ -2056,7 +2056,7 @@
                                                         <rect key="frame" x="0.0" y="212" width="343" height="66"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nxF-vb-YdD" customClass="JVFloatLabeledTextField">
-                                                                <rect key="frame" x="16" y="8" width="319" height="50"/>
+                                                                <rect key="frame" x="16" y="8" width="319" height="19"/>
                                                                 <color key="textColor" name="DarkBlack"/>
                                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
                                                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
@@ -2103,7 +2103,7 @@
                                                         <rect key="frame" x="0.0" y="318" width="343" height="66"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Create a strong password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SMC-Si-YYl" customClass="JVFloatLabeledTextField">
-                                                                <rect key="frame" x="16" y="8" width="281" height="50"/>
+                                                                <rect key="frame" x="16" y="8" width="281" height="19"/>
                                                                 <color key="textColor" name="DarkBlack"/>
                                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
                                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -2929,6 +2929,7 @@
                         <viewLayoutGuide key="safeArea" id="wdB-xk-TfG"/>
                     </view>
                     <connections>
+                        <outlet property="btnBack" destination="Qmq-Xm-Spn" id="pfz-kI-k4e"/>
                         <outlet property="btnForgetPin" destination="4Wz-vI-RW0" id="qdd-Fq-Jbp"/>
                         <outlet property="btnLogin" destination="43G-V4-W5a" id="RqB-nn-Sma"/>
                         <outlet property="tableView" destination="Bb9-nL-y0d" id="t5r-N2-eWO"/>
@@ -2937,60 +2938,45 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZZc-PA-UiV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <view contentMode="scaleToFill" id="mAh-DV-Dv8">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="86"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DH4-qJ-g4W" customClass="CardView" customModule="BWS_2_Staging" customModuleProvider="target">
-                            <rect key="frame" x="16" y="16" width="343" height="58"/>
+                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DH4-qJ-g4W">
+                            <rect key="frame" x="16" y="10" width="343" height="66"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="addNew" translatesAutoresizingMaskIntoConstraints="NO" id="hhM-z2-HyG">
-                                    <rect key="frame" x="8" y="9" width="40" height="40"/>
+                                    <rect key="frame" x="15" y="13" width="40" height="40"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="hhM-z2-HyG" secondAttribute="height" multiplier="1:1" id="5kK-zp-66t"/>
                                         <constraint firstAttribute="height" constant="40" id="BRh-NF-JSs"/>
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add New User" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jMa-VN-C1a">
-                                    <rect key="frame" x="64" y="19.333333333333336" width="239" height="19.666666666666664"/>
+                                    <rect key="frame" x="68" y="23.333333333333336" width="267" height="19.666666666666664"/>
                                     <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="16"/>
-                                    <color key="textColor" name="DarkBlack"/>
+                                    <color key="textColor" name="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5vs-B5-Faj">
-                                    <rect key="frame" x="307" y="19" width="20" height="20"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" secondItem="5vs-B5-Faj" secondAttribute="height" multiplier="1:1" id="hyD-JT-SSs"/>
-                                        <constraint firstAttribute="height" constant="20" id="kb5-R3-D7e"/>
-                                    </constraints>
-                                </button>
                             </subviews>
                             <color key="backgroundColor" name="F9F9F9"/>
                             <constraints>
-                                <constraint firstItem="hhM-z2-HyG" firstAttribute="leading" secondItem="DH4-qJ-g4W" secondAttribute="leading" constant="8" id="55X-kk-yE9"/>
-                                <constraint firstItem="jMa-VN-C1a" firstAttribute="leading" secondItem="hhM-z2-HyG" secondAttribute="trailing" constant="16" id="9dg-R5-7ST"/>
-                                <constraint firstItem="5vs-B5-Faj" firstAttribute="leading" secondItem="jMa-VN-C1a" secondAttribute="trailing" constant="4" id="B00-DO-FqC"/>
+                                <constraint firstItem="hhM-z2-HyG" firstAttribute="leading" secondItem="DH4-qJ-g4W" secondAttribute="leading" constant="15" id="55X-kk-yE9"/>
+                                <constraint firstItem="jMa-VN-C1a" firstAttribute="leading" secondItem="hhM-z2-HyG" secondAttribute="trailing" constant="13" id="9dg-R5-7ST"/>
+                                <constraint firstAttribute="trailing" secondItem="jMa-VN-C1a" secondAttribute="trailing" constant="8" id="9rq-yi-BOH"/>
                                 <constraint firstItem="jMa-VN-C1a" firstAttribute="centerY" secondItem="DH4-qJ-g4W" secondAttribute="centerY" id="YNx-cj-TRV"/>
-                                <constraint firstAttribute="trailing" secondItem="5vs-B5-Faj" secondAttribute="trailing" constant="16" id="hn3-Mf-Y3c"/>
-                                <constraint firstItem="5vs-B5-Faj" firstAttribute="centerY" secondItem="DH4-qJ-g4W" secondAttribute="centerY" id="kbI-63-cOM"/>
                                 <constraint firstItem="hhM-z2-HyG" firstAttribute="centerY" secondItem="DH4-qJ-g4W" secondAttribute="centerY" id="uKv-ch-cYf"/>
                             </constraints>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                     <real key="value" value="8"/>
                                 </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
-                                    <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                    <real key="value" value="0.20000000000000001"/>
-                                </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </view>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <constraints>
-                        <constraint firstItem="DH4-qJ-g4W" firstAttribute="top" secondItem="mAh-DV-Dv8" secondAttribute="top" constant="16" id="N0S-CY-DOj"/>
-                        <constraint firstItem="ZiL-9h-aj3" firstAttribute="bottom" secondItem="DH4-qJ-g4W" secondAttribute="bottom" constant="16" id="Oe2-gr-ZsD"/>
+                        <constraint firstItem="DH4-qJ-g4W" firstAttribute="top" secondItem="mAh-DV-Dv8" secondAttribute="top" constant="10" id="N0S-CY-DOj"/>
+                        <constraint firstItem="ZiL-9h-aj3" firstAttribute="bottom" secondItem="DH4-qJ-g4W" secondAttribute="bottom" constant="10" id="Oe2-gr-ZsD"/>
                         <constraint firstItem="ZiL-9h-aj3" firstAttribute="trailing" secondItem="DH4-qJ-g4W" secondAttribute="trailing" constant="16" id="bkV-FH-eLR"/>
                         <constraint firstItem="DH4-qJ-g4W" firstAttribute="leading" secondItem="ZiL-9h-aj3" secondAttribute="leading" constant="16" id="sCW-3k-aZY"/>
                     </constraints>
@@ -3131,7 +3117,7 @@
                                                                 <rect key="frame" x="0.0" y="110" width="343" height="70"/>
                                                                 <subviews>
                                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mobile Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GO4-JK-799" customClass="JVFloatLabeledTextField">
-                                                                        <rect key="frame" x="56" y="8" width="225" height="54"/>
+                                                                        <rect key="frame" x="56" y="8" width="223" height="54"/>
                                                                         <color key="textColor" name="DarkBlack"/>
                                                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
                                                                         <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
@@ -3155,9 +3141,9 @@
                                                                         </constraints>
                                                                     </imageView>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Checked" translatesAutoresizingMaskIntoConstraints="NO" id="QFd-gd-wbS">
-                                                                        <rect key="frame" x="297" y="20" width="30" height="30"/>
+                                                                        <rect key="frame" x="295" y="19" width="32" height="32"/>
                                                                         <constraints>
-                                                                            <constraint firstAttribute="height" constant="30" id="3u4-vi-gcq"/>
+                                                                            <constraint firstAttribute="height" constant="32" id="3u4-vi-gcq"/>
                                                                             <constraint firstAttribute="width" secondItem="QFd-gd-wbS" secondAttribute="height" multiplier="1:1" id="PHs-lc-vwE"/>
                                                                         </constraints>
                                                                     </imageView>
@@ -3193,7 +3179,7 @@
                                                                 <rect key="frame" x="0.0" y="220" width="343" height="70"/>
                                                                 <subviews>
                                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UmG-MK-cvB" customClass="JVFloatLabeledTextField">
-                                                                        <rect key="frame" x="56" y="8" width="225" height="54"/>
+                                                                        <rect key="frame" x="56" y="8" width="223" height="54"/>
                                                                         <color key="textColor" name="DarkBlack"/>
                                                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
                                                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
@@ -3217,9 +3203,9 @@
                                                                         </constraints>
                                                                     </imageView>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Checked" translatesAutoresizingMaskIntoConstraints="NO" id="p4K-aZ-YMs">
-                                                                        <rect key="frame" x="297" y="20" width="30" height="30"/>
+                                                                        <rect key="frame" x="295" y="19" width="32" height="32"/>
                                                                         <constraints>
-                                                                            <constraint firstAttribute="height" constant="30" id="hYe-3g-VDA"/>
+                                                                            <constraint firstAttribute="height" constant="32" id="hYe-3g-VDA"/>
                                                                             <constraint firstAttribute="width" secondItem="p4K-aZ-YMs" secondAttribute="height" multiplier="1:1" id="mUf-ua-t4b"/>
                                                                         </constraints>
                                                                     </imageView>
@@ -5240,28 +5226,28 @@ personalised playlist</string>
         <image name="splash" width="125" height="293.66665649414062"/>
         <image name="wavyimage" width="125.33333587646484" height="151.66667175292969"/>
         <namedColor name="72C2DD">
-            <color red="0.44705882352941179" green="0.76078431372549016" blue="0.8666666666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.44699999690055847" green="0.76099997758865356" blue="0.86699998378753662" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="7E7E7E">
-            <color red="0.49411764705882355" green="0.49411764705882355" blue="0.49411764705882355" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.49399998784065247" green="0.49399998784065247" blue="0.49399998784065247" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="999999">
-            <color red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.60000002384185791" green="0.60000002384185791" blue="0.60000002384185791" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="DDDDDD">
-            <color red="0.8666666666666667" green="0.8666666666666667" blue="0.8666666666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.86699998378753662" green="0.86699998378753662" blue="0.86699998378753662" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="DarkBlack">
             <color red="0.19215686274509805" green="0.19215686274509805" blue="0.19215686274509805" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="F9F9F9">
-            <color red="0.97647058823529409" green="0.97647058823529409" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.97600001096725464" green="0.97600001096725464" blue="0.97600001096725464" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Green">
-            <color red="0.0" green="0.53333333333333333" blue="0.5725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.53299999237060547" blue="0.57300001382827759" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="black">
-            <color red="0.16470588235294117" green="0.18431372549019609" blue="0.25882352941176473" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.16470588235294117" green="0.18823529411764706" blue="0.25882352941176473" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="greenColor">
             <color red="0.0" green="0.53333333333333333" blue="0.5725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -220,7 +220,7 @@ class CategoryDataModel : EVObject {
 }
 
 
-// MARK:- SignUp API Models
+// MARK:- Add Co User API Models
 class CoUserModel : EVObject {
     var ResponseData : CoUserDataModel?
     var ResponseCode = ""
@@ -267,8 +267,25 @@ class CoUserDataModel : EVObject {
 }
 
 
-/**** Home Screen Audio Models ****/
+// MARK:- Add Co User API Models
+class UserListModel : EVObject {
+    var ResponseData = [UserListDataModel]()
+    var ResponseCode = ""
+    var ResponseMessage = ""
+    var ResponseStatus = ""
+}
 
+class UserListDataModel : EVObject {
+    var UserID = ""
+    var CoUserId = ""
+    var Name = ""
+    var Email = ""
+    var Mobile = ""
+    var isSelected = false
+}
+
+
+// MARK:- Home Screen Audio API Models
 class AudioHomeModel: EVObject {
     var ResponseData : [AudioHomeDataModel]?
     var ResponseCode = ""
@@ -336,8 +353,7 @@ public class AudioDetailsDataModel: EVObject {
 }
 
 
-/**** Playlist Home Model ****/
-
+// MARK:- Playlist Home API Models
 class PlaylistDetailsModel: EVObject {
     var PlaylistID = ""
     var PlaylistName = ""

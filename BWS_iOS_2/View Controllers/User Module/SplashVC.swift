@@ -21,13 +21,7 @@ class SplashVC: BaseViewController {
     // MARK:- FUNCTIONS
     override func goNext() {
         if checkInternet() == false {
-            if (LoginDataModel.currentUser != nil) {
-                let aVC = AppStoryBoard.main.viewController(viewControllerClass: UserListVC.self)
-                self.navigationController?.pushViewController(aVC, animated: true)
-            } else {
-                let aVC = AppStoryBoard.main.viewController(viewControllerClass: StartingVC.self)
-                self.navigationController?.pushViewController(aVC, animated: true)
-            }
+            handleRedirection()
             showAlertToast(message: Theme.strings.alert_check_internet)
         }
         else {
@@ -49,6 +43,7 @@ class SplashVC: BaseViewController {
     func handleRedirection() {
         if (LoginDataModel.currentUser != nil) {
             let aVC = AppStoryBoard.main.viewController(viewControllerClass: UserListVC.self)
+            aVC.hideBackButton = true
             self.navigationController?.pushViewController(aVC, animated: true)
         } else {
             let aVC = AppStoryBoard.main.viewController(viewControllerClass: StartingVC.self)

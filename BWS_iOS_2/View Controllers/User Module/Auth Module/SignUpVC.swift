@@ -276,11 +276,9 @@ extension SignUpVC : TTTAttributedLabelDelegate {
         print("link clicked")
         if url.absoluteString == "action://TC" {
             self.openUrl(urlString: "https://brainwellnessspa.com.au/terms-conditions")
-        }
-        else if url.absoluteString == "action://Policy" {
+        } else if url.absoluteString == "action://Policy" {
             self.openUrl(urlString: "https://brainwellnessspa.com.au/privacy-policy")
-        }
-        else if url.absoluteString == "action://Disclaimer" {
+        } else if url.absoluteString == "action://Disclaimer" {
             let aVC = AppStoryBoard.main.viewController(viewControllerClass: DescriptionPopupVC.self)
             aVC.strDesc = "The Brain Wellness App offers a unique, alternative and drug free method created by our founder Terri Bowman aimed to assist people encountering struggles in their daily lives, to find inner peace and overcome negative thoughts and emotions (the Brain Wellness App Method). \n\nThe Brain Wellness App Method is not a scientific method. \n\nThe testimonials of our clients speak for themselves and we are so proud of the incredible results they have achieved – we want to help you and are committed to assisting you find a way to live a better life. However, as with any service, we accept that it may not be right for everyone and that results may vary from client to client. Accordingly, we make no promises or representations that our service will work for you but we invite you to try it for yourself."
             aVC.strTitle = "Disclaimer"
