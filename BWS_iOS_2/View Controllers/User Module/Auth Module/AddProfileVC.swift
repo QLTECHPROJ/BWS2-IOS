@@ -34,7 +34,7 @@ class AddProfileVC: BaseViewController {
     
     
     // MARK:- VARIABLES
-    var isCome = ""
+    var selectedUser : CoUserDataModel?
     
     
     // MARK:- VIEW LIFE CYCLE
@@ -46,7 +46,15 @@ class AddProfileVC: BaseViewController {
     
     // MARK:- FUNCTIONS
     override func setupUI() {
-        if isCome == "ForgotPin" {
+        if let user = selectedUser {
+            txtFName.text = user.Name
+            txtFMobileNo.text = user.Mobile
+            txtFEmailAdd.text = user.Email
+            
+            txtFName.isEnabled = false
+            txtFMobileNo.isEnabled = false
+            txtFEmailAdd.isEnabled = false
+            
             btnSendPin.setTitle("SEND NEW PIN", for: .normal)
         }
         
@@ -61,12 +69,28 @@ class AddProfileVC: BaseViewController {
         txtFMobileNo.delegate = self
         txtFEmailAdd.delegate = self
         
+        buttonEnableDisable()
+    }
+    
+    func buttonEnableDisable() {
+        var shouldEnable = true
+        
         if txtFEmailAdd.text?.trim.count == 0 || txtFName.text?.trim.count == 0 || txtFMobileNo.text?.trim.count == 0 {
-            btnSendPin.isUserInteractionEnabled = false
-            btnSendPin.backgroundColor = #colorLiteral(red: 0.4941176471, green: 0.4941176471, blue: 0.4941176471, alpha: 1)
+            shouldEnable = false
         } else {
+            shouldEnable = true
+        }
+        
+        if selectedUser != nil {
+            shouldEnable = true
+        }
+        
+        if shouldEnable {
             btnSendPin.isUserInteractionEnabled = true
             btnSendPin.backgroundColor = #colorLiteral(red: 0, green: 0.5333333333, blue: 0.5725490196, alpha: 1)
+        } else {
+            btnSendPin.isUserInteractionEnabled = false
+            btnSendPin.backgroundColor = #colorLiteral(red: 0.4941176471, green: 0.4941176471, blue: 0.4941176471, alpha: 1)
         }
     }
     
@@ -141,12 +165,16 @@ class AddProfileVC: BaseViewController {
     }
     
     @IBAction func onTappedSendPin(_ sender: UIButton) {
-        if checkValidation() {
-            lblErrName.isHidden = true
-            lblErrMobileNo.isHidden = true
-            lblErrEmailAdd.isHidden = true
-            
-            callAddUserProfileAPI()
+        if selectedUser != nil {
+            callForgotPinAPI()
+        } else {
+            if checkValidation() {
+                lblErrName.isHidden = true
+                lblErrMobileNo.isHidden = true
+                lblErrEmailAdd.isHidden = true
+                
+                callAddUserProfileAPI()
+            }
         }
     }
     
@@ -184,13 +212,7 @@ extension AddProfileVC : UITextFieldDelegate {
         imgCheckMobile.isHidden = !isMobileNumberValid(strMobile: txtFMobileNo.text?.trim ?? "")
         imgCheckEmail.isHidden = !isEmailAddressValid(strEmail: txtFEmailAdd.text?.trim ?? "")
         
-        if txtFEmailAdd.text?.trim.count == 0 || txtFName.text?.trim.count == 0 || txtFMobileNo.text?.trim.count == 0 {
-            btnSendPin.isUserInteractionEnabled = false
-            btnSendPin.backgroundColor = #colorLiteral(red: 0.4941176471, green: 0.4941176471, blue: 0.4941176471, alpha: 1)
-        } else {
-            btnSendPin.isUserInteractionEnabled = true
-            btnSendPin.backgroundColor = #colorLiteral(red: 0, green: 0.5333333333, blue: 0.5725490196, alpha: 1)
-        }
+        buttonEnableDisable()
     }
     
 }

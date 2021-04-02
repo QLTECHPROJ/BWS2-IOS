@@ -20,6 +20,7 @@ enum APIRouter: URLRequestConvertible {
     case login([String:String])
     case forgotpass([String:String])
     case addcouser([String:String])
+    case forgotpin([String:String])
     case userlist([String:String])
     case verifypin([String:String])
     case getcouserdetails([String:String])
@@ -38,6 +39,8 @@ enum APIRouter: URLRequestConvertible {
             return APIRoute(path: "forgotpass", method: .post, data: data)
         case .addcouser(let data):
             return APIRoute(path: "addcouser", method: .post, data: data)
+        case .forgotpin(let data):
+            return APIRoute(path: "forgotpin", method: .post, data: data)
         case .userlist(let data):
             return APIRoute(path: "userlist", method: .post, data: data)
         case .verifypin(let data):

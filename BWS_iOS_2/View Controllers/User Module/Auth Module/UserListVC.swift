@@ -130,9 +130,15 @@ class UserListVC: BaseViewController {
     
     // MARK:- ACTIONS
     @IBAction func onTappedForgotPin(_ sender: UIButton) {
-        let aVC = AppStoryBoard.main.viewController(viewControllerClass:AddProfileVC.self)
-        aVC.isCome = "ForgotPin"
-        self.navigationController?.pushViewController(aVC, animated: true)
+        let selectedUser = arrayUsers.filter { $0.isSelected == true }.first
+        
+        if let selectedUser = selectedUser {
+            let aVC = AppStoryBoard.main.viewController(viewControllerClass:AddProfileVC.self)
+            aVC.selectedUser = selectedUser
+            self.navigationController?.pushViewController(aVC, animated: true)
+        } else {
+            showAlertToast(message: Theme.strings.alert_select_login_user)
+        }
     }
     
     

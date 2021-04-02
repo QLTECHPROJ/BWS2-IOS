@@ -215,4 +215,17 @@ extension AddProfileVC {
         }
     }
     
+    // Forgot Pin API Call
+    func callForgotPinAPI() {
+        let parameters = ["UserID":selectedUser?.UserID ?? "",
+                          "CoUserId":selectedUser?.CoUserId ?? "",
+                          "Email":selectedUser?.Email ?? ""]
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.forgotpin(parameters)) { (response : GeneralModel) in
+            if response.ResponseCode == "200" {
+                showAlertToast(message: response.ResponseMessage)
+            }
+        }
+    }
+    
 }
