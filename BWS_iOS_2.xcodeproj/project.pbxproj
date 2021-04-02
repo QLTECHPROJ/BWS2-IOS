@@ -51,6 +51,8 @@
 		28252FA525FF357C00C2EB50 /* DoDassAssessmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28252FA125FF355900C2EB50 /* DoDassAssessmentVC.swift */; };
 		28252FA925FF4CA200C2EB50 /* DassAssessmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28252FA825FF4CA200C2EB50 /* DassAssessmentVC.swift */; };
 		28252FAA25FF4CB600C2EB50 /* DassAssessmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28252FA825FF4CA200C2EB50 /* DassAssessmentVC.swift */; };
+		2830F1C82617479000E46F89 /* PlaylistDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2830F1C72617479000E46F89 /* PlaylistDetailVC.swift */; };
+		2830F1C92617479000E46F89 /* PlaylistDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2830F1C72617479000E46F89 /* PlaylistDetailVC.swift */; };
 		283153B326143F74004001CE /* PlaylistCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283153B126143F74004001CE /* PlaylistCollectionCell.swift */; };
 		283153B426143F74004001CE /* PlaylistCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283153B126143F74004001CE /* PlaylistCollectionCell.swift */; };
 		283153B526143F74004001CE /* PlaylistCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 283153B226143F74004001CE /* PlaylistCollectionCell.xib */; };
@@ -342,6 +344,7 @@
 		28252FA125FF355900C2EB50 /* DoDassAssessmentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoDassAssessmentVC.swift; sourceTree = "<group>"; };
 		28252FA825FF4CA200C2EB50 /* DassAssessmentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DassAssessmentVC.swift; sourceTree = "<group>"; };
 		282F8A2325FB38B700E81153 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2830F1C72617479000E46F89 /* PlaylistDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistDetailVC.swift; sourceTree = "<group>"; };
 		283153B126143F74004001CE /* PlaylistCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistCollectionCell.swift; sourceTree = "<group>"; };
 		283153B226143F74004001CE /* PlaylistCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaylistCollectionCell.xib; sourceTree = "<group>"; };
 		283153B72614401E004001CE /* ManagePlaylistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagePlaylistCell.swift; sourceTree = "<group>"; };
@@ -758,6 +761,7 @@
 				288621472615BF880087730D /* ViewAllPlaylistVC.swift */,
 				283153C0261448C9004001CE /* CreatePlaylistVC.swift */,
 				283153C626145F41004001CE /* AudioDetailVC.swift */,
+				2830F1C72617479000E46F89 /* PlaylistDetailVC.swift */,
 				283153C3261455E0004001CE /* AlertPopUpVC.swift */,
 			);
 			path = "Manage Tab";
@@ -1292,6 +1296,7 @@
 				2870B3D825FB41A10014A4F6 /* NSAttributedString+Extension.swift in Sources */,
 				2870B3D225FB41A10014A4F6 /* DJTextField.swift in Sources */,
 				28E8093926130A8800CD80F7 /* ManageVC.swift in Sources */,
+				2830F1C92617479000E46F89 /* PlaylistDetailVC.swift in Sources */,
 				283153BF2614489E004001CE /* PlaylistCategoryVC.swift in Sources */,
 				2870B3E625FB41A10014A4F6 /* ImagePicker.swift in Sources */,
 				28B5353B260C706200BD8147 /* AreaOfFocusVC.swift in Sources */,
@@ -1419,6 +1424,7 @@
 				2870B44125FB41A10014A4F6 /* ReorderController.swift in Sources */,
 				2870B3D725FB41A10014A4F6 /* NSAttributedString+Extension.swift in Sources */,
 				28E8093826130A8800CD80F7 /* ManageVC.swift in Sources */,
+				2830F1C82617479000E46F89 /* PlaylistDetailVC.swift in Sources */,
 				283153BE2614489E004001CE /* PlaylistCategoryVC.swift in Sources */,
 				2870B3D125FB41A10014A4F6 /* DJTextField.swift in Sources */,
 				28B5353A260C706200BD8147 /* AreaOfFocusVC.swift in Sources */,
