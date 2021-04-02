@@ -20,8 +20,10 @@ class ContinueVC: BaseViewController {
         super.viewDidLoad()
     }
     
+    // MARK:- FUNCTIONS
     override func goNext() {
-        print("Handle Navigation")
+        let aVC = AppStoryBoard.main.viewController(viewControllerClass: ProfileForm1VC.self)
+        self.navigationController?.pushViewController(aVC, animated: true)
     }
     
     

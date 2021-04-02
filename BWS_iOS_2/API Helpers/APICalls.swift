@@ -17,6 +17,27 @@ extension SplashVC {
         
         APICallManager.sharedInstance.callAPI(router: APIRouter.appversion(parameters), displayHud: false) { (response : AppVersionModel) in
             if response.ResponseCode == "200" {
+                SplashVC.isForceUpdate = response.ResponseData.IsForce
+                self.handleAppUpdatePopup()
+            }
+            else {
+                self.handleRedirection()
+            }
+        }
+    }
+    
+    // Call Get Co User Details API
+    func CallGetCoUserDetailsAPI() {
+        let parameters = ["UserID":CoUserDataModel.currentUser?.UserID ?? "",
+                          "CoUserId":CoUserDataModel.currentUser?.CoUserId ?? ""]
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.getcouserdetails(parameters), displayHud: false) { (response : CoUserModel) in
+            if response.ResponseCode == "200" {
+                CoUserDataModel.currentUser = response.ResponseData
+                self.handleCoUserRedirection()
+            }
+            else {
+                CoUserDataModel.currentUser = nil
                 self.handleRedirection()
             }
         }
@@ -129,13 +150,21 @@ extension UserListVC {
     
     // User List API Call
     func callUserListAPI() {
+        arrayUsers.removeAll()
+        tableView.reloadData()
+        buttonEnableDisable()
+        
         let parameters = ["UserID":LoginDataModel.currentUser?.ID ?? ""]
         
         APICallManager.sharedInstance.callAPI(router: APIRouter.userlist(parameters)) { (response : UserListModel) in
             if response.ResponseCode == "200" {
-                self.arrayUsers = response.ResponseData
+                self.arrayUsers = response.ResponseData.CoUserList
                 self.tableView.reloadData()
-                self.buttonEnableDisable()
+                self.maxUsers = Int(response.ResponseData.Maxuseradd) ?? 0
+                self.setupData()
+            }
+            else {
+                self.setupData()
             }
         }
     }
@@ -147,13 +176,14 @@ extension PinVC {
     // Verify Pin API Call
     func callVerifyPinAPI() {
         let strCode = txtFPin1.text! + txtFPin2.text! + txtFPin3.text! + txtFPin4.text!
-        let parameters = ["UserID":selectedUser.CoUserId,
+        let parameters = ["UserID":selectedUser?.CoUserId ?? "",
                           "Pin":strCode]
         
-        APICallManager.sharedInstance.callAPI(router: APIRouter.verifypin(parameters)) { (response : GeneralModel) in
+        APICallManager.sharedInstance.callAPI(router: APIRouter.verifypin(parameters)) { (response : CoUserModel) in
             if response.ResponseCode == "200" {
                 self.dismiss(animated: false, completion: nil)
-                APPDELEGATE.window?.rootViewController = AppStoryBoard.main.viewController(viewControllerClass: NavigationClass.self)
+                CoUserDataModel.currentUser = response.ResponseData
+                self.pinVerified?()
             }
             else {
                 showAlertToast(message: response.ResponseMessage)
@@ -175,7 +205,7 @@ extension AddProfileVC {
         APICallManager.sharedInstance.callAPI(router: APIRouter.addcouser(parameters), displayHud: true, showToast: false) { (response : CoUserModel) in
             if response.ResponseCode == "200" {
                 showAlertToast(message: response.ResponseMessage)
-                CoUserDataModel.currentUser = response.ResponseData
+                self.navigationController?.popViewController(animated: true)
             } else {
                 if response.ResponseMessage.trim.count > 0 {
                     self.lblErrEmailAdd.isHidden = false

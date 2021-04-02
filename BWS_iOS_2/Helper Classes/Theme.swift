@@ -288,6 +288,8 @@ struct AppStrings {
     let alert_blank_password_error = "Please enter password"
     let alert_invalid_password_error = "Password length must be atleast 8 characters"
     
+    let alert_select_login_user = "Please select atleast one to proceed"
+    
     // Audio
     let alert_already_downloaded = "Audio has been already downloaded"
     let alert_blank_search = "Please enter search text"

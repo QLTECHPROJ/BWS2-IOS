@@ -3332,9 +3332,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view clipsSubviews="YES" alpha="0.80000001192092896" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MwL-RW-1jQ">
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MwL-RW-1jQ">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                                <color key="backgroundColor" name="black"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pmX-Nb-OEL">
                                 <rect key="frame" x="16" y="272.66666666666669" width="343" height="267.00000000000006"/>
@@ -3569,6 +3569,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
+                        <color key="backgroundColor" name="transparent_313131_80"/>
                         <constraints>
                             <constraint firstItem="pmX-Nb-OEL" firstAttribute="centerX" secondItem="6Pd-9Q-MTn" secondAttribute="centerX" id="504-6e-osK"/>
                             <constraint firstAttribute="bottom" secondItem="MwL-RW-1jQ" secondAttribute="bottom" id="6mq-R2-Ym1"/>

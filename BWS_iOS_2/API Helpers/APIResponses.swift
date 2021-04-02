@@ -233,8 +233,13 @@ class CoUserDataModel : EVObject {
     var CoUserId = ""
     var Name = ""
     var Email = ""
-    var MobileNo = ""
+    var Mobile = ""
+    var isProfileCompleted = ""
+    var isAssessmentCompleted = ""
+    var indexScore = ""
+    var planDetails : Any?
     var errormsg = ""
+    var isSelected = false
     
     class var currentUser : CoUserDataModel? {
         get {
@@ -269,19 +274,16 @@ class CoUserDataModel : EVObject {
 
 // MARK:- Add Co User API Models
 class UserListModel : EVObject {
-    var ResponseData = [UserListDataModel]()
+    var ResponseData = UserListDataModel()
     var ResponseCode = ""
     var ResponseMessage = ""
     var ResponseStatus = ""
 }
 
 class UserListDataModel : EVObject {
-    var UserID = ""
-    var CoUserId = ""
-    var Name = ""
-    var Email = ""
-    var Mobile = ""
-    var isSelected = false
+    var Maxuseradd = ""
+    var CoUserList = [CoUserDataModel]()
+    var errormsg = ""
 }
 
 

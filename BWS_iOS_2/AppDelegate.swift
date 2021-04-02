@@ -111,6 +111,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 
+// MARK:- UIApplication Life Cycle Events
+extension AppDelegate {
+    
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        if SplashVC.isForceUpdate == "1" {
+            window?.rootViewController = AppStoryBoard.main.intialViewController()
+        }
+    }
+    
+}
+
+
 // MARK:- UNUserNotificationCenterDelegate
 extension AppDelegate : UNUserNotificationCenterDelegate {
     

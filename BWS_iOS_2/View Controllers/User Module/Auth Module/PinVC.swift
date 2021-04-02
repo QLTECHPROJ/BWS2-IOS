@@ -35,7 +35,9 @@ class PinVC: BaseViewController {
     
     
     // MARK:- VARIABLES
-    var selectedUser = UserListDataModel()
+    var selectedUser : CoUserDataModel?
+    var pinVerified : (() -> Void)?
+    
     var textFields: [BackspaceTextField] {
         return [txtFPin1, txtFPin2, txtFPin3, txtFPin4]
     }

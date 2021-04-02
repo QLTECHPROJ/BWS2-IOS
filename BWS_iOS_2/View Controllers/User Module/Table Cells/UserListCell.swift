@@ -19,7 +19,7 @@ class UserListCell: UITableViewCell {
     }
     
     // Configure Cell
-    func configureCell(data : UserListDataModel) {
+    func configureCell(data : CoUserDataModel) {
         lblName.text = data.Name
         
         if data.isSelected {

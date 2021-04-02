@@ -20,13 +20,19 @@ class UserListVC: BaseViewController {
     
     // MARK:- VARIABLES
     var tapGesture = UITapGestureRecognizer()
-    var arrayUsers = [UserListDataModel]()
-    var hideBackButton = false
+    var arrayUsers = [CoUserDataModel]()
+    var maxUsers = 2
+    var hideBackButton = true
     
     
     // MARK:- VIEW LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         setupUI()
         callUserListAPI()
@@ -38,7 +44,6 @@ class UserListVC: BaseViewController {
         btnBack.isHidden = hideBackButton
         
         tableView.register(nibWithCellClass: UserListCell.self)
-        tableView.tableFooterView = viewFooter
         
         tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.viewTapped(_:)))
         tapGesture.numberOfTapsRequired = 1
@@ -47,6 +52,18 @@ class UserListVC: BaseViewController {
         viewFooter.isUserInteractionEnabled = true
         
         buttonEnableDisable()
+    }
+    
+    override func setupData() {
+        self.buttonEnableDisable()
+        
+        if arrayUsers.count < maxUsers {
+            tableView.tableFooterView = viewFooter
+        } else {
+            tableView.tableFooterView = UIView()
+        }
+        
+        self.tableView.reloadData()
     }
     
     @objc func viewTapped(_ sender: UITapGestureRecognizer) {
@@ -65,10 +82,49 @@ class UserListVC: BaseViewController {
         if shouldEnable {
             btnLogin.isUserInteractionEnabled = true
             btnLogin.backgroundColor = Theme.colors.greenColor
+            
+            btnForgetPin.isUserInteractionEnabled = true
+            btnForgetPin.setTitleColor(Theme.colors.greenColor, for: .normal)
         } else {
             btnLogin.isUserInteractionEnabled = false
             btnLogin.backgroundColor = Theme.colors.gray_7E7E7E
+            
+            btnForgetPin.isUserInteractionEnabled = false
+            btnForgetPin.setTitleColor(Theme.colors.gray_7E7E7E, for: .normal)
         }
+    }
+    
+    func handleCoUserRedirection() {
+        if let coUser = CoUserDataModel.currentUser {
+            if coUser.isProfileCompleted == "0" {
+                let aVC = AppStoryBoard.main.viewController(viewControllerClass: ContinueVC.self)
+                self.navigationController?.pushViewController(aVC, animated: true)
+            } else if coUser.isAssessmentCompleted == "0" {
+                let aVC = AppStoryBoard.main.viewController(viewControllerClass: DoDassAssessmentVC.self)
+                self.navigationController?.pushViewController(aVC, animated: true)
+            } else if coUser.planDetails == nil {
+                let aVC = AppStoryBoard.main.viewController(viewControllerClass: ManageStartVC.self)
+                aVC.strTitle = "You are Doing Good"
+                aVC.strSubTitle = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut"
+                aVC.imageMain = UIImage(named: "manageStartWave")
+                aVC.continueClicked = {
+                    self.goNext()
+                }
+                aVC.modalPresentationStyle = .overFullScreen
+                self.present(aVC, animated: true, completion: nil)
+            }
+            else {
+                APPDELEGATE.window?.rootViewController = AppStoryBoard.main.viewController(viewControllerClass: NavigationClass.self)
+            }
+        }
+    }
+    
+    override func goNext() {
+        let aVC = AppStoryBoard.main.viewController(viewControllerClass:ManagePlanListVC.self)
+        let navVC = UINavigationController(rootViewController: aVC)
+        navVC.isNavigationBarHidden = true
+        navVC.modalPresentationStyle = .overFullScreen
+        self.navigationController?.present(navVC, animated: true, completion: nil)
     }
     
     
@@ -86,8 +142,13 @@ class UserListVC: BaseViewController {
         if let selectedUser = selectedUser {
             let aVC = AppStoryBoard.main.viewController(viewControllerClass:PinVC.self)
             aVC.selectedUser = selectedUser
+            aVC.pinVerified = {
+                self.handleCoUserRedirection()
+            }
             aVC.modalPresentationStyle = .overFullScreen
             self.navigationController?.present(aVC, animated: true, completion: nil)
+        } else {
+            showAlertToast(message: Theme.strings.alert_select_login_user)
         }
     }
     

@@ -22,6 +22,7 @@ enum APIRouter: URLRequestConvertible {
     case addcouser([String:String])
     case userlist([String:String])
     case verifypin([String:String])
+    case getcouserdetails([String:String])
     
     var route: APIRoute {
         switch self {
@@ -41,6 +42,8 @@ enum APIRouter: URLRequestConvertible {
             return APIRoute(path: "userlist", method: .post, data: data)
         case .verifypin(let data):
             return APIRoute(path: "verifypin", method: .post, data: data)
+        case .getcouserdetails(let data):
+            return APIRoute(path: "getcouserdetails", method: .post, data: data)
         }
     }
     
