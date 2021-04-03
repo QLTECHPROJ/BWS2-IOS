@@ -58,6 +58,9 @@ class SplashVC: BaseViewController {
     }
     
     func handleRedirection() {
+        APPDELEGATE.window?.rootViewController = AppStoryBoard.main.viewController(viewControllerClass: NavigationClass.self)
+        return
+        
         if (LoginDataModel.currentUser != nil) {
             if CoUserDataModel.currentUser != nil {
                 self.CallGetCoUserDetailsAPI()
