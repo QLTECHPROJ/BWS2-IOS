@@ -31,6 +31,8 @@ class ManagePlanListVC: BaseViewController {
     
     @IBOutlet weak var collectionViewAudios: UICollectionView!
     
+    @IBOutlet weak var carouselView: iCarousel!
+    
     @IBOutlet weak var tblFAQ: UITableView!
     @IBOutlet weak var tblFAQHeightConst: NSLayoutConstraint!
     
@@ -92,6 +94,9 @@ class ManagePlanListVC: BaseViewController {
         tblFAQ.reloadData()
         
         self.tblFAQ.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
+        
+        carouselView.type = .linear
+        carouselView.backgroundColor = UIColor.clear
         
         // DispatchQueue.main.asyncAfter(deadline: .now()) {
         //     self.tblFAQHeightConst.constant = self.tblFAQ.contentSize.height
@@ -374,6 +379,35 @@ extension ManagePlanListVC : UICollectionViewDelegate, UICollectionViewDelegateF
         let width = 115
         let height = 145
         return CGSize(width: width, height: height)
+    }
+    
+}
+
+
+extension ManagePlanListVC : iCarouselDelegate, iCarouselDataSource {
+    
+    func numberOfItems(in carousel: iCarousel) -> Int {
+        return 5
+    }
+    
+    func carousel(_ carousel: iCarousel, viewForItemAt index: Int, reusing view: UIView?) -> UIView {
+        let width : CGFloat = SCREEN_WIDTH - 52
+        let height : CGFloat = 180
+        let cell = PlayVideoCell()
+        let view = cell.loadViewFromNib()
+        view.frame = CGRect(x: 0, y: 0, width: width, height: height)
+        return view
+    }
+    
+    func carousel(_ carousel: iCarousel, valueFor option: iCarouselOption, withDefault value: CGFloat) -> CGFloat {
+        switch option {
+        case .wrap:
+            return 1
+        case .spacing:
+            return value * 1.05
+        default:
+            return value
+        }
     }
     
 }

@@ -3894,7 +3894,7 @@
             </objects>
             <point key="canvasLocation" x="9213.6000000000004" y="136.69950738916256"/>
         </scene>
-        <!--Manage Plan ListVC-->
+        <!--Data Source-->
         <scene sceneID="F0k-yf-zop">
             <objects>
                 <viewController storyboardIdentifier="ManagePlanListVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yve-Dx-R9G" customClass="ManagePlanListVC" customModule="BWS_2_Staging" customModuleProvider="target" sceneMemberID="viewController">
@@ -3903,7 +3903,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" contentInsetAdjustmentBehavior="never" translatesAutoresizingMaskIntoConstraints="NO" id="BES-DD-jrH">
-                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="734.00000000000023"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BQx-dw-rm7">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="2535.3333333333335"/>
@@ -4326,12 +4326,16 @@ FROM REAL CUSTOMERS</string>
                                                         <color key="textColor" name="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E07-D7-APc">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E07-D7-APc" customClass="iCarousel">
                                                         <rect key="frame" x="0.0" y="76.666666666666742" width="375" height="200"/>
                                                         <color key="backgroundColor" name="F9F9F9"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="200" id="jMS-3l-paS"/>
                                                         </constraints>
+                                                        <connections>
+                                                            <outlet property="dataSource" destination="yve-Dx-R9G" id="b8L-95-hve"/>
+                                                            <outlet property="delegate" destination="yve-Dx-R9G" id="Ih8-bz-ZEQ"/>
+                                                        </connections>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aiu-oU-DLD">
                                                         <rect key="frame" x="16" y="296.66666666666652" width="343" height="56"/>
@@ -4454,6 +4458,7 @@ agree to our T&amp;Cs, Privacy Policy &amp; Disclaimer</string>
                     </view>
                     <connections>
                         <outlet property="btnStart" destination="FCV-jv-fqk" id="OB0-5i-FS3"/>
+                        <outlet property="carouselView" destination="E07-D7-APc" id="CYX-Sq-NRd"/>
                         <outlet property="collectionViewAudios" destination="1Sc-mP-aaq" id="ERz-5f-Ok3"/>
                         <outlet property="lblAccessAudioTitle" destination="upV-cZ-jVi" id="aUi-mG-M3Z"/>
                         <outlet property="lblFeedbackSubTitle" destination="Aiu-oU-DLD" id="jq7-5O-TJg"/>

@@ -245,6 +245,12 @@
 		28B53553260CC4B000BD8147 /* CollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B53551260CC4B000BD8147 /* CollectionViewFlowLayout.swift */; };
 		28C1E0202615F18900600041 /* ViewAllAudioVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C1E01F2615F18900600041 /* ViewAllAudioVC.swift */; };
 		28C1E0212615F18900600041 /* ViewAllAudioVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C1E01F2615F18900600041 /* ViewAllAudioVC.swift */; };
+		28D755682618999F00EA63FE /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D755672618999F00EA63FE /* iCarousel.m */; };
+		28D755692618999F00EA63FE /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D755672618999F00EA63FE /* iCarousel.m */; };
+		28D7556D2618A33F00EA63FE /* PlayVideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D7556B2618A33F00EA63FE /* PlayVideoCell.swift */; };
+		28D7556E2618A33F00EA63FE /* PlayVideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D7556B2618A33F00EA63FE /* PlayVideoCell.swift */; };
+		28D7556F2618A33F00EA63FE /* PlayVideoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28D7556C2618A33F00EA63FE /* PlayVideoCell.xib */; };
+		28D755702618A33F00EA63FE /* PlayVideoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28D7556C2618A33F00EA63FE /* PlayVideoCell.xib */; };
 		28E012002618470100B55967 /* UserListPopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E011FF2618470100B55967 /* UserListPopUpVC.swift */; };
 		28E012012618470100B55967 /* UserListPopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E011FF2618470100B55967 /* UserListPopUpVC.swift */; };
 		28E012032618471500B55967 /* NotificatonVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E012022618471500B55967 /* NotificatonVC.swift */; };
@@ -487,6 +493,10 @@
 		28B5354E260CC44100BD8147 /* DynamicHeightCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicHeightCollectionView.swift; sourceTree = "<group>"; };
 		28B53551260CC4B000BD8147 /* CollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		28C1E01F2615F18900600041 /* ViewAllAudioVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewAllAudioVC.swift; sourceTree = "<group>"; };
+		28D755662618999F00EA63FE /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
+		28D755672618999F00EA63FE /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
+		28D7556B2618A33F00EA63FE /* PlayVideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayVideoCell.swift; sourceTree = "<group>"; };
+		28D7556C2618A33F00EA63FE /* PlayVideoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayVideoCell.xib; sourceTree = "<group>"; };
 		28E011FF2618470100B55967 /* UserListPopUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListPopUpVC.swift; sourceTree = "<group>"; };
 		28E012022618471500B55967 /* NotificatonVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificatonVC.swift; sourceTree = "<group>"; };
 		28E012052618474000B55967 /* PlaylistAudiosVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistAudiosVC.swift; sourceTree = "<group>"; };
@@ -680,6 +690,7 @@
 				2870B3AC25FB41A10014A4F6 /* UIViewExtension.swift */,
 				2870B3AE25FB41A10014A4F6 /* MediaType.swift */,
 				2870B3B025FB41A10014A4F6 /* MimeType.swift */,
+				28D755652618998F00EA63FE /* iCarousel */,
 				2870B44B25FB44700014A4F6 /* ClockClass */,
 				2870B38325FB41A10014A4F6 /* DJDesinable */,
 				2870B38925FB41A10014A4F6 /* DJExtensions */,
@@ -812,8 +823,19 @@
 				28B5353D260C781400BD8147 /* AreaOfFocusCell.xib */,
 				28B53548260CC2B800BD8147 /* CategoryCollectionCell.swift */,
 				28B53549260CC2B800BD8147 /* CategoryCollectionCell.xib */,
+				28D7556B2618A33F00EA63FE /* PlayVideoCell.swift */,
+				28D7556C2618A33F00EA63FE /* PlayVideoCell.xib */,
 			);
 			path = "Collection Cells";
+			sourceTree = "<group>";
+		};
+		28D755652618998F00EA63FE /* iCarousel */ = {
+			isa = PBXGroup;
+			children = (
+				28D755662618999F00EA63FE /* iCarousel.h */,
+				28D755672618999F00EA63FE /* iCarousel.m */,
+			);
+			path = iCarousel;
 			sourceTree = "<group>";
 		};
 		28E01211261847EA00B55967 /* Cell */ = {
@@ -1165,6 +1187,7 @@
 				28E80927261308E300CD80F7 /* Home.storyboard in Resources */,
 				282441482609ACE30060292E /* UserListCell.xib in Resources */,
 				2870B35E25FB3A570014A4F6 /* LaunchScreen.storyboard in Resources */,
+				28D755702618A33F00EA63FE /* PlayVideoCell.xib in Resources */,
 				28ED2F9225FB58E000E59C56 /* Montserrat-SemiBold.ttf in Resources */,
 				283153CE26146111004001CE /* AudioCategoryCell.xib in Resources */,
 				28E01236261847EA00B55967 /* SelfDevCell.xib in Resources */,
@@ -1212,6 +1235,7 @@
 				28E80926261308E300CD80F7 /* Home.storyboard in Resources */,
 				28F812BC25FB364900DC6AF6 /* LaunchScreen.storyboard in Resources */,
 				28ED2F9125FB58E000E59C56 /* Montserrat-SemiBold.ttf in Resources */,
+				28D7556F2618A33F00EA63FE /* PlayVideoCell.xib in Resources */,
 				282441472609ACE30060292E /* UserListCell.xib in Resources */,
 				283153CD26146111004001CE /* AudioCategoryCell.xib in Resources */,
 				28E01235261847EA00B55967 /* SelfDevCell.xib in Resources */,
@@ -1445,9 +1469,11 @@
 				28B5353F260C781400BD8147 /* AreaOfFocusCell.swift in Sources */,
 				2870B3E425FB41A10014A4F6 /* DJContants.swift in Sources */,
 				280C48F32600652C00063C03 /* DassAssessmentResultVC.swift in Sources */,
+				28D755692618999F00EA63FE /* iCarousel.m in Sources */,
 				28E01234261847EA00B55967 /* PlayerBannerCell.swift in Sources */,
 				2870B3F625FB41A10014A4F6 /* UITableView+Extension.swift in Sources */,
 				2870B3F425FB41A10014A4F6 /* NSDate+Extension.swift in Sources */,
+				28D7556E2618A33F00EA63FE /* PlayVideoCell.swift in Sources */,
 				2870B37D25FB40830014A4F6 /* Reachability.swift in Sources */,
 				283153C5261455E0004001CE /* AlertPopUpVC.swift in Sources */,
 				2870B36725FB3AEF0014A4F6 /* Constants.swift in Sources */,
@@ -1587,9 +1613,11 @@
 				28B5353E260C781400BD8147 /* AreaOfFocusCell.swift in Sources */,
 				2870B3CF25FB41A10014A4F6 /* DJTextView.swift in Sources */,
 				280C48F22600652C00063C03 /* DassAssessmentResultVC.swift in Sources */,
+				28D755682618999F00EA63FE /* iCarousel.m in Sources */,
 				28E01233261847EA00B55967 /* PlayerBannerCell.swift in Sources */,
 				2870B3E325FB41A10014A4F6 /* DJContants.swift in Sources */,
 				2870B3F525FB41A10014A4F6 /* UITableView+Extension.swift in Sources */,
+				28D7556D2618A33F00EA63FE /* PlayVideoCell.swift in Sources */,
 				2870B3F325FB41A10014A4F6 /* NSDate+Extension.swift in Sources */,
 				283153C4261455E0004001CE /* AlertPopUpVC.swift in Sources */,
 				2870B37C25FB40830014A4F6 /* Reachability.swift in Sources */,

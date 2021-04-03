@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="PlayVideoCell" customModule="BWS_2_Staging" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="323" height="180"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="323" height="180"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aey-cP-fFG">
+                        <rect key="frame" x="0.0" y="0.0" width="323" height="180"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banner_image" translatesAutoresizingMaskIntoConstraints="NO" id="P4c-Fs-AkH">
+                                <rect key="frame" x="0.0" y="0.0" width="323" height="180"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="P4c-Fs-AkH" firstAttribute="leading" secondItem="Aey-cP-fFG" secondAttribute="leading" id="Hih-Bp-Xkf"/>
+                            <constraint firstItem="P4c-Fs-AkH" firstAttribute="top" secondItem="Aey-cP-fFG" secondAttribute="top" id="VkR-QT-wou"/>
+                            <constraint firstAttribute="bottom" secondItem="P4c-Fs-AkH" secondAttribute="bottom" id="hNI-F1-IoO"/>
+                            <constraint firstAttribute="trailing" secondItem="P4c-Fs-AkH" secondAttribute="trailing" id="rIb-3z-ZEq"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Aey-cP-fFG" secondAttribute="trailing" id="6hG-LQ-6W1"/>
+                <constraint firstItem="Aey-cP-fFG" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="HNH-Lb-KHm"/>
+                <constraint firstItem="Aey-cP-fFG" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Ik2-kf-FHc"/>
+                <constraint firstAttribute="bottom" secondItem="Aey-cP-fFG" secondAttribute="bottom" id="h4n-mG-EKx"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <point key="canvasLocation" x="139" y="153"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="banner_image" width="323" height="180"/>
+    </resources>
+</document>
