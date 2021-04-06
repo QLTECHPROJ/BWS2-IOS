@@ -19,9 +19,7 @@ class ProfileForm3VC: BaseViewController {
     
     
     // MARK:- VARIABLES
-    // var selectedValue = ""
     var arrayOptions = ["Male", "Female"]
-    var parameters = [String:Any]()
     
     
     // MARK:- VIEW LIFE CYCLE
@@ -41,12 +39,13 @@ class ProfileForm3VC: BaseViewController {
         tableViewHeightConst.constant = CGFloat(96 * arrayOptions.count)
         self.view.layoutIfNeeded()
         
-        progressView.progress = 0.6
+        progressView.progress = 0.25
         btnPrev.isEnabled = true
         
         btnNext.isEnabled = false
         if ProfileFormModel.shared.genderX.trim.count > 0 {
             if arrayOptions.contains(ProfileFormModel.shared.genderX) {
+                progressView.progress = 0.5
                 btnNext.isEnabled = true
             }
         }
@@ -54,8 +53,6 @@ class ProfileForm3VC: BaseViewController {
     
     override func goNext() {
         let aVC = AppStoryBoard.main.viewController(viewControllerClass: ProfileForm4VC.self)
-        parameters["genderX"] = ProfileFormModel.shared.genderX
-        aVC.parameters = self.parameters
         self.navigationController?.pushViewController(aVC, animated: true)
     }
     

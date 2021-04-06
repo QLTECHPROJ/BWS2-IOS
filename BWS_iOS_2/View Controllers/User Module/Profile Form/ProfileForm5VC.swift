@@ -20,9 +20,7 @@ class ProfileForm5VC: BaseViewController {
     
     
     // MARK:- VARIABLES
-    // var selectedValue = ""
     var arrayOptions = ["Yes", "No"]
-    var parameters = [String:Any]()
     
     
     // MARK:- VIEW LIFE CYCLE
@@ -45,20 +43,20 @@ class ProfileForm5VC: BaseViewController {
         let normalString = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore."
         lblSubTitle.attributedText = normalString.attributedString(alignment: .left, lineSpacing: 10)
         
-        progressView.progress = 1.0
+        progressView.progress = 0.75
         btnPrev.isEnabled = true
         
         btnNext.isEnabled = false
         if ProfileFormModel.shared.prevDrugUse.trim.count > 0 {
             if arrayOptions.contains(ProfileFormModel.shared.prevDrugUse) {
+                progressView.progress = 1.0
                 btnNext.isEnabled = true
             }
         }
     }
     
     override func goNext() {
-        parameters["prevDrugUse"] = ProfileFormModel.shared.prevDrugUse
-        print(parameters)
+        print("Profile Form Data :- ",ProfileFormModel.shared)
     }
     
     
@@ -68,9 +66,7 @@ class ProfileForm5VC: BaseViewController {
     }
     
     @IBAction func nextClicked(sender : UIButton) {
-        ProfileFormModel.shared.isProfileCompleted = true
-        let aVC = AppStoryBoard.main.viewController(viewControllerClass: DoDassAssessmentVC.self)
-        self.navigationController?.pushViewController(aVC, animated: true)
+        self.callProfileAnsSaveAPI()
     }
     
 }

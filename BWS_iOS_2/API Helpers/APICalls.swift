@@ -229,3 +229,30 @@ extension AddProfileVC {
     }
     
 }
+
+extension ProfileForm5VC {
+    
+    // Profile Answer Save API Call
+    func callProfileAnsSaveAPI() {
+        let parameters = ["UserID":CoUserDataModel.currentUser?.UserID ?? "",
+                          "CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+                          "profileType":ProfileFormModel.shared.profileType,
+                          "gender":ProfileFormModel.shared.gender,
+                          "genderX":ProfileFormModel.shared.genderX,
+                          "age":ProfileFormModel.shared.age,
+                          "prevDrugUse":ProfileFormModel.shared.prevDrugUse]
+        
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.profilesaveans(parameters)) { (response : CoUserModel) in
+            if response.ResponseCode == "200" {
+                showAlertToast(message: response.ResponseMessage)
+                ProfileFormModel.shared = ProfileFormModel()
+                CoUserDataModel.currentUser?.isProfileCompleted = "1"
+                CoUserDataModel.currentUser = CoUserDataModel.currentUser
+                let aVC = AppStoryBoard.main.viewController(viewControllerClass: DoDassAssessmentVC.self)
+                self.navigationController?.pushViewController(aVC, animated: true)
+            }
+        }
+    }
+    
+}

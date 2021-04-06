@@ -16,17 +16,7 @@ class ProfileFormModel : EVObject {
     var age = ""
     var prevDrugUse = ""
     
-    static let shared = ProfileFormModel()
-    
-    var isProfileCompleted : Bool {
-        get {
-            UserDefaults.standard.bool(forKey: "isProfileCompleted")
-        }
-        set {
-            UserDefaults.standard.set(newValue, forKey: "isProfileCompleted")
-        }
-    }
-    
+    static var shared = ProfileFormModel()
 }
 
 class ProfileFormStartVC: BaseViewController {
