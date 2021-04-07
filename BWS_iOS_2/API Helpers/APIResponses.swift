@@ -404,8 +404,8 @@ class PlaylistDetailsModel: EVObject {
     var isSelected = false
 }
 
-/**** Create Playlist Model ****/
 
+// MARK:- Create Playlist API Models
 class CreatePlaylistModel: EVObject {
     var ResponseData : CreatePlaylistDataModel?
     var ResponseCode = ""
@@ -418,10 +418,59 @@ class CreatePlaylistDataModel: EVObject {
     var name = ""
 }
 
-/**** Playlist Details API Model ****/
+
+// MARK:- Playlist Details API Models
 class PlaylistDetailsAPIModel: EVObject {
     var ResponseData : PlaylistDetailsModel?
     var ResponseCode = ""
     var ResponseMessage = ""
     var ResponseStatus = ""
+}
+
+
+// MARK:- Assessment Questions API Model
+class AssessmentQueAPIModel:EVObject {
+    var ResponseData : AssessmentDetailModel?
+    var ResponseCode = ""
+    var ResponseMessage = ""
+    var ResponseStatus = ""
+}
+
+class AssessmentDetailModel: EVObject {
+    var Toptitle = ""
+    var Subtitle = ""
+    var Content = [AssessmentContentModel]()
+    var Questions = [AssessmentQueModel]()
+    
+    class var current : AssessmentDetailModel? {
+        get {
+            if let data = UserDefaults.standard.data(forKey: "DassAssessmentData") {
+                return AssessmentDetailModel(data: data)
+            }
+            return nil
+        }
+        set {
+            if let data = newValue {
+                UserDefaults.standard.setValue(data.toJsonData(), forKey: "DassAssessmentData")
+            }
+            else {
+                UserDefaults.standard.setValue(nil, forKey: "DassAssessmentData")
+            }
+            UserDefaults.standard.synchronize()
+        }
+    }
+    
+}
+
+class AssessmentContentModel: EVObject {
+    var condition = ""
+}
+
+class AssessmentQueModel: EVObject {
+    var Question = ""
+    var QueType = ""
+    var Answer = ""
+    var Loop = ""
+    var answers = [Int]()
+    var selectedAnswer = -1
 }

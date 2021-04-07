@@ -256,3 +256,17 @@ extension ProfileForm5VC {
     }
     
 }
+
+extension AssessmentVC {
+    
+    // Fetch Dass Assessment Questions API Call
+    func callAssessmentAPI() {
+        APICallManager.sharedInstance.callAPI(router: APIRouter.assesmentquestionlist) { (response : AssessmentQueAPIModel) in
+            if response.ResponseCode == "200" {
+                self.dicAssessment = response.ResponseData
+                self.setupData()
+            }
+        }
+    }
+    
+}

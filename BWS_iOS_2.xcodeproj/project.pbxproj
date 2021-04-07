@@ -82,6 +82,12 @@
 		283529A32609DA5F009AB2AA /* ThankYouVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283529A22609DA5F009AB2AA /* ThankYouVC.swift */; };
 		283529A42609DA6F009AB2AA /* OrderSummaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283529A02609DA1A009AB2AA /* OrderSummaryVC.swift */; };
 		283529A52609DA6F009AB2AA /* ThankYouVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283529A22609DA5F009AB2AA /* ThankYouVC.swift */; };
+		283F72EF261D994900554774 /* AssessmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283F72EE261D994900554774 /* AssessmentVC.swift */; };
+		283F72F0261D994900554774 /* AssessmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283F72EE261D994900554774 /* AssessmentVC.swift */; };
+		283F72F3261D999200554774 /* SubColCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283F72F1261D999100554774 /* SubColCell.swift */; };
+		283F72F4261D999200554774 /* SubColCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283F72F1261D999100554774 /* SubColCell.swift */; };
+		283F72F5261D999200554774 /* SubColCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 283F72F2261D999200554774 /* SubColCell.xib */; };
+		283F72F6261D999200554774 /* SubColCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 283F72F2261D999200554774 /* SubColCell.xib */; };
 		2870B35825FB3A570014A4F6 /* BWS_iOS_2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 28F812AB25FB336F00DC6AF6 /* BWS_iOS_2.xcdatamodeld */; };
 		2870B35925FB3A570014A4F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F812A225FB336F00DC6AF6 /* AppDelegate.swift */; };
 		2870B35D25FB3A570014A4F6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28F812BD25FB367A00DC6AF6 /* Main.storyboard */; };
@@ -409,6 +415,9 @@
 		28346E21260B5A5900DD41BE /* FAQCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FAQCell.xib; sourceTree = "<group>"; };
 		283529A02609DA1A009AB2AA /* OrderSummaryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderSummaryVC.swift; sourceTree = "<group>"; };
 		283529A22609DA5F009AB2AA /* ThankYouVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThankYouVC.swift; sourceTree = "<group>"; };
+		283F72EE261D994900554774 /* AssessmentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssessmentVC.swift; sourceTree = "<group>"; };
+		283F72F1261D999100554774 /* SubColCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubColCell.swift; sourceTree = "<group>"; };
+		283F72F2261D999200554774 /* SubColCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubColCell.xib; sourceTree = "<group>"; };
 		2870B36325FB3A570014A4F6 /* BWS 2 Staging.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BWS 2 Staging.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2870B36525FB3AE90014A4F6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2870B36825FB3B2B0014A4F6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -628,6 +637,7 @@
 			children = (
 				28252FA125FF355900C2EB50 /* DoDassAssessmentVC.swift */,
 				28252FA825FF4CA200C2EB50 /* DassAssessmentVC.swift */,
+				283F72EE261D994900554774 /* AssessmentVC.swift */,
 				280C48F12600652C00063C03 /* DassAssessmentResultVC.swift */,
 			);
 			path = "Dass Assessment";
@@ -825,6 +835,8 @@
 				28B53549260CC2B800BD8147 /* CategoryCollectionCell.xib */,
 				28D7556B2618A33F00EA63FE /* PlayVideoCell.swift */,
 				28D7556C2618A33F00EA63FE /* PlayVideoCell.xib */,
+				283F72F1261D999100554774 /* SubColCell.swift */,
+				283F72F2261D999200554774 /* SubColCell.xib */,
 			);
 			path = "Collection Cells";
 			sourceTree = "<group>";
@@ -1200,6 +1212,7 @@
 				28E809552613591400CD80F7 /* AudioCollectionCell.xib in Resources */,
 				2870B35F25FB3A570014A4F6 /* Assets.xcassets in Resources */,
 				28E809332613091800CD80F7 /* Account.storyboard in Resources */,
+				283F72F6261D999200554774 /* SubColCell.xib in Resources */,
 				28B5354D260CC2B800BD8147 /* CategoryCollectionCell.xib in Resources */,
 				283153B626143F74004001CE /* PlaylistCollectionCell.xib in Resources */,
 			);
@@ -1248,6 +1261,7 @@
 				28E809542613591400CD80F7 /* AudioCollectionCell.xib in Resources */,
 				28F812AF25FB337000DC6AF6 /* Assets.xcassets in Resources */,
 				28E809322613091800CD80F7 /* Account.storyboard in Resources */,
+				283F72F5261D999200554774 /* SubColCell.xib in Resources */,
 				28B5354C260CC2B800BD8147 /* CategoryCollectionCell.xib in Resources */,
 				283153B526143F74004001CE /* PlaylistCollectionCell.xib in Resources */,
 			);
@@ -1372,6 +1386,7 @@
 				28B53536260C690600BD8147 /* SleepTimeCell.swift in Sources */,
 				2870B41E25FB41A10014A4F6 /* UIImageView+Letters.m in Sources */,
 				2824413B2609AB9C0060292E /* CountryListVC.swift in Sources */,
+				283F72F0261D994900554774 /* AssessmentVC.swift in Sources */,
 				2870B42C25FB41A10014A4F6 /* AnimationFrames.swift in Sources */,
 				2824413C2609ABA10060292E /* SignUpVC.swift in Sources */,
 				2870B46025FB44700014A4F6 /* String+Timepiece.swift in Sources */,
@@ -1486,6 +1501,7 @@
 				2870B3E025FB41A10014A4F6 /* UIView+Extension.swift in Sources */,
 				283153C826145F41004001CE /* AudioDetailVC.swift in Sources */,
 				2870B3FC25FB41A10014A4F6 /* CardView.swift in Sources */,
+				283F72F4261D999200554774 /* SubColCell.swift in Sources */,
 				2870B3DC25FB41A10014A4F6 /* DJExtensions.swift in Sources */,
 				28E0120D2618476E00B55967 /* PlayerVC.swift in Sources */,
 				28E01240261847EA00B55967 /* IndexScrorCell.swift in Sources */,
@@ -1516,6 +1532,7 @@
 				28B53535260C690600BD8147 /* SleepTimeCell.swift in Sources */,
 				2870B41D25FB41A10014A4F6 /* UIImageView+Letters.m in Sources */,
 				2870B42B25FB41A10014A4F6 /* AnimationFrames.swift in Sources */,
+				283F72EF261D994900554774 /* AssessmentVC.swift in Sources */,
 				2870B45F25FB44700014A4F6 /* String+Timepiece.swift in Sources */,
 				2870B3E725FB41A10014A4F6 /* UIViewController+Extension.swift in Sources */,
 				280C48F52600729900063C03 /* ManageStartVC.swift in Sources */,
@@ -1630,6 +1647,7 @@
 				2870B42D25FB41A10014A4F6 /* Theme.swift in Sources */,
 				283153C726145F41004001CE /* AudioDetailVC.swift in Sources */,
 				2870B3DF25FB41A10014A4F6 /* UIView+Extension.swift in Sources */,
+				283F72F3261D999200554774 /* SubColCell.swift in Sources */,
 				2870B3FB25FB41A10014A4F6 /* CardView.swift in Sources */,
 				28E0120C2618476E00B55967 /* PlayerVC.swift in Sources */,
 				28E0123F261847EA00B55967 /* IndexScrorCell.swift in Sources */,

@@ -83,10 +83,13 @@ class DoDassAssessmentVC: BaseViewController {
             self.navigationController?.pushViewController(aVC, animated: true)
         }
         else {
-            let aVC = AppStoryBoard.main.viewController(viewControllerClass: DassAssessmentVC.self)
-            aVC.arrayQuestions = self.arrayQuestions
-            aVC.selectedIndex = self.selectedIndex
+            let aVC = AppStoryBoard.main.viewController(viewControllerClass: AssessmentVC.self)
             self.navigationController?.pushViewController(aVC, animated: true)
+            
+            //            let aVC = AppStoryBoard.main.viewController(viewControllerClass: DassAssessmentVC.self)
+            //            aVC.arrayQuestions = self.arrayQuestions
+            //            aVC.selectedIndex = self.selectedIndex
+            //            self.navigationController?.pushViewController(aVC, animated: true)
         }
     }
     
