@@ -251,6 +251,21 @@ extension PinVC : UITextFieldDelegate, BackspaceTextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
+        
+        if textField == txtFPin1 {
+            lblLine1.isHidden = true
+            shadowRemove(view:viewCard1)
+        } else if textField == txtFPin2 {
+            lblLine2.isHidden = true
+            shadowRemove(view:viewCard2)
+        } else  if textField == txtFPin3 {
+            lblLine3.isHidden = true
+            shadowRemove(view:viewCard3)
+        } else if textField == txtFPin4 {
+            lblLine4.isHidden = true
+            shadowRemove(view:viewCard4)
+        }
+        
         if txtFPin1.text?.trim.count == 0 || txtFPin2.text?.trim.count == 0 ||
             txtFPin3.text?.trim.count == 0 || txtFPin4.text == "" {
             btnDone.isUserInteractionEnabled = false

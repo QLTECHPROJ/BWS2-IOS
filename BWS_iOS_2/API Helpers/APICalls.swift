@@ -19,8 +19,7 @@ extension SplashVC {
             if response.ResponseCode == "200" {
                 SplashVC.isForceUpdate = response.ResponseData.IsForce
                 self.handleAppUpdatePopup()
-            }
-            else {
+            } else {
                 self.handleRedirection()
             }
         }
@@ -35,8 +34,7 @@ extension SplashVC {
             if response.ResponseCode == "200" {
                 CoUserDataModel.currentUser = response.ResponseData
                 self.handleCoUserRedirection()
-            }
-            else {
+            } else {
                 CoUserDataModel.currentUser = nil
                 self.handleRedirection()
             }
@@ -50,7 +48,6 @@ extension CountryListVC {
     // Country List API Call
     func callCountryListAPI() {
         APICallManager.sharedInstance.callAPI(router: APIRouter.countrylist) { (response : CountrylistModel) in
-            
             if response.ResponseCode == "200" {
                 self.arrayCountry = response.ResponseData
                 self.setupData()
@@ -162,8 +159,7 @@ extension UserListVC {
                 self.tableView.reloadData()
                 self.maxUsers = Int(response.ResponseData.Maxuseradd) ?? 0
                 self.setupData()
-            }
-            else {
+            } else {
                 self.setupData()
             }
         }
@@ -184,8 +180,7 @@ extension PinVC {
                 self.dismiss(animated: false, completion: nil)
                 CoUserDataModel.currentUser = response.ResponseData
                 self.pinVerified?()
-            }
-            else {
+            } else {
                 showAlertToast(message: response.ResponseMessage)
             }
         }
@@ -224,6 +219,7 @@ extension AddProfileVC {
         APICallManager.sharedInstance.callAPI(router: APIRouter.forgotpin(parameters)) { (response : GeneralModel) in
             if response.ResponseCode == "200" {
                 showAlertToast(message: response.ResponseMessage)
+                self.navigationController?.popViewController(animated: true)
             }
         }
     }
@@ -265,6 +261,27 @@ extension AssessmentVC {
             if response.ResponseCode == "200" {
                 self.dicAssessment = response.ResponseData
                 self.setupData()
+            }
+        }
+    }
+    
+}
+
+extension DassAssessmentResultVC {
+    
+    // Call Get Co User Details API
+    func CallGetCoUserDetailsAPI() {
+        let parameters = ["UserID":CoUserDataModel.currentUser?.UserID ?? "",
+                          "CoUserId":CoUserDataModel.currentUser?.CoUserId ?? ""]
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.getcouserdetails(parameters), displayHud: false) { (response : CoUserModel) in
+            if response.ResponseCode == "200" {
+                let userData = response.ResponseData
+                userData?.indexScore = "23"
+                CoUserDataModel.currentUser = userData
+                self.setupData()
+            } else {
+                CoUserDataModel.currentUser = nil
             }
         }
     }

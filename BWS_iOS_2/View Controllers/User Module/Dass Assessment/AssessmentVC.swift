@@ -97,7 +97,8 @@ class AssessmentVC: BaseViewController {
             print(pageIndex)
             collectionView.reloadData()
         } else {
-            alertDisplay(title: "Congratualations!", msg: "Your All Assessment Complete Successfully!")
+            let aVC = AppStoryBoard.main.viewController(viewControllerClass: DassAssessmentResultVC.self)
+            self.navigationController?.pushViewController(aVC, animated: true)
         }
         collectionView.reloadData()
     }
@@ -107,8 +108,6 @@ class AssessmentVC: BaseViewController {
             pageIndex = pageIndex - 1
             print(pageIndex)
             collectionView.reloadData()
-        } else {
-            alertDisplay(title: "Warning!", msg: "Please Press Next Button to view more assessments.")
         }
     }
     
