@@ -76,7 +76,7 @@ class SplashVC: BaseViewController {
             if coUser.isProfileCompleted == "0" {
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass: ContinueVC.self)
                 self.navigationController?.pushViewController(aVC, animated: true)
-            } else if coUser.isAssessmentCompleted == "0" {
+            } else if coUser.isAssessmentCompleted == "1" {
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass: DoDassAssessmentVC.self)
                 self.navigationController?.pushViewController(aVC, animated: true)
             } else if coUser.planDetails == nil {

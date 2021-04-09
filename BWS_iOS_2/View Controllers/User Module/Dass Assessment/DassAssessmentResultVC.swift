@@ -18,6 +18,7 @@ class DassAssessmentResultVC: BaseViewController {
     @IBOutlet weak var lblScore : UILabel!
     
     // MARK:- VARIABLES
+    var strScore:String?
     var totalAngle: CGFloat = 180
     var rotation: CGFloat = -90
     
@@ -54,7 +55,7 @@ class DassAssessmentResultVC: BaseViewController {
         indexScoreLabelView.cornerRadius = indexScoreLabelView.frame.size.height / 2
         indexScoreLabelView.clipsToBounds = true
         
-        indexScore = 35
+       // indexScore = 35
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -95,7 +96,7 @@ class DassAssessmentResultVC: BaseViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             UIView.animate(withDuration: 1) {
                 self.value = self.indexScore
-                self.lblScore.text = "\(self.value)"
+                self.lblScore.text = self.strScore
             }
         }
     }

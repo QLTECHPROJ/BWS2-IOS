@@ -269,4 +269,20 @@ extension AssessmentVC {
         }
     }
     
+     // Fetch Dass Assessment answer save API Call
+    func callSaveAnsAssessmentAPI(arrAns:String) {
+        let parameters = ["UserID":CoUserDataModel.currentUser?.UserID ?? "",
+                          "CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+                          "ans":arrAns]
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.assesmentsaveans(parameters)) { (response : GeneralModel) in
+            if response.ResponseCode == "200" {
+                showAlertToast(message: response.ResponseMessage)
+                let aVC = AppStoryBoard.main.viewController(viewControllerClass: DassAssessmentResultVC.self)
+                aVC.strScore = response.ResponseData?.indexScore
+                self.navigationController?.pushViewController(aVC, animated: true)
+            }
+        }
+    }
+    
 }

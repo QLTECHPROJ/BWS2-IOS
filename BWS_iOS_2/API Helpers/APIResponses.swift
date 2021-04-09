@@ -21,6 +21,7 @@ class GeneralModel : EVObject {
 
 class GeneralDataModel : EVObject {
     var errormsg = ""
+    var indexScore = ""
 }
 
 // MARK:- Upload Data Model
