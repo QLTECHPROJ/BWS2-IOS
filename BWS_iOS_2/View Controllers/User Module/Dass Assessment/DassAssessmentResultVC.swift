@@ -26,8 +26,6 @@ class DassAssessmentResultVC: BaseViewController {
     var needleWidth: CGFloat = 15
     let needle = UIImageView()
     
-    var indexScore = 0
-    
     var value: Int = 0 {
         didSet {
             // figure out where the needle is, between 0 and 1
@@ -55,7 +53,7 @@ class DassAssessmentResultVC: BaseViewController {
         indexScoreLabelView.cornerRadius = indexScoreLabelView.frame.size.height / 2
         indexScoreLabelView.clipsToBounds = true
         
-       // indexScore = 35
+        self.CallGetCoUserDetailsAPI()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -95,8 +93,8 @@ class DassAssessmentResultVC: BaseViewController {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             UIView.animate(withDuration: 1) {
-                self.value = self.indexScore
-                self.lblScore.text = self.strScore
+                self.value = Int(CoUserDataModel.currentUser?.indexScore ?? "") ?? 0
+                self.lblScore.text = "\(self.value)"
             }
         }
     }
