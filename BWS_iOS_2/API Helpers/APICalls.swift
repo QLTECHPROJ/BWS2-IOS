@@ -273,31 +273,12 @@ extension AssessmentVC {
         
         APICallManager.sharedInstance.callAPI(router: APIRouter.assesmentsaveans(parameters)) { (response : GeneralModel) in
             if response.ResponseCode == "200" {
+                let userData = CoUserDataModel.currentUser
+                userData?.indexScore = response.ResponseData?.indexScore ?? "0"
+                CoUserDataModel.currentUser = userData
                 showAlertToast(message: response.ResponseMessage)
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass: DassAssessmentResultVC.self)
-                aVC.strScore = response.ResponseData?.indexScore
                 self.navigationController?.pushViewController(aVC, animated: true)
-            }
-        }
-    }
-    
-}
-
-extension DassAssessmentResultVC {
-    
-    // Call Get Co User Details API
-    func CallGetCoUserDetailsAPI() {
-        let parameters = ["UserID":CoUserDataModel.currentUser?.UserID ?? "",
-                          "CoUserId":CoUserDataModel.currentUser?.CoUserId ?? ""]
-        
-        APICallManager.sharedInstance.callAPI(router: APIRouter.getcouserdetails(parameters), displayHud: false) { (response : CoUserModel) in
-            if response.ResponseCode == "200" {
-                let userData = response.ResponseData
-                userData?.indexScore = "23"
-                CoUserDataModel.currentUser = userData
-                self.setupData()
-            } else {
-                CoUserDataModel.currentUser = nil
             }
         }
     }

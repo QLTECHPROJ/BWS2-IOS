@@ -56,6 +56,13 @@ class BaseViewController: UIViewController {
     }
     
     /**
+    Enable / Disable Buttons
+    */
+    func buttonEnableDisable() {
+        // Enable / Disable Buttons
+    }
+    
+    /**
      Refresh data
      */
     func refreshDownloadData() {

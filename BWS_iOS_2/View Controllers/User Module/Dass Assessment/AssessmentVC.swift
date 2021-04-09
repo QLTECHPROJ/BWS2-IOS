@@ -25,30 +25,30 @@ class AssessmentVC: BaseViewController {
     @IBOutlet weak var cvHeight: NSLayoutConstraint!
     @IBOutlet weak var mainViewheight: NSLayoutConstraint!
     
+    
     // MARK:- VARIABLES
     var pageIndex = 0
     var dicAssessment:AssessmentDetailModel?
     var arrayQuetion = [AssessmentQueModel]()
     var arrNewSection = [[AssessmentQueModel]]()
     var arrPage = [Int]()
-    var arrAns = [String]()
+    
     
     // MARK:- VIEW LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        progressView.progress = 0
+        
+        collectionView.register(UINib(nibName:"SubColCell", bundle: nil), forCellWithReuseIdentifier:"SubColCell")
+        self.collectionView.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "header")
+        
         callAssessmentAPI()
-        setupUI()
         setupData()
     }
     
     
     // MARK:- FUNCTIONS
-    override func setupUI() {
-        collectionView.register(UINib(nibName:"SubColCell", bundle: nil), forCellWithReuseIdentifier:"SubColCell")
-        self.collectionView.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "header")
-    }
-    
     override func setupData() {
         lblTitle.text = dicAssessment?.Toptitle
         lblSubTitle.text = dicAssessment?.Subtitle
@@ -87,19 +87,34 @@ class AssessmentVC: BaseViewController {
         if page == nil {
             pageIndex = 0
             arrPage.append(pageIndex)
-        }else {
+        } else {
             let max = page?.max()
             pageIndex = max!
         }
         
-        //Next button enable/disable
+        setupUI()
+        
+        collectionView.reloadData()
+    }
+    
+    override func setupUI() {
         if arrNewSection.count > 0 {
-            
+            progressView.progress = Float(pageIndex + 1) / Float(arrNewSection.count)
+        }
+        
+        collectionView.reloadData()
+        buttonEnableDisable()
+    }
+    
+    override func buttonEnableDisable() {
+        btnPre.isEnabled = pageIndex > 0
+        
+        if arrNewSection.count > 0 {
             let arrData = arrNewSection[pageIndex]
             if arrData.count > 1 {
                 if arrData[0].selectedAnswer == -1 || arrData[1].selectedAnswer == -1 {
                     btnNext.isEnabled = false
-                }else {
+                } else {
                     btnNext.isEnabled = true
                 }
             }
@@ -108,13 +123,6 @@ class AssessmentVC: BaseViewController {
             cvHeight.constant = CGFloat(arrNewSection[pageIndex].count * 270)
             mainViewheight.constant = CGFloat(arrNewSection[pageIndex].count * 270 + 400)
         }
-        
-        //progress of assessment form
-        progressView.progress = 0.064 * Float(pageIndex)
-        print("Progress",progressView.progress)
-        
-        
-        collectionView.reloadData()
     }
     
     func convertIntoJSONString(arrayObject: [Any]) -> String? {
@@ -133,40 +141,23 @@ class AssessmentVC: BaseViewController {
     
     // MARK:- ACTIONS
     @IBAction func onTappedNext(_ sender: UIButton) {
-        
         if pageIndex < (arrNewSection.count - 1) {
             pageIndex = pageIndex + 1
             print(pageIndex)
             collectionView.reloadData()
-            btnPre.isEnabled = true
-            progressView.progress = 0.064 * Float(pageIndex)
         } else {
-            
             let arrayOldQuetion = AssessmentDetailModel.current?.Questions ?? []
-           
-            for j in 0...arrayOldQuetion.count {
-                if j < 33 {
-                    let ans =  arrayOldQuetion[j].selectedAnswer
-                    arrAns.append("\(ans)")
-                }
+            var arrAns = [String]()
+            for question in arrayOldQuetion {
+                arrAns.append("\(question.selectedAnswer)")
             }
+            
             print(arrAns)
             let jsonString = convertIntoJSONString(arrayObject: arrAns) ?? ""
             callSaveAnsAssessmentAPI(arrAns:jsonString)
         }
         
-        if arrNewSection.count > 0 {
-            let arrData = arrNewSection[pageIndex]
-            if arrData.count > 1 {
-            if arrData[0].selectedAnswer == -1 || arrData[1].selectedAnswer == -1 {
-                btnNext.isEnabled = false
-            }else {
-                btnNext.isEnabled = true
-            }
-            }
-        }
-        
-        collectionView.reloadData()
+        setupUI()
     }
     
     @IBAction func onTappedPre(_ sender: UIButton) {
@@ -174,13 +165,9 @@ class AssessmentVC: BaseViewController {
             pageIndex = pageIndex - 1
             print(pageIndex)
             collectionView.reloadData()
-            btnPre.isEnabled = true
-            btnNext.isEnabled = true
-            progressView.progress = 0.064 * Float(pageIndex)
-        } else {
-            btnPre.isEnabled = false
         }
         
+        setupUI()
     }
     
 }
@@ -247,25 +234,17 @@ extension AssessmentVC : UICollectionViewDelegate, UICollectionViewDataSource, U
         dicAssessment?.Questions = arrayQuetion
         AssessmentDetailModel.current = dicAssessment
         
-        //when clcik on any section then after Button enable/disable
-        let arrData = arrNewSection[pageIndex]
-        if arrData.count > 1 {
-        if arrData[0].selectedAnswer == -1 || arrData[1].selectedAnswer == -1 {
-            btnNext.isEnabled = false
-        }else {
-            btnNext.isEnabled = true
-        }
-        }
+        setupUI()
         
         //userdefault for page index
         if arrPage.contains(pageIndex) {
             print(arrPage)
-        }else {
+        } else {
             let page = UserDefaults.standard.array(forKey: "ArrayPage") as? [Int]
             if (page?.contains(pageIndex))! {
                 arrPage = page ?? []
                 print(arrPage)
-            }else {
+            } else {
                 arrPage.append(pageIndex)
             }
         }

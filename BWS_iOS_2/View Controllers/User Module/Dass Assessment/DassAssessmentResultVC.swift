@@ -52,8 +52,6 @@ class DassAssessmentResultVC: BaseViewController {
         indexScoreLabelView.isHidden = true
         indexScoreLabelView.cornerRadius = indexScoreLabelView.frame.size.height / 2
         indexScoreLabelView.clipsToBounds = true
-        
-        self.CallGetCoUserDetailsAPI()
     }
     
     override func viewDidAppear(_ animated: Bool) {

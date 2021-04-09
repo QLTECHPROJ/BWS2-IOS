@@ -69,10 +69,12 @@ class AddProfileVC: BaseViewController {
         txtFMobileNo.delegate = self
         txtFEmailAdd.delegate = self
         
-        buttonEnableDisable()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.buttonEnableDisable()
+        }
     }
     
-    func buttonEnableDisable() {
+    override func buttonEnableDisable() {
         var shouldEnable = true
         
         if txtFEmailAdd.text?.trim.count == 0 || txtFName.text?.trim.count == 0 || txtFMobileNo.text?.trim.count == 0 {
@@ -87,10 +89,10 @@ class AddProfileVC: BaseViewController {
         
         if shouldEnable {
             btnSendPin.isUserInteractionEnabled = true
-            btnSendPin.backgroundColor = #colorLiteral(red: 0, green: 0.5333333333, blue: 0.5725490196, alpha: 1)
+            btnSendPin.backgroundColor = Theme.colors.greenColor
         } else {
             btnSendPin.isUserInteractionEnabled = false
-            btnSendPin.backgroundColor = #colorLiteral(red: 0.4941176471, green: 0.4941176471, blue: 0.4941176471, alpha: 1)
+            btnSendPin.backgroundColor = Theme.colors.gray_7E7E7E
         }
     }
     

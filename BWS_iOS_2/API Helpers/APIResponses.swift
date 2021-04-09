@@ -238,7 +238,7 @@ class CoUserDataModel : EVObject {
     var isProfileCompleted = ""
     var isAssessmentCompleted = ""
     var indexScore = ""
-    var planDetails : Any?
+    var planDetails : [Any]?
     var errormsg = ""
     var isSelected = false
     

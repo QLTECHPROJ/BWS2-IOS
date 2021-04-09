@@ -71,7 +71,7 @@ class UserListVC: BaseViewController {
         self.navigationController?.pushViewController(aVC, animated: true)
     }
     
-    func buttonEnableDisable() {
+    override func buttonEnableDisable() {
         var shouldEnable = false
         let selectedUser = arrayUsers.filter { $0.isSelected == true }.first
         
@@ -102,18 +102,10 @@ class UserListVC: BaseViewController {
             } else if coUser.isAssessmentCompleted == "0" {
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass: DoDassAssessmentVC.self)
                 self.navigationController?.pushViewController(aVC, animated: true)
-            } else if coUser.planDetails == nil {
-                let aVC = AppStoryBoard.main.viewController(viewControllerClass: ManageStartVC.self)
-                aVC.strTitle = "You are Doing Good"
-                aVC.strSubTitle = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut"
-                aVC.imageMain = UIImage(named: "manageStartWave")
-                aVC.continueClicked = {
-                    self.goNext()
-                }
-                aVC.modalPresentationStyle = .overFullScreen
-                self.present(aVC, animated: true, completion: nil)
-            }
-            else {
+            } else if coUser.planDetails?.count == 0 {
+                let aVC = AppStoryBoard.main.viewController(viewControllerClass: DassAssessmentResultVC.self)
+                self.navigationController?.pushViewController(aVC, animated: true)
+            } else {
                 APPDELEGATE.window?.rootViewController = AppStoryBoard.main.viewController(viewControllerClass: NavigationClass.self)
             }
         }
