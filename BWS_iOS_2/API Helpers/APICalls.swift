@@ -265,7 +265,7 @@ extension AssessmentVC {
         }
     }
     
-     // Fetch Dass Assessment answer save API Call
+    // Fetch Dass Assessment answer save API Call
     func callSaveAnsAssessmentAPI(arrAns:String) {
         let parameters = ["UserID":CoUserDataModel.currentUser?.UserID ?? "",
                           "CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
@@ -279,6 +279,124 @@ extension AssessmentVC {
                 showAlertToast(message: response.ResponseMessage)
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass: DassAssessmentResultVC.self)
                 self.navigationController?.pushViewController(aVC, animated: true)
+            }
+        }
+    }
+    
+}
+
+extension CreatePlaylistVC {
+    
+    // Create Playlist API Call
+    func callCreatePlaylistAPI(PlaylistName : String) {
+        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+                          "PlaylistName":PlaylistName]
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.createplaylist(parameters)) { (response : CreatePlaylistModel) in
+            
+            if response.ResponseCode == "200" {
+                if let id = response.ResponseData?.id, let name = response.ResponseData?.name {
+                    if self.playlistToAdd.trim.count > 0 || self.audioToAdd.trim.count > 0 {
+                        self.delegate?.didCreateNewPlaylist(createdPlaylistID: id)
+                        self.navigationController?.popViewController(animated: true)
+                    } else {
+                        let aVC = AppStoryBoard.home.viewController(viewControllerClass: PlaylistAudiosVC.self)
+                        let playlistDetails = PlaylistDetailsModel()
+                        playlistDetails.PlaylistID = id
+                        playlistDetails.PlaylistName = name
+                        playlistDetails.Created = "1"
+                        playlistDetails.TotalAudio = "1"
+                        aVC.objPlaylist = playlistDetails
+                        self.navigationController?.pushViewController(aVC, animated: true)
+                    }
+                }
+            }
+        }
+    }
+    
+    // Rename Playlist API Call
+    func callRenamePlaylistAPI(PlaylistName : String) {
+        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+                          "PlaylistId":objPlaylist!.PlaylistID,
+                          "PlaylistNewName":PlaylistName]
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.renameplaylist(parameters)) { (response : GeneralModel) in
+            
+            if response.ResponseCode == "200" {
+                self.navigationController?.popViewController(animated: true)
+                showAlertToast(message: response.ResponseMessage)
+            }
+        }
+    }
+    
+}
+
+extension PlaylistAudiosVC {
+    
+    // Playlist Detail API Call
+    @objc func callPlaylistDetailAPI() {
+        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+                          "PlaylistId":objPlaylist!.PlaylistID]
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.playlistdetails(parameters)) { (response : PlaylistDetailsAPIModel) in
+            
+            if response.ResponseCode == "200" && response.ResponseData != nil {
+                self.objPlaylist = response.ResponseData
+                self.objPlaylist?.sectionName = self.sectionName
+                self.setupData()
+            }
+        }
+    }
+    
+    // Delete Playlist API Call
+    func callDeletePlaylistAPI() {
+        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+                          "PlaylistId":objPlaylist!.PlaylistID]
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.deleteplaylist(parameters)) { (response : GeneralModel) in
+            
+            if response.ResponseCode == "200" {
+                self.navigationController?.popViewController(animated: true)
+                showAlertToast(message: response.ResponseMessage)
+            }
+        }
+    }
+    
+    // Remove Audio From Playlist API Call
+    func callRemoveAudioFromPlaylistAPI(index : Int) {
+        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+                          "PlaylistId":arraySearchSongs[index].PlaylistID,
+                          "AudioId":arraySearchSongs[index].ID]
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.removeaudiofromplaylist(parameters)) { (response : GeneralModel) in
+            
+            if response.ResponseCode == "200" {
+                if let indexToDelete = self.objPlaylist?.PlaylistSongs.firstIndex(of: self.arraySearchSongs[index]) {
+                    self.objPlaylist?.PlaylistSongs.remove(at: indexToDelete)
+                }
+                self.tableView.reloadData()
+                self.setupData()
+                self.callPlaylistDetailAPI()
+                showAlertToast(message: response.ResponseMessage)
+            }
+        }
+    }
+    
+}
+
+extension PlaylistDetailVC {
+    
+    // Playlist Detail API Call
+    @objc func callPlaylistDetailAPI() {
+        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+                          "PlaylistId":objPlaylist!.PlaylistID]
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.playlistdetails(parameters)) { (response : PlaylistDetailsAPIModel) in
+            
+            if response.ResponseCode == "200" && response.ResponseData != nil {
+                self.objPlaylist = response.ResponseData
+                self.objPlaylist?.sectionName = self.sectionName
+                self.setupData()
             }
         }
     }

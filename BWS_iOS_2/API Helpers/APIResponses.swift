@@ -417,6 +417,7 @@ class CreatePlaylistModel: EVObject {
 class CreatePlaylistDataModel: EVObject {
     var id = ""
     var name = ""
+    var Iscreate = ""
 }
 
 

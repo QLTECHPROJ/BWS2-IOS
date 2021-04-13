@@ -47,7 +47,7 @@ class PreparingPlaylistVC: BaseViewController {
     
     // MARK:- FUNCTIONS
     override func goNext() {
-        print("Handle Navigation")
+        APPDELEGATE.window?.rootViewController = AppStoryBoard.main.viewController(viewControllerClass: NavigationClass.self)
     }
     
     
