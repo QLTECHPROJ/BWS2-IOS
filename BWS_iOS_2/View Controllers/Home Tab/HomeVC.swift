@@ -19,7 +19,6 @@ class HomeVC: BaseViewController {
     @IBOutlet weak var btnChangeUser: UIButton!
     @IBOutlet weak var btnNotification: UIButton!
     
-    
     // MARK:- VIEW LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,6 +77,7 @@ extension HomeVC : UITableViewDelegate, UITableViewDataSource {
             cell.viewJoinNow.isHidden = true
             cell.viewGraph.isHidden = true
             cell.imgBanner.isHidden = false
+            cell.backgroundColor = .white
             return cell
         } else  if indexPath.row == 3 {
             let cell = tableView.dequeueReusableCell(withIdentifier:"IndexScrorCell", for: indexPath) as!  IndexScrorCell
@@ -86,6 +86,7 @@ extension HomeVC : UITableViewDelegate, UITableViewDataSource {
             cell.viewScrore.isHidden = false
             cell.viewJoinNow.isHidden = true
             cell.viewGraph.isHidden = true
+            cell.backgroundColor = .white
             return cell
         } else if indexPath.row == 7 {
             let cell = tableView.dequeueReusableCell(withIdentifier:"IndexScrorCell", for: indexPath) as!  IndexScrorCell
@@ -95,6 +96,7 @@ extension HomeVC : UITableViewDelegate, UITableViewDataSource {
             cell.viewJoinNow.layer.cornerRadius = 16
             cell.viewJoinNow.clipsToBounds = true
             cell.viewGraph.isHidden = true
+            cell.backgroundColor = .white
             return cell
         } else if indexPath.row == 8 {
             let cell = tableView.dequeueReusableCell(withIdentifier:"IndexScrorCell", for: indexPath) as!  IndexScrorCell
@@ -104,15 +106,18 @@ extension HomeVC : UITableViewDelegate, UITableViewDataSource {
             cell.viewJoinNow.isHidden = true
             cell.viewGraph.isHidden = false
             cell.viewGraph.backgroundColor = .black
+            cell.backgroundColor = .white
             return cell
         } else if indexPath.row == 9 {
             let cell = tableView.dequeueReusableCell(withIdentifier:"ProgressCell", for: indexPath) as!  ProgressCell
+            cell.backgroundColor = .white
             return cell
         } else if indexPath.row == 4 || indexPath.row == 5 || indexPath.row == 6 {
             let cell = tableView.dequeueReusableCell(withIdentifier:"PlayerBannerCell", for: indexPath) as!  PlayerBannerCell
             cell.viewGraph.isHidden = false
             cell.viewPlayer.isHidden = true
             cell.wavyImage.isHidden = true
+            cell.backgroundColor = .white
             return cell
         }
         return UITableViewCell()
