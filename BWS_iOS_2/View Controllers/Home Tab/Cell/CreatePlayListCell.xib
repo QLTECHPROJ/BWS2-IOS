@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,16 +15,16 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="CreatePlayListCell" rowHeight="100" id="KGk-i7-Jjw" customClass="CreatePlayListCell" customModule="BWS" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="CreatePlayListCell" rowHeight="100" id="KGk-i7-Jjw" customClass="CreatePlayListCell" customModule="BWS_2_Staging" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="96"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="96"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kO2-mO-bXF">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="playlist_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="kO2-mO-bXF">
                         <rect key="frame" x="16" y="10" width="76" height="76"/>
-                        <color key="backgroundColor" name="button_Background"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="kO2-mO-bXF" secondAttribute="height" multiplier="1:1" id="hxU-Gw-XDQ"/>
                         </constraints>
@@ -36,7 +35,7 @@
                         </userDefinedRuntimeAttributes>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Playlist 1" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RME-fu-kyl">
-                        <rect key="frame" x="100" y="8" width="204" height="80"/>
+                        <rect key="frame" x="108" y="37.5" width="196" height="21"/>
                         <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
@@ -45,13 +44,12 @@
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="RME-fu-kyl" secondAttribute="trailing" constant="16" id="2Ss-Vd-Asj"/>
-                    <constraint firstItem="RME-fu-kyl" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="Egq-bS-dNT"/>
-                    <constraint firstItem="RME-fu-kyl" firstAttribute="leading" secondItem="kO2-mO-bXF" secondAttribute="trailing" constant="8" id="U8O-Qd-Pu4"/>
+                    <constraint firstItem="RME-fu-kyl" firstAttribute="leading" secondItem="kO2-mO-bXF" secondAttribute="trailing" constant="16" id="U8O-Qd-Pu4"/>
                     <constraint firstAttribute="bottom" secondItem="kO2-mO-bXF" secondAttribute="bottom" constant="10" id="WUx-fg-V51"/>
                     <constraint firstItem="kO2-mO-bXF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="adT-AM-CMd"/>
                     <constraint firstItem="kO2-mO-bXF" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="iKA-rI-JcT"/>
+                    <constraint firstItem="RME-fu-kyl" firstAttribute="centerY" secondItem="kO2-mO-bXF" secondAttribute="centerY" id="lCo-Mj-Aih"/>
                     <constraint firstItem="kO2-mO-bXF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="q7i-dB-F28"/>
-                    <constraint firstAttribute="bottom" secondItem="RME-fu-kyl" secondAttribute="bottom" constant="8" id="vpo-Eb-tzz"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -64,8 +62,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <namedColor name="button_Background">
-            <color red="0.0" green="0.35686274509803922" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
+        <image name="playlist_placeholder" width="80" height="80"/>
     </resources>
 </document>

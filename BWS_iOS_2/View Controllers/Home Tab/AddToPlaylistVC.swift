@@ -89,7 +89,7 @@ extension AddToPlaylistVC : AlertPopUpVCDelegate {
                 return
             }
             
-            let aVC = AppStoryBoard.manage.viewController(viewControllerClass: PlaylistDetailVC.self)
+            let aVC = AppStoryBoard.home.viewController(viewControllerClass: PlaylistAudiosVC.self)
             aVC.objPlaylist = playlistData
             aVC.sectionName = "Add To Playlist"
             self.navigationController?.pushViewController(aVC, animated: true)
@@ -113,7 +113,7 @@ extension AddToPlaylistVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 90
+        return 100
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

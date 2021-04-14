@@ -148,7 +148,7 @@ extension ViewAllPlaylistVC : UICollectionViewDataSource, UICollectionViewDelega
         } else if homeData.IsLock == "2" {
             showAlertToast(message: "Please re-activate your membership plan")
         } else {
-            let aVC = AppStoryBoard.manage.viewController(viewControllerClass: PlaylistDetailVC.self)
+            let aVC = AppStoryBoard.home.viewController(viewControllerClass: PlaylistAudiosVC.self)
             aVC.objPlaylist = homeData.Details[indexPath.row]
             aVC.sectionName = homeData.View
             self.navigationController?.pushViewController(aVC, animated: true)

@@ -14,6 +14,15 @@ class AddAudioVC: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     
     
+    //MARK:- VARIABLE
+    var arrayAudio = [AudioDetailsDataModel]()
+    var arrayPlayList = [PlaylistDetailsModel]()
+    var arraySearch = [AudioDetailsDataModel]()
+    var isComeFromAddAudio = false
+    var playlistID = ""
+    var didClickAddToPlaylistAtIndex : ((Int) -> Void)?
+    
+    
     // MARK:- VIEW LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()

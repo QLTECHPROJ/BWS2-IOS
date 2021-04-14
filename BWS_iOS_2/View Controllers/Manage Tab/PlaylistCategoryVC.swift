@@ -8,8 +8,6 @@
 
 import UIKit
 
-var refreshPlaylistData = true
-
 class PlaylistCategoryVC: BaseViewController {
     
     // MARK:- OUTLETS

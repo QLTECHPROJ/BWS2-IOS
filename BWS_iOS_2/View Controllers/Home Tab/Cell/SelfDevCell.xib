@@ -85,7 +85,7 @@
                                         <inset key="imageEdgeInsets" minX="4" minY="4" maxX="4" maxY="4"/>
                                         <state key="normal" image="download_white"/>
                                         <connections>
-                                            <action selector="clickActionsWithSender:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="D9n-sU-PSg"/>
+                                            <action selector="clickActionsWithSender:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="kRI-jQ-Nlw"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gNz-F5-jt4">
@@ -98,7 +98,7 @@
                                         <inset key="imageEdgeInsets" minX="4" minY="4" maxX="4" maxY="4"/>
                                         <state key="normal" image="Remove"/>
                                         <connections>
-                                            <action selector="clickActionsWithSender:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="qOO-fB-OLa"/>
+                                            <action selector="clickActionsWithSender:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="NBI-BV-Uee"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f2B-ui-j1s">
@@ -111,7 +111,7 @@
                                         <inset key="imageEdgeInsets" minX="4" minY="4" maxX="4" maxY="4"/>
                                         <state key="normal" image="Sorting"/>
                                         <connections>
-                                            <action selector="clickActionsWithSender:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="DdQ-M4-E5R"/>
+                                            <action selector="clickActionsWithSender:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="c4Q-CO-eI2"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -177,6 +177,7 @@
                 <outlet property="btnChangePosition" destination="f2B-ui-j1s" id="ajP-2W-pro"/>
                 <outlet property="btnDelete" destination="gNz-F5-jt4" id="n12-lh-KIW"/>
                 <outlet property="btnDownload" destination="vN7-J1-xRI" id="HXW-eo-r99"/>
+                <outlet property="downloadProgressView" destination="rm5-Ra-gQm" id="ciY-Mi-aou"/>
                 <outlet property="imgHeight" destination="30h-Ps-LMf" id="Zmn-YH-cNq"/>
                 <outlet property="imgLeading" destination="jGP-Cp-E6N" id="yad-fN-4cL"/>
                 <outlet property="imgPlay" destination="pUb-Oe-ZQQ" id="bet-R5-PsF"/>

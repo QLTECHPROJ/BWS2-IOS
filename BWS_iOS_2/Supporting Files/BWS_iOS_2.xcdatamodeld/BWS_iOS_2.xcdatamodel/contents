@@ -1,4 +1,42 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="false" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="19F101" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="AudioDownloads" representedClassName="AudioDownloads" syncable="YES">
+        <attribute name="audioDescription" attributeType="String"/>
+        <attribute name="audioDirection" attributeType="String"/>
+        <attribute name="audioDuration" attributeType="String"/>
+        <attribute name="audioFile" attributeType="String"/>
+        <attribute name="audiomastercat" attributeType="String"/>
+        <attribute name="audioSubCategory" attributeType="String"/>
+        <attribute name="bitrate" attributeType="String"/>
+        <attribute name="download" attributeType="String"/>
+        <attribute name="downloadLocation" attributeType="String"/>
+        <attribute name="id" attributeType="String"/>
+        <attribute name="imageFile" attributeType="String"/>
+        <attribute name="isSingleAudio" attributeType="String"/>
+        <attribute name="like" attributeType="String"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="playlistID" attributeType="String"/>
+        <attribute name="selfCreated" attributeType="String"/>
+        <attribute name="sortId" attributeType="String"/>
+    </entity>
+    <entity name="PlaylistDownloads" representedClassName="PlaylistDownloads" syncable="YES">
+        <attribute name="created" attributeType="String"/>
+        <attribute name="download" attributeType="String"/>
+        <attribute name="playlistDesc" attributeType="String"/>
+        <attribute name="playlistID" attributeType="String"/>
+        <attribute name="playlistImage" attributeType="String"/>
+        <attribute name="playlistImageDetail" attributeType="String"/>
+        <attribute name="playlistMastercat" attributeType="String"/>
+        <attribute name="playlistName" attributeType="String"/>
+        <attribute name="playlistSubcat" attributeType="String"/>
+        <attribute name="selfCreated" attributeType="String"/>
+        <attribute name="totalAudio" attributeType="String"/>
+        <attribute name="totalDuration" attributeType="String"/>
+        <attribute name="totalhour" attributeType="String"/>
+        <attribute name="totalminute" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="AudioDownloads" positionX="-63" positionY="-18" width="128" height="298"/>
+        <element name="PlaylistDownloads" positionX="-54" positionY="117" width="128" height="253"/>
+    </elements>
 </model>

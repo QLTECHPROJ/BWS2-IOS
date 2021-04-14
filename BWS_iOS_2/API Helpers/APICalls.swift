@@ -295,6 +295,7 @@ extension BaseViewController {
         APICallManager.sharedInstance.callAPI(router: APIRouter.deleteplaylist(parameters)) { (response : GeneralModel) in
             
             if response.ResponseCode == "200" {
+                refreshPlaylistData = true
                 showAlertToast(message: response.ResponseMessage)
                 DispatchQueue.main.async {
                     complitionBlock?()
@@ -401,6 +402,9 @@ extension PlaylistAudiosVC {
                 self.objPlaylist = response.ResponseData
                 self.objPlaylist?.sectionName = self.sectionName
                 self.setupData()
+                if let playlistID = self.objPlaylist?.PlaylistID, let arraySongs = self.objPlaylist?.PlaylistSongs {
+                    refreshNowPlayingSongs(playlistID: playlistID, arraySongs: arraySongs)
+                }
             }
         }
     }
@@ -425,6 +429,20 @@ extension PlaylistAudiosVC {
         }
     }
     
+    // Playlist Sprting API Call
+    func callSortingPlaylistAudioAPI(audioIds : String) {
+        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+                          "PlaylistId":objPlaylist!.PlaylistID,
+                          "PlaylistAudioId":audioIds]
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.sortingplaylistaudio(parameters)) { (response : PlaylistDetailsAPIModel) in
+            
+            if response.ResponseCode == "200" && response.ResponseData != nil {
+                showAlertToast(message: response.ResponseMessage)
+                self.callPlaylistDetailAPI()
+            }
+        }
+    }
 }
 
 extension PlaylistDetailVC {

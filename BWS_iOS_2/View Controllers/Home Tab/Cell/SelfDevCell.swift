@@ -25,19 +25,168 @@ class SelfDevCell: UITableViewCell {
     @IBOutlet weak var imgHeight: NSLayoutConstraint!
     @IBOutlet weak var imgLeading: NSLayoutConstraint!
     
-   // @IBOutlet weak var downloadProgressView : KDCircularProgress!
+    @IBOutlet weak var downloadProgressView : KDCircularProgress!
     
     @IBOutlet weak var nowPlayingAnimationImageView: UIImageView!
     
     
     // MARK:- VARIABLES
-   
+    var buttonClicked : ((Int) -> Void)?
+    var audioDetails : AudioDetailsDataModel?
+    var hideDownloadProgress = true
+    
     
     // MARK:- FUNCTIONS
     override func awakeFromNib() {
         super.awakeFromNib()
-      
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshDownloadData), name: .refreshDownloadData, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateDownloadProgress), name: .refreshDownloadProgress, object: nil)
+        downloadProgressView.isHidden = true
+        imgView.contentMode = .scaleAspectFill
+        
+        nowPlayingAnimationImageView.backgroundColor = UIColor.black.withAlphaComponent(0.3)
+        nowPlayingAnimationImageView.startNowPlayingAnimation(false)
+        nowPlayingAnimationImageView.isHidden = true
+        nowPlayingAnimationImageView.image = UIImage(named: "NewNowPlayingBars")
     }
     
+    // Configure Cell
+    func generalConfigure(data : AudioDetailsDataModel) {
+        
+        if data.IsLock == "1" || data.IsLock == "2"{
+            if data.IsPlay == "1" {
+                if let imgUrl = URL(string: data.ImageFile.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+                    imgView.sd_setImage(with: imgUrl, completed: nil)
+                    imgPlay.isHidden = true
+                }
+            }
+            else {
+                imgPlay.isHidden = false
+                imgPlay.image = UIImage(named:"newLock")
+                imgPlay.backgroundColor = .clear
+                imgPlay.contentMode = .scaleToFill
+                imgView.backgroundColor = .lightGray
+            }
+        }
+        else {
+            imgPlay.isHidden = true
+        }
+        
+        self.audioDetails = data
+        if let imgUrl = URL(string: data.ImageFile.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+            imgView.sd_setImage(with: imgUrl, completed: nil)
+        }
+        
+        lblTitle.text = data.Name
+        lblDuration.text = data.AudioDuration
+    }
+    
+    // Audio In Playlist Cell
+    func configureAudioInPlaylistCell(data : AudioDetailsDataModel) {
+        self.hideDownloadProgress = false
+        self.generalConfigure(data: data)
+        self.configureCell(backgroundColor: .white, buttonColor: .black, hideDownload: false, hideDelete: false, hideChangePosition: false)
+    }
+    
+    func configureOptionCell(data : AudioDetailsDataModel) {
+        self.hideDownloadProgress = true
+        self.generalConfigure(data: data)
+        self.configureCell(backgroundColor: .white, buttonColor: .black, hideDownload: true, hideDelete: true, hideChangePosition: false)
+        
+        lblTitle.textColor = Theme.colors.textColor
+        lblDuration.textColor = Theme.colors.greenColor
+        
+        btnChangePosition.setImage(UIImage(named: "Sorting"), for: UIControl.State.normal)
+    }
+    
+    func configureDownloadAudioPlaylistCell(data : AudioDetailsDataModel) {
+        self.hideDownloadProgress = false
+        self.generalConfigure(data: data)
+        self.configureCell(backgroundColor: .white, buttonColor: UIColor.black, hideDownload: true, hideDelete: true, hideChangePosition: false)
+        btnDownload.setImage(nil, for: UIControl.State.normal)
+        btnChangePosition.setImage(UIImage(named: "Sorting"), for: UIControl.State.normal)
+    }
+    
+    
+    // MARK:- UI Related Configurations
+    func configureCell(backgroundColor: UIColor = UIColor.white ,buttonColor : UIColor = UIColor.black, hideDownload : Bool = true, hideDelete : Bool = false, hideChangePosition : Bool = true) {
+        self.backgroundColor = backgroundColor
+        
+        lblTitle.textColor = Theme.colors.textColor
+        lblDuration.textColor = Theme.colors.gray_DDDDDD
+        
+        btnDownload.tintColor = buttonColor
+        btnDelete.tintColor = buttonColor
+        btnChangePosition.tintColor = buttonColor
+        
+        btnDownload.alpha = hideDownload ? 0 : 1
+        btnDelete.isHidden = hideDelete
+        btnChangePosition.isHidden = hideChangePosition
+        
+        // Download Progress View
+        downloadProgressView.isHidden = true
+        downloadProgressView.startAngle = -90
+        downloadProgressView.progressThickness = 1
+        downloadProgressView.trackThickness = 1
+        downloadProgressView.clockwise = true
+        downloadProgressView.gradientRotateSpeed = 2
+        downloadProgressView.roundedCorners = false
+        downloadProgressView.glowMode = .forward
+        downloadProgressView.glowAmount = 0
+        downloadProgressView.set(colors: Theme.colors.greenColor)
+        downloadProgressView.trackColor = Theme.colors.gray_DDDDDD
+        downloadProgressView.backgroundColor = UIColor.clear
+    }
+    
+    // MARK:- Handle Download Progress
+    @objc func refreshDownloadData() {
+        updateDownloadProgress()
+    }
+    
+    @objc func updateDownloadProgress() {
+        if checkInternet() == false {
+            return
+        }
+        
+        if hideDownloadProgress {
+            return
+        }
+        
+        guard let details = audioDetails else {
+            return
+        }
+        
+        let isInDatabase = CoreDataHelper.shared.checkAudioInDatabase(audioData: details)
+        let isDownloaded = DJDownloadManager.shared.checkFileExists(fileName: details.AudioFile)
+        let isDownloading = DJDownloadManager.shared.isCurrentlyDownloading(audioFile: details.AudioFile)
+        
+        if isInDatabase && isDownloaded {
+            downloadProgressView.isHidden = true
+            btnDownload.isUserInteractionEnabled = false
+            btnDownload.alpha = 1
+        }
+        else if isInDatabase && isDownloading {
+            btnDownload.alpha = 0
+            btnDownload.isUserInteractionEnabled = false
+            downloadProgressView.isHidden = false
+            downloadProgressView.progress = DJDownloadManager.shared.downloadProgress
+        }
+        else if isInDatabase && isDownloading == false {
+            btnDownload.alpha = 0
+            btnDownload.isUserInteractionEnabled = false
+            downloadProgressView.isHidden = false
+            downloadProgressView.progress = 0
+        }
+        else {
+            downloadProgressView.isHidden = true
+            btnDownload.isUserInteractionEnabled = true
+            btnDownload.alpha = 1
+        }
+    }
+    
+    // MARK:- ACTIONS
+    @IBAction func clickActions(sender : UIButton) {
+        self.buttonClicked?(sender.tag)
+    }
     
 }
