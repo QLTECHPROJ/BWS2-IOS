@@ -40,7 +40,6 @@ class AudioDetailVC: BaseViewController {
     @IBOutlet weak var stackViewDescription : UIStackView!
     @IBOutlet weak var stackViewDirection : UIStackView!
     
-    @IBOutlet weak var btnLike : UIButton!
     @IBOutlet weak var btnAddToPlaylist : UIButton!
     @IBOutlet weak var btnRemoveFromPlaylist : UIButton!
     @IBOutlet weak var btnDownload : UIButton!
@@ -98,12 +97,6 @@ class AudioDetailVC: BaseViewController {
             objCollection.isHidden = arrayCategory.count == 0
             self.view.layoutIfNeeded()
             
-            if details.Like == "1" {
-                btnLike.setImage(UIImage(named: "Like"), for: UIControl.State.normal)
-            } else {
-                btnLike.setImage(UIImage(named: "LikeWhite"), for: UIControl.State.normal)
-            }
-            
             if details.PlaylistID != "" && details.selfCreated != "" {
                 btnRemoveFromPlaylist.isHidden = false
             } else {
@@ -139,12 +132,6 @@ class AudioDetailVC: BaseViewController {
     @IBAction func closeClicked(sender : UIButton) {
         self.dismiss(animated: true) {
             self.didClosePlayerDetail?()
-        }
-    }
-    
-    @IBAction func likeClicked(sender : UIButton) {
-        if let audioData = self.audioDetails {
-            // Call Audio Like API
         }
     }
     

@@ -15,6 +15,7 @@ class PlaylistCollectionCell: UICollectionViewCell {
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var imgLock: UIImageView!
     @IBOutlet weak var btnAddtoPlaylist: UIButton!
+    @IBOutlet weak var btnOptions: UIButton!
     
     
     // MARK:- VIEW LIFE CYCLE

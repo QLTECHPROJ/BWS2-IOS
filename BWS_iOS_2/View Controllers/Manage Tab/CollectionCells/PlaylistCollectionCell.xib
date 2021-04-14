@@ -96,6 +96,7 @@ Bundle</string>
             </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="btnAddtoPlaylist" destination="c1G-4b-5NL" id="drg-5A-9eB"/>
+                <outlet property="btnOptions" destination="1GT-ZW-p5f" id="rQy-mR-A9a"/>
                 <outlet property="imageView" destination="m3Z-Bv-v0d" id="Zfr-Z2-Kxe"/>
                 <outlet property="imgLock" destination="gLD-TJ-kd7" id="B1z-iQ-FIt"/>
                 <outlet property="lblName" destination="DbW-dw-31I" id="HRh-lm-Ppa"/>

@@ -17,11 +17,12 @@ class ManagePlaylistCell: UITableViewCell {
     
     
     // MARK:- VARIABLES
-    var arrayPlaylistDetails : [PlaylistDetailsModel]?
+    var arrayPlaylistDetails = [PlaylistDetailsModel]()
     var homeData = PlaylistHomeDataModel()
     
     var didSelectPlaylistAtIndex : ((Int) -> Void)?
     var didClickAddToPlaylistAtIndex : ((Int) -> Void)?
+    var didClickOptionAtIndex : ((Int) -> Void)?
     var didLongPressAtIndex : ((Int) -> Void)?
     
     
@@ -52,16 +53,14 @@ class ManagePlaylistCell: UITableViewCell {
         
         arrayPlaylistDetails = data.Details
         
-        let count = arrayPlaylistDetails?.count ?? 0
-        
         if homeData.View == "Recently Played" || homeData.View == "My Downloads" || homeData.View == "Popular" {
-            if (count > 6) {
+            if (arrayPlaylistDetails.count > 6) {
                 btnViewAll.isHidden = false
             } else {
                 btnViewAll.isHidden = true
             }
         } else {
-            if (count > 4) {
+            if (arrayPlaylistDetails.count > 4) {
                 btnViewAll.isHidden = false
             } else {
                 btnViewAll.isHidden = true
@@ -94,6 +93,10 @@ class ManagePlaylistCell: UITableViewCell {
         didClickAddToPlaylistAtIndex?(sender.tag)
     }
     
+    @objc func clickPlaylistOption(sender: UIButton) {
+        didClickOptionAtIndex?(sender.tag)
+    }
+    
 }
 
 
@@ -101,9 +104,7 @@ class ManagePlaylistCell: UITableViewCell {
 extension ManagePlaylistCell : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
-        
-        var count = arrayPlaylistDetails?.count ?? 0
+        var count = arrayPlaylistDetails.count
         
         if homeData.View == "Top Categories" {
             return count
@@ -123,11 +124,14 @@ extension ManagePlaylistCell : UICollectionViewDelegate, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withClass: PlaylistCollectionCell.self, for: indexPath)
         
-        // let playlistData = arrayPlaylistDetails![indexPath.row]
-        // cell.configureCell(playlistData: playlistData, homeData: homeData)
+        let playlistData = arrayPlaylistDetails[indexPath.row]
+        cell.configureCell(playlistData: playlistData, homeData: homeData)
         
         cell.btnAddtoPlaylist.tag = indexPath.row
         cell.btnAddtoPlaylist.addTarget(self, action: #selector(clickAddtoPlaylist(sender:)), for: .touchUpInside)
+        
+        cell.btnOptions.tag = indexPath.row
+        cell.btnOptions.addTarget(self, action: #selector(clickPlaylistOption(sender:)), for: .touchUpInside)
         
         return cell
     }

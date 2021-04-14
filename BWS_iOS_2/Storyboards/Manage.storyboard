@@ -379,6 +379,7 @@
                         <viewLayoutGuide key="safeArea" id="jSo-wM-qJP"/>
                     </view>
                     <connections>
+                        <outlet property="imgLock" destination="pcf-3U-k4k" id="XoG-RE-GPh"/>
                         <outlet property="tableHeaderView" destination="noZ-19-OJ6" id="Nr4-aj-Nly"/>
                         <outlet property="tableView" destination="F1p-b4-pTh" id="gwJ-Sx-gib"/>
                     </connections>
@@ -402,6 +403,12 @@ New Playlist</string>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lock" translatesAutoresizingMaskIntoConstraints="NO" id="pcf-3U-k4k">
+                                    <rect key="frame" x="8" y="8" width="30" height="30"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="30" id="1gz-Uk-qK6"/>
+                                    </constraints>
+                                </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1z4-bf-YSs">
                                     <rect key="frame" x="0.0" y="0.0" width="166" height="166"/>
                                     <connections>
@@ -418,9 +425,12 @@ New Playlist</string>
                                 <constraint firstItem="1z4-bf-YSs" firstAttribute="top" secondItem="4Vz-xH-ebj" secondAttribute="top" id="Lkv-2r-3ye"/>
                                 <constraint firstAttribute="trailing" secondItem="NlV-h2-xM5" secondAttribute="trailing" constant="10" id="Ngb-ue-9rd"/>
                                 <constraint firstItem="1z4-bf-YSs" firstAttribute="leading" secondItem="4Vz-xH-ebj" secondAttribute="leading" id="OZ1-ZX-Kpn"/>
+                                <constraint firstItem="pcf-3U-k4k" firstAttribute="leading" secondItem="4Vz-xH-ebj" secondAttribute="leading" constant="8" id="Qyy-rJ-mMe"/>
                                 <constraint firstAttribute="trailing" secondItem="1z4-bf-YSs" secondAttribute="trailing" id="fDx-5d-7qy"/>
                                 <constraint firstAttribute="bottom" secondItem="1z4-bf-YSs" secondAttribute="bottom" id="kJm-QI-xXX"/>
                                 <constraint firstItem="N0D-hM-nae" firstAttribute="centerY" secondItem="4Vz-xH-ebj" secondAttribute="centerY" id="u0p-5n-GQJ"/>
+                                <constraint firstItem="pcf-3U-k4k" firstAttribute="width" secondItem="pcf-3U-k4k" secondAttribute="height" multiplier="1:1" id="wwM-xA-3Bl"/>
+                                <constraint firstItem="pcf-3U-k4k" firstAttribute="top" secondItem="4Vz-xH-ebj" secondAttribute="top" constant="8" id="yfT-QR-zPN"/>
                             </constraints>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -548,7 +558,7 @@ New Playlist</string>
                                 <rect key="frame" x="0.0" y="44" width="375" height="734"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fFy-hS-cvE">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="837.33333333333337"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="767.33333333333337"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="beZ-4a-r6t">
                                                 <rect key="frame" x="16" y="12" width="30" height="30"/>
@@ -688,24 +698,13 @@ New Playlist</string>
                                                 </connections>
                                             </collectionView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="SJq-wT-2N1">
-                                                <rect key="frame" x="16" y="527.33333333333337" width="343" height="280"/>
+                                                <rect key="frame" x="16" y="527.33333333333337" width="343" height="210"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SmE-UX-ebw">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dG7-uv-vZl">
                                                         <rect key="frame" x="0.0" y="0.0" width="343" height="70"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="70" id="Ixk-jK-QVh"/>
+                                                            <constraint firstAttribute="height" constant="70" id="bL0-Zl-mFF"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
-                                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <state key="normal" title="        Like" image="like_white">
-                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="likeClickedWithSender:" destination="VHQ-CY-otv" eventType="touchUpInside" id="QCG-5o-Aoi"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dG7-uv-vZl">
-                                                        <rect key="frame" x="0.0" y="70" width="343" height="70"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" title="        Remove from this playlist" image="remove_white">
@@ -716,7 +715,7 @@ New Playlist</string>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xVX-3u-4Nj">
-                                                        <rect key="frame" x="0.0" y="140" width="343" height="70"/>
+                                                        <rect key="frame" x="0.0" y="70" width="343" height="70"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" title="       Download audio" image="download_white">
@@ -727,7 +726,7 @@ New Playlist</string>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Byp-Iv-iaU">
-                                                        <rect key="frame" x="0.0" y="210" width="343" height="70"/>
+                                                        <rect key="frame" x="0.0" y="140" width="343" height="70"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" title="        Add to Playlist" image="add_to_playlist">
@@ -781,7 +780,6 @@ New Playlist</string>
                     <connections>
                         <outlet property="btnAddToPlaylist" destination="Byp-Iv-iaU" id="KWq-Bh-e3h"/>
                         <outlet property="btnDownload" destination="xVX-3u-4Nj" id="PqE-L4-mvR"/>
-                        <outlet property="btnLike" destination="SmE-UX-ebw" id="c6t-Go-YO3"/>
                         <outlet property="btnRemoveFromPlaylist" destination="dG7-uv-vZl" id="sgB-J0-3C2"/>
                         <outlet property="collectionHeightConst" destination="TCf-ez-C6j" id="aAz-Ih-P3n"/>
                         <outlet property="collectionTopConst" destination="pFf-ge-ZCZ" id="Y4v-Bn-Ir4"/>
@@ -932,7 +930,7 @@ QXJlIHlvdSBzdXJlIHlvdSB3YW50IHRvIGRlbGV0ZQtTZWxmLWRldmVsb3BtZW50IHBsYXlsaXN0Pw
                                 <rect key="frame" x="0.0" y="44" width="375" height="734"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BnM-vo-1Xq">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="927.33333333333337"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="866.33333333333337"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Iy-nd-Bz7">
                                                 <rect key="frame" x="16" y="12" width="30" height="30"/>
@@ -945,7 +943,7 @@ QXJlIHlvdSBzdXJlIHlvdSB3YW50IHRvIGRlbGV0ZQtTZWxmLWRldmVsb3BtZW50IHBsYXlsaXN0Pw
                                                     <action selector="closeClickedWithSender:" destination="Xxb-w8-9Mj" eventType="touchUpInside" id="yLN-hv-LrG"/>
                                                 </connections>
                                             </button>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Npz-3B-Elq" customClass="CardView" customModule="BWS_Staging" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Npz-3B-Elq" customClass="CardView" customModule="BWS_2_Staging" customModuleProvider="target">
                                                 <rect key="frame" x="109" y="42" width="157" height="157"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="audioPlaceHolder" translatesAutoresizingMaskIntoConstraints="NO" id="C7L-CY-P7R">
@@ -1054,24 +1052,10 @@ QXJlIHlvdSBzdXJlIHlvdSB3YW50IHRvIGRlbGV0ZQtTZWxmLWRldmVsb3BtZW50IHBsYXlsaXN0Pw
                                                 </connections>
                                             </collectionView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="oDM-dX-Lh8">
-                                                <rect key="frame" x="24" y="512.33333333333337" width="327" height="365"/>
+                                                <rect key="frame" x="24" y="512.33333333333337" width="327" height="304"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DR4-6q-4Ee">
-                                                        <rect key="frame" x="0.0" y="0.0" width="327" height="60"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="60" id="C44-wS-cfA"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
-                                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <state key="normal" title="       Like Playlist" image="like_white">
-                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="likePlaylist:" destination="Xxb-w8-9Mj" eventType="touchUpInside" id="Pts-CR-jXb"/>
-                                                        </connections>
-                                                    </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8eJ-jj-N94">
-                                                        <rect key="frame" x="0.0" y="61" width="327" height="60"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="327" height="60"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="60" id="OXg-WT-60a"/>
                                                         </constraints>
@@ -1084,7 +1068,7 @@ QXJlIHlvdSBzdXJlIHlvdSB3YW50IHRvIGRlbGV0ZQtTZWxmLWRldmVsb3BtZW50IHBsYXlsaXN0Pw
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZTe-q9-bpi">
-                                                        <rect key="frame" x="0.0" y="122" width="327" height="60"/>
+                                                        <rect key="frame" x="0.0" y="61" width="327" height="60"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="60" id="tzE-4m-sqx"/>
                                                         </constraints>
@@ -1097,7 +1081,7 @@ QXJlIHlvdSBzdXJlIHlvdSB3YW50IHRvIGRlbGV0ZQtTZWxmLWRldmVsb3BtZW50IHBsYXlsaXN0Pw
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZRX-fo-5s3">
-                                                        <rect key="frame" x="0.0" y="183" width="327" height="60"/>
+                                                        <rect key="frame" x="0.0" y="122" width="327" height="60"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="60" id="GnE-L5-YVh"/>
                                                         </constraints>
@@ -1111,7 +1095,7 @@ QXJlIHlvdSBzdXJlIHlvdSB3YW50IHRvIGRlbGV0ZQtTZWxmLWRldmVsb3BtZW50IHBsYXlsaXN0Pw
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ODi-mQ-BIx">
-                                                        <rect key="frame" x="0.0" y="244" width="327" height="60"/>
+                                                        <rect key="frame" x="0.0" y="183" width="327" height="60"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="60" id="iVw-Vr-ojK"/>
                                                         </constraints>
@@ -1125,7 +1109,7 @@ QXJlIHlvdSBzdXJlIHlvdSB3YW50IHRvIGRlbGV0ZQtTZWxmLWRldmVsb3BtZW50IHBsYXlsaXN0Pw
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3kN-JX-ee7">
-                                                        <rect key="frame" x="0.0" y="305" width="327" height="60"/>
+                                                        <rect key="frame" x="0.0" y="244" width="327" height="60"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="60" id="TgZ-WR-fCt"/>
                                                         </constraints>
@@ -1184,7 +1168,6 @@ QXJlIHlvdSBzdXJlIHlvdSB3YW50IHRvIGRlbGV0ZQtTZWxmLWRldmVsb3BtZW50IHBsYXlsaXN0Pw
                         <outlet property="btnDelete" destination="ZTe-q9-bpi" id="6lh-9h-a7c"/>
                         <outlet property="btnDownload" destination="ODi-mQ-BIx" id="bbp-kG-Wti"/>
                         <outlet property="btnFind" destination="ZRX-fo-5s3" id="7x2-vK-7sc"/>
-                        <outlet property="btnLike" destination="DR4-6q-4Ee" id="mPQ-oE-QsI"/>
                         <outlet property="btnRename" destination="8eJ-jj-N94" id="IDx-iM-n5e"/>
                         <outlet property="collectionHeightConst" destination="NZr-GU-ZMy" id="Bbl-5l-szS"/>
                         <outlet property="collectionTopConst" destination="OEr-un-WIx" id="V5c-4F-BQW"/>
@@ -1362,7 +1345,7 @@ QXJlIHlvdSBzdXJlIHlvdSB3YW50IHRvIGRlbGV0ZQtTZWxmLWRldmVsb3BtZW50IHBsYXlsaXN0Pw
         <image name="delete_playlist" width="17" height="17"/>
         <image name="download_white" width="22" height="22"/>
         <image name="edit_white" width="19" height="19"/>
-        <image name="like_white" width="22" height="21"/>
+        <image name="lock" width="30" height="30"/>
         <image name="manage_tab" width="26" height="26"/>
         <image name="manage_tab_top_wave" width="375" height="213.33332824707031"/>
         <image name="moon_zzzz" width="48" height="45"/>

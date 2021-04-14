@@ -35,7 +35,6 @@ class PlaylistDetailVC: BaseViewController {
     @IBOutlet weak var btnFind : UIButton!
     @IBOutlet weak var btnDownload : UIButton!
     @IBOutlet weak var btnAddToPlaylist : UIButton!
-    @IBOutlet weak var btnLike: UIButton!
     
     
     // MARK:- VARIABLES
@@ -58,93 +57,87 @@ class PlaylistDetailVC: BaseViewController {
         
         // Segment Tracking
         self.objPlaylist?.sectionName = self.sectionName
+        
+        callPlaylistDetailAPI()
     }
     
     // MARK:- FUNCTIONS
     override func setupData() {
-        if let details = objPlaylist {
-            if let imgUrl = URL(string: details.PlaylistImage.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
-                imgView.sd_setImage(with: imgUrl, completed: nil)
-            }
+        guard let details = objPlaylist else {
+            return
+        }
+        
+        if let imgUrl = URL(string: details.PlaylistImage.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+            imgView.sd_setImage(with: imgUrl, completed: nil)
+        }
+        
+        lblPlaylistName.text = details.PlaylistName
+        
+        if details.PlaylistMastercat.trim.count > 0 {
+            lblCategory.text = details.PlaylistMastercat
+            lblCategory.isHidden = false
+        }
+        else {
+            lblCategory.isHidden = true
+        }
+        
+        let totalAudios = details.TotalAudio.trim.count > 0 ? details.TotalAudio : "0"
+        let totalhour = details.Totalhour.trim.count > 0 ? details.Totalhour : "0"
+        let totalminute = details.Totalminute.trim.count > 0 ? details.Totalminute : "0"
+        lblAudioCount.text = "\(totalAudios) Audios | \(totalhour)h \(totalminute)m"
+        
+        if objPlaylist!.Created == "1" {
+            btnRename.isHidden = false
+            btnDelete.isHidden = false
+            btnFind.isHidden = true
+            stackViewDescription.isHidden = true
+            objCollection.isHidden = true
             
-            lblPlaylistName.text = details.PlaylistName
+            collectionTopConst.constant = 0
+            collectionHeightConst.constant = 0
+            self.view.layoutIfNeeded()
+        }
+        else {
+            btnRename.isHidden = true
+            btnDelete.isHidden = true
+            btnFind.isHidden = false
+            stackViewDescription.isHidden = false
             
-            if details.PlaylistMastercat.trim.count > 0 {
-                lblCategory.text = details.PlaylistMastercat
-                lblCategory.isHidden = false
-            }
-            else {
-                lblCategory.isHidden = true
-            }
-            
-            let totalAudios = details.TotalAudio.trim.count > 0 ? details.TotalAudio : "0"
-            let totalhour = details.Totalhour.trim.count > 0 ? details.Totalhour : "0"
-            let totalminute = details.Totalminute.trim.count > 0 ? details.Totalminute : "0"
-            lblAudioCount.text = "\(totalAudios) Audios | \(totalhour)h \(totalminute)m"
-            
-            if objPlaylist!.Created == "1" {
-                btnRename.isHidden = false
-                btnDelete.isHidden = false
+            if showFindButton == false {
                 btnFind.isHidden = true
-                stackViewDescription.isHidden = true
-                objCollection.isHidden = true
-                
-                collectionTopConst.constant = 0
-                collectionHeightConst.constant = 0
-                self.view.layoutIfNeeded()
-            }
-            else {
-                btnRename.isHidden = true
-                btnDelete.isHidden = true
-                btnFind.isHidden = false
-                stackViewDescription.isHidden = false
-                
-                if showFindButton == false {
-                    btnFind.isHidden = true
-                }
-                
-                lblDescription.text = details.PlaylistDesc
-                stackViewDescription.isHidden = details.PlaylistDesc.trim.count == 0
-                
-                lblDescription.textColor = UIColor.white
-                
-                if lblDescription.calculateMaxLines() > 4 {
-                    // Add "Read More" text at trailing in UILabel
-                    DispatchQueue.main.async {
-                        self.lblDescription.addTrailing(with: " ", moreText: "Read More...", moreTextFont: UIFont.systemFont(ofSize: 13), moreTextColor: .orange)
-                    }
-                    
-                    // Add Tap Gesture for checking Tap event on "Read More" text
-                    lblDescription.isUserInteractionEnabled = true
-                    lblDescription.lineBreakMode = .byWordWrapping
-                    let tapGesture = UITapGestureRecognizer.init(target: self, action: #selector(tappedOnLabel(_:)))
-                    tapGesture.numberOfTouchesRequired = 1
-                    lblDescription.addGestureRecognizer(tapGesture)
-                }
-                
-                arrayCategory = details.PlaylistSubcat.components(separatedBy: ",").filter { $0.trim.count > 0 }
-                objCollection.reloadData()
-                collectionTopConst.constant = arrayCategory.count > 0 ? 30 : 0
-                collectionHeightConst.constant = arrayCategory.count > 0 ? 50 : 0
-                objCollection.isHidden = arrayCategory.count == 0
-                self.view.layoutIfNeeded()
             }
             
-            if let songs = objPlaylist?.PlaylistSongs, songs.count > 0 {
-                btnDownload.isHidden = false
-            }
-            else {
-                btnDownload.isHidden = true
+            lblDescription.text = details.PlaylistDesc
+            stackViewDescription.isHidden = details.PlaylistDesc.trim.count == 0
+            
+            lblDescription.textColor = UIColor.white
+            
+            if lblDescription.calculateMaxLines() > 4 {
+                // Add "Read More" text at trailing in UILabel
+                DispatchQueue.main.async {
+                    self.lblDescription.addTrailing(with: " ", moreText: "Read More...", moreTextFont: UIFont.systemFont(ofSize: 13), moreTextColor: .orange)
+                }
+                
+                // Add Tap Gesture for checking Tap event on "Read More" text
+                lblDescription.isUserInteractionEnabled = true
+                lblDescription.lineBreakMode = .byWordWrapping
+                let tapGesture = UITapGestureRecognizer.init(target: self, action: #selector(tappedOnLabel(_:)))
+                tapGesture.numberOfTouchesRequired = 1
+                lblDescription.addGestureRecognizer(tapGesture)
             }
             
-            if details.Like == "1" {
-                btnLike.setImage(UIImage(named: "Like"), for: UIControl.State.normal)
-                btnLike.tintColor = UIColor.clear
-            }
-            else {
-                btnLike.setImage(UIImage(named: "LikeWhite"), for: UIControl.State.normal)
-                btnLike.tintColor = UIColor.white
-            }
+            arrayCategory = details.PlaylistSubcat.components(separatedBy: ",").filter { $0.trim.count > 0 }
+            objCollection.reloadData()
+            collectionTopConst.constant = arrayCategory.count > 0 ? 30 : 0
+            collectionHeightConst.constant = arrayCategory.count > 0 ? 50 : 0
+            objCollection.isHidden = arrayCategory.count == 0
+            self.view.layoutIfNeeded()
+        }
+        
+        if let songs = objPlaylist?.PlaylistSongs, songs.count > 0 {
+            btnDownload.isHidden = false
+        } else {
+            btnDownload.isHidden = true
         }
     }
     
@@ -166,10 +159,6 @@ class PlaylistDetailVC: BaseViewController {
     }
     
     // MARK:- ACTIONS
-    @IBAction func likePlaylist(_ sender: UIButton) {
-        // Playlist Like API Call
-    }
-    
     @IBAction func closeClicked(sender : UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -187,9 +176,6 @@ class PlaylistDetailVC: BaseViewController {
     }
     
     @IBAction func findClicked(sender : UIButton) {
-        // Segment Tracking
-        // SegmentTracking.shared.playlistEvents(name: "Playlist Search Clicked", objPlaylist: objPlaylist, trackingType: .track)
-        
         self.dismiss(animated: true) {
             self.delegate?.didClickedFind()
         }

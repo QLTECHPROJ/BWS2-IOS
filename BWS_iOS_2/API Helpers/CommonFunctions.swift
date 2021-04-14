@@ -12,6 +12,12 @@ import SVProgressHUD
 import AVKit
 
 
+// MARK:- open popup for users with Inactive plan
+func openInactivePopup(controller : UIViewController?, openWithNavigation : Bool = false) {
+    // Open Popup
+    // InActive popup screen was removed
+}
+
 /************************ Check network connection ************************/
 
 func checkInternet() -> Bool {

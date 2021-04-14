@@ -119,12 +119,6 @@ class PlaylistAudiosVC: BaseViewController {
             return
         }
         
-        if details.Created == "1" || details.PlaylistSongs.count > 0 {
-            tableView.tableHeaderView = viewHeader
-        } else {
-            tableView.tableHeaderView = UIView()
-        }
-        
         for audio in details.PlaylistSongs {
             if details.Created == "1" {
                 audio.selfCreated = "1"
@@ -141,13 +135,11 @@ class PlaylistAudiosVC: BaseViewController {
         
         if let songs = objPlaylist?.PlaylistSongs, songs.count > 0 {
             arraySearchSongs = songs
-            tableView.isHidden = false
             btnDownload.isUserInteractionEnabled = true
             btnDownload.alpha = 1
             btnPlay.isHidden = false
             tableView.reloadData()
         } else {
-            tableView.isHidden = true
             btnDownload.isUserInteractionEnabled = false
             btnDownload.alpha = 1
             btnDownload.setImage(UIImage(named: "download_dark_gray"), for: UIControl.State.normal)

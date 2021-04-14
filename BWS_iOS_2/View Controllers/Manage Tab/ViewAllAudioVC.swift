@@ -49,12 +49,7 @@ class ViewAllAudioVC: BaseViewController {
         // Fetch Data
     }
     
-    // MARK:- ACTIONS
-    @IBAction func backClicked(sender : UIButton) {
-        self.navigationController?.popViewController(animated: true)
-    }
-    
-    //MARK: - UILongPressGestureRecognizer Action -
+    // Handle Long Press on Playlist
     @objc func handleLongPress(gestureReconizer: UILongPressGestureRecognizer) {
         let point = gestureReconizer.location(in: objCollectionView)
         let indexPath = self.objCollectionView.indexPathForItem(at: point)
@@ -90,7 +85,20 @@ class ViewAllAudioVC: BaseViewController {
     @objc func addPlaylistToPlaylist(sender : UIButton) {
         setAllDeselected()
         let audioData = homeData.Details[sender.tag]
-        // Add To Playlist
+        
+        let aVC = AppStoryBoard.home.viewController(viewControllerClass: AddToPlaylistVC.self)
+        aVC.audioID = audioData.ID
+        aVC.source = "Audio View All Screen"
+        let navVC = UINavigationController(rootViewController: aVC)
+        navVC.navigationBar.isHidden = true
+        navVC.modalPresentationStyle = .fullScreen
+        self.present(navVC, animated: true, completion: nil)
+    }
+    
+    
+    // MARK:- ACTIONS
+    @IBAction func backClicked(sender : UIButton) {
+        self.navigationController?.popViewController(animated: true)
     }
     
 }

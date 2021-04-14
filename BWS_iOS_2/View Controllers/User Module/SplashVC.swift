@@ -70,6 +70,9 @@ class SplashVC: BaseViewController {
     }
     
     func handleCoUserRedirection() {
+        APPDELEGATE.window?.rootViewController = AppStoryBoard.main.viewController(viewControllerClass: NavigationClass.self)
+        return
+        
         if let coUser = CoUserDataModel.currentUser {
             if coUser.isProfileCompleted == "0" {
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass: ContinueVC.self)

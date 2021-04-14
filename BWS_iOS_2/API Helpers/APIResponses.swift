@@ -314,6 +314,7 @@ class AudioHomeDataModel: EVObject {
 
 public class AudioDetailsDataModel: EVObject {
     var ID = ""
+    var PSID = ""
     var PlaylistID = ""
     var Name = ""
     var AudioFile = ""
@@ -355,6 +356,12 @@ public class AudioDetailsDataModel: EVObject {
     var isSelected = false
 }
 
+class AudioDetailsModel: EVObject {
+    var ResponseData = [AudioDetailsDataModel]()
+    var ResponseCode = ""
+    var ResponseMessage = ""
+    var ResponseStatus = ""
+}
 
 // MARK:- Playlist Home API Models
 class PlaylistHomeModel: EVObject {
@@ -375,6 +382,7 @@ class PlaylistHomeDataModel: EVObject {
     var GetLibraryID = ""
     var View = ""
     var UserID = ""
+    var CoUserId = ""
     var Details = [PlaylistDetailsModel]()
     var IsLock = ""
 }
@@ -405,6 +413,12 @@ class PlaylistDetailsModel: EVObject {
     var isSelected = false
 }
 
+class PlaylistListingModel: EVObject {
+    var ResponseData = [PlaylistDetailsModel]()
+    var ResponseCode = ""
+    var ResponseMessage = ""
+    var ResponseStatus = ""
+}
 
 // MARK:- Create Playlist API Models
 class CreatePlaylistModel: EVObject {

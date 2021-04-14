@@ -17,6 +17,13 @@ class CreatePlayListCell: UITableViewCell {
         super.awakeFromNib()
     }
 
-    
+    // Configure Cell
+    func configureCell(data : PlaylistDetailsModel) {
+        if let imgUrl = URL(string: data.PlaylistImage.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+            imgView.sd_setImage(with: imgUrl, completed: nil)
+        }
+        
+        lblTitle.text = data.PlaylistName
+    }
     
 }
