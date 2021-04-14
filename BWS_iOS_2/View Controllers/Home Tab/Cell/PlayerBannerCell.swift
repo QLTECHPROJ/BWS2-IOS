@@ -13,6 +13,11 @@ class PlayerBannerCell: UITableViewCell {
     @IBOutlet weak var wavyImage: UIImageView!
     @IBOutlet weak var viewPlayer: UIView!
     @IBOutlet weak var viewGraph: UIView!
+    @IBOutlet weak var btnPlay: UIButton!
+    @IBOutlet weak var progressview: UIProgressView!
+    @IBOutlet weak var lblDesc: UILabel!
+    @IBOutlet weak var lblTitle: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
