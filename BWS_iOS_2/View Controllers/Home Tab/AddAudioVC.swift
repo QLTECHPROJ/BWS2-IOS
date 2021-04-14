@@ -10,25 +10,33 @@ import UIKit
 
 class AddAudioVC: BaseViewController {
     
-     //MARK:- UIOutlet
+    // MARK:- OUTLETS
     @IBOutlet weak var tableView: UITableView!
-
+    
+    
+    // MARK:- VIEW LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setupUI()
     }
     
+    
+    // MARK:- FUNCTIONS
     override func setupUI() {
-         tableView.register(UINib(nibName:"SelfDevCell", bundle: nil), forCellReuseIdentifier:"SelfDevCell")
+        tableView.register(nibWithCellClass: SelfDevCell.self)
     }
     
-    //MARK:- IBAction
+    
+    // MARK:- ACTIONS
     @IBAction func onTappedBack(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
+    
 }
 
+
+// MARK:- UITableViewDelegate, UITableViewDataSource
 extension AddAudioVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -36,7 +44,7 @@ extension AddAudioVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-      let cell = tableView.dequeueReusableCell(withIdentifier:"SelfDevCell", for: indexPath) as!  SelfDevCell
+        let cell = tableView.dequeueReusableCell(withClass: SelfDevCell.self)
         cell.btnChangePosition.setImage(UIImage(named: "Add"), for: .normal)
         cell.btnDownload.isHidden = true
         cell.btnDelete.isHidden = true
@@ -51,7 +59,5 @@ extension AddAudioVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 85
     }
-    
-    
     
 }

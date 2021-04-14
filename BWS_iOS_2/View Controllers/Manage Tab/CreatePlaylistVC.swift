@@ -67,14 +67,16 @@ class CreatePlaylistVC: BaseViewController {
     }
     
     func buttonEnableDisable(shouldEnable : Bool) {
-        if shouldEnable {
-            btnCreate.isUserInteractionEnabled = true
-            btnCreate.backgroundColor = Theme.colors.white
-            btnCreate.setTitleColor(Theme.colors.textColor, for: .normal)
-        } else {
-            btnCreate.isUserInteractionEnabled = false
-            btnCreate.backgroundColor = Theme.colors.gray_7E7E7E
-            btnCreate.setTitleColor(Theme.colors.white, for: .normal)
+        DispatchQueue.main.async {
+            if shouldEnable {
+                self.btnCreate.isUserInteractionEnabled = true
+                self.btnCreate.backgroundColor = Theme.colors.white
+                self.btnCreate.setTitleColor(Theme.colors.textColor, for: .normal)
+            } else {
+                self.btnCreate.isUserInteractionEnabled = false
+                self.btnCreate.backgroundColor = Theme.colors.gray_7E7E7E
+                self.btnCreate.setTitleColor(Theme.colors.white, for: .normal)
+            }
         }
     }
     
@@ -84,9 +86,9 @@ class CreatePlaylistVC: BaseViewController {
         self.view.endEditing(true)
         if let name = txtName.text, name.trim.count > 0 {
             if objPlaylist != nil {
-                
+                callRenamePlaylistAPI(PlaylistName: name)
             } else {
-                
+                callCreatePlaylistAPI(PlaylistName: name)
             }
         } else {
             showAlertToast(message: Theme.strings.alert_blank_playlist_name)

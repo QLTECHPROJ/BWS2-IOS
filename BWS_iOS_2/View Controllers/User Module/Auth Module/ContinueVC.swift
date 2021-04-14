@@ -18,6 +18,11 @@ class ContinueVC: BaseViewController {
     // MARK:- VIEW LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        lblName.text = "Hi"
+        if let name = CoUserDataModel.currentUser?.Name {
+            lblName.text = "Hi, \(name)"
+        }
     }
     
     // MARK:- FUNCTIONS

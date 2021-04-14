@@ -28,6 +28,20 @@ enum APIRouter: URLRequestConvertible {
     case assesmentquestionlist
     case assesmentsaveans([String:String])
     
+    // Audio
+    case audiodetail([String:String])
+    
+    // Playlist
+    case playlistdetails([String:String])
+    case createplaylist([String:String])
+    case getcreatedplaylist([String:String])
+    case renameplaylist([String:String])
+    case deleteplaylist([String:String])
+    case addaptoplaylist([String:String])
+    case removeaudiofromplaylist([String:String])
+    case sortingplaylistaudio([String:String])
+    case getallplaylist([String:String])
+    
     var route: APIRoute {
         switch self {
         case .appversion(let data):
@@ -56,6 +70,28 @@ enum APIRouter: URLRequestConvertible {
             return APIRoute(path: "assesmentquestionlist", method: .get)
         case .assesmentsaveans(let data):
             return APIRoute(path: "assesmentsaveans", method: .post, data: data)
+            
+        case .audiodetail(let data):
+            return APIRoute(path: "audiodetail", method: .post, data: data)
+        
+        case .playlistdetails(let data):
+            return APIRoute(path: "playlistdetails", method: .post, data: data)
+        case .createplaylist(let data):
+            return APIRoute(path: "createplaylist", method: .post, data: data)
+        case .getcreatedplaylist(let data):
+            return APIRoute(path: "getcreatedplaylist", method: .post, data: data)
+        case .renameplaylist(let data):
+            return APIRoute(path: "renameplaylist", method: .post, data: data)
+        case .deleteplaylist(let data):
+            return APIRoute(path: "deleteplaylist", method: .post, data: data)
+        case .addaptoplaylist(let data):
+            return APIRoute(path: "addaptoplaylist", method: .post, data: data)
+        case .removeaudiofromplaylist(let data):
+            return APIRoute(path: "removeaudiofromplaylist", method: .post, data: data)
+        case .sortingplaylistaudio(let data):
+            return APIRoute(path: "sortingplaylistaudio", method: .post, data: data)
+        case .getallplaylist(let data):
+            return APIRoute(path: "getallplaylist", method: .post, data: data)
         }
     }
     
