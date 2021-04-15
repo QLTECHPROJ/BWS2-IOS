@@ -117,8 +117,7 @@ open class DJMusicPlayer: NSObject {
         set {
             if let newData = newValue {
                 UserDefaults.standard.setValue(newData.toJsonData(), forKey: "currentPlaylist")
-            }
-            else {
+            } else {
                 UserDefaults.standard.setValue(nil, forKey: "currentPlaylist")
             }
             UserDefaults.standard.synchronize()
@@ -212,8 +211,7 @@ open class DJMusicPlayer: NSObject {
                 return true
             }
             return false
-        }
-        else if queuedSongs.count > 0 {
+        } else if queuedSongs.count > 0 {
             if queuedSongs.count > 1 {
                 return true
             }
@@ -425,11 +423,9 @@ open class DJMusicPlayer: NSObject {
     func repeatSongs() {
         if self.repeatPlaylist == .none {
             self.repeatPlaylist = .all
-        }
-        else if self.repeatPlaylist == .all {
+        } else if self.repeatPlaylist == .all {
             self.repeatPlaylist = .single
-        }
-        else {
+        } else {
             self.repeatPlaylist = .none
         }
     }
@@ -494,8 +490,7 @@ open class DJMusicPlayer: NSObject {
         if isInDatabase == true && isLocal == false && checkInternet() == false {
             showAlertToast(message: Theme.strings.alert_redownload)
             return false
-        }
-        else if isLocal == false && checkInternet() == false {
+        } else if isLocal == false && checkInternet() == false {
             showAlertToast(message: Theme.strings.alert_check_internet)
             return false
         }
@@ -508,8 +503,7 @@ open class DJMusicPlayer: NSObject {
         
         if nowPlayingList.count > index && !isPlayingFromQueue {
             playerData = nowPlayingList[index]
-        }
-        else if queuedSongs.count > index {
+        } else if queuedSongs.count > index {
             playerData = queuedSongs[index]
         }
         
@@ -537,8 +531,7 @@ open class DJMusicPlayer: NSObject {
         if isInDatabase == true && isLocal == false && checkInternet() == false {
             showAlertToast(message: Theme.strings.alert_redownload)
             return false
-        }
-        else if isLocal == false && checkInternet() == false {
+        } else if isLocal == false && checkInternet() == false {
             showAlertToast(message: Theme.strings.alert_check_internet)
             return false
         }
@@ -567,8 +560,7 @@ open class DJMusicPlayer: NSObject {
             
             let newAudio = self.nowPlayingList[playIndex]
             self.currentlyPlaying = newAudio
-        }
-        else {
+        } else {
             if self.queuedSongs.count > playIndex {
                 if  self.canPlayFromDownloads(playerData: self.queuedSongs[playIndex]) == false && checkInternet() == false {
                     //                    showAlertToast(message: Theme.strings.alert_check_internet)
@@ -601,8 +593,7 @@ open class DJMusicPlayer: NSObject {
             if currentlyPlaying?.ID != nil && checkInternet() != false {
                 // UIViewController().callRecentlyPlayedAPI(audioID: (self.currentlyPlaying?.ID ?? ""), complitionBlock: nil)
             }
-        }
-        else if self.latestPlayRequest?.isDisclaimer == true {
+        } else if self.latestPlayRequest?.isDisclaimer == true {
             NotificationCenter.default.post(name: .playerItemDidChange, object: nil)
             if currentlyPlaying?.ID != nil && checkInternet() != false {
                 // UIViewController().callRecentlyPlayedAPI(audioID: (self.currentlyPlaying?.ID ?? ""), complitionBlock: nil)
@@ -631,8 +622,7 @@ open class DJMusicPlayer: NSObject {
             showAlertToast(message: Theme.strings.alert_redownload)
             self.isStoppedBecauseOfNetwork = true
             return
-        }
-        else if isLocal == false && checkInternet() == false {
+        } else if isLocal == false && checkInternet() == false {
             showAlertToast(message: Theme.strings.alert_check_internet)
             self.isStoppedBecauseOfNetwork = true
             return
@@ -769,8 +759,7 @@ open class DJMusicPlayer: NSObject {
             if playbackLikelyToKeepUp == false {
                 //Here start the activity indicator inorder to show buffering
                 // self.state = .loading
-            }
-            else {
+            } else {
                 //stop the activity indicator
                 // self.state = .loadingFinished
             }
@@ -830,8 +819,7 @@ open class DJMusicPlayer: NSObject {
                     self.play(isResume: true)
                     print("handleInterruption :- Play")
                 }
-            }
-            else {
+            } else {
                 // Interruption ended. Playback should not resume.
                 self.pause(pauseReason: .interruption)
                 print("handleInterruption :- Pause")

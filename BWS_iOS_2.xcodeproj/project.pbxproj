@@ -122,6 +122,10 @@
 		283529A32609DA5F009AB2AA /* ThankYouVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283529A22609DA5F009AB2AA /* ThankYouVC.swift */; };
 		283529A42609DA6F009AB2AA /* OrderSummaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283529A02609DA1A009AB2AA /* OrderSummaryVC.swift */; };
 		283529A52609DA6F009AB2AA /* ThankYouVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283529A22609DA5F009AB2AA /* ThankYouVC.swift */; };
+		283E1240262879A80007B280 /* Declaimer.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 283E123E262879A80007B280 /* Declaimer.jpeg */; };
+		283E1241262879A80007B280 /* Declaimer.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 283E123E262879A80007B280 /* Declaimer.jpeg */; };
+		283E1242262879A80007B280 /* Brain_Wellness_Spa_Declaimer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 283E123F262879A80007B280 /* Brain_Wellness_Spa_Declaimer.mp3 */; };
+		283E1243262879A80007B280 /* Brain_Wellness_Spa_Declaimer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 283E123F262879A80007B280 /* Brain_Wellness_Spa_Declaimer.mp3 */; };
 		283F72EF261D994900554774 /* AssessmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283F72EE261D994900554774 /* AssessmentVC.swift */; };
 		283F72F0261D994900554774 /* AssessmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283F72EE261D994900554774 /* AssessmentVC.swift */; };
 		283F72F3261D999200554774 /* SubColCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283F72F1261D999100554774 /* SubColCell.swift */; };
@@ -475,6 +479,8 @@
 		28346E21260B5A5900DD41BE /* FAQCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FAQCell.xib; sourceTree = "<group>"; };
 		283529A02609DA1A009AB2AA /* OrderSummaryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderSummaryVC.swift; sourceTree = "<group>"; };
 		283529A22609DA5F009AB2AA /* ThankYouVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThankYouVC.swift; sourceTree = "<group>"; };
+		283E123E262879A80007B280 /* Declaimer.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Declaimer.jpeg; sourceTree = "<group>"; };
+		283E123F262879A80007B280 /* Brain_Wellness_Spa_Declaimer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Brain_Wellness_Spa_Declaimer.mp3; sourceTree = "<group>"; };
 		283F72EE261D994900554774 /* AssessmentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssessmentVC.swift; sourceTree = "<group>"; };
 		283F72F1261D999100554774 /* SubColCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubColCell.swift; sourceTree = "<group>"; };
 		283F72F2261D999200554774 /* SubColCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubColCell.xib; sourceTree = "<group>"; };
@@ -1177,6 +1183,8 @@
 				28F812C125FB36B800DC6AF6 /* Live */,
 				2870B39E25FB41A10014A4F6 /* BWS-Bridging-Header.h */,
 				28F812AE25FB337000DC6AF6 /* Assets.xcassets */,
+				283E123F262879A80007B280 /* Brain_Wellness_Spa_Declaimer.mp3 */,
+				283E123E262879A80007B280 /* Declaimer.jpeg */,
 				28ED2F8325FB58DF00E59C56 /* Fonts */,
 				28F812AB25FB336F00DC6AF6 /* BWS_iOS_2.xcdatamodeld */,
 			);
@@ -1305,6 +1313,7 @@
 				2870B35D25FB3A570014A4F6 /* Main.storyboard in Resources */,
 				28E01226261847EA00B55967 /* CreatePlayListCell.xib in Resources */,
 				28346E19260B0C6B00DD41BE /* PlanListCell.xib in Resources */,
+				283E1243262879A80007B280 /* Brain_Wellness_Spa_Declaimer.mp3 in Resources */,
 				28E0122C261847EA00B55967 /* tagCVCell.xib in Resources */,
 				28ED2F9025FB58E000E59C56 /* Montserrat-Bold.ttf in Resources */,
 				28E01242261847EA00B55967 /* AreaCell.xib in Resources */,
@@ -1316,6 +1325,7 @@
 				283153CE26146111004001CE /* AudioCategoryCell.xib in Resources */,
 				28E01236261847EA00B55967 /* SelfDevCell.xib in Resources */,
 				28E809302613090500CD80F7 /* Elevate.storyboard in Resources */,
+				283E1241262879A80007B280 /* Declaimer.jpeg in Resources */,
 				28E01228261847EA00B55967 /* PlayerBannerCell.xib in Resources */,
 				28ED2F8C25FB58DF00E59C56 /* Montserrat-Medium.ttf in Resources */,
 				28ED2F9425FB58E000E59C56 /* Montserrat-Regular.ttf in Resources */,
@@ -1354,6 +1364,7 @@
 				282441492609ACE30060292E /* CountryCell.xib in Resources */,
 				28E01225261847EA00B55967 /* CreatePlayListCell.xib in Resources */,
 				2880EEE5260A32C300D0B6A7 /* PlanListCell.xib in Resources */,
+				283E1242262879A80007B280 /* Brain_Wellness_Spa_Declaimer.mp3 in Resources */,
 				28E0122B261847EA00B55967 /* tagCVCell.xib in Resources */,
 				28ED2F8F25FB58E000E59C56 /* Montserrat-Bold.ttf in Resources */,
 				28E01241261847EA00B55967 /* AreaCell.xib in Resources */,
@@ -1365,6 +1376,7 @@
 				283153CD26146111004001CE /* AudioCategoryCell.xib in Resources */,
 				28E01235261847EA00B55967 /* SelfDevCell.xib in Resources */,
 				28E8092F2613090500CD80F7 /* Elevate.storyboard in Resources */,
+				283E1240262879A80007B280 /* Declaimer.jpeg in Resources */,
 				28E01227261847EA00B55967 /* PlayerBannerCell.xib in Resources */,
 				28ED2F8B25FB58DF00E59C56 /* Montserrat-Medium.ttf in Resources */,
 				28ED2F9325FB58E000E59C56 /* Montserrat-Regular.ttf in Resources */,

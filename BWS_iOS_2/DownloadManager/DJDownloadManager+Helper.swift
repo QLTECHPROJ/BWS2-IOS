@@ -18,14 +18,12 @@ extension DJDownloadManager {
             for file in directoryContents {
                 do {
                     try fileManager.removeItem(at: file)
-                }
-                catch let error as NSError {
-                    debugPrint("Error while deleting file: \(error)")
+                } catch {
+                    print("Error while deleting file : \(error.localizedDescription)")
                 }
             }
-        }
-        catch let error as NSError {
-            print(error.localizedDescription)
+        } catch {
+            print("Error while fetching files : \(error.localizedDescription)")
         }
     }
     

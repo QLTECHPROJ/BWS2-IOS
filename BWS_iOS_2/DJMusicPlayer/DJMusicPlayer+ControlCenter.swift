@@ -40,8 +40,7 @@ extension DJMusicPlayer {
                     return disclaimerImage
                 }
             }
-        }
-        else {
+        } else {
             if let imgUrl = URL(string: item.ImageFile.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
                 UIImageView().sd_setImage(with: imgUrl, placeholderImage: nil, options: .refreshCached) { (audioImage, error, sdImageCacheType, imageUrl) in
                     
@@ -120,8 +119,7 @@ extension DJMusicPlayer {
             
             commandCenter.previousTrackCommand.isEnabled = false
             commandCenter.nextTrackCommand.isEnabled = false
-        }
-        else {
+        } else {
             commandCenter.previousTrackCommand.removeTarget(self)
             commandCenter.nextTrackCommand.removeTarget(self)
             commandCenter.playCommand.removeTarget(self)
@@ -152,8 +150,7 @@ extension DJMusicPlayer {
             DJMusicPlayer.shared.latestPlayRequest = nil
             DJMusicPlayer.shared.resetPlayer()
             DJMusicPlayer.shared.requestToPlay()
-        }
-        else {
+        } else {
             DJMusicPlayer.shared.togglePlaying()
         }
         

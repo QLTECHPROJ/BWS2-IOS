@@ -48,14 +48,12 @@ class DJDownloadManager {
             for file in directoryContents {
                 do {
                     try fileManager.removeItem(at: file)
-                }
-                catch let error as NSError {
-                    debugPrint("Error while deleting file: \(error)")
+                } catch {
+                    print("Error while deleting file : \(error.localizedDescription)")
                 }
             }
-        }
-        catch let error as NSError {
-            print(error.localizedDescription)
+        } catch {
+            print("Error while fetching files : \(error.localizedDescription)")
         }
     }
     
@@ -66,9 +64,8 @@ class DJDownloadManager {
             let fileURLs = try fileManager.contentsOfDirectory(at: documentsURL, includingPropertiesForKeys: nil)
             print("fileURLs :- ",fileURLs)
             return fileURLs
-        }
-        catch {
-            print("Error while enumerating files \(documentsURL.path): \(error.localizedDescription)")
+        } catch {
+            print("Error while fetching files : \(documentsURL.path): \(error.localizedDescription)")
         }
         
         return [URL]()
@@ -127,9 +124,8 @@ class DJDownloadManager {
         let documentsURL = SDFileUtils.documentDirectoryPath().appendingPathComponent(directoryName).appendingPathComponent(downloadUrl.lastPathComponent)
         do {
             try fileManager.removeItem(at: documentsURL)
-        }
-        catch {
-            debugPrint("Error while deleting file: \(error)")
+        } catch {
+            print("Error while deleting file : \(error.localizedDescription)")
         }
     }
     
@@ -208,8 +204,7 @@ class DJDownloadManager {
                 DJDownloadManager.shared.downloadProgress = 0
                 self.isDownloading = false
                 self.fetchNextDownload()
-            }
-            else {
+            } else {
                 DJDownloadManager.shared.downloadProgress = 0
                 self.isDownloading = false
                 self.fetchNextDownload()
@@ -255,8 +250,7 @@ class DJDownloadManager {
                 if let playlistData = CoreDataHelper.shared.fetchPlaylistDetails(playlistID: playlistId) {
                     arrayDownloadedPlaylists.append(playlistData)
                 }
-            }
-            else if playlistDownloadProgress > 0 {
+            } else if playlistDownloadProgress > 0 {
                 isSingleAudio = false
             }
         }
