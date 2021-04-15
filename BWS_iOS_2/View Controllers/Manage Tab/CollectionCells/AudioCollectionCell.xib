@@ -55,10 +55,10 @@
                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </state>
                     </button>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ieA-2X-qPv">
-                        <rect key="frame" x="0.0" y="188" width="180" height="21"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ieA-2X-qPv">
+                        <rect key="frame" x="0.0" y="184" width="180" height="29"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="21" id="BUF-B3-fTr"/>
+                            <constraint firstAttribute="height" constant="29" id="BUF-B3-fTr"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -75,11 +75,11 @@
                 <constraint firstItem="ieA-2X-qPv" firstAttribute="trailing" secondItem="wZc-wt-7Ri" secondAttribute="trailing" id="Tll-gy-uSk"/>
                 <constraint firstItem="ieA-2X-qPv" firstAttribute="leading" secondItem="wZc-wt-7Ri" secondAttribute="leading" id="bcQ-QY-qza"/>
                 <constraint firstItem="xF2-3e-rpn" firstAttribute="bottom" secondItem="wZc-wt-7Ri" secondAttribute="bottom" id="fV1-Pv-oWa"/>
-                <constraint firstItem="ieA-2X-qPv" firstAttribute="top" secondItem="wZc-wt-7Ri" secondAttribute="bottom" constant="8" id="kPN-od-iJ5"/>
+                <constraint firstItem="ieA-2X-qPv" firstAttribute="top" secondItem="wZc-wt-7Ri" secondAttribute="bottom" constant="4" id="kPN-od-iJ5"/>
                 <constraint firstItem="4g4-v9-G6O" firstAttribute="top" secondItem="oqG-OR-kMi" secondAttribute="top" constant="8" id="kt5-gN-8CQ"/>
                 <constraint firstItem="wZc-wt-7Ri" firstAttribute="leading" secondItem="oqG-OR-kMi" secondAttribute="leading" id="uVM-Ol-LNB"/>
                 <constraint firstAttribute="trailing" secondItem="wZc-wt-7Ri" secondAttribute="trailing" id="v9Q-xt-Ncy"/>
-                <constraint firstAttribute="bottom" secondItem="ieA-2X-qPv" secondAttribute="bottom" constant="8" id="w3e-D8-8jW"/>
+                <constraint firstAttribute="bottom" secondItem="ieA-2X-qPv" secondAttribute="bottom" constant="4" id="w3e-D8-8jW"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="pfi-k7-fUy"/>
             <size key="customSize" width="179" height="211"/>

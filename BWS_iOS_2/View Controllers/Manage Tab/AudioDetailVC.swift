@@ -137,13 +137,30 @@ class AudioDetailVC: BaseViewController {
     
     @IBAction func addToPlaylistClicked(sender : UIButton) {
         if let audioID = self.audioDetails?.ID {
-            // Add To Playlist
+            // Segment Tracking
+            // SegmentTracking.shared.audioDetailsEvents(name: "Add to Playlist Clicked", audioData: self.audioDetails, source: "Audio Details", trackingType: .track)
+            
+            let aVC = AppStoryBoard.home.viewController(viewControllerClass: AddToPlaylistVC.self)
+            aVC.audioID = audioID
+            aVC.source = "Audio Details Screen"
+            let navVC = UINavigationController(rootViewController: aVC)
+            navVC.navigationBar.isHidden = true
+            navVC.modalPresentationStyle = .overFullScreen
+            self.present(navVC, animated: true, completion: nil)
         }
     }
     
     @IBAction func removeFromPlaylistClicked(sender : UIButton) {
         if let playlistID = audioDetails?.PlaylistID {
-            // Remove From Playlist
+            if isPlayingPlaylist(playlistID: playlistID) {
+                if DJMusicPlayer.shared.nowPlayingList.count > 1 {
+                    callRemoveAudioFromPlaylistAPI()
+                } else {
+                    showAlertToast(message: Theme.strings.alert_disclaimer_playlist_remove)
+                }
+            } else {
+                callRemoveAudioFromPlaylistAPI()
+            }
         }
     }
     
@@ -153,7 +170,22 @@ class AudioDetailVC: BaseViewController {
             return
         }
         
-        // Download Audio
+        if lockDownloads == "1" {
+            // Membership Module Remove
+            openInactivePopup(controller: self)
+            return
+        } else if lockDownloads == "2" {
+            showAlertToast(message: "Please re-activate your membership plan")
+            return
+        }
+        
+        if let details = self.audioDetails {
+            details.isSingleAudio = "1"
+            CoreDataHelper.shared.saveAudio(audioData: details)
+            
+            // Segment Tracking
+            // SegmentTracking.shared.audioDetailsEvents(name: "Audio Download Started", audioData: self.audioDetails, source: "Audio Details", trackingType: .track)
+        }
     }
     
 }

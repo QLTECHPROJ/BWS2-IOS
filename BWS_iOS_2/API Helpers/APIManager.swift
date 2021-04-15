@@ -13,7 +13,7 @@ import SystemConfiguration
 
 enum APIRouter: URLRequestConvertible {
     
-    // User Module
+    // User Module - APIs
     case appversion([String:String])
     case countrylist
     case signup([String:String])
@@ -28,10 +28,14 @@ enum APIRouter: URLRequestConvertible {
     case assesmentquestionlist
     case assesmentsaveans([String:String])
     
-    // Audio
+    // Manage Plan - APIs
+    case managehomescreen([String:String])
+    case managehomeviewallaudio([String:String])
+    
+    // Audio - APIs
     case audiodetail([String:String])
     
-    // Playlist
+    // Playlist - APIs
     case playlistdetails([String:String])
     case createplaylist([String:String])
     case getcreatedplaylist([String:String])
@@ -72,6 +76,11 @@ enum APIRouter: URLRequestConvertible {
             return APIRoute(path: "assesmentquestionlist", method: .get)
         case .assesmentsaveans(let data):
             return APIRoute(path: "assesmentsaveans", method: .post, data: data)
+            
+        case .managehomescreen(let data):
+            return APIRoute(path: "managehomescreen", method: .post, data: data)
+        case .managehomeviewallaudio(let data):
+            return APIRoute(path: "managehomeviewallaudio", method: .post, data: data)
             
         case .audiodetail(let data):
             return APIRoute(path: "audiodetail", method: .post, data: data)

@@ -18,6 +18,25 @@ func openInactivePopup(controller : UIViewController?, openWithNavigation : Bool
     // InActive popup screen was removed
 }
 
+// MARK:- Lock Downloads
+func setDownloadsExpiryDate(expireDateString : String) {
+    let userData = CoUserDataModel.currentUser
+    // userData?.expireDate = expireDateString
+    CoUserDataModel.currentUser = userData
+}
+
+func shouldLockDownloads() -> Bool {
+    let date : Date? // CoUserDataModel.currentUser?.expireDate.toDate("yyyy-MM-dd HH:mm:ss")
+    date = nil
+    guard let expiryDate = date else {
+        return false
+    }
+    
+    let currentDate = Date()
+    let difference = expiryDate.differenceWith(currentDate, inUnit: NSCalendar.Unit.day)
+    return difference >= 0
+}
+
 /************************ Check network connection ************************/
 
 func checkInternet() -> Bool {

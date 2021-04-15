@@ -19,7 +19,6 @@ class ViewAllPlaylistVC: BaseViewController {
     var libraryTitle = ""
     var libraryId = ""
     var homeData = PlaylistHomeDataModel()
-    var didClickAddToPlaylistAtIndex : ((Int) -> Void)?
     var playlistIndex : Int?
     
     

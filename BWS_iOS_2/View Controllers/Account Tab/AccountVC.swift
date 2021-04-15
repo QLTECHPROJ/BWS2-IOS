@@ -17,11 +17,61 @@ class AccountVC: BaseViewController {
     }
     
     
+    // MARK:- FUNCTIONS
+    class func clearDownloadData() {
+        if CoUserDataModel.currentUser?.CoUserId == CoUserDataModel.lastCoUserID {
+            return
+        }
+        
+        CoUserDataModel.lastCoUserID = CoUserDataModel.currentUser?.CoUserId
+        
+        // Download Related Data
+        CoreDataHelper.shared.deleteAllAudio()
+        CoreDataHelper.shared.deleteAllPlaylist()
+        DJDownloadManager.shared.clearDocumentDirectory()
+    }
+    
+    
     // MARK:- ACTIONS
     @IBAction func logoutClicked(sender : UIButton) {
+        // Player Related Data
+        DJMusicPlayer.shared.stop(shouldTrack: false)
+        DJMusicPlayer.shared.playIndex = 0
+        DJMusicPlayer.shared.currentlyPlaying = nil
+        DJMusicPlayer.shared.latestPlayRequest = nil
+        DJMusicPlayer.shared.queuedSongs = [AudioDetailsDataModel]()
+        DJMusicPlayer.shared.nowPlayingList = [AudioDetailsDataModel]()
+        
+        // Download Related Data
+        //        CoreDataHelper.shared.deleteAllAudio()
+        //        CoreDataHelper.shared.deleteAllPlaylist()
+        //        DJDownloadManager.shared.clearDocumentDirectory()
+        
+        // Segment Event - Reset
+        // SegmentTracking.shared.flush()
+        // SegmentTracking.shared.reset()
+        
+        // Login User Data
         CoUserDataModel.currentUser = nil
         LoginDataModel.currentUser = nil
         
+        UserDefaults.standard.removeObject(forKey: "QueuedSongs")
+        UserDefaults.standard.removeObject(forKey: "NowPlayingSongs")
+        UserDefaults.standard.synchronize()
+        
+        DJMusicPlayer.shared.shufflePlaylist = false
+        DJMusicPlayer.shared.repeatPlaylist = .all
+        DJMusicPlayer.shared.playerType = .audio
+        DJMusicPlayer.shared.lastPlayerType = .audio
+        DJMusicPlayer.shared.playerScreen = .miniPlayer
+        DJMusicPlayer.shared.isPlayingFromQueue = false
+        DJMusicPlayer.shared.playingFrom = "Audios"
+        DJMusicPlayer.shared.shouldPlayDisclaimer = false
+        
+        // Cancel All ongoing Downloads on logout
+        SDDownloadManager.shared.cancelAllDownloads()
+        
+        // Redirect User to Login screen
         APPDELEGATE.logout()
     }
     

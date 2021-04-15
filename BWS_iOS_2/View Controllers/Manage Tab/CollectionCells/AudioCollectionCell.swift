@@ -27,6 +27,13 @@ class AudioCollectionCell: UICollectionViewCell {
     // MARK:- FUNCTIONS
     // Configure Cell
     func configureCell(audioData : AudioDetailsDataModel, homeData : AudioHomeDataModel) {
+        
+        if homeData.View == "Popular Audio" || homeData.View == "Top Categories" {
+            lblName.font = Theme.fonts.montserratFont(ofSize: 15, weight: .semibold)
+        } else {
+            lblName.font = Theme.fonts.montserratFont(ofSize: 17, weight: .semibold)
+        }
+        
         if homeData.View == "Top Categories" {
             imgLock.isHidden = true
             

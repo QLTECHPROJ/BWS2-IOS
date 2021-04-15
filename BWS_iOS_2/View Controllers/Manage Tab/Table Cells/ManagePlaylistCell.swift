@@ -19,6 +19,7 @@ class ManagePlaylistCell: UITableViewCell {
     // MARK:- VARIABLES
     var arrayPlaylistDetails = [PlaylistDetailsModel]()
     var homeData = PlaylistHomeDataModel()
+    var hideOptionButton = false
     
     var didSelectPlaylistAtIndex : ((Int) -> Void)?
     var didClickAddToPlaylistAtIndex : ((Int) -> Void)?
@@ -123,6 +124,8 @@ extension ManagePlaylistCell : UICollectionViewDelegate, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withClass: PlaylistCollectionCell.self, for: indexPath)
+        
+        cell.hideOptionButton = self.hideOptionButton
         
         let playlistData = arrayPlaylistDetails[indexPath.row]
         cell.configureCell(playlistData: playlistData, homeData: homeData)

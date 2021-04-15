@@ -289,6 +289,18 @@ class UserListDataModel : EVObject {
 
 
 // MARK:- Home Screen Audio API Models
+class ManageHomeModel : EVObject {
+    var ResponseData : ManageHomedataModel?
+    var ResponseCode = ""
+    var ResponseMessage = ""
+    var ResponseStatus = ""
+}
+
+class ManageHomedataModel : EVObject {
+    var Playlist = [PlaylistHomeDataModel]()
+    var Audio = [AudioHomeDataModel]()
+}
+
 class AudioHomeModel: EVObject {
     var ResponseData = [AudioHomeDataModel]()
     var ResponseCode = ""
@@ -304,12 +316,12 @@ class AudioViewAllModel: EVObject {
 }
 
 class AudioHomeDataModel: EVObject {
-    var HomeID = ""
+    var HomeAudioID = ""
     var View = ""
     var UserID = ""
+    var CoUserId = ""
     var Details = [AudioDetailsDataModel]()
     var IsLock = ""
-    var expireDate = ""
 }
 
 public class AudioDetailsDataModel: EVObject {

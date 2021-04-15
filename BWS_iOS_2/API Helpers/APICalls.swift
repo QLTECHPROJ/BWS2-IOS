@@ -306,6 +306,43 @@ extension BaseViewController {
     
 }
 
+extension ManageVC {
+    
+    // Manage Home API Call
+    func callManageHomeAPI() {
+        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? ""]
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.managehomescreen(parameters)) { (response : ManageHomeModel) in
+            if response.ResponseCode == "200" {
+                if let responseData = response.ResponseData {
+                    self.arrayAudioHomeData = responseData.Audio
+                    self.arrayPlaylistHomeData = responseData.Playlist
+                    self.tableView.reloadData()
+                }
+            }
+        }
+    }
+}
+
+extension ViewAllAudioVC {
+    
+    // Get All Audio API Call
+    @objc func callViewAllAudioAPI() {
+        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+                          "GetHomeAudioId":libraryId,
+                          "CategoryName":categoryName]
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.managehomeviewallaudio(parameters)) { (response : AudioViewAllModel) in
+            
+            if response.ResponseCode == "200", let responseData = response.ResponseData {
+                self.homeData = responseData
+                self.objCollectionView.reloadData()
+            }
+        }
+    }
+    
+}
+
 extension PlaylistCategoryVC {
     
     // Playlist Library API Call
@@ -494,6 +531,75 @@ extension AddToPlaylistVC {
             
             if response.ResponseCode == "200" {
                 self.showGoToPlaylistPopUp()
+            }
+        }
+    }
+    
+}
+
+extension AudioDetailVC {
+    
+    // Audio Detail API Call
+    func callAudioDetailsAPI() {
+        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+                          "AudioId":(audioDetails?.ID ?? "")]
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.audiodetail(parameters)) { (response : AudioDetailsModel) in
+            
+            if response.ResponseCode == "200" {
+                guard  let audioData = response.ResponseData.first else {
+                    return
+                }
+                audioData.PlaylistID = self.audioDetails?.PlaylistID ?? ""
+                audioData.selfCreated = self.audioDetails?.selfCreated ?? ""
+                self.audioDetails = audioData
+                self.setupData()
+            }
+        }
+    }
+    
+    // Remove Audio From Playlist API Call
+    func callRemoveAudioFromPlaylistAPI() {
+        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+                          "PlaylistId":audioDetails!.PlaylistID,
+                          "AudioId":audioDetails!.ID]
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.removeaudiofromplaylist(parameters)) { (response : GeneralModel) in
+            
+            if response.ResponseCode == "200" {
+                let playlistID = self.audioDetails!.PlaylistID
+                
+                self.handleRemoveFromPlaylist()
+                showAlertToast(message: response.ResponseMessage)
+                
+                self.callPlaylistDetailAPI(playlistId: playlistID)
+            }
+            else {
+                self.handleRemoveFromPlaylist()
+            }
+        }
+    }
+    
+    func handleRemoveFromPlaylist() {
+        refreshPlaylistData = true
+        NotificationCenter.default.post(name: .refreshPlaylist, object: nil)
+        
+        self.audioDetails!.PlaylistID = ""
+        self.setupData()
+    }
+    
+    // Playlist Detail API Call
+    @objc func callPlaylistDetailAPI(playlistId : String) {
+        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+                          "PlaylistId":playlistId]
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.playlistdetails(parameters)) { (response : PlaylistDetailsAPIModel) in
+            
+            if response.ResponseCode == "200" && response.ResponseData != nil {
+                let objPlaylist = response.ResponseData
+                if let playlistID = objPlaylist?.PlaylistID, let arraySongs = objPlaylist?.PlaylistSongs {
+                    refreshNowPlayingSongs(playlistID: playlistID, arraySongs: arraySongs)
+                }
             }
         }
     }

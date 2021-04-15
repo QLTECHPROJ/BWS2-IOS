@@ -102,8 +102,6 @@ class ManageAudioCell: UITableViewCell {
 extension ManageAudioCell : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
-        
         var count = arrayAudioDetails.count
         
         if homeData.View == "Top Categories" {
@@ -124,8 +122,8 @@ extension ManageAudioCell : UICollectionViewDelegate, UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withClass: AudioCollectionCell.self, for: indexPath)
         
-        // let audioData = arrayAudioDetails![indexPath.row]
-        // cell.configureCell(audioData: audioData, homeData: homeData)
+        let audioData = arrayAudioDetails[indexPath.row]
+        cell.configureCell(audioData: audioData, homeData: homeData)
         
         cell.btnAddtoPlaylist.tag = indexPath.row
         cell.btnAddtoPlaylist.addTarget(self, action: #selector(clickAddtoPlaylist(sender:)), for: .touchUpInside)

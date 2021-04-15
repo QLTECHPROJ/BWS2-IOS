@@ -18,6 +18,10 @@ class PlaylistCollectionCell: UICollectionViewCell {
     @IBOutlet weak var btnOptions: UIButton!
     
     
+    // MARK:- VARIABLES
+    var hideOptionButton = false
+    
+    
     // MARK:- VIEW LIFE CYCLE
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -41,6 +45,8 @@ class PlaylistCollectionCell: UICollectionViewCell {
         imageView.applyGradient(with: [UIColor.clear,UIColor.clear,Theme.colors.greenColor])
         
         lblName.text = playlistData.PlaylistName
+        
+        btnOptions.isHidden = hideOptionButton
         
         if homeData.IsLock == "1" || homeData.IsLock == "2" || homeData.View == "Top Categories" || playlistData.isSelected == false {
             btnAddtoPlaylist.isHidden = true
@@ -70,6 +76,8 @@ class PlaylistCollectionCell: UICollectionViewCell {
         imageView.applyGradient(with: [UIColor.clear,UIColor.clear,Theme.colors.greenColor])
         
         lblName.text = audioData.Name
+        
+        btnOptions.isHidden = hideOptionButton
         
         if homeData.IsLock == "1" || homeData.IsLock == "2" || homeData.View == "Top Categories" || audioData.isSelected == false {
             btnAddtoPlaylist.isHidden = true
