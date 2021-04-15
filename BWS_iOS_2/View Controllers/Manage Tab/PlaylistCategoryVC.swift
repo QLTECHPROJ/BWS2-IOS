@@ -157,7 +157,8 @@ extension PlaylistCategoryVC : UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withClass: ManagePlaylistCell.self)
+        let cell = tableView.dequeueReusableCell(withClass: ManagePlaylistCell.self)        
+        cell.hideOptionButton = true
         cell.btnViewAll.tag = indexPath.row
         cell.btnViewAll.addTarget(self, action: #selector(viewAllClicked(sender:)), for: UIControl.Event.touchUpInside)
         cell.configureCell(data: arrayPlaylistHomeData[indexPath.row])

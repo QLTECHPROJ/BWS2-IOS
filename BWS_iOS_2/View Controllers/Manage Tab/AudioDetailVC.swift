@@ -60,54 +60,62 @@ class AudioDetailVC: BaseViewController {
         super.viewDidLoad()
         objCollection.register(nibWithCellClass: AudioCategoryCell.self)
         setupData()
+        
+        callAudioDetailsAPI()
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshDownloadData), name: .refreshDownloadData, object: nil)
     }
     
     override func setupData() {
-        if let details = audioDetails {
-            lblDirections.text = details.AudioDirection
-            lblDescription.text = details.AudioDescription
-            lblDuration.text = details.AudioDuration
-            lblAudioName.text = details.Name
-            lblSubCategory.text = details.Audiomastercat
-            
-            lblDescription.textColor = UIColor.white
-            
-            if lblDescription.calculateMaxLines() > 4 {
-                // Add "Read More" text at trailing in UILabel
-                DispatchQueue.main.async {
-                    self.lblDescription.addTrailing(with: " ", moreText: "Read More...", moreTextFont: UIFont.systemFont(ofSize: 13), moreTextColor: .orange)
-                }
-                
-                // Add Tap Gesture for checking Tap event on "Read More" text
-                lblDescription.isUserInteractionEnabled = true
-                lblDescription.lineBreakMode = .byWordWrapping
-                let tapGesture = UITapGestureRecognizer.init(target: self, action: #selector(tappedOnLabel(_:)))
-                tapGesture.numberOfTouchesRequired = 1
-                lblDescription.addGestureRecognizer(tapGesture)
-            }
-            
-            stackViewDescription.isHidden = details.AudioDescription.trim.count == 0
-            stackViewDirection.isHidden = details.AudioDirection.trim.count == 0
-            
-            arrayCategory = details.AudioSubCategory.components(separatedBy: ",").filter { $0.trim.count > 0 }
-            
-            objCollection.reloadData()
-            collectionTopConst.constant = arrayCategory.count > 0 ? 16 : 0
-            collectionHeightConst.constant = arrayCategory.count > 0 ? 50 : 0
-            objCollection.isHidden = arrayCategory.count == 0
-            self.view.layoutIfNeeded()
-            
-            if details.PlaylistID != "" && details.selfCreated != "" {
-                btnRemoveFromPlaylist.isHidden = false
-            } else {
-                btnRemoveFromPlaylist.isHidden = true
-            }
-            
-            if let imgUrl = URL(string: details.ImageFile.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
-                imgView.sd_setImage(with: imgUrl, completed: nil)
-            }
-            
+        guard let details = audioDetails else {
+            return
         }
+        
+        lblDirections.text = details.AudioDirection
+        lblDescription.text = details.AudioDescription
+        lblDuration.text = details.AudioDuration
+        lblAudioName.text = details.Name
+        lblSubCategory.text = details.Audiomastercat
+        
+        lblDescription.textColor = UIColor.white
+        
+        if lblDescription.calculateMaxLines() > 4 {
+            // Add "Read More" text at trailing in UILabel
+            DispatchQueue.main.async {
+                self.lblDescription.addTrailing(with: " ", moreText: "Read More...", moreTextFont: UIFont.systemFont(ofSize: 13), moreTextColor: .orange)
+            }
+            
+            // Add Tap Gesture for checking Tap event on "Read More" text
+            lblDescription.isUserInteractionEnabled = true
+            lblDescription.lineBreakMode = .byWordWrapping
+            let tapGesture = UITapGestureRecognizer.init(target: self, action: #selector(tappedOnLabel(_:)))
+            tapGesture.numberOfTouchesRequired = 1
+            lblDescription.addGestureRecognizer(tapGesture)
+        }
+        
+        stackViewDescription.isHidden = details.AudioDescription.trim.count == 0
+        stackViewDirection.isHidden = details.AudioDirection.trim.count == 0
+        
+        arrayCategory = details.AudioSubCategory.components(separatedBy: ",").filter { $0.trim.count > 0 }
+        
+        objCollection.reloadData()
+        collectionTopConst.constant = arrayCategory.count > 0 ? 16 : 0
+        collectionHeightConst.constant = arrayCategory.count > 0 ? 50 : 0
+        objCollection.isHidden = arrayCategory.count == 0
+        self.view.layoutIfNeeded()
+        
+        if details.PlaylistID != "" && details.selfCreated != "" {
+            btnRemoveFromPlaylist.isHidden = false
+        } else {
+            btnRemoveFromPlaylist.isHidden = true
+        }
+        
+        if let imgUrl = URL(string: details.ImageFile.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+            imgView.sd_setImage(with: imgUrl, completed: nil)
+        }
+    }
+    
+    @objc override func refreshDownloadData() {
+        self.setupData()
     }
     
     @objc func tappedOnLabel(_ gesture: UITapGestureRecognizer) {

@@ -114,6 +114,13 @@ class ViewAllAudioVC: BaseViewController {
         self.present(navVC, animated: true, completion: nil)
     }
     
+    @objc func openAudioDetails(sender : UIButton) {
+        let aVC = AppStoryBoard.manage.viewController(viewControllerClass: AudioDetailVC.self)
+        aVC.audioDetails = homeData.Details[sender.tag]
+        aVC.source = "Queue Player Screen"
+        aVC.modalPresentationStyle = .overFullScreen
+        self.present(aVC, animated: true, completion: nil)
+    }
     
     // MARK:- ACTIONS
     @IBAction func backClicked(sender : UIButton) {
@@ -137,6 +144,9 @@ extension ViewAllAudioVC : UICollectionViewDataSource, UICollectionViewDelegate,
 
         cell.btnAddtoPlaylist.tag = indexPath.row
         cell.btnAddtoPlaylist.addTarget(self, action: #selector(addPlaylistToPlaylist(sender:)), for: .touchUpInside)
+        
+        cell.btnOptions.tag = indexPath.row
+        cell.btnOptions.addTarget(self, action: #selector(openAudioDetails(sender:)), for: .touchUpInside)
         
         return cell
     }

@@ -123,7 +123,7 @@ extension ViewAllPlaylistVC : UICollectionViewDataSource, UICollectionViewDelega
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withClass: PlaylistCollectionCell.self, for: indexPath)
-        
+        cell.hideOptionButton = true
         cell.configureCell(playlistData: homeData.Details[indexPath.row], homeData: homeData)
         
         cell.btnAddtoPlaylist.tag = indexPath.row

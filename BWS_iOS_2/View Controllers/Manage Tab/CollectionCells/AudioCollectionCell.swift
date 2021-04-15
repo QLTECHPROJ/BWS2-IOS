@@ -62,7 +62,7 @@ class AudioCollectionCell: UICollectionViewCell {
                 imageView.sd_setImage(with: imgUrl, completed: nil)
             }
             
-            imageView.cornerRadius = 8
+            imageView.cornerRadius = 15
             imageView.clipsToBounds = true
             
             lblName.text = audioData.Name

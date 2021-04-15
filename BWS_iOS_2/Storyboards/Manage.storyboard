@@ -716,6 +716,9 @@ New Playlist</string>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xVX-3u-4Nj">
                                                         <rect key="frame" x="0.0" y="70" width="343" height="70"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="70" id="JrZ-7s-pGc"/>
+                                                        </constraints>
                                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" title="       Download audio" image="download_white">
@@ -727,6 +730,9 @@ New Playlist</string>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Byp-Iv-iaU">
                                                         <rect key="frame" x="0.0" y="140" width="343" height="70"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="70" id="uts-La-yfJ"/>
+                                                        </constraints>
                                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" title="        Add to Playlist" image="add_to_playlist">

@@ -169,6 +169,7 @@ class PlaylistAudiosVC: BaseViewController {
         }
         
         lblPlaylistName.text = details.PlaylistName
+        lblDesc.text = details.PlaylistDesc
         
         var isPlaylistPlaying = false
         
