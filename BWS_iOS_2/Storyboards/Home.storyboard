@@ -564,7 +564,6 @@
                                             <rect key="frame" x="17" y="0.0" width="47" height="50"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="47" id="ByH-6X-SO1"/>
-                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="47" id="a6K-Lv-87T"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your average sleep time is 7 hours" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WaR-9F-zRw">
@@ -737,11 +736,11 @@
                     <viewLayoutGuide key="safeArea" id="dFv-LJ-kyg"/>
                 </view>
                 <view contentMode="scaleToFill" id="z1s-bg-3MT">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="113"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NRf-ej-mRr">
-                            <rect key="frame" x="20" y="56.666666666666664" width="335" height="0.0"/>
+                            <rect key="frame" x="20" y="140" width="335" height="0.0"/>
                             <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -751,7 +750,7 @@
                     <constraints>
                         <constraint firstItem="TPX-sb-ydB" firstAttribute="trailing" secondItem="NRf-ej-mRr" secondAttribute="trailing" constant="20" id="H7Y-xY-O7N"/>
                         <constraint firstItem="NRf-ej-mRr" firstAttribute="leading" secondItem="z1s-bg-3MT" secondAttribute="leading" constant="20" id="h3c-Np-A6e"/>
-                        <constraint firstItem="NRf-ej-mRr" firstAttribute="centerY" secondItem="z1s-bg-3MT" secondAttribute="centerY" id="zy1-Cl-ALs"/>
+                        <constraint firstItem="NRf-ej-mRr" firstAttribute="centerY" secondItem="z1s-bg-3MT" secondAttribute="centerY" multiplier="0.7" id="zy1-Cl-ALs"/>
                     </constraints>
                     <viewLayoutGuide key="safeArea" id="TPX-sb-ydB"/>
                 </view>

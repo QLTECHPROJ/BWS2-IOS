@@ -97,31 +97,23 @@ class PlaylistAudiosVC: BaseViewController {
         txtSearch.delegate = self
         txtSearch.addTarget(self, action: #selector(textFieldValueChanged(textField:)), for: UIControl.Event.editingChanged)
         
-        if isCome == "PlayList" {
+        if isCome != "Suggested" {
             collectionView.isHidden = false
             lblAreaOfFocus.isHidden = false
             btnEdit.isHidden = false
             moonView.isHidden = false
-            viewSearch.isHidden = false
             collectionHeight.constant = 100
             tableHeaderView.frame.size = CGSize(width: tableView.frame.width, height:600)
-        } else if isCome == "Header" {
-            collectionView.isHidden = true
-            lblAreaOfFocus.isHidden = true
-            btnEdit.isHidden = true
-            moonView.isHidden = true
-            viewSearch.isHidden = false
-            collectionHeight.constant = 0
-            tableHeaderView.frame.size = CGSize(width: tableView.frame.width, height:500)
         } else {
             collectionView.isHidden = true
             lblAreaOfFocus.isHidden = true
             btnEdit.isHidden = true
             moonView.isHidden = true
-            viewSearch.isHidden = true
             collectionHeight.constant = 0
-            tableHeaderView.frame.size = CGSize(width: tableView.frame.width, height:500)
+            tableHeaderView.frame.size = CGSize(width: tableView.frame.width, height:480)
         }
+        
+        viewSearch.isHidden = (objPlaylist?.PlaylistSongs.count ?? 0) == 0
         
         tableView.tableHeaderView = tableHeaderView
         btnDownload.alpha = 0
@@ -154,6 +146,39 @@ class PlaylistAudiosVC: BaseViewController {
             tableView.tableFooterView = viewAddAudio
         } else {
             tableView.tableFooterView = UIView()
+        }
+        
+        if details.Created == "1" && details.PlaylistSongs.count > 0 {
+            btnSearch.isHidden = false
+        } else {
+            btnSearch.isHidden = true
+        }
+        
+        viewSearch.isHidden = (objPlaylist?.PlaylistSongs.count ?? 0) == 0
+        
+        if isCome == "Suggested" {
+            collectionView.isHidden = false
+            lblAreaOfFocus.isHidden = false
+            btnEdit.isHidden = false
+            moonView.isHidden = false
+            collectionHeight.constant = 100
+            if viewSearch.isHidden {
+                tableHeaderView.frame.size = CGSize(width: tableView.frame.width, height:550)
+            } else {
+                tableHeaderView.frame.size = CGSize(width: tableView.frame.width, height:600)
+            }
+        } else {
+            collectionView.isHidden = true
+            lblAreaOfFocus.isHidden = true
+            btnEdit.isHidden = true
+            moonView.isHidden = true
+            collectionHeight.constant = 0
+            
+            if viewSearch.isHidden {
+                tableHeaderView.frame.size = CGSize(width: tableView.frame.width, height:355)
+            } else {
+                tableHeaderView.frame.size = CGSize(width: tableView.frame.width, height:480)
+            }
         }
         
         for audio in details.PlaylistSongs {
@@ -616,7 +641,7 @@ extension PlaylistAudiosVC : UITableViewDelegate, UITableViewDataSource {
         let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 50))
         
         let label = UILabel()
-        label.frame = CGRect.init(x: 16, y: 0, width: headerView.frame.width - 32, height: headerView.frame.height - 20)
+        label.frame = CGRect.init(x: 16, y: 10, width: headerView.frame.width - 32, height: headerView.frame.height - 20)
         label.text = "Audios in Playlist"
         label.font = Theme.fonts.montserratFont(ofSize: 15, weight: .bold)
         label.textColor = Theme.colors.textColor
@@ -624,6 +649,18 @@ extension PlaylistAudiosVC : UITableViewDelegate, UITableViewDataSource {
         headerView.addSubview(label)
         
         return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        guard let platlistDetails = objPlaylist else {
+            return 0
+        }
+        
+        if platlistDetails.PlaylistSongs.count == 0 {
+            return 0
+        }
+        
+        return 50
     }
     
 }

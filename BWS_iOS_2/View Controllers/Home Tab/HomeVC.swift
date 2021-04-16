@@ -141,25 +141,24 @@ extension HomeVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        /*
         if indexPath.row == 0 {
             let aVC = AppStoryBoard.home.viewController(viewControllerClass:PlaylistAudiosVC.self)
-            aVC.isCome = "PlayList"
             self.navigationController?.pushViewController(aVC, animated: true)
         } else if indexPath.row == 2 {
             let aVC = AppStoryBoard.home.viewController(viewControllerClass:PlaylistAudiosVC.self)
-            aVC.isCome = ""
             self.navigationController?.pushViewController(aVC, animated: true)
         } else if indexPath.row == 4 {
             let aVC = AppStoryBoard.home.viewController(viewControllerClass:AddAudioVC.self)
             self.navigationController?.pushViewController(aVC, animated: true)
         } else if indexPath.row == 5 {
             let aVC = AppStoryBoard.home.viewController(viewControllerClass:PlaylistAudiosVC.self)
-            aVC.isCome = "Header"
             self.navigationController?.pushViewController(aVC, animated: true)
         } else {
             let aVC = AppStoryBoard.home.viewController(viewControllerClass:AddToPlaylistVC.self)
             self.navigationController?.pushViewController(aVC, animated: true)
         }
+         */
     }
     
 }

@@ -388,7 +388,7 @@ extension CreatePlaylistVC {
         APICallManager.sharedInstance.callAPI(router: APIRouter.createplaylist(parameters)) { (response : CreatePlaylistModel) in
             
             if response.ResponseCode == "200" {
-                if let id = response.ResponseData?.id, let name = response.ResponseData?.name {
+                if let id = response.ResponseData?.PlaylistID, let name = response.ResponseData?.PlaylistName {
                     if self.playlistToAdd.trim.count > 0 || self.audioToAdd.trim.count > 0 {
                         self.delegate?.didCreateNewPlaylist(createdPlaylistID: id)
                         self.navigationController?.popViewController(animated: true)

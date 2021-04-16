@@ -74,12 +74,12 @@ class CountryListVC: BaseViewController {
         btnClear.isHidden = textField.text?.count == 0
     }
     
-    
-    // MARK:- ACTIONS
     @objc func viewTapped(_ sender: UITapGestureRecognizer) {
         self.dismiss(animated: true, completion: nil)
     }
     
+    
+    // MARK:- ACTIONS
     @IBAction func clearSearchClicked(sender: UIButton) {
         txtSearch.text = ""
         arrayCountrySearch = arrayCountry
