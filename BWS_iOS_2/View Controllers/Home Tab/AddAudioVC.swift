@@ -40,7 +40,6 @@ class AddAudioVC: BaseViewController {
             if isComeFromAddAudio {
                 collectionView.isHidden = true
                 tableFooterView.isHidden = true
-                tableFooterView.frame = CGRect(x: 0, y: 0, width: tableView.frame.width, height: 0)
             } else {
                 tableFooterView.isHidden = false
                 collectionView.isHidden = false
@@ -80,7 +79,7 @@ class AddAudioVC: BaseViewController {
             tableView.isHidden = false
             
             callAudioAPI()
-            callPlaylistAPI()
+            // callPlaylistAPI()
         }
         
         tableView.reloadData()
@@ -106,7 +105,7 @@ class AddAudioVC: BaseViewController {
         lblNoData.isHidden = true
         btnClear.isHidden = true
         
-        txtSearch.placeholder = "Add or Search for audio, playlist"
+        txtSearch.placeholder = "Search for audio"
         txtSearch.delegate = self
         txtSearch.addTarget(self, action: #selector(textFieldValueChanged(textField:)), for: UIControl.Event.editingChanged)
         
@@ -128,7 +127,7 @@ class AddAudioVC: BaseViewController {
     
     override func handleRefresh(_ refreshControl: UIRefreshControl) {
         callAudioAPI()
-        callPlaylistAPI()
+        // callPlaylistAPI()
         refreshControl.endRefreshing()
     }
     
@@ -370,9 +369,9 @@ extension AddAudioVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if section == 1 {
+        if section == 1 && arrayAudio.count > 0 {
             let cell = tableView.dequeueReusableCell(withClass: ViewAllCell.self)
-            cell.lblTitle.text = "Suggested Audios"
+            cell.lblTitle.text = "Suggested"
             
             cell.btnViewAll.tag = section
             cell.btnViewAll.addTarget(self, action: #selector(onTappedViewAll(_:)), for: .touchUpInside)
@@ -382,7 +381,7 @@ extension AddAudioVC : UITableViewDelegate, UITableViewDataSource {
             }
             
             return cell
-        } else if section == 2 {
+        } else if section == 2 && arrayPlayList.count > 0 {
             let cell = tableView.dequeueReusableCell(withClass: ViewAllCell.self)
             cell.lblTitle.text = "Suggested Playlist"
             
@@ -399,14 +398,12 @@ extension AddAudioVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 1 && arrayAudio.count > 0 {
+            return 35
+        }
+        
         if isComeFromAddAudio {
-            if section == 1 {
-                return 35
-            } else if section == 2 {
-                return 35
-            }
-        } else {
-            if section == 1 {
+            if section == 2 && arrayPlayList.count > 0 {
                 return 35
             }
         }
