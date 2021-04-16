@@ -262,6 +262,10 @@
 		2870B46225FB44700014A4F6 /* Duration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2870B45325FB44700014A4F6 /* Duration.swift */; };
 		2870B46325FB44700014A4F6 /* WWCalendarTimeSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2870B45425FB44700014A4F6 /* WWCalendarTimeSelector.swift */; };
 		2870B46425FB44700014A4F6 /* WWCalendarTimeSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2870B45425FB44700014A4F6 /* WWCalendarTimeSelector.swift */; };
+		28786CB0262967F7000E8598 /* ViewAllCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28786CAE262967F7000E8598 /* ViewAllCell.swift */; };
+		28786CB1262967F7000E8598 /* ViewAllCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28786CAE262967F7000E8598 /* ViewAllCell.swift */; };
+		28786CB2262967F7000E8598 /* ViewAllCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28786CAF262967F7000E8598 /* ViewAllCell.xib */; };
+		28786CB3262967F7000E8598 /* ViewAllCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28786CAF262967F7000E8598 /* ViewAllCell.xib */; };
 		2880EEE0260A0DE100D0B6A7 /* ManagePlanListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2880EEDF260A0DE100D0B6A7 /* ManagePlanListVC.swift */; };
 		2880EEE1260A0DE500D0B6A7 /* ManagePlanListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2880EEDF260A0DE100D0B6A7 /* ManagePlanListVC.swift */; };
 		2880EEE4260A32C300D0B6A7 /* PlanListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2880EEE2260A32C300D0B6A7 /* PlanListCell.swift */; };
@@ -551,6 +555,8 @@
 		2870B45225FB44700014A4F6 /* String+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Timepiece.swift"; sourceTree = "<group>"; };
 		2870B45325FB44700014A4F6 /* Duration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Duration.swift; sourceTree = "<group>"; };
 		2870B45425FB44700014A4F6 /* WWCalendarTimeSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WWCalendarTimeSelector.swift; sourceTree = "<group>"; };
+		28786CAE262967F7000E8598 /* ViewAllCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewAllCell.swift; sourceTree = "<group>"; };
+		28786CAF262967F7000E8598 /* ViewAllCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewAllCell.xib; sourceTree = "<group>"; };
 		2880EEDF260A0DE100D0B6A7 /* ManagePlanListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagePlanListVC.swift; sourceTree = "<group>"; };
 		2880EEE2260A32C300D0B6A7 /* PlanListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanListCell.swift; sourceTree = "<group>"; };
 		2880EEE3260A32C300D0B6A7 /* PlanListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlanListCell.xib; sourceTree = "<group>"; };
@@ -983,6 +989,8 @@
 				28E0121C261847EA00B55967 /* SelfDevCell.xib */,
 				28E0121E261847EA00B55967 /* CreatePlayListCell.swift */,
 				28E01213261847EA00B55967 /* CreatePlayListCell.xib */,
+				28786CAE262967F7000E8598 /* ViewAllCell.swift */,
+				28786CAF262967F7000E8598 /* ViewAllCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1309,6 +1317,7 @@
 				28E01232261847EA00B55967 /* ProgressCell.xib in Resources */,
 				28ED2FC225FB931800E59C56 /* OptionsCell.xib in Resources */,
 				28E8094F26134A0700CD80F7 /* ManageAudioCell.xib in Resources */,
+				28786CB3262967F7000E8598 /* ViewAllCell.xib in Resources */,
 				2870B45625FB44700014A4F6 /* WWCalendarTimeSelector.storyboard in Resources */,
 				2870B35D25FB3A570014A4F6 /* Main.storyboard in Resources */,
 				28E01226261847EA00B55967 /* CreatePlayListCell.xib in Resources */,
@@ -1360,6 +1369,7 @@
 				28E01231261847EA00B55967 /* ProgressCell.xib in Resources */,
 				2870B45525FB44700014A4F6 /* WWCalendarTimeSelector.storyboard in Resources */,
 				28E8094E26134A0700CD80F7 /* ManageAudioCell.xib in Resources */,
+				28786CB2262967F7000E8598 /* ViewAllCell.xib in Resources */,
 				28F812BE25FB367A00DC6AF6 /* Main.storyboard in Resources */,
 				282441492609ACE30060292E /* CountryCell.xib in Resources */,
 				28E01225261847EA00B55967 /* CreatePlayListCell.xib in Resources */,
@@ -1498,6 +1508,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28786CB1262967F7000E8598 /* ViewAllCell.swift in Sources */,
 				283529A42609DA6F009AB2AA /* OrderSummaryVC.swift in Sources */,
 				28ED2F9B25FB5E9500E59C56 /* ProfileForm1VC.swift in Sources */,
 				28E809532613591400CD80F7 /* AudioCollectionCell.swift in Sources */,
@@ -1664,6 +1675,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28786CB0262967F7000E8598 /* ViewAllCell.swift in Sources */,
 				283529A12609DA1A009AB2AA /* OrderSummaryVC.swift in Sources */,
 				28ED2F9A25FB5E9500E59C56 /* ProfileForm1VC.swift in Sources */,
 				28E809522613591400CD80F7 /* AudioCollectionCell.swift in Sources */,

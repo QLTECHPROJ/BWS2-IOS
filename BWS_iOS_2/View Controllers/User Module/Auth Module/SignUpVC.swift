@@ -37,6 +37,7 @@ class SignUpVC: BaseViewController {
     
     // MARK:- VARIABLES
     var iconClick = true
+    var isCountrySelected = false
     var selectedCountry = CountrylistDataModel(id: "0", name: "Australia", shortName: "AU", code: "61")
     
     
@@ -77,6 +78,12 @@ class SignUpVC: BaseViewController {
     override func setupData() {
         let countryText = selectedCountry.ShortName.uppercased() + " +" + selectedCountry.Code
         btnCountryCode.setTitle(countryText, for: .normal)
+        
+        if isCountrySelected {
+            btnCountryCode.setTitleColor(Theme.colors.textColor, for: .normal)
+        } else {
+            btnCountryCode.setTitleColor(Theme.colors.black_40_opacity, for: .normal)
+        }
     }
     
     func checkValidation() -> Bool {
@@ -192,6 +199,7 @@ class SignUpVC: BaseViewController {
         let aVC = AppStoryBoard.main.viewController(viewControllerClass:CountryListVC.self)
         aVC.didSelectCountry = { countryData in
             self.selectedCountry = countryData
+            self.isCountrySelected = true
             self.setupData()
         }
         aVC.modalPresentationStyle = .overFullScreen

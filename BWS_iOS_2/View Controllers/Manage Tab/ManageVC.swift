@@ -270,7 +270,8 @@ class ManageVC: BaseViewController {
     
     // MARK:- ACTIONS
     @IBAction func searchClicked(sender : UIButton) {
-        
+        let aVC = AppStoryBoard.home.viewController(viewControllerClass: AddAudioVC.self)
+        self.navigationController?.pushViewController(aVC, animated: true)
     }
     
     @IBAction func setReminderClicked(sender : UIButton) {

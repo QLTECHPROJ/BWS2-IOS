@@ -31,6 +31,33 @@ class PlaylistCollectionCell: UICollectionViewCell {
     
     
     // MARK:- FUNCTIONS
+    func configureCell(playlistData : PlaylistDetailsModel) {
+        if playlistData.IsLock == "1" || playlistData.IsLock == "2" {
+            imgLock.isHidden = false
+        } else {
+            imgLock.isHidden = true
+        }
+        
+        if let imgUrl = URL(string: playlistData.PlaylistImage.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+            imageView.sd_setImage(with: imgUrl, completed: nil)
+        }
+        
+        imageView.applyGradient(with: [UIColor.clear,UIColor.clear,Theme.colors.greenColor])
+        
+        lblName.text = playlistData.PlaylistName
+        
+        btnOptions.isHidden = hideOptionButton
+        
+        if playlistData.IsLock == "1" || playlistData.IsLock == "2" || playlistData.isSelected == false {
+            btnAddtoPlaylist.isHidden = true
+            btnAddtoPlaylist.isUserInteractionEnabled = false
+        } else {
+            btnAddtoPlaylist.isHidden = false
+            btnAddtoPlaylist.setBackgroundImage(UIImage(named: "AddtoBack"), for: .normal)
+            btnAddtoPlaylist.isUserInteractionEnabled = true
+        }
+    }
+    
     func configureCell(playlistData : PlaylistDetailsModel, homeData : PlaylistHomeDataModel) {
         if homeData.IsLock == "1" || homeData.IsLock == "2" {
             imgLock.isHidden = false
@@ -48,7 +75,7 @@ class PlaylistCollectionCell: UICollectionViewCell {
         
         btnOptions.isHidden = hideOptionButton
         
-        if homeData.IsLock == "1" || homeData.IsLock == "2" || homeData.View == "Top Categories" || playlistData.isSelected == false {
+        if homeData.IsLock == "1" || homeData.IsLock == "2" || playlistData.isSelected == false {
             btnAddtoPlaylist.isHidden = true
             btnAddtoPlaylist.isUserInteractionEnabled = false
         } else {

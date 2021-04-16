@@ -41,8 +41,12 @@ class SelfDevCell: UITableViewCell {
         super.awakeFromNib()
         NotificationCenter.default.addObserver(self, selector: #selector(refreshDownloadData), name: .refreshDownloadData, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(updateDownloadProgress), name: .refreshDownloadProgress, object: nil)
+        
         downloadProgressView.isHidden = true
         imgView.contentMode = .scaleAspectFill
+        
+        lblTitle.textColor = Theme.colors.textColor
+        lblDuration.textColor = Theme.colors.greenColor
         
         nowPlayingAnimationImageView.backgroundColor = UIColor.black.withAlphaComponent(0.3)
         nowPlayingAnimationImageView.startNowPlayingAnimation(false)
@@ -55,20 +59,15 @@ class SelfDevCell: UITableViewCell {
         
         if data.IsLock == "1" || data.IsLock == "2"{
             if data.IsPlay == "1" {
-                if let imgUrl = URL(string: data.ImageFile.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
-                    imgView.sd_setImage(with: imgUrl, completed: nil)
-                    imgPlay.isHidden = true
-                }
-            }
-            else {
+                imgPlay.isHidden = true
+            } else {
                 imgPlay.isHidden = false
                 imgPlay.image = UIImage(named:"newLock")
                 imgPlay.backgroundColor = .clear
                 imgPlay.contentMode = .scaleToFill
                 imgView.backgroundColor = .lightGray
             }
-        }
-        else {
+        } else {
             imgPlay.isHidden = true
         }
         
@@ -81,11 +80,40 @@ class SelfDevCell: UITableViewCell {
         lblDuration.text = data.AudioDuration
     }
     
+    func generalPlaylistConfigure(data : PlaylistDetailsModel) {
+        
+        if data.IsLock == "1" || data.IsLock == "2" {
+            imgPlay.isHidden = false
+            imgPlay.image = UIImage(named:"newLock")
+            imgPlay.backgroundColor = .clear
+            imgPlay.contentMode = .scaleToFill
+            imgView.backgroundColor = .lightGray
+        } else {
+            imgPlay.isHidden = true
+        }
+        
+        if let imgUrl = URL(string: data.PlaylistImage.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+            imgView.sd_setImage(with: imgUrl, completed: nil)
+        }
+        
+        let totalAudios = data.TotalAudio.trim.count > 0 ? data.TotalAudio : "0"
+        let totalhour = data.Totalhour.trim.count > 0 ? data.Totalhour : "0"
+        let totalminute = data.Totalminute.trim.count > 0 ? data.Totalminute : "0"
+        
+        lblTitle.text = data.PlaylistName
+        lblDuration.text = "\(totalAudios) Audios | \(totalhour)h \(totalminute)m"
+    }
+    
     // Audio In Playlist Cell
     func configureAudioInPlaylistCell(data : AudioDetailsDataModel) {
         self.hideDownloadProgress = false
         self.generalConfigure(data: data)
         self.configureCell(backgroundColor: .white, buttonColor: .black, hideDownload: false, hideDelete: false, hideChangePosition: false)
+        
+        lblTitle.textColor = Theme.colors.textColor
+        lblDuration.textColor = Theme.colors.gray_DDDDDD
+        
+        btnChangePosition.setImage(UIImage(named: "Sorting"), for: UIControl.State.normal)
     }
     
     func configureOptionCell(data : AudioDetailsDataModel) {
@@ -93,18 +121,37 @@ class SelfDevCell: UITableViewCell {
         self.generalConfigure(data: data)
         self.configureCell(backgroundColor: .white, buttonColor: .black, hideDownload: true, hideDelete: true, hideChangePosition: false)
         
-        lblTitle.textColor = Theme.colors.textColor
-        lblDuration.textColor = Theme.colors.greenColor
-        
-        btnChangePosition.setImage(UIImage(named: "Sorting"), for: UIControl.State.normal)
+        btnChangePosition.setImage(UIImage(named: "threeDot_Vertical_green"), for: UIControl.State.normal)
     }
     
     func configureDownloadAudioPlaylistCell(data : AudioDetailsDataModel) {
         self.hideDownloadProgress = false
         self.generalConfigure(data: data)
         self.configureCell(backgroundColor: .white, buttonColor: UIColor.black, hideDownload: true, hideDelete: true, hideChangePosition: false)
+        
+        lblTitle.textColor = Theme.colors.textColor
+        lblDuration.textColor = Theme.colors.gray_DDDDDD
+        
         btnDownload.setImage(nil, for: UIControl.State.normal)
-        btnChangePosition.setImage(UIImage(named: "Sorting"), for: UIControl.State.normal)
+        btnChangePosition.setImage(UIImage(named: "threeDot_Vertical_green"), for: UIControl.State.normal)
+    }
+    
+    // Add Audio Cell
+    func configureAddAudioCell(data : AudioDetailsDataModel) {
+        self.hideDownloadProgress = true
+        self.generalConfigure(data: data)
+        self.configureCell(backgroundColor: .white, buttonColor: UIColor.black, hideDownload: true, hideDelete: true, hideChangePosition: false)
+        
+        btnChangePosition.setImage(UIImage(named: "Add"), for: UIControl.State.normal)
+    }
+    
+    // Add Playlist Cell
+    func configureAddPlaylistCell(data : PlaylistDetailsModel) {
+        self.hideDownloadProgress = true
+        self.generalPlaylistConfigure(data: data)
+        self.configureCell(backgroundColor: .white, buttonColor: UIColor.black, hideDownload: true, hideDelete: true, hideChangePosition: false)
+        
+        btnChangePosition.setImage(UIImage(named: "Add"), for: UIControl.State.normal)
     }
     
     
@@ -113,7 +160,7 @@ class SelfDevCell: UITableViewCell {
         self.backgroundColor = backgroundColor
         
         lblTitle.textColor = Theme.colors.textColor
-        lblDuration.textColor = Theme.colors.gray_DDDDDD
+        lblDuration.textColor = Theme.colors.greenColor
         
         btnDownload.tintColor = buttonColor
         btnDelete.tintColor = buttonColor

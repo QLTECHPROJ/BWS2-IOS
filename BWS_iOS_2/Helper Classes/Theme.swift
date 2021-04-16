@@ -187,6 +187,8 @@ struct AppColors {
     let greenColor = UIColor(hex: "008892")
     let indexScoreColor = UIColor(hex: "B8DAFF")
     
+    let black_40_opacity = UIColor.black.withAlphaComponent(0.4)
+    
     let gray_DDDDDD = UIColor(hex: "DDDDDD")
     let gray_7E7E7E = UIColor(hex: "7E7E7E")
     let gray_707070 = UIColor(hex: "707070")

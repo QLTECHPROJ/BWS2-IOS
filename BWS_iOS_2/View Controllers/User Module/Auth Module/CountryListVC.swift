@@ -29,10 +29,12 @@ class CountryListVC: BaseViewController {
         super.viewDidLoad()
         
         setupUI()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
-        DispatchQueue.main.asyncAfter(deadline: .now()) {
-            self.callCountryListAPI()
-        }
+        self.callCountryListAPI()
     }
     
     

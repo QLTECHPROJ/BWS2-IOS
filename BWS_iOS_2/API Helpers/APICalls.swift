@@ -605,3 +605,72 @@ extension AudioDetailVC {
     }
     
 }
+
+extension AddAudioVC {
+    
+    //call audio list
+    func callAudioAPI() {
+        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? ""]
+        APICallManager.sharedInstance.callAPI(router: APIRouter.suggestedaudio(parameters)) { (response :AudioDetailsModel) in
+            
+            if response.ResponseCode == "200" {
+                self.arrayAudio = response.ResponseData
+                self.setupData()
+            }
+        }
+    }
+    
+    //call playlist
+    func callPlaylistAPI() {
+        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? ""]
+        APICallManager.sharedInstance.callAPI(router: APIRouter.suggestedplaylist(parameters)) { (response :PlaylistListingModel) in
+            
+            if response.ResponseCode == "200" {
+                self.arrayPlayList = response.ResponseData
+                self.setupData()
+            }
+        }
+    }
+    
+    //call search
+    func callSearchAPI(searchText : String) {
+        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+                          "SuggestedName":searchText]
+        
+        // Segment Tracking
+        //        let traits = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+        //                      "source":isComeFromAddAudio ? "Add Audio Screen" : "Search Screen",
+        //                      "searchKeyword":searchText]
+        //        SegmentTracking.shared.trackEvent(name: "Audio/Playlist Searched", traits: traits, trackingType: .track)
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.searchonsuggestedlist(parameters)) { (response : AudioDetailsModel) in
+            
+            self.arraySearch.removeAll()
+            if response.ResponseCode == "200" {
+                self.arraySearch = response.ResponseData
+                self.reloadSearchData()
+            } else {
+                self.arraySearch.removeAll()
+                self.reloadSearchData()
+            }
+        }
+    }
+    
+    func callAddAudioToPlaylistAPI(audioToAdd : String = "" , playlistToAdd : String = "") {
+        self.view.endEditing(true)
+        
+        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+                          "PlaylistId":self.playlistID,
+                          "AudioId":audioToAdd,
+                          "FromPlaylistId":playlistToAdd]
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.addaptoplaylist(parameters)) { (response : AudioDetailsModel) in
+            
+            if response.ResponseCode == "200" {
+                refreshNowPlayingSongs(playlistID: self.playlistID, arraySongs: response.ResponseData)
+                showAlertToast(message: response.ResponseMessage)
+            }
+        }
+    }
+    
+}

@@ -48,6 +48,11 @@ enum APIRouter: URLRequestConvertible {
     case playlistlibrary([String:String])
     case playlistonviewall([String:String])
     
+    // Add / Search Audio - APIs
+    case suggestedaudio([String:String])
+    case suggestedplaylist([String:String])
+    case searchonsuggestedlist([String:String])
+    
     var route: APIRoute {
         switch self {
         case .appversion(let data):
@@ -107,6 +112,13 @@ enum APIRouter: URLRequestConvertible {
             return APIRoute(path: "playlistlibrary", method: .post, data: data)
         case .playlistonviewall(let data):
             return APIRoute(path: "playlistonviewall", method: .post, data: data)
+            
+        case .suggestedaudio(let data):
+            return APIRoute(path: "suggestedaudio", method: .post, data: data)
+        case .suggestedplaylist(let data):
+            return APIRoute(path: "suggestedplaylist", method: .post, data: data)
+        case .searchonsuggestedlist(let data):
+            return APIRoute(path: "searchonsuggestedlist", method: .post, data: data)
         }
     }
     
