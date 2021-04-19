@@ -20,7 +20,9 @@ class ManagePlaylistCell: UITableViewCell {
     var arrayPlaylistDetails = [PlaylistDetailsModel]()
     var homeData = PlaylistHomeDataModel()
     var hideOptionButton = false
+    var showCreatePlaylist = false
     
+    var didClickCreatePlaylist : (() -> Void)?
     var didSelectPlaylistAtIndex : ((Int) -> Void)?
     var didClickAddToPlaylistAtIndex : ((Int) -> Void)?
     var didClickOptionAtIndex : ((Int) -> Void)?
@@ -105,7 +107,18 @@ class ManagePlaylistCell: UITableViewCell {
 // MARK:- UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
 extension ManagePlaylistCell : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        if showCreatePlaylist {
+            return 2
+        }
+        return 1
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if section == 0 && showCreatePlaylist {
+            return 1
+        }
+        
         var count = arrayPlaylistDetails.count
         
         if homeData.View == "Top Categories" {
@@ -124,20 +137,26 @@ extension ManagePlaylistCell : UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withClass: PlaylistCollectionCell.self, for: indexPath)
-        
-        cell.hideOptionButton = self.hideOptionButton
-        
-        let playlistData = arrayPlaylistDetails[indexPath.row]
-        cell.configureCell(playlistData: playlistData, homeData: homeData)
-        
-        cell.btnAddtoPlaylist.tag = indexPath.row
-        cell.btnAddtoPlaylist.addTarget(self, action: #selector(clickAddtoPlaylist(sender:)), for: .touchUpInside)
-        
-        cell.btnOptions.tag = indexPath.row
-        cell.btnOptions.addTarget(self, action: #selector(clickPlaylistOption(sender:)), for: .touchUpInside)
-        
-        return cell
+        if indexPath.section == 0 && showCreatePlaylist {
+            let cell = collectionView.dequeueReusableCell(withClass: PlaylistCollectionCell.self, for: indexPath)
+            cell.configureCreateCell()
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withClass: PlaylistCollectionCell.self, for: indexPath)
+            
+            cell.hideOptionButton = self.hideOptionButton
+            
+            let playlistData = arrayPlaylistDetails[indexPath.row]
+            cell.configureCell(playlistData: playlistData, homeData: homeData)
+            
+            cell.btnAddtoPlaylist.tag = indexPath.row
+            cell.btnAddtoPlaylist.addTarget(self, action: #selector(clickAddtoPlaylist(sender:)), for: .touchUpInside)
+            
+            cell.btnOptions.tag = indexPath.row
+            cell.btnOptions.addTarget(self, action: #selector(clickPlaylistOption(sender:)), for: .touchUpInside)
+            
+            return cell
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -146,12 +165,28 @@ extension ManagePlaylistCell : UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if homeData.IsLock == "1" {
-            // Membership Module Remove
-        } else if homeData.IsLock == "2" {
-            showAlertToast(message: "Please re-activate your membership plan")
+        if indexPath.section == 0 && showCreatePlaylist {
+            didClickCreatePlaylist?()
         } else {
-            didSelectPlaylistAtIndex?(indexPath.row)
+            if homeData.IsLock == "1" {
+                // Membership Module Remove
+            } else if homeData.IsLock == "2" {
+                showAlertToast(message: "Please re-activate your membership plan")
+            } else {
+                didSelectPlaylistAtIndex?(indexPath.row)
+            }
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        if showCreatePlaylist {
+            if section == 0 {
+                return UIEdgeInsets(top: 5, left: 16, bottom: 5, right: 8)
+            } else {
+                return UIEdgeInsets(top: 5, left: 8, bottom: 5, right: 16)
+            }
+        } else {
+            return UIEdgeInsets(top: 5, left: 16, bottom: 5, right: 16)
         }
     }
     

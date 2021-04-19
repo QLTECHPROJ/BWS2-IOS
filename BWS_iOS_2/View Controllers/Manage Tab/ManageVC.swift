@@ -257,6 +257,17 @@ class ManageVC: BaseViewController {
         self.navigationController?.pushViewController(aVC, animated: true)
     }
     
+    func createPlaylist(sectionIndex : Int) {
+        if arrayPlaylistHomeData[sectionIndex].IsLock == "1" {
+            // Membership Module Remove
+            openInactivePopup(controller: self)
+        } else if arrayPlaylistHomeData[sectionIndex].IsLock == "2" {
+            showAlertToast(message: "Please re-activate your membership plan")
+        } else {
+            let aVC = AppStoryBoard.manage.viewController(viewControllerClass: CreatePlaylistVC.self)
+            self.navigationController?.pushViewController(aVC, animated: true)
+        }
+    }
     
     // MARK:- ACTIONS
     @IBAction func searchClicked(sender : UIButton) {
@@ -294,9 +305,14 @@ extension ManageVC : UITableViewDataSource, UITableViewDelegate {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withClass: ManagePlaylistCell.self)
             cell.hideOptionButton = true
+            cell.showCreatePlaylist = true
             cell.btnViewAll.tag = indexPath.row
             cell.btnViewAll.addTarget(self, action: #selector(viewAllPlaylistClicked(sender:)), for: UIControl.Event.touchUpInside)
             cell.configureCell(data: arrayPlaylistHomeData[indexPath.row])
+            
+            cell.didClickCreatePlaylist = {
+                self.createPlaylist(sectionIndex: indexPath.row)
+            }
             
             cell.didSelectPlaylistAtIndex = { playlistIndex in
                 self.openPlaylist(playlistIndex: playlistIndex, sectionIndex: indexPath.row)
