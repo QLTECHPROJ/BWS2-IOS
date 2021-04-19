@@ -31,7 +31,7 @@ extension BaseViewController {
     }
     
     // MARK:- Present Player for Single Audio
-    func presentPlayer(playerData : AudioDetailsDataModel?) {
+    func presentAudioPlayer(playerData : AudioDetailsDataModel?) {
         if let audioData = playerData {
             if DJMusicPlayer.shared.canPlayFromDownloads(playerData: audioData) == false && checkInternet() == false {
                 //                showAlertToast(message: Theme.strings.alert_check_internet)
@@ -39,15 +39,15 @@ extension BaseViewController {
             }
             
             DJMusicPlayer.shared.playerType = .audio
-            presentPlayer(arrayPlayerData: [audioData])
+            presentAudioPlayer(arrayPlayerData: [audioData])
             DJMusicPlayer.shared.playingFrom = "Audios"
         } else {
-            presentPlayer(arrayPlayerData: nil)
+            presentAudioPlayer(arrayPlayerData: nil)
         }
     }
     
     // MARK:- Present Player for Multiple Audio
-    func presentPlayer(arrayPlayerData : [AudioDetailsDataModel]?, index : Int? = nil, openMainPlayer : Bool = false) {
+    func presentAudioPlayer(arrayPlayerData : [AudioDetailsDataModel]?, index : Int? = nil) {
         if var audioList = arrayPlayerData, audioList.count > 0 {
             let playIndex = index ?? 0
             if DJMusicPlayer.shared.canPlayFromDownloads(playerData: audioList[playIndex]) == false && checkInternet() == false {

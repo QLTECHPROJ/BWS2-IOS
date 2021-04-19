@@ -159,11 +159,9 @@ class ManageVC: BaseViewController {
                 if lockDownloads == "1" || lockDownloads == "2" {
                     let arrayPlayableAudios = sectionData.Details.filter { $0.IsPlay == "1" }
                     let newAudioIndex = arrayPlayableAudios.firstIndex(of: audioData) ?? 0
-                    
-                    // self.presentMiniPlayer(arrayPlayerData: arrayPlayableAudios, index: newAudioIndex, openMainPlayer: true)
-                }
-                else {
-                    // self.presentMiniPlayer(arrayPlayerData: sectionData.Details, index: audioIndex, openMainPlayer: true)
+                    self.presentAudioPlayer(arrayPlayerData: arrayPlayableAudios, index: newAudioIndex)
+                } else {
+                    self.presentAudioPlayer(arrayPlayerData: sectionData.Details, index: audioIndex)
                 }
                 
                 DJMusicPlayer.shared.playerType = playerType

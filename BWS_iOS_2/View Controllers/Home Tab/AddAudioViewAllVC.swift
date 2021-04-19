@@ -209,7 +209,7 @@ extension AddAudioViewAllVC : UITableViewDelegate, UITableViewDataSource {
                 // Segment Tracking
                 // SegmentTracking.shared.audioDetailsEvents(name: "Suggested Audio Clicked", audioData: arrayAudio[indexPath.row], trackingType: .track)
                 
-                // self.presentMiniPlayer(playerData: arrayAudio[indexPath.row])
+                self.presentAudioPlayer(playerData: arrayAudio[indexPath.row])
                 DJMusicPlayer.shared.playerType = .searchAudio
                 DJMusicPlayer.shared.playingFrom = "Suggested Audio"
             }

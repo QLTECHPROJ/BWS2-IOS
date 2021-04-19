@@ -497,12 +497,10 @@ extension AddAudioVC : UITableViewDelegate, UITableViewDataSource {
                     return
                 }
                 
-                // let data = arrayAudio[indexPath.row]
-                
                 // Segment Tracking
-                // SegmentTracking.shared.audioDetailsEvents(name: "Suggested Audio Clicked", audioData: data, trackingType: .track)
+                // SegmentTracking.shared.audioDetailsEvents(name: "Suggested Audio Clicked", audioData: arrayAudio[indexPath.row], trackingType: .track)
                 
-                // self.presentMiniPlayer(playerData: data)
+                self.presentAudioPlayer(playerData: arrayAudio[indexPath.row])
                 DJMusicPlayer.shared.playerType = .searchAudio
                 DJMusicPlayer.shared.playingFrom = "Suggested Audio"
             }
@@ -539,7 +537,7 @@ extension AddAudioVC : UITableViewDelegate, UITableViewDataSource {
                         // Segment Tracking
                         // SegmentTracking.shared.audioDetailsEvents(name: "Search Audio Clicked", audioData: data, trackingType: .track)
                         
-                        // self.presentMiniPlayer(playerData: data)
+                        self.presentAudioPlayer(playerData: data)
                         DJMusicPlayer.shared.playerType = .searchAudio
                         DJMusicPlayer.shared.playingFrom = "Search Audio"
                     }

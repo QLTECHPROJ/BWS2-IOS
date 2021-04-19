@@ -482,7 +482,7 @@ class PlaylistAudiosVC: BaseViewController {
             
             DJMusicPlayer.shared.playerType = .downloadedPlaylist
             DJMusicPlayer.shared.currentPlaylist = objPlaylist
-            // self.presentMiniPlayer(arrayPlayerData: arraySearchSongs)
+            self.presentAudioPlayer(arrayPlayerData: arraySearchSongs)
             DJMusicPlayer.shared.playingFrom = objPlaylist!.PlaylistName
             return
         }
@@ -495,7 +495,7 @@ class PlaylistAudiosVC: BaseViewController {
         if arraySearchSongs.count != 0 {
             DJMusicPlayer.shared.playerType = .playlist
             DJMusicPlayer.shared.currentPlaylist = objPlaylist
-            // self.presentMiniPlayer(arrayPlayerData: arraySearchSongs, index: 0)
+            self.presentAudioPlayer(arrayPlayerData: arraySearchSongs, index: 0)
             DJMusicPlayer.shared.playingFrom = objPlaylist!.PlaylistName
         }
     }
@@ -611,7 +611,7 @@ extension PlaylistAudiosVC : UITableViewDelegate, UITableViewDataSource {
             
             DJMusicPlayer.shared.playerType = .downloadedPlaylist
             DJMusicPlayer.shared.currentPlaylist = objPlaylist
-            // self.presentMiniPlayer(arrayPlayerData: arraySearchSongs, index: indexPath.row)
+            self.presentAudioPlayer(arrayPlayerData: arraySearchSongs, index: indexPath.row)
             DJMusicPlayer.shared.playingFrom = objPlaylist!.PlaylistName
             return
         }
@@ -624,7 +624,7 @@ extension PlaylistAudiosVC : UITableViewDelegate, UITableViewDataSource {
         if arraySearchSongs.count != 0 {
             DJMusicPlayer.shared.playerType = .playlist
             DJMusicPlayer.shared.currentPlaylist = objPlaylist
-            // self.presentMiniPlayer(arrayPlayerData: arraySearchSongs, index: indexPath.row)
+            self.presentAudioPlayer(arrayPlayerData: arraySearchSongs, index: indexPath.row)
             DJMusicPlayer.shared.playingFrom = objPlaylist!.PlaylistName
         }
     }
