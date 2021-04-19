@@ -10,7 +10,7 @@ import UIKit
 
 class PlayerVC: BaseViewController {
     
-    //MARK:- UIOutlet
+    // MARK:- OUTLETS
     @IBOutlet weak var btnClose: UIButton!
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var btnDownload: UIButton!
@@ -23,15 +23,21 @@ class PlayerVC: BaseViewController {
     @IBOutlet weak var lblMinTime: UILabel!
     @IBOutlet weak var lblMaxTime: UILabel!
     
-    //MARK:- Variable
+    // MARK:- VARIABLES
+    var audioDetails : AudioDetailsDataModel?
+    var isComeFrom = "Audio"
+    var sliderEvent : UITouch.Phase = .ended
+    var sliderLastValue : Float?
+    var shouldCallAPI : Bool = false
     
-    //MARK:- View Life Cycle
+    
+    // MARK:- VIEW LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
         
     }
     
-    //MARK:- Functions
+    // MARK:- FUNCTIONS
     override func setupUI() {
         //
     }
@@ -40,7 +46,7 @@ class PlayerVC: BaseViewController {
         //
     }
     
-    //MARK:- IBAction
+    // MARK:- ACTIONS
     @IBAction func onTappedClose(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }

@@ -20,7 +20,6 @@ class DisclaimerAudio {
         let audioData = AudioDetailsDataModel()
         audioData.ID = data.ID
         audioData.Name = "Disclaimer"
-//        audioData.AudioFile = fetchDisclaimerAudioFile()
         audioData.AudioFile = "https://brainwellnessspa.com.au/Bws-consumer-panel/html/audio_file/Brain_Wellness_Spa_Declaimer.mp3"
         audioData.ImageFile = ""
         audioData.AudioDuration = "00:48"
@@ -47,19 +46,10 @@ class DisclaimerAudio {
         return stringPath ?? ""
     }
     
-    func fetchDisclaimerAudioFile() -> String {
-        let stringPath = Bundle.main.path(forResource: "Brain_Wellness_Spa_Declaimer", ofType: "mp3")
-        let urlPath = URL(fileURLWithPath: stringPath!)
-        
-        print("stringPath :- ",stringPath)
-        print("relativeString :- ",urlPath.relativeString)
-        print("relativePath :- ",urlPath.relativePath)
-        
-        return urlPath.relativeString
-    }
-    
     func saveDisclaimerAudioToDownloads() {
-        let bundlePath = Bundle.main.path(forResource: "Brain_Wellness_Spa_Declaimer", ofType: "mp3")
+        guard let bundlePath = Bundle.main.path(forResource: "Brain_Wellness_Spa_Declaimer", ofType: "mp3") else {
+            return
+        }
         
         let directoryName = DJDownloadManager.shared.directoryName
         
@@ -72,9 +62,8 @@ class DisclaimerAudio {
         let documentsURL = SDFileUtils.documentDirectoryPath().appendingPathComponent(directoryName).appendingPathComponent("Brain_Wellness_Spa_Declaimer.mp3")
 
         do {
-            try fileManager.copyItem(atPath: bundlePath!, toPath: documentsURL.path)
-        }
-        catch {
+            try fileManager.copyItem(atPath: bundlePath, toPath: documentsURL.path)
+        } catch {
             print("\n")
             print(error)
         }

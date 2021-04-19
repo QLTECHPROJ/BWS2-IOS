@@ -167,22 +167,6 @@ open class DJMusicPlayer: NSObject {
         }
     }
     
-    var isPlayingFromQueue : Bool {
-        get {
-            return UserDefaults.standard.bool(forKey: "isPlayingFromQueue")
-        }
-        set {
-            UserDefaults.standard.set(newValue, forKey: "isPlayingFromQueue")
-            UserDefaults.standard.synchronize()
-        }
-    }
-    
-    var queuedSongs : [AudioDetailsDataModel] = [AudioDetailsDataModel]() {
-        didSet {
-            NotificationCenter.default.post(name: NSNotification.Name.playerQueueDidUpdate, object: nil)
-        }
-    }
-    
     var nowPlayingList : [AudioDetailsDataModel] = [AudioDetailsDataModel]() {
         didSet {
             NotificationCenter.default.post(name: NSNotification.Name.playerQueueDidUpdate, object: nil)
@@ -191,63 +175,12 @@ open class DJMusicPlayer: NSObject {
     
     var isStoppedBecauseOfNetwork : Bool = false
     
-    var repeatPlaylist : RepeatType {
-        get {
-            let raw = UserDefaults.standard.integer(forKey: "repeatPlaylist")
-            if let typeValue = RepeatType(rawValue: raw) {
-                return typeValue
-            }
-            return RepeatType.all
-        }
-        set {
-            UserDefaults.standard.set(newValue.rawValue, forKey: "repeatPlaylist")
-            UserDefaults.standard.synchronize()
-        }
-    }
-    
-    var canShuffle : Bool {
-        if nowPlayingList.count > 0 && !isPlayingFromQueue {
-            if nowPlayingList.count > 1 {
-                return true
-            }
-            return false
-        } else if queuedSongs.count > 0 {
-            if queuedSongs.count > 1 {
-                return true
-            }
-            return false
-        }
-        return false
-    }
-    
     var isPlayingFirst : Bool {
-        //        if repeatPlaylist != .none {
-        //            return false
-        //        }
-        //        return playIndex == 0
         return false
     }
     
     var isPlayingLast : Bool {
-        //        if repeatPlaylist != .none {
-        //            return false
-        //        }
-        //        if nowPlayingList.count > 0 {
-        //            return playIndex == nowPlayingList.count - 1
-        //        }
-        //        // return playIndex == queuedSongs.count - 1
-        //        return queuedSongs.count == 1
         return false
-    }
-    
-    var shufflePlaylist : Bool {
-        get {
-            return UserDefaults.standard.bool(forKey: "shufflePlaylist")
-        }
-        set {
-            UserDefaults.standard.set(newValue, forKey: "shufflePlaylist")
-            UserDefaults.standard.synchronize()
-        }
     }
     
     var elapsedTime: Double {
@@ -420,16 +353,6 @@ open class DJMusicPlayer: NSObject {
         self.seek(toSecond: self.currentTime - 30)
     }
     
-    func repeatSongs() {
-        if self.repeatPlaylist == .none {
-            self.repeatPlaylist = .all
-        } else if self.repeatPlaylist == .all {
-            self.repeatPlaylist = .single
-        } else {
-            self.repeatPlaylist = .none
-        }
-    }
-    
     @objc func playerDidFinishPlaying(_ notification: Notification) {
         NotificationCenter.default.removeObserver(self)
         
@@ -451,17 +374,7 @@ open class DJMusicPlayer: NSObject {
             }
         }
         
-        switch repeatPlaylist {
-        case .all:
-            playNext(isForce: false)
-        case .single:
-            self.stop()
-            self.currentlyPlaying = nil
-            self.latestPlayRequest = nil
-            self.requestToPlay()
-        default:
-            playNext(isForce: false)
-        }
+        playNext(isForce: false)
     }
     
     // MARK: - Private helpers
@@ -501,10 +414,8 @@ open class DJMusicPlayer: NSObject {
     func canPlayFromDownloads(index : Int) -> Bool {
         var playerData : AudioDetailsDataModel?
         
-        if nowPlayingList.count > index && !isPlayingFromQueue {
+        if nowPlayingList.count > index {
             playerData = nowPlayingList[index]
-        } else if queuedSongs.count > index {
-            playerData = queuedSongs[index]
         }
         
         guard let details = playerData else {
@@ -542,7 +453,7 @@ open class DJMusicPlayer: NSObject {
     func requestToPlay() {
         self.isNowPresenting = true
         canPlayFirstTime = false
-        if nowPlayingList.count > playIndex && !isPlayingFromQueue {
+        if nowPlayingList.count > playIndex {
             if  self.canPlayFromDownloads(playerData: self.nowPlayingList[playIndex]) == false && checkInternet() == false {
                 //                showAlertToast(message: Theme.strings.alert_check_internet)
                 //                return
@@ -560,26 +471,6 @@ open class DJMusicPlayer: NSObject {
             
             let newAudio = self.nowPlayingList[playIndex]
             self.currentlyPlaying = newAudio
-        } else {
-            if self.queuedSongs.count > playIndex {
-                if  self.canPlayFromDownloads(playerData: self.queuedSongs[playIndex]) == false && checkInternet() == false {
-                    //                    showAlertToast(message: Theme.strings.alert_check_internet)
-                    //                    return
-                }
-                
-                /*
-                if self.currentlyPlaying?.ID == self.queuedSongs[playIndex].ID {
-                    if self.currentlyPlaying?.isDisclaimer == false {
-                        isAutoPlay = true
-                        return
-                    }
-                }*/
-                
-                self.latestPlayRequest = self.currentlyPlaying
-                
-                let newAudio = self.queuedSongs[playIndex]
-                self.currentlyPlaying = newAudio
-            }
         }
     }
     

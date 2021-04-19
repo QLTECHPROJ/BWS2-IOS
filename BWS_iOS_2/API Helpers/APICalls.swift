@@ -617,6 +617,8 @@ extension AddAudioVC {
                 self.arrayAudio = response.ResponseData
                 self.setupData()
             }
+            
+            // self.callPlaylistAPI()
         }
     }
     
@@ -652,6 +654,43 @@ extension AddAudioVC {
             } else {
                 self.arraySearch.removeAll()
                 self.reloadSearchData()
+            }
+        }
+    }
+    
+    func callAddAudioToPlaylistAPI(audioToAdd : String = "" , playlistToAdd : String = "") {
+        self.view.endEditing(true)
+        
+        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+                          "PlaylistId":self.playlistID,
+                          "AudioId":audioToAdd,
+                          "FromPlaylistId":playlistToAdd]
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.addaptoplaylist(parameters)) { (response : AudioDetailsModel) in
+            
+            if response.ResponseCode == "200" {
+                refreshNowPlayingSongs(playlistID: self.playlistID, arraySongs: response.ResponseData)
+                showAlertToast(message: response.ResponseMessage)
+            }
+        }
+    }
+    
+}
+
+
+extension AddAudioViewAllVC {
+    
+    //call playlist
+    func callPlaylistAPI() {
+        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? ""]
+        APICallManager.sharedInstance.callAPI(router: APIRouter.suggestedplaylist(parameters)) { (response :PlaylistListingModel) in
+            
+            if response.ResponseCode == "200" {
+                self.arrayPlayList = response.ResponseData
+                self.setupData()
+                
+                // Segment Tracking
+                // self.trackScreenData()
             }
         }
     }

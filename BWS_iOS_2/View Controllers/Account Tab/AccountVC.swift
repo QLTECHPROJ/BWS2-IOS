@@ -39,7 +39,6 @@ class AccountVC: BaseViewController {
         DJMusicPlayer.shared.playIndex = 0
         DJMusicPlayer.shared.currentlyPlaying = nil
         DJMusicPlayer.shared.latestPlayRequest = nil
-        DJMusicPlayer.shared.queuedSongs = [AudioDetailsDataModel]()
         DJMusicPlayer.shared.nowPlayingList = [AudioDetailsDataModel]()
         
         // Download Related Data
@@ -55,16 +54,12 @@ class AccountVC: BaseViewController {
         CoUserDataModel.currentUser = nil
         LoginDataModel.currentUser = nil
         
-        UserDefaults.standard.removeObject(forKey: "QueuedSongs")
         UserDefaults.standard.removeObject(forKey: "NowPlayingSongs")
         UserDefaults.standard.synchronize()
         
-        DJMusicPlayer.shared.shufflePlaylist = false
-        DJMusicPlayer.shared.repeatPlaylist = .all
         DJMusicPlayer.shared.playerType = .audio
         DJMusicPlayer.shared.lastPlayerType = .audio
         DJMusicPlayer.shared.playerScreen = .miniPlayer
-        DJMusicPlayer.shared.isPlayingFromQueue = false
         DJMusicPlayer.shared.playingFrom = "Audios"
         DJMusicPlayer.shared.shouldPlayDisclaimer = false
         

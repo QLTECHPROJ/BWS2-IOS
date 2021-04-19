@@ -24,6 +24,15 @@ class HomeVC: BaseViewController {
         super.viewDidLoad()
         
         setupUI()
+        
+        // Clear All Downloads
+        AccountVC.clearDownloadData()
+        
+        // Cancel All Downloads on launch
+        SDDownloadManager.shared.cancelAllDownloads()
+        
+        // Fetch next audio to download on launch
+        DJDownloadManager.shared.fetchNextDownload()
     }
     
     

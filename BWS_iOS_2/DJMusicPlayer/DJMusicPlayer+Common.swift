@@ -28,14 +28,13 @@ enum PlayerScreen: String {
  2. playlist
  3. downloadedPlaylist
  4. topCategories
- 5. queue
- 6. downloadedAudios
- 7. likedAudios
- 8. recentlyPlayed
- 9. library
- 10. getInspired
- 11. popular
- 12. searchAudio
+ 5. downloadedAudios
+ 6. likedAudios
+ 7. recentlyPlayed
+ 8. library
+ 9. getInspired
+ 10. popular
+ 11. searchAudio
  */
 
 enum PlayerType: Int {
@@ -43,7 +42,6 @@ enum PlayerType: Int {
     case playlist
     case downloadedPlaylist
     case topCategories
-    case queue
     case downloadedAudios
     case likedAudios
     case recentlyPlayed

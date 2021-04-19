@@ -79,7 +79,6 @@ class AddAudioVC: BaseViewController {
             tableView.isHidden = false
             
             callAudioAPI()
-            // callPlaylistAPI()
         }
         
         tableView.reloadData()
@@ -127,7 +126,6 @@ class AddAudioVC: BaseViewController {
     
     override func handleRefresh(_ refreshControl: UIRefreshControl) {
         callAudioAPI()
-        // callPlaylistAPI()
         refreshControl.endRefreshing()
     }
     
@@ -177,7 +175,7 @@ class AddAudioVC: BaseViewController {
                 callAddAudioToPlaylistAPI(audioToAdd: audioData.ID, playlistToAdd: "")
             } else {
                 // Segment Tracking
-                let source = audioData.Iscategory == "1" ? "Search Audio" : "Suggested Search Audio"
+                let source = audioData.Iscategory == "1" ? "Search Audio" : "Suggested Audio"
                 // SegmentTracking.shared.audioDetailsEvents(name: "Audio Add Clicked", audioData: audioData, source: source, trackingType: .track)
                 
                 // Add Audio To Playlist
@@ -192,7 +190,7 @@ class AddAudioVC: BaseViewController {
         }
     }
     
-    func addPlaylistToPlaylist(playlistID : String, lock:String) {
+    func addPlaylistToPlaylist(playlistID : String, lock : String, source : String) {
         if lock == "1" {
             // Membership Module Remove
             openInactivePopup(controller: self)
@@ -204,7 +202,7 @@ class AddAudioVC: BaseViewController {
             } else {
                 let aVC = AppStoryBoard.home.viewController(viewControllerClass: AddToPlaylistVC.self)
                 aVC.playlistID = playlistID
-                aVC.source = "Search Playlist"
+                aVC.source = source
                 let navVC = UINavigationController(rootViewController: aVC)
                 navVC.navigationBar.isHidden = true
                 navVC.modalPresentationStyle = .fullScreen
@@ -214,23 +212,21 @@ class AddAudioVC: BaseViewController {
     }
     
     @objc func onTappedViewAll(_ sender: UIButton) {
-        /*
         if sender.tag == 1 {
-            let aVC = AppStoryBoard.search.viewController(viewControllerClass: SearchViewAllVC.self)
+            let aVC = AppStoryBoard.home.viewController(viewControllerClass: AddAudioViewAllVC.self)
             aVC.isFromPlaylist = false
             aVC.isComeFromAddAudio = self.isComeFromAddAudio
             aVC.playlistID = self.playlistID
             aVC.arrayAudio = arrayAudio
             self.navigationController?.pushViewController(aVC, animated: true)
         } else if sender.tag == 2 {
-            let aVC = AppStoryBoard.search.viewController(viewControllerClass: SearchViewAllVC.self)
+            let aVC = AppStoryBoard.home.viewController(viewControllerClass: AddAudioViewAllVC.self)
             aVC.isFromPlaylist = true
             aVC.isComeFromAddAudio = self.isComeFromAddAudio
             aVC.playlistID = self.playlistID
             aVC.arrayPlayList = arrayPlayList
             self.navigationController?.pushViewController(aVC, animated: true)
         }
-         */
     }
     
     // Handle Long Press For Add To Playlist Button
@@ -269,7 +265,7 @@ class AddAudioVC: BaseViewController {
         
         let aVC = AppStoryBoard.home.viewController(viewControllerClass: AddToPlaylistVC.self)
         aVC.playlistID = arrayPlayList[sender.tag].PlaylistID
-        aVC.source = "Suggested Search Playlist"
+        aVC.source = "Suggested Playlist"
         let navVC = UINavigationController(rootViewController: aVC)
         navVC.navigationBar.isHidden = true
         navVC.modalPresentationStyle = .overFullScreen
@@ -292,12 +288,12 @@ class AddAudioVC: BaseViewController {
     }
     
     @IBAction func onTappedViewAllPlayList(_ sender: UIButton) {
-        // let aVC = AppStoryBoard.search.viewController(viewControllerClass: SearchViewAllVC.self)
-        // aVC.isFromPlaylist = true
-        // aVC.isComeFromAddAudio = self.isComeFromAddAudio
-        // aVC.playlistID = self.playlistID
-        // aVC.arrayPlayList = arrayPlayList
-        // self.navigationController?.pushViewController(aVC, animated: true)
+        let aVC = AppStoryBoard.home.viewController(viewControllerClass: AddAudioViewAllVC.self)
+        aVC.isFromPlaylist = true
+        aVC.isComeFromAddAudio = self.isComeFromAddAudio
+        aVC.playlistID = self.playlistID
+        aVC.arrayPlayList = arrayPlayList
+        self.navigationController?.pushViewController(aVC, animated: true)
     }
     
 }
@@ -437,7 +433,7 @@ extension AddAudioVC : UITableViewDelegate, UITableViewDataSource {
             cell.configureAddPlaylistCell(data: arrayPlayList[indexPath.row])
             cell.buttonClicked = { index in
                 if index == 1 {
-                    self.addPlaylistToPlaylist(playlistID: self.arrayPlayList[indexPath.row].PlaylistID, lock: self.arrayPlayList[indexPath.row].IsLock)
+                    self.addPlaylistToPlaylist(playlistID: self.arrayPlayList[indexPath.row].PlaylistID, lock: self.arrayPlayList[indexPath.row].IsLock, source: "Suggested Playlist")
                 }
             }
         } else {
@@ -477,7 +473,7 @@ extension AddAudioVC : UITableViewDelegate, UITableViewDataSource {
                     if self.arraySearch[indexPath.row].Iscategory == "1" {
                         self.addAudioToPlaylist(audioData: self.arraySearch[indexPath.row])
                     } else {
-                        self.addPlaylistToPlaylist(playlistID: self.arraySearch[indexPath.row].ID, lock: self.arraySearch[indexPath.row].IsLock)
+                        self.addPlaylistToPlaylist(playlistID: self.arraySearch[indexPath.row].ID, lock: self.arraySearch[indexPath.row].IsLock, source: "Search Playlist")
                     }
                 }
             }
@@ -504,11 +500,11 @@ extension AddAudioVC : UITableViewDelegate, UITableViewDataSource {
                 // let data = arrayAudio[indexPath.row]
                 
                 // Segment Tracking
-                // SegmentTracking.shared.audioDetailsEvents(name: "Suggested Search Audio Clicked", audioData: data, trackingType: .track)
+                // SegmentTracking.shared.audioDetailsEvents(name: "Suggested Audio Clicked", audioData: data, trackingType: .track)
                 
                 // self.presentMiniPlayer(playerData: data)
                 DJMusicPlayer.shared.playerType = .searchAudio
-                DJMusicPlayer.shared.playingFrom = "Suggested Search Audio"
+                DJMusicPlayer.shared.playingFrom = "Suggested Audio"
             }
         } else if indexPath.section == 2 {
             if arrayPlayList[indexPath.row].IsLock == "1" {
@@ -518,7 +514,7 @@ extension AddAudioVC : UITableViewDelegate, UITableViewDataSource {
                 showAlertToast(message: "Please re-activate your membership plan")
             } else {
                 // Segment Tracking
-                // SegmentTracking.shared.playlistEvents(name: "Suggested Search Playlist Clicked", objPlaylist: arrayPlayList[indexPath.row], trackingType: .track)
+                // SegmentTracking.shared.playlistEvents(name: "Suggested Playlist Clicked", objPlaylist: arrayPlayList[indexPath.row], trackingType: .track)
                 
                 let aVC = AppStoryBoard.manage.viewController(viewControllerClass: PlaylistDetailVC.self)
                 aVC.objPlaylist = arrayPlayList[indexPath.row]
@@ -615,7 +611,7 @@ extension AddAudioVC : UICollectionViewDelegate,UICollectionViewDataSource,UICol
         }
         
         // Segment Tracking
-        // SegmentTracking.shared.playlistEvents(name: "Suggested Search Playlist Clicked", objPlaylist: arrayPlayList[indexPath.row], trackingType: .track)
+        // SegmentTracking.shared.playlistEvents(name: "Suggested Playlist Clicked", objPlaylist: arrayPlayList[indexPath.row], trackingType: .track)
         
         let aVC = AppStoryBoard.manage.viewController(viewControllerClass: PlaylistDetailVC.self)
         aVC.objPlaylist = arrayPlayList[indexPath.row]

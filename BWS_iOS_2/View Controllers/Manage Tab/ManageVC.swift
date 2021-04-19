@@ -38,17 +38,7 @@ class ManageVC: BaseViewController {
         refreshAudioData = true
         setupUI()
         
-        // Clear All Downloads
-        AccountVC.clearDownloadData()
-        
-        // Cancel All Downloads on launch
-        SDDownloadManager.shared.cancelAllDownloads()
-        
-        // Fetch next audio to download on launch
-        DJDownloadManager.shared.fetchNextDownload()
-        
         NotificationCenter.default.addObserver(self, selector: #selector(refreshDownloadData), name: .refreshDownloadData, object: nil)
-        UIApplication.shared.beginReceivingRemoteControlEvents()
     }
     
     override func viewWillAppear(_ animated: Bool) {
