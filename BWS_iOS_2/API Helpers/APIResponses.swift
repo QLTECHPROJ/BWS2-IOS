@@ -240,6 +240,8 @@ class CoUserDataModel : EVObject {
     var indexScore = ""
     var planDetails : [Any]?
     var errormsg = ""
+    var AreaOfFocus = ""
+    var AvgSleepTime = ""
     var isSelected = false
     
     class var currentUser : CoUserDataModel? {
@@ -297,6 +299,7 @@ class ManageHomeModel : EVObject {
 }
 
 class ManageHomedataModel : EVObject {
+    var SuggestedPlaylist : PlaylistDetailsModel?
     var Playlist = [PlaylistHomeDataModel]()
     var Audio = [AudioHomeDataModel]()
 }

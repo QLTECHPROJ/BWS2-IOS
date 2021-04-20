@@ -154,6 +154,51 @@ class SelfDevCell: UITableViewCell {
         btnChangePosition.setImage(UIImage(named: "Add"), for: UIControl.State.normal)
     }
     
+    func configureRemoveAudioCell(data : AudioDetailsDataModel) {
+        self.hideDownloadProgress = false
+        self.generalConfigure(data: data)
+        self.configureCell()
+        btnDownload.setImage(nil, for: UIControl.State.normal)
+    }
+    
+    func configureRemovePlaylistCell(data : PlaylistDetailsModel) {
+        self.hideDownloadProgress = false
+        self.configureCell()
+        
+        let playlistDownloadProgress = CoreDataHelper.shared.updatePlaylistDownloadProgress(playlistID: data.PlaylistID)
+        
+        if  playlistDownloadProgress < 1 {
+            downloadProgressView.isHidden = false
+            self.downloadProgressView.progress = playlistDownloadProgress
+        }
+        else {
+            downloadProgressView.isHidden = true
+        }
+        
+        if checkInternet() == false {
+            downloadProgressView.isHidden = true
+        }
+        
+        btnDownload.setImage(nil, for: UIControl.State.normal)
+        
+        if data.IsLock == "1" || data.IsLock == "2" {
+            imgPlay.isHidden = false
+            imgPlay.image = UIImage(named:"newLock")
+            imgPlay.backgroundColor = .clear
+            imgPlay.contentMode = .scaleToFill
+            imgView.backgroundColor = .lightGray
+        }
+        else {
+            imgPlay.isHidden = true
+        }
+        
+        if let imgUrl = URL(string: data.PlaylistImage.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+            imgView.sd_setImage(with: imgUrl, completed: nil)
+        }
+        
+        lblTitle.text = data.PlaylistName
+        lblDuration.text = "\(data.TotalAudio) Audios | \(data.Totalhour)h \(data.Totalminute)m"
+    }
     
     // MARK:- UI Related Configurations
     func configureCell(backgroundColor: UIColor = UIColor.white ,buttonColor : UIColor = UIColor.black, hideDownload : Bool = true, hideDelete : Bool = false, hideChangePosition : Bool = true) {

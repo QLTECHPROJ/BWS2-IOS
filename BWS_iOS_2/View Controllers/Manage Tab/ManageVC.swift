@@ -24,6 +24,7 @@ class ManageVC: BaseViewController {
     
     
     // MARK:- VARIABLES
+    var suggstedPlaylist : PlaylistDetailsModel?
     var arrayPlaylistHomeData = [PlaylistHomeDataModel]()
     var arrayAudioHomeData = [AudioHomeDataModel]()
     var shouldTrackScreen = false
@@ -62,7 +63,7 @@ class ManageVC: BaseViewController {
     
     // MARK:- FUNCTIONS
     override func setupUI() {
-        tableView.tableHeaderView = tableHeaderView
+        tableView.tableHeaderView = UIView()
         tableView.register(nibWithCellClass: ManageAudioCell.self)
         tableView.register(nibWithCellClass: ManagePlaylistCell.self)
         tableView.rowHeight = UITableView.automaticDimension
@@ -72,6 +73,18 @@ class ManageVC: BaseViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.tableView.reloadData()
         }
+    }
+    
+    override func setupData() {
+        if let objPlaylist = suggstedPlaylist {
+            lblPlaylistName.text = objPlaylist.PlaylistName
+            
+            tableView.tableHeaderView = tableHeaderView
+        } else {
+            tableView.tableHeaderView = UIView()
+        }
+        
+        tableView.reloadData()
     }
     
     // Pull To Refresh Screen Data
@@ -103,7 +116,7 @@ class ManageVC: BaseViewController {
     func addAudioDownloadsData() {
         self.arrayAudioHomeData = [AudioHomeDataModel]()
         let downloadDataModel = AudioHomeDataModel()
-        downloadDataModel.HomeAudioID = "1"
+        downloadDataModel.HomeAudioID = "6"
         downloadDataModel.View = "My Downloads"
         downloadDataModel.UserID = (CoUserDataModel.currentUser?.UserID ?? "")
         downloadDataModel.CoUserId = (CoUserDataModel.currentUser?.CoUserId ?? "")

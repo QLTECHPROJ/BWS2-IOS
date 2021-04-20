@@ -315,9 +315,20 @@ extension ManageVC {
         APICallManager.sharedInstance.callAPI(router: APIRouter.managehomescreen(parameters)) { (response : ManageHomeModel) in
             if response.ResponseCode == "200" {
                 if let responseData = response.ResponseData {
+                    self.suggstedPlaylist = responseData.SuggestedPlaylist
                     self.arrayAudioHomeData = responseData.Audio
                     self.arrayPlaylistHomeData = responseData.Playlist
-                    self.tableView.reloadData()
+                    
+                    for data in self.arrayAudioHomeData {
+                        if data.View == "My Downloads" {
+                            data.Details = CoreDataHelper.shared.fetchSingleAudios()
+                            lockDownloads = data.IsLock
+                            // setDownloadsExpiryDate(expireDateString: data.expireDate)
+                            let _ = shouldLockDownloads()
+                        }
+                    }
+                    
+                    self.setupData()
                 }
             }
         }

@@ -99,7 +99,7 @@ class PlayerVC: BaseViewController {
             
             switch DJMusicPlayer.shared.playbackState {
             case .playing:
-                btnPlay.setImage(UIImage(named: "playPause"), for: UIControl.State.normal)
+                btnPlay.setImage(UIImage(named: "Pause"), for: UIControl.State.normal)
             case .paused:
                 btnPlay.setImage(UIImage(named: "Play"), for: UIControl.State.normal)
             default:
@@ -133,7 +133,7 @@ class PlayerVC: BaseViewController {
                 self.updateDownloadProgress()
             } else {
                 btnDownload.isUserInteractionEnabled = true
-                btnDownload.setImage(UIImage(named: "download_black"), for: UIControl.State.normal)
+                btnDownload.setImage(UIImage(named: "download_audio"), for: UIControl.State.normal)
             }
         }
         
@@ -162,6 +162,8 @@ class PlayerVC: BaseViewController {
             
             btnDownload.isEnabled = true
         }
+        
+        btnInfo.isEnabled = enableOptions
         
         DJMusicPlayer.shared.updateInfoCenter()
     }

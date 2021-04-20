@@ -70,4 +70,9 @@ class AccountVC: BaseViewController {
         APPDELEGATE.logout()
     }
     
+    @IBAction func downloadClicked(sender : UIButton) {
+        let aVC = AppStoryBoard.account.viewController(viewControllerClass: DownloadVC.self)
+        self.navigationController?.pushViewController(aVC, animated: true)
+    }
+    
 }
