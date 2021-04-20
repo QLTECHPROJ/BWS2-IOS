@@ -42,6 +42,7 @@ class DownloadVC: BaseViewController {
         segmentController.segmentControllers = [firstVC,secondVC]
         
         segmentController.segmentTitleColor = Theme.colors.textColor
+        segmentController.segmentSelectedTitleColor = Theme.colors.greenColor
         segmentController.selectedSegmentViewHeight = 3.0
         segmentController.segmentTitleFont = Theme.fonts.montserratFont(ofSize: 13, weight: .medium)
         segmentController.delegate = self
@@ -66,9 +67,7 @@ class DownloadVC: BaseViewController {
 extension DownloadVC: SJSegmentedViewControllerDelegate {
     
     func didMoveToPage(_ controller: UIViewController, segment: SJSegmentTab?, index: Int) {
-        selectedSegment?.titleColor(Theme.colors.textColor)
         selectedSegment = segment
-        segment?.titleColor(Theme.colors.greenColor)
         selectedController = controller
         self.refreshData()
     }

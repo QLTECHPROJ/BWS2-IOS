@@ -12,6 +12,7 @@ class ManageVC: BaseViewController {
     
     // MARK:- OUTLETS
     @IBOutlet weak var tableHeaderView : UIView!
+    @IBOutlet weak var playlistMainView : UIView!
     @IBOutlet weak var playlistTopView : UIView!
     @IBOutlet weak var playlistBottomView : UIView!
     @IBOutlet weak var btnReminder : UIButton!
@@ -19,6 +20,7 @@ class ManageVC: BaseViewController {
     @IBOutlet weak var progressView : UIProgressView!
     @IBOutlet weak var lblPlaylistName : UILabel!
     @IBOutlet weak var lblPlaylistDirection : UILabel!
+    @IBOutlet weak var lblSleepTime : UILabel!
     
     @IBOutlet weak var tableView : UITableView!
     
@@ -77,11 +79,17 @@ class ManageVC: BaseViewController {
     
     override func setupData() {
         if let objPlaylist = suggstedPlaylist {
+            playlistMainView.isHidden = false
+            if let avgSleepTime = CoUserDataModel.currentUser?.AvgSleepTime, avgSleepTime.trim.count > 0 {
+                lblSleepTime.text = "Your average sleep time is \(avgSleepTime) hours"
+            }
             lblPlaylistName.text = objPlaylist.PlaylistName
-            
+            tableHeaderView.frame = CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: 447)
             tableView.tableHeaderView = tableHeaderView
         } else {
-            tableView.tableHeaderView = UIView()
+            playlistMainView.isHidden = true
+            tableHeaderView.frame = CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: 44)
+            tableView.tableHeaderView = tableHeaderView
         }
         
         tableView.reloadData()
