@@ -57,6 +57,7 @@ class PlaylistCollectionCell: UICollectionViewCell {
             imageView.sd_setImage(with: imgUrl, completed: nil)
         }
         
+        imageView.contentMode = .scaleAspectFill
         imageView.applyGradient(with: [UIColor.clear,UIColor.clear,Theme.colors.greenColor])
         
         lblName.text = playlistData.PlaylistName
@@ -84,6 +85,7 @@ class PlaylistCollectionCell: UICollectionViewCell {
             imageView.sd_setImage(with: imgUrl, completed: nil)
         }
         
+        imageView.contentMode = .scaleAspectFill
         imageView.applyGradient(with: [UIColor.clear,UIColor.clear,Theme.colors.greenColor])
         
         lblName.text = playlistData.PlaylistName
@@ -115,6 +117,7 @@ class PlaylistCollectionCell: UICollectionViewCell {
             imageView.sd_setImage(with: imgUrl, completed: nil)
         }
         
+        imageView.contentMode = .scaleAspectFill
         imageView.applyGradient(with: [UIColor.clear,UIColor.clear,Theme.colors.greenColor])
         
         lblName.text = audioData.Name

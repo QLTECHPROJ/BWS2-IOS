@@ -308,6 +308,8 @@ extension ManageVC : UITableViewDataSource, UITableViewDelegate {
             cell.btnViewAll.addTarget(self, action: #selector(viewAllPlaylistClicked(sender:)), for: UIControl.Event.touchUpInside)
             cell.configureCell(data: arrayPlaylistHomeData[indexPath.row])
             
+            cell.lblTitle.text = "Playlist"
+            
             cell.didClickCreatePlaylist = {
                 self.createPlaylist(sectionIndex: indexPath.row)
             }

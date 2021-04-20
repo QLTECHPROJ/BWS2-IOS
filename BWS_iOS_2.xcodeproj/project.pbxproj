@@ -130,6 +130,8 @@
 		283F72F4261D999200554774 /* SubColCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283F72F1261D999100554774 /* SubColCell.swift */; };
 		283F72F5261D999200554774 /* SubColCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 283F72F2261D999200554774 /* SubColCell.xib */; };
 		283F72F6261D999200554774 /* SubColCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 283F72F2261D999200554774 /* SubColCell.xib */; };
+		284C9B6A262E93D1008C4435 /* CryptLib.m in Sources */ = {isa = PBXBuildFile; fileRef = 284C9B68262E93D1008C4435 /* CryptLib.m */; };
+		284C9B6B262E93D1008C4435 /* CryptLib.m in Sources */ = {isa = PBXBuildFile; fileRef = 284C9B68262E93D1008C4435 /* CryptLib.m */; };
 		2870B35825FB3A570014A4F6 /* BWS_iOS_2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 28F812AB25FB336F00DC6AF6 /* BWS_iOS_2.xcdatamodeld */; };
 		2870B35925FB3A570014A4F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F812A225FB336F00DC6AF6 /* AppDelegate.swift */; };
 		2870B35D25FB3A570014A4F6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28F812BD25FB367A00DC6AF6 /* Main.storyboard */; };
@@ -489,6 +491,8 @@
 		283F72EE261D994900554774 /* AssessmentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssessmentVC.swift; sourceTree = "<group>"; };
 		283F72F1261D999100554774 /* SubColCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubColCell.swift; sourceTree = "<group>"; };
 		283F72F2261D999200554774 /* SubColCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubColCell.xib; sourceTree = "<group>"; };
+		284C9B68262E93D1008C4435 /* CryptLib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CryptLib.m; sourceTree = "<group>"; };
+		284C9B69262E93D1008C4435 /* CryptLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CryptLib.h; sourceTree = "<group>"; };
 		2870B36325FB3A570014A4F6 /* BWS 2 Staging.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BWS 2 Staging.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2870B36525FB3AE90014A4F6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2870B36825FB3B2B0014A4F6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -765,6 +769,15 @@
 			path = "Dass Assessment";
 			sourceTree = "<group>";
 		};
+		284C9B67262E93D1008C4435 /* CryptLib */ = {
+			isa = PBXGroup;
+			children = (
+				284C9B69262E93D1008C4435 /* CryptLib.h */,
+				284C9B68262E93D1008C4435 /* CryptLib.m */,
+			);
+			path = CryptLib;
+			sourceTree = "<group>";
+		};
 		2870B35425FB3A410014A4F6 /* Staging */ = {
 			isa = PBXGroup;
 			children = (
@@ -823,6 +836,7 @@
 				2870B3AC25FB41A10014A4F6 /* UIViewExtension.swift */,
 				2870B3AE25FB41A10014A4F6 /* MediaType.swift */,
 				2870B3B025FB41A10014A4F6 /* MimeType.swift */,
+				284C9B67262E93D1008C4435 /* CryptLib */,
 				28D755652618998F00EA63FE /* iCarousel */,
 				2870B44B25FB44700014A4F6 /* ClockClass */,
 				2870B38325FB41A10014A4F6 /* DJDesinable */,
@@ -1518,6 +1532,7 @@
 				28E809532613591400CD80F7 /* AudioCollectionCell.swift in Sources */,
 				2870B44825FB41A10014A4F6 /* ReorderController+AutoScroll.swift in Sources */,
 				28ED2FB625FB8C6E00E59C56 /* ProfileForm4VC.swift in Sources */,
+				284C9B6B262E93D1008C4435 /* CryptLib.m in Sources */,
 				2870B45E25FB44700014A4F6 /* NSDate+Timepiece.swift in Sources */,
 				281DE3302626FD79002CCD9D /* AudioDownloads+CoreDataProperties.swift in Sources */,
 				281DE3242626FD79002CCD9D /* SDFileUtils.swift in Sources */,
@@ -1686,6 +1701,7 @@
 				28E809522613591400CD80F7 /* AudioCollectionCell.swift in Sources */,
 				2870B44725FB41A10014A4F6 /* ReorderController+AutoScroll.swift in Sources */,
 				28ED2FB525FB8C6E00E59C56 /* ProfileForm4VC.swift in Sources */,
+				284C9B6A262E93D1008C4435 /* CryptLib.m in Sources */,
 				2870B45D25FB44700014A4F6 /* NSDate+Timepiece.swift in Sources */,
 				281DE32F2626FD79002CCD9D /* AudioDownloads+CoreDataProperties.swift in Sources */,
 				281DE3232626FD79002CCD9D /* SDFileUtils.swift in Sources */,
