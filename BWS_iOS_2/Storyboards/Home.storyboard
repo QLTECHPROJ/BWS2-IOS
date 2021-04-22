@@ -384,8 +384,8 @@
                         <outlet property="btnEdit" destination="j5E-bz-Hfb" id="YXB-Sf-Kvp"/>
                         <outlet property="btnOption" destination="Si5-Rs-XyR" id="8DG-co-xte"/>
                         <outlet property="btnPlay" destination="0na-9P-YcT" id="dfP-39-kqp"/>
+                        <outlet property="btnReminder" destination="Azn-LA-cyy" id="wyE-qi-6jc"/>
                         <outlet property="btnSearch" destination="xla-8n-jR9" id="XzY-ah-vde"/>
-                        <outlet property="btnTimer" destination="gv3-AF-ZiB" id="CbV-fh-GK6"/>
                         <outlet property="collectionHeight" destination="hfP-Pf-8Tc" id="Xfg-nu-lK7"/>
                         <outlet property="collectionView" destination="kWy-7T-Cn9" id="36A-5a-9aC"/>
                         <outlet property="downloadProgressView" destination="Ild-ag-1ar" id="xFh-ft-sqW"/>
@@ -476,62 +476,74 @@
                                                 <action selector="onTappedBack:" destination="wVS-Jv-0PE" eventType="touchUpInside" id="HR2-IO-3QZ"/>
                                             </connections>
                                         </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gv3-AF-ZiB">
-                                            <rect key="frame" x="195" y="7" width="100" height="30"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="MAQ-t7-yOG">
+                                            <rect key="frame" x="202" y="7" width="157" height="30"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Azn-LA-cyy">
+                                                    <rect key="frame" x="0.0" y="4" width="77" height="22"/>
+                                                    <color key="backgroundColor" white="1" alpha="0.2471372003" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="22" id="yyk-NR-JjZ"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="9"/>
+                                                    <state key="normal" title="     Set reminder     ">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="11"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="setReminderClicked:" destination="wVS-Jv-0PE" eventType="touchUpInside" id="RQe-zl-heF"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="se0-1V-Eix">
+                                                    <rect key="frame" x="87" y="0.0" width="30" height="30"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="F1w-PI-Av8"/>
+                                                        <constraint firstAttribute="width" secondItem="se0-1V-Eix" secondAttribute="height" multiplier="1:1" id="v6y-0P-eCG"/>
+                                                    </constraints>
+                                                    <state key="normal" image="Download"/>
+                                                    <connections>
+                                                        <action selector="downloadClicked:" destination="wVS-Jv-0PE" eventType="touchUpInside" id="QKD-4Y-0ap"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Si5-Rs-XyR">
+                                                    <rect key="frame" x="127" y="0.0" width="30" height="30"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="0E4-SG-Bmt"/>
+                                                        <constraint firstAttribute="width" secondItem="Si5-Rs-XyR" secondAttribute="height" multiplier="1:1" id="kYN-le-fFi"/>
+                                                    </constraints>
+                                                    <state key="normal" image="Detail"/>
+                                                    <connections>
+                                                        <action selector="optionClicked:" destination="wVS-Jv-0PE" eventType="touchUpInside" id="KOh-Qf-Q5s"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="100" id="Py7-73-Rbl"/>
-                                                <constraint firstAttribute="height" constant="30" id="iQC-bZ-nJw"/>
+                                                <constraint firstAttribute="height" constant="30" id="YJX-Fk-ZcO"/>
                                             </constraints>
-                                            <state key="normal" image="SetReminder"/>
-                                            <connections>
-                                                <action selector="setReminderClicked:" destination="wVS-Jv-0PE" eventType="touchUpInside" id="ld3-5s-BmZ"/>
-                                            </connections>
-                                        </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="se0-1V-Eix">
-                                            <rect key="frame" x="295" y="7" width="30" height="30"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="30" id="F1w-PI-Av8"/>
-                                                <constraint firstAttribute="width" secondItem="se0-1V-Eix" secondAttribute="height" multiplier="1:1" id="v6y-0P-eCG"/>
-                                            </constraints>
-                                            <state key="normal" image="Download"/>
-                                            <connections>
-                                                <action selector="downloadClicked:" destination="wVS-Jv-0PE" eventType="touchUpInside" id="QKD-4Y-0ap"/>
-                                            </connections>
-                                        </button>
+                                        </stackView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ild-ag-1ar" customClass="KDCircularProgress" customModule="BWS_2_Staging" customModuleProvider="target">
-                                            <rect key="frame" x="295" y="7" width="30" height="30"/>
+                                            <rect key="frame" x="289" y="7" width="30" height="30"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         </view>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Si5-Rs-XyR">
-                                            <rect key="frame" x="329" y="7" width="30" height="30"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="30" id="0E4-SG-Bmt"/>
-                                                <constraint firstAttribute="width" secondItem="Si5-Rs-XyR" secondAttribute="height" multiplier="1:1" id="kYN-le-fFi"/>
-                                            </constraints>
-                                            <state key="normal" image="Detail"/>
-                                            <connections>
-                                                <action selector="optionClicked:" destination="wVS-Jv-0PE" eventType="touchUpInside" id="KOh-Qf-Q5s"/>
-                                            </connections>
-                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
+                                        <constraint firstItem="Ild-ag-1ar" firstAttribute="leading" secondItem="se0-1V-Eix" secondAttribute="leading" id="7Up-Xv-QVY"/>
                                         <constraint firstItem="gdz-K9-4nz" firstAttribute="centerY" secondItem="D8m-rm-H2b" secondAttribute="centerY" id="A6s-wb-TO5"/>
-                                        <constraint firstItem="Si5-Rs-XyR" firstAttribute="leading" secondItem="se0-1V-Eix" secondAttribute="trailing" constant="4" id="Cl3-wg-PmR"/>
-                                        <constraint firstItem="Ild-ag-1ar" firstAttribute="trailing" secondItem="se0-1V-Eix" secondAttribute="trailing" id="Hem-dc-zoY"/>
-                                        <constraint firstItem="Ild-ag-1ar" firstAttribute="top" secondItem="se0-1V-Eix" secondAttribute="top" id="KPf-jo-IhR"/>
-                                        <constraint firstItem="Ild-ag-1ar" firstAttribute="bottom" secondItem="se0-1V-Eix" secondAttribute="bottom" id="KgX-If-Xm3"/>
-                                        <constraint firstAttribute="trailing" secondItem="Si5-Rs-XyR" secondAttribute="trailing" constant="16" id="M38-qX-q0X"/>
+                                        <constraint firstItem="Ild-ag-1ar" firstAttribute="trailing" secondItem="se0-1V-Eix" secondAttribute="trailing" id="LBX-6U-SVK"/>
                                         <constraint firstItem="gdz-K9-4nz" firstAttribute="leading" secondItem="D8m-rm-H2b" secondAttribute="leading" constant="16" id="R6Z-lv-se5"/>
-                                        <constraint firstItem="Si5-Rs-XyR" firstAttribute="centerY" secondItem="D8m-rm-H2b" secondAttribute="centerY" id="WNs-R1-Ec3"/>
-                                        <constraint firstItem="se0-1V-Eix" firstAttribute="centerY" secondItem="D8m-rm-H2b" secondAttribute="centerY" id="mbh-MX-u7b"/>
-                                        <constraint firstItem="gv3-AF-ZiB" firstAttribute="centerY" secondItem="D8m-rm-H2b" secondAttribute="centerY" id="nUK-KC-9wu"/>
+                                        <constraint firstItem="MAQ-t7-yOG" firstAttribute="centerY" secondItem="gdz-K9-4nz" secondAttribute="centerY" id="Rav-iS-MQf"/>
+                                        <constraint firstItem="Ild-ag-1ar" firstAttribute="top" secondItem="se0-1V-Eix" secondAttribute="top" id="WaQ-eQ-G3r"/>
+                                        <constraint firstAttribute="trailing" secondItem="MAQ-t7-yOG" secondAttribute="trailing" constant="16" id="ZN9-NV-BrI"/>
+                                        <constraint firstItem="Ild-ag-1ar" firstAttribute="bottom" secondItem="se0-1V-Eix" secondAttribute="bottom" id="oN7-dB-tsy"/>
                                         <constraint firstAttribute="height" constant="44" id="pqE-XI-zN8"/>
                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="t0k-Zn-ogc"/>
-                                        <constraint firstItem="Ild-ag-1ar" firstAttribute="leading" secondItem="se0-1V-Eix" secondAttribute="leading" id="tw4-xO-mmP"/>
-                                        <constraint firstItem="se0-1V-Eix" firstAttribute="leading" secondItem="gv3-AF-ZiB" secondAttribute="trailing" id="z9O-RR-9cV"/>
                                     </constraints>
                                 </view>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0na-9P-YcT">
@@ -568,7 +580,7 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your average sleep time is 7 hours" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WaR-9F-zRw">
-                                            <rect key="frame" x="68" y="16.333333333333314" width="258" height="17.333333333333329"/>
+                                            <rect key="frame" x="68" y="17" width="258" height="16.333333333333329"/>
                                             <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="14"/>
                                             <color key="textColor" name="Green"/>
                                             <nil key="highlightedColor"/>
@@ -1314,7 +1326,6 @@
         <image name="PlayBackground" width="343" height="253"/>
         <image name="PlayerWall" width="375" height="812"/>
         <image name="Search" width="15.666666984558105" height="15.666666984558105"/>
-        <image name="SetReminder" width="80" height="21"/>
         <image name="UserImage" width="34" height="34"/>
         <image name="addNew" width="41.666667938232422" height="41.666667938232422"/>
         <image name="closeBlack" width="17.333333969116211" height="17.333333969116211"/>

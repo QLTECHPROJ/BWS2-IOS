@@ -58,7 +58,13 @@ class SplashVC: BaseViewController {
     func handleRedirection() {
         if (LoginDataModel.currentUser != nil) {
             if CoUserDataModel.currentUser != nil {
-                self.CallGetCoUserDetailsAPI()
+                self.callGetCoUserDetailsAPI { (success) in
+                    if success {
+                        self.handleCoUserRedirection()
+                    } else {
+                        self.handleRedirection()
+                    }
+                }
             } else {
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass: UserListVC.self)
                 self.navigationController?.pushViewController(aVC, animated: true)
@@ -70,9 +76,6 @@ class SplashVC: BaseViewController {
     }
     
     func handleCoUserRedirection() {
-        APPDELEGATE.window?.rootViewController = AppStoryBoard.main.viewController(viewControllerClass: NavigationClass.self)
-        return
-        
         if let coUser = CoUserDataModel.currentUser {
             if coUser.isProfileCompleted == "0" {
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass: ContinueVC.self)
@@ -80,8 +83,11 @@ class SplashVC: BaseViewController {
             } else if coUser.isAssessmentCompleted == "0" {
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass: DoDassAssessmentVC.self)
                 self.navigationController?.pushViewController(aVC, animated: true)
-            } else if coUser.planDetails?.count == 0 {
-                let aVC = AppStoryBoard.main.viewController(viewControllerClass: DassAssessmentResultVC.self)
+                // } else if coUser.planDetails?.count == 0 {
+                // let aVC = AppStoryBoard.main.viewController(viewControllerClass: DassAssessmentResultVC.self)
+                // self.navigationController?.pushViewController(aVC, animated: true)
+            } else if coUser.AvgSleepTime.trim.count == 0 || coUser.AreaOfFocus.trim.count == 0 {
+                let aVC = AppStoryBoard.main.viewController(viewControllerClass: SleepTimeVC.self)
                 self.navigationController?.pushViewController(aVC, animated: true)
             } else {
                 APPDELEGATE.window?.rootViewController = AppStoryBoard.main.viewController(viewControllerClass: NavigationClass.self)

@@ -482,12 +482,12 @@ open class DJMusicPlayer: NSObject {
         if self.latestPlayRequest?.ID != self.currentlyPlaying?.ID {
             NotificationCenter.default.post(name: .playerItemDidChange, object: nil)
             if currentlyPlaying?.ID != nil && checkInternet() != false {
-                // UIViewController().callRecentlyPlayedAPI(audioID: (self.currentlyPlaying?.ID ?? ""), complitionBlock: nil)
+                UIViewController().callRecentlyPlayedAPI(audioID: (self.currentlyPlaying?.ID ?? ""), complitionBlock: nil)
             }
         } else if self.latestPlayRequest?.isDisclaimer == true {
             NotificationCenter.default.post(name: .playerItemDidChange, object: nil)
             if currentlyPlaying?.ID != nil && checkInternet() != false {
-                // UIViewController().callRecentlyPlayedAPI(audioID: (self.currentlyPlaying?.ID ?? ""), complitionBlock: nil)
+                UIViewController().callRecentlyPlayedAPI(audioID: (self.currentlyPlaying?.ID ?? ""), complitionBlock: nil)
             }
         }
         

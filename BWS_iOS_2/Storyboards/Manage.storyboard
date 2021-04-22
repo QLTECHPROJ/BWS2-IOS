@@ -81,6 +81,7 @@
                         <outlet property="btnPlay" destination="iMh-nW-BJw" id="tLT-Bc-GfV"/>
                         <outlet property="btnReminder" destination="HKj-hP-CvE" id="GrS-g6-maZ"/>
                         <outlet property="lblPlaylistDirection" destination="LzN-uj-Zor" id="rh9-yS-KLx"/>
+                        <outlet property="lblPlaylistDuration" destination="7EF-JT-8nx" id="ijK-cr-Uiy"/>
                         <outlet property="lblPlaylistName" destination="w5u-m7-2fu" id="bXA-AN-jnX"/>
                         <outlet property="lblSleepTime" destination="gor-gz-EMQ" id="KPp-J2-Q9Q"/>
                         <outlet property="playlistBottomView" destination="qhi-Ku-osb" id="Leh-OV-9TC"/>
@@ -187,19 +188,18 @@
                                             <rect key="frame" x="0.0" y="14" width="343" height="253"/>
                                         </imageView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HKj-hP-CvE">
-                                            <rect key="frame" x="16" y="14" width="80" height="24"/>
+                                            <rect key="frame" x="16" y="14" width="77" height="22"/>
                                             <color key="backgroundColor" white="1" alpha="0.24713720034246575" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="80" id="2RM-NE-rei"/>
-                                                <constraint firstAttribute="height" constant="24" id="DEA-Zr-AV4"/>
+                                                <constraint firstAttribute="height" constant="22" id="DEA-Zr-AV4"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="9"/>
-                                            <state key="normal" title="Set reminder">
+                                            <state key="normal" title="     Set reminder     ">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </state>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                    <real key="value" value="12"/>
+                                                    <real key="value" value="11"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                             <connections>
@@ -220,7 +220,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sleep start in your brain" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="LzN-uj-Zor">
-                                            <rect key="frame" x="27" y="257.33333333333331" width="289" height="11.666666666666686"/>
+                                            <rect key="frame" x="27" y="257.33333333333331" width="242" height="11.666666666666686"/>
                                             <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="10"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
@@ -238,25 +238,33 @@
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </progressView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="07:10:47" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="7EF-JT-8nx">
+                                            <rect key="frame" x="277" y="257.33333333333331" width="39" height="11.666666666666686"/>
+                                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="10"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" name="green_36C2D6"/>
                                     <constraints>
                                         <constraint firstItem="HKj-hP-CvE" firstAttribute="leading" secondItem="r26-ls-N9c" secondAttribute="leading" constant="16" id="1kq-XZ-YE4"/>
                                         <constraint firstAttribute="trailing" secondItem="w5u-m7-2fu" secondAttribute="trailing" constant="27" id="8hf-Tv-GfF"/>
                                         <constraint firstItem="w5u-m7-2fu" firstAttribute="leading" secondItem="r26-ls-N9c" secondAttribute="leading" constant="27" id="BG6-9Y-LUK"/>
+                                        <constraint firstItem="J6j-Bo-ddX" firstAttribute="trailing" secondItem="w5u-m7-2fu" secondAttribute="trailing" id="BTa-kX-OBf"/>
                                         <constraint firstItem="Dex-Eb-aUL" firstAttribute="leading" secondItem="r26-ls-N9c" secondAttribute="leading" id="FI9-A5-a29"/>
+                                        <constraint firstItem="7EF-JT-8nx" firstAttribute="trailing" secondItem="J6j-Bo-ddX" secondAttribute="trailing" id="Q33-Bf-M6y"/>
                                         <constraint firstItem="LzN-uj-Zor" firstAttribute="leading" secondItem="w5u-m7-2fu" secondAttribute="leading" id="SWU-Vl-tQl"/>
                                         <constraint firstAttribute="bottom" secondItem="Dex-Eb-aUL" secondAttribute="bottom" constant="37" id="XWN-TM-ujW"/>
                                         <constraint firstAttribute="height" constant="304" id="YLt-yA-Wgo"/>
-                                        <constraint firstItem="LzN-uj-Zor" firstAttribute="trailing" secondItem="w5u-m7-2fu" secondAttribute="trailing" id="YQO-Re-Iaa"/>
+                                        <constraint firstItem="7EF-JT-8nx" firstAttribute="centerY" secondItem="LzN-uj-Zor" secondAttribute="centerY" id="bCA-Ln-nix"/>
                                         <constraint firstItem="iMh-nW-BJw" firstAttribute="centerY" secondItem="r26-ls-N9c" secondAttribute="centerY" id="coI-cB-tVf"/>
                                         <constraint firstItem="LzN-uj-Zor" firstAttribute="top" secondItem="w5u-m7-2fu" secondAttribute="bottom" constant="2" id="fFj-t8-jaZ"/>
                                         <constraint firstItem="Dex-Eb-aUL" firstAttribute="top" secondItem="r26-ls-N9c" secondAttribute="top" constant="14" id="fYr-em-62x"/>
                                         <constraint firstAttribute="trailing" secondItem="Dex-Eb-aUL" secondAttribute="trailing" id="gFg-lI-g7f"/>
                                         <constraint firstItem="J6j-Bo-ddX" firstAttribute="top" secondItem="LzN-uj-Zor" secondAttribute="bottom" constant="10" id="jqB-ML-kaP"/>
                                         <constraint firstItem="HKj-hP-CvE" firstAttribute="top" secondItem="r26-ls-N9c" secondAttribute="top" constant="14" id="mnG-2j-hST"/>
-                                        <constraint firstItem="J6j-Bo-ddX" firstAttribute="trailing" secondItem="LzN-uj-Zor" secondAttribute="trailing" id="qgu-d2-sWi"/>
                                         <constraint firstItem="J6j-Bo-ddX" firstAttribute="leading" secondItem="LzN-uj-Zor" secondAttribute="leading" id="tCB-as-pjw"/>
+                                        <constraint firstItem="7EF-JT-8nx" firstAttribute="leading" secondItem="LzN-uj-Zor" secondAttribute="trailing" constant="8" id="tOu-rt-Brm"/>
                                         <constraint firstAttribute="bottom" secondItem="J6j-Bo-ddX" secondAttribute="bottom" constant="21" id="xub-Ut-ixd"/>
                                         <constraint firstItem="iMh-nW-BJw" firstAttribute="centerX" secondItem="r26-ls-N9c" secondAttribute="centerX" id="yF1-HU-mom"/>
                                     </constraints>
@@ -320,7 +328,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Playlist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zGQ-uX-iBX">
-                                                <rect key="frame" x="163.66666666666666" y="13.333333333333337" width="47.666666666666657" height="17.666666666666671"/>
+                                                <rect key="frame" x="159" y="13.333333333333337" width="57.333333333333343" height="17.666666666666671"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="15"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -1215,7 +1223,7 @@ QXJlIHlvdSBzdXJlIHlvdSB3YW50IHRvIGRlbGV0ZQtTZWxmLWRldmVsb3BtZW50IHBsYXlsaXN0Pw
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Popular Playlist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pcg-ya-CMy">
-                                        <rect key="frame" x="135.66666666666666" y="13.333333333333337" width="103.66666666666666" height="17.666666666666671"/>
+                                        <rect key="frame" x="126" y="13.333333333333337" width="123" height="17.666666666666671"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="15"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -1290,7 +1298,7 @@ QXJlIHlvdSBzdXJlIHlvdSB3YW50IHRvIGRlbGV0ZQtTZWxmLWRldmVsb3BtZW50IHBsYXlsaXN0Pw
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Popular Playlist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BSh-Cp-o3b">
-                                        <rect key="frame" x="135.66666666666666" y="13.333333333333337" width="103.66666666666666" height="17.666666666666671"/>
+                                        <rect key="frame" x="126" y="13.333333333333337" width="123" height="17.666666666666671"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="15"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>

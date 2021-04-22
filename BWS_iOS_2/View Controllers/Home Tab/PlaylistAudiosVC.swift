@@ -17,7 +17,7 @@ class PlaylistAudiosVC: BaseViewController {
     @IBOutlet weak var lblDesc: UILabel!
     
     @IBOutlet weak var btnPlay : UIButton!
-    @IBOutlet weak var btnTimer : UIButton!
+    @IBOutlet weak var btnReminder : UIButton!
     @IBOutlet weak var btnDownload : UIButton!
     @IBOutlet weak var btnOption: UIButton!
     
@@ -240,16 +240,15 @@ class PlaylistAudiosVC: BaseViewController {
             btnPlay.isHidden = true
         }
         
-        //Timer
-        if objPlaylist?.IsReminder == "1" {
-            // btnTimer.setImage(UIImage(named: "OrangeClock"), for: .normal)
+        if details.IsReminder == "1" {
+            btnReminder.setTitle("     Turn off reminder     ", for: .normal)
         } else {
-            // btnTimer.setImage(UIImage(named: "clock"), for: .normal)
+            btnReminder.setTitle("     Set reminder     ", for: .normal)
         }
         
         if isFromDownload {
-            btnTimer.isEnabled = false
-            btnTimer.alpha = 0
+            btnReminder.isEnabled = false
+            btnReminder.alpha = 0
             btnDownload.alpha = 0
             btnOption.setImage(UIImage(named: "delete_playlist"), for: UIControl.State.normal)
         }

@@ -18,8 +18,11 @@ class ManageVC: BaseViewController {
     @IBOutlet weak var btnReminder : UIButton!
     @IBOutlet weak var btnPlay : UIButton!
     @IBOutlet weak var progressView : UIProgressView!
+    
     @IBOutlet weak var lblPlaylistName : UILabel!
     @IBOutlet weak var lblPlaylistDirection : UILabel!
+    @IBOutlet weak var lblPlaylistDuration : UILabel!
+    
     @IBOutlet weak var lblSleepTime : UILabel!
     
     @IBOutlet weak var tableView : UITableView!
@@ -80,12 +83,28 @@ class ManageVC: BaseViewController {
     override func setupData() {
         if let objPlaylist = suggstedPlaylist {
             playlistMainView.isHidden = false
+            
+            lblPlaylistName.text = objPlaylist.PlaylistName
+            
+            let totalhour = objPlaylist.Totalhour.trim.count > 0 ? objPlaylist.Totalhour : "0"
+            let totalminute = objPlaylist.Totalminute.trim.count > 0 ? objPlaylist.Totalminute : "0"
+            lblPlaylistDuration.text = "\(totalhour):\(totalminute)"
+            
             if let avgSleepTime = CoUserDataModel.currentUser?.AvgSleepTime, avgSleepTime.trim.count > 0 {
                 lblSleepTime.text = "Your average sleep time is \(avgSleepTime) hours"
             }
-            lblPlaylistName.text = objPlaylist.PlaylistName
+            
+            if objPlaylist.IsReminder == "1" {
+                btnReminder.setTitle("     Turn off reminder     ", for: .normal)
+            } else {
+                btnReminder.setTitle("     Set reminder     ", for: .normal)
+            }
+            
             tableHeaderView.frame = CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: 447)
             tableView.tableHeaderView = tableHeaderView
+            
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(playlistTapped(_:)))
+            playlistMainView.addGestureRecognizer(tapGesture)
         } else {
             playlistMainView.isHidden = true
             tableHeaderView.frame = CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: 44)
@@ -117,6 +136,15 @@ class ManageVC: BaseViewController {
                 }
             }
             self.tableView.reloadData()
+        }
+    }
+    
+    @objc func playlistTapped(_ sender: UITapGestureRecognizer) {
+        if let objPlaylist = suggstedPlaylist {
+            let aVC = AppStoryBoard.home.viewController(viewControllerClass: PlaylistAudiosVC.self)
+            aVC.objPlaylist = objPlaylist
+            aVC.sectionName = "Suggested Playlist"
+            self.navigationController?.pushViewController(aVC, animated: true)
         }
     }
     

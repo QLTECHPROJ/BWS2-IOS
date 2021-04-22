@@ -34,6 +34,7 @@ enum APIRouter: URLRequestConvertible {
     
     // Audio - APIs
     case audiodetail([String:String])
+    case recentlyplayed([String:String])
     
     // Playlist - APIs
     case playlistdetails([String:String])
@@ -89,6 +90,8 @@ enum APIRouter: URLRequestConvertible {
             
         case .audiodetail(let data):
             return APIRoute(path: "audiodetail", method: .post, data: data)
+        case .recentlyplayed(let data):
+            return APIRoute(path: "recentlyplayed", method: .post, data: data)
         
         case .playlistdetails(let data):
             return APIRoute(path: "playlistdetails", method: .post, data: data)

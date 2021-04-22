@@ -25,22 +25,6 @@ extension SplashVC {
         }
     }
     
-    // Call Get Co User Details API
-    func CallGetCoUserDetailsAPI() {
-        let parameters = ["UserID":CoUserDataModel.currentUser?.UserID ?? "",
-                          "CoUserId":CoUserDataModel.currentUser?.CoUserId ?? ""]
-        
-        APICallManager.sharedInstance.callAPI(router: APIRouter.getcouserdetails(parameters), displayHud: false) { (response : CoUserModel) in
-            if response.ResponseCode == "200" {
-                CoUserDataModel.currentUser = response.ResponseData
-                self.handleCoUserRedirection()
-            } else {
-                CoUserDataModel.currentUser = nil
-                self.handleRedirection()
-            }
-        }
-    }
-    
 }
 
 extension CountryListVC {
@@ -285,7 +269,43 @@ extension AssessmentVC {
     
 }
 
-extension BaseViewController {
+extension UIViewController {
+    
+    // Call Get Co User Details API
+    func callGetCoUserDetailsAPI(complitionBlock : ((Bool) -> ())?) {
+        let parameters = ["UserID":CoUserDataModel.currentUser?.UserID ?? "",
+                          "CoUserId":CoUserDataModel.currentUser?.CoUserId ?? ""]
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.getcouserdetails(parameters), displayHud: false) { (response : CoUserModel) in
+            if response.ResponseCode == "200" {
+                CoUserDataModel.currentUser = response.ResponseData
+                DispatchQueue.main.async {
+                    complitionBlock?(true)
+                }
+            } else {
+                CoUserDataModel.currentUser = nil
+                DispatchQueue.main.async {
+                    complitionBlock?(false)
+                }
+            }
+        }
+    }
+    
+    // Audio Recently Played API Call
+    func callRecentlyPlayedAPI(audioID : String, complitionBlock : (() -> ())?) {
+        if audioID.trim.count == 0 || DJMusicPlayer.shared.currentlyPlaying?.isDisclaimer == true {
+            return
+        }
+        
+        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+                          "AudioId":audioID]
+        APICallManager.sharedInstance.callAPI(router: APIRouter.recentlyplayed(parameters), displayHud: false) { (response : GeneralModel) in
+            if response.ResponseCode == "200" {
+                refreshAudioData = true
+                complitionBlock?()
+            }
+        }
+    }
     
     // Delete Playlist API Call
     func callDeletePlaylistAPI(objPlaylist : PlaylistDetailsModel, complitionBlock : (() -> ())?) {
