@@ -16,7 +16,8 @@ class RecommendedCategoryHeaderCell: UITableViewCell {
     
     @IBOutlet weak var collectionView : DynamicHeightCollectionView!
     
-    var arrayCategories = [CategoryDataModel]()
+    var arrayCategories = [CategoryListModel]()
+    var arrayCategoryData = [CategoryDataModel]()
     var backClicked : (() -> Void)?
     
     override func awakeFromNib() {
@@ -31,9 +32,15 @@ class RecommendedCategoryHeaderCell: UITableViewCell {
     }
     
     // Configure Cell
-    func configureCell(data : [CategoryDataModel]) {
-        arrayCategories = data
+    func configureCell(data : CategoryModel) {
         
+       
+         arrayCategories = data.ResponseData
+        
+//        for i in arrayCategories {
+//            arrayCategories[] = i.Details.filter{ $0.isSelected == true }
+//        }
+       
         let layout = CollectionViewFlowLayout()
         layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         layout.minimumLineSpacing = 7
@@ -64,12 +71,21 @@ class RecommendedCategoryHeaderCell: UITableViewCell {
 extension RecommendedCategoryHeaderCell : UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+       
+//        for i in arrayCategories {
+//            arrayCategories  = arrayCategories[section].Details.filter{ $0.isSelected == true }
+//           
+//        }
         return arrayCategories.count
+       
+       
+       
+       
     }
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withClass: AreaOfFocusCell.self, for: indexPath)
-        cell.configureCell(data: arrayCategories[indexPath.row], index: indexPath.row)
+        
+        cell.configureCell(data: arrayCategories[indexPath.item], index: indexPath.row)
         return cell
     }
     

@@ -26,7 +26,14 @@ class AreaCell: UITableViewCell {
         collectionView.reloadData()
         collectionView.layoutIfNeeded()
     }
-
+    
+    
+    @IBAction func onTappedEdit(_ sender: UIButton) {
+     
+        let aVC = AppStoryBoard.main.viewController(viewControllerClass:AreaOfFocusVC.self)
+        self.parentViewController?.navigationController?.pushViewController(aVC, animated: true)
+    }
+    
 }
 
 extension AreaCell : UICollectionViewDelegate , UICollectionViewDataSource {
@@ -37,8 +44,8 @@ extension AreaCell : UICollectionViewDelegate , UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withClass: AreaOfFocusCell.self, for: indexPath)
         let data = CategoryDataModel()
-        data.CategoryName = "Lorem"
-        cell.configureCell(data: data, index: indexPath.row)
+        data.ProblemName = "Lorem"
+       // cell.configureCell(data: data, index: indexPath.row)
         return cell
     }
     

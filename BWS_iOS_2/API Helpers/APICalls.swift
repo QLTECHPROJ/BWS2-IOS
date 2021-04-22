@@ -674,3 +674,47 @@ extension AddAudioVC {
     }
     
 }
+
+extension AreaOfFocusVC {
+    
+    //call Category Rec list
+    func callRecCategory() {
+        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? ""]
+        APICallManager.sharedInstance.callAPI(router: APIRouter.getrecommendedcategory(parameters)) { (response :CategoryModel) in
+            
+            if response.ResponseCode == "200" {
+                self.arrayCategories = response.ResponseData
+                self.arrayMain = response
+                self.tableView.reloadData()
+            }
+        }
+    }
+}
+
+extension SleepTimeVC {
+    
+    // Fetch Sleep Time
+    func callSleepTimetAPI() {
+        APICallManager.sharedInstance.callAPI(router: APIRouter.avgsleeptime) { (response : AverageSleepTimeModel) in
+            if response.ResponseCode == "200" {
+                self.arrayTimes = response.ResponseData
+                self.collectionViewSleepTime.reloadData()
+            }
+        }
+    }
+}
+
+extension ManagePlanListVC {
+    
+    //call Category Rec list
+    func callManagePlanList() {
+        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? ""]
+        APICallManager.sharedInstance.callAPI(router: APIRouter.planlist(parameters)) { (response :PlanListModel) in
+            
+            if response.ResponseCode == "200" {
+               
+                self.tableView.reloadData()
+            }
+        }
+    }
+}

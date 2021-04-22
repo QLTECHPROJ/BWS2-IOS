@@ -19,7 +19,7 @@ class CategoryCollectionCell: UICollectionViewCell {
     
     // Configure Cell
     func configureCell(data : CategoryDataModel) {
-        lblCategory.text = data.CategoryName
+        lblCategory.text = data.ProblemName
         
         if data.isSelected {
             self.borderColor = Theme.colors.magenta_C44B6C

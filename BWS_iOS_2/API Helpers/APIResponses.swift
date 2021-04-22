@@ -143,17 +143,43 @@ class PlanListModel : EVObject {
     var ResponseCode = ""
     var ResponseMessage = ""
     var ResponseStatus = ""
-    var ResponseData = [PlanDataModel]()
+    var ResponseData : PlanDataModel?
 }
 
 class PlanDataModel : EVObject {
-    var PlanName = ""
-    var PlanDescription = ""
-    var PlanPrice = ""
-    var PlanPeriod = ""
-    var Popular = ""
-    var isSelected = false
+    
+    var Plan = [planListDataModel]()
+    var AudioFiles = [AudioDataModel]()
+    var IntroductorySession = [IntroductorySesDataModel]()
+    var TestminialVideo = [TestminialVideoDatamodel]()
+    var FAQs = [FAQListDataModel]()
+    
 }
+
+class planListDataModel:EVObject {
+    
+}
+
+class IntroductorySesDataModel:EVObject {
+    
+}
+
+class TestminialVideoDatamodel : EVObject {
+    var UserName = ""
+    var VideoLink = ""
+    var VideoDesc = ""
+}
+
+class FAQListDataModel : EVObject {
+    
+   var ID = ""
+   var Title = ""
+   var Desc = ""
+   var VideoURL = ""
+   var Category = ""
+    
+}
+
 
 // MARK:- General API Models
 class AudioListModel : EVObject {
@@ -166,7 +192,7 @@ class AudioListModel : EVObject {
 class AudioDataModel : EVObject {
     var ID = ""
     var Name = ""
-    var Image = ""
+    var ImageFile = ""
 }
 
 
@@ -206,17 +232,36 @@ class CategoryModel : EVObject {
     var ResponseMessage = ""
     var ResponseStatus = ""
     var ResponseData = [CategoryListModel]()
+    
+        class var category : CategoryModel? {
+            get {
+                if let userData = UserDefaults.standard.data(forKey: "Category") {
+                    return CategoryModel(data: userData)
+                }
+                return nil
+            }
+            set {
+                if let newData = newValue {
+                    UserDefaults.standard.set(newData.toJsonData(), forKey:"Category")
+                }
+                else {
+                    UserDefaults.standard.setValue(nil, forKeyPath: "Category")
+                }
+                UserDefaults.standard.synchronize()
+            }
+        }
 }
 
 class CategoryListModel : EVObject {
     var ID = ""
-    var CategoryName = ""
-    var SubCategories = [CategoryDataModel]()
+    var View = ""
+    var Details = [CategoryDataModel]()
+   
 }
 
 class CategoryDataModel : EVObject {
     var ID = ""
-    var CategoryName = ""
+    var ProblemName = ""
     var isSelected = false
 }
 
@@ -502,3 +547,17 @@ class AssessmentQueModel: EVObject {
     var answers = [Int]()
     var selectedAnswer = -1
 }
+
+//Sleep time
+class AverageSleepTimeModel: EVObject {
+    var ResponseData = [AverageSleepTimeDataModel]()
+    var ResponseCode = ""
+    var ResponseMessage = ""
+    var ResponseStatus = ""
+}
+
+class AverageSleepTimeDataModel: EVObject {
+    var Name = ""
+    var isSelected = false
+}
+

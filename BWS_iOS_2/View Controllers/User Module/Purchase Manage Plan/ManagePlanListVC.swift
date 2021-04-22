@@ -261,7 +261,9 @@ class ManagePlanListVC: BaseViewController {
     }
     
     @IBAction func startClicked(sender : UIButton) {
-        let aVC = AppStoryBoard.main.viewController(viewControllerClass: OrderSummaryVC.self)
+//        let aVC = AppStoryBoard.main.viewController(viewControllerClass: OrderSummaryVC.self)
+//        self.navigationController?.pushViewController(aVC, animated: true)
+        let aVC = AppStoryBoard.main.viewController(viewControllerClass:SleepTimeVC.self)
         self.navigationController?.pushViewController(aVC, animated: true)
     }
     

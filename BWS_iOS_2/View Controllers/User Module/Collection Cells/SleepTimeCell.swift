@@ -18,12 +18,12 @@ class SleepTimeCell: UICollectionViewCell {
     }
     
     // Configure Cell
-    func configureCell(data : SleepTimeDataModel) {
+    func configureCell(data : AverageSleepTimeDataModel) {
         self.borderWidth = 1
         self.cornerRadius = 8
         self.clipsToBounds = true
         
-        lblSleepTime.text = data.SleepTime
+        lblSleepTime.text = data.Name
         
         if data.isSelected {
             self.borderColor = Theme.colors.orangeColor

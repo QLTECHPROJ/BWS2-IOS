@@ -27,10 +27,13 @@ enum APIRouter: URLRequestConvertible {
     case profilesaveans([String:String])
     case assesmentquestionlist
     case assesmentsaveans([String:String])
+    case getrecommendedcategory([String:String])
+    case avgsleeptime
     
     // Manage Plan - APIs
     case managehomescreen([String:String])
     case managehomeviewallaudio([String:String])
+    case planlist([String:String])
     
     // Audio - APIs
     case audiodetail([String:String])
@@ -119,6 +122,12 @@ enum APIRouter: URLRequestConvertible {
             return APIRoute(path: "suggestedplaylist", method: .post, data: data)
         case .searchonsuggestedlist(let data):
             return APIRoute(path: "searchonsuggestedlist", method: .post, data: data)
+        case .getrecommendedcategory(let data):
+            return APIRoute(path: "getrecommendedcategory", method: .post, data: data)
+        case .avgsleeptime:
+            return APIRoute(path: "avgsleeptime", method: .get)
+        case .planlist(let data):
+            return APIRoute(path: "planlist", method: .post, data: data)
         }
     }
     

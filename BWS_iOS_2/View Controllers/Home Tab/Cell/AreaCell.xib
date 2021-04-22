@@ -36,6 +36,9 @@
                             <constraint firstAttribute="height" constant="30" id="RCS-FQ-RkA"/>
                         </constraints>
                         <state key="normal" image="edit"/>
+                        <connections>
+                            <action selector="onTappedEdit:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="572-8n-5Eg"/>
+                        </connections>
                     </button>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="UFW-4S-7kt" customClass="DynamicHeightCollectionView" customModule="BWS_2_Staging" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="34" width="320" height="56"/>

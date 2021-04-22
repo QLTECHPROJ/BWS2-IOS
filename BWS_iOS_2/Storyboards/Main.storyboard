@@ -5022,18 +5022,35 @@ agree to our T&amp;Cs, Privacy Policy &amp; Disclaimer</string>
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="never" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ur-dq-fHN">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="472"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <connections>
                                             <outlet property="dataSource" destination="CpQ-64-WUK" id="mP7-r8-eGT"/>
                                             <outlet property="delegate" destination="CpQ-64-WUK" id="flO-dA-sdA"/>
                                         </connections>
                                     </tableView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UcH-Zu-gvd">
+                                        <rect key="frame" x="40" y="488" width="240" height="50"/>
+                                        <color key="backgroundColor" red="0.0" green="0.53333333333333333" blue="0.5725490196078431" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="kbu-Kw-gEw"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="15"/>
+                                        <state key="normal" title="CONTINUE">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="OnTappedContinue:" destination="CpQ-64-WUK" eventType="touchUpInside" id="m6D-NJ-r63"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="0Ur-dq-fHN" secondAttribute="trailing" id="AG5-wa-Kji"/>
-                                    <constraint firstAttribute="bottom" secondItem="0Ur-dq-fHN" secondAttribute="bottom" id="lfw-w2-J1u"/>
+                                    <constraint firstItem="UcH-Zu-gvd" firstAttribute="leading" secondItem="6L7-Y9-sem" secondAttribute="leading" constant="40" id="IyV-QY-Xhq"/>
+                                    <constraint firstAttribute="bottom" secondItem="UcH-Zu-gvd" secondAttribute="bottom" constant="30" id="SJD-P0-dMt"/>
+                                    <constraint firstItem="UcH-Zu-gvd" firstAttribute="top" secondItem="0Ur-dq-fHN" secondAttribute="bottom" constant="16" id="f5J-rw-j93"/>
+                                    <constraint firstAttribute="trailing" secondItem="UcH-Zu-gvd" secondAttribute="trailing" constant="40" id="lhM-EJ-ff2"/>
                                     <constraint firstItem="0Ur-dq-fHN" firstAttribute="leading" secondItem="6L7-Y9-sem" secondAttribute="leading" id="sCK-Yh-pzf"/>
                                     <constraint firstItem="0Ur-dq-fHN" firstAttribute="top" secondItem="6L7-Y9-sem" secondAttribute="top" id="tTc-hq-WSN"/>
                                 </constraints>
@@ -5054,7 +5071,7 @@ agree to our T&amp;Cs, Privacy Policy &amp; Disclaimer</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qe4-BR-VdY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3029.5999999999999" y="2324.6305418719212"/>
+            <point key="canvasLocation" x="3030" y="2325"/>
         </scene>
         <!--Preparing PlaylistVC-->
         <scene sceneID="WCx-G7-YCg">
@@ -5433,7 +5450,7 @@ personalised playlist</string>
             <color red="0.16470588235294117" green="0.18823529411764706" blue="0.25882352941176473" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="black_40_opacity">
-            <color red="0.0" green="0.0" blue="0.0" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.0" blue="0.0" alpha="0.40000000596046448" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="greenColor">
             <color red="0.0" green="0.53333333333333333" blue="0.5725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
