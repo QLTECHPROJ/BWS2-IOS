@@ -12,18 +12,24 @@ class ManageVC: BaseViewController {
     
     // MARK:- OUTLETS
     @IBOutlet weak var tableHeaderView : UIView!
+    @IBOutlet weak var playlistMainView : UIView!
     @IBOutlet weak var playlistTopView : UIView!
     @IBOutlet weak var playlistBottomView : UIView!
     @IBOutlet weak var btnReminder : UIButton!
     @IBOutlet weak var btnPlay : UIButton!
     @IBOutlet weak var progressView : UIProgressView!
+    
     @IBOutlet weak var lblPlaylistName : UILabel!
     @IBOutlet weak var lblPlaylistDirection : UILabel!
+    @IBOutlet weak var lblPlaylistDuration : UILabel!
+    
+    @IBOutlet weak var lblSleepTime : UILabel!
     
     @IBOutlet weak var tableView : UITableView!
     
     
     // MARK:- VARIABLES
+    var suggstedPlaylist : PlaylistDetailsModel?
     var arrayPlaylistHomeData = [PlaylistHomeDataModel]()
     var arrayAudioHomeData = [AudioHomeDataModel]()
     var shouldTrackScreen = false
@@ -38,17 +44,7 @@ class ManageVC: BaseViewController {
         refreshAudioData = true
         setupUI()
         
-        // Clear All Downloads
-        AccountVC.clearDownloadData()
-        
-        // Cancel All Downloads on launch
-        SDDownloadManager.shared.cancelAllDownloads()
-        
-        // Fetch next audio to download on launch
-        DJDownloadManager.shared.fetchNextDownload()
-        
         NotificationCenter.default.addObserver(self, selector: #selector(refreshDownloadData), name: .refreshDownloadData, object: nil)
-        UIApplication.shared.beginReceivingRemoteControlEvents()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -72,7 +68,7 @@ class ManageVC: BaseViewController {
     
     // MARK:- FUNCTIONS
     override func setupUI() {
-        tableView.tableHeaderView = tableHeaderView
+        tableView.tableHeaderView = UIView()
         tableView.register(nibWithCellClass: ManageAudioCell.self)
         tableView.register(nibWithCellClass: ManagePlaylistCell.self)
         tableView.rowHeight = UITableView.automaticDimension
@@ -82,6 +78,40 @@ class ManageVC: BaseViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.tableView.reloadData()
         }
+    }
+    
+    override func setupData() {
+        if let objPlaylist = suggstedPlaylist {
+            playlistMainView.isHidden = false
+            
+            lblPlaylistName.text = objPlaylist.PlaylistName
+            
+            let totalhour = objPlaylist.Totalhour.trim.count > 0 ? objPlaylist.Totalhour : "0"
+            let totalminute = objPlaylist.Totalminute.trim.count > 0 ? objPlaylist.Totalminute : "0"
+            lblPlaylistDuration.text = "\(totalhour):\(totalminute)"
+            
+            if let avgSleepTime = CoUserDataModel.currentUser?.AvgSleepTime, avgSleepTime.trim.count > 0 {
+                lblSleepTime.text = "Your average sleep time is \(avgSleepTime) hours"
+            }
+            
+            if objPlaylist.IsReminder == "1" {
+                btnReminder.setTitle("     Turn off reminder     ", for: .normal)
+            } else {
+                btnReminder.setTitle("     Set reminder     ", for: .normal)
+            }
+            
+            tableHeaderView.frame = CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: 447)
+            tableView.tableHeaderView = tableHeaderView
+            
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(playlistTapped(_:)))
+            playlistMainView.addGestureRecognizer(tapGesture)
+        } else {
+            playlistMainView.isHidden = true
+            tableHeaderView.frame = CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: 44)
+            tableView.tableHeaderView = tableHeaderView
+        }
+        
+        tableView.reloadData()
     }
     
     // Pull To Refresh Screen Data
@@ -109,11 +139,20 @@ class ManageVC: BaseViewController {
         }
     }
     
+    @objc func playlistTapped(_ sender: UITapGestureRecognizer) {
+        if let objPlaylist = suggstedPlaylist {
+            let aVC = AppStoryBoard.home.viewController(viewControllerClass: PlaylistAudiosVC.self)
+            aVC.objPlaylist = objPlaylist
+            aVC.sectionName = "Suggested Playlist"
+            self.navigationController?.pushViewController(aVC, animated: true)
+        }
+    }
+    
     // Add Audio Download Data is Internet is not available
     func addAudioDownloadsData() {
         self.arrayAudioHomeData = [AudioHomeDataModel]()
         let downloadDataModel = AudioHomeDataModel()
-        downloadDataModel.HomeAudioID = "1"
+        downloadDataModel.HomeAudioID = "6"
         downloadDataModel.View = "My Downloads"
         downloadDataModel.UserID = (CoUserDataModel.currentUser?.UserID ?? "")
         downloadDataModel.CoUserId = (CoUserDataModel.currentUser?.CoUserId ?? "")
@@ -169,11 +208,9 @@ class ManageVC: BaseViewController {
                 if lockDownloads == "1" || lockDownloads == "2" {
                     let arrayPlayableAudios = sectionData.Details.filter { $0.IsPlay == "1" }
                     let newAudioIndex = arrayPlayableAudios.firstIndex(of: audioData) ?? 0
-                    
-                    // self.presentMiniPlayer(arrayPlayerData: arrayPlayableAudios, index: newAudioIndex, openMainPlayer: true)
-                }
-                else {
-                    // self.presentMiniPlayer(arrayPlayerData: sectionData.Details, index: audioIndex, openMainPlayer: true)
+                    self.presentAudioPlayer(arrayPlayerData: arrayPlayableAudios, index: newAudioIndex)
+                } else {
+                    self.presentAudioPlayer(arrayPlayerData: sectionData.Details, index: audioIndex)
                 }
                 
                 DJMusicPlayer.shared.playerType = playerType
@@ -267,6 +304,17 @@ class ManageVC: BaseViewController {
         self.navigationController?.pushViewController(aVC, animated: true)
     }
     
+    func createPlaylist(sectionIndex : Int) {
+        if arrayPlaylistHomeData[sectionIndex].IsLock == "1" {
+            // Membership Module Remove
+            openInactivePopup(controller: self)
+        } else if arrayPlaylistHomeData[sectionIndex].IsLock == "2" {
+            showAlertToast(message: "Please re-activate your membership plan")
+        } else {
+            let aVC = AppStoryBoard.manage.viewController(viewControllerClass: CreatePlaylistVC.self)
+            self.navigationController?.pushViewController(aVC, animated: true)
+        }
+    }
     
     // MARK:- ACTIONS
     @IBAction func searchClicked(sender : UIButton) {
@@ -304,9 +352,16 @@ extension ManageVC : UITableViewDataSource, UITableViewDelegate {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withClass: ManagePlaylistCell.self)
             cell.hideOptionButton = true
+            cell.showCreatePlaylist = true
             cell.btnViewAll.tag = indexPath.row
             cell.btnViewAll.addTarget(self, action: #selector(viewAllPlaylistClicked(sender:)), for: UIControl.Event.touchUpInside)
             cell.configureCell(data: arrayPlaylistHomeData[indexPath.row])
+            
+            cell.lblTitle.text = "Playlist"
+            
+            cell.didClickCreatePlaylist = {
+                self.createPlaylist(sectionIndex: indexPath.row)
+            }
             
             cell.didSelectPlaylistAtIndex = { playlistIndex in
                 self.openPlaylist(playlistIndex: playlistIndex, sectionIndex: indexPath.row)

@@ -38,7 +38,7 @@ class ManagePlanListVC: BaseViewController {
     
     
     // MARK:- VARIABLES
-    var arrayPlans = [PlanDataModel]()
+    var arrayPlans = [PlanListDataModel]()
     var selectedPlanIndex = 0
     var arrayQuestions = [FAQDataModel]()
     
@@ -199,7 +199,7 @@ class ManagePlanListVC: BaseViewController {
     }
     
     func fetchPlans() {
-        let weeklyPlan = PlanDataModel()
+        let weeklyPlan = PlanListDataModel()
         weeklyPlan.isSelected = true
         weeklyPlan.PlanName = "Weekly"
         weeklyPlan.PlanDescription = "Lorem ipsum dolor sit"
@@ -207,7 +207,7 @@ class ManagePlanListVC: BaseViewController {
         weeklyPlan.PlanPeriod = "Week"
         arrayPlans.append(weeklyPlan)
         
-        let monthlyPlan = PlanDataModel()
+        let monthlyPlan = PlanListDataModel()
         monthlyPlan.isSelected = false
         monthlyPlan.PlanName = "Monthly"
         monthlyPlan.PlanDescription = "Lorem ipsum dolor sit"
@@ -215,7 +215,7 @@ class ManagePlanListVC: BaseViewController {
         monthlyPlan.PlanPeriod = "Month"
         arrayPlans.append(monthlyPlan)
         
-        let sixMonthlyPlan = PlanDataModel()
+        let sixMonthlyPlan = PlanListDataModel()
         sixMonthlyPlan.isSelected = false
         sixMonthlyPlan.PlanName = "Six-Monthly"
         sixMonthlyPlan.PlanDescription = "Lorem ipsum dolor sit"
@@ -224,7 +224,7 @@ class ManagePlanListVC: BaseViewController {
         sixMonthlyPlan.Popular = "1"
         arrayPlans.append(sixMonthlyPlan)
         
-        let yearlyPlan = PlanDataModel()
+        let yearlyPlan = PlanListDataModel()
         yearlyPlan.isSelected = false
         yearlyPlan.PlanName = "Annual"
         yearlyPlan.PlanDescription = "Lorem ipsum dolor sit"

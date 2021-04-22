@@ -225,7 +225,6 @@ class DJDownloadManager {
     }
     
     func showDownloadSuccessMessage(fileUrl : String) {
-        // let downloadedAudios = CoreDataHelper.shared.fetchAudios(filePath: fileUrl)
         var downloadedAudios = CoreDataHelper.shared.fetchAllAudios()
         downloadedAudios = downloadedAudios.filter { $0.AudioFile == fileUrl }
         let singleAudios = downloadedAudios.filter { $0.isSingleAudio == "1" }

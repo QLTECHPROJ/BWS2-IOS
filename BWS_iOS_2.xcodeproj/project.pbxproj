@@ -43,8 +43,6 @@
 		281DE3382626FD79002CCD9D /* DJMusicPlayerReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281DE3182626FD79002CCD9D /* DJMusicPlayerReachability.swift */; };
 		281DE3392626FD79002CCD9D /* ConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281DE3192626FD79002CCD9D /* ConnectionManager.swift */; };
 		281DE33A2626FD79002CCD9D /* ConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281DE3192626FD79002CCD9D /* ConnectionManager.swift */; };
-		281DE33B2626FD79002CCD9D /* PlayerCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281DE31A2626FD79002CCD9D /* PlayerCommon.swift */; };
-		281DE33C2626FD79002CCD9D /* PlayerCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281DE31A2626FD79002CCD9D /* PlayerCommon.swift */; };
 		281DE33D2626FD79002CCD9D /* DJMusicPlayer+CommonFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281DE31B2626FD79002CCD9D /* DJMusicPlayer+CommonFunctions.swift */; };
 		281DE33E2626FD79002CCD9D /* DJMusicPlayer+CommonFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281DE31B2626FD79002CCD9D /* DJMusicPlayer+CommonFunctions.swift */; };
 		281DE33F2626FD79002CCD9D /* DisclaimerAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281DE31C2626FD79002CCD9D /* DisclaimerAudio.swift */; };
@@ -132,6 +130,8 @@
 		283F72F4261D999200554774 /* SubColCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283F72F1261D999100554774 /* SubColCell.swift */; };
 		283F72F5261D999200554774 /* SubColCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 283F72F2261D999200554774 /* SubColCell.xib */; };
 		283F72F6261D999200554774 /* SubColCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 283F72F2261D999200554774 /* SubColCell.xib */; };
+		284C9B6A262E93D1008C4435 /* CryptLib.m in Sources */ = {isa = PBXBuildFile; fileRef = 284C9B68262E93D1008C4435 /* CryptLib.m */; };
+		284C9B6B262E93D1008C4435 /* CryptLib.m in Sources */ = {isa = PBXBuildFile; fileRef = 284C9B68262E93D1008C4435 /* CryptLib.m */; };
 		2870B35825FB3A570014A4F6 /* BWS_iOS_2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 28F812AB25FB336F00DC6AF6 /* BWS_iOS_2.xcdatamodeld */; };
 		2870B35925FB3A570014A4F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F812A225FB336F00DC6AF6 /* AppDelegate.swift */; };
 		2870B35D25FB3A570014A4F6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28F812BD25FB367A00DC6AF6 /* Main.storyboard */; };
@@ -266,6 +266,10 @@
 		28786CB1262967F7000E8598 /* ViewAllCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28786CAE262967F7000E8598 /* ViewAllCell.swift */; };
 		28786CB2262967F7000E8598 /* ViewAllCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28786CAF262967F7000E8598 /* ViewAllCell.xib */; };
 		28786CB3262967F7000E8598 /* ViewAllCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28786CAF262967F7000E8598 /* ViewAllCell.xib */; };
+		287E807B262D3F760006A925 /* AddAudioViewAllVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287E807A262D3F760006A925 /* AddAudioViewAllVC.swift */; };
+		287E807C262D3F760006A925 /* AddAudioViewAllVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287E807A262D3F760006A925 /* AddAudioViewAllVC.swift */; };
+		287E807E262D510C0006A925 /* AudioPlayerSetUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287E807D262D510C0006A925 /* AudioPlayerSetUp.swift */; };
+		287E807F262D510C0006A925 /* AudioPlayerSetUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287E807D262D510C0006A925 /* AudioPlayerSetUp.swift */; };
 		2880EEE0260A0DE100D0B6A7 /* ManagePlanListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2880EEDF260A0DE100D0B6A7 /* ManagePlanListVC.swift */; };
 		2880EEE1260A0DE500D0B6A7 /* ManagePlanListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2880EEDF260A0DE100D0B6A7 /* ManagePlanListVC.swift */; };
 		2880EEE4260A32C300D0B6A7 /* PlanListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2880EEE2260A32C300D0B6A7 /* PlanListCell.swift */; };
@@ -273,6 +277,12 @@
 		2880EEE6260A32C700D0B6A7 /* PlanListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2880EEE2260A32C300D0B6A7 /* PlanListCell.swift */; };
 		288621482615BF880087730D /* ViewAllPlaylistVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288621472615BF880087730D /* ViewAllPlaylistVC.swift */; };
 		288621492615BF880087730D /* ViewAllPlaylistVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288621472615BF880087730D /* ViewAllPlaylistVC.swift */; };
+		28B27820262EED41005794E3 /* DownloadVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B2781F262EED41005794E3 /* DownloadVC.swift */; };
+		28B27821262EED41005794E3 /* DownloadVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B2781F262EED41005794E3 /* DownloadVC.swift */; };
+		28B27823262EEECC005794E3 /* DownloadAudioVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B27822262EEECC005794E3 /* DownloadAudioVC.swift */; };
+		28B27825262EEEE1005794E3 /* DownloadPlaylistVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B27824262EEEE1005794E3 /* DownloadPlaylistVC.swift */; };
+		28B27826262EEEE1005794E3 /* DownloadPlaylistVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B27824262EEEE1005794E3 /* DownloadPlaylistVC.swift */; };
+		28B27827262EEF5F005794E3 /* DownloadAudioVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B27822262EEECC005794E3 /* DownloadAudioVC.swift */; };
 		28B53530260C635000BD8147 /* SleepTimeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B5352F260C635000BD8147 /* SleepTimeVC.swift */; };
 		28B53531260C635000BD8147 /* SleepTimeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B5352F260C635000BD8147 /* SleepTimeVC.swift */; };
 		28B53535260C690600BD8147 /* SleepTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B53533260C690600BD8147 /* SleepTimeCell.swift */; };
@@ -442,7 +452,6 @@
 		281DE3172626FD79002CCD9D /* DJMusicPlayer+Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DJMusicPlayer+Common.swift"; sourceTree = "<group>"; };
 		281DE3182626FD79002CCD9D /* DJMusicPlayerReachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DJMusicPlayerReachability.swift; sourceTree = "<group>"; };
 		281DE3192626FD79002CCD9D /* ConnectionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionManager.swift; sourceTree = "<group>"; };
-		281DE31A2626FD79002CCD9D /* PlayerCommon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerCommon.swift; sourceTree = "<group>"; };
 		281DE31B2626FD79002CCD9D /* DJMusicPlayer+CommonFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DJMusicPlayer+CommonFunctions.swift"; sourceTree = "<group>"; };
 		281DE31C2626FD79002CCD9D /* DisclaimerAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisclaimerAudio.swift; sourceTree = "<group>"; };
 		281DE31D2626FD79002CCD9D /* DJMusicPlayer+ControlCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DJMusicPlayer+ControlCenter.swift"; sourceTree = "<group>"; };
@@ -488,6 +497,8 @@
 		283F72EE261D994900554774 /* AssessmentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssessmentVC.swift; sourceTree = "<group>"; };
 		283F72F1261D999100554774 /* SubColCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubColCell.swift; sourceTree = "<group>"; };
 		283F72F2261D999200554774 /* SubColCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubColCell.xib; sourceTree = "<group>"; };
+		284C9B68262E93D1008C4435 /* CryptLib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CryptLib.m; sourceTree = "<group>"; };
+		284C9B69262E93D1008C4435 /* CryptLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CryptLib.h; sourceTree = "<group>"; };
 		2870B36325FB3A570014A4F6 /* BWS 2 Staging.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BWS 2 Staging.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2870B36525FB3AE90014A4F6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2870B36825FB3B2B0014A4F6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -557,10 +568,15 @@
 		2870B45425FB44700014A4F6 /* WWCalendarTimeSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WWCalendarTimeSelector.swift; sourceTree = "<group>"; };
 		28786CAE262967F7000E8598 /* ViewAllCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewAllCell.swift; sourceTree = "<group>"; };
 		28786CAF262967F7000E8598 /* ViewAllCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewAllCell.xib; sourceTree = "<group>"; };
+		287E807A262D3F760006A925 /* AddAudioViewAllVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAudioViewAllVC.swift; sourceTree = "<group>"; };
+		287E807D262D510C0006A925 /* AudioPlayerSetUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerSetUp.swift; sourceTree = "<group>"; };
 		2880EEDF260A0DE100D0B6A7 /* ManagePlanListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagePlanListVC.swift; sourceTree = "<group>"; };
 		2880EEE2260A32C300D0B6A7 /* PlanListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanListCell.swift; sourceTree = "<group>"; };
 		2880EEE3260A32C300D0B6A7 /* PlanListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlanListCell.xib; sourceTree = "<group>"; };
 		288621472615BF880087730D /* ViewAllPlaylistVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewAllPlaylistVC.swift; sourceTree = "<group>"; };
+		28B2781F262EED41005794E3 /* DownloadVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadVC.swift; sourceTree = "<group>"; };
+		28B27822262EEECC005794E3 /* DownloadAudioVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadAudioVC.swift; sourceTree = "<group>"; };
+		28B27824262EEEE1005794E3 /* DownloadPlaylistVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadPlaylistVC.swift; sourceTree = "<group>"; };
 		28B5352F260C635000BD8147 /* SleepTimeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepTimeVC.swift; sourceTree = "<group>"; };
 		28B53533260C690600BD8147 /* SleepTimeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepTimeCell.swift; sourceTree = "<group>"; };
 		28B53534260C690600BD8147 /* SleepTimeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SleepTimeCell.xib; sourceTree = "<group>"; };
@@ -709,7 +725,6 @@
 		281DE3152626FD79002CCD9D /* DJMusicPlayer */ = {
 			isa = PBXGroup;
 			children = (
-				281DE31A2626FD79002CCD9D /* PlayerCommon.swift */,
 				281DE3162626FD79002CCD9D /* DJMusicPlayer.swift */,
 				281DE31D2626FD79002CCD9D /* DJMusicPlayer+ControlCenter.swift */,
 				281DE31E2626FD79002CCD9D /* DJMusicPlayer+Functionalities.swift */,
@@ -761,6 +776,15 @@
 				280C48F12600652C00063C03 /* DassAssessmentResultVC.swift */,
 			);
 			path = "Dass Assessment";
+			sourceTree = "<group>";
+		};
+		284C9B67262E93D1008C4435 /* CryptLib */ = {
+			isa = PBXGroup;
+			children = (
+				284C9B69262E93D1008C4435 /* CryptLib.h */,
+				284C9B68262E93D1008C4435 /* CryptLib.m */,
+			);
+			path = CryptLib;
 			sourceTree = "<group>";
 		};
 		2870B35425FB3A410014A4F6 /* Staging */ = {
@@ -821,6 +845,7 @@
 				2870B3AC25FB41A10014A4F6 /* UIViewExtension.swift */,
 				2870B3AE25FB41A10014A4F6 /* MediaType.swift */,
 				2870B3B025FB41A10014A4F6 /* MimeType.swift */,
+				284C9B67262E93D1008C4435 /* CryptLib */,
 				28D755652618998F00EA63FE /* iCarousel */,
 				2870B44B25FB44700014A4F6 /* ClockClass */,
 				2870B38325FB41A10014A4F6 /* DJDesinable */,
@@ -1026,10 +1051,12 @@
 			children = (
 				28E01211261847EA00B55967 /* Cell */,
 				28E8093426130A7A00CD80F7 /* HomeVC.swift */,
+				287E807D262D510C0006A925 /* AudioPlayerSetUp.swift */,
 				28E011FF2618470100B55967 /* UserListPopUpVC.swift */,
 				28E012022618471500B55967 /* NotificatonVC.swift */,
 				28E012052618474000B55967 /* PlaylistAudiosVC.swift */,
 				28E012082618475E00B55967 /* AddAudioVC.swift */,
+				287E807A262D3F760006A925 /* AddAudioViewAllVC.swift */,
 				28E0120B2618476E00B55967 /* PlayerVC.swift */,
 				28E0120E2618479600B55967 /* AddToPlaylistVC.swift */,
 			);
@@ -1056,6 +1083,9 @@
 			isa = PBXGroup;
 			children = (
 				28E8094026130ACE00CD80F7 /* AccountVC.swift */,
+				28B2781F262EED41005794E3 /* DownloadVC.swift */,
+				28B27822262EEECC005794E3 /* DownloadAudioVC.swift */,
+				28B27824262EEEE1005794E3 /* DownloadPlaylistVC.swift */,
 			);
 			path = "Account Tab";
 			sourceTree = "<group>";
@@ -1514,6 +1544,7 @@
 				28E809532613591400CD80F7 /* AudioCollectionCell.swift in Sources */,
 				2870B44825FB41A10014A4F6 /* ReorderController+AutoScroll.swift in Sources */,
 				28ED2FB625FB8C6E00E59C56 /* ProfileForm4VC.swift in Sources */,
+				284C9B6B262E93D1008C4435 /* CryptLib.m in Sources */,
 				2870B45E25FB44700014A4F6 /* NSDate+Timepiece.swift in Sources */,
 				281DE3302626FD79002CCD9D /* AudioDownloads+CoreDataProperties.swift in Sources */,
 				281DE3242626FD79002CCD9D /* SDFileUtils.swift in Sources */,
@@ -1533,6 +1564,7 @@
 				2870B3DE25FB41A10014A4F6 /* Int+Extension.swift in Sources */,
 				283529A52609DA6F009AB2AA /* ThankYouVC.swift in Sources */,
 				2870B43425FB41A10014A4F6 /* DJPageMenuConfiguration.swift in Sources */,
+				287E807F262D510C0006A925 /* AudioPlayerSetUp.swift in Sources */,
 				28E0122A261847EA00B55967 /* SelfDevCell.swift in Sources */,
 				2870B3D625FB41A10014A4F6 /* UIImageView+Extension.swift in Sources */,
 				28E0122E261847EA00B55967 /* tagCVCell.swift in Sources */,
@@ -1569,6 +1601,7 @@
 				2870B37425FB405D0014A4F6 /* APICalls.swift in Sources */,
 				282441462609ACE30060292E /* UserListCell.swift in Sources */,
 				282441522609AD2E0060292E /* UserListVC.swift in Sources */,
+				287E807C262D3F760006A925 /* AddAudioViewAllVC.swift in Sources */,
 				28E012042618471500B55967 /* NotificatonVC.swift in Sources */,
 				28ED2FB325FB8C6600E59C56 /* ProfileForm3VC.swift in Sources */,
 				2870B41C25FB41A10014A4F6 /* MimeType.swift in Sources */,
@@ -1587,11 +1620,11 @@
 				281DE3202626FD79002CCD9D /* SDDownloadObject.swift in Sources */,
 				2870B45825FB44700014A4F6 /* NSDateComponents+Timepiece.swift in Sources */,
 				2870B44625FB41A10014A4F6 /* ReorderController+DestinationRow.swift in Sources */,
+				28B27826262EEEE1005794E3 /* DownloadPlaylistVC.swift in Sources */,
 				2870B3EE25FB41A10014A4F6 /* DJValidation.swift in Sources */,
 				28ED2FC025FB931800E59C56 /* OptionsCell.swift in Sources */,
 				2870B43A25FB41A10014A4F6 /* DJPageMenuCell.swift in Sources */,
 				28E012102618479600B55967 /* AddToPlaylistVC.swift in Sources */,
-				281DE33C2626FD79002CCD9D /* PlayerCommon.swift in Sources */,
 				2870B36E25FB401F0014A4F6 /* APIManager.swift in Sources */,
 				28E012072618474000B55967 /* PlaylistAudiosVC.swift in Sources */,
 				283153BA2614401E004001CE /* ManagePlaylistCell.swift in Sources */,
@@ -1607,6 +1640,7 @@
 				28E0123C261847EA00B55967 /* NotificationCell.swift in Sources */,
 				28E0123E261847EA00B55967 /* AreaCell.swift in Sources */,
 				2870B44225FB41A10014A4F6 /* ReorderController.swift in Sources */,
+				28B27821262EED41005794E3 /* DownloadVC.swift in Sources */,
 				2870B3D825FB41A10014A4F6 /* NSAttributedString+Extension.swift in Sources */,
 				2870B3D225FB41A10014A4F6 /* DJTextField.swift in Sources */,
 				28E8093926130A8800CD80F7 /* ManageVC.swift in Sources */,
@@ -1628,6 +1662,7 @@
 				28E0123A261847EA00B55967 /* CreatePlayListCell.swift in Sources */,
 				281DE3262626FD79002CCD9D /* DJDownloadManager+Helper.swift in Sources */,
 				28252FA525FF357C00C2EB50 /* DoDassAssessmentVC.swift in Sources */,
+				28B27827262EEF5F005794E3 /* DownloadAudioVC.swift in Sources */,
 				2870B3D025FB41A10014A4F6 /* DJTextView.swift in Sources */,
 				281DE3442626FD79002CCD9D /* DJMusicPlayer+Functionalities.swift in Sources */,
 				28B5353F260C781400BD8147 /* AreaOfFocusCell.swift in Sources */,
@@ -1681,6 +1716,7 @@
 				28E809522613591400CD80F7 /* AudioCollectionCell.swift in Sources */,
 				2870B44725FB41A10014A4F6 /* ReorderController+AutoScroll.swift in Sources */,
 				28ED2FB525FB8C6E00E59C56 /* ProfileForm4VC.swift in Sources */,
+				284C9B6A262E93D1008C4435 /* CryptLib.m in Sources */,
 				2870B45D25FB44700014A4F6 /* NSDate+Timepiece.swift in Sources */,
 				281DE32F2626FD79002CCD9D /* AudioDownloads+CoreDataProperties.swift in Sources */,
 				281DE3232626FD79002CCD9D /* SDFileUtils.swift in Sources */,
@@ -1700,6 +1736,7 @@
 				2870B3D525FB41A10014A4F6 /* UIImageView+Extension.swift in Sources */,
 				283529A32609DA5F009AB2AA /* ThankYouVC.swift in Sources */,
 				2870B37925FB40710014A4F6 /* CommonFunctions.swift in Sources */,
+				287E807E262D510C0006A925 /* AudioPlayerSetUp.swift in Sources */,
 				28E01229261847EA00B55967 /* SelfDevCell.swift in Sources */,
 				2870B42F25FB41A10014A4F6 /* GradientView.swift in Sources */,
 				28E0122D261847EA00B55967 /* tagCVCell.swift in Sources */,
@@ -1716,6 +1753,7 @@
 				282441352609AB3D0060292E /* StartingVC.swift in Sources */,
 				2870B3FD25FB41A10014A4F6 /* KDCircularProgress.swift in Sources */,
 				2870B40F25FB41A10014A4F6 /* Config.swift in Sources */,
+				28B27823262EEECC005794E3 /* DownloadAudioVC.swift in Sources */,
 				2824413F2609AC820060292E /* LoginVC.swift in Sources */,
 				28ED2F8025FB511300E59C56 /* ProfileFormStartVC.swift in Sources */,
 				2870B3D925FB41A10014A4F6 /* UIColor+Extension.swift in Sources */,
@@ -1736,6 +1774,7 @@
 				2870B37325FB405D0014A4F6 /* APICalls.swift in Sources */,
 				282441452609ACE30060292E /* UserListCell.swift in Sources */,
 				282441512609AD2E0060292E /* UserListVC.swift in Sources */,
+				287E807B262D3F760006A925 /* AddAudioViewAllVC.swift in Sources */,
 				28E012032618471500B55967 /* NotificatonVC.swift in Sources */,
 				28252FA925FF4CA200C2EB50 /* DassAssessmentVC.swift in Sources */,
 				2870B41B25FB41A10014A4F6 /* MimeType.swift in Sources */,
@@ -1758,7 +1797,6 @@
 				2870B3ED25FB41A10014A4F6 /* DJValidation.swift in Sources */,
 				2870B43925FB41A10014A4F6 /* DJPageMenuCell.swift in Sources */,
 				28E0120F2618479600B55967 /* AddToPlaylistVC.swift in Sources */,
-				281DE33B2626FD79002CCD9D /* PlayerCommon.swift in Sources */,
 				2870B36D25FB401C0014A4F6 /* APIManager.swift in Sources */,
 				28E012062618474000B55967 /* PlaylistAudiosVC.swift in Sources */,
 				283153B92614401E004001CE /* ManagePlaylistCell.swift in Sources */,
@@ -1771,9 +1809,11 @@
 				28346E22260B5A5900DD41BE /* FAQCell.swift in Sources */,
 				281DE33D2626FD79002CCD9D /* DJMusicPlayer+CommonFunctions.swift in Sources */,
 				28ED2FB825FB8C7700E59C56 /* ProfileForm5VC.swift in Sources */,
+				28B27825262EEEE1005794E3 /* DownloadPlaylistVC.swift in Sources */,
 				28E0123B261847EA00B55967 /* NotificationCell.swift in Sources */,
 				28E0123D261847EA00B55967 /* AreaCell.swift in Sources */,
 				2870B45925FB44700014A4F6 /* NSCalendar+Timepiece.swift in Sources */,
+				28B27820262EED41005794E3 /* DownloadVC.swift in Sources */,
 				2870B44125FB41A10014A4F6 /* ReorderController.swift in Sources */,
 				2870B3D725FB41A10014A4F6 /* NSAttributedString+Extension.swift in Sources */,
 				28E8093826130A8800CD80F7 /* ManageVC.swift in Sources */,

@@ -180,14 +180,13 @@ extension ViewAllAudioVC : UICollectionViewDataSource, UICollectionViewDelegate,
                 if lockDownloads == "1" || lockDownloads == "2" {
                     let arrayPlayableAudios = homeData.Details.filter { $0.IsPlay == "1" }
                     let newAudioIndex = arrayPlayableAudios.firstIndex(of: homeData.Details[indexPath.row]) ?? 0
-                    // self.presentMiniPlayer(arrayPlayerData: arrayPlayableAudios, index: newAudioIndex, openMainPlayer: true)
+                    self.presentAudioPlayer(arrayPlayerData: arrayPlayableAudios, index: newAudioIndex)
                 } else {
-                    // self.presentMiniPlayer(arrayPlayerData: homeData.Details, index: indexPath.row, openMainPlayer: true)
+                    self.presentAudioPlayer(arrayPlayerData: homeData.Details, index: indexPath.row)
                 }
                 
                 DJMusicPlayer.shared.playingFrom = self.categoryName
-            }
-            else {
+            } else {
                 var playerType = PlayerType.audio
                 
                 switch homeData.View {
@@ -217,9 +216,9 @@ extension ViewAllAudioVC : UICollectionViewDataSource, UICollectionViewDelegate,
                 if lockDownloads == "1" || lockDownloads == "2" {
                     let arrayPlayableAudios = homeData.Details.filter { $0.IsPlay == "1" }
                     let newAudioIndex = arrayPlayableAudios.firstIndex(of: homeData.Details[indexPath.row]) ?? 0
-                    // self.presentMiniPlayer(arrayPlayerData: arrayPlayableAudios, index: newAudioIndex, openMainPlayer: true)
+                    self.presentAudioPlayer(arrayPlayerData: arrayPlayableAudios, index: newAudioIndex)
                 } else {
-                    // self.presentMiniPlayer(arrayPlayerData: homeData.Details, index: indexPath.row, openMainPlayer: true)
+                    self.presentAudioPlayer(arrayPlayerData: homeData.Details, index: indexPath.row)
                 }
                 
                 DJMusicPlayer.shared.playerType = playerType

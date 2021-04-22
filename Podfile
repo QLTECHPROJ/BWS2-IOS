@@ -13,6 +13,7 @@ def shared_pods
     pod 'JVFloatLabeledTextField'
     pod 'MultiSlider'
     pod 'ANActivityIndicator'
+    pod 'SJSegmentedScrollView'
     
     # Firebase Pods
     pod 'Firebase/Analytics'

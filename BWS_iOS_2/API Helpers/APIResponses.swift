@@ -148,7 +148,7 @@ class PlanListModel : EVObject {
 
 class PlanDataModel : EVObject {
     
-    var Plan = [planListDataModel]()
+    var Plan = [PlanListDataModel]()
     var AudioFiles = [AudioDataModel]()
     var IntroductorySession = [IntroductorySesDataModel]()
     var TestminialVideo = [TestminialVideoDatamodel]()
@@ -156,8 +156,13 @@ class PlanDataModel : EVObject {
     
 }
 
-class planListDataModel:EVObject {
-    
+class PlanListDataModel:EVObject {
+    var PlanName = ""
+    var PlanDescription = ""
+    var PlanPrice = ""
+    var PlanPeriod = ""
+    var Popular = ""
+    var isSelected = false
 }
 
 class IntroductorySesDataModel:EVObject {
@@ -285,6 +290,8 @@ class CoUserDataModel : EVObject {
     var indexScore = ""
     var planDetails : [Any]?
     var errormsg = ""
+    var AreaOfFocus = ""
+    var AvgSleepTime = ""
     var isSelected = false
     
     class var currentUser : CoUserDataModel? {
@@ -342,6 +349,7 @@ class ManageHomeModel : EVObject {
 }
 
 class ManageHomedataModel : EVObject {
+    var SuggestedPlaylist : PlaylistDetailsModel?
     var Playlist = [PlaylistHomeDataModel]()
     var Audio = [AudioHomeDataModel]()
 }

@@ -103,6 +103,7 @@ PODS:
   - SDWebImage (5.10.4):
     - SDWebImage/Core (= 5.10.4)
   - SDWebImage/Core (5.10.4)
+  - SJSegmentedScrollView (1.5.0)
   - SVProgressHUD (2.2.5)
   - SweeterSwift (1.1.4)
   - TagListView (1.4.1)
@@ -120,6 +121,7 @@ DEPENDENCIES:
   - JVFloatLabeledTextField
   - MultiSlider
   - SDWebImage
+  - SJSegmentedScrollView
   - SVProgressHUD
   - TagListView
   - Toast-Swift
@@ -148,6 +150,7 @@ SPEC REPOS:
     - nanopb
     - PromisesObjC
     - SDWebImage
+    - SJSegmentedScrollView
     - SVProgressHUD
     - SweeterSwift
     - TagListView
@@ -176,12 +179,13 @@ SPEC CHECKSUMS:
   nanopb: 59221d7f958fb711001e6a449489542d92ae113e
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   SDWebImage: c666b97e1fa9c64b4909816a903322018f0a9c84
+  SJSegmentedScrollView: 67ca97389a9c3a409d3b54c88781f031f5091c61
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SweeterSwift: 8a90cf3156f5a1b6f39785c479369a16633b5ea9
   TagListView: a1c236d17960a0cf64156725a76ce6d73ebce2be
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
   TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
 
-PODFILE CHECKSUM: a30bb4c7bde822e88d24c0c6dc863d4e027bffec
+PODFILE CHECKSUM: c005cdd0850bd6acfabf2cd6de1b5a655710f7aa
 
 COCOAPODS: 1.10.1

@@ -25,22 +25,6 @@ extension SplashVC {
         }
     }
     
-    // Call Get Co User Details API
-    func CallGetCoUserDetailsAPI() {
-        let parameters = ["UserID":CoUserDataModel.currentUser?.UserID ?? "",
-                          "CoUserId":CoUserDataModel.currentUser?.CoUserId ?? ""]
-        
-        APICallManager.sharedInstance.callAPI(router: APIRouter.getcouserdetails(parameters), displayHud: false) { (response : CoUserModel) in
-            if response.ResponseCode == "200" {
-                CoUserDataModel.currentUser = response.ResponseData
-                self.handleCoUserRedirection()
-            } else {
-                CoUserDataModel.currentUser = nil
-                self.handleRedirection()
-            }
-        }
-    }
-    
 }
 
 extension CountryListVC {
@@ -285,7 +269,43 @@ extension AssessmentVC {
     
 }
 
-extension BaseViewController {
+extension UIViewController {
+    
+    // Call Get Co User Details API
+    func callGetCoUserDetailsAPI(complitionBlock : ((Bool) -> ())?) {
+        let parameters = ["UserID":CoUserDataModel.currentUser?.UserID ?? "",
+                          "CoUserId":CoUserDataModel.currentUser?.CoUserId ?? ""]
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.getcouserdetails(parameters), displayHud: false) { (response : CoUserModel) in
+            if response.ResponseCode == "200" {
+                CoUserDataModel.currentUser = response.ResponseData
+                DispatchQueue.main.async {
+                    complitionBlock?(true)
+                }
+            } else {
+                CoUserDataModel.currentUser = nil
+                DispatchQueue.main.async {
+                    complitionBlock?(false)
+                }
+            }
+        }
+    }
+    
+    // Audio Recently Played API Call
+    func callRecentlyPlayedAPI(audioID : String, complitionBlock : (() -> ())?) {
+        if audioID.trim.count == 0 || DJMusicPlayer.shared.currentlyPlaying?.isDisclaimer == true {
+            return
+        }
+        
+        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+                          "AudioId":audioID]
+        APICallManager.sharedInstance.callAPI(router: APIRouter.recentlyplayed(parameters), displayHud: false) { (response : GeneralModel) in
+            if response.ResponseCode == "200" {
+                refreshAudioData = true
+                complitionBlock?()
+            }
+        }
+    }
     
     // Delete Playlist API Call
     func callDeletePlaylistAPI(objPlaylist : PlaylistDetailsModel, complitionBlock : (() -> ())?) {
@@ -315,9 +335,20 @@ extension ManageVC {
         APICallManager.sharedInstance.callAPI(router: APIRouter.managehomescreen(parameters)) { (response : ManageHomeModel) in
             if response.ResponseCode == "200" {
                 if let responseData = response.ResponseData {
+                    self.suggstedPlaylist = responseData.SuggestedPlaylist
                     self.arrayAudioHomeData = responseData.Audio
                     self.arrayPlaylistHomeData = responseData.Playlist
-                    self.tableView.reloadData()
+                    
+                    for data in self.arrayAudioHomeData {
+                        if data.View == "My Downloads" {
+                            data.Details = CoreDataHelper.shared.fetchSingleAudios()
+                            lockDownloads = data.IsLock
+                            // setDownloadsExpiryDate(expireDateString: data.expireDate)
+                            let _ = shouldLockDownloads()
+                        }
+                    }
+                    
+                    self.setupData()
                 }
             }
         }
@@ -617,6 +648,8 @@ extension AddAudioVC {
                 self.arrayAudio = response.ResponseData
                 self.setupData()
             }
+            
+            // self.callPlaylistAPI()
         }
     }
     
@@ -712,9 +745,46 @@ extension ManagePlanListVC {
         APICallManager.sharedInstance.callAPI(router: APIRouter.planlist(parameters)) { (response :PlanListModel) in
             
             if response.ResponseCode == "200" {
-               
-                self.tableView.reloadData()
+              
+                self.tblFAQ.reloadData()
             }
         }
     }
+    
+}
+
+extension AddAudioViewAllVC {
+    
+    //call playlist
+    func callPlaylistAPI() {
+        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? ""]
+        APICallManager.sharedInstance.callAPI(router: APIRouter.suggestedplaylist(parameters)) { (response :PlaylistListingModel) in
+            
+            if response.ResponseCode == "200" {
+                self.arrayPlayList = response.ResponseData
+                self.setupData()
+                
+                // Segment Tracking
+                // self.trackScreenData()
+            }
+        }
+    }
+    
+    func callAddAudioToPlaylistAPI(audioToAdd : String = "" , playlistToAdd : String = "") {
+        self.view.endEditing(true)
+        
+        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+                          "PlaylistId":self.playlistID,
+                          "AudioId":audioToAdd,
+                          "FromPlaylistId":playlistToAdd]
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.addaptoplaylist(parameters)) { (response : AudioDetailsModel) in
+            
+            if response.ResponseCode == "200" {
+                refreshNowPlayingSongs(playlistID: self.playlistID, arraySongs: response.ResponseData)
+                showAlertToast(message: response.ResponseMessage)
+            }
+        }
+    }
+    
 }

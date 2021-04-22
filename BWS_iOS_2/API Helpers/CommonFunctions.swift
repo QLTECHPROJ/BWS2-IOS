@@ -54,7 +54,11 @@ func checkInternet() -> Bool {
 
 func showAlertToast(message : String) {
     if let Window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first {
-        Window.makeToast(message)
+        var toastStyle = ToastManager.shared.style
+        toastStyle.backgroundColor = Theme.colors.greenColor
+        toastStyle.titleColor = Theme.colors.white
+        toastStyle.titleAlignment = .left
+        Window.makeToast(message, style: toastStyle)
     }
 }
 

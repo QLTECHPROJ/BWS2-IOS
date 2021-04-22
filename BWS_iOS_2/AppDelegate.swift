@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 import IQKeyboardManagerSwift
 import Firebase
+import AVKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,8 +23,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Set App Notification Count to "0" on App Launch
         UIApplication.shared.applicationIconBadgeNumber = 0
         
+        // Battery Level & State Observation
+        self.startBatteryObservation()
+        
+        // AudioSession Configuration
+        let audioSession = AVAudioSession.sharedInstance()
+        do {
+            try audioSession.setCategory(AVAudioSession.Category.playback, options: .allowAirPlay)
+            try audioSession.setActive(true)
+        } catch let error as NSError {
+            print("Setting category to AVAudioSessionCategoryPlayback failed: \(error)")
+        }
+        
         // IQKeyboardManager Setup
         IQKeyboardManager.shared.enable = true
+        
+        // Cancel All Downloads
+        SDDownloadManager.shared.cancelAllDownloads()
         
         // User Notification Configuration
         self.registerForPushNotification()
@@ -32,6 +48,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         Messaging.messaging().delegate = self
         
+        // UIFont setup for
+        UIFont.overrideInitialize()
+        
+        // Begin Receiving Remote Control Events
+        UIApplication.shared.beginReceivingRemoteControlEvents()
+        
+        // Observe Network Reachability
+        ConnectionManager.sharedInstance.observeReachability()
+        
+        window?.makeKeyAndVisible()
         window?.rootViewController = AppStoryBoard.main.intialViewController()
         
         return true
@@ -120,6 +146,15 @@ extension AppDelegate {
         }
     }
     
+    func applicationWillTerminate(_ application: UIApplication) {
+        SDDownloadManager.shared.cancelAllDownloads()
+    }
+    
+    func application(_ application: UIApplication, handleEventsForBackgroundURLSession identifier: String, completionHandler: @escaping () -> Void) {
+        debugPrint("handleEventsForBackgroundURLSession: \(identifier)")
+        SDDownloadManager.shared.backgroundCompletionHandler = completionHandler
+    }
+    
 }
 
 
@@ -168,6 +203,42 @@ extension AppDelegate : MessagingDelegate {
         
         let dataDict:[String: String] = ["token": fcmToken ?? ""]
         NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
+    }
+    
+}
+
+
+// MARK:- Battery Level & State Observation
+extension AppDelegate {
+    
+    var batteryLevel: Float { (UIDevice.current.batteryLevel * 100) }
+    var batteryState: String {
+        switch UIDevice.current.batteryState {
+        case .unplugged:
+            return "unplugged"
+        case .charging:
+            return "charging"
+        case .full:
+            return "full"
+        default:
+            return "unknown"
+        }
+    }
+    
+    func startBatteryObservation() {
+        UIDevice.current.isBatteryMonitoringEnabled = true
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(batteryLevelDidChange), name: UIDevice.batteryLevelDidChangeNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(batteryStateDidChange), name: UIDevice.batteryStateDidChangeNotification, object: nil)
+    }
+    
+    @objc func batteryLevelDidChange(_ notification: Notification) {
+        print(batteryLevel)
+    }
+    
+    @objc func batteryStateDidChange(_ notification: Notification) {
+        print(batteryState)
     }
     
 }

@@ -28,7 +28,7 @@ class PlanListCell: UITableViewCell {
     }
     
     // Configure Cell
-    func configureCell(data : PlanDataModel, isSelected : Bool) {
+    func configureCell(data : PlanListDataModel, isSelected : Bool) {
         
         lblPlan.text = data.PlanName
         lblPlanDesc.text = data.PlanDescription

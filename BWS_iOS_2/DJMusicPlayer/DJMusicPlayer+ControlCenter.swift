@@ -20,7 +20,7 @@ extension DJMusicPlayer {
         let currentTime = item.AudioDuration
         let duration = item.AudioDuration
         let trackNumber = playIndex
-        let trackCount = queuedSongs.count
+        let trackCount = nowPlayingList.count
         
         var nowPlayingInfo : [String : AnyObject] = [
             MPMediaItemPropertyPlaybackDuration : duration as AnyObject,

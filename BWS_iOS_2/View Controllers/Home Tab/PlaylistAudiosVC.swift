@@ -17,7 +17,7 @@ class PlaylistAudiosVC: BaseViewController {
     @IBOutlet weak var lblDesc: UILabel!
     
     @IBOutlet weak var btnPlay : UIButton!
-    @IBOutlet weak var btnTimer : UIButton!
+    @IBOutlet weak var btnReminder : UIButton!
     @IBOutlet weak var btnDownload : UIButton!
     @IBOutlet weak var btnOption: UIButton!
     
@@ -240,16 +240,15 @@ class PlaylistAudiosVC: BaseViewController {
             btnPlay.isHidden = true
         }
         
-        //Timer
-        if objPlaylist?.IsReminder == "1" {
-            // btnTimer.setImage(UIImage(named: "OrangeClock"), for: .normal)
+        if details.IsReminder == "1" {
+            btnReminder.setTitle("     Turn off reminder     ", for: .normal)
         } else {
-            // btnTimer.setImage(UIImage(named: "clock"), for: .normal)
+            btnReminder.setTitle("     Set reminder     ", for: .normal)
         }
         
         if isFromDownload {
-            btnTimer.isEnabled = false
-            btnTimer.alpha = 0
+            btnReminder.isEnabled = false
+            btnReminder.alpha = 0
             btnDownload.alpha = 0
             btnOption.setImage(UIImage(named: "delete_playlist"), for: UIControl.State.normal)
         }
@@ -482,7 +481,7 @@ class PlaylistAudiosVC: BaseViewController {
             
             DJMusicPlayer.shared.playerType = .downloadedPlaylist
             DJMusicPlayer.shared.currentPlaylist = objPlaylist
-            // self.presentMiniPlayer(arrayPlayerData: arraySearchSongs)
+            self.presentAudioPlayer(arrayPlayerData: arraySearchSongs)
             DJMusicPlayer.shared.playingFrom = objPlaylist!.PlaylistName
             return
         }
@@ -495,7 +494,7 @@ class PlaylistAudiosVC: BaseViewController {
         if arraySearchSongs.count != 0 {
             DJMusicPlayer.shared.playerType = .playlist
             DJMusicPlayer.shared.currentPlaylist = objPlaylist
-            // self.presentMiniPlayer(arrayPlayerData: arraySearchSongs, index: 0)
+            self.presentAudioPlayer(arrayPlayerData: arraySearchSongs, index: 0)
             DJMusicPlayer.shared.playingFrom = objPlaylist!.PlaylistName
         }
     }
@@ -583,7 +582,7 @@ extension PlaylistAudiosVC : UITableViewDelegate, UITableViewDataSource {
         
         if isPlayingAudio(audioID: arraySearchSongs[indexPath.row].ID) && displayNowPlaying {
             cell.nowPlayingAnimationImageView.isHidden = false
-            cell.backgroundColor = Theme.colors.off_white_F9F9F9
+            cell.backgroundColor = Theme.colors.gray_EEEEEE
             if DJMusicPlayer.shared.isPlaying {
                 cell.nowPlayingAnimationImageView.startNowPlayingAnimation(true)
             }
@@ -611,7 +610,7 @@ extension PlaylistAudiosVC : UITableViewDelegate, UITableViewDataSource {
             
             DJMusicPlayer.shared.playerType = .downloadedPlaylist
             DJMusicPlayer.shared.currentPlaylist = objPlaylist
-            // self.presentMiniPlayer(arrayPlayerData: arraySearchSongs, index: indexPath.row)
+            self.presentAudioPlayer(arrayPlayerData: arraySearchSongs, index: indexPath.row)
             DJMusicPlayer.shared.playingFrom = objPlaylist!.PlaylistName
             return
         }
@@ -624,7 +623,7 @@ extension PlaylistAudiosVC : UITableViewDelegate, UITableViewDataSource {
         if arraySearchSongs.count != 0 {
             DJMusicPlayer.shared.playerType = .playlist
             DJMusicPlayer.shared.currentPlaylist = objPlaylist
-            // self.presentMiniPlayer(arrayPlayerData: arraySearchSongs, index: indexPath.row)
+            self.presentAudioPlayer(arrayPlayerData: arraySearchSongs, index: indexPath.row)
             DJMusicPlayer.shared.playingFrom = objPlaylist!.PlaylistName
         }
     }
