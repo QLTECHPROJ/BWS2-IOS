@@ -86,9 +86,9 @@ class SplashVC: BaseViewController {
                 // } else if coUser.planDetails?.count == 0 {
                 // let aVC = AppStoryBoard.main.viewController(viewControllerClass: DassAssessmentResultVC.self)
                 // self.navigationController?.pushViewController(aVC, animated: true)
-            } else if coUser.AvgSleepTime.trim.count == 0 || coUser.AreaOfFocus.trim.count == 0 {
-                let aVC = AppStoryBoard.main.viewController(viewControllerClass: SleepTimeVC.self)
-                self.navigationController?.pushViewController(aVC, animated: true)
+                // } else if coUser.AvgSleepTime.trim.count == 0 || coUser.AreaOfFocus.trim.count == 0 {
+                // let aVC = AppStoryBoard.main.viewController(viewControllerClass: SleepTimeVC.self)
+                // self.navigationController?.pushViewController(aVC, animated: true)
             } else {
                 APPDELEGATE.window?.rootViewController = AppStoryBoard.main.viewController(viewControllerClass: NavigationClass.self)
             }

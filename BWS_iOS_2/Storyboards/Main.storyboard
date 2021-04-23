@@ -3059,7 +3059,7 @@
                                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X1K-M2-pc6">
                                                                 <rect key="frame" x="0.0" y="0.0" width="288" height="70"/>
                                                                 <subviews>
-                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rCN-u2-eGO" customClass="JVFloatLabeledTextField">
+                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="User Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rCN-u2-eGO" customClass="JVFloatLabeledTextField">
                                                                         <rect key="frame" x="56" y="8" width="170" height="54"/>
                                                                         <color key="textColor" name="textColor"/>
                                                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>

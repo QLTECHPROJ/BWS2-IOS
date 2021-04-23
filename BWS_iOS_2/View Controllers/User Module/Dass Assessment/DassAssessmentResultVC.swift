@@ -46,6 +46,11 @@ class DassAssessmentResultVC: BaseViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        // Clear Assessment Questions Data
+        AssessmentDetailModel.current = nil
+        UserDefaults.standard.removeObject(forKey: "ArrayPage")
+        UserDefaults.standard.synchronize()
+        
         let normalString = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut"
         lblSubTitle.attributedText = normalString.attributedString(alignment: .center, lineSpacing: 10)
         
@@ -102,11 +107,13 @@ class DassAssessmentResultVC: BaseViewController {
     }
     
     override func goNext() {
-        let aVC = AppStoryBoard.main.viewController(viewControllerClass:ManagePlanListVC.self)
-        let navVC = UINavigationController(rootViewController: aVC)
-        navVC.isNavigationBarHidden = true
-        navVC.modalPresentationStyle = .overFullScreen
-        self.navigationController?.present(navVC, animated: true, completion: nil)
+        APPDELEGATE.window?.rootViewController = AppStoryBoard.main.viewController(viewControllerClass: NavigationClass.self)
+        
+        // let aVC = AppStoryBoard.main.viewController(viewControllerClass:ManagePlanListVC.self)
+        // let navVC = UINavigationController(rootViewController: aVC)
+        // navVC.isNavigationBarHidden = true
+        // navVC.modalPresentationStyle = .overFullScreen
+        // self.navigationController?.present(navVC, animated: true, completion: nil)
     }
     
     func handleNavigation() {

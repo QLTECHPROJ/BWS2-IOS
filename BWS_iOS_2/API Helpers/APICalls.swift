@@ -681,6 +681,7 @@ extension AddAudioVC {
             self.arraySearch.removeAll()
             if response.ResponseCode == "200" {
                 self.arraySearch = response.ResponseData
+                self.arraySearch = self.arraySearch.filter { $0.Iscategory == "1" }
                 self.reloadSearchData()
             } else {
                 self.arraySearch.removeAll()

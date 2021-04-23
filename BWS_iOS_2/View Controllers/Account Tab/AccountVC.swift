@@ -54,6 +54,11 @@ class AccountVC: BaseViewController {
         CoUserDataModel.currentUser = nil
         LoginDataModel.currentUser = nil
         
+        // Clear Assessment Questions Data
+        AssessmentDetailModel.current = nil
+        UserDefaults.standard.removeObject(forKey: "ArrayPage")
+        UserDefaults.standard.synchronize()
+        
         UserDefaults.standard.removeObject(forKey: "NowPlayingSongs")
         UserDefaults.standard.synchronize()
         
