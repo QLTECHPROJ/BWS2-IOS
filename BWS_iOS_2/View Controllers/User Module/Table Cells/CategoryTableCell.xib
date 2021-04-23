@@ -56,6 +56,7 @@
                     <constraint firstItem="JWJ-zx-Sln" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="sHf-kR-9B9"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="collectionView" destination="c04-f6-cbJ" id="ruz-lO-DCj"/>

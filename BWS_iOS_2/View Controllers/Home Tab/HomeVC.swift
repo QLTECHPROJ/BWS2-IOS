@@ -12,12 +12,11 @@ class HomeVC: BaseViewController {
     
     // MARK:- OUTLETS
     @IBOutlet weak var tableView: UITableView!
-    
-    // UserInfo
     @IBOutlet weak var imgUser: UIImageView!
     @IBOutlet weak var lblUser: UILabel!
     @IBOutlet weak var btnChangeUser: UIButton!
     @IBOutlet weak var btnNotification: UIButton!
+    
     
     // MARK:- VIEW LIFE CYCLE
     override func viewDidLoad() {
@@ -42,6 +41,8 @@ class HomeVC: BaseViewController {
         tableView.register(UINib(nibName:"AreaCell", bundle: nil), forCellReuseIdentifier:"AreaCell")
         tableView.register(UINib(nibName:"IndexScrorCell", bundle: nil), forCellReuseIdentifier:"IndexScrorCell")
         tableView.register(UINib(nibName:"ProgressCell", bundle: nil), forCellReuseIdentifier:"ProgressCell")
+        
+        lblUser.text = CoUserDataModel.currentUser?.Name ?? ""
     }
     
     

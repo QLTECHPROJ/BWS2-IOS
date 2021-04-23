@@ -14,10 +14,9 @@ class RecommendedCategoryHeaderCell: UITableViewCell {
     @IBOutlet weak var txtSearch: UITextField!
     @IBOutlet weak var btnClear: UIButton!
     
-    @IBOutlet weak var collectionView : DynamicHeightCollectionView!
+    @IBOutlet weak var collectionView : UICollectionView!
     
-    var arrayCategories = [CategoryListModel]()
-    var arrayCategoryData = [CategoryDataModel]()
+    var arrayCategories = [CategoryDataModel]()
     var backClicked : (() -> Void)?
     
     override func awakeFromNib() {
@@ -29,18 +28,7 @@ class RecommendedCategoryHeaderCell: UITableViewCell {
         
         btnClear.isHidden = true
         txtSearch.addTarget(self, action: #selector(textFieldValueChanged(textField:)), for: UIControl.Event.editingChanged)
-    }
-    
-    // Configure Cell
-    func configureCell(data : CategoryModel) {
         
-       
-         arrayCategories = data.ResponseData
-        
-//        for i in arrayCategories {
-//            arrayCategories[] = i.Details.filter{ $0.isSelected == true }
-//        }
-       
         let layout = CollectionViewFlowLayout()
         layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         layout.minimumLineSpacing = 7
@@ -48,6 +36,15 @@ class RecommendedCategoryHeaderCell: UITableViewCell {
         layout.sectionInset = UIEdgeInsets(top: 7, left: 16, bottom: 7, right: 16)
         collectionView.collectionViewLayout = layout
         collectionView.register(nibWithCellClass: AreaOfFocusCell.self)
+        collectionView.reloadData()
+        collectionView.layoutIfNeeded()
+    }
+    
+    // Configure Cell
+    func configureCell(data : [CategoryDataModel]) {
+        arrayCategories.removeAll()
+        arrayCategories = data
+        
         collectionView.reloadData()
         collectionView.layoutIfNeeded()
     }
@@ -71,21 +68,12 @@ class RecommendedCategoryHeaderCell: UITableViewCell {
 extension RecommendedCategoryHeaderCell : UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-       
-//        for i in arrayCategories {
-//            arrayCategories  = arrayCategories[section].Details.filter{ $0.isSelected == true }
-//           
-//        }
         return arrayCategories.count
-       
-       
-       
-       
     }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withClass: AreaOfFocusCell.self, for: indexPath)
-        
-        cell.configureCell(data: arrayCategories[indexPath.item], index: indexPath.row)
+        cell.configureCell(data: arrayCategories[indexPath.row], index: indexPath.row)
         return cell
     }
     

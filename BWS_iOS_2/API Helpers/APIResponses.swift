@@ -22,6 +22,7 @@ class GeneralModel : EVObject {
 class GeneralDataModel : EVObject {
     var errormsg = ""
     var indexScore = ""
+    var ScoreLevel = ""
 }
 
 // MARK:- Upload Data Model
@@ -237,24 +238,6 @@ class CategoryModel : EVObject {
     var ResponseMessage = ""
     var ResponseStatus = ""
     var ResponseData = [CategoryListModel]()
-    
-        class var category : CategoryModel? {
-            get {
-                if let userData = UserDefaults.standard.data(forKey: "Category") {
-                    return CategoryModel(data: userData)
-                }
-                return nil
-            }
-            set {
-                if let newData = newValue {
-                    UserDefaults.standard.set(newData.toJsonData(), forKey:"Category")
-                }
-                else {
-                    UserDefaults.standard.setValue(nil, forKeyPath: "Category")
-                }
-                UserDefaults.standard.synchronize()
-            }
-        }
 }
 
 class CategoryListModel : EVObject {
@@ -288,6 +271,7 @@ class CoUserDataModel : EVObject {
     var isProfileCompleted = ""
     var isAssessmentCompleted = ""
     var indexScore = ""
+    var ScoreLevel = ""
     var planDetails : [Any]?
     var errormsg = ""
     var AreaOfFocus = ""

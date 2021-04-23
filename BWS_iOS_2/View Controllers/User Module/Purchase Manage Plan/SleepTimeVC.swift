@@ -24,28 +24,16 @@ class SleepTimeVC: BaseViewController {
         collectionViewSleepTime.register(nibWithCellClass: SleepTimeCell.self)
         
         callSleepTimetAPI()
-        //fetchTimes()
     }
     
     
     // MARK:- FUNCTIONS
-//    func fetchTimes() {
-//        arrayTimes.removeAll()
-//
-//        let timesArray = ["< 3 Hours", "3 - 4 Hours", "4 - 5 Hours", "5 - 6 Hours", "6 - 7 Hours", "7 - 8 Hours", "8 - 9 Hours", "9 - 10 Hours", "> 10 Hours"]
-//
-//        for time in timesArray {
-//            let timeData = SleepTimeDataModel()
-//            timeData.SleepTime = time
-//            arrayTimes.append(timeData)
-//        }
-//
-//        collectionViewSleepTime.reloadData()
-//    }
-    
     override func goNext() {
-        let aVC = AppStoryBoard.main.viewController(viewControllerClass: AreaOfFocusVC.self)
-        self.navigationController?.pushViewController(aVC, animated: true)
+        if let selectedSleepTime = arrayTimes.filter({ $0.isSelected == true }).first {
+            let aVC = AppStoryBoard.main.viewController(viewControllerClass: AreaOfFocusVC.self)
+            aVC.averageSleepTime = selectedSleepTime.Name
+            self.navigationController?.pushViewController(aVC, animated: true)
+        }
     }
     
 }

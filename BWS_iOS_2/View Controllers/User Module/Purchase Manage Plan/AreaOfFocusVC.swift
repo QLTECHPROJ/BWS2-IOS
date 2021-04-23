@@ -17,88 +17,54 @@ class AreaOfFocusVC: BaseViewController {
     // MARK:- VARIABLES
     var arrayAresOfFocus = [CategoryDataModel]()
     var arrayCategories = [CategoryListModel]()
-    var arrayMain : CategoryModel?
+    var averageSleepTime = ""
+    
     
     // MARK:- VIEW LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
         tableView.register(nibWithCellClass: RecommendedCategoryHeaderCell.self)
         tableView.register(nibWithCellClass: CategoryTableCell.self)
-      
         
+        callGetRecommendedCategoryAPI()
         
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
-//            let aVC = AppStoryBoard.main.viewController(viewControllerClass: PreparingPlaylistVC.self)
-//            self.navigationController?.pushViewController(aVC, animated: true)
-//        }
-        callRecCategory()
-        setupData()
-       // fetchAreaOfFocus()
-      //  fetchCategories()
-        
+        // DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+        //     let aVC = AppStoryBoard.main.viewController(viewControllerClass: PreparingPlaylistVC.self)
+        //     self.navigationController?.pushViewController(aVC, animated: true)
+        // }
     }
     
     
     // MARK:- FUNCTIONS
-//    func fetchAreaOfFocus() {
-//      //  arrayAresOfFocus.removeAll()
-//
-//      //  let timesArray = ["Alcohol Addiction", "Parental Stress", "Drug Addiction"]
-//        for time in arrayCategories {
-//            let subCategory = CategoryDataModel()
-//
-//            for i in 0...time.Details.count {
-//                subCategory.ProblemName = time.Details[i].ProblemName
-//            }
-//
-//            arrayAresOfFocus.append(subCategory)
-//        }
-//
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-//            self.tableView.reloadData()
-//        }
-//    }
-    
-//    func fetchCategories() {
-//        arrayCategories.removeAll()
-//
-//      //  let categoryArray = ["Mental Health", "Self - Development", "Addiction"]
-//     //   let timesArray = ["Alcohol Addiction", "Eating Disorder", "Money Stress", "Anger / Aggression / Moods", "Obsessive complusive disorder", "Stress / Anxiety / Depression / Happiness", "Trauma/PTSD", "Insomnia", "Loneliness or Abandonment", "Memory", "Mind Chatter or Worry", "Parental Stress", "Fatigue", "Self esteem / Self confidence / Self Worth / Inadequacies", "Relationship Breakdown"]
-//
-//        for category in arrayCategories {
-//            var arraySubCategories = [CategoryDataModel]()
-//
-//            for time in arrayCategories {
-//                let subCategory = CategoryDataModel()
-//                for i in 0...time.Details.count {
-//                    subCategory.ProblemName = time.Details[i].ProblemName
-//                }
-//                arraySubCategories.append(subCategory)
-//            }
-//
-//            let categoryData = CategoryListModel()
-//            categoryData.View = category.View
-//            categoryData.Details = arraySubCategories
-//            arrayCategories.append(categoryData)
-//        }
-//
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-//            self.tableView.reloadData()
-//        }
-//    }
-    
     override func setupData() {
-
+        arrayAresOfFocus.removeAll()
+        
+        for category in arrayCategories {
+            for subCategory in category.Details {
+                if subCategory.isSelected {
+                    arrayAresOfFocus.append(subCategory)
+                }
+            }
+        }
+        
+        tableView.reloadData()
     }
     
-    @IBAction func OnTappedContinue(_ sender: UIButton) {
-        
-        
-    }
     
+    // MARK:- ACTIONS
+    @IBAction func continueClicked() {
+        print("Sleep Time :- ",averageSleepTime)
+        if arrayAresOfFocus.count > 0 {
+            let categories = arrayAresOfFocus.map { $0.ProblemName }
+            let strCategories = categories.joined(separator: ",")
+            print("Selected Categories :- ",strCategories)
+            
+            callSaveCategoryAPI(areaOfFocus: strCategories)
+        } else {
+            showAlertToast(message: "Please Select Category")
+        }
+    }
     
 }
 
@@ -106,43 +72,38 @@ class AreaOfFocusVC: BaseViewController {
 // MARK:- UITableViewDataSource, UITableViewDelegate
 extension AreaOfFocusVC : UITableViewDataSource, UITableViewDelegate {
     
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        return 1
-//    }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        if section == 0 {
-//            return 1
-//        } else {
-       // return arrayCategories[section].Details.count
-       // }
-        
-        if arrayCategories.count > 0 {
-            
-            return arrayCategories.count + 1
+        if section == 0 {
+            return 1
+        } else {
+            return arrayCategories.count
         }
-        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0 {
+        if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withClass: RecommendedCategoryHeaderCell.self)
-            let arrayCat = CategoryModel.category.self
-            if arrayCat != nil {
-                cell.configureCell(data:arrayCat!)
-            }
+            cell.configureCell(data: arrayAresOfFocus)
+            
             cell.backClicked = {
                 self.navigationController?.popViewController(animated: true)
             }
+            
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withClass: CategoryTableCell.self)
+            cell.configureCell(data: arrayCategories[indexPath.row])
+            
+            cell.categoryClicked = {
+                self.setupData()
+            }
+            
             return cell
         }
-        else {
-        let cell = tableView.dequeueReusableCell(withClass: CategoryTableCell.self)
-        cell.lblCategory.text = arrayCategories[indexPath.row - 1].View
-            cell.configureCell(data:arrayCategories[indexPath.row - 1], main: arrayMain!)
-       // cell.collectionView.reloadData()
-        return cell
-        }
     }
-   
+    
 }

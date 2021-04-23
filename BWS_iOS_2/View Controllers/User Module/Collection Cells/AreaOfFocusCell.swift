@@ -9,7 +9,7 @@
 import UIKit
 
 class AreaOfFocusCell: UICollectionViewCell {
-
+    
     @IBOutlet weak var lblIndex : UILabel!
     @IBOutlet weak var viewCategory : UIView!
     @IBOutlet weak var lblCategory : UILabel!
@@ -20,28 +20,17 @@ class AreaOfFocusCell: UICollectionViewCell {
     }
     
     // Configure Cell
-    func configureCell(data : CategoryListModel, index : Int) {
+    func configureCell(data : CategoryDataModel, index : Int) {
+        lblIndex.text = "\(index + 1)"
+        lblCategory.text = data.ProblemName
         
+        viewCategory.borderColor = Theme.colors.magenta_C44B6C
+        viewCategory.backgroundColor = Theme.colors.pink_FFDFEA
+        lblCategory.textColor = Theme.colors.magenta_C44B6C
         
-        if data.Details.count > 0 {
-        for i in  data.Details {
-            if i.isSelected == true {
-                lblIndex.text = "\(index + 1)"
-                lblCategory.text = i.ProblemName
-                
-                viewCategory.borderColor = Theme.colors.magenta_C44B6C
-                viewCategory.backgroundColor = Theme.colors.pink_FFDFEA
-                lblCategory.textColor = Theme.colors.magenta_C44B6C
-                
-                lblIndex.borderColor = Theme.colors.magenta_C44B6C
-                lblIndex.backgroundColor = Theme.colors.pink_FFDFEA
-                lblIndex.textColor = Theme.colors.magenta_C44B6C
-            }else {
-                
-            }
-        }
-        }
-       
+        lblIndex.borderColor = Theme.colors.magenta_C44B6C
+        lblIndex.backgroundColor = Theme.colors.pink_FFDFEA
+        lblIndex.textColor = Theme.colors.magenta_C44B6C
     }
     
 }

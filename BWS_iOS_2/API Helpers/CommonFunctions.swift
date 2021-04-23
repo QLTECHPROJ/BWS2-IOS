@@ -58,6 +58,7 @@ func showAlertToast(message : String) {
         toastStyle.backgroundColor = Theme.colors.greenColor
         toastStyle.titleColor = Theme.colors.white
         toastStyle.titleAlignment = .left
+        toastStyle.titleFont = Theme.fonts.montserratFont(ofSize: 12, weight: .regular)
         Window.makeToast(message, style: toastStyle)
     }
 }

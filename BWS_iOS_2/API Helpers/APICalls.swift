@@ -259,6 +259,7 @@ extension AssessmentVC {
             if response.ResponseCode == "200" {
                 let userData = CoUserDataModel.currentUser
                 userData?.indexScore = response.ResponseData?.indexScore ?? "0"
+                userData?.ScoreLevel = response.ResponseData?.ScoreLevel ?? ""
                 CoUserDataModel.currentUser = userData
                 showAlertToast(message: response.ResponseMessage)
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass: DassAssessmentResultVC.self)
@@ -711,18 +712,35 @@ extension AddAudioVC {
 
 extension AreaOfFocusVC {
     
-    //call Category Rec list
-    func callRecCategory() {
+    // Fetch Recommended Category list
+    func callGetRecommendedCategoryAPI() {
         let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? ""]
+        
         APICallManager.sharedInstance.callAPI(router: APIRouter.getrecommendedcategory(parameters)) { (response :CategoryModel) in
             
             if response.ResponseCode == "200" {
                 self.arrayCategories = response.ResponseData
-                self.arrayMain = response
                 self.tableView.reloadData()
+                self.setupData()
             }
         }
     }
+    
+    // Save Category & Sleep Time
+    func callSaveCategoryAPI(areaOfFocus : String) {
+        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+                          "AvgSleepTime":self.averageSleepTime,
+                          "CatName":areaOfFocus]
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.saverecommendedcategory(parameters)) { (response :GeneralModel) in
+            
+            if response.ResponseCode == "200" {
+                let aVC = AppStoryBoard.main.viewController(viewControllerClass: PreparingPlaylistVC.self)
+                self.navigationController?.pushViewController(aVC, animated: true)
+            }
+        }
+    }
+    
 }
 
 extension SleepTimeVC {
@@ -784,6 +802,29 @@ extension AddAudioViewAllVC {
             if response.ResponseCode == "200" {
                 refreshNowPlayingSongs(playlistID: self.playlistID, arraySongs: response.ResponseData)
                 showAlertToast(message: response.ResponseMessage)
+            }
+        }
+    }
+    
+}
+
+extension UserListPopUpVC {
+    
+    // User List API Call
+    func callUserListAPI() {
+        arrayUsers.removeAll()
+        tableView.reloadData()
+        
+        let parameters = ["UserID":LoginDataModel.currentUser?.ID ?? ""]
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.userlist(parameters)) { (response : UserListModel) in
+            if response.ResponseCode == "200" {
+                self.arrayUsers = response.ResponseData.CoUserList
+                self.tableView.reloadData()
+                self.maxUsers = Int(response.ResponseData.Maxuseradd) ?? 0
+                self.setupData()
+            } else {
+                self.setupData()
             }
         }
     }

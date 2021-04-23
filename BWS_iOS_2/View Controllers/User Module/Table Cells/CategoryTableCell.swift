@@ -11,29 +11,33 @@ import UIKit
 class CategoryTableCell: UITableViewCell {
     
     @IBOutlet weak var lblCategory : UILabel!
-    @IBOutlet weak var collectionView : UICollectionView!
+    @IBOutlet weak var collectionView : DynamicHeightCollectionView!
     
-    var arrayCategories : CategoryListModel?
-    var arrayMain : CategoryModel?
-    var dictData = [CategoryListModel]()
+    var arrayCategories = [CategoryDataModel]()
+    var categoryClicked : (() -> Void)?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        let layout = CollectionViewFlowLayout()
+        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        layout.minimumLineSpacing = 10
+        layout.minimumInteritemSpacing = 10
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 16)
+        collectionView.collectionViewLayout = layout
+        collectionView.register(nibWithCellClass: CategoryCollectionCell.self)
+        collectionView.reloadData()
+        collectionView.layoutIfNeeded()
     }
     
     // Configure Cell
-    func configureCell(data : CategoryListModel,main:CategoryModel) {
-      
-        self.arrayCategories = data
-        self.arrayMain = main
+    func configureCell(data : CategoryListModel) {
+        lblCategory.text = data.View
         
-//        let layout = CollectionViewFlowLayout()
-//        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-//        layout.minimumLineSpacing = 10
-//        layout.minimumInteritemSpacing = 10
-//        layout.sectionInset = UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 16)
-//        collectionView.collectionViewLayout = layout
-        collectionView.register(nibWithCellClass: CategoryCollectionCell.self)
+        arrayCategories.removeAll()
+        arrayCategories = data.Details
+        
         collectionView.reloadData()
         collectionView.layoutIfNeeded()
     }
@@ -44,29 +48,24 @@ class CategoryTableCell: UITableViewCell {
 extension CategoryTableCell : UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        if (arrayCategories?.Details.count)! > 0 {
-            
-            return (arrayCategories?.Details.count)!
-        }
-        return 0
+        return arrayCategories.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withClass: CategoryCollectionCell.self, for: indexPath)
-        cell.configureCell(data: (arrayCategories?.Details[indexPath.item])!)
+        cell.configureCell(data: arrayCategories[indexPath.row])
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        for category in arrayCategories!.Details {
+        for category in arrayCategories {
             category.isSelected = false
         }
-        arrayCategories?.Details[indexPath.item].isSelected = true
-        CategoryModel.category = arrayMain
-       
+        
+        arrayCategories[indexPath.row].isSelected = true
         collectionView.reloadData()
         
-        
+        self.categoryClicked?()
     }
+    
 }

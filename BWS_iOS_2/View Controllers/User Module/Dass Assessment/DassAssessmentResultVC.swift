@@ -16,6 +16,8 @@ class DassAssessmentResultVC: BaseViewController {
     @IBOutlet weak var indexScoreLabelView : UIView!
     
     @IBOutlet weak var lblScore : UILabel!
+    @IBOutlet weak var lblScoreLevel : UILabel!
+    
     
     // MARK:- VARIABLES
     var strScore:String?
@@ -26,10 +28,10 @@ class DassAssessmentResultVC: BaseViewController {
     var needleWidth: CGFloat = 15
     let needle = UIImageView()
     
-    var value: Int = 0 {
+    var scoreValue: Int = 0 {
         didSet {
             // figure out where the needle is, between 0 and 1
-            let needlePosition = CGFloat(value) / 100
+            let needlePosition = CGFloat(scoreValue) / 100
             
             // create a lerp from the start angle (rotation) through to the end angle (rotation + totalAngle)
             let lerpFrom = rotation
@@ -40,6 +42,7 @@ class DassAssessmentResultVC: BaseViewController {
             needle.transform = CGAffineTransform(rotationAngle: deg2rad(needleRotation))
         }
     }
+    
     
     // MARK:- VIEW LIFE CYCLE
     override func viewDidLoad() {
@@ -91,13 +94,15 @@ class DassAssessmentResultVC: BaseViewController {
     }
     
     override func setupData() {
-        self.value = 0
-        self.lblScore.text = "\(self.value)"
+        scoreValue = 0
+        lblScore.text = "\(scoreValue)"
+        
+        lblScoreLevel.text = CoUserDataModel.currentUser?.ScoreLevel ?? ""
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             UIView.animate(withDuration: 1) {
-                self.value = Int(CoUserDataModel.currentUser?.indexScore ?? "") ?? 0
-                self.lblScore.text = "\(self.value)"
+                self.scoreValue = Int(CoUserDataModel.currentUser?.indexScore ?? "") ?? 0
+                self.lblScore.text = "\(self.scoreValue)"
             }
         }
     }
@@ -107,13 +112,11 @@ class DassAssessmentResultVC: BaseViewController {
     }
     
     override func goNext() {
-        APPDELEGATE.window?.rootViewController = AppStoryBoard.main.viewController(viewControllerClass: NavigationClass.self)
-        
-        // let aVC = AppStoryBoard.main.viewController(viewControllerClass:ManagePlanListVC.self)
-        // let navVC = UINavigationController(rootViewController: aVC)
-        // navVC.isNavigationBarHidden = true
-        // navVC.modalPresentationStyle = .overFullScreen
-        // self.navigationController?.present(navVC, animated: true, completion: nil)
+        let aVC = AppStoryBoard.main.viewController(viewControllerClass:ManagePlanListVC.self)
+        let navVC = UINavigationController(rootViewController: aVC)
+        navVC.isNavigationBarHidden = true
+        navVC.modalPresentationStyle = .overFullScreen
+        self.navigationController?.present(navVC, animated: true, completion: nil)
     }
     
     func handleNavigation() {
@@ -127,6 +130,7 @@ class DassAssessmentResultVC: BaseViewController {
         aVC.modalPresentationStyle = .overFullScreen
         self.present(aVC, animated: true, completion: nil)
     }
+    
     
     // MARK:- ACTIONS
     @IBAction func continueClicked(sender : UIButton) {

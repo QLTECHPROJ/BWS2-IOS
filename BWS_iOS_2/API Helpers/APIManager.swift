@@ -27,13 +27,14 @@ enum APIRouter: URLRequestConvertible {
     case profilesaveans([String:String])
     case assesmentquestionlist
     case assesmentsaveans([String:String])
-    case getrecommendedcategory([String:String])
+    case planlist([String:String])
     case avgsleeptime
+    case getrecommendedcategory([String:String])
+    case saverecommendedcategory([String:String])
     
     // Manage Plan - APIs
     case managehomescreen([String:String])
     case managehomeviewallaudio([String:String])
-    case planlist([String:String])
     
     // Audio - APIs
     case audiodetail([String:String])
@@ -85,6 +86,14 @@ enum APIRouter: URLRequestConvertible {
             return APIRoute(path: "assesmentquestionlist", method: .get)
         case .assesmentsaveans(let data):
             return APIRoute(path: "assesmentsaveans", method: .post, data: data)
+        case .planlist(let data):
+            return APIRoute(path: "planlist", method: .post, data: data)
+        case .avgsleeptime:
+            return APIRoute(path: "avgsleeptime", method: .get)
+        case .getrecommendedcategory(let data):
+            return APIRoute(path: "getrecommendedcategory", method: .post, data: data)
+        case .saverecommendedcategory(let data):
+            return APIRoute(path: "saverecommendedcategory", method: .post, data: data)
             
         case .managehomescreen(let data):
             return APIRoute(path: "managehomescreen", method: .post, data: data)
@@ -125,12 +134,6 @@ enum APIRouter: URLRequestConvertible {
             return APIRoute(path: "suggestedplaylist", method: .post, data: data)
         case .searchonsuggestedlist(let data):
             return APIRoute(path: "searchonsuggestedlist", method: .post, data: data)
-        case .getrecommendedcategory(let data):
-            return APIRoute(path: "getrecommendedcategory", method: .post, data: data)
-        case .avgsleeptime:
-            return APIRoute(path: "avgsleeptime", method: .get)
-        case .planlist(let data):
-            return APIRoute(path: "planlist", method: .post, data: data)
         }
     }
     
