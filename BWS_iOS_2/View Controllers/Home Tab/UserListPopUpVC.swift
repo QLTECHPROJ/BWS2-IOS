@@ -22,6 +22,7 @@ class UserListPopUpVC: BaseViewController {
     var tapGesture = UITapGestureRecognizer()
     var arrayUsers = [CoUserDataModel]()
     var maxUsers = 2
+    var selectedUser : CoUserDataModel?
     var didCompleteLogin : (() -> Void)?
     
     
@@ -32,6 +33,10 @@ class UserListPopUpVC: BaseViewController {
         viewUserList.isHidden = true
         viewUserListTopConst.constant = 0
         self.view.layoutIfNeeded()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         setupUI()
         callUserListAPI()
@@ -117,19 +122,14 @@ class UserListPopUpVC: BaseViewController {
     }
     
     func newUserLogin() {
-        let selectedUser = arrayUsers.filter { $0.isSelected == true }.first
-        
-        if let selectedUser = selectedUser {
+        if let newLoginUser = selectedUser {
             let aVC = AppStoryBoard.main.viewController(viewControllerClass:PinVC.self)
-            aVC.selectedUser = selectedUser
+            aVC.selectedUser = newLoginUser
             aVC.pinVerified = {
-                self.dismiss(animated: true, completion: nil)
                 self.handleCoUserRedirection()
             }
             aVC.modalPresentationStyle = .overFullScreen
             self.navigationController?.present(aVC, animated: true, completion: nil)
-        } else {
-            showAlertToast(message: Theme.strings.alert_select_login_user)
         }
     }
     
@@ -150,13 +150,7 @@ extension UserListPopUpVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        for user in arrayUsers {
-            user.isSelected = false
-        }
-        
-        arrayUsers[indexPath.row].isSelected = true
-        tableView.reloadData()
-        
+        selectedUser = arrayUsers[indexPath.row]
         newUserLogin()
     }
     
