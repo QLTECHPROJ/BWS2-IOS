@@ -159,10 +159,21 @@ extension PinVC {
         let parameters = ["UserID":selectedUser?.CoUserId ?? "",
                           "Pin":strCode]
         
+        let coUserID = CoUserDataModel.currentUser?.CoUserId
+        
         APICallManager.sharedInstance.callAPI(router: APIRouter.verifypin(parameters)) { (response : CoUserModel) in
             if response.ResponseCode == "200" {
                 self.dismiss(animated: false, completion: nil)
+                
                 CoUserDataModel.currentUser = response.ResponseData
+                
+                if let lastCoUserID = coUserID {
+                    CoUserDataModel.lastCoUserID = lastCoUserID
+                }
+                
+                // Clear Last User Data
+                AccountVC.clearUserData()
+                
                 self.pinVerified?()
             } else {
                 showAlertToast(message: response.ResponseMessage)

@@ -22,6 +22,7 @@ class UserListPopUpVC: BaseViewController {
     var tapGesture = UITapGestureRecognizer()
     var arrayUsers = [CoUserDataModel]()
     var maxUsers = 2
+    var didCompleteLogin : (() -> Void)?
     
     
     // MARK:- VIEW LIFE CYCLE
@@ -115,14 +116,6 @@ class UserListPopUpVC: BaseViewController {
         }
     }
     
-    override func goNext() {
-        let aVC = AppStoryBoard.main.viewController(viewControllerClass:ManagePlanListVC.self)
-        let navVC = UINavigationController(rootViewController: aVC)
-        navVC.isNavigationBarHidden = true
-        navVC.modalPresentationStyle = .overFullScreen
-        self.navigationController?.present(navVC, animated: true, completion: nil)
-    }
-    
     func newUserLogin() {
         let selectedUser = arrayUsers.filter { $0.isSelected == true }.first
         
@@ -130,6 +123,7 @@ class UserListPopUpVC: BaseViewController {
             let aVC = AppStoryBoard.main.viewController(viewControllerClass:PinVC.self)
             aVC.selectedUser = selectedUser
             aVC.pinVerified = {
+                self.dismiss(animated: true, completion: nil)
                 self.handleCoUserRedirection()
             }
             aVC.modalPresentationStyle = .overFullScreen

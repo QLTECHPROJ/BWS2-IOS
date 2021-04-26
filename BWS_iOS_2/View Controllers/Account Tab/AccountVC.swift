@@ -31,6 +31,45 @@ class AccountVC: BaseViewController {
         DJDownloadManager.shared.clearDocumentDirectory()
     }
     
+    class func clearUserData() {
+        // Player Related Data
+        DJMusicPlayer.shared.stop(shouldTrack: false)
+        DJMusicPlayer.shared.playIndex = 0
+        DJMusicPlayer.shared.currentlyPlaying = nil
+        DJMusicPlayer.shared.latestPlayRequest = nil
+        DJMusicPlayer.shared.nowPlayingList = [AudioDetailsDataModel]()
+        
+        // Segment Event - Reset
+        // SegmentTracking.shared.flush()
+        // SegmentTracking.shared.reset()
+        
+        // Clear Assessment Questions Data
+        AssessmentDetailModel.current = nil
+        UserDefaults.standard.removeObject(forKey: "ArrayPage")
+        UserDefaults.standard.synchronize()
+        
+        UserDefaults.standard.removeObject(forKey: "NowPlayingSongs")
+        UserDefaults.standard.synchronize()
+        
+        DJMusicPlayer.shared.playerType = .audio
+        DJMusicPlayer.shared.lastPlayerType = .audio
+        DJMusicPlayer.shared.playerScreen = .miniPlayer
+        DJMusicPlayer.shared.playingFrom = "Audios"
+        DJMusicPlayer.shared.shouldPlayDisclaimer = false
+        
+        // Cancel All ongoing Downloads on logout
+        SDDownloadManager.shared.cancelAllDownloads()
+        
+        if CoUserDataModel.currentUser?.CoUserId == CoUserDataModel.lastCoUserID {
+            return
+        }
+        
+        // Download Related Data
+        CoreDataHelper.shared.deleteAllAudio()
+        CoreDataHelper.shared.deleteAllPlaylist()
+        DJDownloadManager.shared.clearDocumentDirectory()
+    }
+    
     
     // MARK:- ACTIONS
     @IBAction func logoutClicked(sender : UIButton) {

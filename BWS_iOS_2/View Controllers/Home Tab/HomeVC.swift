@@ -49,9 +49,10 @@ class HomeVC: BaseViewController {
     // MARK:- ACTIONS
     @IBAction func onTappedChangeUser(_ sender: UIButton) {
         let aVC = AppStoryBoard.home.viewController(viewControllerClass:UserListPopUpVC.self)
-        aVC.modalPresentationStyle = .overFullScreen
-        self.navigationController?.present(aVC, animated: true, completion: nil)
-        
+        let navVC = UINavigationController(rootViewController: aVC)
+        navVC.navigationBar.isHidden = true
+        navVC.modalPresentationStyle = .overFullScreen
+        self.present(navVC, animated: true, completion: nil)
     }
     
     @IBAction func onTappedNotification(_ sender: UIButton) {

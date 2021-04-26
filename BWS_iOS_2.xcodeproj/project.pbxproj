@@ -725,6 +725,7 @@
 		281DE3152626FD79002CCD9D /* DJMusicPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				287E807D262D510C0006A925 /* AudioPlayerSetUp.swift */,
 				281DE3162626FD79002CCD9D /* DJMusicPlayer.swift */,
 				281DE31D2626FD79002CCD9D /* DJMusicPlayer+ControlCenter.swift */,
 				281DE31E2626FD79002CCD9D /* DJMusicPlayer+Functionalities.swift */,
@@ -1051,7 +1052,6 @@
 			children = (
 				28E01211261847EA00B55967 /* Cell */,
 				28E8093426130A7A00CD80F7 /* HomeVC.swift */,
-				287E807D262D510C0006A925 /* AudioPlayerSetUp.swift */,
 				28E011FF2618470100B55967 /* UserListPopUpVC.swift */,
 				28E012022618471500B55967 /* NotificatonVC.swift */,
 				28E012052618474000B55967 /* PlaylistAudiosVC.swift */,
