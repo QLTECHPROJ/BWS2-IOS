@@ -109,9 +109,9 @@ class UserListPopUpVC: BaseViewController {
             } else if coUser.isAssessmentCompleted == "0" {
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass: DoDassAssessmentVC.self)
                 self.navigationController?.pushViewController(aVC, animated: true)
-                // } else if coUser.planDetails?.count == 0 {
-                // let aVC = AppStoryBoard.main.viewController(viewControllerClass: DassAssessmentResultVC.self)
-                // self.navigationController?.pushViewController(aVC, animated: true)
+            } else if coUser.planDetails?.count == 0 {
+                let aVC = AppStoryBoard.main.viewController(viewControllerClass: DassAssessmentResultVC.self)
+                self.navigationController?.pushViewController(aVC, animated: true)
             } else if coUser.AvgSleepTime.trim.count == 0 || coUser.AreaOfFocus.trim.count == 0 {
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass: SleepTimeVC.self)
                 self.navigationController?.pushViewController(aVC, animated: true)
@@ -124,6 +124,7 @@ class UserListPopUpVC: BaseViewController {
     func newUserLogin() {
         if let newLoginUser = selectedUser {
             let aVC = AppStoryBoard.main.viewController(viewControllerClass:PinVC.self)
+            aVC.strTitle = "Unlock"
             aVC.selectedUser = newLoginUser
             aVC.pinVerified = {
                 self.handleCoUserRedirection()

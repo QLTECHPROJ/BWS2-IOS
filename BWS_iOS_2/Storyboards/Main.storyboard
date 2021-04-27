@@ -3595,6 +3595,7 @@
                         <outlet property="lblLine2" destination="fxQ-dO-GnH" id="cwv-eg-qfR"/>
                         <outlet property="lblLine3" destination="h1u-P2-wYN" id="cJd-mc-nGF"/>
                         <outlet property="lblLine4" destination="ary-0f-mA7" id="wKf-tS-dka"/>
+                        <outlet property="lblTitle" destination="i8s-W6-Bwz" id="N0U-YL-q1J"/>
                         <outlet property="txtFPin1" destination="cqQ-4e-a0W" id="yhW-Ef-9VG"/>
                         <outlet property="txtFPin2" destination="cul-zc-vso" id="Smd-q5-b0m"/>
                         <outlet property="txtFPin3" destination="U1b-6s-TWh" id="dWl-K6-F59"/>
@@ -3900,7 +3901,7 @@
             </objects>
             <point key="canvasLocation" x="9213.6000000000004" y="136.69950738916256"/>
         </scene>
-        <!--Data Source-->
+        <!--Manage Plan ListVC-->
         <scene sceneID="F0k-yf-zop">
             <objects>
                 <viewController storyboardIdentifier="ManagePlanListVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yve-Dx-R9G" customClass="ManagePlanListVC" customModule="BWS_2_Staging" customModuleProvider="target" sceneMemberID="viewController">
@@ -3912,7 +3913,7 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="734"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BQx-dw-rm7">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="2535.3333333333335"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="2578.3333333333335"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CAw-zD-bjj">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="717"/>
@@ -4322,7 +4323,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a2D-C6-3GA">
-                                                <rect key="frame" x="0.0" y="1856.0000000000002" width="375" height="423.66666666666674"/>
+                                                <rect key="frame" x="0.0" y="1856.0000000000002" width="375" height="466.66666666666674"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3MF-Tb-Qgw">
                                                         <rect key="frame" x="16" y="19.999999999999996" width="343" height="46.666666666666657"/>
@@ -4332,50 +4333,27 @@ FROM REAL CUSTOMERS</string>
                                                         <color key="textColor" name="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E07-D7-APc" customClass="iCarousel">
-                                                        <rect key="frame" x="0.0" y="76.666666666666742" width="375" height="200"/>
-                                                        <color key="backgroundColor" name="F9F9F9"/>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wn1-N3-mYW" customClass="iCarousel">
+                                                        <rect key="frame" x="0.0" y="76.666666666666742" width="375" height="380"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="200" id="jMS-3l-paS"/>
+                                                            <constraint firstAttribute="height" constant="380" id="qrT-pi-6mV"/>
                                                         </constraints>
-                                                        <connections>
-                                                            <outlet property="dataSource" destination="yve-Dx-R9G" id="b8L-95-hve"/>
-                                                            <outlet property="delegate" destination="yve-Dx-R9G" id="Ih8-bz-ZEQ"/>
-                                                        </connections>
                                                     </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aiu-oU-DLD">
-                                                        <rect key="frame" x="16" y="296.66666666666652" width="343" height="56"/>
-                                                        <string key="text">“I would pay it all over again. It was worth every penny. On a bad day I would be very agitated and very angry about everyday occurrences.”</string>
-                                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
-                                                        <color key="textColor" name="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Tayla" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jjp-Ed-wM9">
-                                                        <rect key="frame" x="16" y="372.66666666666652" width="343" height="21"/>
-                                                        <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="18"/>
-                                                        <color key="textColor" name="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <constraints>
-                                                    <constraint firstItem="Aiu-oU-DLD" firstAttribute="trailing" secondItem="3MF-Tb-Qgw" secondAttribute="trailing" id="2MM-b7-iWJ"/>
+                                                    <constraint firstAttribute="bottom" secondItem="wn1-N3-mYW" secondAttribute="bottom" constant="10" id="2Qy-bg-wvk"/>
                                                     <constraint firstItem="3MF-Tb-Qgw" firstAttribute="top" secondItem="a2D-C6-3GA" secondAttribute="top" constant="20" id="4II-Vw-ezc"/>
-                                                    <constraint firstItem="Aiu-oU-DLD" firstAttribute="leading" secondItem="3MF-Tb-Qgw" secondAttribute="leading" id="IJ3-aT-aMF"/>
-                                                    <constraint firstItem="Jjp-Ed-wM9" firstAttribute="trailing" secondItem="Aiu-oU-DLD" secondAttribute="trailing" id="Ka0-9V-hcF"/>
-                                                    <constraint firstItem="Aiu-oU-DLD" firstAttribute="top" secondItem="E07-D7-APc" secondAttribute="bottom" constant="20" id="OUa-Pm-iPi"/>
-                                                    <constraint firstItem="Jjp-Ed-wM9" firstAttribute="top" secondItem="Aiu-oU-DLD" secondAttribute="bottom" constant="20" id="U3K-rr-UJj"/>
+                                                    <constraint firstAttribute="trailing" secondItem="wn1-N3-mYW" secondAttribute="trailing" id="F39-RS-HRT"/>
+                                                    <constraint firstItem="wn1-N3-mYW" firstAttribute="top" secondItem="3MF-Tb-Qgw" secondAttribute="bottom" constant="10" id="San-LW-RcV"/>
                                                     <constraint firstItem="3MF-Tb-Qgw" firstAttribute="leading" secondItem="a2D-C6-3GA" secondAttribute="leading" constant="16" id="alF-HC-aTD"/>
-                                                    <constraint firstAttribute="trailing" secondItem="E07-D7-APc" secondAttribute="trailing" id="dzq-qz-O44"/>
                                                     <constraint firstAttribute="trailing" secondItem="3MF-Tb-Qgw" secondAttribute="trailing" constant="16" id="f3X-54-9ts"/>
-                                                    <constraint firstItem="E07-D7-APc" firstAttribute="leading" secondItem="a2D-C6-3GA" secondAttribute="leading" id="lB5-sq-Xju"/>
-                                                    <constraint firstItem="Jjp-Ed-wM9" firstAttribute="leading" secondItem="Aiu-oU-DLD" secondAttribute="leading" id="mNg-8R-Tub"/>
-                                                    <constraint firstAttribute="bottom" secondItem="Jjp-Ed-wM9" secondAttribute="bottom" constant="30" id="nBH-HT-Its"/>
-                                                    <constraint firstItem="E07-D7-APc" firstAttribute="top" secondItem="3MF-Tb-Qgw" secondAttribute="bottom" constant="10" id="umf-74-zRJ"/>
+                                                    <constraint firstItem="wn1-N3-mYW" firstAttribute="leading" secondItem="a2D-C6-3GA" secondAttribute="leading" id="w5r-f1-zYY"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oXe-V2-n4u">
-                                                <rect key="frame" x="0.0" y="2279.6666666666665" width="375" height="235.66666666666652"/>
+                                                <rect key="frame" x="0.0" y="2322.6666666666665" width="375" height="235.66666666666652"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Frequently Asked Questions" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GKd-lu-KuF">
                                                         <rect key="frame" x="16" y="20" width="343" height="20"/>
@@ -4464,10 +4442,9 @@ agree to our T&amp;Cs, Privacy Policy &amp; Disclaimer</string>
                     </view>
                     <connections>
                         <outlet property="btnStart" destination="FCV-jv-fqk" id="OB0-5i-FS3"/>
-                        <outlet property="carouselView" destination="E07-D7-APc" id="CYX-Sq-NRd"/>
+                        <outlet property="carouselView" destination="wn1-N3-mYW" id="IfV-4m-sQs"/>
                         <outlet property="collectionViewAudios" destination="1Sc-mP-aaq" id="ERz-5f-Ok3"/>
                         <outlet property="lblAccessAudioTitle" destination="upV-cZ-jVi" id="aUi-mG-M3Z"/>
-                        <outlet property="lblFeedbackSubTitle" destination="Aiu-oU-DLD" id="jq7-5O-TJg"/>
                         <outlet property="lblFeedbackTitle" destination="3MF-Tb-Qgw" id="1dU-kJ-VCW"/>
                         <outlet property="lblIntroductorySubTitle" destination="R6r-1e-8rx" id="BTY-FK-TWd"/>
                         <outlet property="lblPrivacy" destination="E4q-s4-6k6" id="gCA-lc-YvC"/>
@@ -4483,7 +4460,7 @@ agree to our T&amp;Cs, Privacy Policy &amp; Disclaimer</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="90S-9J-Q2O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137" y="2325"/>
+            <point key="canvasLocation" x="136.80000000000001" y="2324.6305418719212"/>
         </scene>
         <!--Order SummaryVC-->
         <scene sceneID="xxl-Ex-bwb">

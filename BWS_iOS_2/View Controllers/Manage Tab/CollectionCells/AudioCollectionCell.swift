@@ -78,4 +78,20 @@ class AudioCollectionCell: UICollectionViewCell {
         }
     }
     
+    func configureCell(audioData : AudioDetailsDataModel) {
+        imgLock.isHidden = true
+        btnAddtoPlaylist.isHidden = true
+        
+        lblName.font = Theme.fonts.montserratFont(ofSize: 15, weight: .semibold)
+        
+        if let imgUrl = URL(string: audioData.ImageFile.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+            imageView.sd_setImage(with: imgUrl, completed: nil)
+        }
+        
+        imageView.cornerRadius = 15
+        imageView.clipsToBounds = true
+        
+        lblName.text = audioData.Name
+    }
+    
 }

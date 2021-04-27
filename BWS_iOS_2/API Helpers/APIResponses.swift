@@ -144,20 +144,18 @@ class PlanListModel : EVObject {
     var ResponseCode = ""
     var ResponseMessage = ""
     var ResponseStatus = ""
-    var ResponseData : PlanDataModel?
+    var ResponseData = PlanListDataModel()
 }
 
-class PlanDataModel : EVObject {
-    
-    var Plan = [PlanListDataModel]()
-    var AudioFiles = [AudioDataModel]()
-    var IntroductorySession = [IntroductorySesDataModel]()
-    var TestminialVideo = [TestminialVideoDatamodel]()
-    var FAQs = [FAQListDataModel]()
-    
+class PlanListDataModel : EVObject {
+    var Plan = [PlanDetailsModel]()
+    var AudioFiles = [AudioDetailsDataModel]()
+    var IntroductorySession = [SesssionDataModel]()
+    var TestminialVideo = [TestminialVideoDataModel]()
+    var FAQs = [FAQDataModel]()
 }
 
-class PlanListDataModel:EVObject {
+class PlanDetailsModel:EVObject {
     var PlanName = ""
     var PlanDescription = ""
     var PlanPrice = ""
@@ -166,41 +164,15 @@ class PlanListDataModel:EVObject {
     var isSelected = false
 }
 
-class IntroductorySesDataModel:EVObject {
+class SesssionDataModel:EVObject {
     
 }
 
-class TestminialVideoDatamodel : EVObject {
+class TestminialVideoDataModel : EVObject {
     var UserName = ""
     var VideoLink = ""
     var VideoDesc = ""
 }
-
-class FAQListDataModel : EVObject {
-    
-   var ID = ""
-   var Title = ""
-   var Desc = ""
-   var VideoURL = ""
-   var Category = ""
-    
-}
-
-
-// MARK:- General API Models
-class AudioListModel : EVObject {
-    var ResponseCode = ""
-    var ResponseMessage = ""
-    var ResponseStatus = ""
-    var ResponseData = [AudioDataModel]()
-}
-
-class AudioDataModel : EVObject {
-    var ID = ""
-    var Name = ""
-    var ImageFile = ""
-}
-
 
 // MARK:- FAQ API Models
 class FAQListModel : EVObject {
@@ -211,8 +183,11 @@ class FAQListModel : EVObject {
 }
 
 class FAQDataModel : EVObject {
-    var Question = ""
-    var Answer = ""
+    var ID = ""
+    var Title = ""
+    var Desc = ""
+    var VideoURL = ""
+    var Category = ""
     var isSelected = false
 }
 
@@ -244,7 +219,6 @@ class CategoryListModel : EVObject {
     var ID = ""
     var View = ""
     var Details = [CategoryDataModel]()
-   
 }
 
 class CategoryDataModel : EVObject {

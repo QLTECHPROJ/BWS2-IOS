@@ -19,7 +19,6 @@ class ManagePlanListVC: BaseViewController {
     @IBOutlet weak var lblAccessAudioTitle: UILabel!
     @IBOutlet weak var lblIntroductorySubTitle: UILabel!
     @IBOutlet weak var lblFeedbackTitle: UILabel!
-    @IBOutlet weak var lblFeedbackSubTitle: UILabel!
     
     @IBOutlet weak var lblProfiles: UILabel!
     
@@ -38,9 +37,12 @@ class ManagePlanListVC: BaseViewController {
     
     
     // MARK:- VARIABLES
-    var arrayPlans = [PlanListDataModel]()
-    var selectedPlanIndex = 0
     var arrayQuestions = [FAQDataModel]()
+    var arrayAudios = [AudioDetailsDataModel]()
+    var arrayVideos = [TestminialVideoDataModel]()
+    
+    var arrayPlans = [PlanDetailsModel]()
+    var selectedPlanIndex = 0
     
     
     // MARK:- VIEW LIFE CYCLE
@@ -55,9 +57,11 @@ class ManagePlanListVC: BaseViewController {
             self.collectionViewAudios.contentOffset = CGPoint(x: (self.collectionViewAudios.contentSize.width - 115) / 2, y: 0)
         }
         
-        fetchPlans()
-        fetchQuestions()
         setupUI()
+        
+        fetchPlans()
+        
+        callManagePlanListAPI()
     }
     
     
@@ -66,7 +70,7 @@ class ManagePlanListVC: BaseViewController {
         let normalString = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut"
         lblSubTitle.attributedText = normalString.attributedString(alignment: .center, lineSpacing: 10)
         
-        let accessAudioString = "Access More Than 65 Audio Programs."
+        let accessAudioString = "Access More Than 75 Audio Programs."
         lblAccessAudioTitle.attributedText = accessAudioString.attributedString(alignment: .center, lineSpacing: 10)
         
         let introductorySubTitleString = "Self reported date of 2173 clients before and after the introductory session"
@@ -75,9 +79,6 @@ class ManagePlanListVC: BaseViewController {
         let feedbackTitleString = "SEE REAL TESTIMONIALS \nFROM REAL CUSTOMERS"
         lblFeedbackTitle.attributedText = feedbackTitleString.attributedString(alignment: .center, lineSpacing: 10)
         
-        let feedbackSubTitleString = "“I would pay it all over again. It was worth every penny. On a bad day I would be very agitated and very angry about everyday occurrences.”"
-        lblFeedbackSubTitle.attributedText = feedbackSubTitleString.attributedString(alignment: .left, lineSpacing: 10)
-        
         setupSlider()
         setStartButtonTitle()
         setupPrivacyLabel()
@@ -85,23 +86,27 @@ class ManagePlanListVC: BaseViewController {
         tblPlanList.register(nibWithCellClass: PlanListCell.self)
         tblFAQ.register(nibWithCellClass: FAQCell.self)
         
-        tblPlanListHeightConst.constant = CGFloat(arrayPlans.count * 110)
-        self.view.layoutIfNeeded()
-        tblPlanList.reloadData()
-        
         tblFAQ.rowHeight = UITableView.automaticDimension
         tblFAQ.estimatedRowHeight = 80
         tblFAQ.reloadData()
         
         self.tblFAQ.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
         
+        carouselView.dataSource = self
+        carouselView.delegate = self
         carouselView.type = .linear
         carouselView.backgroundColor = UIColor.clear
+    }
+    
+    override func setupData() {
+        tblPlanListHeightConst.constant = CGFloat(arrayPlans.count * 110)
+        self.view.layoutIfNeeded()
         
-        // DispatchQueue.main.asyncAfter(deadline: .now()) {
-        //     self.tblFAQHeightConst.constant = self.tblFAQ.contentSize.height
-        //     self.view.layoutIfNeeded()
-        // }
+        tblPlanList.reloadData()
+        tblFAQ.reloadData()
+        
+        collectionViewAudios.reloadData()
+        carouselView.reloadData()
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -119,17 +124,21 @@ class ManagePlanListVC: BaseViewController {
         sliderProfiles.addTarget(self, action: #selector(sliderChanged), for: .valueChanged)
         
         sliderProfiles.isContinuous = true
-        sliderProfiles.minimumValue = CGFloat(2)
+        sliderProfiles.minimumValue = CGFloat(1)
         sliderProfiles.maximumValue = CGFloat(6)
         sliderProfiles.snapStepSize = CGFloat(1)
         sliderProfiles.distanceBetweenThumbs = CGFloat(1)
         sliderProfiles.keepsDistanceBetweenThumbs = true
-        sliderProfiles.value = [sliderProfiles.minimumValue]
+        sliderProfiles.value = [2]
     }
     
     @objc func sliderChanged(_ slider: MultiSlider) {
         print("thumb \(slider.draggedThumbIndex) moved")
         print("now thumbs are at \(slider.value)") // e.g., [1.0, 4.5, 5.0]
+        
+        if slider.value[0] < 2 {
+            slider.value = [2]
+        }
         
         // let roundedStepValue = round(sender.value / 1) * 1
         // sender.value = roundedStepValue
@@ -199,7 +208,7 @@ class ManagePlanListVC: BaseViewController {
     }
     
     func fetchPlans() {
-        let weeklyPlan = PlanListDataModel()
+        let weeklyPlan = PlanDetailsModel()
         weeklyPlan.isSelected = true
         weeklyPlan.PlanName = "Weekly"
         weeklyPlan.PlanDescription = "Lorem ipsum dolor sit"
@@ -207,7 +216,7 @@ class ManagePlanListVC: BaseViewController {
         weeklyPlan.PlanPeriod = "Week"
         arrayPlans.append(weeklyPlan)
         
-        let monthlyPlan = PlanListDataModel()
+        let monthlyPlan = PlanDetailsModel()
         monthlyPlan.isSelected = false
         monthlyPlan.PlanName = "Monthly"
         monthlyPlan.PlanDescription = "Lorem ipsum dolor sit"
@@ -215,7 +224,7 @@ class ManagePlanListVC: BaseViewController {
         monthlyPlan.PlanPeriod = "Month"
         arrayPlans.append(monthlyPlan)
         
-        let sixMonthlyPlan = PlanListDataModel()
+        let sixMonthlyPlan = PlanDetailsModel()
         sixMonthlyPlan.isSelected = false
         sixMonthlyPlan.PlanName = "Six-Monthly"
         sixMonthlyPlan.PlanDescription = "Lorem ipsum dolor sit"
@@ -224,34 +233,15 @@ class ManagePlanListVC: BaseViewController {
         sixMonthlyPlan.Popular = "1"
         arrayPlans.append(sixMonthlyPlan)
         
-        let yearlyPlan = PlanListDataModel()
+        let yearlyPlan = PlanDetailsModel()
         yearlyPlan.isSelected = false
         yearlyPlan.PlanName = "Annual"
         yearlyPlan.PlanDescription = "Lorem ipsum dolor sit"
         yearlyPlan.PlanPrice = "$249.99"
         yearlyPlan.PlanPeriod = "Year"
         arrayPlans.append(yearlyPlan)
-    }
-    
-    func fetchQuestions() {
-        arrayQuestions.removeAll()
         
-        for i in 1...10 {
-            let question = FAQDataModel()
-            if i % 3 == 0 {
-                question.Question = "\(i) - How can I cancel if I need to?"
-                question.Answer = "\(i) - How do I purchase a subscription?"
-            }
-            else if i % 2 == 0 {
-                question.Question = "\(i) - Is there a free trial?"
-                question.Answer = "\(i) - Yes. Every plan comes with a 30-day free trial option"
-            }
-            else {
-                question.Question = "\(i) - What are the benefits of signing up for the Membership Program"
-                question.Answer = "\(i) - What's the best way to use the Membership? Where do I start?"
-            }
-            arrayQuestions.append(question)
-        }
+        setupData()
     }
     
     
@@ -261,9 +251,7 @@ class ManagePlanListVC: BaseViewController {
     }
     
     @IBAction func startClicked(sender : UIButton) {
-//        let aVC = AppStoryBoard.main.viewController(viewControllerClass: OrderSummaryVC.self)
-//        self.navigationController?.pushViewController(aVC, animated: true)
-        let aVC = AppStoryBoard.main.viewController(viewControllerClass:SleepTimeVC.self)
+        let aVC = AppStoryBoard.main.viewController(viewControllerClass: OrderSummaryVC.self)
         self.navigationController?.pushViewController(aVC, animated: true)
     }
     
@@ -369,11 +357,12 @@ extension ManagePlanListVC : UITableViewDataSource, UITableViewDelegate {
 extension ManagePlanListVC : UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return arrayAudios.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withClass: AudioCollectionCell.self, for: indexPath)
+        cell.configureCell(audioData: arrayAudios[indexPath.row])
         return cell
     }
     
@@ -389,16 +378,21 @@ extension ManagePlanListVC : UICollectionViewDelegate, UICollectionViewDelegateF
 extension ManagePlanListVC : iCarouselDelegate, iCarouselDataSource {
     
     func numberOfItems(in carousel: iCarousel) -> Int {
-        return 5
+        return arrayVideos.count
     }
     
     func carousel(_ carousel: iCarousel, viewForItemAt index: Int, reusing view: UIView?) -> UIView {
-        let width : CGFloat = SCREEN_WIDTH - 52
-        let height : CGFloat = 180
-        let cell = PlayVideoCell()
-        let view = cell.loadViewFromNib()
-        view.frame = CGRect(x: 0, y: 0, width: width, height: height)
-        return view
+        let width : CGFloat = SCREEN_WIDTH - 32
+        let height : CGFloat = 360
+        let frame = CGRect(x: 0, y: 10, width: width, height: height)
+        
+        guard let cell = PlayVideoCell.instantiateFromNib() else {
+            return UIView()
+        }
+        
+        cell.configureCell(data: arrayVideos[index])
+        cell.frame = frame
+        return cell
     }
     
     func carousel(_ carousel: iCarousel, valueFor option: iCarouselOption, withDefault value: CGFloat) -> CGFloat {
@@ -406,7 +400,7 @@ extension ManagePlanListVC : iCarouselDelegate, iCarouselDataSource {
         case .wrap:
             return 1
         case .spacing:
-            return value * 1.05
+            return value
         default:
             return value
         }

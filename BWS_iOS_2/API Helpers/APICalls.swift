@@ -769,14 +769,16 @@ extension SleepTimeVC {
 
 extension ManagePlanListVC {
     
-    //call Category Rec list
-    func callManagePlanList() {
+    // Fetch Plan List & Other Data
+    func callManagePlanListAPI() {
         let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? ""]
         APICallManager.sharedInstance.callAPI(router: APIRouter.planlist(parameters)) { (response :PlanListModel) in
             
             if response.ResponseCode == "200" {
-              
-                self.tblFAQ.reloadData()
+                self.arrayAudios = response.ResponseData.AudioFiles
+                self.arrayVideos = response.ResponseData.TestminialVideo
+                self.arrayQuestions = response.ResponseData.FAQs
+                self.setupData()
             }
         }
     }
