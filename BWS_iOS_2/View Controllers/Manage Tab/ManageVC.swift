@@ -91,7 +91,7 @@ class ManageVC: BaseViewController {
             lblPlaylistDuration.text = "\(totalhour):\(totalminute)"
             
             if let avgSleepTime = CoUserDataModel.currentUser?.AvgSleepTime, avgSleepTime.trim.count > 0 {
-                lblSleepTime.text = "Your average sleep time is \(avgSleepTime) hours"
+                lblSleepTime.text = "Your average sleep time is \(avgSleepTime)"
             }
             
             if objPlaylist.IsReminder == "1" {

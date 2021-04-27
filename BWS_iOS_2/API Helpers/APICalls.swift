@@ -843,3 +843,24 @@ extension UserListPopUpVC {
     }
     
 }
+
+extension HomeVC {
+    
+    // Home API Call
+    func callHomeAPI() {
+        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? ""]
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.homescreen(parameters)) { (response : HomeModel) in
+            if response.ResponseCode == "200" {
+                self.suggstedPlaylist = response.ResponseData.SuggestedPlaylist
+                self.arrayPastIndexScore = response.ResponseData.PastIndexScore
+                self.arraySessionScore = response.ResponseData.SessionScore
+                self.arraySessionProgress = response.ResponseData.SessionProgress
+                self.setupData()
+            } else {
+                self.setupData()
+            }
+        }
+    }
+    
+}

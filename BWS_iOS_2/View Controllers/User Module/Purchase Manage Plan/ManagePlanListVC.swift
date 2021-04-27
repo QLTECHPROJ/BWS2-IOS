@@ -99,6 +99,8 @@ class ManagePlanListVC: BaseViewController {
     }
     
     override func setupData() {
+        setStartButtonTitle()
+        
         tblPlanListHeightConst.constant = CGFloat(arrayPlans.count * 110)
         self.view.layoutIfNeeded()
         

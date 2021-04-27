@@ -15,6 +15,10 @@
 		280DFCDF260DA03E00479EE6 /* RecommendedCategoryHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280DFCDC260DA03E00479EE6 /* RecommendedCategoryHeaderCell.swift */; };
 		280DFCE0260DA03E00479EE6 /* RecommendedCategoryHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 280DFCDD260DA03E00479EE6 /* RecommendedCategoryHeaderCell.xib */; };
 		280DFCE1260DA03E00479EE6 /* RecommendedCategoryHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 280DFCDD260DA03E00479EE6 /* RecommendedCategoryHeaderCell.xib */; };
+		2819848D2638214E00DA5A66 /* SuggestedPlaylistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2819848B2638214E00DA5A66 /* SuggestedPlaylistCell.swift */; };
+		2819848E2638214E00DA5A66 /* SuggestedPlaylistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2819848B2638214E00DA5A66 /* SuggestedPlaylistCell.swift */; };
+		2819848F2638214E00DA5A66 /* SuggestedPlaylistCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2819848C2638214E00DA5A66 /* SuggestedPlaylistCell.xib */; };
+		281984902638214E00DA5A66 /* SuggestedPlaylistCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2819848C2638214E00DA5A66 /* SuggestedPlaylistCell.xib */; };
 		281DE31F2626FD79002CCD9D /* SDDownloadObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281DE30A2626FD79002CCD9D /* SDDownloadObject.swift */; };
 		281DE3202626FD79002CCD9D /* SDDownloadObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281DE30A2626FD79002CCD9D /* SDDownloadObject.swift */; };
 		281DE3212626FD79002CCD9D /* SDDownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281DE30B2626FD79002CCD9D /* SDDownloadManager.swift */; };
@@ -331,8 +335,8 @@
 		28E01224261847EA00B55967 /* IndexScrorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28E01212261847EA00B55967 /* IndexScrorCell.xib */; };
 		28E01225261847EA00B55967 /* CreatePlayListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28E01213261847EA00B55967 /* CreatePlayListCell.xib */; };
 		28E01226261847EA00B55967 /* CreatePlayListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28E01213261847EA00B55967 /* CreatePlayListCell.xib */; };
-		28E01227261847EA00B55967 /* PlayerBannerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28E01214261847EA00B55967 /* PlayerBannerCell.xib */; };
-		28E01228261847EA00B55967 /* PlayerBannerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28E01214261847EA00B55967 /* PlayerBannerCell.xib */; };
+		28E01227261847EA00B55967 /* GraphCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28E01214261847EA00B55967 /* GraphCell.xib */; };
+		28E01228261847EA00B55967 /* GraphCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28E01214261847EA00B55967 /* GraphCell.xib */; };
 		28E01229261847EA00B55967 /* SelfDevCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E01215261847EA00B55967 /* SelfDevCell.swift */; };
 		28E0122A261847EA00B55967 /* SelfDevCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E01215261847EA00B55967 /* SelfDevCell.swift */; };
 		28E0122B261847EA00B55967 /* tagCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28E01217261847EA00B55967 /* tagCVCell.xib */; };
@@ -343,8 +347,8 @@
 		28E01230261847EA00B55967 /* ProgressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E01219261847EA00B55967 /* ProgressCell.swift */; };
 		28E01231261847EA00B55967 /* ProgressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28E0121A261847EA00B55967 /* ProgressCell.xib */; };
 		28E01232261847EA00B55967 /* ProgressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28E0121A261847EA00B55967 /* ProgressCell.xib */; };
-		28E01233261847EA00B55967 /* PlayerBannerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E0121B261847EA00B55967 /* PlayerBannerCell.swift */; };
-		28E01234261847EA00B55967 /* PlayerBannerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E0121B261847EA00B55967 /* PlayerBannerCell.swift */; };
+		28E01233261847EA00B55967 /* GraphCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E0121B261847EA00B55967 /* GraphCell.swift */; };
+		28E01234261847EA00B55967 /* GraphCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E0121B261847EA00B55967 /* GraphCell.swift */; };
 		28E01235261847EA00B55967 /* SelfDevCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28E0121C261847EA00B55967 /* SelfDevCell.xib */; };
 		28E01236261847EA00B55967 /* SelfDevCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28E0121C261847EA00B55967 /* SelfDevCell.xib */; };
 		28E01237261847EA00B55967 /* NotificationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28E0121D261847EA00B55967 /* NotificationCell.xib */; };
@@ -438,6 +442,8 @@
 		280C48F42600729900063C03 /* ManageStartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageStartVC.swift; sourceTree = "<group>"; };
 		280DFCDC260DA03E00479EE6 /* RecommendedCategoryHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedCategoryHeaderCell.swift; sourceTree = "<group>"; };
 		280DFCDD260DA03E00479EE6 /* RecommendedCategoryHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecommendedCategoryHeaderCell.xib; sourceTree = "<group>"; };
+		2819848B2638214E00DA5A66 /* SuggestedPlaylistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestedPlaylistCell.swift; sourceTree = "<group>"; };
+		2819848C2638214E00DA5A66 /* SuggestedPlaylistCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SuggestedPlaylistCell.xib; sourceTree = "<group>"; };
 		281DE30A2626FD79002CCD9D /* SDDownloadObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDDownloadObject.swift; sourceTree = "<group>"; };
 		281DE30B2626FD79002CCD9D /* SDDownloadManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDDownloadManager.swift; sourceTree = "<group>"; };
 		281DE30C2626FD79002CCD9D /* SDFileUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDFileUtils.swift; sourceTree = "<group>"; };
@@ -602,13 +608,13 @@
 		28E0120E2618479600B55967 /* AddToPlaylistVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToPlaylistVC.swift; sourceTree = "<group>"; };
 		28E01212261847EA00B55967 /* IndexScrorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IndexScrorCell.xib; sourceTree = "<group>"; };
 		28E01213261847EA00B55967 /* CreatePlayListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreatePlayListCell.xib; sourceTree = "<group>"; };
-		28E01214261847EA00B55967 /* PlayerBannerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayerBannerCell.xib; sourceTree = "<group>"; };
+		28E01214261847EA00B55967 /* GraphCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GraphCell.xib; sourceTree = "<group>"; };
 		28E01215261847EA00B55967 /* SelfDevCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfDevCell.swift; sourceTree = "<group>"; };
 		28E01217261847EA00B55967 /* tagCVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = tagCVCell.xib; sourceTree = "<group>"; };
 		28E01218261847EA00B55967 /* tagCVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tagCVCell.swift; sourceTree = "<group>"; };
 		28E01219261847EA00B55967 /* ProgressCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressCell.swift; sourceTree = "<group>"; };
 		28E0121A261847EA00B55967 /* ProgressCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgressCell.xib; sourceTree = "<group>"; };
-		28E0121B261847EA00B55967 /* PlayerBannerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerBannerCell.swift; sourceTree = "<group>"; };
+		28E0121B261847EA00B55967 /* GraphCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphCell.swift; sourceTree = "<group>"; };
 		28E0121C261847EA00B55967 /* SelfDevCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelfDevCell.xib; sourceTree = "<group>"; };
 		28E0121D261847EA00B55967 /* NotificationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationCell.xib; sourceTree = "<group>"; };
 		28E0121E261847EA00B55967 /* CreatePlayListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePlayListCell.swift; sourceTree = "<group>"; };
@@ -1001,8 +1007,10 @@
 			isa = PBXGroup;
 			children = (
 				28E01216261847EA00B55967 /* CVCell */,
-				28E0121B261847EA00B55967 /* PlayerBannerCell.swift */,
-				28E01214261847EA00B55967 /* PlayerBannerCell.xib */,
+				28E0121B261847EA00B55967 /* GraphCell.swift */,
+				28E01214261847EA00B55967 /* GraphCell.xib */,
+				2819848B2638214E00DA5A66 /* SuggestedPlaylistCell.swift */,
+				2819848C2638214E00DA5A66 /* SuggestedPlaylistCell.xib */,
 				28E01220261847EA00B55967 /* AreaCell.swift */,
 				28E01222261847EA00B55967 /* AreaCell.xib */,
 				28E01221261847EA00B55967 /* IndexScrorCell.swift */,
@@ -1356,6 +1364,7 @@
 				28E0122C261847EA00B55967 /* tagCVCell.xib in Resources */,
 				28ED2F9025FB58E000E59C56 /* Montserrat-Bold.ttf in Resources */,
 				28E01242261847EA00B55967 /* AreaCell.xib in Resources */,
+				281984902638214E00DA5A66 /* SuggestedPlaylistCell.xib in Resources */,
 				28E80927261308E300CD80F7 /* Home.storyboard in Resources */,
 				282441482609ACE30060292E /* UserListCell.xib in Resources */,
 				2870B35E25FB3A570014A4F6 /* LaunchScreen.storyboard in Resources */,
@@ -1365,7 +1374,7 @@
 				28E01236261847EA00B55967 /* SelfDevCell.xib in Resources */,
 				28E809302613090500CD80F7 /* Elevate.storyboard in Resources */,
 				283E1241262879A80007B280 /* Declaimer.jpeg in Resources */,
-				28E01228261847EA00B55967 /* PlayerBannerCell.xib in Resources */,
+				28E01228261847EA00B55967 /* GraphCell.xib in Resources */,
 				28ED2F8C25FB58DF00E59C56 /* Montserrat-Medium.ttf in Resources */,
 				28ED2F9425FB58E000E59C56 /* Montserrat-Regular.ttf in Resources */,
 				28E01238261847EA00B55967 /* NotificationCell.xib in Resources */,
@@ -1408,6 +1417,7 @@
 				28E0122B261847EA00B55967 /* tagCVCell.xib in Resources */,
 				28ED2F8F25FB58E000E59C56 /* Montserrat-Bold.ttf in Resources */,
 				28E01241261847EA00B55967 /* AreaCell.xib in Resources */,
+				2819848F2638214E00DA5A66 /* SuggestedPlaylistCell.xib in Resources */,
 				28E80926261308E300CD80F7 /* Home.storyboard in Resources */,
 				28F812BC25FB364900DC6AF6 /* LaunchScreen.storyboard in Resources */,
 				28ED2F9125FB58E000E59C56 /* Montserrat-SemiBold.ttf in Resources */,
@@ -1417,7 +1427,7 @@
 				28E01235261847EA00B55967 /* SelfDevCell.xib in Resources */,
 				28E8092F2613090500CD80F7 /* Elevate.storyboard in Resources */,
 				283E1240262879A80007B280 /* Declaimer.jpeg in Resources */,
-				28E01227261847EA00B55967 /* PlayerBannerCell.xib in Resources */,
+				28E01227261847EA00B55967 /* GraphCell.xib in Resources */,
 				28ED2F8B25FB58DF00E59C56 /* Montserrat-Medium.ttf in Resources */,
 				28ED2F9325FB58E000E59C56 /* Montserrat-Regular.ttf in Resources */,
 				28E01237261847EA00B55967 /* NotificationCell.xib in Resources */,
@@ -1559,6 +1569,7 @@
 				2824413C2609ABA10060292E /* SignUpVC.swift in Sources */,
 				2870B46025FB44700014A4F6 /* String+Timepiece.swift in Sources */,
 				2870B3E825FB41A10014A4F6 /* UIViewController+Extension.swift in Sources */,
+				2819848E2638214E00DA5A66 /* SuggestedPlaylistCell.swift in Sources */,
 				288621492615BF880087730D /* ViewAllPlaylistVC.swift in Sources */,
 				280C48F62600729900063C03 /* ManageStartVC.swift in Sources */,
 				2870B3DE25FB41A10014A4F6 /* Int+Extension.swift in Sources */,
@@ -1669,7 +1680,7 @@
 				2870B3E425FB41A10014A4F6 /* DJContants.swift in Sources */,
 				280C48F32600652C00063C03 /* DassAssessmentResultVC.swift in Sources */,
 				28D755692618999F00EA63FE /* iCarousel.m in Sources */,
-				28E01234261847EA00B55967 /* PlayerBannerCell.swift in Sources */,
+				28E01234261847EA00B55967 /* GraphCell.swift in Sources */,
 				2870B3F625FB41A10014A4F6 /* UITableView+Extension.swift in Sources */,
 				281DE32A2626FD79002CCD9D /* AudioDownloads+CoreDataClass.swift in Sources */,
 				2870B3F425FB41A10014A4F6 /* NSDate+Extension.swift in Sources */,
@@ -1731,6 +1742,7 @@
 				2870B3E725FB41A10014A4F6 /* UIViewController+Extension.swift in Sources */,
 				280C48F52600729900063C03 /* ManageStartVC.swift in Sources */,
 				2870B3DD25FB41A10014A4F6 /* Int+Extension.swift in Sources */,
+				2819848D2638214E00DA5A66 /* SuggestedPlaylistCell.swift in Sources */,
 				288621482615BF880087730D /* ViewAllPlaylistVC.swift in Sources */,
 				2870B43325FB41A10014A4F6 /* DJPageMenuConfiguration.swift in Sources */,
 				2870B3D525FB41A10014A4F6 /* UIImageView+Extension.swift in Sources */,
@@ -1841,7 +1853,7 @@
 				2870B3CF25FB41A10014A4F6 /* DJTextView.swift in Sources */,
 				280C48F22600652C00063C03 /* DassAssessmentResultVC.swift in Sources */,
 				28D755682618999F00EA63FE /* iCarousel.m in Sources */,
-				28E01233261847EA00B55967 /* PlayerBannerCell.swift in Sources */,
+				28E01233261847EA00B55967 /* GraphCell.swift in Sources */,
 				2870B3E325FB41A10014A4F6 /* DJContants.swift in Sources */,
 				281DE3292626FD79002CCD9D /* AudioDownloads+CoreDataClass.swift in Sources */,
 				2870B3F525FB41A10014A4F6 /* UITableView+Extension.swift in Sources */,

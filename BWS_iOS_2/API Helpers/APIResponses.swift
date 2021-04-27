@@ -514,7 +514,7 @@ class AssessmentQueModel: EVObject {
     var selectedAnswer = -1
 }
 
-//Sleep time
+// MARK:- Average Sleep Time Model
 class AverageSleepTimeModel: EVObject {
     var ResponseData = [AverageSleepTimeDataModel]()
     var ResponseCode = ""
@@ -527,3 +527,31 @@ class AverageSleepTimeDataModel: EVObject {
     var isSelected = false
 }
 
+// MARK:- Average Sleep Time Model
+class HomeModel: EVObject {
+    var ResponseData = HomeDataModel()
+    var ResponseCode = ""
+    var ResponseMessage = ""
+    var ResponseStatus = ""
+}
+
+class HomeDataModel: EVObject {
+    var IndexScore = ""
+    var SuggestedPlaylist : PlaylistDetailsModel?
+    var PastIndexScore = [PastIndexScoreModel]()
+    var SessionScore = [SessionScoreModel]()
+    var SessionProgress = [SessionProgressModel]()
+}
+
+class PastIndexScoreModel : EVObject {
+    var Month = ""
+    var IndexScore = ""
+}
+
+class SessionScoreModel : EVObject {
+    
+}
+
+class SessionProgressModel : EVObject {
+    
+}
