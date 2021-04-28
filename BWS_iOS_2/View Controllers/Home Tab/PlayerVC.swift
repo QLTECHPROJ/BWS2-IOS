@@ -187,10 +187,10 @@ class PlayerVC: BaseViewController {
             return String(format: "%02d:%02d:%02d", hours, minutes, seconds)
         }
         
-        let playTime = String(format: "%02d:%02d", minutes, seconds)
-        let duration = DJMusicPlayer.shared.currentlyPlaying?.AudioDuration ?? "00:00"
-        let progress = String(format: "%0.3f",DJMusicPlayer.shared.progress)
-        print(" - (progress - \(progress)) : (playTime - \(playTime)) : (duration - \(duration))")
+        //        let playTime = String(format: "%02d:%02d", minutes, seconds)
+        //        let duration = DJMusicPlayer.shared.currentlyPlaying?.AudioDuration ?? "00:00"
+        //        let progress = String(format: "%0.3f",DJMusicPlayer.shared.progress)
+        //        print(" - (progress - \(progress)) : (playTime - \(playTime)) : (duration - \(duration))")
         
         return String(format: "%02d:%02d", minutes, seconds)
     }

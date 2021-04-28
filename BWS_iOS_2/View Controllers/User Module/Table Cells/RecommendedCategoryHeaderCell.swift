@@ -16,7 +16,7 @@ class RecommendedCategoryHeaderCell: UITableViewCell {
     
     @IBOutlet weak var collectionView : UICollectionView!
     
-    var arrayCategories = [CategoryDataModel]()
+    var arrayCategories = [AreaOfFocusModel]()
     var backClicked : (() -> Void)?
     
     override func awakeFromNib() {
@@ -41,7 +41,7 @@ class RecommendedCategoryHeaderCell: UITableViewCell {
     }
     
     // Configure Cell
-    func configureCell(data : [CategoryDataModel]) {
+    func configureCell(data : [AreaOfFocusModel]) {
         arrayCategories.removeAll()
         arrayCategories = data
         

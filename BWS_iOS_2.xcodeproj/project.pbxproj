@@ -279,6 +279,8 @@
 		2880EEE4260A32C300D0B6A7 /* PlanListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2880EEE2260A32C300D0B6A7 /* PlanListCell.swift */; };
 		2880EEE5260A32C300D0B6A7 /* PlanListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2880EEE3260A32C300D0B6A7 /* PlanListCell.xib */; };
 		2880EEE6260A32C700D0B6A7 /* PlanListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2880EEE2260A32C300D0B6A7 /* PlanListCell.swift */; };
+		28813B78263989A40015DA7A /* JSONSerializable+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28813B77263989A40015DA7A /* JSONSerializable+Helper.swift */; };
+		28813B79263989A40015DA7A /* JSONSerializable+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28813B77263989A40015DA7A /* JSONSerializable+Helper.swift */; };
 		288621482615BF880087730D /* ViewAllPlaylistVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288621472615BF880087730D /* ViewAllPlaylistVC.swift */; };
 		288621492615BF880087730D /* ViewAllPlaylistVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288621472615BF880087730D /* ViewAllPlaylistVC.swift */; };
 		28B27820262EED41005794E3 /* DownloadVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B2781F262EED41005794E3 /* DownloadVC.swift */; };
@@ -579,6 +581,7 @@
 		2880EEDF260A0DE100D0B6A7 /* ManagePlanListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagePlanListVC.swift; sourceTree = "<group>"; };
 		2880EEE2260A32C300D0B6A7 /* PlanListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanListCell.swift; sourceTree = "<group>"; };
 		2880EEE3260A32C300D0B6A7 /* PlanListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlanListCell.xib; sourceTree = "<group>"; };
+		28813B77263989A40015DA7A /* JSONSerializable+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONSerializable+Helper.swift"; sourceTree = "<group>"; };
 		288621472615BF880087730D /* ViewAllPlaylistVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewAllPlaylistVC.swift; sourceTree = "<group>"; };
 		28B2781F262EED41005794E3 /* DownloadVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadVC.swift; sourceTree = "<group>"; };
 		28B27822262EEECC005794E3 /* DownloadAudioVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadAudioVC.swift; sourceTree = "<group>"; };
@@ -844,6 +847,7 @@
 				2870B3B525FB41A10014A4F6 /* NotificationName+Extention.swift */,
 				2870B3C425FB41A10014A4F6 /* ReadMore_Helper.swift */,
 				2870B39C25FB41A10014A4F6 /* ExpandableLabel.swift */,
+				28813B77263989A40015DA7A /* JSONSerializable+Helper.swift */,
 				2870B3B925FB41A10014A4F6 /* BackspaceTextField.swift */,
 				2870B3BA25FB41A10014A4F6 /* AnimationFrames.swift */,
 				2870B3BC25FB41A10014A4F6 /* GradientView.swift */,
@@ -1595,6 +1599,7 @@
 				282441402609AC840060292E /* LoginVC.swift in Sources */,
 				2870B3FE25FB41A10014A4F6 /* KDCircularProgress.swift in Sources */,
 				2870B41025FB41A10014A4F6 /* Config.swift in Sources */,
+				28813B79263989A40015DA7A /* JSONSerializable+Helper.swift in Sources */,
 				2870B3DA25FB41A10014A4F6 /* UIColor+Extension.swift in Sources */,
 				281DE3322626FD79002CCD9D /* PlaylistDownloads+CoreDataProperties.swift in Sources */,
 				2870B42225FB41A10014A4F6 /* NotificationName+Extention.swift in Sources */,
@@ -1768,6 +1773,7 @@
 				28B27823262EEECC005794E3 /* DownloadAudioVC.swift in Sources */,
 				2824413F2609AC820060292E /* LoginVC.swift in Sources */,
 				28ED2F8025FB511300E59C56 /* ProfileFormStartVC.swift in Sources */,
+				28813B78263989A40015DA7A /* JSONSerializable+Helper.swift in Sources */,
 				2870B3D925FB41A10014A4F6 /* UIColor+Extension.swift in Sources */,
 				2870B42125FB41A10014A4F6 /* NotificationName+Extention.swift in Sources */,
 				281DE3312626FD79002CCD9D /* PlaylistDownloads+CoreDataProperties.swift in Sources */,

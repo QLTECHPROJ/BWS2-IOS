@@ -57,10 +57,8 @@ extension SignUpVC {
         
         APICallManager.sharedInstance.callAPI(router: APIRouter.signup(parameters), displayHud: true, showToast: false) { (response : LoginModel) in
             if response.ResponseCode == "200" {
-                LoginDataModel.currentUser = response.ResponseData
-                
-                let aVC = AppStoryBoard.main.viewController(viewControllerClass:UserListVC.self)
-                self.navigationController?.pushViewController(aVC, animated: true)
+                showAlertToast(message: response.ResponseMessage)
+                self.navigationController?.popViewController(animated: true)
             } else {
                 if response.ResponseMessage.trim.count > 0 {
                     self.lblErrPass.isHidden = false
@@ -732,20 +730,25 @@ extension AreaOfFocusVC {
             if response.ResponseCode == "200" {
                 self.arrayCategories = response.ResponseData
                 self.tableView.reloadData()
-                self.setupData()
+                self.setInitialData()
             }
         }
     }
     
     // Save Category & Sleep Time
-    func callSaveCategoryAPI(areaOfFocus : String) {
-        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
-                          "AvgSleepTime":self.averageSleepTime,
-                          "CatName":areaOfFocus]
+    func callSaveCategoryAPI(areaOfFocus : [[String:Any]]) {
+        let parameters : [String : Any] = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+                                           "AvgSleepTime":self.averageSleepTime,
+                                           "CatName":areaOfFocus.toJSON() ?? ""]
         
-        APICallManager.sharedInstance.callAPI(router: APIRouter.saverecommendedcategory(parameters)) { (response :GeneralModel) in
+        APICallManager.sharedInstance.callAPI(router: APIRouter.saverecommendedcategory(parameters)) { (response :SaveCategoryModel) in
             
             if response.ResponseCode == "200" {
+                let userData = CoUserDataModel.currentUser
+                userData?.AvgSleepTime = response.ResponseData?.AvgSleepTime ?? "0"
+                userData?.AreaOfFocus = response.ResponseData?.CategoryData ?? [AreaOfFocusModel]()
+                CoUserDataModel.currentUser = userData
+                
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass: PreparingPlaylistVC.self)
                 self.navigationController?.pushViewController(aVC, animated: true)
             }
@@ -852,6 +855,8 @@ extension HomeVC {
         
         APICallManager.sharedInstance.callAPI(router: APIRouter.homescreen(parameters)) { (response : HomeModel) in
             if response.ResponseCode == "200" {
+                self.tableView.isHidden = false
+                
                 self.suggstedPlaylist = response.ResponseData.SuggestedPlaylist
                 self.arrayPastIndexScore = response.ResponseData.PastIndexScore
                 self.arraySessionScore = response.ResponseData.SessionScore

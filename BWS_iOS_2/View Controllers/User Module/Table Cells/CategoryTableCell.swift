@@ -14,7 +14,7 @@ class CategoryTableCell: UITableViewCell {
     @IBOutlet weak var collectionView : DynamicHeightCollectionView!
     
     var arrayCategories = [CategoryDataModel]()
-    var categoryClicked : (() -> Void)?
+    var categoryClicked : ((Int) -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -58,14 +58,7 @@ extension CategoryTableCell : UICollectionViewDelegate, UICollectionViewDelegate
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        for category in arrayCategories {
-            category.isSelected = false
-        }
-        
-        arrayCategories[indexPath.row].isSelected = true
-        collectionView.reloadData()
-        
-        self.categoryClicked?()
+        self.categoryClicked?(indexPath.row)
     }
     
 }

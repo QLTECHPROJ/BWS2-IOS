@@ -30,7 +30,7 @@ enum APIRouter: URLRequestConvertible {
     case planlist([String:String])
     case avgsleeptime
     case getrecommendedcategory([String:String])
-    case saverecommendedcategory([String:String])
+    case saverecommendedcategory([String:Any])
     
     // Home Tab - APIs
     case homescreen([String:String])

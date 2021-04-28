@@ -23,7 +23,7 @@ class HomeVC: BaseViewController {
     var arrayPastIndexScore = [PastIndexScoreModel]()
     var arraySessionScore = [SessionScoreModel]()
     var arraySessionProgress = [SessionProgressModel]()
-    var areaOfFocus = [String]()
+    var areaOfFocus = [AreaOfFocusModel]()
     
     
     // MARK:- VIEW LIFE CYCLE
@@ -41,12 +41,17 @@ class HomeVC: BaseViewController {
         
         setupUI()
         setupData()
+        registerForPlayerNotifications()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        callHomeAPI()
+        if checkInternet() {
+            callHomeAPI()
+        } else {
+            tableView.isHidden = true
+        }
     }
     
     
@@ -62,13 +67,89 @@ class HomeVC: BaseViewController {
     }
     
     override func setupData() {
-        if let strAreaOfFocus = CoUserDataModel.currentUser?.AreaOfFocus {
-            areaOfFocus = strAreaOfFocus.components(separatedBy: ",")
+        areaOfFocus.removeAll()
+        if let arrayCategory = CoUserDataModel.currentUser?.AreaOfFocus {
+            areaOfFocus = arrayCategory
         }
         
         tableView.reloadData()
     }
     
+    override func handleDJMusicPlayerNotifications(notification: Notification) {
+        switch notification.name {
+        case .playbackProgressDidChange:
+            break
+        case .playerItemDidChange:
+            if tableView.numberOfSections > 0 {
+                if tableView.numberOfRows(inSection: 0) > 0 {
+                    self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
+                }
+            }
+            break
+        case .playerQueueDidUpdate, .playbackStateDidChange, .playerStateDidChange:
+            if tableView.numberOfSections > 0 {
+                if tableView.numberOfRows(inSection: 0) > 0 {
+                    self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
+                }
+            }
+        default:
+            break
+        }
+    }
+    
+    func setReminder() {
+        // For Suggested Playlist
+    }
+    
+    func playSuggestedPlaylist() {
+        guard let playlistData = suggstedPlaylist else {
+            return
+        }
+        
+        let isPlaylistPlaying = isPlayingPlaylist(playlistID: playlistData.PlaylistID)
+        
+        if isPlaylistPlaying {
+            if DJMusicPlayer.shared.playbackState == .stopped {
+                DJMusicPlayer.shared.currentlyPlaying = nil
+                DJMusicPlayer.shared.latestPlayRequest = nil
+                DJMusicPlayer.shared.resetPlayer()
+                DJMusicPlayer.shared.requestToPlay()
+            } else {
+                DJMusicPlayer.shared.togglePlaying()
+            }
+            
+            return
+        }
+        
+        if playlistData.PlaylistSongs.count == 0 {
+            return
+        }
+        
+        let isDownloaded = DJDownloadManager.shared.checkFileExists(fileName: playlistData.PlaylistSongs[0].AudioFile)
+        
+        if isDownloaded == false && checkInternet() == false {
+            showAlertToast(message: Theme.strings.alert_redownload_playlist)
+            return
+        }
+        
+        if DJMusicPlayer.shared.currentlyPlaying?.isDisclaimer == true {
+            showAlertToast(message: Theme.strings.alert_disclaimer_playing)
+            return
+        }
+        
+        if playlistData.PlaylistSongs.count != 0 {
+            DJMusicPlayer.shared.playerType = .playlist
+            DJMusicPlayer.shared.currentPlaylist = playlistData
+            self.presentAudioPlayer(arrayPlayerData: playlistData.PlaylistSongs, index: 0)
+            DJMusicPlayer.shared.playingFrom = playlistData.PlaylistName
+        }
+    }
+    
+    func editAreaOfFocus() {
+        let aVC = AppStoryBoard.main.viewController(viewControllerClass:AreaOfFocusVC.self)
+        aVC.averageSleepTime = CoUserDataModel.currentUser?.AvgSleepTime ?? ""
+        self.navigationController?.pushViewController(aVC, animated: true)
+    }
     
     // MARK:- ACTIONS
     @IBAction func onTappedChangeUser(_ sender: UIButton) {
@@ -98,10 +179,24 @@ extension HomeVC : UITableViewDelegate, UITableViewDataSource {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withClass: SuggestedPlaylistCell.self)
             cell.configureCell(data: self.suggstedPlaylist)
+            
+            cell.playClicked = {
+                self.playSuggestedPlaylist()
+            }
+            
+            cell.setReminderClicked = {
+                self.setReminder()
+            }
+            
             return cell
         } else  if indexPath.row == 1 {
             let cell = tableView.dequeueReusableCell(withClass: AreaCell.self)
             cell.configureCell(data: areaOfFocus)
+            
+            cell.editClicked = {
+                self.editAreaOfFocus()
+            }
+            
             return cell
         } else if indexPath.row == 2 {
             let cell = tableView.dequeueReusableCell(withClass: IndexScrorCell.self)
@@ -164,6 +259,20 @@ extension HomeVC : UITableViewDelegate, UITableViewDataSource {
             return 200
         }
         return 0
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.row {
+        case 0:
+            if let objPlaylist = suggstedPlaylist {
+                let aVC = AppStoryBoard.home.viewController(viewControllerClass: PlaylistAudiosVC.self)
+                aVC.objPlaylist = objPlaylist
+                aVC.sectionName = "Suggested Playlist"
+                self.navigationController?.pushViewController(aVC, animated: true)
+            }
+        default:
+            break
+        }
     }
     
 }

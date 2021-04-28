@@ -103,6 +103,7 @@ class LoginModel : EVObject {
 }
 
 class LoginDataModel : EVObject {
+    var EmailSend = ""
     var ID = ""
     var Name = ""
     var Email = ""
@@ -227,6 +228,24 @@ class CategoryDataModel : EVObject {
     var isSelected = false
 }
 
+// MARK:- Save Category API Models
+class SaveCategoryModel : EVObject {
+    var ResponseCode = ""
+    var ResponseMessage = ""
+    var ResponseStatus = ""
+    var ResponseData : SaveCategoryDataModel?
+}
+
+class SaveCategoryDataModel : EVObject {
+    var CoUserId = ""
+    var AvgSleepTime = ""
+    var CategoryData = [AreaOfFocusModel]()
+}
+
+class AreaOfFocusModel : EVObject {
+    var MainCat = ""
+    var RecommendedCat = ""
+}
 
 // MARK:- Add Co User API Models
 class CoUserModel : EVObject {
@@ -248,7 +267,7 @@ class CoUserDataModel : EVObject {
     var ScoreLevel = ""
     var planDetails : [Any]?
     var errormsg = ""
-    var AreaOfFocus = ""
+    var AreaOfFocus = [AreaOfFocusModel]()
     var AvgSleepTime = ""
     var isSelected = false
     

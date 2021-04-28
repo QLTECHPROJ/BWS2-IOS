@@ -31,7 +31,7 @@ class ThankYouVC: BaseViewController {
     
     func handleCoUserRedirection() {
         if let coUser = CoUserDataModel.currentUser {
-            if coUser.AvgSleepTime.trim.count == 0 || coUser.AreaOfFocus.trim.count == 0 {
+            if coUser.AvgSleepTime.trim.count == 0 || coUser.AreaOfFocus.count == 0 {
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass: SleepTimeVC.self)
                 self.navigationController?.pushViewController(aVC, animated: true)
             } else {

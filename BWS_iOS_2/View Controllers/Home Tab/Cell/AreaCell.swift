@@ -14,7 +14,8 @@ class AreaCell: UITableViewCell {
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var collectionView: DynamicHeightCollectionView!
     
-    var arrayCategories = [String]()
+    var arrayCategories = [AreaOfFocusModel]()
+    var editClicked : ( () -> Void )?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,7 +33,7 @@ class AreaCell: UITableViewCell {
         btnEdit.isHidden = ( arrayCategories.count == 0 )
     }
     
-    func configureCell(data : [String]) {
+    func configureCell(data : [AreaOfFocusModel]) {
         arrayCategories.removeAll()
         arrayCategories = data
         
@@ -43,8 +44,7 @@ class AreaCell: UITableViewCell {
     }
     
     @IBAction func onTappedEdit(_ sender: UIButton) {
-        let aVC = AppStoryBoard.main.viewController(viewControllerClass:AreaOfFocusVC.self)
-        self.parentViewController?.navigationController?.pushViewController(aVC, animated: true)
+        editClicked?()
     }
     
 }

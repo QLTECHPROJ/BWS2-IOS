@@ -112,7 +112,7 @@ class UserListPopUpVC: BaseViewController {
             } else if coUser.planDetails?.count == 0 {
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass: DassAssessmentResultVC.self)
                 self.navigationController?.pushViewController(aVC, animated: true)
-            } else if coUser.AvgSleepTime.trim.count == 0 || coUser.AreaOfFocus.trim.count == 0 {
+            } else if coUser.AvgSleepTime.trim.count == 0 || coUser.AreaOfFocus.count == 0 {
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass: SleepTimeVC.self)
                 self.navigationController?.pushViewController(aVC, animated: true)
             } else {
@@ -152,7 +152,15 @@ extension UserListPopUpVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedUser = arrayUsers[indexPath.row]
-        newUserLogin()
+        
+        DispatchQueue.main.async {
+            if self.selectedUser?.CoUserId == CoUserDataModel.currentUser?.CoUserId {
+                self.dismiss(animated: true, completion: nil)
+            } else {
+                self.newUserLogin()
+            }
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
