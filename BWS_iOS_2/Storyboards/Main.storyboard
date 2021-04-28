@@ -4901,7 +4901,7 @@ agree to our T&amp;Cs, Privacy Policy &amp; Disclaimer</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6A5-Sm-S5t">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AverageSleepTime_Top" translatesAutoresizingMaskIntoConstraints="NO" id="BP7-cV-hqI">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="163"/>
@@ -4916,7 +4916,7 @@ agree to our T&amp;Cs, Privacy Policy &amp; Disclaimer</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="qTZ-Cr-3OG">
-                                        <rect key="frame" x="0.0" y="229" width="375" height="583"/>
+                                        <rect key="frame" x="0.0" y="229" width="375" height="549"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="30" minimumInteritemSpacing="24" id="hqV-SU-VqV">
                                             <size key="itemSize" width="159" height="50"/>
@@ -4973,7 +4973,7 @@ agree to our T&amp;Cs, Privacy Policy &amp; Disclaimer</string>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="6A5-Sm-S5t" secondAttribute="bottom" id="R63-x2-iJY"/>
+                            <constraint firstItem="lP2-Xb-bxt" firstAttribute="bottom" secondItem="6A5-Sm-S5t" secondAttribute="bottom" id="R63-x2-iJY"/>
                             <constraint firstItem="6A5-Sm-S5t" firstAttribute="leading" secondItem="lP2-Xb-bxt" secondAttribute="leading" id="YDi-7u-nr8"/>
                             <constraint firstItem="6A5-Sm-S5t" firstAttribute="top" secondItem="82z-RP-YIK" secondAttribute="top" id="Z7i-7t-83I"/>
                             <constraint firstItem="lP2-Xb-bxt" firstAttribute="trailing" secondItem="6A5-Sm-S5t" secondAttribute="trailing" id="qKV-Hw-Efo"/>
@@ -4997,10 +4997,10 @@ agree to our T&amp;Cs, Privacy Policy &amp; Disclaimer</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6L7-Y9-sem">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="never" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ur-dq-fHN">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="716"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="682"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <connections>
                                             <outlet property="dataSource" destination="CpQ-64-WUK" id="mP7-r8-eGT"/>
@@ -5008,7 +5008,7 @@ agree to our T&amp;Cs, Privacy Policy &amp; Disclaimer</string>
                                         </connections>
                                     </tableView>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UcH-Zu-gvd">
-                                        <rect key="frame" x="40" y="732" width="295" height="50"/>
+                                        <rect key="frame" x="40" y="698" width="295" height="50"/>
                                         <color key="backgroundColor" red="0.0" green="0.53333333333333333" blue="0.5725490196078431" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="kbu-Kw-gEw"/>
@@ -5041,7 +5041,7 @@ agree to our T&amp;Cs, Privacy Policy &amp; Disclaimer</string>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="6L7-Y9-sem" secondAttribute="bottom" id="14C-le-E0w"/>
+                            <constraint firstItem="eze-Xr-aVQ" firstAttribute="bottom" secondItem="6L7-Y9-sem" secondAttribute="bottom" id="14C-le-E0w"/>
                             <constraint firstItem="6L7-Y9-sem" firstAttribute="top" secondItem="EDP-0f-OzP" secondAttribute="top" id="kSc-xl-hx5"/>
                             <constraint firstItem="eze-Xr-aVQ" firstAttribute="trailing" secondItem="6L7-Y9-sem" secondAttribute="trailing" id="m7S-po-PmD"/>
                             <constraint firstItem="6L7-Y9-sem" firstAttribute="leading" secondItem="eze-Xr-aVQ" secondAttribute="leading" id="vBt-TJ-enZ"/>

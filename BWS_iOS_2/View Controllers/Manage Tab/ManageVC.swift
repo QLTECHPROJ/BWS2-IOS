@@ -45,6 +45,7 @@ class ManageVC: BaseViewController {
         setupUI()
         registerForPlayerNotifications()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshData), name: .refreshData, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(refreshDownloadData), name: .refreshDownloadData, object: nil)
     }
     
@@ -147,6 +148,15 @@ class ManageVC: BaseViewController {
             callManageHomeAPI()
         }
         refreshControl.endRefreshing()
+    }
+    
+    // Refresh Data
+    @objc func refreshData() {
+        if checkInternet() == false {
+            addAudioDownloadsData()
+        } else {
+            callManageHomeAPI()
+        }
     }
     
     // Refresh Screen Data after Download Completed

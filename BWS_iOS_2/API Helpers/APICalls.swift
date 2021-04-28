@@ -750,6 +750,7 @@ extension AreaOfFocusVC {
                 CoUserDataModel.currentUser = userData
                 
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass: PreparingPlaylistVC.self)
+                aVC.isFromEdit = self.isFromEdit
                 self.navigationController?.pushViewController(aVC, animated: true)
             }
         }

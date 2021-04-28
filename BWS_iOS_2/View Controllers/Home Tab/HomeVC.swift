@@ -42,6 +42,8 @@ class HomeVC: BaseViewController {
         setupUI()
         setupData()
         registerForPlayerNotifications()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshData), name: .refreshData, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -73,6 +75,10 @@ class HomeVC: BaseViewController {
         }
         
         tableView.reloadData()
+    }
+    
+    @objc func refreshData() {
+        callHomeAPI()
     }
     
     override func handleDJMusicPlayerNotifications(notification: Notification) {
@@ -148,7 +154,11 @@ class HomeVC: BaseViewController {
     func editAreaOfFocus() {
         let aVC = AppStoryBoard.main.viewController(viewControllerClass:AreaOfFocusVC.self)
         aVC.averageSleepTime = CoUserDataModel.currentUser?.AvgSleepTime ?? ""
-        self.navigationController?.pushViewController(aVC, animated: true)
+        aVC.isFromEdit = true
+        let navVC = UINavigationController(rootViewController: aVC)
+        navVC.navigationBar.isHidden = true
+        navVC.modalPresentationStyle = .overFullScreen
+        self.present(navVC, animated: true, completion: nil)
     }
     
     // MARK:- ACTIONS
