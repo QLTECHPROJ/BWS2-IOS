@@ -102,24 +102,16 @@ class UserListVC: BaseViewController {
             } else if coUser.isAssessmentCompleted == "0" {
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass: DoDassAssessmentVC.self)
                 self.navigationController?.pushViewController(aVC, animated: true)
-                // } else if coUser.planDetails?.count == 0 {
-                // let aVC = AppStoryBoard.main.viewController(viewControllerClass: DassAssessmentResultVC.self)
-                // self.navigationController?.pushViewController(aVC, animated: true)
-            } else if coUser.AvgSleepTime.trim.count == 0 || coUser.AreaOfFocus.trim.count == 0 {
+                //            } else if coUser.planDetails?.count == 0 {
+                //                let aVC = AppStoryBoard.main.viewController(viewControllerClass: DassAssessmentResultVC.self)
+                //                self.navigationController?.pushViewController(aVC, animated: true)
+            } else if coUser.AvgSleepTime.trim.count == 0 || coUser.AreaOfFocus.count == 0 {
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass: SleepTimeVC.self)
                 self.navigationController?.pushViewController(aVC, animated: true)
             } else {
                 APPDELEGATE.window?.rootViewController = AppStoryBoard.main.viewController(viewControllerClass: NavigationClass.self)
             }
         }
-    }
-    
-    override func goNext() {
-        let aVC = AppStoryBoard.main.viewController(viewControllerClass:ManagePlanListVC.self)
-        let navVC = UINavigationController(rootViewController: aVC)
-        navVC.isNavigationBarHidden = true
-        navVC.modalPresentationStyle = .overFullScreen
-        self.navigationController?.present(navVC, animated: true, completion: nil)
     }
     
     

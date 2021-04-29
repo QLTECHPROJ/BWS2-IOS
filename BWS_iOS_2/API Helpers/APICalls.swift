@@ -57,10 +57,8 @@ extension SignUpVC {
         
         APICallManager.sharedInstance.callAPI(router: APIRouter.signup(parameters), displayHud: true, showToast: false) { (response : LoginModel) in
             if response.ResponseCode == "200" {
-                LoginDataModel.currentUser = response.ResponseData
-                
-                let aVC = AppStoryBoard.main.viewController(viewControllerClass:UserListVC.self)
-                self.navigationController?.pushViewController(aVC, animated: true)
+                showAlertToast(message: response.ResponseMessage)
+                self.navigationController?.popViewController(animated: true)
             } else {
                 if response.ResponseMessage.trim.count > 0 {
                     self.lblErrPass.isHidden = false
@@ -732,21 +730,27 @@ extension AreaOfFocusVC {
             if response.ResponseCode == "200" {
                 self.arrayCategories = response.ResponseData
                 self.tableView.reloadData()
-                self.setupData()
+                self.setInitialData()
             }
         }
     }
     
     // Save Category & Sleep Time
-    func callSaveCategoryAPI(areaOfFocus : String) {
-        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
-                          "AvgSleepTime":self.averageSleepTime,
-                          "CatName":areaOfFocus]
+    func callSaveCategoryAPI(areaOfFocus : [[String:Any]]) {
+        let parameters : [String : Any] = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+                                           "AvgSleepTime":self.averageSleepTime,
+                                           "CatName":areaOfFocus.toJSON() ?? ""]
         
-        APICallManager.sharedInstance.callAPI(router: APIRouter.saverecommendedcategory(parameters)) { (response :GeneralModel) in
+        APICallManager.sharedInstance.callAPI(router: APIRouter.saverecommendedcategory(parameters)) { (response :SaveCategoryModel) in
             
             if response.ResponseCode == "200" {
+                let userData = CoUserDataModel.currentUser
+                userData?.AvgSleepTime = response.ResponseData?.AvgSleepTime ?? "0"
+                userData?.AreaOfFocus = response.ResponseData?.CategoryData ?? [AreaOfFocusModel]()
+                CoUserDataModel.currentUser = userData
+                
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass: PreparingPlaylistVC.self)
+                aVC.isFromEdit = self.isFromEdit
                 self.navigationController?.pushViewController(aVC, animated: true)
             }
         }
@@ -769,14 +773,16 @@ extension SleepTimeVC {
 
 extension ManagePlanListVC {
     
-    //call Category Rec list
-    func callManagePlanList() {
+    // Fetch Plan List & Other Data
+    func callManagePlanListAPI() {
         let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? ""]
         APICallManager.sharedInstance.callAPI(router: APIRouter.planlist(parameters)) { (response :PlanListModel) in
             
             if response.ResponseCode == "200" {
-              
-                self.tblFAQ.reloadData()
+                self.arrayAudios = response.ResponseData.AudioFiles
+                self.arrayVideos = response.ResponseData.TestminialVideo
+                self.arrayQuestions = response.ResponseData.FAQs
+                self.setupData()
             }
         }
     }
@@ -861,6 +867,27 @@ extension ResourceVC {
             else {
                 ResourceVC.arrayCategories = [ResourceCategoryDataModel]()
                 self.setUpPageMenu()
+            }
+        }
+    }
+}
+
+extension HomeVC {
+    
+    // Home API Call
+    func callHomeAPI() {
+        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? ""]
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.homescreen(parameters)) { (response : HomeModel) in
+            if response.ResponseCode == "200" {
+                self.tableView.isHidden = false
+                
+                self.suggstedPlaylist = response.ResponseData.SuggestedPlaylist
+                self.arrayPastIndexScore = response.ResponseData.PastIndexScore
+                self.arraySessionScore = response.ResponseData.SessionScore
+                self.arraySessionProgress = response.ResponseData.SessionProgress
+                self.setupData()
+            } else {
                 self.setupData()
             }
         }

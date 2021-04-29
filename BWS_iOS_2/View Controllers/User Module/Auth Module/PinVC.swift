@@ -12,6 +12,7 @@ class PinVC: BaseViewController {
     
     // MARK:- OUTLETS
     @IBOutlet weak var viewBack: UIView!
+    @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var btnDone: UIButton!
     
     // Textfield
@@ -35,6 +36,7 @@ class PinVC: BaseViewController {
     
     
     // MARK:- VARIABLES
+    var strTitle = "Unlock the app"
     var selectedUser : CoUserDataModel?
     var pinVerified : (() -> Void)?
     
@@ -60,6 +62,8 @@ class PinVC: BaseViewController {
     
     // MARK:- FUNCTIONS
     override func setupUI() {
+        
+        lblTitle.text = strTitle
         
         for textfield in textFields {
             textfield.tintColor = UIColor.clear

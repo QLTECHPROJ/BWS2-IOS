@@ -629,6 +629,28 @@ open class DJMusicPlayer: NSObject {
         NotificationCenter.default.removeObserver(self)
     }
     
+    func getPlayTime() -> String {
+        if DJMusicPlayer.shared.currentTime.isNaN || DJMusicPlayer.shared.currentTime.isInfinite {
+            return "00:00"
+        }
+        
+        let currentTime = DJMusicPlayer.shared.currentTime
+        let hours = Int((currentTime / 60) / 60)
+        let minutes = Int(currentTime / 60)
+        let seconds = Int(currentTime) % 60
+        
+        if hours > 0 {
+            return String(format: "%02d:%02d:%02d", hours, minutes, seconds)
+        }
+        
+        let playTime = String(format: "%02d:%02d", minutes, seconds)
+        let duration = DJMusicPlayer.shared.currentlyPlaying?.AudioDuration ?? "00:00"
+        let progress = String(format: "%0.3f",DJMusicPlayer.shared.progress)
+        print(" - (progress - \(progress)) : (playTime - \(playTime)) : (duration - \(duration))")
+        
+        return String(format: "%02d:%02d", minutes, seconds)
+    }
+    
     private func addPeriodicTimeObserver() {
         // Invoke callback every half second
         // let interval = CMTime(seconds: 0.5, preferredTimescale: CMTimeScale(NSEC_PER_SEC))
@@ -659,6 +681,7 @@ open class DJMusicPlayer: NSObject {
                 let currentSeconds = time.seconds
                 let totalSeconds = self.duration
                 self.progress = Float(currentSeconds/totalSeconds)
+                _ = self.getPlayTime()
                 //                print("DJMusicPlayer.shared.progress :- ",self.progress)
                 NotificationCenter.default.post(name: .playbackProgressDidChange, object: nil)
                 

@@ -43,7 +43,9 @@ class ManageVC: BaseViewController {
         
         refreshAudioData = true
         setupUI()
+        registerForPlayerNotifications()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshData), name: .refreshData, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(refreshDownloadData), name: .refreshDownloadData, object: nil)
     }
     
@@ -68,6 +70,8 @@ class ManageVC: BaseViewController {
     
     // MARK:- FUNCTIONS
     override func setupUI() {
+        progressView.isHidden = true
+        
         tableView.tableHeaderView = UIView()
         tableView.register(nibWithCellClass: ManageAudioCell.self)
         tableView.register(nibWithCellClass: ManagePlaylistCell.self)
@@ -81,20 +85,42 @@ class ManageVC: BaseViewController {
     }
     
     override func setupData() {
-        if let objPlaylist = suggstedPlaylist {
+        if let playlistData = suggstedPlaylist {
             playlistMainView.isHidden = false
             
-            lblPlaylistName.text = objPlaylist.PlaylistName
+            lblPlaylistName.text = playlistData.PlaylistName
             
-            let totalhour = objPlaylist.Totalhour.trim.count > 0 ? objPlaylist.Totalhour : "0"
-            let totalminute = objPlaylist.Totalminute.trim.count > 0 ? objPlaylist.Totalminute : "0"
+            let totalhour = playlistData.Totalhour.trim.count > 0 ? playlistData.Totalhour : "0"
+            let totalminute = playlistData.Totalminute.trim.count > 0 ? playlistData.Totalminute : "0"
             lblPlaylistDuration.text = "\(totalhour):\(totalminute)"
             
             if let avgSleepTime = CoUserDataModel.currentUser?.AvgSleepTime, avgSleepTime.trim.count > 0 {
-                lblSleepTime.text = "Your average sleep time is \(avgSleepTime) hours"
+                lblSleepTime.text = "Your average sleep time is \(avgSleepTime)"
             }
             
-            if objPlaylist.IsReminder == "1" {
+            let isPlaylistPlaying = isPlayingPlaylist(playlistID: playlistData.PlaylistID)
+            
+            if isPlaylistPlaying && DJMusicPlayer.shared.isPlaying {
+                btnPlay.setImage(UIImage(named: "playPause"), for: UIControl.State.normal)
+            } else {
+                btnPlay.setImage(UIImage(named: "play_white"), for: UIControl.State.normal)
+            }
+            
+            if DJMusicPlayer.shared.state == .loading && DJMusicPlayer.shared.isPlaying {
+                if checkInternet() {
+                    btnPlay.setImage(UIImage(named: "playPause"), for: UIControl.State.normal)
+                } else {
+                    btnPlay.setImage(UIImage(named: "play_white"), for: UIControl.State.normal)
+                }
+            }
+            
+            if playlistData.PlaylistSongs.count > 0 {
+                btnPlay.isHidden = false
+            } else {
+                btnPlay.isHidden = true
+            }
+            
+            if playlistData.IsReminder == "1" {
                 btnReminder.setTitle("     Turn off reminder     ", for: .normal)
             } else {
                 btnReminder.setTitle("     Set reminder     ", for: .normal)
@@ -124,6 +150,15 @@ class ManageVC: BaseViewController {
         refreshControl.endRefreshing()
     }
     
+    // Refresh Data
+    @objc func refreshData() {
+        if checkInternet() == false {
+            addAudioDownloadsData()
+        } else {
+            callManageHomeAPI()
+        }
+    }
+    
     // Refresh Screen Data after Download Completed
     @objc override func refreshDownloadData() {
         if checkInternet() == false {
@@ -136,6 +171,20 @@ class ManageVC: BaseViewController {
                 }
             }
             self.tableView.reloadData()
+        }
+    }
+    
+    override func handleDJMusicPlayerNotifications(notification: Notification) {
+        switch notification.name {
+        case .playbackProgressDidChange:
+            break
+        case .playerItemDidChange:
+            self.setupData()
+            break
+        case .playerQueueDidUpdate, .playbackStateDidChange, .playerStateDidChange:
+            self.setupData()
+        default:
+            break
         }
     }
     
@@ -327,7 +376,47 @@ class ManageVC: BaseViewController {
     }
     
     @IBAction func playClicked(sender : UIButton) {
+        guard let playlistData = suggstedPlaylist else {
+            return
+        }
         
+        let isPlaylistPlaying = isPlayingPlaylist(playlistID: playlistData.PlaylistID)
+        
+        if isPlaylistPlaying {
+            if DJMusicPlayer.shared.playbackState == .stopped {
+                DJMusicPlayer.shared.currentlyPlaying = nil
+                DJMusicPlayer.shared.latestPlayRequest = nil
+                DJMusicPlayer.shared.resetPlayer()
+                DJMusicPlayer.shared.requestToPlay()
+            } else {
+                DJMusicPlayer.shared.togglePlaying()
+            }
+            
+            return
+        }
+        
+        if playlistData.PlaylistSongs.count == 0 {
+            return
+        }
+        
+        let isDownloaded = DJDownloadManager.shared.checkFileExists(fileName: playlistData.PlaylistSongs[0].AudioFile)
+        
+        if isDownloaded == false && checkInternet() == false {
+            showAlertToast(message: Theme.strings.alert_redownload_playlist)
+            return
+        }
+        
+        if DJMusicPlayer.shared.currentlyPlaying?.isDisclaimer == true {
+            showAlertToast(message: Theme.strings.alert_disclaimer_playing)
+            return
+        }
+        
+        if playlistData.PlaylistSongs.count != 0 {
+            DJMusicPlayer.shared.playerType = .playlist
+            DJMusicPlayer.shared.currentPlaylist = playlistData
+            self.presentAudioPlayer(arrayPlayerData: playlistData.PlaylistSongs, index: 0)
+            DJMusicPlayer.shared.playingFrom = playlistData.PlaylistName
+        }
     }
     
 }

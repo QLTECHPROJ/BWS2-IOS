@@ -103,6 +103,7 @@ class LoginModel : EVObject {
 }
 
 class LoginDataModel : EVObject {
+    var EmailSend = ""
     var ID = ""
     var Name = ""
     var Email = ""
@@ -144,20 +145,18 @@ class PlanListModel : EVObject {
     var ResponseCode = ""
     var ResponseMessage = ""
     var ResponseStatus = ""
-    var ResponseData : PlanDataModel?
+    var ResponseData = PlanListDataModel()
 }
 
-class PlanDataModel : EVObject {
-    
-    var Plan = [PlanListDataModel]()
-    var AudioFiles = [AudioDataModel]()
-    var IntroductorySession = [IntroductorySesDataModel]()
-    var TestminialVideo = [TestminialVideoDatamodel]()
-    var FAQs = [FAQListDataModel]()
-    
+class PlanListDataModel : EVObject {
+    var Plan = [PlanDetailsModel]()
+    var AudioFiles = [AudioDetailsDataModel]()
+    var IntroductorySession = [SesssionDataModel]()
+    var TestminialVideo = [TestminialVideoDataModel]()
+    var FAQs = [FAQDataModel]()
 }
 
-class PlanListDataModel:EVObject {
+class PlanDetailsModel:EVObject {
     var PlanName = ""
     var PlanDescription = ""
     var PlanPrice = ""
@@ -166,41 +165,15 @@ class PlanListDataModel:EVObject {
     var isSelected = false
 }
 
-class IntroductorySesDataModel:EVObject {
+class SesssionDataModel:EVObject {
     
 }
 
-class TestminialVideoDatamodel : EVObject {
+class TestminialVideoDataModel : EVObject {
     var UserName = ""
     var VideoLink = ""
     var VideoDesc = ""
 }
-
-class FAQListDataModel : EVObject {
-    
-   var ID = ""
-   var Title = ""
-   var Desc = ""
-   var VideoURL = ""
-   var Category = ""
-    
-}
-
-
-// MARK:- General API Models
-class AudioListModel : EVObject {
-    var ResponseCode = ""
-    var ResponseMessage = ""
-    var ResponseStatus = ""
-    var ResponseData = [AudioDataModel]()
-}
-
-class AudioDataModel : EVObject {
-    var ID = ""
-    var Name = ""
-    var ImageFile = ""
-}
-
 
 // MARK:- FAQ API Models
 class FAQListModel : EVObject {
@@ -211,8 +184,11 @@ class FAQListModel : EVObject {
 }
 
 class FAQDataModel : EVObject {
-    var Question = ""
-    var Answer = ""
+    var ID = ""
+    var Title = ""
+    var Desc = ""
+    var VideoURL = ""
+    var Category = ""
     var isSelected = false
 }
 
@@ -244,7 +220,6 @@ class CategoryListModel : EVObject {
     var ID = ""
     var View = ""
     var Details = [CategoryDataModel]()
-   
 }
 
 class CategoryDataModel : EVObject {
@@ -253,6 +228,24 @@ class CategoryDataModel : EVObject {
     var isSelected = false
 }
 
+// MARK:- Save Category API Models
+class SaveCategoryModel : EVObject {
+    var ResponseCode = ""
+    var ResponseMessage = ""
+    var ResponseStatus = ""
+    var ResponseData : SaveCategoryDataModel?
+}
+
+class SaveCategoryDataModel : EVObject {
+    var CoUserId = ""
+    var AvgSleepTime = ""
+    var CategoryData = [AreaOfFocusModel]()
+}
+
+class AreaOfFocusModel : EVObject {
+    var MainCat = ""
+    var RecommendedCat = ""
+}
 
 // MARK:- Add Co User API Models
 class CoUserModel : EVObject {
@@ -274,7 +267,7 @@ class CoUserDataModel : EVObject {
     var ScoreLevel = ""
     var planDetails : [Any]?
     var errormsg = ""
-    var AreaOfFocus = ""
+    var AreaOfFocus = [AreaOfFocusModel]()
     var AvgSleepTime = ""
     var isSelected = false
     
@@ -540,7 +533,7 @@ class AssessmentQueModel: EVObject {
     var selectedAnswer = -1
 }
 
-//Sleep time
+// MARK:- Average Sleep Time Model
 class AverageSleepTimeModel: EVObject {
     var ResponseData = [AverageSleepTimeDataModel]()
     var ResponseCode = ""
@@ -551,6 +544,35 @@ class AverageSleepTimeModel: EVObject {
 class AverageSleepTimeDataModel: EVObject {
     var Name = ""
     var isSelected = false
+}
+
+// MARK:- Average Sleep Time Model
+class HomeModel: EVObject {
+    var ResponseData = HomeDataModel()
+    var ResponseCode = ""
+    var ResponseMessage = ""
+    var ResponseStatus = ""
+}
+
+class HomeDataModel: EVObject {
+    var IndexScore = ""
+    var SuggestedPlaylist : PlaylistDetailsModel?
+    var PastIndexScore = [PastIndexScoreModel]()
+    var SessionScore = [SessionScoreModel]()
+    var SessionProgress = [SessionProgressModel]()
+}
+
+class PastIndexScoreModel : EVObject {
+    var Month = ""
+    var IndexScore = ""
+}
+
+class SessionScoreModel : EVObject {
+    
+}
+
+class SessionProgressModel : EVObject {
+    
 }
 
 /**** Resource Category Model ****/
@@ -564,7 +586,6 @@ class ResourceCategoryModel: EVObject {
 class ResourceCategoryDataModel: EVObject {
     var CategoryName = ""
 }
-
 
 /**** Resource Category Model ****/
 class ResourceListModel: EVObject {

@@ -33,4 +33,17 @@ class AreaOfFocusCell: UICollectionViewCell {
         lblIndex.textColor = Theme.colors.magenta_C44B6C
     }
     
+    func configureCell(data : AreaOfFocusModel, index : Int) {
+        lblIndex.text = "\(index + 1)"
+        lblCategory.text = data.RecommendedCat
+        
+        viewCategory.borderColor = Theme.colors.magenta_C44B6C
+        viewCategory.backgroundColor = Theme.colors.pink_FFDFEA
+        lblCategory.textColor = Theme.colors.magenta_C44B6C
+        
+        lblIndex.borderColor = Theme.colors.magenta_C44B6C
+        lblIndex.backgroundColor = Theme.colors.pink_FFDFEA
+        lblIndex.textColor = Theme.colors.magenta_C44B6C
+    }
+    
 }

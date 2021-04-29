@@ -17,6 +17,10 @@ class PreparingPlaylistVC: BaseViewController {
     @IBOutlet weak var animationView : ANActivityIndicatorView!
     
     
+    // MARK:- VARIABLES
+    var isFromEdit = false
+    
+    
     // MARK:- VIEW LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +51,12 @@ class PreparingPlaylistVC: BaseViewController {
     
     // MARK:- FUNCTIONS
     override func goNext() {
-        APPDELEGATE.window?.rootViewController = AppStoryBoard.main.viewController(viewControllerClass: NavigationClass.self)
+        if isFromEdit {
+            self.navigationController?.dismiss(animated: true, completion: nil)
+            NotificationCenter.default.post(name: .refreshData, object: nil)
+        } else {
+            APPDELEGATE.window?.rootViewController = AppStoryBoard.main.viewController(viewControllerClass: NavigationClass.self)
+        }
     }
     
     

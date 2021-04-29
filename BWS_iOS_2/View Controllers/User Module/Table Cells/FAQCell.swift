@@ -30,8 +30,8 @@ class FAQCell: UITableViewCell {
     
     // Configure Cell
     func configureCell(data : FAQDataModel) {
-        lblQuestion.text = data.Question
-        lblAnswer.text = data.Answer
+        lblQuestion.text = data.Title
+        lblAnswer.text = data.Desc
         
         viewBack.dropShadow(color: Theme.colors.black, opacity: 0.1, offSet: CGSize(width: 0, height: 0), radius: 5)
         

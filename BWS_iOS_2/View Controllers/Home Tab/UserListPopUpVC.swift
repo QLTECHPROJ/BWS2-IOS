@@ -22,6 +22,7 @@ class UserListPopUpVC: BaseViewController {
     var tapGesture = UITapGestureRecognizer()
     var arrayUsers = [CoUserDataModel]()
     var maxUsers = 2
+    var selectedUser : CoUserDataModel?
     var didCompleteLogin : (() -> Void)?
     
     
@@ -32,6 +33,10 @@ class UserListPopUpVC: BaseViewController {
         viewUserList.isHidden = true
         viewUserListTopConst.constant = 0
         self.view.layoutIfNeeded()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         setupUI()
         callUserListAPI()
@@ -104,10 +109,10 @@ class UserListPopUpVC: BaseViewController {
             } else if coUser.isAssessmentCompleted == "0" {
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass: DoDassAssessmentVC.self)
                 self.navigationController?.pushViewController(aVC, animated: true)
-                // } else if coUser.planDetails?.count == 0 {
-                // let aVC = AppStoryBoard.main.viewController(viewControllerClass: DassAssessmentResultVC.self)
-                // self.navigationController?.pushViewController(aVC, animated: true)
-            } else if coUser.AvgSleepTime.trim.count == 0 || coUser.AreaOfFocus.trim.count == 0 {
+            } else if coUser.planDetails?.count == 0 {
+                let aVC = AppStoryBoard.main.viewController(viewControllerClass: DassAssessmentResultVC.self)
+                self.navigationController?.pushViewController(aVC, animated: true)
+            } else if coUser.AvgSleepTime.trim.count == 0 || coUser.AreaOfFocus.count == 0 {
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass: SleepTimeVC.self)
                 self.navigationController?.pushViewController(aVC, animated: true)
             } else {
@@ -117,19 +122,15 @@ class UserListPopUpVC: BaseViewController {
     }
     
     func newUserLogin() {
-        let selectedUser = arrayUsers.filter { $0.isSelected == true }.first
-        
-        if let selectedUser = selectedUser {
+        if let newLoginUser = selectedUser {
             let aVC = AppStoryBoard.main.viewController(viewControllerClass:PinVC.self)
-            aVC.selectedUser = selectedUser
+            aVC.strTitle = "Unlock"
+            aVC.selectedUser = newLoginUser
             aVC.pinVerified = {
-                self.dismiss(animated: true, completion: nil)
                 self.handleCoUserRedirection()
             }
             aVC.modalPresentationStyle = .overFullScreen
             self.navigationController?.present(aVC, animated: true, completion: nil)
-        } else {
-            showAlertToast(message: Theme.strings.alert_select_login_user)
         }
     }
     
@@ -150,14 +151,16 @@ extension UserListPopUpVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        for user in arrayUsers {
-            user.isSelected = false
+        selectedUser = arrayUsers[indexPath.row]
+        
+        DispatchQueue.main.async {
+            if self.selectedUser?.CoUserId == CoUserDataModel.currentUser?.CoUserId {
+                self.dismiss(animated: true, completion: nil)
+            } else {
+                self.newUserLogin()
+            }
         }
         
-        arrayUsers[indexPath.row].isSelected = true
-        tableView.reloadData()
-        
-        newUserLogin()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

@@ -29,11 +29,21 @@ class ThankYouVC: BaseViewController {
         btnViewInvoice.setAttributedTitle(attributedTitle, for: .normal)
     }
     
+    func handleCoUserRedirection() {
+        if let coUser = CoUserDataModel.currentUser {
+            if coUser.AvgSleepTime.trim.count == 0 || coUser.AreaOfFocus.count == 0 {
+                let aVC = AppStoryBoard.main.viewController(viewControllerClass: SleepTimeVC.self)
+                self.navigationController?.pushViewController(aVC, animated: true)
+            } else {
+                APPDELEGATE.window?.rootViewController = AppStoryBoard.main.viewController(viewControllerClass: NavigationClass.self)
+            }
+        }
+    }
+    
     
     // MARK:- ACTIONS
     @IBAction func exploreAppClicked(sender: UIButton) {
-        let aVC = AppStoryBoard.main.viewController(viewControllerClass:SleepTimeVC.self)
-        self.navigationController?.pushViewController(aVC, animated: true)
+        self.handleCoUserRedirection()
     }
     
     @IBAction func viewInvoiceClicked(sender: UIButton) {

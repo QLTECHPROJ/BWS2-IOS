@@ -4,32 +4,66 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Bold.ttf">
+            <string>Montserrat-Bold</string>
+        </array>
+        <array key="Montserrat-Regular.ttf">
+            <string>Montserrat-Regular</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="PlayVideoCell" customModule="BWS_2_Staging" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="323" height="180"/>
+            <rect key="frame" x="0.0" y="0.0" width="353" height="360"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="323" height="180"/>
+                <rect key="frame" x="0.0" y="0.0" width="353" height="360"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aey-cP-fFG">
-                        <rect key="frame" x="0.0" y="0.0" width="323" height="180"/>
+                        <rect key="frame" x="0.0" y="0.0" width="353" height="360"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banner_image" translatesAutoresizingMaskIntoConstraints="NO" id="P4c-Fs-AkH">
-                                <rect key="frame" x="0.0" y="0.0" width="323" height="180"/>
+                                <rect key="frame" x="10" y="0.0" width="333" height="180"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="180" id="mdA-qo-3al"/>
+                                </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Ysz-fe-oTI">
+                                <rect key="frame" x="5" y="200" width="343" height="56"/>
+                                <string key="text">“I would pay it all over again. It was worth every penny. On a bad day I would be very agitated and very angry about everyday occurrences.”</string>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
+                                <color key="textColor" name="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Tayla" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZdT-2A-dXo">
+                                <rect key="frame" x="5" y="328" width="343" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="TFS-ab-IpX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="18"/>
+                                <color key="textColor" name="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="P4c-Fs-AkH" firstAttribute="leading" secondItem="Aey-cP-fFG" secondAttribute="leading" id="Hih-Bp-Xkf"/>
-                            <constraint firstItem="P4c-Fs-AkH" firstAttribute="top" secondItem="Aey-cP-fFG" secondAttribute="top" id="VkR-QT-wou"/>
-                            <constraint firstAttribute="bottom" secondItem="P4c-Fs-AkH" secondAttribute="bottom" id="hNI-F1-IoO"/>
-                            <constraint firstAttribute="trailing" secondItem="P4c-Fs-AkH" secondAttribute="trailing" id="rIb-3z-ZEq"/>
+                            <constraint firstItem="Ysz-fe-oTI" firstAttribute="centerX" secondItem="Aey-cP-fFG" secondAttribute="centerX" id="232-va-wuG"/>
+                            <constraint firstItem="Ysz-fe-oTI" firstAttribute="leading" secondItem="Aey-cP-fFG" secondAttribute="leading" constant="5" id="6Bt-YP-5Tk"/>
+                            <constraint firstItem="ZdT-2A-dXo" firstAttribute="trailing" secondItem="Ysz-fe-oTI" secondAttribute="trailing" id="A0S-Ey-Ez5"/>
+                            <constraint firstItem="Ysz-fe-oTI" firstAttribute="top" secondItem="P4c-Fs-AkH" secondAttribute="bottom" constant="20" id="I3Z-Ye-xdW"/>
+                            <constraint firstItem="ZdT-2A-dXo" firstAttribute="leading" secondItem="Ysz-fe-oTI" secondAttribute="leading" id="R5g-bg-C2X"/>
+                            <constraint firstAttribute="bottom" secondItem="ZdT-2A-dXo" secondAttribute="bottom" constant="10" id="SEJ-mx-cLs"/>
+                            <constraint firstItem="P4c-Fs-AkH" firstAttribute="top" secondItem="Aey-cP-fFG" secondAttribute="top" id="Xby-wj-FdO"/>
+                            <constraint firstItem="ZdT-2A-dXo" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Ysz-fe-oTI" secondAttribute="bottom" constant="20" id="Yyg-ME-YPG"/>
+                            <constraint firstItem="P4c-Fs-AkH" firstAttribute="centerX" secondItem="Aey-cP-fFG" secondAttribute="centerX" id="cV0-0D-QKI"/>
+                            <constraint firstItem="P4c-Fs-AkH" firstAttribute="leading" secondItem="Aey-cP-fFG" secondAttribute="leading" constant="10" id="omn-n9-EXK"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -41,10 +75,18 @@
                 <constraint firstAttribute="bottom" secondItem="Aey-cP-fFG" secondAttribute="bottom" id="h4n-mG-EKx"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <connections>
+                <outlet property="imageView" destination="P4c-Fs-AkH" id="1Ng-x2-9kb"/>
+                <outlet property="lblComment" destination="Ysz-fe-oTI" id="uNs-pH-FtH"/>
+                <outlet property="lblName" destination="ZdT-2A-dXo" id="BO6-2l-9Y4"/>
+            </connections>
             <point key="canvasLocation" x="139" y="153"/>
         </collectionViewCell>
     </objects>
     <resources>
         <image name="banner_image" width="323" height="180"/>
+        <namedColor name="textColor">
+            <color red="0.19215686274509805" green="0.19215686274509805" blue="0.19215686274509805" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>
