@@ -19,6 +19,7 @@ class ChangePassWordVC: BaseViewController {
     @IBOutlet weak var lblErrOldPass: UILabel!
     @IBOutlet weak var lblErrConfirmPass: UILabel!
     @IBOutlet weak var lblErrNewPass: UILabel!
+    @IBOutlet weak var btnSave: UIButton!
     //MARK:- Variables
     
     //MARK:- View Life Cycle
@@ -42,7 +43,7 @@ class ChangePassWordVC: BaseViewController {
     override func buttonEnableDisable() {
         var shouldEnable = true
         
-        if txtFOldPIN.text?.trim.count == 0 || txtFNewPIN.text?.trim.count == 0 || txtFConfirmPIN.text?.trim.count == 0 {
+        if txtfOldPassword.text?.trim.count == 0 || txtFNewPassword.text?.trim.count == 0 || txtFConfirmPassword.text?.trim.count == 0 {
             shouldEnable = false
         } else {
             shouldEnable = true

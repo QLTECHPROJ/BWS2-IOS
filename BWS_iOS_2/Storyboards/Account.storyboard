@@ -1221,6 +1221,7 @@
                         <viewLayoutGuide key="safeArea" id="zRK-Op-9Io"/>
                     </view>
                     <connections>
+                        <outlet property="btnSave" destination="wt5-Hz-2wi" id="LUV-lh-Rlj"/>
                         <outlet property="lblErrConfirmPass" destination="x2l-pR-sQ9" id="VYG-Az-GSj"/>
                         <outlet property="lblErrNewPass" destination="hGy-Xe-01d" id="HLc-Um-C9u"/>
                         <outlet property="lblErrOldPass" destination="pFk-Df-vIq" id="HQb-kb-HAj"/>

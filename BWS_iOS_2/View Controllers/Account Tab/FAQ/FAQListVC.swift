@@ -43,16 +43,16 @@ class FAQListVC: BaseViewController {
         for i in 1...10 {
             let question = FAQDataModel()
             if i % 3 == 0 {
-                question.Question = "\(i) - How can I cancel if I need to?"
-                question.Answer = "\(i) - How do I purchase a subscription?"
+                question.Title = "\(i) - How can I cancel if I need to?"
+                question.Desc = "\(i) - How do I purchase a subscription?"
             }
             else if i % 2 == 0 {
-                question.Question = "\(i) - Is there a free trial?"
-                question.Answer = "\(i) - Yes. Every plan comes with a 30-day free trial option"
+                question.Title = "\(i) - Is there a free trial?"
+                question.Desc = "\(i) - Yes. Every plan comes with a 30-day free trial option"
             }
             else {
-                question.Question = "\(i) - What are the benefits of signing up for the Membership Program"
-                question.Answer = "\(i) - What's the best way to use the Membership? Where do I start?"
+                question.Title = "\(i) - What are the benefits of signing up for the Membership Program"
+                question.Desc = "\(i) - What's the best way to use the Membership? Where do I start?"
             }
             arrayQuestions.append(question)
         }
