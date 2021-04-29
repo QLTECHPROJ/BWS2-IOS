@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Bold.ttf">
+            <string>Montserrat-Bold</string>
+        </array>
+        <array key="Montserrat-Regular.ttf">
+            <string>Montserrat-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="WebsiteCell" rowHeight="98" id="KGk-i7-Jjw" customClass="WebsiteCell" customModule="Brain_Wellness_App" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="98"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="98"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pRo-xw-V39" customClass="CardView" customModule="Brain_Wellness_App" customModuleProvider="target">
+                        <rect key="frame" x="16" y="10" width="288" height="78"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="zrd-3V-nPt">
+                                <rect key="frame" x="0.0" y="0.0" width="78" height="78"/>
+                                <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="zrd-3V-nPt" secondAttribute="height" multiplier="1:1" id="eoI-3w-hQ8"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j6R-5q-nit">
+                                <rect key="frame" x="94" y="5" width="178" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="18" id="tbp-t7-f5s"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="13"/>
+                                <color key="textColor" name="title"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dEF-k7-54S">
+                                <rect key="frame" x="94" y="25" width="178" height="26"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="11"/>
+                                <color key="textColor" name="cardValidDate"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="zrd-3V-nPt" firstAttribute="leading" secondItem="pRo-xw-V39" secondAttribute="leading" id="0e0-7X-zcU"/>
+                            <constraint firstAttribute="trailing" secondItem="j6R-5q-nit" secondAttribute="trailing" constant="16" id="DKz-Vp-K4g"/>
+                            <constraint firstAttribute="bottom" secondItem="zrd-3V-nPt" secondAttribute="bottom" id="EQW-K8-DaP"/>
+                            <constraint firstItem="j6R-5q-nit" firstAttribute="top" secondItem="zrd-3V-nPt" secondAttribute="top" constant="5" id="HAX-Ik-KXn"/>
+                            <constraint firstItem="zrd-3V-nPt" firstAttribute="top" secondItem="pRo-xw-V39" secondAttribute="top" id="HFs-ot-81W"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="dEF-k7-54S" secondAttribute="bottom" constant="8" id="Kgq-NB-jGA"/>
+                            <constraint firstItem="dEF-k7-54S" firstAttribute="trailing" secondItem="j6R-5q-nit" secondAttribute="trailing" id="M9O-Z4-I4o"/>
+                            <constraint firstItem="dEF-k7-54S" firstAttribute="leading" secondItem="j6R-5q-nit" secondAttribute="leading" id="Nik-WE-oUl"/>
+                            <constraint firstItem="j6R-5q-nit" firstAttribute="leading" secondItem="zrd-3V-nPt" secondAttribute="trailing" constant="16" id="hK5-w0-hUH"/>
+                            <constraint firstItem="dEF-k7-54S" firstAttribute="top" secondItem="j6R-5q-nit" secondAttribute="bottom" constant="2" id="pQ2-6q-AT1"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                <real key="value" value="0.29999999999999999"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="pRo-xw-V39" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="8ey-kM-QxZ"/>
+                    <constraint firstAttribute="trailing" secondItem="pRo-xw-V39" secondAttribute="trailing" constant="16" id="Rx2-UI-vvx"/>
+                    <constraint firstItem="pRo-xw-V39" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="VY2-eQ-Pkt"/>
+                    <constraint firstAttribute="bottom" secondItem="pRo-xw-V39" secondAttribute="bottom" constant="10" id="hPc-dL-gU8"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="imgView" destination="zrd-3V-nPt" id="c1u-4I-BP1"/>
+                <outlet property="lblSubTitle" destination="dEF-k7-54S" id="I5f-l6-oFY"/>
+                <outlet property="lblTitle" destination="j6R-5q-nit" id="fNE-1U-NVj"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="108.48214285714285"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="Image" width="57.5" height="57.5"/>
+        <namedColor name="cardValidDate">
+            <color red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="title">
+            <color red="0.16470588235294117" green="0.18823529411764706" blue="0.25882352941176473" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

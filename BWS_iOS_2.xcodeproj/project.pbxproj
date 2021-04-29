@@ -427,6 +427,56 @@
 		28F812BC25FB364900DC6AF6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28F812BB25FB364900DC6AF6 /* LaunchScreen.storyboard */; };
 		28F812BE25FB367A00DC6AF6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28F812BD25FB367A00DC6AF6 /* Main.storyboard */; };
 		28F812C325FB36CF00DC6AF6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F812C225FB36CF00DC6AF6 /* Constants.swift */; };
+		9A51DF26263820FD001364EA /* AccountInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A51DF25263820FD001364EA /* AccountInfoVC.swift */; };
+		9A51DF27263821EF001364EA /* AccountInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A51DF25263820FD001364EA /* AccountInfoVC.swift */; };
+		9A51DF2926382DFC001364EA /* EditProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A51DF2826382DFC001364EA /* EditProfileVC.swift */; };
+		9A51DF2A2638319E001364EA /* EditProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A51DF2826382DFC001364EA /* EditProfileVC.swift */; };
+		9A51DF2C26383A4E001364EA /* ChangePINVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A51DF2B26383A4E001364EA /* ChangePINVC.swift */; };
+		9A51DF2D26383A6D001364EA /* ChangePINVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A51DF2B26383A4E001364EA /* ChangePINVC.swift */; };
+		9A51DF2F26384034001364EA /* ChangePassWordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A51DF2E26384034001364EA /* ChangePassWordVC.swift */; };
+		9A51DF3026384034001364EA /* ChangePassWordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A51DF2E26384034001364EA /* ChangePassWordVC.swift */; };
+		9AC066FC2639178E00287A44 /* RecAudioBookVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC066EC2639178E00287A44 /* RecAudioBookVC.swift */; };
+		9AC066FD2639178E00287A44 /* RecAudioBookVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC066EC2639178E00287A44 /* RecAudioBookVC.swift */; };
+		9AC066FE2639178F00287A44 /* RecDocuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC066ED2639178E00287A44 /* RecDocuVC.swift */; };
+		9AC066FF2639178F00287A44 /* RecDocuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC066ED2639178E00287A44 /* RecDocuVC.swift */; };
+		9AC067002639178F00287A44 /* RecApps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC066EE2639178E00287A44 /* RecApps.swift */; };
+		9AC067012639178F00287A44 /* RecApps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC066EE2639178E00287A44 /* RecApps.swift */; };
+		9AC067022639178F00287A44 /* RecPodCastsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC066EF2639178E00287A44 /* RecPodCastsVC.swift */; };
+		9AC067032639178F00287A44 /* RecPodCastsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC066EF2639178E00287A44 /* RecPodCastsVC.swift */; };
+		9AC067042639178F00287A44 /* PodcastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC066F12639178E00287A44 /* PodcastCell.swift */; };
+		9AC067052639178F00287A44 /* PodcastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC066F12639178E00287A44 /* PodcastCell.swift */; };
+		9AC067062639178F00287A44 /* PodcastCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AC066F22639178E00287A44 /* PodcastCell.xib */; };
+		9AC067072639178F00287A44 /* PodcastCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AC066F22639178E00287A44 /* PodcastCell.xib */; };
+		9AC067082639178F00287A44 /* AppsCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AC066F32639178E00287A44 /* AppsCollectionCell.xib */; };
+		9AC067092639178F00287A44 /* AppsCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AC066F32639178E00287A44 /* AppsCollectionCell.xib */; };
+		9AC0670A2639178F00287A44 /* WebsiteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC066F42639178E00287A44 /* WebsiteCell.swift */; };
+		9AC0670B2639178F00287A44 /* WebsiteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC066F42639178E00287A44 /* WebsiteCell.swift */; };
+		9AC0670C2639178F00287A44 /* DocumentryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AC066F52639178E00287A44 /* DocumentryCell.xib */; };
+		9AC0670D2639178F00287A44 /* DocumentryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AC066F52639178E00287A44 /* DocumentryCell.xib */; };
+		9AC0670E2639178F00287A44 /* DocumentryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC066F62639178E00287A44 /* DocumentryCell.swift */; };
+		9AC0670F2639178F00287A44 /* DocumentryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC066F62639178E00287A44 /* DocumentryCell.swift */; };
+		9AC067102639178F00287A44 /* AppsCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC066F72639178E00287A44 /* AppsCollectionCell.swift */; };
+		9AC067112639178F00287A44 /* AppsCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC066F72639178E00287A44 /* AppsCollectionCell.swift */; };
+		9AC067122639178F00287A44 /* WebsiteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AC066F82639178E00287A44 /* WebsiteCell.xib */; };
+		9AC067132639178F00287A44 /* WebsiteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AC066F82639178E00287A44 /* WebsiteCell.xib */; };
+		9AC067142639178F00287A44 /* ResourceDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC066F92639178E00287A44 /* ResourceDetailVC.swift */; };
+		9AC067152639178F00287A44 /* ResourceDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC066F92639178E00287A44 /* ResourceDetailVC.swift */; };
+		9AC067162639178F00287A44 /* ResourceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC066FA2639178E00287A44 /* ResourceVC.swift */; };
+		9AC067172639178F00287A44 /* ResourceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC066FA2639178E00287A44 /* ResourceVC.swift */; };
+		9AC067182639178F00287A44 /* RecWebSite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC066FB2639178E00287A44 /* RecWebSite.swift */; };
+		9AC067192639178F00287A44 /* RecWebSite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC066FB2639178E00287A44 /* RecWebSite.swift */; };
+		9AC0671C2639304E00287A44 /* FeatureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC0671A2639304E00287A44 /* FeatureCell.swift */; };
+		9AC0671D2639304E00287A44 /* FeatureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC0671A2639304E00287A44 /* FeatureCell.swift */; };
+		9AC0671E2639304E00287A44 /* FeatureCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AC0671B2639304E00287A44 /* FeatureCell.xib */; };
+		9AC0671F2639304E00287A44 /* FeatureCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AC0671B2639304E00287A44 /* FeatureCell.xib */; };
+		9AC0672226394B3900287A44 /* FAQVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC0672126394B3900287A44 /* FAQVC.swift */; };
+		9AC0672326394B3900287A44 /* FAQVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC0672126394B3900287A44 /* FAQVC.swift */; };
+		9AC0672526394B5800287A44 /* FAQListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC0672426394B5800287A44 /* FAQListVC.swift */; };
+		9AC0672626394B5800287A44 /* FAQListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC0672426394B5800287A44 /* FAQListVC.swift */; };
+		9AD558282636DFFA007ED68F /* AccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD558262636DFFA007ED68F /* AccountCell.swift */; };
+		9AD558292636DFFA007ED68F /* AccountCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AD558272636DFFA007ED68F /* AccountCell.xib */; };
+		9AD5582A2636E6C3007ED68F /* AccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD558262636DFFA007ED68F /* AccountCell.swift */; };
+		9AD5582B2636E6C7007ED68F /* AccountCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AD558272636DFFA007ED68F /* AccountCell.xib */; };
 		D8C9DBD48B974EAF0900A669 /* Pods_BWS_iOS_2_Staging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A9C109FCD0C02CB81D9724A /* Pods_BWS_iOS_2_Staging.framework */; };
 		E0C944874ACC5E9D7BB97CCB /* Pods_BWS_iOS_2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2297DCB35FF63C0665FDF246 /* Pods_BWS_iOS_2.framework */; };
 /* End PBXBuildFile section */
@@ -658,6 +708,31 @@
 		8A9C109FCD0C02CB81D9724A /* Pods_BWS_iOS_2_Staging.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BWS_iOS_2_Staging.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B21B18CDBF9C2C0E59EF0A9 /* Pods-BWS_iOS_2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BWS_iOS_2.debug.xcconfig"; path = "Target Support Files/Pods-BWS_iOS_2/Pods-BWS_iOS_2.debug.xcconfig"; sourceTree = "<group>"; };
 		8B77A1CEEE992185949BB28D /* Pods-BWS_iOS_2_Staging.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BWS_iOS_2_Staging.release.xcconfig"; path = "Target Support Files/Pods-BWS_iOS_2_Staging/Pods-BWS_iOS_2_Staging.release.xcconfig"; sourceTree = "<group>"; };
+		9A51DF25263820FD001364EA /* AccountInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountInfoVC.swift; sourceTree = "<group>"; };
+		9A51DF2826382DFC001364EA /* EditProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileVC.swift; sourceTree = "<group>"; };
+		9A51DF2B26383A4E001364EA /* ChangePINVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePINVC.swift; sourceTree = "<group>"; };
+		9A51DF2E26384034001364EA /* ChangePassWordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePassWordVC.swift; sourceTree = "<group>"; };
+		9AC066EC2639178E00287A44 /* RecAudioBookVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecAudioBookVC.swift; sourceTree = "<group>"; };
+		9AC066ED2639178E00287A44 /* RecDocuVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecDocuVC.swift; sourceTree = "<group>"; };
+		9AC066EE2639178E00287A44 /* RecApps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecApps.swift; sourceTree = "<group>"; };
+		9AC066EF2639178E00287A44 /* RecPodCastsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecPodCastsVC.swift; sourceTree = "<group>"; };
+		9AC066F12639178E00287A44 /* PodcastCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PodcastCell.swift; sourceTree = "<group>"; };
+		9AC066F22639178E00287A44 /* PodcastCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PodcastCell.xib; sourceTree = "<group>"; };
+		9AC066F32639178E00287A44 /* AppsCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppsCollectionCell.xib; sourceTree = "<group>"; };
+		9AC066F42639178E00287A44 /* WebsiteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebsiteCell.swift; sourceTree = "<group>"; };
+		9AC066F52639178E00287A44 /* DocumentryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DocumentryCell.xib; sourceTree = "<group>"; };
+		9AC066F62639178E00287A44 /* DocumentryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentryCell.swift; sourceTree = "<group>"; };
+		9AC066F72639178E00287A44 /* AppsCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppsCollectionCell.swift; sourceTree = "<group>"; };
+		9AC066F82639178E00287A44 /* WebsiteCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebsiteCell.xib; sourceTree = "<group>"; };
+		9AC066F92639178E00287A44 /* ResourceDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceDetailVC.swift; sourceTree = "<group>"; };
+		9AC066FA2639178E00287A44 /* ResourceVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceVC.swift; sourceTree = "<group>"; };
+		9AC066FB2639178E00287A44 /* RecWebSite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecWebSite.swift; sourceTree = "<group>"; };
+		9AC0671A2639304E00287A44 /* FeatureCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureCell.swift; sourceTree = "<group>"; };
+		9AC0671B2639304E00287A44 /* FeatureCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeatureCell.xib; sourceTree = "<group>"; };
+		9AC0672126394B3900287A44 /* FAQVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQVC.swift; sourceTree = "<group>"; };
+		9AC0672426394B5800287A44 /* FAQListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQListVC.swift; sourceTree = "<group>"; };
+		9AD558262636DFFA007ED68F /* AccountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCell.swift; sourceTree = "<group>"; };
+		9AD558272636DFFA007ED68F /* AccountCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountCell.xib; sourceTree = "<group>"; };
 		B7D692722F8063D61FB31679 /* Pods-BWS_iOS_2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BWS_iOS_2.release.xcconfig"; path = "Target Support Files/Pods-BWS_iOS_2/Pods-BWS_iOS_2.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1082,10 +1157,12 @@
 		28E809472613497B00CD80F7 /* Account Tab */ = {
 			isa = PBXGroup;
 			children = (
+				9AC0672026394B2000287A44 /* FAQ */,
+				9AC066EB2639178E00287A44 /* ResourceVC */,
+				9AC066EA2639176700287A44 /* AccountInfo */,
+				9AC066E92639174B00287A44 /* Download */,
+				9AD558242636DFC0007ED68F /* Cell */,
 				28E8094026130ACE00CD80F7 /* AccountVC.swift */,
-				28B2781F262EED41005794E3 /* DownloadVC.swift */,
-				28B27822262EEECC005794E3 /* DownloadAudioVC.swift */,
-				28B27824262EEEE1005794E3 /* DownloadPlaylistVC.swift */,
 			);
 			path = "Account Tab";
 			sourceTree = "<group>";
@@ -1239,6 +1316,77 @@
 			path = Live;
 			sourceTree = "<group>";
 		};
+		9AC066E92639174B00287A44 /* Download */ = {
+			isa = PBXGroup;
+			children = (
+				28B2781F262EED41005794E3 /* DownloadVC.swift */,
+				28B27822262EEECC005794E3 /* DownloadAudioVC.swift */,
+				28B27824262EEEE1005794E3 /* DownloadPlaylistVC.swift */,
+			);
+			path = Download;
+			sourceTree = "<group>";
+		};
+		9AC066EA2639176700287A44 /* AccountInfo */ = {
+			isa = PBXGroup;
+			children = (
+				9A51DF25263820FD001364EA /* AccountInfoVC.swift */,
+				9A51DF2826382DFC001364EA /* EditProfileVC.swift */,
+				9A51DF2B26383A4E001364EA /* ChangePINVC.swift */,
+				9A51DF2E26384034001364EA /* ChangePassWordVC.swift */,
+			);
+			path = AccountInfo;
+			sourceTree = "<group>";
+		};
+		9AC066EB2639178E00287A44 /* ResourceVC */ = {
+			isa = PBXGroup;
+			children = (
+				9AC066F02639178E00287A44 /* Cell */,
+				9AC066EC2639178E00287A44 /* RecAudioBookVC.swift */,
+				9AC066ED2639178E00287A44 /* RecDocuVC.swift */,
+				9AC066EE2639178E00287A44 /* RecApps.swift */,
+				9AC066EF2639178E00287A44 /* RecPodCastsVC.swift */,
+				9AC066F92639178E00287A44 /* ResourceDetailVC.swift */,
+				9AC066FA2639178E00287A44 /* ResourceVC.swift */,
+				9AC066FB2639178E00287A44 /* RecWebSite.swift */,
+			);
+			path = ResourceVC;
+			sourceTree = "<group>";
+		};
+		9AC066F02639178E00287A44 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				9AC0671A2639304E00287A44 /* FeatureCell.swift */,
+				9AC0671B2639304E00287A44 /* FeatureCell.xib */,
+				9AC066F12639178E00287A44 /* PodcastCell.swift */,
+				9AC066F22639178E00287A44 /* PodcastCell.xib */,
+				9AC066F32639178E00287A44 /* AppsCollectionCell.xib */,
+				9AC066F42639178E00287A44 /* WebsiteCell.swift */,
+				9AC066F52639178E00287A44 /* DocumentryCell.xib */,
+				9AC066F62639178E00287A44 /* DocumentryCell.swift */,
+				9AC066F72639178E00287A44 /* AppsCollectionCell.swift */,
+				9AC066F82639178E00287A44 /* WebsiteCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		9AC0672026394B2000287A44 /* FAQ */ = {
+			isa = PBXGroup;
+			children = (
+				9AC0672126394B3900287A44 /* FAQVC.swift */,
+				9AC0672426394B5800287A44 /* FAQListVC.swift */,
+			);
+			path = FAQ;
+			sourceTree = "<group>";
+		};
+		9AD558242636DFC0007ED68F /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				9AD558262636DFFA007ED68F /* AccountCell.swift */,
+				9AD558272636DFFA007ED68F /* AccountCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		FFE2125D60868B17531FF520 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1342,10 +1490,13 @@
 				28346E25260B5A5900DD41BE /* FAQCell.xib in Resources */,
 				28ED2F9625FB58E000E59C56 /* Montserrat-Italic.ttf in Resources */,
 				28E01224261847EA00B55967 /* IndexScrorCell.xib in Resources */,
+				9AC067072639178F00287A44 /* PodcastCell.xib in Resources */,
+				9AD5582B2636E6C7007ED68F /* AccountCell.xib in Resources */,
 				28E8092D261308F900CD80F7 /* Wellness.storyboard in Resources */,
 				28B53538260C690600BD8147 /* SleepTimeCell.xib in Resources */,
 				28E01232261847EA00B55967 /* ProgressCell.xib in Resources */,
 				28ED2FC225FB931800E59C56 /* OptionsCell.xib in Resources */,
+				9AC0671F2639304E00287A44 /* FeatureCell.xib in Resources */,
 				28E8094F26134A0700CD80F7 /* ManageAudioCell.xib in Resources */,
 				28786CB3262967F7000E8598 /* ViewAllCell.xib in Resources */,
 				2870B45625FB44700014A4F6 /* WWCalendarTimeSelector.storyboard in Resources */,
@@ -1364,10 +1515,13 @@
 				283153CE26146111004001CE /* AudioCategoryCell.xib in Resources */,
 				28E01236261847EA00B55967 /* SelfDevCell.xib in Resources */,
 				28E809302613090500CD80F7 /* Elevate.storyboard in Resources */,
+				9AC067132639178F00287A44 /* WebsiteCell.xib in Resources */,
+				9AC0670D2639178F00287A44 /* DocumentryCell.xib in Resources */,
 				283E1241262879A80007B280 /* Declaimer.jpeg in Resources */,
 				28E01228261847EA00B55967 /* PlayerBannerCell.xib in Resources */,
 				28ED2F8C25FB58DF00E59C56 /* Montserrat-Medium.ttf in Resources */,
 				28ED2F9425FB58E000E59C56 /* Montserrat-Regular.ttf in Resources */,
+				9AC067092639178F00287A44 /* AppsCollectionCell.xib in Resources */,
 				28E01238261847EA00B55967 /* NotificationCell.xib in Resources */,
 				28B53547260CC29700BD8147 /* CategoryTableCell.xib in Resources */,
 				28E809552613591400CD80F7 /* AudioCollectionCell.xib in Resources */,
@@ -1394,10 +1548,13 @@
 				28346E24260B5A5900DD41BE /* FAQCell.xib in Resources */,
 				28ED2FC125FB931800E59C56 /* OptionsCell.xib in Resources */,
 				28E01223261847EA00B55967 /* IndexScrorCell.xib in Resources */,
+				9AC067062639178F00287A44 /* PodcastCell.xib in Resources */,
+				9AD558292636DFFA007ED68F /* AccountCell.xib in Resources */,
 				28E8092C261308F900CD80F7 /* Wellness.storyboard in Resources */,
 				28B53537260C690600BD8147 /* SleepTimeCell.xib in Resources */,
 				28E01231261847EA00B55967 /* ProgressCell.xib in Resources */,
 				2870B45525FB44700014A4F6 /* WWCalendarTimeSelector.storyboard in Resources */,
+				9AC0671E2639304E00287A44 /* FeatureCell.xib in Resources */,
 				28E8094E26134A0700CD80F7 /* ManageAudioCell.xib in Resources */,
 				28786CB2262967F7000E8598 /* ViewAllCell.xib in Resources */,
 				28F812BE25FB367A00DC6AF6 /* Main.storyboard in Resources */,
@@ -1416,10 +1573,13 @@
 				283153CD26146111004001CE /* AudioCategoryCell.xib in Resources */,
 				28E01235261847EA00B55967 /* SelfDevCell.xib in Resources */,
 				28E8092F2613090500CD80F7 /* Elevate.storyboard in Resources */,
+				9AC067122639178F00287A44 /* WebsiteCell.xib in Resources */,
+				9AC0670C2639178F00287A44 /* DocumentryCell.xib in Resources */,
 				283E1240262879A80007B280 /* Declaimer.jpeg in Resources */,
 				28E01227261847EA00B55967 /* PlayerBannerCell.xib in Resources */,
 				28ED2F8B25FB58DF00E59C56 /* Montserrat-Medium.ttf in Resources */,
 				28ED2F9325FB58E000E59C56 /* Montserrat-Regular.ttf in Resources */,
+				9AC067082639178F00287A44 /* AppsCollectionCell.xib in Resources */,
 				28E01237261847EA00B55967 /* NotificationCell.xib in Resources */,
 				28B53546260CC29700BD8147 /* CategoryTableCell.xib in Resources */,
 				28E809542613591400CD80F7 /* AudioCollectionCell.xib in Resources */,
@@ -1552,6 +1712,8 @@
 				28ED2FB025FB8C5700E59C56 /* ProfileForm2VC.swift in Sources */,
 				2824415E2609AD590060292E /* PinVC.swift in Sources */,
 				28B53536260C690600BD8147 /* SleepTimeCell.swift in Sources */,
+				9AC067012639178F00287A44 /* RecApps.swift in Sources */,
+				9AC067112639178F00287A44 /* AppsCollectionCell.swift in Sources */,
 				2870B41E25FB41A10014A4F6 /* UIImageView+Letters.m in Sources */,
 				2824413B2609AB9C0060292E /* CountryListVC.swift in Sources */,
 				283F72F0261D994900554774 /* AssessmentVC.swift in Sources */,
@@ -1564,8 +1726,10 @@
 				2870B3DE25FB41A10014A4F6 /* Int+Extension.swift in Sources */,
 				283529A52609DA6F009AB2AA /* ThankYouVC.swift in Sources */,
 				2870B43425FB41A10014A4F6 /* DJPageMenuConfiguration.swift in Sources */,
+				9AC067052639178F00287A44 /* PodcastCell.swift in Sources */,
 				287E807F262D510C0006A925 /* AudioPlayerSetUp.swift in Sources */,
 				28E0122A261847EA00B55967 /* SelfDevCell.swift in Sources */,
+				9AC0672626394B5800287A44 /* FAQListVC.swift in Sources */,
 				2870B3D625FB41A10014A4F6 /* UIImageView+Extension.swift in Sources */,
 				28E0122E261847EA00B55967 /* tagCVCell.swift in Sources */,
 				28E012012618470100B55967 /* UserListPopUpVC.swift in Sources */,
@@ -1574,14 +1738,18 @@
 				28B53531260C635000BD8147 /* SleepTimeVC.swift in Sources */,
 				2824414C2609ACE30060292E /* CountryCell.swift in Sources */,
 				2870B37A25FB40710014A4F6 /* CommonFunctions.swift in Sources */,
+				9A51DF27263821EF001364EA /* AccountInfoVC.swift in Sources */,
 				2870B43025FB41A10014A4F6 /* GradientView.swift in Sources */,
 				2870B41825FB41A10014A4F6 /* MediaType.swift in Sources */,
 				2870B3CE25FB41A10014A4F6 /* DJCheckBox.swift in Sources */,
 				2870B44025FB41A10014A4F6 /* ReorderController+SnapshotView.swift in Sources */,
 				2870B46425FB44700014A4F6 /* WWCalendarTimeSelector.swift in Sources */,
+				9AD5582A2636E6C3007ED68F /* AccountCell.swift in Sources */,
 				2870B43625FB41A10014A4F6 /* DJPageMenuController.swift in Sources */,
 				282441362609AB5A0060292E /* StartingVC.swift in Sources */,
+				9AC067172639178F00287A44 /* ResourceVC.swift in Sources */,
 				282441402609AC840060292E /* LoginVC.swift in Sources */,
+				9A51DF2A2638319E001364EA /* EditProfileVC.swift in Sources */,
 				2870B3FE25FB41A10014A4F6 /* KDCircularProgress.swift in Sources */,
 				2870B41025FB41A10014A4F6 /* Config.swift in Sources */,
 				2870B3DA25FB41A10014A4F6 /* UIColor+Extension.swift in Sources */,
@@ -1595,6 +1763,7 @@
 				281DE3222626FD79002CCD9D /* SDDownloadManager.swift in Sources */,
 				2870B41425FB41A10014A4F6 /* UIViewExtension.swift in Sources */,
 				282441552609AD3A0060292E /* AddProfileVC.swift in Sources */,
+				9AC066FD2639178E00287A44 /* RecAudioBookVC.swift in Sources */,
 				2870B3F025FB41A10014A4F6 /* UITextField+Extension.swift in Sources */,
 				281DE3422626FD79002CCD9D /* DJMusicPlayer+ControlCenter.swift in Sources */,
 				281DE3382626FD79002CCD9D /* DJMusicPlayerReachability.swift in Sources */,
@@ -1605,6 +1774,7 @@
 				28E012042618471500B55967 /* NotificatonVC.swift in Sources */,
 				28ED2FB325FB8C6600E59C56 /* ProfileForm3VC.swift in Sources */,
 				2870B41C25FB41A10014A4F6 /* MimeType.swift in Sources */,
+				9AC067152639178F00287A44 /* ResourceDetailVC.swift in Sources */,
 				28252FAA25FF4CB600C2EB50 /* DassAssessmentVC.swift in Sources */,
 				28E01230261847EA00B55967 /* ProgressCell.swift in Sources */,
 				2870B43E25FB41A10014A4F6 /* UITableView+Reorder.swift in Sources */,
@@ -1631,9 +1801,11 @@
 				283153C2261448C9004001CE /* CreatePlaylistVC.swift in Sources */,
 				28E8093F26130AA500CD80F7 /* ElevateVC.swift in Sources */,
 				2870B3EC25FB41A10014A4F6 /* UINavigationBar+Extension.swift in Sources */,
+				9AC067192639178F00287A44 /* RecWebSite.swift in Sources */,
 				282441582609AD440060292E /* ContinueVC.swift in Sources */,
 				28E8094226130ACE00CD80F7 /* AccountVC.swift in Sources */,
 				2870B45A25FB44700014A4F6 /* NSCalendar+Timepiece.swift in Sources */,
+				9A51DF3026384034001364EA /* ChangePassWordVC.swift in Sources */,
 				28346E23260B5A5900DD41BE /* FAQCell.swift in Sources */,
 				281DE33E2626FD79002CCD9D /* DJMusicPlayer+CommonFunctions.swift in Sources */,
 				28ED2FB925FB8C7700E59C56 /* ProfileForm5VC.swift in Sources */,
@@ -1647,6 +1819,7 @@
 				2830F1C92617479000E46F89 /* PlaylistDetailVC.swift in Sources */,
 				283153BF2614489E004001CE /* PlaylistCategoryVC.swift in Sources */,
 				2870B3E625FB41A10014A4F6 /* ImagePicker.swift in Sources */,
+				9AC0671D2639304E00287A44 /* FeatureCell.swift in Sources */,
 				28B5353B260C706200BD8147 /* AreaOfFocusVC.swift in Sources */,
 				2870B3FA25FB41A10014A4F6 /* ExpandableLabel.swift in Sources */,
 				281DE32C2626FD79002CCD9D /* CoreDataHelper.swift in Sources */,
@@ -1655,6 +1828,7 @@
 				280DFCDF260DA03E00479EE6 /* RecommendedCategoryHeaderCell.swift in Sources */,
 				2870B37125FB404B0014A4F6 /* APIRoute.swift in Sources */,
 				2870B44425FB41A10014A4F6 /* ReorderController+GestureRecognizer.swift in Sources */,
+				9AC0672326394B3900287A44 /* FAQVC.swift in Sources */,
 				2870B3E225FB41A10014A4F6 /* UIImage+Extension.swift in Sources */,
 				2870B42A25FB41A10014A4F6 /* BackspaceTextField.swift in Sources */,
 				2870B44A25FB41A10014A4F6 /* TabBarController.swift in Sources */,
@@ -1670,6 +1844,7 @@
 				280C48F32600652C00063C03 /* DassAssessmentResultVC.swift in Sources */,
 				28D755692618999F00EA63FE /* iCarousel.m in Sources */,
 				28E01234261847EA00B55967 /* PlayerBannerCell.swift in Sources */,
+				9AC067032639178F00287A44 /* RecPodCastsVC.swift in Sources */,
 				2870B3F625FB41A10014A4F6 /* UITableView+Extension.swift in Sources */,
 				281DE32A2626FD79002CCD9D /* AudioDownloads+CoreDataClass.swift in Sources */,
 				2870B3F425FB41A10014A4F6 /* NSDate+Extension.swift in Sources */,
@@ -1689,15 +1864,19 @@
 				283153C826145F41004001CE /* AudioDetailVC.swift in Sources */,
 				281DE3362626FD79002CCD9D /* DJMusicPlayer+Common.swift in Sources */,
 				2870B3FC25FB41A10014A4F6 /* CardView.swift in Sources */,
+				9AC0670B2639178F00287A44 /* WebsiteCell.swift in Sources */,
 				281DE3282626FD79002CCD9D /* DJDownloadManager.swift in Sources */,
 				283F72F4261D999200554774 /* SubColCell.swift in Sources */,
 				2870B3DC25FB41A10014A4F6 /* DJExtensions.swift in Sources */,
+				9AC0670F2639178F00287A44 /* DocumentryCell.swift in Sources */,
 				28E0120D2618476E00B55967 /* PlayerVC.swift in Sources */,
 				28E01240261847EA00B55967 /* IndexScrorCell.swift in Sources */,
 				2870B46225FB44700014A4F6 /* Duration.swift in Sources */,
 				2870B42025FB41A10014A4F6 /* NavigationClass.swift in Sources */,
 				28E0120A2618475E00B55967 /* AddAudioVC.swift in Sources */,
+				9AC066FF2639178F00287A44 /* RecDocuVC.swift in Sources */,
 				2870B43C25FB41A10014A4F6 /* ReadMore_Helper.swift in Sources */,
+				9A51DF2D26383A6D001364EA /* ChangePINVC.swift in Sources */,
 				281DE33A2626FD79002CCD9D /* ConnectionManager.swift in Sources */,
 				28E8093626130A7A00CD80F7 /* HomeVC.swift in Sources */,
 				28E8093C26130A9800CD80F7 /* WellnessVC.swift in Sources */,
@@ -1724,6 +1903,8 @@
 				28ED2FAF25FB8C5700E59C56 /* ProfileForm2VC.swift in Sources */,
 				2824415D2609AD590060292E /* PinVC.swift in Sources */,
 				28B53535260C690600BD8147 /* SleepTimeCell.swift in Sources */,
+				9AC067002639178F00287A44 /* RecApps.swift in Sources */,
+				9AC067102639178F00287A44 /* AppsCollectionCell.swift in Sources */,
 				2870B41D25FB41A10014A4F6 /* UIImageView+Letters.m in Sources */,
 				2870B42B25FB41A10014A4F6 /* AnimationFrames.swift in Sources */,
 				283F72EF261D994900554774 /* AssessmentVC.swift in Sources */,
@@ -1736,8 +1917,10 @@
 				2870B3D525FB41A10014A4F6 /* UIImageView+Extension.swift in Sources */,
 				283529A32609DA5F009AB2AA /* ThankYouVC.swift in Sources */,
 				2870B37925FB40710014A4F6 /* CommonFunctions.swift in Sources */,
+				9AC067042639178F00287A44 /* PodcastCell.swift in Sources */,
 				287E807E262D510C0006A925 /* AudioPlayerSetUp.swift in Sources */,
 				28E01229261847EA00B55967 /* SelfDevCell.swift in Sources */,
+				9AC0672526394B5800287A44 /* FAQListVC.swift in Sources */,
 				2870B42F25FB41A10014A4F6 /* GradientView.swift in Sources */,
 				28E0122D261847EA00B55967 /* tagCVCell.swift in Sources */,
 				28E012002618470100B55967 /* UserListPopUpVC.swift in Sources */,
@@ -1746,14 +1929,18 @@
 				28B53530260C635000BD8147 /* SleepTimeVC.swift in Sources */,
 				2824414B2609ACE30060292E /* CountryCell.swift in Sources */,
 				2870B41725FB41A10014A4F6 /* MediaType.swift in Sources */,
+				9A51DF26263820FD001364EA /* AccountInfoVC.swift in Sources */,
 				2870B3CD25FB41A10014A4F6 /* DJCheckBox.swift in Sources */,
 				2870B43F25FB41A10014A4F6 /* ReorderController+SnapshotView.swift in Sources */,
 				2870B46325FB44700014A4F6 /* WWCalendarTimeSelector.swift in Sources */,
 				2870B43525FB41A10014A4F6 /* DJPageMenuController.swift in Sources */,
 				282441352609AB3D0060292E /* StartingVC.swift in Sources */,
+				9AD558282636DFFA007ED68F /* AccountCell.swift in Sources */,
 				2870B3FD25FB41A10014A4F6 /* KDCircularProgress.swift in Sources */,
 				2870B40F25FB41A10014A4F6 /* Config.swift in Sources */,
+				9AC067162639178F00287A44 /* ResourceVC.swift in Sources */,
 				28B27823262EEECC005794E3 /* DownloadAudioVC.swift in Sources */,
+				9A51DF2926382DFC001364EA /* EditProfileVC.swift in Sources */,
 				2824413F2609AC820060292E /* LoginVC.swift in Sources */,
 				28ED2F8025FB511300E59C56 /* ProfileFormStartVC.swift in Sources */,
 				2870B3D925FB41A10014A4F6 /* UIColor+Extension.swift in Sources */,
@@ -1767,6 +1954,7 @@
 				281DE3332626FD79002CCD9D /* DJMusicPlayer.swift in Sources */,
 				281DE3212626FD79002CCD9D /* SDDownloadManager.swift in Sources */,
 				2870B3EF25FB41A10014A4F6 /* UITextField+Extension.swift in Sources */,
+				9AC066FC2639178E00287A44 /* RecAudioBookVC.swift in Sources */,
 				282441542609AD3A0060292E /* AddProfileVC.swift in Sources */,
 				28ED2FB225FB8C6600E59C56 /* ProfileForm3VC.swift in Sources */,
 				281DE3412626FD79002CCD9D /* DJMusicPlayer+ControlCenter.swift in Sources */,
@@ -1777,6 +1965,7 @@
 				287E807B262D3F760006A925 /* AddAudioViewAllVC.swift in Sources */,
 				28E012032618471500B55967 /* NotificatonVC.swift in Sources */,
 				28252FA925FF4CA200C2EB50 /* DassAssessmentVC.swift in Sources */,
+				9AC067142639178F00287A44 /* ResourceDetailVC.swift in Sources */,
 				2870B41B25FB41A10014A4F6 /* MimeType.swift in Sources */,
 				2870B43D25FB41A10014A4F6 /* UITableView+Reorder.swift in Sources */,
 				28E0122F261847EA00B55967 /* ProgressCell.swift in Sources */,
@@ -1803,9 +1992,11 @@
 				283153C1261448C9004001CE /* CreatePlaylistVC.swift in Sources */,
 				28E8093E26130AA500CD80F7 /* ElevateVC.swift in Sources */,
 				282441382609AB6E0060292E /* SignUpVC.swift in Sources */,
+				9AC067182639178F00287A44 /* RecWebSite.swift in Sources */,
 				282441572609AD440060292E /* ContinueVC.swift in Sources */,
 				28E8094126130ACE00CD80F7 /* AccountVC.swift in Sources */,
 				2870B3EB25FB41A10014A4F6 /* UINavigationBar+Extension.swift in Sources */,
+				9A51DF2F26384034001364EA /* ChangePassWordVC.swift in Sources */,
 				28346E22260B5A5900DD41BE /* FAQCell.swift in Sources */,
 				281DE33D2626FD79002CCD9D /* DJMusicPlayer+CommonFunctions.swift in Sources */,
 				28ED2FB825FB8C7700E59C56 /* ProfileForm5VC.swift in Sources */,
@@ -1819,6 +2010,7 @@
 				28E8093826130A8800CD80F7 /* ManageVC.swift in Sources */,
 				2830F1C82617479000E46F89 /* PlaylistDetailVC.swift in Sources */,
 				283153BE2614489E004001CE /* PlaylistCategoryVC.swift in Sources */,
+				9AC0671C2639304E00287A44 /* FeatureCell.swift in Sources */,
 				2870B3D125FB41A10014A4F6 /* DJTextField.swift in Sources */,
 				28B5353A260C706200BD8147 /* AreaOfFocusVC.swift in Sources */,
 				2870B3E525FB41A10014A4F6 /* ImagePicker.swift in Sources */,
@@ -1827,6 +2019,7 @@
 				28B5354F260CC44100BD8147 /* DynamicHeightCollectionView.swift in Sources */,
 				280DFCDE260DA03E00479EE6 /* RecommendedCategoryHeaderCell.swift in Sources */,
 				28F812A325FB336F00DC6AF6 /* AppDelegate.swift in Sources */,
+				9AC0672226394B3900287A44 /* FAQVC.swift in Sources */,
 				2870B37025FB404B0014A4F6 /* APIRoute.swift in Sources */,
 				2870B44325FB41A10014A4F6 /* ReorderController+GestureRecognizer.swift in Sources */,
 				2870B3E125FB41A10014A4F6 /* UIImage+Extension.swift in Sources */,
@@ -1842,6 +2035,7 @@
 				280C48F22600652C00063C03 /* DassAssessmentResultVC.swift in Sources */,
 				28D755682618999F00EA63FE /* iCarousel.m in Sources */,
 				28E01233261847EA00B55967 /* PlayerBannerCell.swift in Sources */,
+				9AC067022639178F00287A44 /* RecPodCastsVC.swift in Sources */,
 				2870B3E325FB41A10014A4F6 /* DJContants.swift in Sources */,
 				281DE3292626FD79002CCD9D /* AudioDownloads+CoreDataClass.swift in Sources */,
 				2870B3F525FB41A10014A4F6 /* UITableView+Extension.swift in Sources */,
@@ -1861,15 +2055,19 @@
 				283153C726145F41004001CE /* AudioDetailVC.swift in Sources */,
 				281DE3352626FD79002CCD9D /* DJMusicPlayer+Common.swift in Sources */,
 				2870B3DF25FB41A10014A4F6 /* UIView+Extension.swift in Sources */,
+				9AC0670A2639178F00287A44 /* WebsiteCell.swift in Sources */,
 				281DE3272626FD79002CCD9D /* DJDownloadManager.swift in Sources */,
 				283F72F3261D999200554774 /* SubColCell.swift in Sources */,
 				2870B3FB25FB41A10014A4F6 /* CardView.swift in Sources */,
+				9AC0670E2639178F00287A44 /* DocumentryCell.swift in Sources */,
 				28E0120C2618476E00B55967 /* PlayerVC.swift in Sources */,
 				28E0123F261847EA00B55967 /* IndexScrorCell.swift in Sources */,
 				2870B3DB25FB41A10014A4F6 /* DJExtensions.swift in Sources */,
 				2870B46125FB44700014A4F6 /* Duration.swift in Sources */,
 				28E012092618475E00B55967 /* AddAudioVC.swift in Sources */,
+				9AC066FE2639178F00287A44 /* RecDocuVC.swift in Sources */,
 				2870B41F25FB41A10014A4F6 /* NavigationClass.swift in Sources */,
+				9A51DF2C26383A4E001364EA /* ChangePINVC.swift in Sources */,
 				281DE3392626FD79002CCD9D /* ConnectionManager.swift in Sources */,
 				28E8093526130A7A00CD80F7 /* HomeVC.swift in Sources */,
 				28E8093B26130A9800CD80F7 /* WellnessVC.swift in Sources */,

@@ -58,6 +58,10 @@ enum APIRouter: URLRequestConvertible {
     case suggestedplaylist([String:String])
     case searchonsuggestedlist([String:String])
     
+    //Account
+    case resourcelist([String:String])
+    case resourcecategorylist([String:String])
+    
     var route: APIRoute {
         switch self {
         case .appversion(let data):
@@ -134,6 +138,12 @@ enum APIRouter: URLRequestConvertible {
             return APIRoute(path: "suggestedplaylist", method: .post, data: data)
         case .searchonsuggestedlist(let data):
             return APIRoute(path: "searchonsuggestedlist", method: .post, data: data)
+            
+        //Account
+        case .resourcelist(let data):
+            return APIRoute(path: "resourcelist", method: .post, data: data)
+        case .resourcecategorylist(let data):
+            return APIRoute(path: "resourcecategorylist", method: .post, data: data)
         }
     }
     

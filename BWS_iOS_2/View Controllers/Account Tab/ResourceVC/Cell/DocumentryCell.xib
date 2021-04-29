@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Bold.ttf">
+            <string>Montserrat-Bold</string>
+        </array>
+        <array key="Montserrat-Medium.ttf">
+            <string>Montserrat-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="DocumentryCell" rowHeight="256" id="KGk-i7-Jjw" customClass="DocumentryCell" customModule="Brain_Wellness_App" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="256"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="256"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fj5-gX-Fdz" customClass="CardView" customModule="Brain_Wellness_App" customModuleProvider="target">
+                        <rect key="frame" x="16" y="8" width="343" height="240"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Emm-80-wYJ">
+                                <rect key="frame" x="16" y="8" width="311" height="132"/>
+                                <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="132" id="fhH-yg-7OI"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0tc-6T-b2r">
+                                <rect key="frame" x="16" y="148" width="311" height="56"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="13"/>
+                                <color key="textColor" name="cardNumber"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Mw-De-QYI">
+                                <rect key="frame" x="16" y="212" width="311" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="h09-lK-Ku0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="13"/>
+                                <color key="textColor" name="cardValidDate"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Emm-80-wYJ" firstAttribute="top" secondItem="fj5-gX-Fdz" secondAttribute="top" constant="8" id="5Pe-6P-eG2"/>
+                            <constraint firstAttribute="trailing" secondItem="0tc-6T-b2r" secondAttribute="trailing" constant="16" id="BiM-uz-1ZH"/>
+                            <constraint firstAttribute="trailing" secondItem="4Mw-De-QYI" secondAttribute="trailing" constant="16" id="C3L-zQ-Gqc"/>
+                            <constraint firstItem="0tc-6T-b2r" firstAttribute="top" secondItem="Emm-80-wYJ" secondAttribute="bottom" constant="8" id="FjZ-8M-StG"/>
+                            <constraint firstItem="4Mw-De-QYI" firstAttribute="top" secondItem="0tc-6T-b2r" secondAttribute="bottom" constant="8" id="abC-Ou-rsu"/>
+                            <constraint firstItem="Emm-80-wYJ" firstAttribute="leading" secondItem="fj5-gX-Fdz" secondAttribute="leading" constant="16" id="bHP-T5-gW1"/>
+                            <constraint firstItem="0tc-6T-b2r" firstAttribute="leading" secondItem="fj5-gX-Fdz" secondAttribute="leading" constant="16" id="cOL-h7-oYa"/>
+                            <constraint firstAttribute="trailing" secondItem="Emm-80-wYJ" secondAttribute="trailing" constant="16" id="dqD-eL-Zv6"/>
+                            <constraint firstItem="4Mw-De-QYI" firstAttribute="leading" secondItem="fj5-gX-Fdz" secondAttribute="leading" constant="16" id="jT4-34-3WX"/>
+                            <constraint firstAttribute="bottom" secondItem="4Mw-De-QYI" secondAttribute="bottom" constant="8" id="wDj-J8-hXM"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                <real key="value" value="0.29999999999999999"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="16"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOffsetHeight">
+                                <integer key="value" value="0"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="0.0"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="fj5-gX-Fdz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="SHp-J7-xyk"/>
+                    <constraint firstAttribute="bottom" secondItem="fj5-gX-Fdz" secondAttribute="bottom" constant="8" id="Vvz-1g-NaQ"/>
+                    <constraint firstItem="fj5-gX-Fdz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="cbH-GW-s9a"/>
+                    <constraint firstAttribute="trailing" secondItem="fj5-gX-Fdz" secondAttribute="trailing" constant="16" id="yeM-vY-GyE"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="imgView" destination="Emm-80-wYJ" id="xrG-gV-7Jv"/>
+                <outlet property="lblTitle" destination="0tc-6T-b2r" id="dOJ-bB-Lo3"/>
+                <outlet property="lblYear" destination="4Mw-De-QYI" id="ean-Aq-lg8"/>
+            </connections>
+            <point key="canvasLocation" x="97.826086956521749" y="171.42857142857142"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="cardNumber">
+            <color red="0.19215686274509805" green="0.19215686274509805" blue="0.19215686274509805" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="cardValidDate">
+            <color red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

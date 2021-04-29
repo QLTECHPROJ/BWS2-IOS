@@ -841,3 +841,29 @@ extension UserListPopUpVC {
     }
     
 }
+
+extension ResourceVC {
+    
+    func callResourceCategoryListAPI() {
+        let parameters = ["UserID":""]
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.resourcecategorylist(parameters)) { (response : ResourceCategoryModel) in
+            
+            if response.ResponseCode == "200" && response.ResponseData != nil {
+                ResourceVC.arrayCategories = response.ResponseData!
+                let all = ResourceCategoryDataModel()
+                all.CategoryName = "All"
+                ResourceVC.arrayCategories.insert(all, at: 0)
+                ResourceVC.selectedCategory.removeAll()
+                self.setUpPageMenu()
+                self.setupData()
+            }
+            else {
+                ResourceVC.arrayCategories = [ResourceCategoryDataModel]()
+                self.setUpPageMenu()
+                self.setupData()
+            }
+        }
+    }
+    
+}

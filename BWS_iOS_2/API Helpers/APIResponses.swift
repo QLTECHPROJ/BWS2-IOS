@@ -553,3 +553,37 @@ class AverageSleepTimeDataModel: EVObject {
     var isSelected = false
 }
 
+/**** Resource Category Model ****/
+class ResourceCategoryModel: EVObject {
+    var ResponseData : [ResourceCategoryDataModel]?
+    var ResponseCode = ""
+    var ResponseMessage = ""
+    var ResponseStatus = ""
+}
+
+class ResourceCategoryDataModel: EVObject {
+    var CategoryName = ""
+}
+
+
+/**** Resource Category Model ****/
+class ResourceListModel: EVObject {
+    var ResponseData : [ResourceListDataModel]?
+    var ResponseCode = ""
+    var ResponseMessage = ""
+    var ResponseStatus = ""
+}
+
+class ResourceListDataModel: EVObject {
+    var ID = ""
+    var title = ""
+    var type = ""
+    var master_category = ""
+    var sub_category = ""
+    var ResourceDesc = ""
+    var image = ""
+    var author = ""
+    var resource_link_1 = ""
+    var resource_link_2 = ""
+    var Detailimage = ""
+}

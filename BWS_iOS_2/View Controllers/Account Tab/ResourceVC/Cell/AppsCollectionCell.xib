@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AppsCollectionCell" id="gTV-IL-0wX" customClass="AppsCollectionCell" customModule="Brain_Wellness_App" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="155" height="230"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="155" height="230"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8qS-Tk-c4T">
+                        <rect key="frame" x="0.0" y="0.0" width="155" height="230"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H9I-gL-214" customClass="CardView" customModule="Brain_Wellness_App" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="155" height="155"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tWM-42-wap">
+                                        <rect key="frame" x="0.0" y="0.0" width="155" height="155"/>
+                                        <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="tWM-42-wap" secondAttribute="height" multiplier="1:1" id="pTr-3w-7HA"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="tWM-42-wap" firstAttribute="leading" secondItem="H9I-gL-214" secondAttribute="leading" id="3P8-M1-tfn"/>
+                                    <constraint firstAttribute="bottom" secondItem="tWM-42-wap" secondAttribute="bottom" id="43n-jD-qrH"/>
+                                    <constraint firstAttribute="trailing" secondItem="tWM-42-wap" secondAttribute="trailing" id="8mK-yM-JA1"/>
+                                    <constraint firstItem="tWM-42-wap" firstAttribute="top" secondItem="H9I-gL-214" secondAttribute="top" id="e3D-xB-VUC"/>
+                                    <constraint firstAttribute="width" secondItem="H9I-gL-214" secondAttribute="height" multiplier="1:1" id="lmf-D8-BiY"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="NWy-D1-29h">
+                                <rect key="frame" x="5" y="165" width="145" height="49.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="label label label label label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1zA-a7-n4V">
+                                        <rect key="frame" x="0.0" y="0.0" width="145" height="31.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                        <color key="textColor" name="title"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="label label label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gEX-Oi-Erh">
+                                        <rect key="frame" x="0.0" y="33.5" width="145" height="16"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
+                                        <color key="textColor" name="cardValidDate"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="H9I-gL-214" firstAttribute="leading" secondItem="8qS-Tk-c4T" secondAttribute="leading" id="4OI-4H-wq3"/>
+                            <constraint firstAttribute="trailing" secondItem="H9I-gL-214" secondAttribute="trailing" id="564-tV-oRY"/>
+                            <constraint firstItem="NWy-D1-29h" firstAttribute="leading" secondItem="8qS-Tk-c4T" secondAttribute="leading" constant="5" id="Fx4-pK-u0o"/>
+                            <constraint firstAttribute="trailing" secondItem="NWy-D1-29h" secondAttribute="trailing" constant="5" id="aS4-ck-IGp"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="NWy-D1-29h" secondAttribute="bottom" constant="10" id="hAb-oY-qRj"/>
+                            <constraint firstItem="H9I-gL-214" firstAttribute="top" secondItem="8qS-Tk-c4T" secondAttribute="top" id="jXS-8L-oDb"/>
+                            <constraint firstItem="NWy-D1-29h" firstAttribute="top" secondItem="H9I-gL-214" secondAttribute="bottom" constant="10" id="tzk-uY-tkW"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="8qS-Tk-c4T" secondAttribute="bottom" id="JbD-rp-MA9"/>
+                <constraint firstAttribute="trailing" secondItem="8qS-Tk-c4T" secondAttribute="trailing" id="OJe-xZ-x00"/>
+                <constraint firstItem="8qS-Tk-c4T" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="YE5-y8-szk"/>
+                <constraint firstItem="8qS-Tk-c4T" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="zTw-1m-l5s"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="187" height="233"/>
+            <connections>
+                <outlet property="imgView" destination="tWM-42-wap" id="vC2-J5-eQ4"/>
+                <outlet property="lblSubTitle" destination="gEX-Oi-Erh" id="fNy-IQ-mJg"/>
+                <outlet property="lblTitle" destination="1zA-a7-n4V" id="sOy-ED-vEH"/>
+            </connections>
+            <point key="canvasLocation" x="136.95652173913044" y="101.78571428571428"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <namedColor name="cardValidDate">
+            <color red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="title">
+            <color red="0.16470588235294117" green="0.18823529411764706" blue="0.25882352941176473" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
