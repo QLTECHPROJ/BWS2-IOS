@@ -58,12 +58,16 @@ class SplashVC: BaseViewController {
     func handleRedirection() {
         if (LoginDataModel.currentUser != nil) {
             if CoUserDataModel.currentUser != nil {
-                self.callGetCoUserDetailsAPI { (success) in
-                    if success {
-                        self.handleCoUserRedirection()
-                    } else {
-                        self.handleRedirection()
+                if checkInternet() {
+                    self.callGetCoUserDetailsAPI { (success) in
+                        if success {
+                            self.handleCoUserRedirection()
+                        } else {
+                            self.handleRedirection()
+                        }
                     }
+                } else {
+                    self.handleCoUserRedirection()
                 }
             } else {
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass: UserListVC.self)

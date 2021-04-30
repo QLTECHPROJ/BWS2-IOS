@@ -15,6 +15,7 @@ class ProfileFormModel : EVObject {
     var genderX = ""
     var age = ""
     var prevDrugUse = ""
+    var Medication = ""
     
     static var shared = ProfileFormModel()
 }

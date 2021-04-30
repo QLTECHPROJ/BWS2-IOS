@@ -396,6 +396,7 @@
                         <outlet property="lblDesc" destination="Pga-Se-qVI" id="cF1-jE-FoA"/>
                         <outlet property="lblNoDataFooter" destination="NRf-ej-mRr" id="9Qm-ym-861"/>
                         <outlet property="lblPlaylistName" destination="CnT-bT-PPx" id="BU6-mf-uKD"/>
+                        <outlet property="lblSleepTime" destination="WaR-9F-zRw" id="IWb-4Y-e5O"/>
                         <outlet property="moonView" destination="b0f-RW-tnx" id="FbB-In-LKW"/>
                         <outlet property="tableFooterView" destination="z1s-bg-3MT" id="hvt-DF-97G"/>
                         <outlet property="tableHeaderView" destination="6h2-Qp-BP4" id="KGv-dC-Hax"/>
@@ -580,7 +581,7 @@
                                                 <constraint firstAttribute="width" constant="47" id="ByH-6X-SO1"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your average sleep time is 7 hours" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WaR-9F-zRw">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your average sleep time is 7 hours" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="WaR-9F-zRw">
                                             <rect key="frame" x="68" y="17" width="258" height="16.333333333333329"/>
                                             <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="14"/>
                                             <color key="textColor" name="Green"/>
@@ -650,6 +651,9 @@
                                 <constraint firstAttribute="height" constant="30" id="PW0-ns-FXn"/>
                             </constraints>
                             <state key="normal" image="edit"/>
+                            <connections>
+                                <action selector="editClicked:" destination="wVS-Jv-0PE" eventType="touchUpInside" id="XaR-mL-uXG"/>
+                            </connections>
                         </button>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="kWy-7T-Cn9">
                             <rect key="frame" x="0.0" y="419.66666666666669" width="375" height="100.00000000000006"/>
@@ -832,7 +836,6 @@
                                                 <rect key="frame" x="312" y="8" width="31" height="31"/>
                                                 <state key="normal" image="closeBlack"/>
                                                 <connections>
-                                                    <action selector="clearSearchClickedWithSender:" destination="wVS-Jv-0PE" eventType="touchUpInside" id="nl9-EU-PZL"/>
                                                     <action selector="clearSearchClickedWithSender:" destination="lgy-Dg-h8h" eventType="touchUpInside" id="ppa-5j-m25"/>
                                                 </connections>
                                             </button>

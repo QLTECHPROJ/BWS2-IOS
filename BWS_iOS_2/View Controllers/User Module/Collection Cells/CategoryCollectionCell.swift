@@ -9,7 +9,7 @@
 import UIKit
 
 class CategoryCollectionCell: UICollectionViewCell {
-
+    
     @IBOutlet weak var lblCategory : UILabel!
     
     override func awakeFromNib() {
@@ -21,15 +21,16 @@ class CategoryCollectionCell: UICollectionViewCell {
     func configureCell(data : CategoryDataModel) {
         lblCategory.text = data.ProblemName
         
-        if data.isSelected {
-            self.borderColor = Theme.colors.magenta_C44B6C
-            self.backgroundColor = Theme.colors.pink_FFDFEA
-            lblCategory.textColor = Theme.colors.magenta_C44B6C
-        }
-        else {
-            self.borderColor = Theme.colors.off_white_F9F9F9
-            self.backgroundColor = Theme.colors.off_white_F9F9F9
-            lblCategory.textColor = Theme.colors.textColor
+        DispatchQueue.main.async {
+            if data.isSelected {
+                self.borderColor = Theme.colors.magenta_C44B6C
+                self.backgroundColor = Theme.colors.pink_FFDFEA
+                self.lblCategory.textColor = Theme.colors.magenta_C44B6C
+            } else {
+                self.borderColor = UIColor.clear
+                self.backgroundColor = Theme.colors.off_white_F9F9F9
+                self.lblCategory.textColor = Theme.colors.textColor
+            }
         }
         
     }

@@ -26,8 +26,11 @@ class PlaylistCategoryVC: BaseViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        refreshPlaylistData = true
         imgLock.isHidden = true
         setupUI()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshDownloadData), name: .refreshDownloadData, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,6 +38,7 @@ class PlaylistCategoryVC: BaseViewController {
         
         if checkInternet() == false {
             refreshPlaylistData = false
+            addPlaylistDownloadsData()
             showAlertToast(message: Theme.strings.alert_check_internet)
         } else {
             refreshPlaylistData = false
@@ -66,11 +70,37 @@ class PlaylistCategoryVC: BaseViewController {
     
     override func handleRefresh(_ refreshControl: UIRefreshControl) {
         if checkInternet() == false {
-            showAlertToast(message: Theme.strings.alert_check_internet)
+            addPlaylistDownloadsData()
         } else {
             callPlaylistLibraryAPI()
         }
         refreshControl.endRefreshing()
+    }
+    
+    @objc override func refreshDownloadData() {
+        if checkInternet() == false {
+            addPlaylistDownloadsData()
+        } else {
+            for data in arrayPlaylistHomeData {
+                if data.View == "My Downloads" {
+                    data.Details = CoreDataHelper.shared.fetchAllPlaylists()
+                }
+            }
+            self.tableView.reloadData()
+        }
+    }
+    
+    func addPlaylistDownloadsData() {
+        self.arrayPlaylistHomeData = [PlaylistHomeDataModel]()
+        let downloadDataModel = PlaylistHomeDataModel()
+        downloadDataModel.GetLibraryID = "2"
+        downloadDataModel.View = "My Downloads"
+        downloadDataModel.UserID = (CoUserDataModel.currentUser?.UserID ?? "")
+        downloadDataModel.CoUserId = (CoUserDataModel.currentUser?.CoUserId ?? "")
+        downloadDataModel.Details = CoreDataHelper.shared.fetchAllPlaylists()
+        downloadDataModel.IsLock = shouldLockDownloads() ? "1" : "0"
+        self.arrayPlaylistHomeData = [downloadDataModel]
+        self.tableView.reloadData()
     }
     
     func openPlaylist(playlistIndex : Int, sectionIndex : Int) {

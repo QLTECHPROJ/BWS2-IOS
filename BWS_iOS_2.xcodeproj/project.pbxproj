@@ -95,6 +95,8 @@
 		28252FAA25FF4CB600C2EB50 /* DassAssessmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28252FA825FF4CA200C2EB50 /* DassAssessmentVC.swift */; };
 		2830F1C82617479000E46F89 /* PlaylistDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2830F1C72617479000E46F89 /* PlaylistDetailVC.swift */; };
 		2830F1C92617479000E46F89 /* PlaylistDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2830F1C72617479000E46F89 /* PlaylistDetailVC.swift */; };
+		2830F7E8263AB4730020A086 /* ProfileForm6VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2830F7E7263AB4730020A086 /* ProfileForm6VC.swift */; };
+		2830F7E9263AB4730020A086 /* ProfileForm6VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2830F7E7263AB4730020A086 /* ProfileForm6VC.swift */; };
 		283153B326143F74004001CE /* PlaylistCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283153B126143F74004001CE /* PlaylistCollectionCell.swift */; };
 		283153B426143F74004001CE /* PlaylistCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283153B126143F74004001CE /* PlaylistCollectionCell.swift */; };
 		283153B526143F74004001CE /* PlaylistCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 283153B226143F74004001CE /* PlaylistCollectionCell.xib */; };
@@ -536,6 +538,7 @@
 		28252FA825FF4CA200C2EB50 /* DassAssessmentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DassAssessmentVC.swift; sourceTree = "<group>"; };
 		282F8A2325FB38B700E81153 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2830F1C72617479000E46F89 /* PlaylistDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistDetailVC.swift; sourceTree = "<group>"; };
+		2830F7E7263AB4730020A086 /* ProfileForm6VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileForm6VC.swift; sourceTree = "<group>"; };
 		283153B126143F74004001CE /* PlaylistCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistCollectionCell.swift; sourceTree = "<group>"; };
 		283153B226143F74004001CE /* PlaylistCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaylistCollectionCell.xib; sourceTree = "<group>"; };
 		283153B72614401E004001CE /* ManagePlaylistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagePlaylistCell.swift; sourceTree = "<group>"; };
@@ -848,6 +851,7 @@
 				28ED2FB125FB8C6600E59C56 /* ProfileForm3VC.swift */,
 				28ED2FB425FB8C6E00E59C56 /* ProfileForm4VC.swift */,
 				28ED2FB725FB8C7700E59C56 /* ProfileForm5VC.swift */,
+				2830F7E7263AB4730020A086 /* ProfileForm6VC.swift */,
 			);
 			path = "Profile Form";
 			sourceTree = "<group>";
@@ -1735,6 +1739,7 @@
 				2824413C2609ABA10060292E /* SignUpVC.swift in Sources */,
 				2870B46025FB44700014A4F6 /* String+Timepiece.swift in Sources */,
 				2870B3E825FB41A10014A4F6 /* UIViewController+Extension.swift in Sources */,
+				2830F7E9263AB4730020A086 /* ProfileForm6VC.swift in Sources */,
 				2819848E2638214E00DA5A66 /* SuggestedPlaylistCell.swift in Sources */,
 				288621492615BF880087730D /* ViewAllPlaylistVC.swift in Sources */,
 				280C48F62600729900063C03 /* ManageStartVC.swift in Sources */,
@@ -1928,6 +1933,7 @@
 				2870B3E725FB41A10014A4F6 /* UIViewController+Extension.swift in Sources */,
 				280C48F52600729900063C03 /* ManageStartVC.swift in Sources */,
 				2870B3DD25FB41A10014A4F6 /* Int+Extension.swift in Sources */,
+				2830F7E8263AB4730020A086 /* ProfileForm6VC.swift in Sources */,
 				2819848D2638214E00DA5A66 /* SuggestedPlaylistCell.swift in Sources */,
 				288621482615BF880087730D /* ViewAllPlaylistVC.swift in Sources */,
 				2870B43325FB41A10014A4F6 /* DJPageMenuConfiguration.swift in Sources */,

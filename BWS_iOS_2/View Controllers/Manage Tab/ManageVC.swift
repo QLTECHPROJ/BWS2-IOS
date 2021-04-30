@@ -193,6 +193,7 @@ class ManageVC: BaseViewController {
             let aVC = AppStoryBoard.home.viewController(viewControllerClass: PlaylistAudiosVC.self)
             aVC.objPlaylist = objPlaylist
             aVC.sectionName = "Suggested Playlist"
+            aVC.isCome = "Suggested"
             self.navigationController?.pushViewController(aVC, animated: true)
         }
     }
@@ -207,8 +208,13 @@ class ManageVC: BaseViewController {
         downloadDataModel.CoUserId = (CoUserDataModel.currentUser?.CoUserId ?? "")
         downloadDataModel.Details = CoreDataHelper.shared.fetchSingleAudios()
         downloadDataModel.IsLock = shouldLockDownloads() ? "1" : "0"
-        self.arrayAudioHomeData = [downloadDataModel]
-        self.tableView.reloadData()
+        arrayAudioHomeData = [downloadDataModel]
+        
+        playlistIndexPath = nil
+        suggstedPlaylist = nil
+        arrayPlaylistHomeData = [PlaylistHomeDataModel]()
+        
+        setupData()
     }
     
     // Play Audio

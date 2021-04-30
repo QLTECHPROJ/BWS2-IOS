@@ -45,7 +45,7 @@ class ProfileForm1VC: BaseViewController {
         btnNext.isEnabled = false
         if ProfileFormModel.shared.profileType.trim.count > 0 {
             if arrayOptions.contains(ProfileFormModel.shared.profileType) {
-                progressView.progress = 0.25
+                progressView.progress = 0.2
                 btnNext.isEnabled = true
             }
         }

@@ -1,14 +1,14 @@
 //
-//  ProfileForm4VC.swift
+//  ProfileForm6VC.swift
 //  BWS_iOS_2
 //
-//  Created by Dhruvit on 12/03/21.
+//  Created by Dhruvit on 29/04/21.
 //  Copyright © 2021 Dhruvit. All rights reserved.
 //
 
 import UIKit
 
-class ProfileForm4VC: BaseViewController {
+class ProfileForm6VC: BaseViewController {
     
     // MARK:- OUTLETS
     @IBOutlet weak var progressView : UIProgressView!
@@ -19,7 +19,7 @@ class ProfileForm4VC: BaseViewController {
     
     
     // MARK:- VARIABLES
-    var arrayOptions = ["0 - 4", "5 -12", "13 - 17", "> 18"]
+    var arrayOptions = ["Yes", "No"]
     
     
     // MARK:- VIEW LIFE CYCLE
@@ -39,21 +39,20 @@ class ProfileForm4VC: BaseViewController {
         tableViewHeightConst.constant = CGFloat(96 * arrayOptions.count)
         self.view.layoutIfNeeded()
         
-        progressView.progress = 0.4
+        progressView.progress = 0.8
         btnPrev.isEnabled = true
         
         btnNext.isEnabled = false
-        if ProfileFormModel.shared.age.trim.count > 0 {
-            if arrayOptions.contains(ProfileFormModel.shared.age) {
-                progressView.progress = 0.6
+        if ProfileFormModel.shared.Medication.trim.count > 0 {
+            if arrayOptions.contains(ProfileFormModel.shared.Medication) {
+                progressView.progress = 1.0
                 btnNext.isEnabled = true
             }
         }
     }
     
     override func goNext() {
-        let aVC = AppStoryBoard.main.viewController(viewControllerClass: ProfileForm5VC.self)
-        self.navigationController?.pushViewController(aVC, animated: true)
+        print("Profile Form Data :- ",ProfileFormModel.shared)
     }
     
     
@@ -63,14 +62,14 @@ class ProfileForm4VC: BaseViewController {
     }
     
     @IBAction func nextClicked(sender : UIButton) {
-        goNext()
+        self.callProfileAnsSaveAPI()
     }
     
 }
 
 
 // MARK:- UITableViewDelegate, UITableViewDataSource
-extension ProfileForm4VC : UITableViewDelegate, UITableViewDataSource {
+extension ProfileForm6VC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return arrayOptions.count
@@ -81,7 +80,7 @@ extension ProfileForm4VC : UITableViewDelegate, UITableViewDataSource {
         let optionValue = arrayOptions[indexPath.row]
         cell.buttonOption.setTitle(optionValue, for: .normal)
         
-        if optionValue == ProfileFormModel.shared.age {
+        if optionValue == ProfileFormModel.shared.Medication {
             cell.buttonOption.borderColor = Theme.colors.purple
             cell.buttonOption.setTitleColor(Theme.colors.purple, for: .normal)
         } else {
@@ -93,7 +92,7 @@ extension ProfileForm4VC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        ProfileFormModel.shared.age = arrayOptions[indexPath.row]
+        ProfileFormModel.shared.Medication = arrayOptions[indexPath.row]
         self.setupUI()
         
         self.view.isUserInteractionEnabled = false
@@ -109,3 +108,4 @@ extension ProfileForm4VC : UITableViewDelegate, UITableViewDataSource {
     }
     
 }
+
