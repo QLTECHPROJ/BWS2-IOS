@@ -2,6 +2,7 @@ ${PODS_ROOT}/Target Support Files/Pods-BWS_iOS_2_Staging/Pods-BWS_iOS_2_Staging-
 ${BUILT_PRODUCTS_DIR}/ANActivityIndicator/ANActivityIndicator.framework
 ${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
 ${BUILT_PRODUCTS_DIR}/AvailableHapticFeedback/AvailableHapticFeedback.framework
+${BUILT_PRODUCTS_DIR}/Charts/Charts.framework
 ${BUILT_PRODUCTS_DIR}/EVReflection/EVReflection.framework
 ${BUILT_PRODUCTS_DIR}/FirebaseCore/FirebaseCore.framework
 ${BUILT_PRODUCTS_DIR}/FirebaseCoreDiagnostics/FirebaseCoreDiagnostics.framework

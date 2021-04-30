@@ -14,6 +14,7 @@ def shared_pods
     pod 'MultiSlider'
     pod 'ANActivityIndicator'
     pod 'SJSegmentedScrollView'
+    pod 'Charts'
     
     # Firebase Pods
     pod 'Firebase/Analytics'

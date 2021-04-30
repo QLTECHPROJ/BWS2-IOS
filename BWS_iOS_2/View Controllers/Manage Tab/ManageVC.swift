@@ -193,7 +193,6 @@ class ManageVC: BaseViewController {
             let aVC = AppStoryBoard.home.viewController(viewControllerClass: PlaylistAudiosVC.self)
             aVC.objPlaylist = objPlaylist
             aVC.sectionName = "Suggested Playlist"
-            aVC.isCome = "Suggested"
             self.navigationController?.pushViewController(aVC, animated: true)
         }
     }

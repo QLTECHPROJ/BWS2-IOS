@@ -102,7 +102,7 @@ class PlaylistAudiosVC: BaseViewController {
         txtSearch.delegate = self
         txtSearch.addTarget(self, action: #selector(textFieldValueChanged(textField:)), for: UIControl.Event.editingChanged)
         
-        if isCome != "Suggested" {
+        if objPlaylist?.Created == "2" {
             collectionView.isHidden = false
             lblAreaOfFocus.isHidden = false
             btnEdit.isHidden = false
@@ -171,7 +171,7 @@ class PlaylistAudiosVC: BaseViewController {
         
         viewSearch.isHidden = (objPlaylist?.PlaylistSongs.count ?? 0) == 0
         
-        if isCome == "Suggested" {
+        if details.Created == "2" {
             collectionView.isHidden = false
             lblAreaOfFocus.isHidden = false
             btnEdit.isHidden = false

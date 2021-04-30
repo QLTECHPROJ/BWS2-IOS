@@ -199,6 +199,8 @@ struct AppColors {
     let off_white_F9F9F9 = UIColor(hex: "F9F9F9")
     let sky_blue_light_E4F3F3 = UIColor(hex: "E4F3F3")
     
+    let red_CE5060 = UIColor(hex: "CE5060")
+    
     let pink_FFDFEA = UIColor(hex: "FFDFEA")
     let magenta_C44B6C = UIColor(hex: "C44B6C")
     
