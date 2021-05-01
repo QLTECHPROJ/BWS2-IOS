@@ -87,6 +87,7 @@ class AccountVC: BaseViewController {
     
     // MARK:- ACTIONS
      func logoutClicked() {
+        
         // Player Related Data
         DJMusicPlayer.shared.stop(shouldTrack: false)
         DJMusicPlayer.shared.playIndex = 0
@@ -218,7 +219,7 @@ extension AccountVC:UITableViewDelegate,UITableViewDataSource {
         }else if indexPath.section == 2{
             if indexPath.row == 1 {
                 //Log Out
-               logoutClicked()
+               callLogoutAPI()
             }else {
                 //FAQ
                 let aVC = AppStoryBoard.account.viewController(viewControllerClass: FAQVC.self)

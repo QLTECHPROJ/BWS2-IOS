@@ -894,3 +894,38 @@ extension HomeVC {
     }
     
 }
+
+extension AccountVC {
+    
+    //call logout
+    func callLogoutAPI() {
+        let parameters = ["UserID":LoginDataModel.currentUser?.ID ?? "",
+                          "Token":FCM_TOKEN,
+                          "DeviceType":APP_TYPE]
+        APICallManager.sharedInstance.callAPI(router: APIRouter.logout(parameters)) { (response :GeneralModel) in
+            
+            if response.ResponseCode == "200" {
+                showAlertToast(message: response.ResponseMessage)
+                self.logoutClicked()
+            }
+        }
+    }
+}
+
+extension ChangePINVC {
+    
+    //call change pin
+    func callChangePinAPI() {
+        let parameters = ["UserID":LoginDataModel.currentUser?.ID ?? "",
+                          "CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+                          "OldPin":txtFOldPIN.text ?? "",
+                          "NewPin":txtFConfirmPIN.text ?? ""]
+        APICallManager.sharedInstance.callAPI(router: APIRouter.changepin(parameters)) { (response :GeneralModel) in
+            
+            if response.ResponseCode == "200" {
+                showAlertToast(message: response.ResponseMessage)
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
+    }
+}

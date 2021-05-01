@@ -64,6 +64,8 @@ enum APIRouter: URLRequestConvertible {
     //Account
     case resourcelist([String:String])
     case resourcecategorylist([String:String])
+    case logout([String:String])
+    case changepin([String:String])
     
     var route: APIRoute {
         switch self {
@@ -150,6 +152,10 @@ enum APIRouter: URLRequestConvertible {
             return APIRoute(path: "resourcelist", method: .post, data: data)
         case .resourcecategorylist(let data):
             return APIRoute(path: "resourcecategorylist", method: .post, data: data)
+       case .logout(let data):
+            return APIRoute(path: "logout", method: .post, data: data)
+       case .changepin(let data):
+            return APIRoute(path: "changepin", method: .post, data: data)
         }
     }
     

@@ -65,11 +65,11 @@ class ChangePINVC: BaseViewController {
     }
     
     func checkValidation() -> Bool {
-    var isValid = true
-    let strPin1 = txtFOldPIN.text?.trim ?? ""
-    let strPin2 = txtFNewPIN.text?.trim ?? ""
-    let strPin3 = txtFConfirmPIN.text?.trim ?? ""
-    
+        var isValid = true
+        let strPin1 = txtFOldPIN.text?.trim ?? ""
+        let strPin2 = txtFNewPIN.text?.trim ?? ""
+        let strPin3 = txtFConfirmPIN.text?.trim ?? ""
+        
         if strPin1.count == 0 {
             isValid = false
             lblErrOldPIN.isHidden = false
@@ -89,6 +89,7 @@ class ChangePINVC: BaseViewController {
         }
         
         if strPin2 != strPin3 {
+            isValid = false
             lblErrConfirmPIN.isHidden = false
             lblErrConfirmPIN.text = "pin is not same"
         }
@@ -100,7 +101,9 @@ class ChangePINVC: BaseViewController {
         self.navigationController?.popViewController(animated: true)
     }
     @IBAction func onTappedSave(_ sender: UIButton) {
-        checkValidation()
+        if checkValidation() {
+            callChangePinAPI()
+        }
     }
     
 }
@@ -124,7 +127,11 @@ extension ChangePINVC : UITextFieldDelegate {
         if let text = textField.text,
             let textRange = Range(range, in: text) {
             let updatedText = text.replacingCharacters(in: textRange, with: string).trim
-            if textField == txtFOldPIN || textField == txtFNewPIN || textField == txtFConfirmPIN && updatedText.count > 4 {
+            if textField == txtFOldPIN && updatedText.count > 4 {
+                return false
+            }else if textField == txtFNewPIN  && updatedText.count > 4 {
+                return false
+            }else if textField == txtFConfirmPIN && updatedText.count > 4 {
                 return false
             }
         }
