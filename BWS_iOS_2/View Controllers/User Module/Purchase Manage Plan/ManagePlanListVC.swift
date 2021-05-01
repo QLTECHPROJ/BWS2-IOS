@@ -96,6 +96,7 @@ class ManagePlanListVC: BaseViewController {
         carouselView.delegate = self
         carouselView.type = .linear
         carouselView.backgroundColor = UIColor.clear
+        carouselView.isPagingEnabled = true
     }
     
     override func setupData() {
@@ -406,6 +407,10 @@ extension ManagePlanListVC : iCarouselDelegate, iCarouselDataSource {
         default:
             return value
         }
+    }
+    
+    func carouselCurrentItemIndexDidChange(_ carousel: iCarousel) {
+        NotificationCenter.default.post(name: .pauseYouTubeVideo, object: nil)
     }
     
 }
