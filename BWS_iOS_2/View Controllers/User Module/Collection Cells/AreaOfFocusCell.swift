@@ -20,30 +20,46 @@ class AreaOfFocusCell: UICollectionViewCell {
     }
     
     // Configure Cell
+    func generalConfiuration(index : Int) {
+        var titleColor = Theme.colors.magenta_C44B6C
+        var backColor = Theme.colors.pink_FFDFEA
+        
+        switch index {
+        case 1:
+            titleColor = Theme.colors.green_27B86A
+            backColor = Theme.colors.green_A2EEC5
+            break
+        case 2:
+            titleColor = Theme.colors.blue_38667E
+            backColor = Theme.colors.blue_B8E1F7
+            break
+        default:
+            break
+        }
+        
+        DispatchQueue.main.async {
+            self.viewCategory.borderColor = titleColor
+            self.viewCategory.backgroundColor = backColor
+            self.lblCategory.textColor = titleColor
+            
+            self.lblIndex.borderColor = titleColor
+            self.lblIndex.backgroundColor = backColor
+            self.lblIndex.textColor = titleColor
+        }
+    }
+    
     func configureCell(data : CategoryDataModel, index : Int) {
+        generalConfiuration(index : index)
+        
         lblIndex.text = "\(index + 1)"
         lblCategory.text = data.ProblemName
-        
-        viewCategory.borderColor = Theme.colors.magenta_C44B6C
-        viewCategory.backgroundColor = Theme.colors.pink_FFDFEA
-        lblCategory.textColor = Theme.colors.magenta_C44B6C
-        
-        lblIndex.borderColor = Theme.colors.magenta_C44B6C
-        lblIndex.backgroundColor = Theme.colors.pink_FFDFEA
-        lblIndex.textColor = Theme.colors.magenta_C44B6C
     }
     
     func configureCell(data : AreaOfFocusModel, index : Int) {
+        generalConfiuration(index : index)
+        
         lblIndex.text = "\(index + 1)"
         lblCategory.text = data.RecommendedCat
-        
-        viewCategory.borderColor = Theme.colors.magenta_C44B6C
-        viewCategory.backgroundColor = Theme.colors.pink_FFDFEA
-        lblCategory.textColor = Theme.colors.magenta_C44B6C
-        
-        lblIndex.borderColor = Theme.colors.magenta_C44B6C
-        lblIndex.backgroundColor = Theme.colors.pink_FFDFEA
-        lblIndex.textColor = Theme.colors.magenta_C44B6C
     }
     
 }

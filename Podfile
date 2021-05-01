@@ -14,6 +14,8 @@ def shared_pods
     pod 'MultiSlider'
     pod 'ANActivityIndicator'
     pod 'SJSegmentedScrollView'
+    pod 'Charts'
+    pod 'youtube-ios-player-helper'
     
     # Firebase Pods
     pod 'Firebase/Analytics'

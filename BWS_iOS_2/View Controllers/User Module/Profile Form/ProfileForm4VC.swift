@@ -39,13 +39,13 @@ class ProfileForm4VC: BaseViewController {
         tableViewHeightConst.constant = CGFloat(96 * arrayOptions.count)
         self.view.layoutIfNeeded()
         
-        progressView.progress = 0.5
+        progressView.progress = 0.4
         btnPrev.isEnabled = true
         
         btnNext.isEnabled = false
         if ProfileFormModel.shared.age.trim.count > 0 {
             if arrayOptions.contains(ProfileFormModel.shared.age) {
-                progressView.progress = 0.75
+                progressView.progress = 0.6
                 btnNext.isEnabled = true
             }
         }

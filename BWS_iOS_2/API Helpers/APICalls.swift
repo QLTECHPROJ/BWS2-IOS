@@ -219,7 +219,7 @@ extension AddProfileVC {
     
 }
 
-extension ProfileForm5VC {
+extension ProfileForm6VC {
     
     // Profile Answer Save API Call
     func callProfileAnsSaveAPI() {
@@ -229,7 +229,8 @@ extension ProfileForm5VC {
                           "gender":ProfileFormModel.shared.gender,
                           "genderX":ProfileFormModel.shared.genderX,
                           "age":ProfileFormModel.shared.age,
-                          "prevDrugUse":ProfileFormModel.shared.prevDrugUse]
+                          "prevDrugUse":ProfileFormModel.shared.prevDrugUse,
+                          "Medication":ProfileFormModel.shared.Medication]
         
         
         APICallManager.sharedInstance.callAPI(router: APIRouter.profilesaveans(parameters)) { (response : CoUserModel) in

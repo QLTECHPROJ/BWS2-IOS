@@ -43,20 +43,21 @@ class ProfileForm5VC: BaseViewController {
         let normalString = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore."
         lblSubTitle.attributedText = normalString.attributedString(alignment: .left, lineSpacing: 10)
         
-        progressView.progress = 0.75
+        progressView.progress = 0.6
         btnPrev.isEnabled = true
         
         btnNext.isEnabled = false
         if ProfileFormModel.shared.prevDrugUse.trim.count > 0 {
             if arrayOptions.contains(ProfileFormModel.shared.prevDrugUse) {
-                progressView.progress = 1.0
+                progressView.progress = 0.8
                 btnNext.isEnabled = true
             }
         }
     }
     
     override func goNext() {
-        print("Profile Form Data :- ",ProfileFormModel.shared)
+        let aVC = AppStoryBoard.main.viewController(viewControllerClass: ProfileForm6VC.self)
+        self.navigationController?.pushViewController(aVC, animated: true)
     }
     
     
@@ -66,7 +67,7 @@ class ProfileForm5VC: BaseViewController {
     }
     
     @IBAction func nextClicked(sender : UIButton) {
-        self.callProfileAnsSaveAPI()
+        goNext()
     }
     
 }

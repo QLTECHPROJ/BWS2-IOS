@@ -29,12 +29,13 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aey-cP-fFG">
                         <rect key="frame" x="0.0" y="0.0" width="353" height="360"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banner_image" translatesAutoresizingMaskIntoConstraints="NO" id="P4c-Fs-AkH">
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pqv-r1-2sE" customClass="YTPlayerView">
                                 <rect key="frame" x="10" y="0.0" width="333" height="180"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="180" id="mdA-qo-3al"/>
+                                    <constraint firstAttribute="height" constant="180" id="ZiD-Q4-9Xw"/>
                                 </constraints>
-                            </imageView>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Ysz-fe-oTI">
                                 <rect key="frame" x="5" y="200" width="343" height="56"/>
                                 <string key="text">“I would pay it all over again. It was worth every penny. On a bad day I would be very agitated and very angry about everyday occurrences.”</string>
@@ -54,16 +55,16 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="Pqv-r1-2sE" firstAttribute="centerX" secondItem="Aey-cP-fFG" secondAttribute="centerX" id="0RI-7R-RfL"/>
                             <constraint firstItem="Ysz-fe-oTI" firstAttribute="centerX" secondItem="Aey-cP-fFG" secondAttribute="centerX" id="232-va-wuG"/>
                             <constraint firstItem="Ysz-fe-oTI" firstAttribute="leading" secondItem="Aey-cP-fFG" secondAttribute="leading" constant="5" id="6Bt-YP-5Tk"/>
                             <constraint firstItem="ZdT-2A-dXo" firstAttribute="trailing" secondItem="Ysz-fe-oTI" secondAttribute="trailing" id="A0S-Ey-Ez5"/>
-                            <constraint firstItem="Ysz-fe-oTI" firstAttribute="top" secondItem="P4c-Fs-AkH" secondAttribute="bottom" constant="20" id="I3Z-Ye-xdW"/>
+                            <constraint firstItem="Ysz-fe-oTI" firstAttribute="top" secondItem="Pqv-r1-2sE" secondAttribute="bottom" constant="20" id="G9M-Pc-uqp"/>
                             <constraint firstItem="ZdT-2A-dXo" firstAttribute="leading" secondItem="Ysz-fe-oTI" secondAttribute="leading" id="R5g-bg-C2X"/>
                             <constraint firstAttribute="bottom" secondItem="ZdT-2A-dXo" secondAttribute="bottom" constant="10" id="SEJ-mx-cLs"/>
-                            <constraint firstItem="P4c-Fs-AkH" firstAttribute="top" secondItem="Aey-cP-fFG" secondAttribute="top" id="Xby-wj-FdO"/>
                             <constraint firstItem="ZdT-2A-dXo" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Ysz-fe-oTI" secondAttribute="bottom" constant="20" id="Yyg-ME-YPG"/>
-                            <constraint firstItem="P4c-Fs-AkH" firstAttribute="centerX" secondItem="Aey-cP-fFG" secondAttribute="centerX" id="cV0-0D-QKI"/>
-                            <constraint firstItem="P4c-Fs-AkH" firstAttribute="leading" secondItem="Aey-cP-fFG" secondAttribute="leading" constant="10" id="omn-n9-EXK"/>
+                            <constraint firstItem="Pqv-r1-2sE" firstAttribute="leading" secondItem="Aey-cP-fFG" secondAttribute="leading" constant="10" id="ZLk-XF-iZM"/>
+                            <constraint firstItem="Pqv-r1-2sE" firstAttribute="top" secondItem="Aey-cP-fFG" secondAttribute="top" id="yHj-BJ-X3o"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -76,15 +77,14 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <connections>
-                <outlet property="imageView" destination="P4c-Fs-AkH" id="1Ng-x2-9kb"/>
                 <outlet property="lblComment" destination="Ysz-fe-oTI" id="uNs-pH-FtH"/>
                 <outlet property="lblName" destination="ZdT-2A-dXo" id="BO6-2l-9Y4"/>
+                <outlet property="playerView" destination="Pqv-r1-2sE" id="3xw-vj-92T"/>
             </connections>
             <point key="canvasLocation" x="139" y="153"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="banner_image" width="323" height="180"/>
         <namedColor name="textColor">
             <color red="0.19215686274509805" green="0.19215686274509805" blue="0.19215686274509805" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

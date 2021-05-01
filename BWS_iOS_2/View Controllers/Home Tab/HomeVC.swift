@@ -186,7 +186,8 @@ extension HomeVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0 {
+        switch indexPath.row {
+        case 0:
             let cell = tableView.dequeueReusableCell(withClass: SuggestedPlaylistCell.self)
             cell.configureCell(data: self.suggstedPlaylist)
             
@@ -199,7 +200,8 @@ extension HomeVC : UITableViewDelegate, UITableViewDataSource {
             }
             
             return cell
-        } else  if indexPath.row == 1 {
+            
+        case 1:
             let cell = tableView.dequeueReusableCell(withClass: AreaCell.self)
             cell.configureCell(data: areaOfFocus)
             
@@ -208,7 +210,8 @@ extension HomeVC : UITableViewDelegate, UITableViewDataSource {
             }
             
             return cell
-        } else if indexPath.row == 2 {
+            
+        case 2:
             let cell = tableView.dequeueReusableCell(withClass: IndexScrorCell.self)
             cell.lblTitle.text = "Index Score"
             cell.viewScrore.isHidden = true
@@ -216,7 +219,8 @@ extension HomeVC : UITableViewDelegate, UITableViewDataSource {
             cell.viewGraph.isHidden = true
             cell.imgBanner.isHidden = false
             return cell
-        } else  if indexPath.row == 3 {
+            
+        case 3:
             let cell = tableView.dequeueReusableCell(withClass: IndexScrorCell.self)
             cell.imgBanner.isHidden = true
             cell.lblTitle.text = "Index Score"
@@ -224,7 +228,21 @@ extension HomeVC : UITableViewDelegate, UITableViewDataSource {
             cell.viewJoinNow.isHidden = true
             cell.viewGraph.isHidden = true
             return cell
-        } else if indexPath.row == 7 {
+            
+        case 4:
+            let cell = tableView.dequeueReusableCell(withClass: GraphCell.self)
+            cell.configureCell(data: arrayPastIndexScore)
+            return cell
+            
+        case 5:
+            let cell = tableView.dequeueReusableCell(withClass: GraphCell.self)
+            return cell
+            
+        case 6:
+            let cell = tableView.dequeueReusableCell(withClass: GraphCell.self)
+            return cell
+            
+        case 7:
             let cell = tableView.dequeueReusableCell(withClass: IndexScrorCell.self)
             cell.imgBanner.isHidden = true
             cell.viewScrore.isHidden = true
@@ -233,7 +251,8 @@ extension HomeVC : UITableViewDelegate, UITableViewDataSource {
             cell.viewJoinNow.clipsToBounds = true
             cell.viewGraph.isHidden = true
             return cell
-        } else if indexPath.row == 8 {
+            
+        case 8:
             let cell = tableView.dequeueReusableCell(withClass: IndexScrorCell.self)
             cell.lblTitle.text = "My activities "
             cell.imgBanner.isHidden = true
@@ -241,33 +260,50 @@ extension HomeVC : UITableViewDelegate, UITableViewDataSource {
             cell.viewJoinNow.isHidden = true
             cell.viewGraph.isHidden = false
             return cell
-        } else if indexPath.row == 9 {
+            
+        case 9:
             let cell = tableView.dequeueReusableCell(withClass: ProgressCell.self)
             cell.backgroundColor = .white
             return cell
-        } else if indexPath.row == 4 || indexPath.row == 5 || indexPath.row == 6 {
-            let cell = tableView.dequeueReusableCell(withClass: GraphCell.self)
-            return cell
+            
+        default:
+            return UITableViewCell()
         }
-        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == 0 && suggstedPlaylist != nil {
-            return 390
-        } else if indexPath.row == 1 {
+        
+        switch indexPath.row {
+        case 0:
+            if suggstedPlaylist != nil {
+                return 390
+            }
+            
+        case 1:
             return UITableView.automaticDimension
-        } else if indexPath.row == 2 ||  indexPath.row == 3 {
-             return 150
-        } else if indexPath.row == 7 {
-             return 130
-        } else if indexPath.row == 4 || indexPath.row == 5 || indexPath.row == 6 {
-            return 310
-        } else if indexPath.row == 8 {
+            
+        case 2,3:
+            return 150
+            
+        case 4:
+            return 273
+            
+        case 5,6:
+            return 0
+            
+        case 7:
+            return 130
+            
+        case 8:
             return 300
-        } else if indexPath.row == 9 {
+            
+        case 9:
             return 200
+            
+        default:
+            return 0
         }
+        
         return 0
     }
     

@@ -27,6 +27,7 @@ class RecommendedCategoryHeaderCell: UITableViewCell {
         lblSubTitle.attributedText = normalString.attributedString(alignment: .left, lineSpacing: 10)
         
         btnClear.isHidden = true
+        txtSearch.isEnabled = false
         txtSearch.addTarget(self, action: #selector(textFieldValueChanged(textField:)), for: UIControl.Event.editingChanged)
         
         let layout = CollectionViewFlowLayout()

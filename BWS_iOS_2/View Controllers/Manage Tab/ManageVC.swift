@@ -207,8 +207,13 @@ class ManageVC: BaseViewController {
         downloadDataModel.CoUserId = (CoUserDataModel.currentUser?.CoUserId ?? "")
         downloadDataModel.Details = CoreDataHelper.shared.fetchSingleAudios()
         downloadDataModel.IsLock = shouldLockDownloads() ? "1" : "0"
-        self.arrayAudioHomeData = [downloadDataModel]
-        self.tableView.reloadData()
+        arrayAudioHomeData = [downloadDataModel]
+        
+        playlistIndexPath = nil
+        suggstedPlaylist = nil
+        arrayPlaylistHomeData = [PlaylistHomeDataModel]()
+        
+        setupData()
     }
     
     // Play Audio

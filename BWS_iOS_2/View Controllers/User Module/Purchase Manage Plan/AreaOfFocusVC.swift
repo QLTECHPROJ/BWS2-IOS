@@ -138,7 +138,11 @@ extension AreaOfFocusVC : UITableViewDataSource, UITableViewDelegate {
             cell.configureCell(data: arrayAresOfFocus)
             
             cell.backClicked = {
-                self.navigationController?.popViewController(animated: true)
+                if self.isFromEdit {
+                    self.navigationController?.dismiss(animated: true, completion: nil)
+                } else {
+                    self.navigationController?.popViewController(animated: true)
+                }
             }
             
             return cell

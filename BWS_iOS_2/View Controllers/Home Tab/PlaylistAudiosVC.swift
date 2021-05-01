@@ -35,6 +35,8 @@ class PlaylistAudiosVC: BaseViewController {
     @IBOutlet weak var txtSearch: UITextField!
     @IBOutlet weak var btnClear: UIButton!
     
+    @IBOutlet weak var lblSleepTime : UILabel!
+    
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var collectionHeight: NSLayoutConstraint!
     
@@ -47,6 +49,7 @@ class PlaylistAudiosVC: BaseViewController {
     // MARK:- VARIABLES
     var objPlaylist : PlaylistDetailsModel?
     var arraySearchSongs = [AudioDetailsDataModel]()
+    var areaOfFocus = [AreaOfFocusModel]()
     var isFromDownload = false
     var sectionName = ""
     var isCome = ""
@@ -66,12 +69,14 @@ class PlaylistAudiosVC: BaseViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(callPlaylistDetailAPI), name: .refreshPlaylist, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(refreshDownloadData), name: .refreshDownloadData, object: nil)
         
+        btnEdit.isHidden = true
         btnClear.isHidden = true
         
         setupUI()
         setupData()
         
         registerForPlayerNotifications()
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshData), name: .refreshData, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -92,12 +97,12 @@ class PlaylistAudiosVC: BaseViewController {
     // MARK:- FUNCTIONS
     override func setupUI() {
         tableView.register(nibWithCellClass: SelfDevCell.self)
-        collectionView.register(nibWithCellClass: tagCVCell.self)
+        collectionView.register(nibWithCellClass: AreaOfFocusCell.self)
         
         txtSearch.delegate = self
         txtSearch.addTarget(self, action: #selector(textFieldValueChanged(textField:)), for: UIControl.Event.editingChanged)
         
-        if isCome != "Suggested" {
+        if objPlaylist?.Created == "2" {
             collectionView.isHidden = false
             lblAreaOfFocus.isHidden = false
             btnEdit.isHidden = false
@@ -121,6 +126,16 @@ class PlaylistAudiosVC: BaseViewController {
         
         tableView.rowHeight = 70
         tableView.reorder.delegate = self
+        
+        let layout = CollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        layout.minimumLineSpacing = 7
+        layout.minimumInteritemSpacing = 7
+        layout.sectionInset = UIEdgeInsets(top: 7, left: 16, bottom: 7, right: 16)
+        collectionView.collectionViewLayout = layout
+        collectionView.reloadData()
+        collectionView.layoutIfNeeded()
         
         // Download Progress View
         downloadProgressView.isHidden = true
@@ -156,7 +171,7 @@ class PlaylistAudiosVC: BaseViewController {
         
         viewSearch.isHidden = (objPlaylist?.PlaylistSongs.count ?? 0) == 0
         
-        if isCome == "Suggested" {
+        if details.Created == "2" {
             collectionView.isHidden = false
             lblAreaOfFocus.isHidden = false
             btnEdit.isHidden = false
@@ -167,6 +182,13 @@ class PlaylistAudiosVC: BaseViewController {
             } else {
                 tableHeaderView.frame.size = CGSize(width: tableView.frame.width, height:600)
             }
+            
+            areaOfFocus = CoUserDataModel.currentUser?.AreaOfFocus ?? [AreaOfFocusModel]()
+            btnEdit.isHidden = ( areaOfFocus.count == 0 )
+            self.collectionView.reloadData()
+            
+            imgViewPlaylist.image = nil
+            imgViewTransparent.image = UIImage(named: "cloud")
         } else {
             collectionView.isHidden = true
             lblAreaOfFocus.isHidden = true
@@ -179,6 +201,12 @@ class PlaylistAudiosVC: BaseViewController {
             } else {
                 tableHeaderView.frame.size = CGSize(width: tableView.frame.width, height:480)
             }
+            
+            imgViewTransparent.image = nil
+            
+            if let strUrl = details.PlaylistImageDetail.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let imgUrl = URL(string: strUrl) {
+                imgViewPlaylist.sd_setImage(with: imgUrl, completed: nil)
+            }
         }
         
         for audio in details.PlaylistSongs {
@@ -189,8 +217,8 @@ class PlaylistAudiosVC: BaseViewController {
             }
         }
         
-        if let strUrl = details.PlaylistImageDetail.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let imgUrl = URL(string: strUrl) {
-            imgViewPlaylist.sd_setImage(with: imgUrl, completed: nil)
+        if let avgSleepTime = CoUserDataModel.currentUser?.AvgSleepTime, avgSleepTime.trim.count > 0 {
+            lblSleepTime.text = "Your average sleep time is \(avgSleepTime)"
         }
         
         lblPlaylistName.text = details.PlaylistName
@@ -376,6 +404,19 @@ class PlaylistAudiosVC: BaseViewController {
         }
     }
     
+    func editAreaOfFocus() {
+        let aVC = AppStoryBoard.main.viewController(viewControllerClass:AreaOfFocusVC.self)
+        aVC.averageSleepTime = CoUserDataModel.currentUser?.AvgSleepTime ?? ""
+        aVC.isFromEdit = true
+        let navVC = UINavigationController(rootViewController: aVC)
+        navVC.navigationBar.isHidden = true
+        navVC.modalPresentationStyle = .overFullScreen
+        self.present(navVC, animated: true, completion: nil)
+    }
+    
+    @objc func refreshData() {
+        self.setupData()
+    }
     
     // MARK:- ACTIONS
     @IBAction func onTappedBack(_ sender: UIButton) {
@@ -386,6 +427,10 @@ class PlaylistAudiosVC: BaseViewController {
         } else {
             self.navigationController?.popViewController(animated: true)
         }
+    }
+    
+    @IBAction func editClicked(_ sender: UIButton) {
+        self.editAreaOfFocus()
     }
     
     @IBAction func setReminderClicked(_ sender: UIButton) {
@@ -669,24 +714,13 @@ extension PlaylistAudiosVC : UITableViewDelegate, UITableViewDataSource {
 extension PlaylistAudiosVC : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return areaOfFocus.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withClass: tagCVCell.self, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withClass: AreaOfFocusCell.self, for: indexPath)
+        cell.configureCell(data: areaOfFocus[indexPath.row], index: indexPath.row)
         return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width/3, height: 150)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
     }
     
 }

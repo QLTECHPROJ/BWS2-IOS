@@ -2,6 +2,9 @@ PODS:
   - Alamofire (4.9.1)
   - ANActivityIndicator (1.2.0)
   - AvailableHapticFeedback (1.0.2)
+  - Charts (3.6.0):
+    - Charts/Core (= 3.6.0)
+  - Charts/Core (3.6.0)
   - EVReflection/Alamofire (5.10.1):
     - Alamofire
     - EVReflection/Core
@@ -109,10 +112,12 @@ PODS:
   - TagListView (1.4.1)
   - Toast-Swift (5.0.1)
   - TTTAttributedLabel (2.0.0)
+  - youtube-ios-player-helper (1.0.3)
 
 DEPENDENCIES:
   - Alamofire (~> 4.9.1)
   - ANActivityIndicator
+  - Charts
   - EVReflection/Alamofire (~> 5.10.1)
   - Firebase/Analytics
   - Firebase/Crashlytics
@@ -126,12 +131,14 @@ DEPENDENCIES:
   - TagListView
   - Toast-Swift
   - TTTAttributedLabel
+  - youtube-ios-player-helper
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - ANActivityIndicator
     - AvailableHapticFeedback
+    - Charts
     - EVReflection
     - Firebase
     - FirebaseAnalytics
@@ -156,11 +163,13 @@ SPEC REPOS:
     - TagListView
     - Toast-Swift
     - TTTAttributedLabel
+    - youtube-ios-player-helper
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   ANActivityIndicator: 44a996931d0c554cf157b31056603b23bbdbe76a
   AvailableHapticFeedback: 9b21b9f6d3e4566015988b5de35b40abefe6c09a
+  Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
   EVReflection: 8124de482178d34ccd56473e16cd95990f9a1113
   Firebase: d59ad4129167f9f0d2a4f6c1f0c462254b6002c8
   FirebaseAnalytics: 3b98b563d7d64c07900511198b4805cfd9f9f61c
@@ -185,7 +194,8 @@ SPEC CHECKSUMS:
   TagListView: a1c236d17960a0cf64156725a76ce6d73ebce2be
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
   TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
+  youtube-ios-player-helper: 0185c57db23c80d63d6ca11251d110abb8a4ca61
 
-PODFILE CHECKSUM: c005cdd0850bd6acfabf2cd6de1b5a655710f7aa
+PODFILE CHECKSUM: ed5c2147bb3a788bd071fd41b4316a8c924d650d
 
 COCOAPODS: 1.10.1
