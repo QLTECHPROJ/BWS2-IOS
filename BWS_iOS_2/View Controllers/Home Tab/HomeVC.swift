@@ -20,6 +20,9 @@ class HomeVC: BaseViewController {
     
     // MARK:- VARIABLES
     var suggstedPlaylist : PlaylistDetailsModel?
+    var shouldCheckIndexScore = ""
+    var IndexScoreDiff = ""
+    var ScoreIncDec = ""
     var arrayPastIndexScore = [PastIndexScoreModel]()
     var arraySessionScore = [SessionScoreModel]()
     var arraySessionProgress = [SessionProgressModel]()
@@ -62,10 +65,14 @@ class HomeVC: BaseViewController {
         tableView.register(nibWithCellClass: SuggestedPlaylistCell.self)
         tableView.register(nibWithCellClass: GraphCell.self)
         tableView.register(nibWithCellClass: AreaCell.self)
-        tableView.register(nibWithCellClass: IndexScrorCell.self)
+        tableView.register(nibWithCellClass: IndexScoreCell.self)
         tableView.register(nibWithCellClass: ProgressCell.self)
         
         lblUser.text = CoUserDataModel.currentUser?.Name ?? ""
+        
+        if let strUrl = CoUserDataModel.currentUser?.Image.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let imgUrl = URL(string: strUrl) {
+            imgUser.sd_setImage(with: imgUrl, completed: nil)
+        }
     }
     
     override func setupData() {
@@ -212,21 +219,15 @@ extension HomeVC : UITableViewDelegate, UITableViewDataSource {
             return cell
             
         case 2:
-            let cell = tableView.dequeueReusableCell(withClass: IndexScrorCell.self)
-            cell.lblTitle.text = "Index Score"
-            cell.viewScrore.isHidden = true
-            cell.viewJoinNow.isHidden = true
-            cell.viewGraph.isHidden = true
-            cell.imgBanner.isHidden = false
-            return cell
+            if self.shouldCheckIndexScore == "1" {
+                let cell = tableView.dequeueReusableCell(withClass: IndexScoreCell.self)
+                cell.configureCheckIndexScoreCell()
+                return cell
+            }
             
         case 3:
-            let cell = tableView.dequeueReusableCell(withClass: IndexScrorCell.self)
-            cell.imgBanner.isHidden = true
-            cell.lblTitle.text = "Index Score"
-            cell.viewScrore.isHidden = false
-            cell.viewJoinNow.isHidden = true
-            cell.viewGraph.isHidden = true
+            let cell = tableView.dequeueReusableCell(withClass: IndexScoreCell.self)
+            cell.configureIndexScoreCell(IndexScoreDiff: IndexScoreDiff, ScoreIncDec: ScoreIncDec)
             return cell
             
         case 4:
@@ -243,22 +244,13 @@ extension HomeVC : UITableViewDelegate, UITableViewDataSource {
             return cell
             
         case 7:
-            let cell = tableView.dequeueReusableCell(withClass: IndexScrorCell.self)
-            cell.imgBanner.isHidden = true
-            cell.viewScrore.isHidden = true
-            cell.viewJoinNow.isHidden = false
-            cell.viewJoinNow.layer.cornerRadius = 16
-            cell.viewJoinNow.clipsToBounds = true
-            cell.viewGraph.isHidden = true
+            let cell = tableView.dequeueReusableCell(withClass: IndexScoreCell.self)
+            cell.configureJoinEEPCell()
             return cell
             
         case 8:
-            let cell = tableView.dequeueReusableCell(withClass: IndexScrorCell.self)
-            cell.lblTitle.text = "My activities "
-            cell.imgBanner.isHidden = true
-            cell.viewScrore.isHidden = true
-            cell.viewJoinNow.isHidden = true
-            cell.viewGraph.isHidden = false
+            let cell = tableView.dequeueReusableCell(withClass: IndexScoreCell.self)
+            cell.configureMyActivityCell()
             return cell
             
         case 9:
@@ -269,6 +261,8 @@ extension HomeVC : UITableViewDelegate, UITableViewDataSource {
         default:
             return UITableViewCell()
         }
+        
+        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -282,8 +276,13 @@ extension HomeVC : UITableViewDelegate, UITableViewDataSource {
         case 1:
             return UITableView.automaticDimension
             
-        case 2,3:
-            return 150
+        case 2:
+            if self.shouldCheckIndexScore == "1" {
+                return 155
+            }
+            
+        case 3:
+            return 168
             
         case 4:
             return 273
@@ -292,7 +291,7 @@ extension HomeVC : UITableViewDelegate, UITableViewDataSource {
             return 0
             
         case 7:
-            return 130
+            return 0 // return 140
             
         case 8:
             return 300
@@ -316,6 +315,17 @@ extension HomeVC : UITableViewDelegate, UITableViewDataSource {
                 aVC.sectionName = "Suggested Playlist"
                 self.navigationController?.pushViewController(aVC, animated: true)
             }
+            
+        case 2:
+            if self.shouldCheckIndexScore == "1" {
+                let aVC = AppStoryBoard.main.viewController(viewControllerClass: DoDassAssessmentVC.self)
+                aVC.isFromEdit = true
+                let navVC = UINavigationController(rootViewController: aVC)
+                navVC.navigationBar.isHidden = true
+                navVC.modalPresentationStyle = .overFullScreen
+                self.present(navVC, animated: true, completion: nil)
+            }
+            
         default:
             break
         }

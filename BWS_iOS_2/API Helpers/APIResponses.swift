@@ -149,6 +149,11 @@ class PlanListModel : EVObject {
 }
 
 class PlanListDataModel : EVObject {
+    var Image = ""
+    var Title = ""
+    var Desc = ""
+    var TrialPeriod = ""
+    var PlanFeatures = [PlanFeatureModel]()
     var Plan = [PlanDetailsModel]()
     var AudioFiles = [AudioDetailsDataModel]()
     var IntroductorySession = [SesssionDataModel]()
@@ -157,12 +162,24 @@ class PlanListDataModel : EVObject {
 }
 
 class PlanDetailsModel:EVObject {
-    var PlanName = ""
-    var PlanDescription = ""
-    var PlanPrice = ""
-    var PlanPeriod = ""
-    var Popular = ""
+    var PlanPosition = ""
+    var ProfileCount = ""
+    var PlanID = ""
+    var PlanAmount = ""
+    var PlanCurrency = ""
+    var PlanInterval = ""
+    var PlanImage = ""
+    var PlanTenure = ""
+    var PlanNextRenewal = ""
+    var FreeTrial = ""
+    var SubName = ""
+    var RecommendedFlag = ""
+    var PlanFlag = ""
     var isSelected = false
+}
+
+class PlanFeatureModel:EVObject {
+    var Feature = ""
 }
 
 class SesssionDataModel:EVObject {
@@ -261,6 +278,8 @@ class CoUserDataModel : EVObject {
     var Name = ""
     var Email = ""
     var Mobile = ""
+    var DOB = ""
+    var Image = ""
     var isProfileCompleted = ""
     var isAssessmentCompleted = ""
     var indexScore = ""
@@ -444,6 +463,7 @@ class PlaylistDetailsModel: EVObject {
     var Download = ""
     var IsLock = ""
     var IsReminder = ""
+    var ReminderId = ""
     var ReminderTime = ""
     var ReminderDay = ""
     var PlaylistImageDetail = ""
@@ -556,6 +576,9 @@ class HomeModel: EVObject {
 
 class HomeDataModel: EVObject {
     var IndexScore = ""
+    var shouldCheckIndexScore = ""
+    var IndexScoreDiff = ""
+    var ScoreIncDec = ""
     var SuggestedPlaylist : PlaylistDetailsModel?
     var PastIndexScore = [PastIndexScoreModel]()
     var SessionScore = [SessionScoreModel]()

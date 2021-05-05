@@ -112,6 +112,17 @@ class AudioDetailVC: BaseViewController {
         if let imgUrl = URL(string: details.ImageFile.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
             imgView.sd_setImage(with: imgUrl, completed: nil)
         }
+        
+        // For Download
+        if CoreDataHelper.shared.checkAudioInDatabase(audioData: details) {
+            btnDownload.isUserInteractionEnabled = false
+            btnDownload.setImage(UIImage(named: "download_orange"), for: UIControl.State.normal)
+            btnDownload.setTitleColor(Theme.colors.orange_F89552, for: UIControl.State.normal)
+        } else {
+            btnDownload.isUserInteractionEnabled = true
+            btnDownload.setImage(UIImage(named: "download_white"), for: UIControl.State.normal)
+            btnDownload.setTitleColor(Theme.colors.white, for: UIControl.State.normal)
+        }
     }
     
     @objc override func refreshDownloadData() {

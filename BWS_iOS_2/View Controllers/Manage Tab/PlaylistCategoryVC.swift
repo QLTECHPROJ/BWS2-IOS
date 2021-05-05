@@ -104,6 +104,16 @@ class PlaylistCategoryVC: BaseViewController {
     }
     
     func openPlaylist(playlistIndex : Int, sectionIndex : Int) {
+        if arrayPlaylistHomeData[sectionIndex].View == "My Downloads" {
+            let aVC = AppStoryBoard.home.viewController(viewControllerClass: PlaylistAudiosVC.self)
+            aVC.objPlaylist = arrayPlaylistHomeData[sectionIndex].Details[playlistIndex]
+            aVC.sectionName = arrayPlaylistHomeData[sectionIndex].View
+            aVC.isFromDownload = true
+            aVC.sectionName = "Downloaded Playlists"
+            self.navigationController?.pushViewController(aVC, animated: true)
+            return
+        }
+        
         let aVC = AppStoryBoard.home.viewController(viewControllerClass: PlaylistAudiosVC.self)
         aVC.objPlaylist = arrayPlaylistHomeData[sectionIndex].Details[playlistIndex]
         aVC.sectionName = arrayPlaylistHomeData[sectionIndex].View

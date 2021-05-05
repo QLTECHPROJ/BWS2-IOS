@@ -37,12 +37,16 @@ class ManagePlanListVC: BaseViewController {
     
     
     // MARK:- VARIABLES
+    var dataModel = PlanListDataModel()
+    var PlanFeatures = [PlanFeatureModel]()
+    var arrayPlans = [PlanDetailsModel]()
+    var selectedPlanIndex = 0
+    
+    var profileCount = 2
+    
     var arrayQuestions = [FAQDataModel]()
     var arrayAudios = [AudioDetailsDataModel]()
     var arrayVideos = [TestminialVideoDataModel]()
-    
-    var arrayPlans = [PlanDetailsModel]()
-    var selectedPlanIndex = 0
     
     
     // MARK:- VIEW LIFE CYCLE
@@ -59,7 +63,7 @@ class ManagePlanListVC: BaseViewController {
         
         setupUI()
         
-        fetchPlans()
+        // fetchPlans()
         
         callManagePlanListAPI()
     }
@@ -67,18 +71,6 @@ class ManagePlanListVC: BaseViewController {
     
     // MARK:- FUNCTIONS
     override func setupUI() {
-        let normalString = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut"
-        lblSubTitle.attributedText = normalString.attributedString(alignment: .center, lineSpacing: 10)
-        
-        let accessAudioString = "Access More Than 75 Audio Programs."
-        lblAccessAudioTitle.attributedText = accessAudioString.attributedString(alignment: .center, lineSpacing: 10)
-        
-        let introductorySubTitleString = "Self reported date of 2173 clients before and after the introductory session"
-        lblIntroductorySubTitle.attributedText = introductorySubTitleString.attributedString(alignment: .center, lineSpacing: 10)
-        
-        let feedbackTitleString = "SEE REAL TESTIMONIALS \nFROM REAL CUSTOMERS"
-        lblFeedbackTitle.attributedText = feedbackTitleString.attributedString(alignment: .center, lineSpacing: 10)
-        
         setupSlider()
         setStartButtonTitle()
         setupPrivacyLabel()
@@ -100,6 +92,24 @@ class ManagePlanListVC: BaseViewController {
     }
     
     override func setupData() {
+        PlanFeatures = dataModel.PlanFeatures
+        arrayPlans = dataModel.Plan.filter { $0.ProfileCount == "\(profileCount)" }
+        arrayAudios = dataModel.AudioFiles
+        arrayVideos = dataModel.TestminialVideo
+        arrayQuestions = dataModel.FAQs
+        
+        let normalString = dataModel.Desc
+        lblSubTitle.attributedText = normalString.attributedString(alignment: .center, lineSpacing: 10)
+        
+        let accessAudioString = "Access More Than 75 Audio Programs."
+        lblAccessAudioTitle.attributedText = accessAudioString.attributedString(alignment: .center, lineSpacing: 10)
+        
+        let introductorySubTitleString = "Self reported date of 2173 clients before and after the introductory session"
+        lblIntroductorySubTitle.attributedText = introductorySubTitleString.attributedString(alignment: .center, lineSpacing: 10)
+        
+        let feedbackTitleString = "SEE REAL TESTIMONIALS \nFROM REAL CUSTOMERS"
+        lblFeedbackTitle.attributedText = feedbackTitleString.attributedString(alignment: .center, lineSpacing: 10)
+        
         setStartButtonTitle()
         
         tblPlanListHeightConst.constant = CGFloat(arrayPlans.count * 110)
@@ -128,7 +138,7 @@ class ManagePlanListVC: BaseViewController {
         
         sliderProfiles.isContinuous = true
         sliderProfiles.minimumValue = CGFloat(1)
-        sliderProfiles.maximumValue = CGFloat(6)
+        sliderProfiles.maximumValue = CGFloat(5)
         sliderProfiles.snapStepSize = CGFloat(1)
         sliderProfiles.distanceBetweenThumbs = CGFloat(1)
         sliderProfiles.keepsDistanceBetweenThumbs = true
@@ -149,13 +159,16 @@ class ManagePlanListVC: BaseViewController {
         // print("Slider Value :- ",sender.value)
         
         lblProfiles.text = "\(Int(slider.value[0]))"
+        profileCount = Int(slider.value[0])
+        setupData()
     }
     
     func setStartButtonTitle() {
         if selectedPlanIndex < arrayPlans.count {
-            let planText = "START AT " + arrayPlans[selectedPlanIndex].PlanPrice + " / " + arrayPlans[selectedPlanIndex].PlanPeriod
+            let planText = "START AT " + "$" + arrayPlans[selectedPlanIndex].PlanAmount + " / " + arrayPlans[selectedPlanIndex].PlanTenure
             btnStart.setTitle(planText.uppercased(), for: .normal)
             btnStart.isEnabled = true
+            lblTrialText.text = arrayPlans[selectedPlanIndex].FreeTrial
         } else {
             btnStart.isEnabled = false
         }
@@ -213,35 +226,35 @@ class ManagePlanListVC: BaseViewController {
     func fetchPlans() {
         let weeklyPlan = PlanDetailsModel()
         weeklyPlan.isSelected = true
-        weeklyPlan.PlanName = "Weekly"
-        weeklyPlan.PlanDescription = "Lorem ipsum dolor sit"
-        weeklyPlan.PlanPrice = "$9.99"
-        weeklyPlan.PlanPeriod = "Week"
+        weeklyPlan.PlanInterval = "Weekly"
+        weeklyPlan.SubName = "Lorem ipsum dolor sit"
+        weeklyPlan.PlanAmount = "$9.99"
+        weeklyPlan.PlanTenure = "Week"
         arrayPlans.append(weeklyPlan)
         
         let monthlyPlan = PlanDetailsModel()
         monthlyPlan.isSelected = false
-        monthlyPlan.PlanName = "Monthly"
-        monthlyPlan.PlanDescription = "Lorem ipsum dolor sit"
-        monthlyPlan.PlanPrice = "$29.99"
-        monthlyPlan.PlanPeriod = "Month"
+        monthlyPlan.PlanInterval = "Monthly"
+        monthlyPlan.SubName = "Lorem ipsum dolor sit"
+        monthlyPlan.PlanAmount = "$29.99"
+        monthlyPlan.PlanTenure = "Month"
         arrayPlans.append(monthlyPlan)
         
         let sixMonthlyPlan = PlanDetailsModel()
         sixMonthlyPlan.isSelected = false
-        sixMonthlyPlan.PlanName = "Six-Monthly"
-        sixMonthlyPlan.PlanDescription = "Lorem ipsum dolor sit"
-        sixMonthlyPlan.PlanPrice = "$149.99"
-        sixMonthlyPlan.PlanPeriod = "Six Month"
-        sixMonthlyPlan.Popular = "1"
+        sixMonthlyPlan.PlanInterval = "Six-Monthly"
+        sixMonthlyPlan.SubName = "Lorem ipsum dolor sit"
+        sixMonthlyPlan.PlanAmount = "$149.99"
+        sixMonthlyPlan.PlanTenure = "Six Month"
+        sixMonthlyPlan.RecommendedFlag = "1"
         arrayPlans.append(sixMonthlyPlan)
         
         let yearlyPlan = PlanDetailsModel()
         yearlyPlan.isSelected = false
-        yearlyPlan.PlanName = "Annual"
-        yearlyPlan.PlanDescription = "Lorem ipsum dolor sit"
-        yearlyPlan.PlanPrice = "$249.99"
-        yearlyPlan.PlanPeriod = "Year"
+        yearlyPlan.PlanInterval = "Annual"
+        yearlyPlan.SubName = "Lorem ipsum dolor sit"
+        yearlyPlan.PlanAmount = "$249.99"
+        yearlyPlan.PlanTenure = "Year"
         arrayPlans.append(yearlyPlan)
         
         setupData()
@@ -254,8 +267,11 @@ class ManagePlanListVC: BaseViewController {
     }
     
     @IBAction func startClicked(sender : UIButton) {
-        let aVC = AppStoryBoard.main.viewController(viewControllerClass: OrderSummaryVC.self)
-        self.navigationController?.pushViewController(aVC, animated: true)
+        if selectedPlanIndex < arrayPlans.count {
+            let aVC = AppStoryBoard.main.viewController(viewControllerClass: OrderSummaryVC.self)
+            aVC.planData = arrayPlans[selectedPlanIndex]
+            self.navigationController?.pushViewController(aVC, animated: true)
+        }
     }
     
 }

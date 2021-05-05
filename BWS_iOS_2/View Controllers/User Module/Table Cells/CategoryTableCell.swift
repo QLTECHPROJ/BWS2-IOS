@@ -13,6 +13,8 @@ class CategoryTableCell: UITableViewCell {
     @IBOutlet weak var lblCategory : UILabel!
     @IBOutlet weak var collectionView : DynamicHeightCollectionView!
     
+    var mainCategory = ""
+    var arrayAreaOfFocus = [AreaOfFocusModel]()
     var arrayCategories = [CategoryDataModel]()
     var categoryClicked : ((Int) -> Void)?
     
@@ -33,6 +35,7 @@ class CategoryTableCell: UITableViewCell {
     
     // Configure Cell
     func configureCell(data : CategoryListModel) {
+        mainCategory = data.View
         lblCategory.text = data.View
         
         arrayCategories.removeAll()
@@ -53,7 +56,8 @@ extension CategoryTableCell : UICollectionViewDelegate, UICollectionViewDelegate
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withClass: CategoryCollectionCell.self, for: indexPath)
-        cell.configureCell(data: arrayCategories[indexPath.row])
+        cell.arrayAreaOfFocus = self.arrayAreaOfFocus
+        cell.configureCell(mainCategory: mainCategory, data: arrayCategories[indexPath.row])
         return cell
     }
     
@@ -62,3 +66,4 @@ extension CategoryTableCell : UICollectionViewDelegate, UICollectionViewDelegate
     }
     
 }
+

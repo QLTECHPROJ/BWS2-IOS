@@ -55,6 +55,14 @@ class AddProfileVC: BaseViewController {
             txtFMobileNo.isEnabled = false
             txtFEmailAdd.isEnabled = false
             
+            if let strUrl = user.Image.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let imgUrl = URL(string: strUrl) {
+                UIImageView().sd_setImage(with: imgUrl) { (image, error, sdImageCacheType, imageUrl) in
+                    if let userImage = image {
+                        self.btnUserImage.setImage(userImage, for: .normal)
+                    }
+                }
+            }
+            
             btnSendPin.setTitle("SEND NEW PIN", for: .normal)
         }
         

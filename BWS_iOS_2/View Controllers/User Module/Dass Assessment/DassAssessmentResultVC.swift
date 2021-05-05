@@ -20,6 +20,7 @@ class DassAssessmentResultVC: BaseViewController {
     
     
     // MARK:- VARIABLES
+    var isFromEdit = false
     var strScore:String?
     var totalAngle: CGFloat = 180
     var rotation: CGFloat = -90
@@ -108,7 +109,7 @@ class DassAssessmentResultVC: BaseViewController {
     }
     
     func deg2rad(_ number: CGFloat) -> CGFloat {
-        return number * .pi / 180
+        return number * .pi / 215 // return number * .pi / 180
     }
     
     override func goNext() {
@@ -134,6 +135,12 @@ class DassAssessmentResultVC: BaseViewController {
     
     // MARK:- ACTIONS
     @IBAction func continueClicked(sender : UIButton) {
+        if isFromEdit {
+            self.navigationController?.dismiss(animated: true, completion: nil)
+            NotificationCenter.default.post(name: .refreshData, object: nil)
+            return
+        }
+        
         let aVC = AppStoryBoard.main.viewController(viewControllerClass: StepVC.self)
         aVC.strTitle = "Step 3"
         aVC.strSubTitle = "we're analysing your inputs"

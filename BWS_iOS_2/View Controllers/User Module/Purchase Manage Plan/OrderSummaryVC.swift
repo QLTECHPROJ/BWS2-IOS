@@ -25,16 +25,32 @@ class OrderSummaryVC: BaseViewController {
     @IBOutlet weak var lblTotalAmount: UILabel!
     
     
+    // MARK:- VARIABLES
+    var planData = PlanDetailsModel()
+    
+    
     // MARK:- VIEW LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupData()
     }
     
     
     // MARK:- FUNCTIONS
     override func setupData() {
+        lblPlanTitle.text = planData.PlanInterval
+        lblPlanDesc.text = planData.FreeTrial
+        lblPlanPrice.text = "$" + planData.PlanAmount
+        lblPlanPriceDesc.text = planData.SubName
         
+        lblPlanPrice1.text = "$" + planData.PlanAmount
+        lblPlanPriceDesc1.text = planData.SubName
+        
+        lblPlanRenewal.text = planData.PlanTenure
+        lblPlanExpired.text = planData.PlanNextRenewal
+        
+        lblTotalAmount.text = "$" + planData.PlanAmount
     }
     
     

@@ -15,7 +15,7 @@ class AreaOfFocusVC: BaseViewController {
     
     
     // MARK:- VARIABLES
-    var arrayAresOfFocus = [AreaOfFocusModel]()
+    var arrayAreaOfFocus = [AreaOfFocusModel]()
     var arrayCategories = [CategoryListModel]()
     var averageSleepTime = ""
     var isFromEdit = false
@@ -39,7 +39,7 @@ class AreaOfFocusVC: BaseViewController {
     
     // MARK:- FUNCTIONS
     override func setupData() {
-        arrayAresOfFocus.removeAll()
+        arrayAreaOfFocus.removeAll()
         
         for category in arrayCategories {
             for subCategory in category.Details {
@@ -47,7 +47,7 @@ class AreaOfFocusVC: BaseViewController {
                     let cat = AreaOfFocusModel()
                     cat.MainCat = category.View
                     cat.RecommendedCat = subCategory.ProblemName
-                    arrayAresOfFocus.append(cat)
+                    arrayAreaOfFocus.append(cat)
                 }
             }
         }
@@ -77,32 +77,68 @@ class AreaOfFocusVC: BaseViewController {
         
         let isSelected = arrayCategories[indexPath.section].Details[indexPath.row].isSelected
         
-        if arrayAresOfFocus.count < 3 || isSelected == true {
-            for (section,categoy) in arrayCategories.enumerated() {
-                if indexPath.section == section {
-                    var isSelected = categoy.Details[indexPath.row].isSelected
-                    for subCategory in categoy.Details {
-                        subCategory.isSelected = false
-                    }
-                    
-                    isSelected.toggle()
-                    categoy.Details[indexPath.row].isSelected = isSelected
-                }
+        if isSelected {
+            arrayCategories[indexPath.section].Details[indexPath.row].isSelected = false
+            let cat = AreaOfFocusModel()
+            cat.MainCat = arrayCategories[indexPath.section].View
+            cat.RecommendedCat = arrayCategories[indexPath.section].Details[indexPath.row].ProblemName
+            
+            if let removeIndex = arrayAreaOfFocus.firstIndex(of: cat) {
+                arrayAreaOfFocus.remove(at: removeIndex)
             }
         } else {
-            showAlertToast(message: "You can select maximum 3 categories")
+            if arrayAreaOfFocus.count < 3 {
+                for subCategory in arrayCategories[indexPath.section].Details {
+                    subCategory.isSelected = false
+                    
+                    let cat = AreaOfFocusModel()
+                    cat.MainCat = arrayCategories[indexPath.section].View
+                    cat.RecommendedCat = subCategory.ProblemName
+                    
+                    if let removeIndex = arrayAreaOfFocus.firstIndex(of: cat) {
+                        arrayAreaOfFocus.remove(at: removeIndex)
+                    }
+                }
+                
+                arrayCategories[indexPath.section].Details[indexPath.row].isSelected = true
+                
+                let cat = AreaOfFocusModel()
+                cat.MainCat = arrayCategories[indexPath.section].View
+                cat.RecommendedCat = arrayCategories[indexPath.section].Details[indexPath.row].ProblemName
+                arrayAreaOfFocus.append(cat)
+            } else {
+                showAlertToast(message: "You can select maximum 3 categories")
+            }
         }
         
-        self.setupData()
+        tableView.reloadData()
+        
+        //        if arrayAresOfFocus.count < 3 || isSelected == true {
+        //            for (section,categoy) in arrayCategories.enumerated() {
+        //                if indexPath.section == section {
+        //                    var isSelected = categoy.Details[indexPath.row].isSelected
+        //                    for subCategory in categoy.Details {
+        //                        subCategory.isSelected = false
+        //                    }
+        //
+        //                    isSelected.toggle()
+        //                    categoy.Details[indexPath.row].isSelected = isSelected
+        //                }
+        //            }
+        //        } else {
+        //            showAlertToast(message: "You can select maximum 3 categories")
+        //        }
+        //
+        //        self.setupData()
     }
     
     
     // MARK:- ACTIONS
     @IBAction func continueClicked() {
         print("Sleep Time :- ",averageSleepTime)
-        if arrayAresOfFocus.count > 0 {
+        if arrayAreaOfFocus.count > 0 {
             var selectedCategories = [[String:Any]]()
-            for category in arrayAresOfFocus {
+            for category in arrayAreaOfFocus {
                 let catData = ["View":category.MainCat,
                                "ProblemName":category.RecommendedCat]
                 selectedCategories.append(catData)
@@ -135,7 +171,7 @@ extension AreaOfFocusVC : UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withClass: RecommendedCategoryHeaderCell.self)
-            cell.configureCell(data: arrayAresOfFocus)
+            cell.configureCell(data: arrayAreaOfFocus)
             
             cell.backClicked = {
                 if self.isFromEdit {
@@ -148,6 +184,7 @@ extension AreaOfFocusVC : UITableViewDataSource, UITableViewDelegate {
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withClass: CategoryTableCell.self)
+            cell.arrayAreaOfFocus = self.arrayAreaOfFocus
             cell.configureCell(data: arrayCategories[indexPath.row])
             
             cell.categoryClicked = { rowIndex in

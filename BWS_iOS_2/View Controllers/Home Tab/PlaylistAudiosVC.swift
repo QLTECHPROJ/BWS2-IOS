@@ -233,14 +233,14 @@ class PlaylistAudiosVC: BaseViewController {
         }
         
         if isPlaylistPlaying && DJMusicPlayer.shared.isPlaying {
-            btnPlay.setImage(UIImage(named: "playPause"), for: UIControl.State.normal)
+            btnPlay.setImage(UIImage(named: "pause_white"), for: UIControl.State.normal)
         } else {
             btnPlay.setImage(UIImage(named: "play_white"), for: UIControl.State.normal)
         }
         
         if DJMusicPlayer.shared.state == .loading && DJMusicPlayer.shared.isPlaying {
             if checkInternet() {
-                btnPlay.setImage(UIImage(named: "playPause"), for: UIControl.State.normal)
+                btnPlay.setImage(UIImage(named: "pause_white"), for: UIControl.State.normal)
             } else {
                 btnPlay.setImage(UIImage(named: "play_white"), for: UIControl.State.normal)
             }
@@ -255,16 +255,16 @@ class PlaylistAudiosVC: BaseViewController {
             if CoreDataHelper.shared.checkPlaylistDownloaded(playlistData: details) {
                 btnDownload.isUserInteractionEnabled = false
                 self.updateDownloadProgress()
-                btnDownload.setImage(UIImage(named: "download_orange"), for: UIControl.State.normal)
+                btnDownload.setImage(UIImage(named: "download_orange_round"), for: UIControl.State.normal)
             } else {
                 btnDownload.isUserInteractionEnabled = true
-                btnDownload.setImage(UIImage(named: "Download"), for: UIControl.State.normal)
+                btnDownload.setImage(UIImage(named: "download_white_round"), for: UIControl.State.normal)
             }
         } else {
             arraySearchSongs = [AudioDetailsDataModel]()
             btnDownload.isUserInteractionEnabled = false
             btnDownload.alpha = 1
-            btnDownload.setImage(UIImage(named: "download_dark_gray"), for: UIControl.State.normal)
+            btnDownload.setImage(UIImage(named: "download_gray_round"), for: UIControl.State.normal)
             btnPlay.isHidden = true
         }
         
@@ -278,7 +278,7 @@ class PlaylistAudiosVC: BaseViewController {
             btnReminder.isEnabled = false
             btnReminder.alpha = 0
             btnDownload.alpha = 0
-            btnOption.setImage(UIImage(named: "delete_playlist"), for: UIControl.State.normal)
+            btnOption.setImage(UIImage(named: "trash_black"), for: UIControl.State.normal)
         }
         
         self.updateDownloadProgress()
@@ -330,7 +330,7 @@ class PlaylistAudiosVC: BaseViewController {
                 if checkInternet() == false {
                     if isFromDownload == false {
                         btnDownload.alpha = 0.5
-                        btnDownload.setImage(UIImage(named: "Download"), for: UIControl.State.normal)
+                        btnDownload.setImage(UIImage(named: "download_white_round"), for: UIControl.State.normal)
                     }
                     downloadProgressView.isHidden = true
                 }
@@ -338,7 +338,7 @@ class PlaylistAudiosVC: BaseViewController {
                 downloadProgressView.isHidden = true
                 btnDownload.isUserInteractionEnabled = false
                 btnDownload.alpha = 1
-                btnDownload.setImage(UIImage(named: "download_orange"), for: UIControl.State.normal)
+                btnDownload.setImage(UIImage(named: "download_orange_round"), for: UIControl.State.normal)
                 
                 if isFromDownload {
                     btnDownload.alpha = 0
@@ -348,7 +348,7 @@ class PlaylistAudiosVC: BaseViewController {
             downloadProgressView.isHidden = true
             btnDownload.isUserInteractionEnabled = true
             btnDownload.alpha = 1
-            btnDownload.setImage(UIImage(named: "Download"), for: UIControl.State.normal)
+            btnDownload.setImage(UIImage(named: "download_white_round"), for: UIControl.State.normal)
         }
     }
     

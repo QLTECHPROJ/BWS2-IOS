@@ -27,6 +27,7 @@ class AssessmentVC: BaseViewController {
     
     
     // MARK:- VARIABLES
+    var isFromEdit = false
     var pageIndex = 0
     var dicAssessment:AssessmentDetailModel?
     var arrayQuetion = [AssessmentQueModel]()

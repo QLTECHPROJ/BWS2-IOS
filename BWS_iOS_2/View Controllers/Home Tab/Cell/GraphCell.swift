@@ -18,7 +18,8 @@ class GraphCell: UITableViewCell {
                   "Jan", "Feb", "Mar",
                   "Apr", "May", "Jun",
                   "Jul", "Aug", "Sep",
-                  "Oct", "Nov", "Dec"]
+                  "Oct", "Nov", "Dec",
+                  ""]
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -52,7 +53,7 @@ extension GraphCell : ChartViewDelegate {
         chartView.delegate = self
         
         chartView.isUserInteractionEnabled = false
-        chartView.rightAxis.enabled = false
+        // chartView.rightAxis.enabled = false
         chartView.chartDescription?.enabled = false
         chartView.maxVisibleCount = indexScores.count
         chartView.drawBarShadowEnabled = false
@@ -73,12 +74,17 @@ extension GraphCell : ChartViewDelegate {
         xAxis.labelPosition = .bottom
         xAxis.granularity = 1
         xAxis.axisMinimum = 0
-        xAxis.axisMaximum = 12
+        xAxis.axisMaximum = 13
         xAxis.valueFormatter = self
         
         let leftAxis = chartView.leftAxis
         leftAxis.axisMinimum = 0
         leftAxis.axisMaximum = 100
+        
+        let rightAxis = chartView.rightAxis
+        rightAxis.drawLabelsEnabled = false
+        rightAxis.axisMinimum = 0
+        rightAxis.axisMaximum = 100
         
         setChart()
     }

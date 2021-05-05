@@ -126,14 +126,14 @@ class PlayerVC: BaseViewController {
             
             if isInDatabase && isDownloaded == false && checkInternet() == false {
                 btnDownload.isUserInteractionEnabled = false
-                btnDownload.setImage(UIImage(named: "Download"), for: UIControl.State.normal)
+                btnDownload.setImage(UIImage(named: "download_gray_round"), for: UIControl.State.normal)
             } else if isInDatabase {
                 btnDownload.isUserInteractionEnabled = false
-                btnDownload.setImage(UIImage(named: "download_orange"), for: UIControl.State.normal)
+                btnDownload.setImage(UIImage(named: "download_orange_round"), for: UIControl.State.normal)
                 self.updateDownloadProgress()
             } else {
                 btnDownload.isUserInteractionEnabled = true
-                btnDownload.setImage(UIImage(named: "download_audio"), for: UIControl.State.normal)
+                btnDownload.setImage(UIImage(named: "download_white_round"), for: UIControl.State.normal)
             }
         }
         
@@ -212,7 +212,7 @@ class PlayerVC: BaseViewController {
             downloadProgressView.isHidden = true
             btnDownload.isUserInteractionEnabled = false
             btnDownload.alpha = 1
-            btnDownload.setImage(UIImage(named: "download_orange"), for: UIControl.State.normal)
+            btnDownload.setImage(UIImage(named: "download_orange_round"), for: UIControl.State.normal)
         } else if isInDatabase && isDownloading {
             btnDownload.alpha = 0
             btnDownload.isUserInteractionEnabled = false
@@ -227,7 +227,7 @@ class PlayerVC: BaseViewController {
             downloadProgressView.isHidden = true
             btnDownload.isUserInteractionEnabled = true
             btnDownload.alpha = 1
-            btnDownload.setImage(UIImage(named: "download_black"), for: UIControl.State.normal)
+            btnDownload.setImage(UIImage(named: "download_white_round"), for: UIControl.State.normal)
         }
     }
     

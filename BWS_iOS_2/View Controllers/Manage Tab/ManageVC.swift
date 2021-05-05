@@ -101,14 +101,14 @@ class ManageVC: BaseViewController {
             let isPlaylistPlaying = isPlayingPlaylist(playlistID: playlistData.PlaylistID)
             
             if isPlaylistPlaying && DJMusicPlayer.shared.isPlaying {
-                btnPlay.setImage(UIImage(named: "playPause"), for: UIControl.State.normal)
+                btnPlay.setImage(UIImage(named: "pause_white"), for: UIControl.State.normal)
             } else {
                 btnPlay.setImage(UIImage(named: "play_white"), for: UIControl.State.normal)
             }
             
             if DJMusicPlayer.shared.state == .loading && DJMusicPlayer.shared.isPlaying {
                 if checkInternet() {
-                    btnPlay.setImage(UIImage(named: "playPause"), for: UIControl.State.normal)
+                    btnPlay.setImage(UIImage(named: "pause_white"), for: UIControl.State.normal)
                 } else {
                     btnPlay.setImage(UIImage(named: "play_white"), for: UIControl.State.normal)
                 }

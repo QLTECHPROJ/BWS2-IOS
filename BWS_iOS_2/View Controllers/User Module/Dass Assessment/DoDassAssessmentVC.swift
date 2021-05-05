@@ -41,6 +41,10 @@ class DoDassAssessmentVC: BaseViewController {
     @IBOutlet weak var lblSubTitle : UILabel!
     
     
+    // MARK:- VARIABLES
+    var isFromEdit = false
+    
+    
     // MARK:- VIEW LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +56,7 @@ class DoDassAssessmentVC: BaseViewController {
     
     override func goNext() {
         let aVC = AppStoryBoard.main.viewController(viewControllerClass: AssessmentVC.self)
+        aVC.isFromEdit = isFromEdit
         self.navigationController?.pushViewController(aVC, animated: true)
     }
     

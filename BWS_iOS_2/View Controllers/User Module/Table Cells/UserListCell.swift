@@ -22,6 +22,10 @@ class UserListCell: UITableViewCell {
     func configureCell(data : CoUserDataModel) {
         lblName.text = data.Name
         
+        if let strUrl = data.Image.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let imgUrl = URL(string: strUrl) {
+            imgView.sd_setImage(with: imgUrl, completed: nil)
+        }
+        
         if data.isSelected {
             btnSelect.setImage(UIImage(named: "UserSelect"), for: .normal)
         }

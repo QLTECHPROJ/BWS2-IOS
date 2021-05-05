@@ -30,9 +30,9 @@ class PlanListCell: UITableViewCell {
     // Configure Cell
     func configureCell(data : PlanDetailsModel, isSelected : Bool) {
         
-        lblPlan.text = data.PlanName
-        lblPlanDesc.text = data.PlanDescription
-        lblPlanPrice.text = data.PlanPrice
+        lblPlan.text = data.PlanInterval
+        lblPlanDesc.text = data.SubName
+        lblPlanPrice.text = "$" + data.PlanAmount
         
         if isSelected {
             viewBack.backgroundColor = Theme.colors.skyBlue
@@ -49,7 +49,7 @@ class PlanListCell: UITableViewCell {
             lblPlanPrice.textColor = Theme.colors.textColor
         }
         
-        viewPopular.isHidden = (data.Popular != "1")
+        viewPopular.isHidden = (data.RecommendedFlag != "1")
     }
     
 }

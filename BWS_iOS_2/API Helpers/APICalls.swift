@@ -154,7 +154,7 @@ extension PinVC {
     // Verify Pin API Call
     func callVerifyPinAPI() {
         let strCode = txtFPin1.text! + txtFPin2.text! + txtFPin3.text! + txtFPin4.text!
-        let parameters = ["UserID":selectedUser?.CoUserId ?? "",
+        let parameters = ["CoUserId":selectedUser?.CoUserId ?? "",
                           "Pin":strCode]
         
         let coUserID = CoUserDataModel.currentUser?.CoUserId
@@ -273,6 +273,7 @@ extension AssessmentVC {
                 CoUserDataModel.currentUser = userData
                 showAlertToast(message: response.ResponseMessage)
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass: DassAssessmentResultVC.self)
+                aVC.isFromEdit = self.isFromEdit
                 self.navigationController?.pushViewController(aVC, animated: true)
             }
         }
@@ -395,6 +396,11 @@ extension PlaylistCategoryVC {
             
             if response.ResponseCode == "200" {
                 self.arrayPlaylistHomeData = response.ResponseData
+                for data in self.arrayPlaylistHomeData {
+                    if data.View == "My Downloads" {
+                        data.Details = CoreDataHelper.shared.fetchAllPlaylists()
+                    }
+                }
                 self.tableView.reloadData()
             }
         }
@@ -780,9 +786,7 @@ extension ManagePlanListVC {
         APICallManager.sharedInstance.callAPI(router: APIRouter.planlist(parameters)) { (response :PlanListModel) in
             
             if response.ResponseCode == "200" {
-                self.arrayAudios = response.ResponseData.AudioFiles
-                self.arrayVideos = response.ResponseData.TestminialVideo
-                self.arrayQuestions = response.ResponseData.FAQs
+                self.dataModel = response.ResponseData
                 self.setupData()
             }
         }
@@ -883,6 +887,9 @@ extension HomeVC {
             if response.ResponseCode == "200" {
                 self.tableView.isHidden = false
                 
+                self.shouldCheckIndexScore = response.ResponseData.shouldCheckIndexScore
+                self.IndexScoreDiff = response.ResponseData.IndexScoreDiff
+                self.ScoreIncDec = response.ResponseData.ScoreIncDec
                 self.suggstedPlaylist = response.ResponseData.SuggestedPlaylist
                 self.arrayPastIndexScore = response.ResponseData.PastIndexScore
                 self.arraySessionScore = response.ResponseData.SessionScore

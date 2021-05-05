@@ -106,9 +106,9 @@ class SelfDevCell: UITableViewCell {
     
     // Audio In Playlist Cell
     func configureAudioInPlaylistCell(data : AudioDetailsDataModel) {
-        self.hideDownloadProgress = false
+        self.hideDownloadProgress = true
         self.generalConfigure(data: data)
-        self.configureCell(backgroundColor: .white, buttonColor: .black, hideDownload: false, hideDelete: false, hideChangePosition: false)
+        self.configureCell(backgroundColor: .white, buttonColor: .black, hideDownload: true, hideDelete: false, hideChangePosition: false)
         
         lblTitle.textColor = Theme.colors.textColor
         lblDuration.textColor = Theme.colors.gray_DDDDDD
@@ -125,7 +125,7 @@ class SelfDevCell: UITableViewCell {
     }
     
     func configureDownloadAudioPlaylistCell(data : AudioDetailsDataModel) {
-        self.hideDownloadProgress = false
+        self.hideDownloadProgress = true
         self.generalConfigure(data: data)
         self.configureCell(backgroundColor: .white, buttonColor: UIColor.black, hideDownload: true, hideDelete: true, hideChangePosition: false)
         

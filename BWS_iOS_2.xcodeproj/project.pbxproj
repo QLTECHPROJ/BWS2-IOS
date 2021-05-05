@@ -335,8 +335,8 @@
 		28E0120D2618476E00B55967 /* PlayerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E0120B2618476E00B55967 /* PlayerVC.swift */; };
 		28E0120F2618479600B55967 /* AddToPlaylistVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E0120E2618479600B55967 /* AddToPlaylistVC.swift */; };
 		28E012102618479600B55967 /* AddToPlaylistVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E0120E2618479600B55967 /* AddToPlaylistVC.swift */; };
-		28E01223261847EA00B55967 /* IndexScrorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28E01212261847EA00B55967 /* IndexScrorCell.xib */; };
-		28E01224261847EA00B55967 /* IndexScrorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28E01212261847EA00B55967 /* IndexScrorCell.xib */; };
+		28E01223261847EA00B55967 /* IndexScoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28E01212261847EA00B55967 /* IndexScoreCell.xib */; };
+		28E01224261847EA00B55967 /* IndexScoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28E01212261847EA00B55967 /* IndexScoreCell.xib */; };
 		28E01225261847EA00B55967 /* CreatePlayListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28E01213261847EA00B55967 /* CreatePlayListCell.xib */; };
 		28E01226261847EA00B55967 /* CreatePlayListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28E01213261847EA00B55967 /* CreatePlayListCell.xib */; };
 		28E01227261847EA00B55967 /* GraphCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28E01214261847EA00B55967 /* GraphCell.xib */; };
@@ -363,8 +363,8 @@
 		28E0123C261847EA00B55967 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E0121F261847EA00B55967 /* NotificationCell.swift */; };
 		28E0123D261847EA00B55967 /* AreaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E01220261847EA00B55967 /* AreaCell.swift */; };
 		28E0123E261847EA00B55967 /* AreaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E01220261847EA00B55967 /* AreaCell.swift */; };
-		28E0123F261847EA00B55967 /* IndexScrorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E01221261847EA00B55967 /* IndexScrorCell.swift */; };
-		28E01240261847EA00B55967 /* IndexScrorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E01221261847EA00B55967 /* IndexScrorCell.swift */; };
+		28E0123F261847EA00B55967 /* IndexScoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E01221261847EA00B55967 /* IndexScoreCell.swift */; };
+		28E01240261847EA00B55967 /* IndexScoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E01221261847EA00B55967 /* IndexScoreCell.swift */; };
 		28E01241261847EA00B55967 /* AreaCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28E01222261847EA00B55967 /* AreaCell.xib */; };
 		28E01242261847EA00B55967 /* AreaCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28E01222261847EA00B55967 /* AreaCell.xib */; };
 		28E80926261308E300CD80F7 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28E80925261308E300CD80F7 /* Home.storyboard */; };
@@ -662,7 +662,7 @@
 		28E012082618475E00B55967 /* AddAudioVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAudioVC.swift; sourceTree = "<group>"; };
 		28E0120B2618476E00B55967 /* PlayerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerVC.swift; sourceTree = "<group>"; };
 		28E0120E2618479600B55967 /* AddToPlaylistVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToPlaylistVC.swift; sourceTree = "<group>"; };
-		28E01212261847EA00B55967 /* IndexScrorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IndexScrorCell.xib; sourceTree = "<group>"; };
+		28E01212261847EA00B55967 /* IndexScoreCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IndexScoreCell.xib; sourceTree = "<group>"; };
 		28E01213261847EA00B55967 /* CreatePlayListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreatePlayListCell.xib; sourceTree = "<group>"; };
 		28E01214261847EA00B55967 /* GraphCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GraphCell.xib; sourceTree = "<group>"; };
 		28E01215261847EA00B55967 /* SelfDevCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfDevCell.swift; sourceTree = "<group>"; };
@@ -676,7 +676,7 @@
 		28E0121E261847EA00B55967 /* CreatePlayListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePlayListCell.swift; sourceTree = "<group>"; };
 		28E0121F261847EA00B55967 /* NotificationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
 		28E01220261847EA00B55967 /* AreaCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AreaCell.swift; sourceTree = "<group>"; };
-		28E01221261847EA00B55967 /* IndexScrorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexScrorCell.swift; sourceTree = "<group>"; };
+		28E01221261847EA00B55967 /* IndexScoreCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexScoreCell.swift; sourceTree = "<group>"; };
 		28E01222261847EA00B55967 /* AreaCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AreaCell.xib; sourceTree = "<group>"; };
 		28E80925261308E300CD80F7 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		28E80928261308ED00CD80F7 /* Manage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Manage.storyboard; sourceTree = "<group>"; };
@@ -1096,8 +1096,8 @@
 				2819848C2638214E00DA5A66 /* SuggestedPlaylistCell.xib */,
 				28E01220261847EA00B55967 /* AreaCell.swift */,
 				28E01222261847EA00B55967 /* AreaCell.xib */,
-				28E01221261847EA00B55967 /* IndexScrorCell.swift */,
-				28E01212261847EA00B55967 /* IndexScrorCell.xib */,
+				28E01221261847EA00B55967 /* IndexScoreCell.swift */,
+				28E01212261847EA00B55967 /* IndexScoreCell.xib */,
 				28E01219261847EA00B55967 /* ProgressCell.swift */,
 				28E0121A261847EA00B55967 /* ProgressCell.xib */,
 				28E0121F261847EA00B55967 /* NotificationCell.swift */,
@@ -1505,7 +1505,7 @@
 				2870B43825FB41A10014A4F6 /* DJPageMenuCell.xib in Resources */,
 				28346E25260B5A5900DD41BE /* FAQCell.xib in Resources */,
 				28ED2F9625FB58E000E59C56 /* Montserrat-Italic.ttf in Resources */,
-				28E01224261847EA00B55967 /* IndexScrorCell.xib in Resources */,
+				28E01224261847EA00B55967 /* IndexScoreCell.xib in Resources */,
 				9AC067072639178F00287A44 /* PodcastCell.xib in Resources */,
 				9AD5582B2636E6C7007ED68F /* AccountCell.xib in Resources */,
 				28E8092D261308F900CD80F7 /* Wellness.storyboard in Resources */,
@@ -1564,7 +1564,7 @@
 				28ED2F9525FB58E000E59C56 /* Montserrat-Italic.ttf in Resources */,
 				28346E24260B5A5900DD41BE /* FAQCell.xib in Resources */,
 				28ED2FC125FB931800E59C56 /* OptionsCell.xib in Resources */,
-				28E01223261847EA00B55967 /* IndexScrorCell.xib in Resources */,
+				28E01223261847EA00B55967 /* IndexScoreCell.xib in Resources */,
 				9AC067062639178F00287A44 /* PodcastCell.xib in Resources */,
 				9AD558292636DFFA007ED68F /* AccountCell.xib in Resources */,
 				28E8092C261308F900CD80F7 /* Wellness.storyboard in Resources */,
@@ -1891,7 +1891,7 @@
 				2870B3DC25FB41A10014A4F6 /* DJExtensions.swift in Sources */,
 				9AC0670F2639178F00287A44 /* DocumentryCell.swift in Sources */,
 				28E0120D2618476E00B55967 /* PlayerVC.swift in Sources */,
-				28E01240261847EA00B55967 /* IndexScrorCell.swift in Sources */,
+				28E01240261847EA00B55967 /* IndexScoreCell.swift in Sources */,
 				2870B46225FB44700014A4F6 /* Duration.swift in Sources */,
 				2870B42025FB41A10014A4F6 /* NavigationClass.swift in Sources */,
 				28E0120A2618475E00B55967 /* AddAudioVC.swift in Sources */,
@@ -2085,7 +2085,7 @@
 				2870B3FB25FB41A10014A4F6 /* CardView.swift in Sources */,
 				9AC0670E2639178F00287A44 /* DocumentryCell.swift in Sources */,
 				28E0120C2618476E00B55967 /* PlayerVC.swift in Sources */,
-				28E0123F261847EA00B55967 /* IndexScrorCell.swift in Sources */,
+				28E0123F261847EA00B55967 /* IndexScoreCell.swift in Sources */,
 				2870B3DB25FB41A10014A4F6 /* DJExtensions.swift in Sources */,
 				2870B46125FB44700014A4F6 /* Duration.swift in Sources */,
 				28E012092618475E00B55967 /* AddAudioVC.swift in Sources */,
