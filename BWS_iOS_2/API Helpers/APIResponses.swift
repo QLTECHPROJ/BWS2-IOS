@@ -427,6 +427,22 @@ class AudioDetailsModel: EVObject {
     var ResponseStatus = ""
 }
 
+// MARK:- Notification List API Models
+class NotificationListModel: EVObject {
+    var ResponseData = [NotificationListDataModel]()
+    var ResponseCode = ""
+    var ResponseMessage = ""
+    var ResponseStatus = ""
+}
+
+class NotificationListDataModel: EVObject {
+    var ID = ""
+    var Image = ""
+    var Msg = ""
+    var DurationTime = ""
+}
+
+
 // MARK:- Playlist Home API Models
 class PlaylistHomeModel: EVObject {
     var ResponseData = [PlaylistHomeDataModel]()
@@ -590,6 +606,7 @@ class HomeDataModel: EVObject {
 
 class PastIndexScoreModel : EVObject {
     var Month = ""
+    var MonthName = ""
     var IndexScore = ""
 }
 

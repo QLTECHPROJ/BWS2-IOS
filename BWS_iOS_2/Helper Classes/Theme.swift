@@ -349,6 +349,8 @@ struct AppStrings {
     let alert_playlist_download_error = "An errored while downloading playlist."
     let alert_playlist_delete_error = "An error occured while deleting playlist."
     let alert_playlists_delete_error = "An error occured while deleting playlists."
+    
+    let alert_select_day_and_time = "Please select days and Time"
 }
 
 // MARK: - UIStatusBarStyle - autoDarkContent

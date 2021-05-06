@@ -77,6 +77,15 @@ extension GraphCell : ChartViewDelegate {
         xAxis.axisMaximum = 13
         xAxis.valueFormatter = self
         
+        let dataCount = Double(indexScores.count + 1)
+        if dataCount < 7 {
+            xAxis.axisMaximum = 7
+        } else if dataCount > 13 {
+            xAxis.axisMaximum = 13
+        } else {
+            xAxis.axisMaximum = dataCount
+        }
+        
         let leftAxis = chartView.leftAxis
         leftAxis.axisMinimum = 0
         leftAxis.axisMaximum = 100

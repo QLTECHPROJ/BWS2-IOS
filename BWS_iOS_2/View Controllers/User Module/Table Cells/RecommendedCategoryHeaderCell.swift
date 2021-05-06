@@ -18,6 +18,8 @@ class RecommendedCategoryHeaderCell: UITableViewCell {
     
     var arrayCategories = [AreaOfFocusModel]()
     var backClicked : (() -> Void)?
+    var searchText : ((String) -> Void)?
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,7 +29,7 @@ class RecommendedCategoryHeaderCell: UITableViewCell {
         lblSubTitle.attributedText = normalString.attributedString(alignment: .left, lineSpacing: 10)
         
         btnClear.isHidden = true
-        txtSearch.isEnabled = false
+        // txtSearch.isEnabled = false
         txtSearch.addTarget(self, action: #selector(textFieldValueChanged(textField:)), for: UIControl.Event.editingChanged)
         
         let layout = CollectionViewFlowLayout()
@@ -61,6 +63,7 @@ class RecommendedCategoryHeaderCell: UITableViewCell {
     @IBAction func clearSearchClicked(sender: UIButton) {
         txtSearch.text = ""
         btnClear.isHidden = true
+        searchText?("")
     }
     
 }
@@ -76,6 +79,30 @@ extension RecommendedCategoryHeaderCell : UICollectionViewDelegate, UICollection
         let cell = collectionView.dequeueReusableCell(withClass: AreaOfFocusCell.self, for: indexPath)
         cell.configureCell(data: arrayCategories[indexPath.row], index: indexPath.row)
         return cell
+    }
+    
+}
+
+// MARK:- UITextFieldDelegate
+extension RecommendedCategoryHeaderCell : UITextFieldDelegate {
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        if let text = textField.text,
+            let textRange = Range(range, in: text) {
+            let updatedText = text.replacingCharacters(in: textRange, with: string).trim
+            // self.searchText?(updatedText)
+        }
+        
+        return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
+        self.searchText?(textField.text ?? "")
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        return textField.resignFirstResponder()
     }
     
 }

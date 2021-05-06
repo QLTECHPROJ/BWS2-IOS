@@ -71,6 +71,8 @@ class HomeVC: BaseViewController {
         tableView.register(nibWithCellClass: IndexScoreCell.self)
         tableView.register(nibWithCellClass: ProgressCell.self)
         
+        tableView.refreshControl = refreshControl
+        
         lblUser.text = CoUserDataModel.currentUser?.Name ?? ""
         
         if let strUrl = CoUserDataModel.currentUser?.Image.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let imgUrl = URL(string: strUrl) {
@@ -85,6 +87,16 @@ class HomeVC: BaseViewController {
         }
         
         tableView.reloadData()
+    }
+    
+    // Pull To Refresh Screen Data
+    override func handleRefresh(_ refreshControl: UIRefreshControl) {
+        if checkInternet() {
+            callHomeAPI()
+        } else {
+            tableView.isHidden = true
+        }
+        refreshControl.endRefreshing()
     }
     
     @objc func refreshData() {
@@ -306,10 +318,10 @@ extension HomeVC : UITableViewDelegate, UITableViewDataSource {
             return 0 // return 140
             
         case 8:
-            return 300
+            return 0 // 300
             
         case 9:
-            return 200
+            return 0 // 200
             
         default:
             return 0

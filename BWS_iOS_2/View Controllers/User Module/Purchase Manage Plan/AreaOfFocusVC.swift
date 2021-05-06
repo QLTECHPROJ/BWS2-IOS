@@ -17,6 +17,7 @@ class AreaOfFocusVC: BaseViewController {
     // MARK:- VARIABLES
     var arrayAreaOfFocus = [AreaOfFocusModel]()
     var arrayCategories = [CategoryListModel]()
+    var arrayCategoriesMain = [CategoryListModel]()
     var averageSleepTime = ""
     var isFromEdit = false
     
@@ -132,6 +133,26 @@ class AreaOfFocusVC: BaseViewController {
         //        self.setupData()
     }
     
+    func searchCategory(searchText : String) {
+        if searchText.trim.count > 0 {
+            arrayCategories = arrayCategoriesMain.filter({ (model:CategoryListModel) -> Bool in
+                return model.View.lowercased().contains(searchText.lowercased())
+            })
+            
+            // if arrayCountrySearch.count > 0 {
+            //     lblNoData.isHidden = true
+            // } else {
+            //     lblNoData.isHidden = false
+            //     lblNoData.text = "Couldn't find " + updatedText + " Try searching again"
+            // }
+            // lblNoData.isHidden = arrayCountrySearch.count != 0
+            tableView.reloadData()
+        } else {
+            arrayCategories = arrayCategoriesMain
+            // lblNoData.isHidden = true
+            tableView.reloadData()
+        }
+    }
     
     // MARK:- ACTIONS
     @IBAction func continueClicked() {
@@ -177,6 +198,10 @@ extension AreaOfFocusVC : UITableViewDataSource, UITableViewDelegate {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withClass: RecommendedCategoryHeaderCell.self)
             cell.configureCell(data: arrayAreaOfFocus)
+            
+            cell.searchText = { keyword in
+                self.searchCategory(searchText: keyword)
+            }
             
             cell.backClicked = {
                 if self.isFromEdit {

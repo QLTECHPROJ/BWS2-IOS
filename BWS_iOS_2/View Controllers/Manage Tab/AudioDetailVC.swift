@@ -190,7 +190,6 @@ class AudioDetailVC: BaseViewController {
         }
         
         if lockDownloads == "1" {
-            // Membership Module Remove
             openInactivePopup(controller: self)
             return
         } else if lockDownloads == "2" {

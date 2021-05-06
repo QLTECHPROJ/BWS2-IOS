@@ -166,7 +166,6 @@ class AddAudioVC: BaseViewController {
     
     func addAudioToPlaylist(audioData : AudioDetailsDataModel) {
         if audioData.IsLock == "1" {
-           // Membership Module Remove
            openInactivePopup(controller: self)
         } else if audioData.IsLock == "2" {
             showAlertToast(message: Theme.strings.alert_reactivate_plan)
@@ -192,7 +191,6 @@ class AddAudioVC: BaseViewController {
     
     func addPlaylistToPlaylist(playlistID : String, lock : String, source : String) {
         if lock == "1" {
-            // Membership Module Remove
             openInactivePopup(controller: self)
         } else if lock == "2" {
             showAlertToast(message: Theme.strings.alert_reactivate_plan)
@@ -487,7 +485,6 @@ extension AddAudioVC : UITableViewDelegate, UITableViewDataSource {
         
         if indexPath.section == 1 {
             if arrayAudio[indexPath.row].IsLock == "1" && arrayAudio[indexPath.row].IsPlay != "1" {
-                // Membership Module Remove
                 openInactivePopup(controller: self)
             } else if arrayAudio[indexPath.row].IsLock == "2" && arrayAudio[indexPath.row].IsPlay != "1" {
                 showAlertToast(message: Theme.strings.alert_reactivate_plan)
@@ -506,7 +503,6 @@ extension AddAudioVC : UITableViewDelegate, UITableViewDataSource {
             }
         } else if indexPath.section == 2 {
             if arrayPlayList[indexPath.row].IsLock == "1" {
-                // Membership Module Remove
                 openInactivePopup(controller: self)
             } else if arrayPlayList[indexPath.row].IsLock == "2" {
                 showAlertToast(message: Theme.strings.alert_reactivate_plan)
@@ -522,7 +518,6 @@ extension AddAudioVC : UITableViewDelegate, UITableViewDataSource {
         } else {
             if arraySearch[indexPath.row].Iscategory == "1" {
                 if arraySearch[indexPath.row].IsLock == "1" && arraySearch[indexPath.row].IsPlay != "1" {
-                    // Membership Module Remove
                     openInactivePopup(controller: self)
                 } else if arraySearch[indexPath.row].IsLock == "2" && arraySearch[indexPath.row].IsPlay != "1" {
                     showAlertToast(message: Theme.strings.alert_reactivate_plan)
@@ -544,7 +539,6 @@ extension AddAudioVC : UITableViewDelegate, UITableViewDataSource {
                 }
             } else {
                 if arraySearch[indexPath.row].IsLock == "1" {
-                    // Membership Module Remove
                     openInactivePopup(controller: self)
                 } else if arraySearch[indexPath.row].IsLock == "2" {
                     showAlertToast(message: Theme.strings.alert_reactivate_plan)
@@ -600,7 +594,6 @@ extension AddAudioVC : UICollectionViewDelegate,UICollectionViewDataSource,UICol
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         if arrayPlayList[indexPath.row].IsLock == "1" {
-            // Membership Module Remove
             openInactivePopup(controller: self)
             return
         } else if  arrayPlayList[indexPath.row].IsLock == "2" {

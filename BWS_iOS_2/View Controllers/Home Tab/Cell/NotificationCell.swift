@@ -9,16 +9,26 @@
 import UIKit
 
 class NotificationCell: UITableViewCell {
-
+    
+    @IBOutlet weak var imgView : UIImageView!
+    @IBOutlet weak var lblTitle : UILabel!
+    @IBOutlet weak var lblSubTitle : UILabel!
+    @IBOutlet weak var lblTime : UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    // Configure Cell
+    func configureCell(data : NotificationListDataModel) {
+        lblTitle.text = data.Msg
+        lblTime.text = data.DurationTime
+        lblSubTitle.isHidden = true
+        
+        if let strUrl = data.Image.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let imgUrl = URL(string: strUrl) {
+            imgView.sd_setImage(with: imgUrl, completed: nil)
+        }
     }
     
 }

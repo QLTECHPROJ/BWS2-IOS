@@ -176,7 +176,6 @@ class PlaylistCategoryVC: BaseViewController {
     
     @IBAction func createPlaylistClicked(sender : UIButton) {
         if arrayPlaylistHomeData[0].IsLock == "1" {
-            // Membership Module Remove
             openInactivePopup(controller: self)
         } else if arrayPlaylistHomeData[0].IsLock == "2" {
             showAlertToast(message: Theme.strings.alert_reactivate_plan)

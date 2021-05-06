@@ -815,6 +815,7 @@ extension AreaOfFocusVC {
         APICallManager.sharedInstance.callAPI(router: APIRouter.getrecommendedcategory(parameters)) { (response :CategoryModel) in
             
             if response.ResponseCode == "200" {
+                self.arrayCategoriesMain = response.ResponseData
                 self.arrayCategories = response.ResponseData
                 self.tableView.reloadData()
                 self.setInitialData()
@@ -924,6 +925,26 @@ extension UserListPopUpVC {
                 self.arrayUsers = response.ResponseData.CoUserList
                 self.tableView.reloadData()
                 self.maxUsers = Int(response.ResponseData.Maxuseradd) ?? 0
+                self.setupData()
+            } else {
+                self.setupData()
+            }
+        }
+    }
+    
+}
+
+extension NotificatonVC {
+    
+    // Notification List API Call
+    func callNotificationListAPI() {
+        let parameters = ["UserID":CoUserDataModel.currentUser?.UserID ?? "",
+                          "CoUserId":CoUserDataModel.currentUser?.CoUserId ?? ""]
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.getnotificationlist(parameters)) { (response : NotificationListModel) in
+            if response.ResponseCode == "200" {
+                self.arrayNotifications = response.ResponseData
+                self.tableView.reloadData()
                 self.setupData()
             } else {
                 self.setupData()

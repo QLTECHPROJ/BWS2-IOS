@@ -97,7 +97,7 @@ class DayVC: BaseViewController {
     @IBAction func onTappedSave(_ sender: Any) {
         
         if arrSelectDays.count == 0 || lblTime.text == "" || lblTime.text == nil || strPlaylistID == "" || strPlaylistID == nil{
-            showAlertToast(message: "Please select days and Time")
+            showAlertToast(message: Theme.strings.alert_select_day_and_time)
         }else {
             callSetRemAPI()
         }

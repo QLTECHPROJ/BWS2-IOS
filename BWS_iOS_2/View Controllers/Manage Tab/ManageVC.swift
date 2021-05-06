@@ -360,7 +360,6 @@ class ManageVC: BaseViewController {
     
     func createPlaylist(sectionIndex : Int) {
         if arrayPlaylistHomeData[sectionIndex].IsLock == "1" {
-            // Membership Module Remove
             openInactivePopup(controller: self)
         } else if arrayPlaylistHomeData[sectionIndex].IsLock == "2" {
             showAlertToast(message: Theme.strings.alert_reactivate_plan)

@@ -146,7 +146,7 @@ extension ManageAudioCell : UICollectionViewDelegate, UICollectionViewDataSource
                 if arrayAudioDetails[indexPath.row].IsPlay == "1" {
                     didSelectAudioAtIndex?(indexPath.row)
                 } else {
-                    // Membership Module Remove
+                    openInactivePopup(controller: self.parentViewController)
                 }
             } else if homeData.IsLock == "2" {
                 if arrayAudioDetails[indexPath.row].IsPlay == "1" {

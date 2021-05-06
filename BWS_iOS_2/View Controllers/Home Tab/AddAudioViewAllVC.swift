@@ -77,7 +77,6 @@ class AddAudioViewAllVC: BaseViewController {
     
     func addAudioToPlaylist(audioData : AudioDetailsDataModel) {
         if audioData.IsLock == "1" {
-            // Membership Module Remove
             openInactivePopup(controller: self)
         } else if audioData.IsLock == "2" {
            showAlertToast(message: Theme.strings.alert_reactivate_plan)
@@ -102,7 +101,6 @@ class AddAudioViewAllVC: BaseViewController {
     
     func addPlaylistToPlaylist(playlistID : String, lock:String) {
         if lock == "1" {
-            // Membership Module Remove
             openInactivePopup(controller: self)
         } else if lock == "2" {
             showAlertToast(message: Theme.strings.alert_reactivate_plan)
@@ -181,7 +179,6 @@ extension AddAudioViewAllVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if isFromPlaylist {
             if arrayPlayList[indexPath.row].IsLock == "1" {
-                // Membership Module Remove
                 openInactivePopup(controller: self)
             } else if  arrayPlayList[indexPath.row].IsLock == "2" {
                 showAlertToast(message: Theme.strings.alert_reactivate_plan)
@@ -196,7 +193,6 @@ extension AddAudioViewAllVC : UITableViewDelegate, UITableViewDataSource {
             }
         } else {
             if arrayAudio[indexPath.row].IsLock == "1" && arrayAudio[indexPath.row].IsPlay != "1" {
-                // Membership Module Remove
                 openInactivePopup(controller: self)
             } else if arrayAudio[indexPath.row].IsLock == "2" && arrayAudio[indexPath.row].IsPlay != "1" {
                 showAlertToast(message: Theme.strings.alert_reactivate_plan)
