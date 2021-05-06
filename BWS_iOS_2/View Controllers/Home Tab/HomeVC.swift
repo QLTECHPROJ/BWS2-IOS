@@ -46,6 +46,9 @@ class HomeVC: BaseViewController {
         setupData()
         registerForPlayerNotifications()
         
+        imgUser.cornerRadius = imgUser.frame.size.height / 2
+        imgUser.clipsToBounds = true
+        
         NotificationCenter.default.addObserver(self, selector: #selector(refreshData), name: .refreshData, object: nil)
     }
     

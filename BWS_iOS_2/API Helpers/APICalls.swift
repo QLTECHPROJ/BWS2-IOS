@@ -1016,13 +1016,12 @@ extension AccountVC {
     
     // Add Profile Image API
     func callAddProfileImageAPI() {
+        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? ""]
+        
         var uploadData = [UploadDataModel]()
         if imageData.data != nil {
             uploadData = [imageData]
         }
-        
-        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
-                          "ProfileImage":uploadData[0].name]
         
         APICallManager.sharedInstance.callUploadWebService(apiUrl: APIRouter.updateprofileimg(parameters).urlRequest!.url!.absoluteString, includeHeader: true, parameters: parameters, uploadParameters: uploadData, httpMethod: .post) { (response : CoUserModel) in
             

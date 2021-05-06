@@ -25,8 +25,9 @@ class AccountVC: BaseViewController {
     // MARK:- VIEW LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
-       setupUI()
-       setupData()
+        imgUser.contentMode = .scaleAspectFill
+        setupUI()
+        setupData()
     }
     
     
@@ -180,7 +181,7 @@ class AccountVC: BaseViewController {
     }
     @IBAction func onTappedCamera(_ sender: UIButton) {
         self.view.endEditing(true)
-        var arrayTitles = ["Take a Photo","Choose from Gallary","Remove Photo"]
+        var arrayTitles = ["Take a Photo","Choose from Gallary"]
         if let imageStr = CoUserDataModel.currentUser?.Image, imageStr.trim.count > 0 {
             arrayTitles.append("Remove Photo")
         }
@@ -306,13 +307,13 @@ extension AccountVC : UIImagePickerControllerDelegate, UINavigationControllerDel
         
         if let image = info[.editedImage] as? UIImage {
             imgUser.image = image
-            imageData = UploadDataModel(name: "image.jpeg", key: "Image", data: image.jpegData(compressionQuality: 0.5), extention: "jpeg", mimeType: "image/jpeg")
+            imageData = UploadDataModel(name: "image.jpeg", key: "ProfileImage", data: image.jpegData(compressionQuality: 0.5), extention: "jpeg", mimeType: "image/jpeg")
             //CoUserDataModel.currentUser?.Image = imageData.name
             self.callAddProfileImageAPI()
         }
         else if let image = info[.originalImage] as? UIImage {
             imgUser.image = image
-            imageData = UploadDataModel(name: "image.jpeg", key: "Image", data: image.jpegData(compressionQuality: 0.5), extention: "jpeg", mimeType: "image/jpeg")
+            imageData = UploadDataModel(name: "image.jpeg", key: "ProfileImage", data: image.jpegData(compressionQuality: 0.5), extention: "jpeg", mimeType: "image/jpeg")
             //CoUserDataModel.currentUser?.Image = imageData.name
             self.callAddProfileImageAPI()
         }

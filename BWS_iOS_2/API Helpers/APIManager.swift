@@ -330,7 +330,9 @@ class APICallManager {
         
         var headers : HTTPHeaders?
         if includeHeader {
-            headers = ["Accept":"application/json","Test":"1"]
+            headers = ["Accept":"application/json",
+                       "Oauth":APICallManager.sharedInstance.generateToken(),
+                       "Yaccess":DEVICE_UUID]
         }
         
         if parameters != nil {
