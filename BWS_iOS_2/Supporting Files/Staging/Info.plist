@@ -52,5 +52,12 @@
 	</array>
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
+    <key>NSCameraUsageDescription</key>
+    <string>Allow Brain Wellness App to Take Photo for Profile Photo.</string>
+    <key>NSContactsUsageDescription</key>
+    <string>Allow Brain Wellness App to access your contacts list.</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>Allow Brain Wellness App to Choose Photo From Gallery for Profile Photo.</string>
+
 </dict>
 </plist>

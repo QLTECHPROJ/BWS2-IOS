@@ -15,7 +15,8 @@ class AccountCell: UITableViewCell {
     @IBOutlet weak var lblLine: UILabel!
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var img: UIImageView!
-    
+    @IBOutlet weak var imgArrow: UIImageView!
+    @IBOutlet weak var viewBack: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

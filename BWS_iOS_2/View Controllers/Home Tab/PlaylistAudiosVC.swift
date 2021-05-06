@@ -434,7 +434,16 @@ class PlaylistAudiosVC: BaseViewController {
     }
     
     @IBAction func setReminderClicked(_ sender: UIButton) {
-        // Do nothing
+        if objPlaylist?.IsReminder == "1" {
+            callRemSatusAPI(status: "0")
+        } else if objPlaylist?.IsReminder == "0" {
+            let aVC = AppStoryBoard.account.viewController(viewControllerClass: DayVC.self)
+            aVC.objPlaylist = objPlaylist
+            self.navigationController?.pushViewController(aVC, animated: true)
+        } else {
+            let aVC = AppStoryBoard.account.viewController(viewControllerClass: DayVC.self)
+            self.navigationController?.pushViewController(aVC, animated: true)
+        }
     }
     
     @IBAction func downloadClicked(_ sender: UIButton) {

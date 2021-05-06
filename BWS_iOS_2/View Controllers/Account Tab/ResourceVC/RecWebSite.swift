@@ -40,12 +40,12 @@ class RecWebSite: BaseViewController {
 extension RecWebSite : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return ResourceVC.websiteData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withClass: WebsiteCell.self)
-       // cell.configureCell(data: ResourceVC.websiteData[indexPath.row])
+        cell.configureCell(data: ResourceVC.websiteData[indexPath.row])
         return cell
     }
     

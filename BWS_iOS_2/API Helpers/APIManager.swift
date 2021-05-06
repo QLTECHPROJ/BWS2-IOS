@@ -63,9 +63,18 @@ enum APIRouter: URLRequestConvertible {
     
     //Account
     case resourcelist([String:String])
-    case resourcecategorylist([String:String])
+    case resourcecatlist([String:String])
     case logout([String:String])
     case changepin([String:String])
+    case changepassword([String:String])
+    case faqlist
+    case reminderlist([String:String])
+    case reminderstatus([String:String])
+    case setreminder([String:String])
+    case deletereminder([String:String])
+    case updateprofileimg([String:String])
+    case removeprofileimg([String:String])
+    case editprofile([String:String])
     
     var route: APIRoute {
         switch self {
@@ -150,12 +159,30 @@ enum APIRouter: URLRequestConvertible {
         //Account
         case .resourcelist(let data):
             return APIRoute(path: "resourcelist", method: .post, data: data)
-        case .resourcecategorylist(let data):
-            return APIRoute(path: "resourcecategorylist", method: .post, data: data)
-       case .logout(let data):
+        case .resourcecatlist(let data):
+            return APIRoute(path: "resourcecatlist", method: .post, data: data)
+        case .logout(let data):
             return APIRoute(path: "logout", method: .post, data: data)
-       case .changepin(let data):
+        case .changepin(let data):
             return APIRoute(path: "changepin", method: .post, data: data)
+        case .changepassword(let data):
+            return APIRoute(path: "changepassword", method: .post, data: data)
+        case .faqlist:
+            return APIRoute(path: "faqlist", method: .get)
+        case .reminderlist(let data):
+            return APIRoute(path: "reminderlist", method: .post, data: data)
+        case .reminderstatus(let data):
+            return APIRoute(path: "reminderstatus", method: .post, data: data)
+        case .setreminder(let data):
+            return APIRoute(path: "setreminder", method: .post, data: data)
+        case .deletereminder(let data):
+            return APIRoute(path: "deletereminder", method: .post, data: data)
+        case .updateprofileimg(let data):
+            return APIRoute(path: "updateprofileimg", method: .post, data: data)
+        case .removeprofileimg(let data):
+            return APIRoute(path: "removeprofileimg", method: .post, data: data)
+        case .editprofile(let data):
+            return APIRoute(path: "editprofile", method: .post, data: data)
         }
     }
     

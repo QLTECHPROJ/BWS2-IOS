@@ -129,7 +129,7 @@ class ResourceVC: BaseViewController {
         let font = UIFont(name:"Montserrat-Medium", size: 16)!
         
         //let bottomHairlineColor = Theme.colors.button_Background!
-        let bottomHairlineColor = Theme.colors.greenColor
+        let bottomHairlineColor = hexStringToUIColor(hex: "#005BAA")
         let menuBackColor = UIColor.white
         let titleColor = Theme.colors.black
         let shadowColor = UIColor.lightGray
@@ -193,9 +193,9 @@ class ResourceVC: BaseViewController {
                     
                     aVC.collectionView.reloadData()
                     if ResourceVC.audioData.count == 0 {
-                      //  aVC.callResourceListAPI(resourceID: ResourcesType.audioBooks.rawValue) {
+                       aVC.callResourceListAPI(resourceID: ResourcesType.audioBooks.rawValue) {
                             aVC.setupData()
-                       // }
+                       }
                     }
                 }
             }
@@ -206,9 +206,9 @@ class ResourceVC: BaseViewController {
                     
                     aVC.tableView.reloadData()
                     if ResourceVC.documentariesData.count == 0 {
-                      //  aVC.callResourceListAPI(resourceID: ResourcesType.documentaries.rawValue) {
+                       aVC.callResourceListAPI(resourceID: ResourcesType.documentaries.rawValue) {
                             aVC.setupData()
-                      //  }
+                    }
                     }
                 }
             }
@@ -219,9 +219,9 @@ class ResourceVC: BaseViewController {
                     
                     aVC.tableView.reloadData()
                     if ResourceVC.podcastData.count == 0 {
-                     //   aVC.callResourceListAPI(resourceID: ResourcesType.podcasts.rawValue) {
+                        aVC.callResourceListAPI(resourceID: ResourcesType.podcasts.rawValue) {
                             aVC.setupData()
-                      //  }
+                    }
                     }
                 }
             }
@@ -232,9 +232,9 @@ class ResourceVC: BaseViewController {
                     
                     aVC.tableView.reloadData()
                     if ResourceVC.websiteData.count == 0 {
-                       // aVC.callResourceListAPI(resourceID: ResourcesType.websites.rawValue) {
+                        aVC.callResourceListAPI(resourceID: ResourcesType.websites.rawValue) {
                             aVC.setupData()
-                        //}
+                        }
                     }
                 }
             }
@@ -245,9 +245,9 @@ class ResourceVC: BaseViewController {
                     
                     aVC.collectionView.reloadData()
                     if ResourceVC.appsData.count == 0 {
-                      //  aVC.callResourceListAPI(resourceID: ResourcesType.apps.rawValue) {
+                        aVC.callResourceListAPI(resourceID: ResourcesType.apps.rawValue) {
                             aVC.setupData()
-                     //   }
+                        }
                     }
                 }
             }

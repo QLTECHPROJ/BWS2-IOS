@@ -46,7 +46,7 @@
                                     <constraint firstAttribute="width" secondItem="rf9-6d-xfK" secondAttribute="height" multiplier="1:1" id="SXS-ds-KNv"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fct-2h-YXh">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fct-2h-YXh">
                                 <rect key="frame" x="0.0" y="59" width="288" height="2"/>
                                 <color key="backgroundColor" name="DDDDDD"/>
                                 <constraints>
@@ -87,10 +87,12 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="img" destination="hUr-H1-LeL" id="DOA-Ev-c69"/>
+                <outlet property="imgArrow" destination="rf9-6d-xfK" id="Kvw-3C-AsN"/>
                 <outlet property="imgHeight" destination="Cvv-uJ-eda" id="Vif-fm-hvv"/>
                 <outlet property="imgLeading" destination="zO7-D9-aOC" id="OSX-nx-O3B"/>
                 <outlet property="lblLine" destination="Fct-2h-YXh" id="EGD-EL-6rA"/>
                 <outlet property="lblTitle" destination="zbf-xs-coe" id="AKq-za-K39"/>
+                <outlet property="viewBack" destination="YtH-7s-039" id="AeN-PP-gRV"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="107.47767857142857"/>
         </tableViewCell>

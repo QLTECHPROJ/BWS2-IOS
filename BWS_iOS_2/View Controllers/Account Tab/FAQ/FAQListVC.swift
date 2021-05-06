@@ -14,19 +14,17 @@ class FAQListVC: BaseViewController {
      @IBOutlet weak var tableView: UITableView!
     
     //MARK:- Variables
-    var arrayQuestions = [FAQDataModel]()
+    var arrayFilter = [FAQDataModel]()
     
     //MARK:- View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        fetchQuestions()
     }
     
     //MARK:- Functions
     override func setupUI() {
         tableView.register(nibWithCellClass: FAQCell.self)
-        
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 80
         tableView.reloadData()
@@ -37,26 +35,26 @@ class FAQListVC: BaseViewController {
         
     }
     
-    func fetchQuestions() {
-        arrayQuestions.removeAll()
-        
-        for i in 1...10 {
-            let question = FAQDataModel()
-            if i % 3 == 0 {
-                question.Title = "\(i) - How can I cancel if I need to?"
-                question.Desc = "\(i) - How do I purchase a subscription?"
-            }
-            else if i % 2 == 0 {
-                question.Title = "\(i) - Is there a free trial?"
-                question.Desc = "\(i) - Yes. Every plan comes with a 30-day free trial option"
-            }
-            else {
-                question.Title = "\(i) - What are the benefits of signing up for the Membership Program"
-                question.Desc = "\(i) - What's the best way to use the Membership? Where do I start?"
-            }
-            arrayQuestions.append(question)
-        }
-    }
+//    func fetchQuestions() {
+//        arrayQuestions.removeAll()
+//
+//        for i in 1...10 {
+//            let question = FAQDataModel()
+//            if i % 3 == 0 {
+//                question.Title = "\(i) - How can I cancel if I need to?"
+//                question.Desc = "\(i) - How do I purchase a subscription?"
+//            }
+//            else if i % 2 == 0 {
+//                question.Title = "\(i) - Is there a free trial?"
+//                question.Desc = "\(i) - Yes. Every plan comes with a 30-day free trial option"
+//            }
+//            else {
+//                question.Title = "\(i) - What are the benefits of signing up for the Membership Program"
+//                question.Desc = "\(i) - What's the best way to use the Membership? Where do I start?"
+//            }
+//            arrayQuestions.append(question)
+//        }
+//    }
     
     //MARK:- IBAction Methods
     @IBAction func backClicked(sender : UIButton) {
@@ -68,25 +66,25 @@ extension FAQListVC:UITableViewDelegate,UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arrayQuestions.count
+        return arrayFilter.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
          let cell = tableView.dequeueReusableCell(withClass: FAQCell.self)
-        cell.configureCell(data: arrayQuestions[indexPath.row])
+        cell.configureCell(data: arrayFilter[indexPath.row])
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        var isSelected = arrayQuestions[indexPath.row].isSelected
+        var isSelected = arrayFilter[indexPath.row].isSelected
         
-        for question in arrayQuestions {
+        for question in arrayFilter {
             question.isSelected = false
         }
         
         isSelected.toggle()
-        arrayQuestions[indexPath.row].isSelected = isSelected
+        arrayFilter[indexPath.row].isSelected = isSelected
         tableView.reloadData()
         
     }

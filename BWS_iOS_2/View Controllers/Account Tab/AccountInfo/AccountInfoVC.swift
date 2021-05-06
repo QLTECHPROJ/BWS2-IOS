@@ -51,6 +51,7 @@ extension AccountInfoVC:UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withClass: AccountCell.self)
+        cell.viewBack.backgroundColor = Theme.colors.off_white_F9F9F9
         cell.img.image = UIImage(named: arrImage[indexPath.section])
         cell.lblTitle.text = arrTitle[indexPath.section]
         cell.lblLine.isHidden = true

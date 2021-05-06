@@ -290,6 +290,8 @@ class CoUserDataModel : EVObject {
     var AvgSleepTime = ""
     var isSelected = false
     
+    static var profileImage : UIImage?
+    
     class var currentUser : CoUserDataModel? {
         get {
             if let userData = UserDefaults.standard.data(forKey: "CoUserData") {
@@ -298,6 +300,7 @@ class CoUserDataModel : EVObject {
             return nil
         }
         set {
+            CoUserDataModel.profileImage = nil
             if let newData = newValue {
                 UserDefaults.standard.setValue(newData.toJsonData(), forKey: "CoUserData")
             }
@@ -598,7 +601,7 @@ class SessionProgressModel : EVObject {
     
 }
 
-/**** Resource Category Model ****/
+// MARK:- Resource Category Model
 class ResourceCategoryModel: EVObject {
     var ResponseData : [ResourceCategoryDataModel]?
     var ResponseCode = ""
@@ -610,7 +613,7 @@ class ResourceCategoryDataModel: EVObject {
     var CategoryName = ""
 }
 
-/**** Resource Category Model ****/
+// MARK:- Resource List Model
 class ResourceListModel: EVObject {
     var ResponseData : [ResourceListDataModel]?
     var ResponseCode = ""
@@ -630,4 +633,48 @@ class ResourceListDataModel: EVObject {
     var resource_link_1 = ""
     var resource_link_2 = ""
     var Detailimage = ""
+}
+
+// MARK:- Reminder API Model
+class ReminderModel:EVObject {
+    var ResponseData = [ReminderListDataModel]()
+    var ResponseCode = ""
+    var ResponseMessage = ""
+    var ResponseStatus = ""
+}
+
+class ReminderListDataModel:EVObject {
+    var ReminderId = ""
+    var PlaylistId = ""
+    var PlaylistName = ""
+    var ReminderDay = ""
+    var ReminderTime = ""
+    var IsCheck = ""
+    var IsLock = ""
+    var RDay = ""
+    var Created = ""
+}
+
+class ReminderPlayListModel:EVObject {
+    var ResponseData = [ReminderPlayListDataModel]()
+    var ResponseCode = ""
+    var ResponseMessage = ""
+    var ResponseStatus = ""
+}
+
+class ReminderPlayListDataModel:EVObject {
+    var ID = ""
+    var Name = ""
+}
+
+class AddProfileImageModel: EVObject {
+    var ResponseData : AddProfileImageDataModel?
+    var ResponseCode = ""
+    var ResponseMessage = ""
+    var ResponseStatus = ""
+}
+
+class AddProfileImageDataModel: EVObject {
+    var ProfileImage = ""
+    var UserID = ""
 }

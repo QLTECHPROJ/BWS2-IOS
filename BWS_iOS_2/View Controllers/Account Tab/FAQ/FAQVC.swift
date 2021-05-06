@@ -15,7 +15,9 @@ class FAQVC: BaseViewController {
     @IBOutlet var headerView: UIView!
     
     //MARK:- Variables
-    var arrTitle = ["Audio","Playlist","Help"]
+    var arrTitle = ["Audio","Playlist","General"]
+    var arrayFAQ = [FAQDataModel]()
+    var arrayFilter = [FAQDataModel]()
     
     //MARK:- View Life Cycle
     override func viewDidLoad() {
@@ -25,11 +27,14 @@ class FAQVC: BaseViewController {
     
     //MARK:- Functions
     override func setupUI() {
+        callFAQtAPI()
         tableView.register(nibWithCellClass:AccountCell.self)
         tableView.tableFooterView = headerView
     }
     
     override func setupData() {
+        
+        
         
     }
     
@@ -54,7 +59,12 @@ extension FAQVC:UITableViewDelegate,UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withClass: AccountCell.self)
         cell.imgHeight.constant = 0
         cell.imgLeading.constant = 0
-        cell.lblTitle.text = arrTitle[indexPath.section]
+        cell.viewBack.backgroundColor = Theme.colors.off_white_F9F9F9
+        if arrTitle[indexPath.section] == "General" {
+            cell.lblTitle.text = "Help"
+        }else {
+            cell.lblTitle.text = arrTitle[indexPath.section]
+        }
         cell.lblLine.isHidden = true
         return cell
     }
@@ -62,6 +72,8 @@ extension FAQVC:UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let aVC = AppStoryBoard.account.viewController(viewControllerClass: FAQListVC.self)
+        arrayFilter = arrayFAQ.filter { $0.Category == arrTitle[indexPath.section] }
+        aVC.arrayFilter = arrayFilter
         self.navigationController?.pushViewController(aVC, animated: true)
         
     }

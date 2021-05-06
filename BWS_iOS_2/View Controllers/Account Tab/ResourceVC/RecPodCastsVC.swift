@@ -40,12 +40,12 @@ class RecPodCastsVC: BaseViewController {
 extension RecPodCastsVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return ResourceVC.podcastData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withClass: PodcastCell.self)
-       // cell.configureCell(data: ResourceVC.podcastData[indexPath.row])
+        cell.configureCell(data: ResourceVC.podcastData[indexPath.row])
         return cell
     }
     

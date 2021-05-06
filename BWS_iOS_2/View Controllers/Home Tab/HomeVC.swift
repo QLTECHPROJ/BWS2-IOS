@@ -111,7 +111,16 @@ class HomeVC: BaseViewController {
     }
     
     func setReminder() {
-        // For Suggested Playlist
+        if suggstedPlaylist?.IsReminder == "1" {
+            callRemSatusAPI(status: "0")
+        } else if suggstedPlaylist?.IsReminder == "0" {
+            let aVC = AppStoryBoard.account.viewController(viewControllerClass: DayVC.self)
+            aVC.objPlaylist = suggstedPlaylist
+            self.navigationController?.pushViewController(aVC, animated: true)
+        } else {
+            let aVC = AppStoryBoard.account.viewController(viewControllerClass: DayVC.self)
+            self.navigationController?.pushViewController(aVC, animated: true)
+        }
     }
     
     func playSuggestedPlaylist() {

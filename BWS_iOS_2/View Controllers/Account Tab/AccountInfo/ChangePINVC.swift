@@ -73,19 +73,19 @@ class ChangePINVC: BaseViewController {
         if strPin1.count == 0 {
             isValid = false
             lblErrOldPIN.isHidden = false
-            lblErrOldPIN.text = ""
+            lblErrOldPIN.text = Theme.strings.alert_blank_inputField_error
         }
         
         if strPin2.count == 0 {
             isValid = false
             lblErrNewPIN.isHidden = false
-            lblErrNewPIN.text = Theme.strings.alert_blank_mobile_error
+            lblErrNewPIN.text = Theme.strings.alert_blank_inputField_error
         }
         
         if strPin3.count == 0 {
             isValid = false
             lblErrConfirmPIN.isHidden = false
-            lblErrConfirmPIN.text = Theme.strings.alert_blank_fullname_error
+            lblErrConfirmPIN.text = Theme.strings.alert_blank_inputField_error
         }
         
         if strPin2 != strPin3 {

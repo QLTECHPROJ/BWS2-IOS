@@ -12,16 +12,21 @@ class AccountVC: BaseViewController {
     
     //MARK:- UIOutlet
     @IBOutlet weak var tableView: UITableView!
-    
     @IBOutlet var HeaderView: UIView!
+    @IBOutlet weak var lblUser: UILabel!
+    @IBOutlet weak var imgUser: UIImageView!
+    @IBOutlet weak var btnChange: UIButton!
+    
     //MARK:- Variable
-    var arrImage = ["UserName","UpgradePlan","Download","Resources","Reminder","Billing","Invoice","FAQ","Logout"]
-    var arrTitle = ["Account Info","Upgrade Plan","Downloads","Resources","Reminder","Billing and Order","Invoices","FAQ","Log Out"]
+    var arrImage = ["UserName","UpgradePlan","download_account","Resources","Reminder","Billing","Invoices","FAQ","Logout"]
+    var arrTitle = ["Account Info","Upgrade Plan","Download","Resources","Reminder","Billing and Order","Invoices","FAQ","Log Out"]
+    var imageData = UploadDataModel()
     
     // MARK:- VIEW LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
        setupUI()
+       setupData()
     }
     
     
@@ -30,6 +35,16 @@ class AccountVC: BaseViewController {
     override func setupUI() {
         tableView.register(nibWithCellClass:AccountCell.self)
         tableView.tableHeaderView = HeaderView
+    }
+    
+    override func setupData() {
+        if let userData = CoUserDataModel.currentUser {
+            imgUser.loadUserProfileImage(fontSize: 50)
+            
+            let userName = userData.Name.trim.count > 0 ? userData.Name : "Guest"
+            lblUser.text = userName
+            
+        }
     }
     
     class func clearDownloadData() {
@@ -84,6 +99,36 @@ class AccountVC: BaseViewController {
         DJDownloadManager.shared.clearDocumentDirectory()
     }
     
+    func handleImageOptions(buttonTitle : String) {
+        switch buttonTitle {
+        case "Take a Photo":
+            DispatchQueue.main.async {
+                if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera) {
+                    let picker = UIImagePickerController()
+                    picker.sourceType = .camera
+                    picker.delegate = self
+                    picker.allowsEditing = true
+                    self.present(picker, animated: true, completion: nil)
+                }
+                else {
+                    showAlertToast(message: Theme.strings.alert_camera_not_available)
+                }
+            }
+        case "Choose from Gallary":
+            DispatchQueue.main.async {
+                let picker = UIImagePickerController()
+                picker.sourceType = .photoLibrary
+                picker.delegate = self
+                picker.allowsEditing = true
+                self.present(picker, animated: true, completion: nil)
+            }
+        case "Remove Photo":
+            self.callRemoveProfileImageAPI()
+        default:
+            break
+        }
+        
+    }
     
     // MARK:- ACTIONS
      func logoutClicked() {
@@ -133,7 +178,22 @@ class AccountVC: BaseViewController {
         let aVC = AppStoryBoard.account.viewController(viewControllerClass: DownloadVC.self)
         self.navigationController?.pushViewController(aVC, animated: true)
     }
+    @IBAction func onTappedCamera(_ sender: UIButton) {
+        self.view.endEditing(true)
+        var arrayTitles = ["Take a Photo","Choose from Gallary","Remove Photo"]
+        if let imageStr = CoUserDataModel.currentUser?.Image, imageStr.trim.count > 0 {
+            arrayTitles.append("Remove Photo")
+        }
+        
+        showActionSheet(title: "", message: "Profile Image Options", titles: arrayTitles, cancelButtonTitle: "Cancel") { (buttonTitle) in
+            DispatchQueue.main.async {
+                self.handleImageOptions(buttonTitle: buttonTitle)
+            }
+        }
+    }
     
+    @IBAction func onTappedImage(_ sender: UIButton) {
+    }
 }
 
 extension AccountVC:UITableViewDelegate,UITableViewDataSource {
@@ -156,7 +216,6 @@ extension AccountVC:UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withClass: AccountCell.self)
-        
         if indexPath.section == 0 {
             cell.lblTitle.text = arrTitle[indexPath.row]
             cell.img.image = UIImage(named: arrImage[indexPath.row])
@@ -171,20 +230,13 @@ extension AccountVC:UITableViewDelegate,UITableViewDataSource {
             cell.img.image = UIImage(named: arrImage[indexPath.row+7])
         }
         
+        cell.backgroundColor = .white
         cell.lblLine.isHidden = true
         tableView.separatorStyle = .singleLine
         tableView.separatorColor = .gray
         tableView.separatorInset.right = 16
         tableView.separatorInset.left = 16
-        
-//        if indexPath.row == 1 {
-//            cell.lblLine.isHidden = true
-//        }else if indexPath.row == 6 {
-//            cell.lblLine.isHidden = true
-//        }else if indexPath.row == 8 {
-//            cell.lblLine.isHidden = true
-//        }
-       
+      
         return cell
     }
     
@@ -210,6 +262,8 @@ extension AccountVC:UITableViewDelegate,UITableViewDataSource {
                 self.navigationController?.pushViewController(aVC, animated: true)
             }else if indexPath.row == 2 {
                 //Reminder
+                let aVC = AppStoryBoard.account.viewController(viewControllerClass: ReminderListVC.self)
+                self.navigationController?.pushViewController(aVC, animated: true)
             }else if indexPath.row == 3 {
                 //Billing and Order
             }else if indexPath.row == 4 {
@@ -244,4 +298,41 @@ extension AccountVC:UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 44
     }
+}
+
+extension AccountVC : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        if let image = info[.editedImage] as? UIImage {
+            imgUser.image = image
+            imageData = UploadDataModel(name: "image.jpeg", key: "Image", data: image.jpegData(compressionQuality: 0.5), extention: "jpeg", mimeType: "image/jpeg")
+            //CoUserDataModel.currentUser?.Image = imageData.name
+            self.callAddProfileImageAPI()
+        }
+        else if let image = info[.originalImage] as? UIImage {
+            imgUser.image = image
+            imageData = UploadDataModel(name: "image.jpeg", key: "Image", data: image.jpegData(compressionQuality: 0.5), extention: "jpeg", mimeType: "image/jpeg")
+            //CoUserDataModel.currentUser?.Image = imageData.name
+            self.callAddProfileImageAPI()
+        }
+        
+//        // Segment Tracking
+//        if picker.sourceType == .camera {
+//            SegmentTracking.shared.trackEvent(name: "Camera Photo Added", traits: ["userId" : LoginDataModel.currentUser?.UserID ?? ""], trackingType: .track)
+//        }
+//        else {
+//            SegmentTracking.shared.trackEvent(name: "Gallery Photo Added", traits: ["userId" : LoginDataModel.currentUser?.UserID ?? ""], trackingType: .track)
+//        }
+        
+        picker.dismiss(animated: true)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        // Segment Tracking
+//        SegmentTracking.shared.trackEvent(name: "Profile Photo Cancelled", traits: ["userId" : LoginDataModel.currentUser?.UserID ?? ""], trackingType: .track)
+        
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
 }

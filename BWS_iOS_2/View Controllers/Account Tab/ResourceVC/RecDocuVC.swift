@@ -37,12 +37,12 @@ class RecDocuVC: BaseViewController {
 extension RecDocuVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return ResourceVC.documentariesData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withClass: DocumentryCell.self)
-        //cell.configureCell(data: ResourceVC.documentariesData[indexPath.row])
+        cell.configureCell(data: ResourceVC.documentariesData[indexPath.row])
         return cell
     }
     

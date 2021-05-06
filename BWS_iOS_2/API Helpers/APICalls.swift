@@ -336,6 +336,52 @@ extension UIViewController {
         }
     }
     
+    // Resource List API Call
+    func callResourceListAPI(resourceID : String, complitionBlock : (() -> ())?) {
+        var CategoryName = ResourceVC.selectedCategory
+        
+        if ResourceVC.selectedCategory == "All" {
+            CategoryName = ""
+        }
+        
+        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+                          "ResourceTypeId":resourceID,
+                          "Category":CategoryName]
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.resourcelist(parameters)) { (response : ResourceListModel) in
+            
+            if response.ResponseCode == "200" && response.ResponseData != nil {
+                switch resourceID {
+                case ResourcesType.documentaries.rawValue:
+                    ResourceVC.documentariesData = response.ResponseData!
+                case ResourcesType.podcasts.rawValue:
+                    ResourceVC.podcastData = response.ResponseData!
+                case ResourcesType.websites.rawValue:
+                    ResourceVC.websiteData = response.ResponseData!
+                case ResourcesType.apps.rawValue:
+                    ResourceVC.appsData = response.ResponseData!
+                default:
+                    ResourceVC.audioData = response.ResponseData!
+                }
+                complitionBlock?()
+            } else {
+                switch resourceID {
+                case ResourcesType.documentaries.rawValue:
+                    ResourceVC.documentariesData = [ResourceListDataModel]()
+                case ResourcesType.podcasts.rawValue:
+                    ResourceVC.podcastData = [ResourceListDataModel]()
+                case ResourcesType.websites.rawValue:
+                    ResourceVC.websiteData = [ResourceListDataModel]()
+                case ResourcesType.apps.rawValue:
+                    ResourceVC.appsData = [ResourceListDataModel]()
+                default:
+                    ResourceVC.audioData = [ResourceListDataModel]()
+                }
+                complitionBlock?()
+            }
+        }
+    }
+    
 }
 
 extension ManageVC {
@@ -365,6 +411,22 @@ extension ManageVC {
             }
         }
     }
+    
+    // Change Reminder Status API Call
+    func callRemSatusAPI(status:String) {
+        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+                          "ReminderStatus":status,
+                          "PlaylistId":suggstedPlaylist?.PlaylistID ?? ""]
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.reminderstatus(parameters)) { (response :GeneralModel) in
+            
+            if response.ResponseCode == "200" {
+                self.callManageHomeAPI()
+                showAlertToast(message: response.ResponseMessage)
+            }
+        }
+    }
+    
 }
 
 extension ViewAllAudioVC {
@@ -528,6 +590,24 @@ extension PlaylistAudiosVC {
             }
         }
     }
+    
+    // Change Reminder Status API Call
+    func callRemSatusAPI(status:String) {
+        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+                          "ReminderStatus":status,
+                          "PlaylistId":objPlaylist?.PlaylistID ?? ""]
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.reminderstatus(parameters)) { (response :GeneralModel) in
+            
+            if response.ResponseCode == "200" {
+                
+                self.callPlaylistDetailAPI()
+                showAlertToast(message: response.ResponseMessage)
+                
+            }
+        }
+    }
+    
 }
 
 extension PlaylistDetailVC {
@@ -856,9 +936,9 @@ extension UserListPopUpVC {
 extension ResourceVC {
     
     func callResourceCategoryListAPI() {
-        let parameters = ["UserID":""]
+        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? ""]
         
-        APICallManager.sharedInstance.callAPI(router: APIRouter.resourcecategorylist(parameters)) { (response : ResourceCategoryModel) in
+        APICallManager.sharedInstance.callAPI(router: APIRouter.resourcecatlist(parameters)) { (response : ResourceCategoryModel) in
             
             if response.ResponseCode == "200" && response.ResponseData != nil {
                 ResourceVC.arrayCategories = response.ResponseData!
@@ -901,6 +981,21 @@ extension HomeVC {
         }
     }
     
+    // Change Reminder Status API Call
+    func callRemSatusAPI(status:String) {
+        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+                          "ReminderStatus":status,
+                          "PlaylistId":suggstedPlaylist?.PlaylistID ?? ""]
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.reminderstatus(parameters)) { (response :GeneralModel) in
+            
+            if response.ResponseCode == "200" {
+                self.callHomeAPI()
+                showAlertToast(message: response.ResponseMessage)
+            }
+        }
+    }
+    
 }
 
 extension AccountVC {
@@ -918,6 +1013,48 @@ extension AccountVC {
             }
         }
     }
+    
+    // Add Profile Image API
+    func callAddProfileImageAPI() {
+        var uploadData = [UploadDataModel]()
+        if imageData.data != nil {
+            uploadData = [imageData]
+        }
+        
+        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+                          "ProfileImage":uploadData[0].name]
+        
+        APICallManager.sharedInstance.callUploadWebService(apiUrl: APIRouter.updateprofileimg(parameters).urlRequest!.url!.absoluteString, includeHeader: true, parameters: parameters, uploadParameters: uploadData, httpMethod: .post) { (response : CoUserModel) in
+            
+            if response.ResponseCode == "200" {
+                self.imageData = UploadDataModel()
+                showAlertToast(message: response.ResponseMessage)
+                self.callGetCoUserDetailsAPI { (success) in
+                    if success {
+                        self.setupData()
+                    }
+                }
+            }
+        }
+    }
+    
+    // Remove Profile Image API
+    func callRemoveProfileImageAPI() {
+        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? ""]
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.removeprofileimg(parameters)) { (response : GeneralModel) in
+            
+            if response.ResponseCode == "200" {
+                showAlertToast(message: response.ResponseMessage)
+                self.callGetCoUserDetailsAPI { (success) in
+                    if success {
+                        self.setupData()
+                    }
+                }
+            }
+        }
+    }
+    
 }
 
 extension ChangePINVC {
@@ -936,4 +1073,199 @@ extension ChangePINVC {
             }
         }
     }
+}
+
+extension ChangePassWordVC {
+    
+    //call change pin
+    func callChangePasswordAPI() {
+        let parameters = ["UserID":LoginDataModel.currentUser?.ID ?? "",
+                          "CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+                          "OldPassword":txtfOldPassword.text ?? "",
+                          "NewPassword":txtFConfirmPassword.text ?? ""]
+        APICallManager.sharedInstance.callAPI(router: APIRouter.changepassword(parameters)) { (response :GeneralModel) in
+            
+            if response.ResponseCode == "200" {
+                showAlertToast(message: response.ResponseMessage)
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
+    }
+}
+
+extension FAQVC {
+    
+    // Country List API Call
+    func callFAQtAPI() {
+        APICallManager.sharedInstance.callAPI(router: APIRouter.faqlist) { (response : FAQListModel) in
+            if response.ResponseCode == "200" {
+                self.arrayFAQ = response.ResponseData
+                self.setupData()
+            }
+        }
+    }
+    
+}
+
+extension ReminderListVC {
+    
+    func callRemListAPI() {
+        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? ""]
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.reminderlist(parameters)) { (response :ReminderModel) in
+            
+            if response.ResponseCode == "200" {
+                self.arrayRemList = response.ResponseData
+                self.setupData()
+                
+//                // Segment Tracking
+//                if self.isReminderScreenTracked == false {
+//                    self.isReminderScreenTracked = true
+//                    SegmentTracking.shared.trackReminderScreenViewed(arrayReminders: response.ResponseData)
+//                }
+            }
+        }
+    }
+    func callRemSatusAPI(status:String) {
+        
+        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+                          "ReminderStatus":status,
+                          "PlaylistId":strRemID ?? ""]
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.reminderstatus(parameters)) { (response :GeneralModel) in
+            
+            if response.ResponseCode == "200" {
+                
+                self.callRemListAPI()
+                showAlertToast(message: response.ResponseMessage)
+            
+            }
+        }
+    }
+    
+    func callRemDeleteAPI(remID:String) {
+
+        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "","ReminderId":remID]
+
+        APICallManager.sharedInstance.callAPI(router: APIRouter.deletereminder(parameters)) { (response :GeneralModel) in
+
+            if response.ResponseCode == "200" {
+                
+                self.callRemListAPI()
+                self.setupData()
+                showAlertToast(message: response.ResponseMessage)
+            }
+        }
+    }
+}
+
+extension DayVC {
+    
+    func callSetRemAPI() {
+        
+        let strDay =  (arrSelectDays.map{String($0)}).joined(separator: ",")
+        print(strDay)
+
+        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+                          "PlaylistId":strPlaylistID ?? "",
+                          "IsSingle":"1",
+                          "ReminderTime":lblTime.text ?? "" ,
+                          "ReminderDay":strDay]
+
+        APICallManager.sharedInstance.callAPI(router: APIRouter.setreminder(parameters)) { (response : GeneralModel) in
+
+            if response.ResponseCode == "200" {
+                showAlertToast(message: response.ResponseMessage)
+            self.navigationController?.popViewController(animated: true)
+                self.setupData()
+                self.tableView.reloadData()
+
+            }
+        }
+    }
+}
+
+extension UIImageView {
+    
+    func loadUserProfileImage(fontSize : CGFloat) {
+        self.image = nil
+        
+        if let userImage = CoUserDataModel.profileImage {
+            self.image = userImage
+            return
+        }
+        
+        if let userData = CoUserDataModel.currentUser {
+            DispatchQueue.global().async {
+                if let imgUrl = URL(string: userData.Image.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+                    do {
+                        let imageData = try Data(contentsOf: imgUrl)
+                        let profileImage = UIImage(data: imageData)
+                        DispatchQueue.main.async {
+                            CoUserDataModel.profileImage = profileImage
+                            self.image = profileImage
+                            if profileImage == nil {
+                                self.setInitialProfileImage(fontSize: fontSize)
+                            }
+                        }
+                    }
+                    catch {
+                        print("Image Download Error : \(error.localizedDescription)")
+                        self.setInitialProfileImage(fontSize: fontSize)
+                    }
+                }
+                else {
+                    self.setInitialProfileImage(fontSize: fontSize)
+                }
+            }
+        }
+    }
+    
+    func setInitialProfileImage(initial : String? = nil, fontSize : CGFloat) {
+        let userName = (CoUserDataModel.currentUser?.Name ?? "").trim.count > 0 ? (CoUserDataModel.currentUser?.Name ?? "") : "Guest"
+        var nameInitial : String = "\(userName.first ?? "G")"
+        
+        if initial != nil {
+            nameInitial = initial!
+        }
+        
+        DispatchQueue.main.async {
+            self.setImageWith(nameInitial, color: Theme.colors.blue_38667E, circular: false, textAttributes: [NSAttributedString.Key.font : UIFont(name: CustomFonts.MontserratSemiBold, size: fontSize) as Any, NSAttributedString.Key.foregroundColor : UIColor.white])
+        }
+    }
+    
+}
+
+extension EditProfileVC {
+      //Update Profile Detail API
+        func callUpdateProfileDetailAPI() {
+            var DOB = selectedDOB.stringFromFormat(Theme.dateFormats.DOB_Backend)
+    
+            if txtFDOB.text?.trim.count == 0 {
+                DOB = ""
+            }
+    
+            let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+                              "Name":txtFName.text!,
+                              "Dob":DOB ,
+                              "MobileNo":txtFMobileNo.text!,
+                              "EmailId":txtFEmailAdd.text!]
+    
+            APICallManager.sharedInstance.callAPI(router: APIRouter.editprofile(parameters)) { (response : CoUserModel) in
+    
+                if response.ResponseCode == "200" {
+                    showAlertToast(message: response.ResponseMessage)
+                    self.callGetCoUserDetailsAPI { (success) in
+                        if success {
+                           self.setupData()
+                           self.navigationController?.popViewController(animated: true)
+                        }
+                    }
+
+    
+//                    // Segment Tracking
+//                    SegmentTracking.shared.identifyUser(profileDetails: response.ResponseData)
+                }
+            }
+        }
 }

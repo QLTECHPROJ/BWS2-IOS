@@ -285,6 +285,24 @@
 		28813B79263989A40015DA7A /* JSONSerializable+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28813B77263989A40015DA7A /* JSONSerializable+Helper.swift */; };
 		288621482615BF880087730D /* ViewAllPlaylistVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288621472615BF880087730D /* ViewAllPlaylistVC.swift */; };
 		288621492615BF880087730D /* ViewAllPlaylistVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288621472615BF880087730D /* ViewAllPlaylistVC.swift */; };
+		2891E29C2643CCF800658B49 /* DayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2891E2922643CCF800658B49 /* DayVC.swift */; };
+		2891E29D2643CCF800658B49 /* DayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2891E2922643CCF800658B49 /* DayVC.swift */; };
+		2891E29E2643CCF800658B49 /* ReminderListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2891E2932643CCF800658B49 /* ReminderListVC.swift */; };
+		2891E29F2643CCF800658B49 /* ReminderListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2891E2932643CCF800658B49 /* ReminderListVC.swift */; };
+		2891E2A02643CCF800658B49 /* SelectPlayListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2891E2952643CCF800658B49 /* SelectPlayListCell.swift */; };
+		2891E2A12643CCF800658B49 /* SelectPlayListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2891E2952643CCF800658B49 /* SelectPlayListCell.swift */; };
+		2891E2A22643CCF800658B49 /* ReminderListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2891E2962643CCF800658B49 /* ReminderListCell.swift */; };
+		2891E2A32643CCF800658B49 /* ReminderListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2891E2962643CCF800658B49 /* ReminderListCell.swift */; };
+		2891E2A42643CCF800658B49 /* ReminderListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2891E2972643CCF800658B49 /* ReminderListCell.xib */; };
+		2891E2A52643CCF800658B49 /* ReminderListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2891E2972643CCF800658B49 /* ReminderListCell.xib */; };
+		2891E2A62643CCF800658B49 /* SelectPlayListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2891E2982643CCF800658B49 /* SelectPlayListCell.xib */; };
+		2891E2A72643CCF800658B49 /* SelectPlayListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2891E2982643CCF800658B49 /* SelectPlayListCell.xib */; };
+		2891E2A82643CCF800658B49 /* TimeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2891E2992643CCF800658B49 /* TimeView.xib */; };
+		2891E2A92643CCF800658B49 /* TimeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2891E2992643CCF800658B49 /* TimeView.xib */; };
+		2891E2AA2643CCF800658B49 /* TimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2891E29A2643CCF800658B49 /* TimeView.swift */; };
+		2891E2AB2643CCF800658B49 /* TimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2891E29A2643CCF800658B49 /* TimeView.swift */; };
+		2891E2AC2643CCF800658B49 /* TimeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2891E29B2643CCF800658B49 /* TimeVC.swift */; };
+		2891E2AD2643CCF800658B49 /* TimeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2891E29B2643CCF800658B49 /* TimeVC.swift */; };
 		28B27820262EED41005794E3 /* DownloadVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B2781F262EED41005794E3 /* DownloadVC.swift */; };
 		28B27821262EED41005794E3 /* DownloadVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B2781F262EED41005794E3 /* DownloadVC.swift */; };
 		28B27823262EEECC005794E3 /* DownloadAudioVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B27822262EEECC005794E3 /* DownloadAudioVC.swift */; };
@@ -640,6 +658,15 @@
 		2880EEE3260A32C300D0B6A7 /* PlanListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlanListCell.xib; sourceTree = "<group>"; };
 		28813B77263989A40015DA7A /* JSONSerializable+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONSerializable+Helper.swift"; sourceTree = "<group>"; };
 		288621472615BF880087730D /* ViewAllPlaylistVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewAllPlaylistVC.swift; sourceTree = "<group>"; };
+		2891E2922643CCF800658B49 /* DayVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayVC.swift; sourceTree = "<group>"; };
+		2891E2932643CCF800658B49 /* ReminderListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderListVC.swift; sourceTree = "<group>"; };
+		2891E2952643CCF800658B49 /* SelectPlayListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectPlayListCell.swift; sourceTree = "<group>"; };
+		2891E2962643CCF800658B49 /* ReminderListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderListCell.swift; sourceTree = "<group>"; };
+		2891E2972643CCF800658B49 /* ReminderListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReminderListCell.xib; sourceTree = "<group>"; };
+		2891E2982643CCF800658B49 /* SelectPlayListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectPlayListCell.xib; sourceTree = "<group>"; };
+		2891E2992643CCF800658B49 /* TimeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimeView.xib; sourceTree = "<group>"; };
+		2891E29A2643CCF800658B49 /* TimeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeView.swift; sourceTree = "<group>"; };
+		2891E29B2643CCF800658B49 /* TimeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeVC.swift; sourceTree = "<group>"; };
 		28B2781F262EED41005794E3 /* DownloadVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadVC.swift; sourceTree = "<group>"; };
 		28B27822262EEECC005794E3 /* DownloadAudioVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadAudioVC.swift; sourceTree = "<group>"; };
 		28B27824262EEEE1005794E3 /* DownloadPlaylistVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadPlaylistVC.swift; sourceTree = "<group>"; };
@@ -1052,6 +1079,30 @@
 			path = ClockHelper;
 			sourceTree = "<group>";
 		};
+		2891E2912643CCF800658B49 /* Reminder */ = {
+			isa = PBXGroup;
+			children = (
+				2891E2942643CCF800658B49 /* Cell */,
+				2891E2922643CCF800658B49 /* DayVC.swift */,
+				2891E2932643CCF800658B49 /* ReminderListVC.swift */,
+				2891E29B2643CCF800658B49 /* TimeVC.swift */,
+			);
+			path = Reminder;
+			sourceTree = "<group>";
+		};
+		2891E2942643CCF800658B49 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				2891E2952643CCF800658B49 /* SelectPlayListCell.swift */,
+				2891E2982643CCF800658B49 /* SelectPlayListCell.xib */,
+				2891E2962643CCF800658B49 /* ReminderListCell.swift */,
+				2891E2972643CCF800658B49 /* ReminderListCell.xib */,
+				2891E29A2643CCF800658B49 /* TimeView.swift */,
+				2891E2992643CCF800658B49 /* TimeView.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		28B5352E260C627100BD8147 /* Purchase Manage Plan */ = {
 			isa = PBXGroup;
 			children = (
@@ -1179,11 +1230,12 @@
 		28E809472613497B00CD80F7 /* Account Tab */ = {
 			isa = PBXGroup;
 			children = (
-				9AC0672026394B2000287A44 /* FAQ */,
-				9AC066EB2639178E00287A44 /* ResourceVC */,
+				9AD558242636DFC0007ED68F /* Cell */,
 				9AC066EA2639176700287A44 /* AccountInfo */,
 				9AC066E92639174B00287A44 /* Download */,
-				9AD558242636DFC0007ED68F /* Cell */,
+				2891E2912643CCF800658B49 /* Reminder */,
+				9AC066EB2639178E00287A44 /* ResourceVC */,
+				9AC0672026394B2000287A44 /* FAQ */,
 				28E8094026130ACE00CD80F7 /* AccountVC.swift */,
 			);
 			path = "Account Tab";
@@ -1510,11 +1562,14 @@
 				28B53541260C781400BD8147 /* AreaOfFocusCell.xib in Resources */,
 				28ED2F8E25FB58E000E59C56 /* Montserrat-Light.ttf in Resources */,
 				283153BC2614401E004001CE /* ManagePlaylistCell.xib in Resources */,
+				2891E2A92643CCF800658B49 /* TimeView.xib in Resources */,
 				2870B43825FB41A10014A4F6 /* DJPageMenuCell.xib in Resources */,
 				28346E25260B5A5900DD41BE /* FAQCell.xib in Resources */,
+				2891E2A52643CCF800658B49 /* ReminderListCell.xib in Resources */,
 				28ED2F9625FB58E000E59C56 /* Montserrat-Italic.ttf in Resources */,
 				28E01224261847EA00B55967 /* IndexScoreCell.xib in Resources */,
 				9AC067072639178F00287A44 /* PodcastCell.xib in Resources */,
+				2891E2A72643CCF800658B49 /* SelectPlayListCell.xib in Resources */,
 				9AD5582B2636E6C7007ED68F /* AccountCell.xib in Resources */,
 				28E8092D261308F900CD80F7 /* Wellness.storyboard in Resources */,
 				28B53538260C690600BD8147 /* SleepTimeCell.xib in Resources */,
@@ -1570,11 +1625,14 @@
 				28B53540260C781400BD8147 /* AreaOfFocusCell.xib in Resources */,
 				282441632609CB4E0060292E /* GoogleService-Info.plist in Resources */,
 				283153BB2614401E004001CE /* ManagePlaylistCell.xib in Resources */,
+				2891E2A82643CCF800658B49 /* TimeView.xib in Resources */,
 				28ED2F9525FB58E000E59C56 /* Montserrat-Italic.ttf in Resources */,
 				28346E24260B5A5900DD41BE /* FAQCell.xib in Resources */,
+				2891E2A42643CCF800658B49 /* ReminderListCell.xib in Resources */,
 				28ED2FC125FB931800E59C56 /* OptionsCell.xib in Resources */,
 				28E01223261847EA00B55967 /* IndexScoreCell.xib in Resources */,
 				9AC067062639178F00287A44 /* PodcastCell.xib in Resources */,
+				2891E2A62643CCF800658B49 /* SelectPlayListCell.xib in Resources */,
 				9AD558292636DFFA007ED68F /* AccountCell.xib in Resources */,
 				28E8092C261308F900CD80F7 /* Wellness.storyboard in Resources */,
 				28B53537260C690600BD8147 /* SleepTimeCell.xib in Resources */,
@@ -1731,8 +1789,10 @@
 				28ED2F9B25FB5E9500E59C56 /* ProfileForm1VC.swift in Sources */,
 				28B2F4AC2642C143009A4E5B /* PlanFeaturesCell.swift in Sources */,
 				28E809532613591400CD80F7 /* AudioCollectionCell.swift in Sources */,
+				2891E2A12643CCF800658B49 /* SelectPlayListCell.swift in Sources */,
 				2870B44825FB41A10014A4F6 /* ReorderController+AutoScroll.swift in Sources */,
 				28ED2FB625FB8C6E00E59C56 /* ProfileForm4VC.swift in Sources */,
+				2891E2AB2643CCF800658B49 /* TimeView.swift in Sources */,
 				284C9B6B262E93D1008C4435 /* CryptLib.m in Sources */,
 				2870B45E25FB44700014A4F6 /* NSDate+Timepiece.swift in Sources */,
 				281DE3302626FD79002CCD9D /* AudioDownloads+CoreDataProperties.swift in Sources */,
@@ -1746,6 +1806,7 @@
 				2870B41E25FB41A10014A4F6 /* UIImageView+Letters.m in Sources */,
 				2824413B2609AB9C0060292E /* CountryListVC.swift in Sources */,
 				283F72F0261D994900554774 /* AssessmentVC.swift in Sources */,
+				2891E29D2643CCF800658B49 /* DayVC.swift in Sources */,
 				2870B42C25FB41A10014A4F6 /* AnimationFrames.swift in Sources */,
 				2824413C2609ABA10060292E /* SignUpVC.swift in Sources */,
 				2870B46025FB44700014A4F6 /* String+Timepiece.swift in Sources */,
@@ -1803,6 +1864,7 @@
 				282441462609ACE30060292E /* UserListCell.swift in Sources */,
 				282441522609AD2E0060292E /* UserListVC.swift in Sources */,
 				287E807C262D3F760006A925 /* AddAudioViewAllVC.swift in Sources */,
+				2891E29F2643CCF800658B49 /* ReminderListVC.swift in Sources */,
 				28E012042618471500B55967 /* NotificatonVC.swift in Sources */,
 				28ED2FB325FB8C6600E59C56 /* ProfileForm3VC.swift in Sources */,
 				2870B41C25FB41A10014A4F6 /* MimeType.swift in Sources */,
@@ -1831,6 +1893,7 @@
 				28E012072618474000B55967 /* PlaylistAudiosVC.swift in Sources */,
 				283153BA2614401E004001CE /* ManagePlaylistCell.swift in Sources */,
 				283153C2261448C9004001CE /* CreatePlaylistVC.swift in Sources */,
+				2891E2AD2643CCF800658B49 /* TimeVC.swift in Sources */,
 				28E8093F26130AA500CD80F7 /* ElevateVC.swift in Sources */,
 				2870B3EC25FB41A10014A4F6 /* UINavigationBar+Extension.swift in Sources */,
 				9AC067192639178F00287A44 /* RecWebSite.swift in Sources */,
@@ -1854,6 +1917,7 @@
 				9AC0671D2639304E00287A44 /* FeatureCell.swift in Sources */,
 				28B5353B260C706200BD8147 /* AreaOfFocusVC.swift in Sources */,
 				2870B3FA25FB41A10014A4F6 /* ExpandableLabel.swift in Sources */,
+				2891E2A32643CCF800658B49 /* ReminderListCell.swift in Sources */,
 				281DE32C2626FD79002CCD9D /* CoreDataHelper.swift in Sources */,
 				2870B35925FB3A570014A4F6 /* AppDelegate.swift in Sources */,
 				28B53550260CC44100BD8147 /* DynamicHeightCollectionView.swift in Sources */,
@@ -1926,8 +1990,10 @@
 				28ED2F9A25FB5E9500E59C56 /* ProfileForm1VC.swift in Sources */,
 				28B2F4AB2642C143009A4E5B /* PlanFeaturesCell.swift in Sources */,
 				28E809522613591400CD80F7 /* AudioCollectionCell.swift in Sources */,
+				2891E2A02643CCF800658B49 /* SelectPlayListCell.swift in Sources */,
 				2870B44725FB41A10014A4F6 /* ReorderController+AutoScroll.swift in Sources */,
 				28ED2FB525FB8C6E00E59C56 /* ProfileForm4VC.swift in Sources */,
+				2891E2AA2643CCF800658B49 /* TimeView.swift in Sources */,
 				284C9B6A262E93D1008C4435 /* CryptLib.m in Sources */,
 				2870B45D25FB44700014A4F6 /* NSDate+Timepiece.swift in Sources */,
 				281DE32F2626FD79002CCD9D /* AudioDownloads+CoreDataProperties.swift in Sources */,
@@ -1941,6 +2007,7 @@
 				2870B41D25FB41A10014A4F6 /* UIImageView+Letters.m in Sources */,
 				2870B42B25FB41A10014A4F6 /* AnimationFrames.swift in Sources */,
 				283F72EF261D994900554774 /* AssessmentVC.swift in Sources */,
+				2891E29C2643CCF800658B49 /* DayVC.swift in Sources */,
 				2870B45F25FB44700014A4F6 /* String+Timepiece.swift in Sources */,
 				2870B3E725FB41A10014A4F6 /* UIViewController+Extension.swift in Sources */,
 				280C48F52600729900063C03 /* ManageStartVC.swift in Sources */,
@@ -1998,6 +2065,7 @@
 				2870B37325FB405D0014A4F6 /* APICalls.swift in Sources */,
 				282441452609ACE30060292E /* UserListCell.swift in Sources */,
 				282441512609AD2E0060292E /* UserListVC.swift in Sources */,
+				2891E29E2643CCF800658B49 /* ReminderListVC.swift in Sources */,
 				287E807B262D3F760006A925 /* AddAudioViewAllVC.swift in Sources */,
 				28E012032618471500B55967 /* NotificatonVC.swift in Sources */,
 				28252FA925FF4CA200C2EB50 /* DassAssessmentVC.swift in Sources */,
@@ -2026,6 +2094,7 @@
 				28E012062618474000B55967 /* PlaylistAudiosVC.swift in Sources */,
 				283153B92614401E004001CE /* ManagePlaylistCell.swift in Sources */,
 				283153C1261448C9004001CE /* CreatePlaylistVC.swift in Sources */,
+				2891E2AC2643CCF800658B49 /* TimeVC.swift in Sources */,
 				28E8093E26130AA500CD80F7 /* ElevateVC.swift in Sources */,
 				282441382609AB6E0060292E /* SignUpVC.swift in Sources */,
 				9AC067182639178F00287A44 /* RecWebSite.swift in Sources */,
@@ -2049,6 +2118,7 @@
 				9AC0671C2639304E00287A44 /* FeatureCell.swift in Sources */,
 				2870B3D125FB41A10014A4F6 /* DJTextField.swift in Sources */,
 				28B5353A260C706200BD8147 /* AreaOfFocusVC.swift in Sources */,
+				2891E2A22643CCF800658B49 /* ReminderListCell.swift in Sources */,
 				2870B3E525FB41A10014A4F6 /* ImagePicker.swift in Sources */,
 				281DE32B2626FD79002CCD9D /* CoreDataHelper.swift in Sources */,
 				2870B3F925FB41A10014A4F6 /* ExpandableLabel.swift in Sources */,

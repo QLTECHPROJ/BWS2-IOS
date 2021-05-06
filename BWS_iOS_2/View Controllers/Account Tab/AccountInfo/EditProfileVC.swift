@@ -38,7 +38,8 @@ class EditProfileVC: BaseViewController {
     //MARK:- View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-       setupUI()
+        setupUI()
+        self.setupData()
     }
     
     //MARK:- Functions
@@ -48,13 +49,37 @@ class EditProfileVC: BaseViewController {
         txtFDOB.delegate = self
         txtFName.delegate = self
         
-        initDOBPickerView()
         buttonEnableDisable()
-        
     }
     
     override func setupData() {
-        
+        if let userData = CoUserDataModel.currentUser {
+            let userName = userData.Name.trim.count > 0 ? userData.Name : "Guest"
+            
+            txtFName.text = userName
+            txtFMobileNo.text = userData.Mobile
+            txtFEmailAdd.text = userData.Email
+            txtFDOB.text = userData.DOB
+            
+            txtFMobileNo.isEnabled = false
+            txtFDOB.isEnabled = false
+            imgCheckEmail.isHidden = false
+            txtFEmailAdd.isEnabled = false
+            
+            txtFDOB.textColor = Theme.colors.gray_EEEEEE
+            txtFMobileNo.textColor = Theme.colors.gray_EEEEEE
+            txtFEmailAdd.textColor = Theme.colors.gray_EEEEEE
+            
+            self.initDOBPickerView()
+            
+            if txtFDOB.text == userData.DOB ||  txtFEmailAdd.text == userData.Email || txtFName.text == userName  {
+                btnSave.isUserInteractionEnabled = false
+                btnSave.backgroundColor = hexStringToUIColor(hex: "7E7E7E")
+            } else {
+                btnSave.isUserInteractionEnabled = true
+                btnSave.backgroundColor = hexStringToUIColor(hex: "#008892")
+            }
+        }
     }
     
     override func buttonEnableDisable() {
@@ -165,10 +190,10 @@ class EditProfileVC: BaseViewController {
         txtFDOB.datePicker?.maximumDate = tenYearsAgo
         txtFDOB.dateFormatter.dateFormat = Theme.dateFormats.DOB_App
         
-        if let userData = LoginDataModel.currentUser {
+        if let userData = CoUserDataModel.currentUser {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = Theme.dateFormats.DOB_App
-           // tenYearsAgo = dateFormatter.date(from: userData.d)
+            tenYearsAgo = dateFormatter.date(from: userData.DOB)
         }
         
         let dateFormatter = DateFormatter()
@@ -179,9 +204,16 @@ class EditProfileVC: BaseViewController {
             txtFDOB.datePicker?.date = tenYearsAgo!
             selectedDOB = tenYearsAgo!
             //lblDobPlaceholder.isHidden = txtFDOB.text?.count == 0
+            CoUserDataModel.currentUser?.DOB = txtFDOB.text ?? ""
         }
         
         //txtDOBTopConst.constant = (txtFDOB.text?.count == 0) ? 0 : 10
+    }
+    
+    @objc func textFieldValueChanged(textField : UITextField ) {
+       // lblDobPlaceholder.isHidden = txtDOB.text?.count == 0
+       // txtDOBTopConst.constant = (txtDOB.text?.count == 0) ? 0 : 10
+        self.view.layoutIfNeeded()
     }
     
     //MARK:- IBAction Methods
@@ -191,7 +223,9 @@ class EditProfileVC: BaseViewController {
     
     @IBAction func onTappedSave(_ sender: UIButton) {
         
-        checkValidation()
+        if checkValidation() {
+            callUpdateProfileDetailAPI()
+        }
     }
     
   
@@ -221,7 +255,17 @@ extension EditProfileVC : UITextFieldDelegate {
             }
         }
         
-        return true
+        let inValidCharacterSet = NSCharacterSet.whitespaces
+        guard let firstChar = string.unicodeScalars.first else {
+            return true
+        }
+        
+        if inValidCharacterSet.contains(firstChar) && textField == txtFName {
+            return true
+        }
+        
+        return !inValidCharacterSet.contains(firstChar)
+        
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {

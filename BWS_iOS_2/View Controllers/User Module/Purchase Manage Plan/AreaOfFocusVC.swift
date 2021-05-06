@@ -30,10 +30,6 @@ class AreaOfFocusVC: BaseViewController {
         
         callGetRecommendedCategoryAPI()
         
-        if isFromEdit {
-            self.clearAudioPlayer()
-        }
-        
         // DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
         //     let aVC = AppStoryBoard.main.viewController(viewControllerClass: PreparingPlaylistVC.self)
         //     self.navigationController?.pushViewController(aVC, animated: true)
@@ -140,6 +136,11 @@ class AreaOfFocusVC: BaseViewController {
     // MARK:- ACTIONS
     @IBAction func continueClicked() {
         print("Sleep Time :- ",averageSleepTime)
+        
+        if isFromEdit && DJMusicPlayer.shared.currentPlaylist?.Created == "2" {
+            self.clearAudioPlayer()
+        }
+        
         if arrayAreaOfFocus.count > 0 {
             var selectedCategories = [[String:Any]]()
             for category in arrayAreaOfFocus {

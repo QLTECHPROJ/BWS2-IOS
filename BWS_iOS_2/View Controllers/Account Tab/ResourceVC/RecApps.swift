@@ -37,12 +37,12 @@ class RecApps: BaseViewController {
 extension RecApps : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return ResourceVC.appsData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withClass: AppsCollectionCell.self, for: indexPath)
-        //cell.configureCell(data: ResourceVC.appsData[indexPath.row])
+        cell.configureCell(data: ResourceVC.appsData[indexPath.row])
         cell.lblSubTitle.isHidden = true
         return cell
     }

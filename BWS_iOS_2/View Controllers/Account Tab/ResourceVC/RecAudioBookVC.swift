@@ -37,19 +37,19 @@ class RecAudioBookVC: BaseViewController {
 extension RecAudioBookVC : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return ResourceVC.audioData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withClass: AppsCollectionCell.self, for: indexPath)
-        //cell.configureCell(data: ResourceVC.audioData[indexPath.row])
+        cell.configureCell(data: ResourceVC.audioData[indexPath.row])
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let aVC = AppStoryBoard.account.viewController(viewControllerClass: ResourceDetailVC.self)
         aVC.objDetail = ResourceVC.audioData[indexPath.row]
-//        aVC.screenTitle = self.title ?? "Resource"
+        aVC.screenTitle = self.title ?? "Resource"
         aVC.screenTitle = "Audio Books"
         self.navigationController?.pushViewController(aVC, animated: true)
     }
