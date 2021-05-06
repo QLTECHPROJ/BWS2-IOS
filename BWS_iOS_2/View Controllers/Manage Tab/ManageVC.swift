@@ -121,7 +121,7 @@ class ManageVC: BaseViewController {
             }
             
             if playlistData.IsReminder == "1" {
-                btnReminder.setTitle("     Turn off reminder     ", for: .normal)
+                btnReminder.setTitle("     Reminder(s)     ", for: .normal)
             } else {
                 btnReminder.setTitle("     Set reminder     ", for: .normal)
             }
@@ -363,7 +363,7 @@ class ManageVC: BaseViewController {
             // Membership Module Remove
             openInactivePopup(controller: self)
         } else if arrayPlaylistHomeData[sectionIndex].IsLock == "2" {
-            showAlertToast(message: "Please re-activate your membership plan")
+            showAlertToast(message: Theme.strings.alert_reactivate_plan)
         } else {
             let aVC = AppStoryBoard.manage.viewController(viewControllerClass: CreatePlaylistVC.self)
             self.navigationController?.pushViewController(aVC, animated: true)

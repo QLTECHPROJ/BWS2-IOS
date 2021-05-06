@@ -179,7 +179,7 @@ class PlaylistCategoryVC: BaseViewController {
             // Membership Module Remove
             openInactivePopup(controller: self)
         } else if arrayPlaylistHomeData[0].IsLock == "2" {
-            showAlertToast(message: "Please re-activate your membership plan")
+            showAlertToast(message: Theme.strings.alert_reactivate_plan)
         } else {
             let aVC = AppStoryBoard.manage.viewController(viewControllerClass: CreatePlaylistVC.self)
             self.navigationController?.pushViewController(aVC, animated: true)

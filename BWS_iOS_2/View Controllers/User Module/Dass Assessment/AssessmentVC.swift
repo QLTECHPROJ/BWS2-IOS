@@ -108,7 +108,7 @@ class AssessmentVC: BaseViewController {
     }
     
     override func buttonEnableDisable() {
-        btnPre.isEnabled = pageIndex > 0
+        btnPre.isHidden = pageIndex == 0
         
         if arrNewSection.count > 0 {
             let arrData = arrNewSection[pageIndex]

@@ -291,6 +291,10 @@
 		28B27825262EEEE1005794E3 /* DownloadPlaylistVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B27824262EEEE1005794E3 /* DownloadPlaylistVC.swift */; };
 		28B27826262EEEE1005794E3 /* DownloadPlaylistVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B27824262EEEE1005794E3 /* DownloadPlaylistVC.swift */; };
 		28B27827262EEF5F005794E3 /* DownloadAudioVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B27822262EEECC005794E3 /* DownloadAudioVC.swift */; };
+		28B2F4AB2642C143009A4E5B /* PlanFeaturesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B2F4A92642C143009A4E5B /* PlanFeaturesCell.swift */; };
+		28B2F4AC2642C143009A4E5B /* PlanFeaturesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B2F4A92642C143009A4E5B /* PlanFeaturesCell.swift */; };
+		28B2F4AD2642C143009A4E5B /* PlanFeaturesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28B2F4AA2642C143009A4E5B /* PlanFeaturesCell.xib */; };
+		28B2F4AE2642C143009A4E5B /* PlanFeaturesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28B2F4AA2642C143009A4E5B /* PlanFeaturesCell.xib */; };
 		28B53530260C635000BD8147 /* SleepTimeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B5352F260C635000BD8147 /* SleepTimeVC.swift */; };
 		28B53531260C635000BD8147 /* SleepTimeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B5352F260C635000BD8147 /* SleepTimeVC.swift */; };
 		28B53535260C690600BD8147 /* SleepTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B53533260C690600BD8147 /* SleepTimeCell.swift */; };
@@ -639,6 +643,8 @@
 		28B2781F262EED41005794E3 /* DownloadVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadVC.swift; sourceTree = "<group>"; };
 		28B27822262EEECC005794E3 /* DownloadAudioVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadAudioVC.swift; sourceTree = "<group>"; };
 		28B27824262EEEE1005794E3 /* DownloadPlaylistVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadPlaylistVC.swift; sourceTree = "<group>"; };
+		28B2F4A92642C143009A4E5B /* PlanFeaturesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanFeaturesCell.swift; sourceTree = "<group>"; };
+		28B2F4AA2642C143009A4E5B /* PlanFeaturesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlanFeaturesCell.xib; sourceTree = "<group>"; };
 		28B5352F260C635000BD8147 /* SleepTimeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepTimeVC.swift; sourceTree = "<group>"; };
 		28B53533260C690600BD8147 /* SleepTimeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepTimeCell.swift; sourceTree = "<group>"; };
 		28B53534260C690600BD8147 /* SleepTimeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SleepTimeCell.xib; sourceTree = "<group>"; };
@@ -1245,6 +1251,8 @@
 				282441422609ACE20060292E /* UserListCell.xib */,
 				28ED2FBD25FB931800E59C56 /* OptionsCell.swift */,
 				28ED2FBE25FB931800E59C56 /* OptionsCell.xib */,
+				28B2F4A92642C143009A4E5B /* PlanFeaturesCell.swift */,
+				28B2F4AA2642C143009A4E5B /* PlanFeaturesCell.xib */,
 				2880EEE2260A32C300D0B6A7 /* PlanListCell.swift */,
 				2880EEE3260A32C300D0B6A7 /* PlanListCell.xib */,
 				28346E20260B5A5900DD41BE /* FAQCell.swift */,
@@ -1524,6 +1532,7 @@
 				28ED2F9025FB58E000E59C56 /* Montserrat-Bold.ttf in Resources */,
 				28E01242261847EA00B55967 /* AreaCell.xib in Resources */,
 				281984902638214E00DA5A66 /* SuggestedPlaylistCell.xib in Resources */,
+				28B2F4AE2642C143009A4E5B /* PlanFeaturesCell.xib in Resources */,
 				28E80927261308E300CD80F7 /* Home.storyboard in Resources */,
 				282441482609ACE30060292E /* UserListCell.xib in Resources */,
 				2870B35E25FB3A570014A4F6 /* LaunchScreen.storyboard in Resources */,
@@ -1583,6 +1592,7 @@
 				28ED2F8F25FB58E000E59C56 /* Montserrat-Bold.ttf in Resources */,
 				28E01241261847EA00B55967 /* AreaCell.xib in Resources */,
 				2819848F2638214E00DA5A66 /* SuggestedPlaylistCell.xib in Resources */,
+				28B2F4AD2642C143009A4E5B /* PlanFeaturesCell.xib in Resources */,
 				28E80926261308E300CD80F7 /* Home.storyboard in Resources */,
 				28F812BC25FB364900DC6AF6 /* LaunchScreen.storyboard in Resources */,
 				28ED2F9125FB58E000E59C56 /* Montserrat-SemiBold.ttf in Resources */,
@@ -1719,6 +1729,7 @@
 				28786CB1262967F7000E8598 /* ViewAllCell.swift in Sources */,
 				283529A42609DA6F009AB2AA /* OrderSummaryVC.swift in Sources */,
 				28ED2F9B25FB5E9500E59C56 /* ProfileForm1VC.swift in Sources */,
+				28B2F4AC2642C143009A4E5B /* PlanFeaturesCell.swift in Sources */,
 				28E809532613591400CD80F7 /* AudioCollectionCell.swift in Sources */,
 				2870B44825FB41A10014A4F6 /* ReorderController+AutoScroll.swift in Sources */,
 				28ED2FB625FB8C6E00E59C56 /* ProfileForm4VC.swift in Sources */,
@@ -1913,6 +1924,7 @@
 				28786CB0262967F7000E8598 /* ViewAllCell.swift in Sources */,
 				283529A12609DA1A009AB2AA /* OrderSummaryVC.swift in Sources */,
 				28ED2F9A25FB5E9500E59C56 /* ProfileForm1VC.swift in Sources */,
+				28B2F4AB2642C143009A4E5B /* PlanFeaturesCell.swift in Sources */,
 				28E809522613591400CD80F7 /* AudioCollectionCell.swift in Sources */,
 				2870B44725FB41A10014A4F6 /* ReorderController+AutoScroll.swift in Sources */,
 				28ED2FB525FB8C6E00E59C56 /* ProfileForm4VC.swift in Sources */,

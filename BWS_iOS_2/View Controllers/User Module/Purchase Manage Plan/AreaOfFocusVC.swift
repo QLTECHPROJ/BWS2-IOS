@@ -30,6 +30,10 @@ class AreaOfFocusVC: BaseViewController {
         
         callGetRecommendedCategoryAPI()
         
+        if isFromEdit {
+            self.clearAudioPlayer()
+        }
+        
         // DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
         //     let aVC = AppStoryBoard.main.viewController(viewControllerClass: PreparingPlaylistVC.self)
         //     self.navigationController?.pushViewController(aVC, animated: true)
@@ -107,7 +111,7 @@ class AreaOfFocusVC: BaseViewController {
                 cat.RecommendedCat = arrayCategories[indexPath.section].Details[indexPath.row].ProblemName
                 arrayAreaOfFocus.append(cat)
             } else {
-                showAlertToast(message: "You can select maximum 3 categories")
+                showAlertToast(message: Theme.strings.alert_max_category)
             }
         }
         
@@ -126,7 +130,7 @@ class AreaOfFocusVC: BaseViewController {
         //                }
         //            }
         //        } else {
-        //            showAlertToast(message: "You can select maximum 3 categories")
+        //            showAlertToast(message: Theme.strings.alert_max_category)
         //        }
         //
         //        self.setupData()
@@ -146,7 +150,7 @@ class AreaOfFocusVC: BaseViewController {
             
             callSaveCategoryAPI(areaOfFocus: selectedCategories)
         } else {
-            showAlertToast(message: "Please Select Category")
+            showAlertToast(message: Theme.strings.alert_select_category)
         }
     }
     

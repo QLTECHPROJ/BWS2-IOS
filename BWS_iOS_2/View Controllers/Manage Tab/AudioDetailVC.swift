@@ -194,7 +194,7 @@ class AudioDetailVC: BaseViewController {
             openInactivePopup(controller: self)
             return
         } else if lockDownloads == "2" {
-            showAlertToast(message: "Please re-activate your membership plan")
+            showAlertToast(message: Theme.strings.alert_reactivate_plan)
             return
         }
         

@@ -171,7 +171,7 @@ extension ManagePlaylistCell : UICollectionViewDelegate, UICollectionViewDataSou
             if homeData.IsLock == "1" {
                 // Membership Module Remove
             } else if homeData.IsLock == "2" {
-                showAlertToast(message: "Please re-activate your membership plan")
+                showAlertToast(message: Theme.strings.alert_reactivate_plan)
             } else {
                 didSelectPlaylistAtIndex?(indexPath.row)
             }

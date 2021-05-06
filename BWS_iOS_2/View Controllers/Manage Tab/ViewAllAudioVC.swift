@@ -162,7 +162,7 @@ extension ViewAllAudioVC : UICollectionViewDataSource, UICollectionViewDelegate,
             openInactivePopup(controller: self)
             return
         } else if homeData.IsLock == "2" && homeData.Details[indexPath.row].IsPlay != "1" {
-            showAlertToast(message: "Please re-activate your membership plan")
+            showAlertToast(message: Theme.strings.alert_reactivate_plan)
             return
         } else {
             if homeData.View == "Top Categories" {

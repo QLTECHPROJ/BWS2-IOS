@@ -40,7 +40,7 @@ class ProfileForm1VC: BaseViewController {
         self.view.layoutIfNeeded()
         
         progressView.progress = 0.0
-        btnPrev.isEnabled = false
+        btnPrev.isHidden = true
         
         btnNext.isEnabled = false
         if ProfileFormModel.shared.profileType.trim.count > 0 {

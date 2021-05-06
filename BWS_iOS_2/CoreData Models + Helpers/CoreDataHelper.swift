@@ -30,7 +30,7 @@ class CoreDataHelper {
         }
         
         if objects.count > 0 {
-            showAlertToast(message: "Audio has been already added to download list.")
+            showAlertToast(message: Theme.strings.alert_audio_already_downloaded)
             return
         }
         
@@ -59,9 +59,9 @@ class CoreDataHelper {
             
             let isDownloaded = DJDownloadManager.shared.checkFileExists(fileName: audioData.AudioFile)
             if isDownloaded && audioData.isSingleAudio == "1" {
-                showAlertToast(message: "Audio download complete and added to your downloads")
+                showAlertToast(message: Theme.strings.alert_audio_downloaded)
             } else if audioData.isSingleAudio == "1" {
-                showAlertToast(message: "Audio download has been started.")
+                showAlertToast(message: Theme.strings.alert_audio_download_started)
             }
             
             DJDownloadManager.shared.fetchNextDownload()
@@ -71,7 +71,7 @@ class CoreDataHelper {
             refreshPlayerDownloadedAudios()
         } catch {
             print("Error :- ",error.localizedDescription)
-            showAlertToast(message: "An errored while downloading audio.")
+            showAlertToast(message: Theme.strings.alert_audio_download_error)
         }
     }
     
@@ -304,11 +304,11 @@ class CoreDataHelper {
         
         do {
             try context.save()
-            showAlertToast(message: "Removed from your downloads")
+            showAlertToast(message: Theme.strings.alert_removed_from_downloads)
             NotificationCenter.default.post(name: NSNotification.Name.refreshDownloadData, object: nil)
         } catch {
             print("Error :- ",error.localizedDescription)
-            showAlertToast(message: "An error occured while deleting audio.")
+            showAlertToast(message: Theme.strings.alert_audio_delete_error)
         }
         
         DJDownloadManager.shared.fetchNextDownload()
@@ -323,7 +323,7 @@ class CoreDataHelper {
         }
         catch {
             print("Error :- ",error.localizedDescription)
-            showAlertToast(message: "An error occured while deleting audios.")
+            showAlertToast(message: Theme.strings.alert_audios_delete_error)
         }
     }
     
@@ -336,7 +336,7 @@ extension CoreDataHelper {
     func savePlayist(playlistData : PlaylistDetailsModel) {
         
         if self.checkPlaylistDownloaded(playlistData: playlistData) {
-            showAlertToast(message: "Playlist has been already added to download list.")
+            showAlertToast(message: Theme.strings.alert_playlist_already_downloaded)
             return
         }
         
@@ -365,15 +365,15 @@ extension CoreDataHelper {
             try context.save()
             let playlistDownloadProgress = CoreDataHelper.shared.updatePlaylistDownloadProgress(playlistID: playlistData.PlaylistID)
             if  playlistDownloadProgress < 1 {
-                showAlertToast(message: "Playlist download has been started.")
+                showAlertToast(message: Theme.strings.alert_playlist_download_started)
             } else {
-                showAlertToast(message: "Playlist download complete and added to your downloads")
+                showAlertToast(message: Theme.strings.alert_playlist_downloaded)
             }
             DJDownloadManager.shared.fetchNextDownload()
             NotificationCenter.default.post(name: NSNotification.Name.refreshDownloadData, object: nil)
         } catch {
             print("Error :- ",error.localizedDescription)
-            showAlertToast(message: "An errored while downloading playlist.")
+            showAlertToast(message: Theme.strings.alert_playlist_download_error)
         }
     }
     
@@ -475,12 +475,12 @@ extension CoreDataHelper {
             }
             
             try context.save()
-            showAlertToast(message: "Playlist has been removed.")
+            showAlertToast(message: Theme.strings.alert_playlist_removed)
             NotificationCenter.default.post(name: NSNotification.Name.refreshDownloadData, object: nil)
             DJDownloadManager.shared.fetchNextDownload()
         } catch {
             print("Error :- ",error.localizedDescription)
-            showAlertToast(message: "An error occured while deleting playlist.")
+            showAlertToast(message: Theme.strings.alert_playlist_delete_error)
         }
     }
     
@@ -512,7 +512,7 @@ extension CoreDataHelper {
             NotificationCenter.default.post(name: NSNotification.Name.refreshDownloadData, object: nil)
         } catch {
             print("Error :- ",error.localizedDescription)
-            showAlertToast(message: "An error occured while deleting playlists.")
+            showAlertToast(message: Theme.strings.alert_playlists_delete_error)
         }
     }
     

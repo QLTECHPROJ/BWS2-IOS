@@ -401,7 +401,7 @@ open class DJMusicPlayer: NSObject {
         }
         
         if isInDatabase == true && isLocal == false && checkInternet() == false {
-            showAlertToast(message: Theme.strings.alert_redownload)
+            showAlertToast(message: Theme.strings.alert_redownload_audio)
             return false
         } else if isLocal == false && checkInternet() == false {
             showAlertToast(message: Theme.strings.alert_check_internet)
@@ -440,7 +440,7 @@ open class DJMusicPlayer: NSObject {
         }
         
         if isInDatabase == true && isLocal == false && checkInternet() == false {
-            showAlertToast(message: Theme.strings.alert_redownload)
+            showAlertToast(message: Theme.strings.alert_redownload_audio)
             return false
         } else if isLocal == false && checkInternet() == false {
             showAlertToast(message: Theme.strings.alert_check_internet)
@@ -510,7 +510,7 @@ open class DJMusicPlayer: NSObject {
         }
         
         if isInDatabase == true && isLocal == false && checkInternet() == false {
-            showAlertToast(message: Theme.strings.alert_redownload)
+            showAlertToast(message: Theme.strings.alert_redownload_audio)
             self.isStoppedBecauseOfNetwork = true
             return
         } else if isLocal == false && checkInternet() == false {

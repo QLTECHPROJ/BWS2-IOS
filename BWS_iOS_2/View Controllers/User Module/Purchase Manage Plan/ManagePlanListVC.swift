@@ -15,10 +15,14 @@ class ManagePlanListVC: BaseViewController {
     // MARK:- OUTLETS
     @IBOutlet weak var lblPrivacy: TTTAttributedLabel!
     
+    @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblSubTitle: UILabel!
     @IBOutlet weak var lblAccessAudioTitle: UILabel!
     @IBOutlet weak var lblIntroductorySubTitle: UILabel!
     @IBOutlet weak var lblFeedbackTitle: UILabel!
+    
+    @IBOutlet weak var tblPlanFeatures: UITableView!
+    @IBOutlet weak var tblPlanFeaturesHeightConst: NSLayoutConstraint!
     
     @IBOutlet weak var lblProfiles: UILabel!
     
@@ -29,6 +33,8 @@ class ManagePlanListVC: BaseViewController {
     @IBOutlet weak var lblTrialText: UILabel!
     
     @IBOutlet weak var collectionViewAudios: UICollectionView!
+    
+    @IBOutlet weak var viewSessionHeightConst: NSLayoutConstraint!
     
     @IBOutlet weak var carouselView: iCarousel!
     
@@ -75,6 +81,10 @@ class ManagePlanListVC: BaseViewController {
         setStartButtonTitle()
         setupPrivacyLabel()
         
+        viewSessionHeightConst.constant = 0
+        self.view.layoutIfNeeded()
+        
+        tblPlanFeatures.register(nibWithCellClass: PlanFeaturesCell.self)
         tblPlanList.register(nibWithCellClass: PlanListCell.self)
         tblFAQ.register(nibWithCellClass: FAQCell.self)
         
@@ -98,6 +108,8 @@ class ManagePlanListVC: BaseViewController {
         arrayVideos = dataModel.TestminialVideo
         arrayQuestions = dataModel.FAQs
         
+        lblTitle.text = dataModel.Title
+        
         let normalString = dataModel.Desc
         lblSubTitle.attributedText = normalString.attributedString(alignment: .center, lineSpacing: 10)
         
@@ -112,9 +124,13 @@ class ManagePlanListVC: BaseViewController {
         
         setStartButtonTitle()
         
+        tblPlanFeaturesHeightConst.constant = CGFloat(PlanFeatures.count * 38)
+        self.view.layoutIfNeeded()
+        
         tblPlanListHeightConst.constant = CGFloat(arrayPlans.count * 110)
         self.view.layoutIfNeeded()
         
+        tblPlanFeatures.reloadData()
         tblPlanList.reloadData()
         tblFAQ.reloadData()
         
@@ -309,24 +325,34 @@ extension ManagePlanListVC : TTTAttributedLabelDelegate {
 extension ManagePlanListVC : UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableView == tblFAQ {
+        if tableView == tblPlanFeatures {
+            return PlanFeatures.count
+        } else if tableView == tblFAQ {
             return arrayQuestions.count
-        } else {
+        } else if tableView == tblPlanList {
             return arrayPlans.count
         }
+        
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if tableView == tblFAQ {
+        if tableView == tblPlanFeatures {
+            let cell = tableView.dequeueReusableCell(withClass: PlanFeaturesCell.self)
+            cell.configureCell(data: PlanFeatures[indexPath.row])
+            return cell
+        } else if tableView == tblFAQ {
             let cell = tableView.dequeueReusableCell(withClass: FAQCell.self)
             cell.configureCell(data: arrayQuestions[indexPath.row])
             return cell
-        } else {
+        } else if tableView == tblPlanList {
             let cell = tableView.dequeueReusableCell(withClass: PlanListCell.self)
             let isSelected = (indexPath.row == selectedPlanIndex)
             cell.configureCell(data: arrayPlans[indexPath.row], isSelected: isSelected)
             return cell
         }
+        
+        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -342,8 +368,7 @@ extension ManagePlanListVC : UITableViewDataSource, UITableViewDelegate {
             tableView.reloadData()
             
             setStartButtonTitle()
-        }
-        else {
+        } else if tableView == tblPlanList {
             selectedPlanIndex = indexPath.row
             tableView.reloadData()
             
@@ -361,12 +386,15 @@ extension ManagePlanListVC : UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if tableView == tblFAQ {
+        if tableView == tblPlanFeatures {
+            return 38
+        } else if tableView == tblFAQ {
             return UITableView.automaticDimension
-        }
-        else {
+        } else if tableView == tblPlanList {
             return 110
         }
+        
+        return 0
     }
     
 }

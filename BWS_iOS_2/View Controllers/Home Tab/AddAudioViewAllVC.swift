@@ -80,7 +80,7 @@ class AddAudioViewAllVC: BaseViewController {
             // Membership Module Remove
             openInactivePopup(controller: self)
         } else if audioData.IsLock == "2" {
-           showAlertToast(message: "Please re-activate your membership plan")
+           showAlertToast(message: Theme.strings.alert_reactivate_plan)
         } else {
             if isComeFromAddAudio {
                 callAddAudioToPlaylistAPI(audioToAdd: audioData.ID, playlistToAdd: "")
@@ -105,7 +105,7 @@ class AddAudioViewAllVC: BaseViewController {
             // Membership Module Remove
             openInactivePopup(controller: self)
         } else if lock == "2" {
-            showAlertToast(message: "Please re-activate your membership plan")
+            showAlertToast(message: Theme.strings.alert_reactivate_plan)
         } else {
             if isComeFromAddAudio {
                 callAddAudioToPlaylistAPI(audioToAdd: "", playlistToAdd: playlistID)
@@ -184,7 +184,7 @@ extension AddAudioViewAllVC : UITableViewDelegate, UITableViewDataSource {
                 // Membership Module Remove
                 openInactivePopup(controller: self)
             } else if  arrayPlayList[indexPath.row].IsLock == "2" {
-                showAlertToast(message: "Please re-activate your membership plan")
+                showAlertToast(message: Theme.strings.alert_reactivate_plan)
             } else {
                 // Segment Tracking
                 // SegmentTracking.shared.playlistEvents(name: "Suggested Playlist Clicked", objPlaylist: arrayPlayList[indexPath.row], trackingType: .track)
@@ -199,7 +199,7 @@ extension AddAudioViewAllVC : UITableViewDelegate, UITableViewDataSource {
                 // Membership Module Remove
                 openInactivePopup(controller: self)
             } else if arrayAudio[indexPath.row].IsLock == "2" && arrayAudio[indexPath.row].IsPlay != "1" {
-                showAlertToast(message: "Please re-activate your membership plan")
+                showAlertToast(message: Theme.strings.alert_reactivate_plan)
             } else {
                 if DJMusicPlayer.shared.currentlyPlaying?.isDisclaimer == true {
                     showAlertToast(message: Theme.strings.alert_disclaimer_playing)

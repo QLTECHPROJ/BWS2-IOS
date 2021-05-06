@@ -273,7 +273,7 @@ struct AppStrings {
     let logout = "LOG OUT"
     
     /*    Common Strings    */
-    let please_wait = "Please wait..."
+    let please_wait = "Please wait"
     
     /*    Alert Strings    */
     let alert_check_internet = "Internet connection seems to be offline."
@@ -302,7 +302,6 @@ struct AppStrings {
     let alert_select_login_user = "Please select atleast one to proceed"
     
     // Audio
-    let alert_already_downloaded = "Audio has been already downloaded"
     let alert_blank_search = "Please enter search text"
     
     // Playlist
@@ -318,11 +317,6 @@ struct AppStrings {
     let alert_blank_State = "State is required"
     let alert_blank_postalCode = "Postcode is required"
     
-    // Downloads
-    let alert_redownload = "Audio download was incomplete, will be downloaded automatically when online."
-    let alert_redownload_playlist = "Playlist download was incomplete, will be downloaded automatically when online."
-    
-    
     let alert_reactivate_plan = "Please re-activate your membership plan"
     
     let alert_disclaimer_playing = "The audio shall start playing after the disclaimer."
@@ -333,9 +327,28 @@ struct AppStrings {
     let alert_playing_playlist_remove = "Currently this playlist is in player,so you can't delete this playlist as of now."
     let alert_playing_audio_remove = "Currently this audio is in player,so you can't delete this audio as of now."
     
-    let alert_queue_audio_limit = "Can't add more than 20 audios in Queue."
-    let alert_queue_audio_added = "Added to the queue"
-    let alert_queue_audio_already_added = "Audio already in queue"
+    let alert_select_category = "Please Select Category"
+    let alert_max_category = "You can select maximum 3 categories"
+    
+    let alert_removed_from_downloads = "Removed from your downloads"
+    
+    // Download
+    let alert_audio_already_downloaded = "Audio has been already added to download list."
+    let alert_audio_download_started = "Audio download has been started."
+    let alert_audio_downloaded = "Audio download complete and added to your downloads"
+    let alert_redownload_audio = "Audio download was incomplete, will be downloaded automatically when online."
+    let alert_audio_download_error = "An errored while downloading audio."
+    let alert_audio_delete_error = "An error occured while deleting audio."
+    let alert_audios_delete_error = "An error occured while deleting audios."
+    
+    let alert_playlist_removed = "Playlist has been removed."
+    let alert_playlist_already_downloaded = "Playlist has been already added to download list."
+    let alert_playlist_download_started = "Playlist download has been started."
+    let alert_playlist_downloaded = "Playlist download complete and added to your downloads"
+    let alert_redownload_playlist = "Playlist download was incomplete, will be downloaded automatically when online."
+    let alert_playlist_download_error = "An errored while downloading playlist."
+    let alert_playlist_delete_error = "An error occured while deleting playlist."
+    let alert_playlists_delete_error = "An error occured while deleting playlists."
 }
 
 // MARK: - UIStatusBarStyle - autoDarkContent

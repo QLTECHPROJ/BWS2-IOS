@@ -269,7 +269,7 @@ class PlaylistAudiosVC: BaseViewController {
         }
         
         if details.IsReminder == "1" {
-            btnReminder.setTitle("     Turn off reminder     ", for: .normal)
+            btnReminder.setTitle("     Reminder(s)     ", for: .normal)
         } else {
             btnReminder.setTitle("     Set reminder     ", for: .normal)
         }

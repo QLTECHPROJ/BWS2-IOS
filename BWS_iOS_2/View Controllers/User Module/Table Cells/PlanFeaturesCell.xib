@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Medium.ttf">
+            <string>Montserrat-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PlanFeaturesCell" id="KGk-i7-Jjw" customClass="PlanFeaturesCell" customModule="BWS_2_Staging" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="38"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="38"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="orange_tick" translatesAutoresizingMaskIntoConstraints="NO" id="WK2-CE-cJd">
+                        <rect key="frame" x="40" y="14.5" width="12" height="9"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="9" id="S1U-nY-rZV"/>
+                            <constraint firstAttribute="width" constant="12" id="X1U-SN-hxc"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Access 75+ Audio Programs" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lPF-lG-4On">
+                        <rect key="frame" x="72" y="8" width="263" height="22"/>
+                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="17"/>
+                        <color key="textColor" name="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="WK2-CE-cJd" firstAttribute="centerY" secondItem="lPF-lG-4On" secondAttribute="centerY" id="0QB-Ma-RNd"/>
+                    <constraint firstAttribute="trailing" secondItem="lPF-lG-4On" secondAttribute="trailing" constant="40" id="3vO-6q-c3y"/>
+                    <constraint firstItem="lPF-lG-4On" firstAttribute="leading" secondItem="WK2-CE-cJd" secondAttribute="trailing" constant="20" id="Q9O-1p-bLv"/>
+                    <constraint firstItem="lPF-lG-4On" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="X4i-g5-RWM"/>
+                    <constraint firstItem="lPF-lG-4On" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="fu3-BX-97J"/>
+                    <constraint firstItem="WK2-CE-cJd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="40" id="llM-UA-3bk"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="lblFeature" destination="lPF-lG-4On" id="ULj-rF-ecm"/>
+            </connections>
+            <point key="canvasLocation" x="139" y="153"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="orange_tick" width="12" height="9"/>
+        <namedColor name="textColor">
+            <color red="0.19215686274509805" green="0.19215686274509805" blue="0.19215686274509805" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

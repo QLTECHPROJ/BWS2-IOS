@@ -145,7 +145,7 @@ extension ViewAllPlaylistVC : UICollectionViewDataSource, UICollectionViewDelega
             // Membership Module Remove
             openInactivePopup(controller: self)
         } else if homeData.IsLock == "2" {
-            showAlertToast(message: "Please re-activate your membership plan")
+            showAlertToast(message: Theme.strings.alert_reactivate_plan)
         } else {
             let aVC = AppStoryBoard.home.viewController(viewControllerClass: PlaylistAudiosVC.self)
             aVC.objPlaylist = homeData.Details[indexPath.row]

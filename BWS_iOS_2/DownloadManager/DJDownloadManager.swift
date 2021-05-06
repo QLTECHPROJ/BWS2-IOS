@@ -212,7 +212,7 @@ class DJDownloadManager {
                     print("Downloaded file's url is \(fileUrl.path)")
                     // CoreDataHelper.shared.updateDownloadLocation(filePath: fileUrl)
                     NotificationCenter.default.post(name: NSNotification.Name.refreshDownloadData, object: nil)
-                    // showAlertToast(message: "Audio download complete and added to your downloads")
+                    // showAlertToast(message: Theme.strings.alert_audio_downloaded)
                     
                     if let urlPath = request.url?.absoluteString {
                         self.showDownloadSuccessMessage(fileUrl: urlPath)
@@ -255,11 +255,11 @@ class DJDownloadManager {
         }
         
         if isSingleAudio {
-            showAlertToast(message: "Audio download complete and added to your downloads")
+            showAlertToast(message: Theme.strings.alert_audio_downloaded)
         }
         
         if isPlaylistDownloaded == true {
-            showAlertToast(message: "Playlist download complete and added to your downloads")
+            showAlertToast(message: Theme.strings.alert_playlist_downloaded)
         }
         
     }

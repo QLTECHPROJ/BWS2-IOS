@@ -370,7 +370,7 @@ class PlayerVC: BaseViewController {
     
     @IBAction func forwardClicked(sender : UIButton) {
         if (DJMusicPlayer.shared.duration - DJMusicPlayer.shared.currentTime) <= 30 {
-            showAlertToast(message: "Please wait")
+            showAlertToast(message: Theme.strings.please_wait)
             return
         }
         
@@ -394,7 +394,7 @@ class PlayerVC: BaseViewController {
             openInactivePopup(controller: self, openWithNavigation: true)
             return
         } else if lockDownloads == "2" {
-            showAlertToast(message: "Please re-activate your membership plan")
+            showAlertToast(message: Theme.strings.alert_reactivate_plan)
             return
         }
         

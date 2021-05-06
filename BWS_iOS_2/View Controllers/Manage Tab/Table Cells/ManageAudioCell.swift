@@ -152,7 +152,7 @@ extension ManageAudioCell : UICollectionViewDelegate, UICollectionViewDataSource
                 if arrayAudioDetails[indexPath.row].IsPlay == "1" {
                     didSelectAudioAtIndex?(indexPath.row)
                 } else {
-                    showAlertToast(message: "Please re-activate your membership plan")
+                    showAlertToast(message: Theme.strings.alert_reactivate_plan)
                 }
             } else {
                 didSelectAudioAtIndex?(indexPath.row)
