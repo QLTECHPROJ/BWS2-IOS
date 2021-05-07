@@ -99,7 +99,7 @@ class SignUpVC: BaseViewController {
         if strMobile.count == 0 {
             isValid = false
             self.lblErrMobileNo.isHidden = false
-            self.lblErrMobileNo.text = Theme.strings.alert_blank_mobile_error
+            self.lblErrMobileNo.text = Theme.strings.alert_invalid_mobile_error
         } else if strMobile.count < 8 || strMobile.count > 10 {
             isValid = false
             self.lblErrMobileNo.isHidden = false
@@ -113,7 +113,7 @@ class SignUpVC: BaseViewController {
         if txtFEmailAdd.text?.trim.count == 0 {
             isValid = false
             lblErrEmail.isHidden = false
-            lblErrEmail.text = Theme.strings.alert_blank_email_error
+            lblErrEmail.text = Theme.strings.alert_invalid_email_error
         } else if !txtFEmailAdd.text!.isValidEmail {
             isValid = false
             lblErrEmail.isHidden = false
@@ -123,7 +123,7 @@ class SignUpVC: BaseViewController {
         if txtFPassWord.text?.trim.count == 0 {
             isValid = false
             lblErrPass.isHidden = false
-            lblErrPass.text = Theme.strings.alert_blank_password_error
+            lblErrPass.text = Theme.strings.alert_invalid_password_error
         } else if txtFPassWord.text!.trim.count < 8 {
             isValid = false
             lblErrPass.isHidden = false

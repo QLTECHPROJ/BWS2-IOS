@@ -73,7 +73,7 @@ class LoginVC: BaseViewController {
         if txtFEmailAdd.text?.trim.count == 0 {
             isValid = false
             lblErrEmail.isHidden = false
-            lblErrEmail.text = Theme.strings.alert_blank_email_error
+            lblErrEmail.text = Theme.strings.alert_invalid_email_error
         } else if !txtFEmailAdd.text!.isValidEmail {
             isValid = false
             lblErrEmail.isHidden = false

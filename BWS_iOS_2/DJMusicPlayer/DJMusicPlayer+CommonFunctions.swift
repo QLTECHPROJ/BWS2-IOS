@@ -23,8 +23,7 @@ class QueuedSongsData: EVObject {
 func fetchNowPlayingSongs() {
     if let userData = UserDefaults.standard.data(forKey: "NowPlayingSongs") {
         DJMusicPlayer.shared.nowPlayingList = QueuedSongsData(data: userData).arraySongs
-    }
-    else {
+    } else {
         DJMusicPlayer.shared.nowPlayingList = [AudioDetailsDataModel]()
     }
 }
@@ -167,8 +166,7 @@ func refreshPlayerDownloadedAudios() {
             saveNowPlayingSongs()
         }
         DJMusicPlayer.shared.playIndex = newIndex!
-    }
-    else {
+    } else {
         if DJMusicPlayer.shared.nowPlayingList.count > currentIndex {
             if DJMusicPlayer.shared.currentlyPlaying?.isDisclaimer == true {
                 let disclaimer = DisclaimerAudio.shared.fetchDisclaimerAudio(data: DJMusicPlayer.shared.currentlyPlaying!)
@@ -182,8 +180,7 @@ func refreshPlayerDownloadedAudios() {
                 
                 DJMusicPlayer.shared.requestToPlay()
             }
-        }
-        else {
+        } else {
             if DJMusicPlayer.shared.currentlyPlaying?.isDisclaimer == true {
                 let disclaimer = DisclaimerAudio.shared.fetchDisclaimerAudio(data: DJMusicPlayer.shared.currentlyPlaying!)
                 DJMusicPlayer.shared.nowPlayingList.insert(disclaimer, at: 0)
@@ -328,8 +325,7 @@ func refreshNowPlayingSongs(playlistID : String, arraySongs : [AudioDetailsDataM
             saveNowPlayingSongs()
         }
         DJMusicPlayer.shared.playIndex = newIndex!
-    }
-    else {
+    } else {
         if DJMusicPlayer.shared.nowPlayingList.count > currentIndex {
             if DJMusicPlayer.shared.currentlyPlaying?.isDisclaimer == true {
                 let disclaimer = DisclaimerAudio.shared.fetchDisclaimerAudio(data: DJMusicPlayer.shared.currentlyPlaying!)
@@ -343,8 +339,7 @@ func refreshNowPlayingSongs(playlistID : String, arraySongs : [AudioDetailsDataM
                 
                 DJMusicPlayer.shared.requestToPlay()
             }
-        }
-        else {
+        } else {
             if DJMusicPlayer.shared.currentlyPlaying?.isDisclaimer == true {
                 let disclaimer = DisclaimerAudio.shared.fetchDisclaimerAudio(data: DJMusicPlayer.shared.currentlyPlaying!)
                 DJMusicPlayer.shared.nowPlayingList.insert(disclaimer, at: 0)

@@ -119,7 +119,7 @@ class EditProfileVC: BaseViewController {
         if strMobile.count == 0 {
             isValid = false
             lblErrMobileNo.isHidden = false
-            lblErrMobileNo.text = Theme.strings.alert_blank_mobile_error
+            lblErrMobileNo.text = Theme.strings.alert_invalid_mobile_error
         } else if strMobile.count < 8 || strMobile.count > 10 {
             isValid = false
             lblErrMobileNo.isHidden = false
@@ -133,7 +133,7 @@ class EditProfileVC: BaseViewController {
         if strEmail.count == 0 {
             isValid = false
             lblErrEmailAdd.isHidden = false
-            lblErrEmailAdd.text = Theme.strings.alert_blank_email_error
+            lblErrEmailAdd.text = Theme.strings.alert_invalid_email_error
         } else if strEmail.isValidEmail == false {
             isValid = false
             lblErrEmailAdd.isHidden = false

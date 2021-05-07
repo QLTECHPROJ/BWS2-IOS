@@ -50,7 +50,7 @@ class CountryListVC: BaseViewController {
         } else {
             txtSearch.isUserInteractionEnabled = true
             lblNoData.isHidden = false
-            lblNoData.text = "Search term not found please use another one"
+            lblNoData.text = Theme.strings.alert_search_term_not_found
         }
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.viewTapped(_:)))
@@ -114,7 +114,7 @@ extension CountryListVC : UITextFieldDelegate {
                 lblNoData.isHidden = true
             } else {
                 lblNoData.isHidden = false
-                lblNoData.text = "Couldn't find " + updatedText + " Try searching again"
+                lblNoData.text = Theme.strings.alert_country_search // "Couldn't find " + updatedText + " Try searching again"
             }
             lblNoData.isHidden = arrayCountrySearch.count != 0
             tableView.isHidden = arrayCountrySearch.count == 0

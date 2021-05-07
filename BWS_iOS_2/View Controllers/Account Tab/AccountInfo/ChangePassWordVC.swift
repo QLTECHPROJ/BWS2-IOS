@@ -72,7 +72,7 @@ class ChangePassWordVC: BaseViewController {
         if strPin1.count == 0 {
             isValid = false
             lblErrOldPass.isHidden = false
-            lblErrOldPass.text = Theme.strings.alert_blank_password_error
+            lblErrOldPass.text = Theme.strings.alert_invalid_password_error
         }else if txtfOldPassword.text!.trim.count < 8 {
             isValid = false
             lblErrOldPass.isHidden = false
@@ -82,7 +82,7 @@ class ChangePassWordVC: BaseViewController {
         if strPin2.count == 0 {
             isValid = false
             lblErrNewPass.isHidden = false
-            lblErrNewPass.text = Theme.strings.alert_blank_password_error
+            lblErrNewPass.text = Theme.strings.alert_invalid_password_error
         }else if txtFNewPassword.text!.trim.count < 8 {
             isValid = false
             lblErrNewPass.isHidden = false
@@ -92,7 +92,7 @@ class ChangePassWordVC: BaseViewController {
         if strPin3.count == 0 {
             isValid = false
             lblErrConfirmPass.isHidden = false
-            lblErrConfirmPass.text = Theme.strings.alert_blank_password_error
+            lblErrConfirmPass.text = Theme.strings.alert_invalid_password_error
         }else if txtFConfirmPassword.text!.trim.count < 8 {
             isValid = false
             lblErrConfirmPass.isHidden = false

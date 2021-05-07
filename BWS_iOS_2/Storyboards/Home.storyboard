@@ -313,6 +313,12 @@
                                     <constraint firstItem="qzf-Aw-hj6" firstAttribute="leading" secondItem="2Tk-sv-M9d" secondAttribute="leading" constant="16" id="eZc-pP-92V"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No data found." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wNV-gL-NaG">
+                                <rect key="frame" x="30" y="391" width="315" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HQG-du-ZTb">
                                 <rect key="frame" x="0.0" y="96" width="375" height="682"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -326,15 +332,19 @@
                         <constraints>
                             <constraint firstItem="HQG-du-ZTb" firstAttribute="top" secondItem="2Tk-sv-M9d" secondAttribute="bottom" constant="8" symbolic="YES" id="8Wd-QK-6DX"/>
                             <constraint firstItem="xi2-h6-CSS" firstAttribute="trailing" secondItem="HQG-du-ZTb" secondAttribute="trailing" id="AAr-I8-6La"/>
+                            <constraint firstItem="wNV-gL-NaG" firstAttribute="centerX" secondItem="tdJ-Tz-zfd" secondAttribute="centerX" id="Crg-kt-4rs"/>
                             <constraint firstItem="2Tk-sv-M9d" firstAttribute="top" secondItem="xi2-h6-CSS" secondAttribute="top" id="GqV-He-trp"/>
                             <constraint firstItem="xi2-h6-CSS" firstAttribute="trailing" secondItem="2Tk-sv-M9d" secondAttribute="trailing" id="JbU-Iv-vbT"/>
                             <constraint firstItem="xi2-h6-CSS" firstAttribute="bottom" secondItem="HQG-du-ZTb" secondAttribute="bottom" id="YcO-Tw-xxp"/>
                             <constraint firstItem="2Tk-sv-M9d" firstAttribute="leading" secondItem="xi2-h6-CSS" secondAttribute="leading" id="biq-wp-Pf6"/>
+                            <constraint firstItem="wNV-gL-NaG" firstAttribute="leading" secondItem="xi2-h6-CSS" secondAttribute="leading" constant="30" id="leX-wV-b30"/>
                             <constraint firstItem="HQG-du-ZTb" firstAttribute="leading" secondItem="xi2-h6-CSS" secondAttribute="leading" id="mfs-bG-3lo"/>
+                            <constraint firstItem="wNV-gL-NaG" firstAttribute="centerY" secondItem="tdJ-Tz-zfd" secondAttribute="centerY" id="nTa-p0-xel"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xi2-h6-CSS"/>
                     </view>
                     <connections>
+                        <outlet property="lblNoData" destination="wNV-gL-NaG" id="Ytd-bX-kqE"/>
                         <outlet property="tableView" destination="HQG-du-ZTb" id="FjH-dw-H0v"/>
                     </connections>
                 </viewController>
@@ -1326,7 +1336,7 @@
         <image name="Download" width="20" height="20"/>
         <image name="DropDown" width="11.333333015441895" height="6.6666665077209473"/>
         <image name="Notification" width="12.333333015441895" height="15"/>
-        <image name="Play" width="170.66667175292969" height="170.66667175292969"/>
+        <image name="Play" width="100" height="100"/>
         <image name="PlayBackground" width="343" height="253"/>
         <image name="PlayerWall" width="375" height="812"/>
         <image name="Search" width="15.666666984558105" height="15.666666984558105"/>

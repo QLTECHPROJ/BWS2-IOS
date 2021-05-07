@@ -282,18 +282,21 @@ struct AppStrings {
     let alert_logout = "Are you sure want to logout?"
     let alert_blank_inputField_error = "Please fill required details"
     
+    let alert_search_term_not_found = "Search term not found please use another one"
+    let alert_country_search = "Sorry we are not available in this country yet"
+    
     // Auth & Profile
     let alert_blank_mobile_error = "Please enter your mobile number"
-    let alert_invalid_mobile_error = "Please enter a valid mobile number"
+    let alert_invalid_mobile_error = "Please provide a valid mobile number"
     let alert_invalid_otp = "Please enter the SMS code"
     
-    let alert_blank_fullname_error = "Name is required"
+    let alert_blank_fullname_error = "Please provide a Name"
     let alert_blank_dob_error = "Date of Birth should not be blank"
     let alert_dob_error = "You must be 18 years of age to register"
     let alert_invalid_fullname_error = "Please enter valid Name"
     
     let alert_blank_email_error = "Email address is required"
-    let alert_invalid_email_error = "Please enter a valid email address"
+    let alert_invalid_email_error = "Please provide a valid email address"
     let alert_camera_not_available = "Camera is not available on this device."
     
     let alert_blank_password_error = "Please enter password"

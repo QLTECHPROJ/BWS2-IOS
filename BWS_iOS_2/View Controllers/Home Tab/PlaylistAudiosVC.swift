@@ -832,10 +832,6 @@ extension PlaylistAudiosVC : TableViewReorderDelegate {
             return false
         }
         
-        if objPlaylist!.Created == "0" {
-            return false
-        }
-        
         if DJMusicPlayer.shared.currentlyPlaying?.isDisclaimer == true && isPlayingPlaylist(playlistID: self.objPlaylist!.PlaylistID) {
             showAlertToast(message: Theme.strings.alert_disclaimer_playlist_sorting)
             return false

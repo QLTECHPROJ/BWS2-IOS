@@ -50,7 +50,7 @@ class DoDassAssessmentVC: BaseViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        let normalString = "We're done with the first part. \n\nLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore. \n\nAt vero eos et accusam et justo duo dolores et ea"
+        let normalString = "We're done with the first part. \n\nIn the next step, you will have to fill an assessment form which will help us assess your mental health."
         lblSubTitle.attributedText = normalString.attributedString(alignment: .left, lineSpacing: 10)
     }
     

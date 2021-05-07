@@ -110,9 +110,6 @@ class SelfDevCell: UITableViewCell {
         self.generalConfigure(data: data)
         self.configureCell(backgroundColor: .white, buttonColor: .black, hideDownload: true, hideDelete: false, hideChangePosition: false)
         
-        lblTitle.textColor = Theme.colors.textColor
-        lblDuration.textColor = Theme.colors.gray_DDDDDD
-        
         btnChangePosition.setImage(UIImage(named: "Sorting"), for: UIControl.State.normal)
     }
     
