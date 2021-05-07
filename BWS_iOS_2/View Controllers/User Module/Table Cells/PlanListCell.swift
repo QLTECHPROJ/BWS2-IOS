@@ -20,11 +20,13 @@ class PlanListCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        viewBack.backgroundColor = Theme.colors.off_white_F9F9F9
-        
-        lblPlan.textColor = Theme.colors.textColor
-        lblPlanDesc.textColor = Theme.colors.textColor
-        lblPlanPrice.textColor = Theme.colors.textColor
+        DispatchQueue.main.async {
+            self.viewBack.backgroundColor = Theme.colors.off_white_F9F9F9
+            
+            self.lblPlan.textColor = Theme.colors.textColor
+            self.lblPlanDesc.textColor = Theme.colors.textColor
+            self.lblPlanPrice.textColor = Theme.colors.textColor
+        }
     }
     
     // Configure Cell
@@ -34,19 +36,20 @@ class PlanListCell: UITableViewCell {
         lblPlanDesc.text = data.SubName
         lblPlanPrice.text = "$" + data.PlanAmount
         
-        if isSelected {
-            viewBack.backgroundColor = Theme.colors.skyBlue
-            
-            lblPlan.textColor = Theme.colors.white
-            lblPlanDesc.textColor = Theme.colors.white
-            lblPlanPrice.textColor = Theme.colors.white
-        }
-        else {
-            viewBack.backgroundColor = Theme.colors.off_white_F9F9F9
-            
-            lblPlan.textColor = Theme.colors.textColor
-            lblPlanDesc.textColor = Theme.colors.textColor
-            lblPlanPrice.textColor = Theme.colors.textColor
+        DispatchQueue.main.async {
+            if isSelected {
+                self.viewBack.backgroundColor = Theme.colors.skyBlue
+                
+                self.lblPlan.textColor = Theme.colors.white
+                self.lblPlanDesc.textColor = Theme.colors.white
+                self.lblPlanPrice.textColor = Theme.colors.white
+            } else {
+                self.viewBack.backgroundColor = Theme.colors.off_white_F9F9F9
+                
+                self.lblPlan.textColor = Theme.colors.textColor
+                self.lblPlanDesc.textColor = Theme.colors.textColor
+                self.lblPlanPrice.textColor = Theme.colors.textColor
+            }
         }
         
         viewPopular.isHidden = (data.RecommendedFlag != "1")

@@ -58,7 +58,8 @@ extension SignUpVC {
         APICallManager.sharedInstance.callAPI(router: APIRouter.signup(parameters), displayHud: true, showToast: false) { (response : LoginModel) in
             if response.ResponseCode == "200" {
                 showAlertToast(message: response.ResponseMessage)
-                self.navigationController?.popViewController(animated: true)
+                let aVC = AppStoryBoard.main.viewController(viewControllerClass:LoginVC.self)
+                self.navigationController?.pushViewController(aVC, animated: true)
             } else {
                 if response.ResponseMessage.trim.count > 0 {
                     self.lblErrPass.isHidden = false
@@ -299,6 +300,22 @@ extension UIViewController {
                 DispatchQueue.main.async {
                     complitionBlock?(false)
                 }
+            }
+        }
+    }
+    
+    // Call Log Out API
+    func callLogoutAPI(complitionBlock : (() -> ())?) {
+        let parameters = ["UserID":LoginDataModel.currentUser?.ID ?? "",
+                          "Token":FCM_TOKEN,
+                          "DeviceType":APP_TYPE]
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.logout(parameters)) { (response : GeneralModel) in
+            
+            if response.ResponseCode == "200" {
+                complitionBlock?()
+            } else {
+                complitionBlock?()
             }
         }
     }
@@ -1020,20 +1037,6 @@ extension HomeVC {
 }
 
 extension AccountVC {
-    
-    //call logout
-    func callLogoutAPI() {
-        let parameters = ["UserID":LoginDataModel.currentUser?.ID ?? "",
-                          "Token":FCM_TOKEN,
-                          "DeviceType":APP_TYPE]
-        APICallManager.sharedInstance.callAPI(router: APIRouter.logout(parameters)) { (response :GeneralModel) in
-            
-            if response.ResponseCode == "200" {
-                showAlertToast(message: response.ResponseMessage)
-                self.logoutClicked()
-            }
-        }
-    }
     
     // Add Profile Image API
     func callAddProfileImageAPI() {

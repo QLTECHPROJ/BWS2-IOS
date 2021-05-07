@@ -113,11 +113,16 @@ class DassAssessmentResultVC: BaseViewController {
     }
     
     override func goNext() {
-        let aVC = AppStoryBoard.main.viewController(viewControllerClass:ManagePlanListVC.self)
-        let navVC = UINavigationController(rootViewController: aVC)
-        navVC.isNavigationBarHidden = true
-        navVC.modalPresentationStyle = .overFullScreen
-        self.navigationController?.present(navVC, animated: true, completion: nil)
+        if CoUserDataModel.currentUser?.planDetails?.count == 0 {
+            let aVC = AppStoryBoard.main.viewController(viewControllerClass:ManagePlanListVC.self)
+            let navVC = UINavigationController(rootViewController: aVC)
+            navVC.isNavigationBarHidden = true
+            navVC.modalPresentationStyle = .overFullScreen
+            self.navigationController?.present(navVC, animated: true, completion: nil)
+        } else {
+            let aVC = AppStoryBoard.main.viewController(viewControllerClass: SleepTimeVC.self)
+            self.navigationController?.pushViewController(aVC, animated: true)
+        }
     }
     
     func handleNavigation() {

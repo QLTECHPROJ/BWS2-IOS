@@ -46,6 +46,9 @@ class AddProfileVC: BaseViewController {
     
     // MARK:- FUNCTIONS
     override func setupUI() {
+        btnUserImage.cornerRadius = btnUserImage.frame.height / 2
+        btnUserImage.clipsToBounds = true
+        
         if let user = selectedUser {
             txtFName.text = user.Name
             txtFMobileNo.text = user.Mobile
