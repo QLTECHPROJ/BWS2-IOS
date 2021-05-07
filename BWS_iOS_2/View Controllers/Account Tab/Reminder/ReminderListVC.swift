@@ -67,10 +67,12 @@ class ReminderListVC: BaseViewController{
                 intArray.append(i.ReminderId)
             }
             arrayRemDelete = intArray
+            lblSelected.text = "\(intArray.count)" + "Selected"
             tableView.reloadData()
         }else {
            
             arrayRemDelete = []
+            lblSelected.text = "\(arrayRemDelete.count)" + "Selected"
             tableView.reloadData()
         }
        
@@ -163,12 +165,14 @@ extension ReminderListVC:UITableViewDelegate , UITableViewDataSource{
         arrayRemDelete.append(arrayRemList[indexPath.row].ReminderId)
         tableView.tableHeaderView = viewHeader
         tableView.tableFooterView = viewFooter
+        lblSelected.text = "\(indexPath.row)" + "Selected"
        }else {
         arrayRemDelete.removeAll(where: { $0 == arrayRemList[indexPath.row].ReminderId })
         if arrayRemDelete.count == 0 {
            tableView.tableHeaderView = nil
            tableView.tableFooterView = nil
         }
+        lblSelected.text = "\(indexPath.row)" + "Selected"
        }
         tableView.reloadData()
     }

@@ -21,11 +21,15 @@ class DayVC: BaseViewController {
     @IBOutlet weak var btnTime: UIButton!
     @IBOutlet weak var lblTime: UILabel!
     
+    @IBOutlet weak var viewDate: UIView!
+    
+    @IBOutlet weak var datePicker: UIDatePicker!
+    
     // MARK:- VARIABLES
     var arrSelectDays = [Int]()
-    var arrayWeek = ["sunday","monday","tuesday","wednesday","thursday","friday","saturday"]
+    var arrayWeek = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
     var toolBar = UIToolbar()
-    var datePicker  = UIDatePicker()
+   // var datePicker  = UIDatePicker()
     var strPlaylistID:String?
     var objPlaylist : PlaylistDetailsModel?
     
@@ -35,6 +39,7 @@ class DayVC: BaseViewController {
         setupUI()
         setupData()
         buttonEnableDisable()
+        viewDate.isHidden = true
     }
     
     //MARK:- Functions
@@ -76,20 +81,21 @@ class DayVC: BaseViewController {
     
     func adddatePicker() {
         
-        datePicker = UIDatePicker.init()
+       // datePicker = UIDatePicker.init()
+        viewDate.isHidden = false
         datePicker.backgroundColor = UIColor.white
         datePicker.datePickerMode = .time
         datePicker.autoresizingMask = .flexibleWidth
                 
-        datePicker.addTarget(self, action: #selector(self.dateChanged(_:)), for: .valueChanged)
-        datePicker.frame = CGRect(x: 0.0, y: UIScreen.main.bounds.size.height - 400, width: UIScreen.main.bounds.size.width, height: 400)
-        self.view.addSubview(datePicker)
+        //datePicker.addTarget(self, action: #selector(self.dateChanged(_:)), for: .valueChanged)
+//        datePicker.frame = CGRect(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 300)
+//        self.view.addSubview(datePicker)
                 
-        toolBar = UIToolbar(frame: CGRect(x: 0, y: UIScreen.main.bounds.size.height - 400, width: UIScreen.main.bounds.size.width, height: 50))
-        toolBar.barStyle = .default
-        toolBar.items = [UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil), UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.onDoneButtonClick))]
-        toolBar.sizeToFit()
-        self.view.addSubview(toolBar)
+//        toolBar = UIToolbar(frame: CGRect(x: 0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 50))
+//        toolBar.barStyle = .default
+//        toolBar.items = [UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil), UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.onDoneButtonClick))]
+//        toolBar.sizeToFit()
+       // self.view.addSubview(toolBar)
        
     }
     
@@ -113,13 +119,13 @@ class DayVC: BaseViewController {
             }
             arrSelectDays = intArray
             tableView.reloadData()
-            btnAll.setTitle("UnSelectAll", for: .selected)
+            btnAll.setTitle("UnSelect All", for: .selected)
             btnAll.setTitleColor(.white, for: .selected)
             buttonEnableDisable()
         }else {
            arrSelectDays = []
            tableView.reloadData()
-            btnAll.setTitle("SelectAll", for: .normal)
+            btnAll.setTitle("Select All", for: .normal)
             btnAll.setTitleColor(.white, for: .normal)
         }
         
@@ -133,23 +139,30 @@ class DayVC: BaseViewController {
         adddatePicker()
     }
     
-    @objc func dateChanged(_ sender: UIDatePicker?) {
+    @IBAction func OnTappedChanged(_ sender: UIDatePicker) {
         let dateFormatter = DateFormatter()
         dateFormatter.timeStyle = .short
         
-        if let date = sender?.date {
+            let date = sender.date
             print("Picked the date \(dateFormatter.string(from: date))")
             lblTime.text = "\(dateFormatter.string(from: date))"
             buttonEnableDisable()
-        }
+       
     }
+   
     
     @objc func onDoneButtonClick() {
         toolBar.removeFromSuperview()
         datePicker.removeFromSuperview()
         
     }
+    @IBAction func onTappedCancel(_ sender: UIButton) {
+         viewDate.isHidden = true
+    }
     
+    @IBAction func onTappedDone(_ sender: UIButton) {
+        viewDate.isHidden = true
+    }
 }
 
 // MARK:- UITableViewDelegate, UITableViewDataSource
@@ -163,20 +176,20 @@ extension DayVC:UITableViewDelegate , UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withClass: ReminderListCell.self)
         
-        cell.lblTitle.text = arrayWeek[indexPath.row]
-        cell.lblTitle.textColor = .white
+        cell.lblSubTitle.text = arrayWeek[indexPath.row]
+        cell.lblSubTitle.textColor = .white
         cell.backgroundColor = .clear
         cell.lblTime.isHidden = true
-        cell.lblSubTitle.isHidden = true
+        cell.lblTitle.isHidden = true
         cell.swtchReminder.isHidden = true
         cell.lblLine.isHidden = true
         cell.btnHeight.constant = 20
        
         if arrSelectDays.contains(indexPath.row) {
-            cell.lblTitle.font = Theme.fonts.montserratFont(ofSize: 15, weight: .bold)
+            cell.lblSubTitle.font = Theme.fonts.montserratFont(ofSize: 15, weight: .bold)
             cell.btnSelect.setImage(UIImage(named: "WhiteCheck"), for: .normal)
         }else {
-             cell.lblTitle.font = Theme.fonts.montserratFont(ofSize: 15, weight: .regular)
+             cell.lblSubTitle.font = Theme.fonts.montserratFont(ofSize: 15, weight: .regular)
              cell.btnSelect.setImage(UIImage(named: "WhiteUnCheck"), for: .normal)
         }
         return cell
