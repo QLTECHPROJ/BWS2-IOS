@@ -67,12 +67,12 @@ class ReminderListVC: BaseViewController{
                 intArray.append(i.ReminderId)
             }
             arrayRemDelete = intArray
-            lblSelected.text = "\(intArray.count)" + "Selected"
+            lblSelected.text = "\(intArray.count )" +  " Selected"
             tableView.reloadData()
         }else {
            
             arrayRemDelete = []
-            lblSelected.text = "\(arrayRemDelete.count)" + "Selected"
+            lblSelected.text = "\(arrayRemDelete.count)" + " Selected"
             tableView.reloadData()
         }
        
@@ -132,6 +132,7 @@ extension ReminderListVC:UITableViewDelegate , UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withClass: ReminderListCell.self)
+        cell.btnHeight.constant = 20
         cell.lblTitle.text = arrayRemList[indexPath.row].PlaylistName
         cell.lblSubTitle.text = arrayRemList[indexPath.row].ReminderDay
 
@@ -163,14 +164,14 @@ extension ReminderListVC:UITableViewDelegate , UITableViewDataSource{
         arrayRemDelete.append(arrayRemList[indexPath.row].ReminderId)
         tableView.tableHeaderView = viewHeader
         tableView.tableFooterView = viewFooter
-        lblSelected.text = "\(indexPath.row)" + "Selected"
+        lblSelected.text = "\(indexPath.row + 1)" + " Selected"
        }else {
         arrayRemDelete.removeAll(where: { $0 == arrayRemList[indexPath.row].ReminderId })
         if arrayRemDelete.count == 0 {
            tableView.tableHeaderView = nil
            tableView.tableFooterView = nil
         }
-        lblSelected.text = "\(indexPath.row)" + "Selected"
+        lblSelected.text = "\(indexPath.row)" + " Selected"
        }
         tableView.reloadData()
     }

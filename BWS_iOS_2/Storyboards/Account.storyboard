@@ -196,7 +196,7 @@
         <!--Account InfoVC-->
         <scene sceneID="2gB-2M-PSZ">
             <objects>
-                <viewController storyboardIdentifier="AccountInfoVC" id="W2Y-wt-XVv" customClass="AccountInfoVC" customModule="BWS_2_Staging" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AccountInfoVC" hidesBottomBarWhenPushed="YES" id="W2Y-wt-XVv" customClass="AccountInfoVC" customModule="BWS_2_Staging" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Kpj-ry-nc8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1293,7 +1293,7 @@
         <!--FAQVC-->
         <scene sceneID="QsZ-rc-Sdd">
             <objects>
-                <viewController storyboardIdentifier="FAQVC" id="7Od-wK-hfO" customClass="FAQVC" customModule="BWS_2_Staging" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FAQVC" hidesBottomBarWhenPushed="YES" id="7Od-wK-hfO" customClass="FAQVC" customModule="BWS_2_Staging" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CNz-Iz-W2Q">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2102,7 +2102,7 @@
         <!--Reminder ListVC-->
         <scene sceneID="UTs-fX-DVG">
             <objects>
-                <viewController storyboardIdentifier="ReminderListVC" id="Byd-xb-pPP" customClass="ReminderListVC" customModule="BWS_2_Staging" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ReminderListVC" hidesBottomBarWhenPushed="YES" id="Byd-xb-pPP" customClass="ReminderListVC" customModule="BWS_2_Staging" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0Ky-dn-34x">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2507,15 +2507,15 @@
                             <color key="textColor" name="Green"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SelectAll" translatesAutoresizingMaskIntoConstraints="NO" id="QWq-X4-MIz">
-                            <rect key="frame" x="16" y="62" width="30" height="30"/>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="WhiteSelectAll" translatesAutoresizingMaskIntoConstraints="NO" id="QWq-X4-MIz">
+                            <rect key="frame" x="16" y="62" width="20" height="20"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="30" id="5yg-6w-Vcs"/>
+                                <constraint firstAttribute="height" constant="20" id="5yg-6w-Vcs"/>
                                 <constraint firstAttribute="width" secondItem="QWq-X4-MIz" secondAttribute="height" multiplier="1:1" id="l1f-XK-jYl"/>
                             </constraints>
                         </imageView>
                         <button clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IRk-d5-7r4">
-                            <rect key="frame" x="62" y="62" width="65" height="30"/>
+                            <rect key="frame" x="52" y="58" width="65" height="30"/>
                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="Select All">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2527,7 +2527,7 @@
                     </subviews>
                     <color key="backgroundColor" name="Green"/>
                     <constraints>
-                        <constraint firstItem="IRk-d5-7r4" firstAttribute="top" secondItem="JXG-Qt-efT" secondAttribute="bottom" constant="16" id="73m-Yk-YJw"/>
+                        <constraint firstItem="IRk-d5-7r4" firstAttribute="top" secondItem="JXG-Qt-efT" secondAttribute="bottom" constant="12" id="73m-Yk-YJw"/>
                         <constraint firstItem="2fF-bb-5uv" firstAttribute="centerX" secondItem="PsY-g9-DBS" secondAttribute="centerX" constant="16" id="7E3-qO-Bwc"/>
                         <constraint firstItem="QWq-X4-MIz" firstAttribute="leading" secondItem="6qD-JS-B4V" secondAttribute="leading" constant="16" id="aAB-dF-7tI"/>
                         <constraint firstItem="JXG-Qt-efT" firstAttribute="centerX" secondItem="PsY-g9-DBS" secondAttribute="centerX" id="bpz-WL-QEG"/>
@@ -2676,6 +2676,7 @@
         <image name="UserImage" width="34" height="34"/>
         <image name="UserName" width="20" height="22"/>
         <image name="UserNumber" width="12.666666984558105" height="20"/>
+        <image name="WhiteSelectAll" width="170.66667175292969" height="170.66667175292969"/>
         <image name="closeBlack" width="17.333333969116211" height="17.333333969116211"/>
         <image name="close_white" width="13.666666984558105" height="13.666666984558105"/>
         <image name="profile_tab" width="26.333333969116211" height="29"/>

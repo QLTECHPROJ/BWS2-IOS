@@ -50,12 +50,22 @@ class DayVC: BaseViewController {
     
     override func setupData() {
         if let playlistData = objPlaylist {
-            strPlaylistID = playlistData.PlaylistID
-            lblTime.text = playlistData.ReminderTime
-            lblPlaylist.text = playlistData.PlaylistName
-            let listItems = playlistData.ReminderDay.components(separatedBy: ",")
-            let myIntArrSafe = listItems.map { Int($0) ?? 0 }
-            arrSelectDays = myIntArrSafe
+            if objPlaylist?.ReminderDay != "" {
+                strPlaylistID = playlistData.PlaylistID
+                lblTime.text = playlistData.ReminderTime
+                lblPlaylist.text = playlistData.PlaylistName
+                let listItems = playlistData.ReminderDay.components(separatedBy: ",")
+                let myIntArrSafe = listItems.map { Int($0) ?? 0 }
+                arrSelectDays = myIntArrSafe
+            }else {
+                let dateFormatter = DateFormatter()
+                dateFormatter.timeStyle = .short
+                let date = Date()
+                lblTime.text = "\(dateFormatter.string(from: date))"
+                lblPlaylist.text = playlistData.PlaylistName
+                strPlaylistID = playlistData.PlaylistID
+            }
+           
         }
         //tableView.reloadData()
     }
@@ -75,7 +85,7 @@ class DayVC: BaseViewController {
         } else {
             btnSave.isUserInteractionEnabled = false
             btnSave.backgroundColor = Theme.colors.gray_7E7E7E
-            btnSave.titleLabel?.textColor = .white
+            btnSave.setTitleColor(.white, for: .normal)
         }
     }
     
