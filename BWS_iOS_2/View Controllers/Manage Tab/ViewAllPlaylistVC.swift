@@ -142,7 +142,6 @@ extension ViewAllPlaylistVC : UICollectionViewDataSource, UICollectionViewDelega
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if homeData.IsLock == "1" {
-            // Membership Module Remove
             openInactivePopup(controller: self)
         } else if homeData.IsLock == "2" {
             showAlertToast(message: Theme.strings.alert_reactivate_plan)

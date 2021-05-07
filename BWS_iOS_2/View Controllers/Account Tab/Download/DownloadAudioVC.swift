@@ -138,7 +138,6 @@ extension DownloadAudioVC:UITableViewDelegate , UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if downloadedAudios[indexPath.row].IsLock == "1" {
-            // Membership Module Remove
             openInactivePopup(controller: self)
         } else if downloadedAudios[indexPath.row].IsLock == "2" {
             showAlertToast(message: Theme.strings.alert_reactivate_plan)

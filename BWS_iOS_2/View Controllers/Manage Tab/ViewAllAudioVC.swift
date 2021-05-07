@@ -158,7 +158,6 @@ extension ViewAllAudioVC : UICollectionViewDataSource, UICollectionViewDelegate,
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if homeData.IsLock == "1" && homeData.Details[indexPath.row].IsPlay != "1" {
-            // Membership Module Remove
             openInactivePopup(controller: self)
             return
         } else if homeData.IsLock == "2" && homeData.Details[indexPath.row].IsPlay != "1" {

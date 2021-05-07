@@ -10,45 +10,60 @@ import UIKit
 
 class NotificatonVC: BaseViewController {
     
-    //MARK:- UIOutlet
+    // MARK:- OUTLETS
     @IBOutlet weak var tableView: UITableView!
+    
+    
+    // MARK:- VARIABLES
+    var arrayNotifications = [NotificationListDataModel]()
+    
     
     //MARK:- View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
-       setupUI()
+        
+        setupUI()
+        callNotificationListAPI()
     }
     
-    //MARK:- Functions
+    
+    // MARK:- FUNCTIONS
     override func setupUI() {
-         tableView.register(UINib(nibName:"NotificationCell", bundle: nil), forCellReuseIdentifier:"NotificationCell")
+        tableView.register(nibWithCellClass: NotificationCell.self)
+        tableView.estimatedRowHeight = 90
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.refreshControl = refreshControl
     }
     
-    //MARK:- IBAction
+    // Pull To Refresh Screen Data
+    override func handleRefresh(_ refreshControl: UIRefreshControl) {
+        if checkInternet() {
+            callNotificationListAPI()
+        } else {
+            tableView.isHidden = true
+        }
+        refreshControl.endRefreshing()
+    }
+    
+    // MARK:- ACTIONS
     @IBAction func onTappedBack(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
-  
+    
 }
 
+
+// MARK:- UITableViewDelegate, UITableViewDataSource
 extension NotificatonVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return arrayNotifications.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-      let cell = tableView.dequeueReusableCell(withIdentifier:"NotificationCell", for: indexPath) as!  NotificationCell
+        let cell = tableView.dequeueReusableCell(withClass: NotificationCell.self)
+        cell.configureCell(data: arrayNotifications[indexPath.row])
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.navigationController?.popViewController(animated: true)
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 85
     }
     
 }

@@ -108,7 +108,6 @@ extension DownloadPlaylistVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if downloadedPlaylists[indexPath.row].IsLock == "1" {
-            // Membership Module Remove
             openInactivePopup(controller: self)
         }
         else if downloadedPlaylists[indexPath.row].IsLock == "2"  {

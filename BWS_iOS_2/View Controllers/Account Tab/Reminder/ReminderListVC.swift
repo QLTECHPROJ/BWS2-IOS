@@ -86,13 +86,11 @@ class ReminderListVC: BaseViewController{
     }
     @objc func switchValueDidChange(_ sender: UISwitch!) {
         if arrayRemList[sender.tag].IsLock == "1" {
-            // Membership Module Remove
-           // openInactivePopup(controller: self)
-          //  sender.isOn.toggle()
-        }
-        else if arrayRemList[sender.tag].IsLock == "2" {
-            //showAlertToast(message: "Please re-activate your membership plan")
-           // sender.isOn.toggle()
+            openInactivePopup(controller: self)
+            sender.isOn.toggle()
+        } else if arrayRemList[sender.tag].IsLock == "2" {
+            showAlertToast(message: Theme.strings.alert_reactivate_plan)
+            sender.isOn.toggle()
         }
         else {
             //  sender.isOn = !sender.isOn

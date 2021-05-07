@@ -390,7 +390,6 @@ class PlayerVC: BaseViewController {
         }
         
         if lockDownloads == "1" {
-            // Membership Module Remove
             openInactivePopup(controller: self, openWithNavigation: true)
             return
         } else if lockDownloads == "2" {

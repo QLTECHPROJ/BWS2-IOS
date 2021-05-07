@@ -34,6 +34,7 @@ enum APIRouter: URLRequestConvertible {
     
     // Home Tab - APIs
     case homescreen([String:String])
+    case getnotificationlist([String:String])
     
     // Manage Plan Tab - APIs
     case managehomescreen([String:String])
@@ -115,6 +116,8 @@ enum APIRouter: URLRequestConvertible {
             
         case .homescreen(let data):
             return APIRoute(path: "homescreen", method: .post, data: data)
+        case .getnotificationlist(let data):
+            return APIRoute(path: "getnotificationlist", method: .post, data: data)
             
         case .managehomescreen(let data):
             return APIRoute(path: "managehomescreen", method: .post, data: data)
