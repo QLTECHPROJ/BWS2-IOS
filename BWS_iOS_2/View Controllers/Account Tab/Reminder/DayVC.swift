@@ -32,6 +32,8 @@ class DayVC: BaseViewController {
    // var datePicker  = UIDatePicker()
     var strPlaylistID:String?
     var objPlaylist : PlaylistDetailsModel?
+    var arrayRemList : ReminderListDataModel?
+    var isCome:String?
     
     // MARK:- VIEW LIFE CYCLE
     override func viewDidLoad() {
@@ -49,6 +51,16 @@ class DayVC: BaseViewController {
     }
     
     override func setupData() {
+        if isCome == "ReminderList" {
+            if let playlistData = arrayRemList {
+                strPlaylistID = playlistData.PlaylistId
+                lblTime.text = playlistData.ReminderTime
+                lblPlaylist.text = playlistData.PlaylistName
+                let listItems = playlistData.RDay.components(separatedBy: ",")
+                let myIntArrSafe = listItems.map { Int($0) ?? 0 }
+                arrSelectDays = myIntArrSafe
+            }
+        }else {
         if let playlistData = objPlaylist {
             if objPlaylist?.ReminderDay != "" {
                 strPlaylistID = playlistData.PlaylistID
@@ -67,13 +79,15 @@ class DayVC: BaseViewController {
             }
            
         }
+        }
+        
         //tableView.reloadData()
     }
     
     override func buttonEnableDisable() {
         var shouldEnable = true
         
-        if arrSelectDays.count == 0 || lblTime.text == "" || lblTime.text == nil ||  strPlaylistID == "" || strPlaylistID == nil {
+        if arrSelectDays.count == 0 || lblTime.text == "" || lblTime.text == nil ||  strPlaylistID == "" || strPlaylistID == nil || isCome == "Update" {
             shouldEnable = false
         }else {
             shouldEnable = true
@@ -208,6 +222,7 @@ extension DayVC:UITableViewDelegate , UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if !arrSelectDays.contains(indexPath.row) {
             arrSelectDays.append(indexPath.row)
+            isCome = ""
         }else {
             arrSelectDays.removeAll(where: { $0 == indexPath.row })
         }

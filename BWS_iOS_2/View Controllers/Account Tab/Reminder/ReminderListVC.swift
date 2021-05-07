@@ -15,6 +15,7 @@ class ReminderListVC: BaseViewController{
     @IBOutlet var viewHeader: UIView!
     @IBOutlet weak var lblSelected: UILabel!
     @IBOutlet var viewFooter: UIView!
+    @IBOutlet weak var lblNoData: UILabel!
     
     // MARK:- VARIABLES
    var arrayRemList = [ReminderListDataModel]()
@@ -121,6 +122,24 @@ class ReminderListVC: BaseViewController{
     @IBAction func onTappedBack(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
+    @objc func checkboxClicked(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+        
+        if !arrayRemDelete.contains(arrayRemList[sender.tag].ReminderId){
+         arrayRemDelete.append(arrayRemList[sender.tag].ReminderId)
+         tableView.tableHeaderView = viewHeader
+         tableView.tableFooterView = viewFooter
+         lblSelected.text = "\(sender.tag + 1)" + " Selected"
+        }else {
+         arrayRemDelete.removeAll(where: { $0 == arrayRemList[sender.tag].ReminderId })
+         if arrayRemDelete.count == 0 {
+            tableView.tableHeaderView = nil
+            tableView.tableFooterView = nil
+         }
+         lblSelected.text = "\(sender.tag)" + " Selected"
+        }
+         tableView.reloadData()
+    }
 }
 // MARK:- UITableViewDelegate, UITableViewDataSource
 extension ReminderListVC:UITableViewDelegate , UITableViewDataSource{
@@ -156,24 +175,16 @@ extension ReminderListVC:UITableViewDelegate , UITableViewDataSource{
         }else {
             cell.btnSelect.setImage(UIImage(named: "Unckeck"), for: .normal)
         }
+        cell.btnSelect.addTarget(self, action: #selector(checkboxClicked(_ :)), for: .touchUpInside)
+        cell.btnSelect.tag = indexPath.row
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       if !arrayRemDelete.contains(arrayRemList[indexPath.row].ReminderId){
-        arrayRemDelete.append(arrayRemList[indexPath.row].ReminderId)
-        tableView.tableHeaderView = viewHeader
-        tableView.tableFooterView = viewFooter
-        lblSelected.text = "\(indexPath.row + 1)" + " Selected"
-       }else {
-        arrayRemDelete.removeAll(where: { $0 == arrayRemList[indexPath.row].ReminderId })
-        if arrayRemDelete.count == 0 {
-           tableView.tableHeaderView = nil
-           tableView.tableFooterView = nil
-        }
-        lblSelected.text = "\(indexPath.row)" + " Selected"
-       }
-        tableView.reloadData()
+        let aVC = AppStoryBoard.account.viewController(viewControllerClass: DayVC.self)
+        aVC.arrayRemList = arrayRemList[indexPath.row]
+        aVC.isCome = "ReminderList"
+        self.navigationController?.pushViewController(aVC, animated: true)
     }
    
 }

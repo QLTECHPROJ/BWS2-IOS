@@ -1140,6 +1140,14 @@ extension ReminderListVC {
             if response.ResponseCode == "200" {
                 self.arrayRemList = response.ResponseData
                 self.setupData()
+                if self.arrayRemList.count > 0 {
+                    self.lblNoData.isHidden = true
+                    self.tableView.isHidden = false
+                }else {
+                    self.lblNoData.isHidden = false
+                    self.lblNoData.text = "No data found"
+                    self.tableView.isHidden = true
+                }
                 
 //                // Segment Tracking
 //                if self.isReminderScreenTracked == false {

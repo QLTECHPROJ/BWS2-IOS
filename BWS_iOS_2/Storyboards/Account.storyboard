@@ -2146,20 +2146,29 @@
                                     <outlet property="delegate" destination="Byd-xb-pPP" id="lo1-AM-NS1"/>
                                 </connections>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b8m-W9-ajB">
+                                <rect key="frame" x="187.66666666666666" y="406" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="XOC-cU-fGc" firstAttribute="trailing" secondItem="bed-5l-HxJ" secondAttribute="trailing" id="1B1-0E-1Ok"/>
                             <constraint firstItem="bed-5l-HxJ" firstAttribute="top" secondItem="CUS-HE-Sw2" secondAttribute="bottom" constant="8" symbolic="YES" id="9rM-2h-6dg"/>
+                            <constraint firstItem="b8m-W9-ajB" firstAttribute="centerY" secondItem="0Ky-dn-34x" secondAttribute="centerY" id="NWJ-eZ-tOG"/>
                             <constraint firstItem="CUS-HE-Sw2" firstAttribute="trailing" secondItem="XOC-cU-fGc" secondAttribute="trailing" id="Pzq-cG-8G9"/>
                             <constraint firstItem="CUS-HE-Sw2" firstAttribute="top" secondItem="XOC-cU-fGc" secondAttribute="top" id="WpR-PR-QcB"/>
                             <constraint firstItem="CUS-HE-Sw2" firstAttribute="leading" secondItem="XOC-cU-fGc" secondAttribute="leading" id="hct-bE-e7e"/>
+                            <constraint firstItem="b8m-W9-ajB" firstAttribute="centerX" secondItem="0Ky-dn-34x" secondAttribute="centerX" id="kpK-dP-aSD"/>
                             <constraint firstItem="bed-5l-HxJ" firstAttribute="leading" secondItem="XOC-cU-fGc" secondAttribute="leading" id="sEz-fp-xCe"/>
                             <constraint firstItem="XOC-cU-fGc" firstAttribute="bottom" secondItem="bed-5l-HxJ" secondAttribute="bottom" id="yWc-2B-56U"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="XOC-cU-fGc"/>
                     </view>
                     <connections>
+                        <outlet property="lblNoData" destination="b8m-W9-ajB" id="xZV-gA-ecO"/>
                         <outlet property="lblSelected" destination="2eL-74-7cH" id="aaq-Lk-soN"/>
                         <outlet property="tableView" destination="bed-5l-HxJ" id="8n8-PK-5zn"/>
                         <outlet property="viewFooter" destination="OuO-uT-lfL" id="51y-RS-Ohm"/>
@@ -2487,7 +2496,7 @@
                                 <constraint firstAttribute="width" constant="120" id="3Pn-NV-eMe"/>
                             </constraints>
                             <inset key="titleEdgeInsets" minX="-20" minY="0.0" maxX="0.0" maxY="0.0"/>
-                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="75" maxY="0.0"/>
+                            <inset key="imageEdgeInsets" minX="8" minY="4" maxX="90" maxY="4"/>
                             <state key="normal" image="Time"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -2671,7 +2680,7 @@
         <image name="Date" width="19" height="20"/>
         <image name="Filter" width="68" height="68"/>
         <image name="SelectAll" width="170.66667175292969" height="170.66667175292969"/>
-        <image name="Time" width="15.666666984558105" height="19.333333969116211"/>
+        <image name="Time" width="30" height="30"/>
         <image name="UserEmail" width="20" height="16"/>
         <image name="UserImage" width="34" height="34"/>
         <image name="UserName" width="20" height="22"/>
