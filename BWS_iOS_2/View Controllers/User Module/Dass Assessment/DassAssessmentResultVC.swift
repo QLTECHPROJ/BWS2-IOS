@@ -55,7 +55,7 @@ class DassAssessmentResultVC: BaseViewController {
         UserDefaults.standard.removeObject(forKey: "ArrayPage")
         UserDefaults.standard.synchronize()
         
-        let normalString = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut"
+        let normalString = "The index score determines the intensity of your mental health challenge and based on your score we will recommend the programs to help you."
         lblSubTitle.attributedText = normalString.attributedString(alignment: .center, lineSpacing: 10)
         
         indexScoreLabelView.isHidden = true

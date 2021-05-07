@@ -36,7 +36,7 @@ class ContinueVC: BaseViewController {
     @IBAction func onTappedContinue(_ sender: UIButton) {
         let aVC = AppStoryBoard.main.viewController(viewControllerClass:StepVC.self)
         aVC.strTitle = "Step 1"
-        aVC.strSubTitle = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam"
+        aVC.strSubTitle = "Simply fill in your assessment form and we'll recommend the programs best suited to your needs"
         aVC.imageMain = UIImage(named: "profileForm")
         aVC.viewTapped = {
             self.goNext()

@@ -37,7 +37,7 @@ class DownloadPlaylistVC: BaseViewController {
         
         lblNoData.isHidden = true
         lblNoData.text = "Your downloaded playlists will appear here"
-        lblNoData.font = UIFont.systemFont(ofSize: 17)
+        lblNoData.font = Theme.fonts.montserratFont(ofSize: 17, weight: .regular)
     }
     
     override func setupData() {

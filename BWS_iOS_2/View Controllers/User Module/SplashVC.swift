@@ -39,8 +39,7 @@ class SplashVC: BaseViewController {
             aVC.modalPresentationStyle = .overFullScreen
             aVC.delegate = self
             self.present(aVC, animated: false, completion: nil)
-        }
-        else if SplashVC.isForceUpdate == "0" {
+        } else if SplashVC.isForceUpdate == "0" {
             let aVC = AppStoryBoard.manage.viewController(viewControllerClass: AlertPopUpVC.self)
             aVC.titleText = "Update Brain Wellness App"
             aVC.detailText = "Brain Wellness App recommends that you update to the latest version"
@@ -49,8 +48,7 @@ class SplashVC: BaseViewController {
             aVC.modalPresentationStyle = .overFullScreen
             aVC.delegate = self
             self.present(aVC, animated: false, completion: nil)
-        }
-        else {
+        } else {
             self.handleRedirection()
         }
     }
@@ -109,13 +107,11 @@ extension SplashVC : AlertPopUpVCDelegate {
         if sender.tag == 0 {
             if SplashVC.isForceUpdate == "1" {
                 self.openUrl(urlString: APP_AppStore_Link)
-            }
-            else {
+            } else {
                 self.openUrl(urlString: APP_AppStore_Link)
                 self.handleRedirection()
             }
-        }
-        else {
+        } else {
             self.handleRedirection()
         }
     }

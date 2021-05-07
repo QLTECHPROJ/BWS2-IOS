@@ -21,7 +21,7 @@ class StartingVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let normalString = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor"
+        let normalString = "Your one-stop solution for mental & emotional health challenges"
         lblSubTitle.attributedText = normalString.attributedString(alignment: .center, lineSpacing: 10)
     }
     

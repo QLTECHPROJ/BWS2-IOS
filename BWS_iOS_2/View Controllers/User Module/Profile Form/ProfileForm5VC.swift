@@ -40,7 +40,7 @@ class ProfileForm5VC: BaseViewController {
         tableViewHeightConst.constant = CGFloat(96 * arrayOptions.count)
         self.view.layoutIfNeeded()
         
-        let normalString = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore."
+        let normalString = "Have you ever taken any illicit drugs in your life?"
         lblSubTitle.attributedText = normalString.attributedString(alignment: .left, lineSpacing: 10)
         
         progressView.progress = 0.6

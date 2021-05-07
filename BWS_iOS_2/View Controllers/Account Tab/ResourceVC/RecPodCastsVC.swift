@@ -19,7 +19,7 @@ class RecPodCastsVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         lblNoData.isHidden = true
-        lblNoData.font = UIFont.systemFont(ofSize: 17)
+        lblNoData.font = Theme.fonts.montserratFont(ofSize: 17, weight: .regular)
         tableView.register(nibWithCellClass: PodcastCell.self)
         tableView.rowHeight = 70
         //tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: 30))

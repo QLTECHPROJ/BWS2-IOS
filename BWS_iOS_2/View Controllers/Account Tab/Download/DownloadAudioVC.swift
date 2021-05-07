@@ -37,7 +37,7 @@ class DownloadAudioVC: BaseViewController {
         tableView.tableFooterView = UIView()
         lblNoData.isHidden = true
         lblNoData.text = "Your downloaded audios will appear here"
-        lblNoData.font = UIFont.systemFont(ofSize: 17)
+        lblNoData.font = Theme.fonts.montserratFont(ofSize: 17, weight: .regular)
     }
     
     override func setupData() {

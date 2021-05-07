@@ -12,6 +12,7 @@ class NotificatonVC: BaseViewController {
     
     // MARK:- OUTLETS
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var lblNoData: UILabel!
     
     
     // MARK:- VARIABLES
@@ -22,8 +23,18 @@ class NotificatonVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        lblNoData.isHidden = true
+        lblNoData.font = Theme.fonts.montserratFont(ofSize: 17, weight: .regular)
+        
         setupUI()
-        callNotificationListAPI()
+        
+        if checkInternet() {
+            lblNoData.isHidden = true
+            callNotificationListAPI()
+        } else {
+            lblNoData.isHidden = false
+            tableView.isHidden = true
+        }
     }
     
     
@@ -35,11 +46,23 @@ class NotificatonVC: BaseViewController {
         tableView.refreshControl = refreshControl
     }
     
+    override func setupData() {
+        if arrayNotifications.count > 0 {
+            lblNoData.isHidden = true
+            tableView.isHidden = false
+        } else {
+            lblNoData.isHidden = false
+            tableView.isHidden = true
+        }
+    }
+    
     // Pull To Refresh Screen Data
     override func handleRefresh(_ refreshControl: UIRefreshControl) {
         if checkInternet() {
+            lblNoData.isHidden = true
             callNotificationListAPI()
         } else {
+            lblNoData.isHidden = false
             tableView.isHidden = true
         }
         refreshControl.endRefreshing()
