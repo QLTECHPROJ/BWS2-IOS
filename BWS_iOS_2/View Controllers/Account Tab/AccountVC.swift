@@ -10,17 +10,19 @@ import UIKit
 
 class AccountVC: BaseViewController {
     
-    //MARK:- UIOutlet
+    // MARK:- OUTLETS
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet var HeaderView: UIView!
+    @IBOutlet weak var HeaderView: UIView!
     @IBOutlet weak var lblUser: UILabel!
     @IBOutlet weak var imgUser: UIImageView!
     @IBOutlet weak var btnChange: UIButton!
     
-    //MARK:- Variable
+    
+    // MARK:- VARIABLES
     var arrImage = ["UserName","UpgradePlan","download_account","Resources","Reminder","Billing","Invoices","FAQ","Logout"]
     var arrTitle = ["Account Info","Upgrade Plan","Download","Resources","Reminder","Billing and Order","Invoices","FAQ","Log Out"]
     var imageData = UploadDataModel()
+    
     
     // MARK:- VIEW LIFE CYCLE
     override func viewDidLoad() {
@@ -32,7 +34,6 @@ class AccountVC: BaseViewController {
     
     
     // MARK:- FUNCTIONS
-    
     override func setupUI() {
         tableView.register(nibWithCellClass:AccountCell.self)
         tableView.tableHeaderView = HeaderView
@@ -44,7 +45,6 @@ class AccountVC: BaseViewController {
             
             let userName = userData.Name.trim.count > 0 ? userData.Name : "Guest"
             lblUser.text = userName
-            
         }
     }
     
@@ -131,9 +131,7 @@ class AccountVC: BaseViewController {
         
     }
     
-    // MARK:- ACTIONS
-     func logoutClicked() {
-        
+    func handleLogout() {
         // Player Related Data
         DJMusicPlayer.shared.stop(shouldTrack: false)
         DJMusicPlayer.shared.playIndex = 0
@@ -175,10 +173,59 @@ class AccountVC: BaseViewController {
         APPDELEGATE.logout()
     }
     
-     func downloadClicked() {
-        let aVC = AppStoryBoard.account.viewController(viewControllerClass: DownloadVC.self)
-        self.navigationController?.pushViewController(aVC, animated: true)
+    func handleCellSelctionAction(indexPath : IndexPath) {
+        if indexPath.section == 0 {
+            if indexPath.row == 0 {
+                //Account Info
+                let aVC = AppStoryBoard.account.viewController(viewControllerClass: AccountInfoVC.self)
+                self.navigationController?.pushViewController(aVC, animated: true)
+            } else if indexPath.row == 1 {
+                //Upgrade Plan
+            }
+        } else if indexPath.section == 1 {
+            if indexPath.row == 0 {
+                //Downloads
+                let aVC = AppStoryBoard.account.viewController(viewControllerClass: DownloadVC.self)
+                self.navigationController?.pushViewController(aVC, animated: true)
+            } else if indexPath.row == 1 {
+                //Resources
+                let aVC = AppStoryBoard.account.viewController(viewControllerClass: ResourceVC.self)
+                self.navigationController?.pushViewController(aVC, animated: true)
+            } else if indexPath.row == 2 {
+                //Reminder
+                let aVC = AppStoryBoard.account.viewController(viewControllerClass: ReminderListVC.self)
+                self.navigationController?.pushViewController(aVC, animated: true)
+            } else if indexPath.row == 3 {
+                //Billing and Order
+            } else if indexPath.row == 4 {
+                //Invoices
+            }
+        } else if indexPath.section == 2 {
+            if indexPath.row == 1 {
+                // LogOut
+                if checkInternet() == false {
+                    showAlertToast(message: Theme.strings.alert_check_internet)
+                    return
+                }
+                
+                let aVC = AppStoryBoard.manage.viewController(viewControllerClass: AlertPopUpVC.self)
+                aVC.titleText = "Log out"
+                aVC.detailText = "Are you sure you want to log out \nBrain Wellness App?"
+                aVC.firstButtonTitle = "OK"
+                aVC.secondButtonTitle = "CLOSE"
+                aVC.modalPresentationStyle = .overFullScreen
+                aVC.delegate = self
+                self.present(aVC, animated: false, completion: nil)
+            } else {
+                //FAQ
+                let aVC = AppStoryBoard.account.viewController(viewControllerClass: FAQVC.self)
+                self.navigationController?.pushViewController(aVC, animated: true)
+            }
+        }
     }
+    
+    
+    // MARK:- ACTIONS
     @IBAction func onTappedCamera(_ sender: UIButton) {
         self.view.endEditing(true)
         var arrayTitles = ["Take a Photo","Choose from Gallary"]
@@ -194,7 +241,9 @@ class AccountVC: BaseViewController {
     }
     
     @IBAction func onTappedImage(_ sender: UIButton) {
+        
     }
+    
 }
 
 extension AccountVC:UITableViewDelegate,UITableViewDataSource {
@@ -206,11 +255,11 @@ extension AccountVC:UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return 2
-        }else if section == 1 {
+        } else if section == 1 {
             return 5
-        }else if section == 2{
+        } else if section == 2 {
             return 2
-        }else {
+        } else {
             return 0
         }
     }
@@ -220,13 +269,10 @@ extension AccountVC:UITableViewDelegate,UITableViewDataSource {
         if indexPath.section == 0 {
             cell.lblTitle.text = arrTitle[indexPath.row]
             cell.img.image = UIImage(named: arrImage[indexPath.row])
-           
-        }else if indexPath.section == 1 {
+        } else if indexPath.section == 1 {
             cell.lblTitle.text = arrTitle[indexPath.row+2]
             cell.img.image = UIImage(named: arrImage[indexPath.row+2])
-            
-            
-        }else if indexPath.section == 2{
+        } else if indexPath.section == 2 {
             cell.lblTitle.text = arrTitle[indexPath.row+7]
             cell.img.image = UIImage(named: arrImage[indexPath.row+7])
         }
@@ -237,59 +283,20 @@ extension AccountVC:UITableViewDelegate,UITableViewDataSource {
         tableView.separatorColor = .gray
         tableView.separatorInset.right = 16
         tableView.separatorInset.left = 16
-      
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       
-        if indexPath.section == 0 {
-            if indexPath.row == 0 {
-                //Account Info
-                let aVC = AppStoryBoard.account.viewController(viewControllerClass: AccountInfoVC.self)
-                self.navigationController?.pushViewController(aVC, animated: true)
-            }else if indexPath.row == 1 {
-                //Upgrade Plan
-            }
-            
-        }else if indexPath.section == 1 {
-           
-            if indexPath.row == 0 {
-                //Downloads
-                downloadClicked()
-            }else if indexPath.row == 1 {
-                //Resources
-                let aVC = AppStoryBoard.account.viewController(viewControllerClass: ResourceVC.self)
-                self.navigationController?.pushViewController(aVC, animated: true)
-            }else if indexPath.row == 2 {
-                //Reminder
-                let aVC = AppStoryBoard.account.viewController(viewControllerClass: ReminderListVC.self)
-                self.navigationController?.pushViewController(aVC, animated: true)
-            }else if indexPath.row == 3 {
-                //Billing and Order
-            }else if indexPath.row == 4 {
-                //Invoices
-            }
-            
-        }else if indexPath.section == 2{
-            if indexPath.row == 1 {
-                //Log Out
-               callLogoutAPI()
-            }else {
-                //FAQ
-                let aVC = AppStoryBoard.account.viewController(viewControllerClass: FAQVC.self)
-                self.navigationController?.pushViewController(aVC, animated: true)
-            }
+        DispatchQueue.main.async {
+            self.handleCellSelctionAction(indexPath: indexPath)
         }
-        
-        
-       
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let vw = UIView()
-        vw.backgroundColor = UIColor.white
-        return vw
+        let view = UIView()
+        view.backgroundColor = UIColor.white
+        return view
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -299,39 +306,59 @@ extension AccountVC:UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 44
     }
+    
 }
 
+
+// MARK:- AlertPopUpVCDelegate
+extension AccountVC : AlertPopUpVCDelegate {
+    
+    func handleAction(sender: UIButton, popUpTag: Int) {
+        if sender.tag == 0 {
+            if checkInternet() == false {
+                showAlertToast(message: Theme.strings.alert_check_internet)
+                return
+            }
+            
+            self.callLogoutAPI {
+                UIApplication.shared.endReceivingRemoteControlEvents()
+                self.handleLogout()
+            }
+        }
+    }
+    
+}
+
+
+// MARK:- UIImagePickerControllerDelegate, UINavigationControllerDelegate
 extension AccountVC : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
         if let image = info[.editedImage] as? UIImage {
             imgUser.image = image
             imageData = UploadDataModel(name: "image.jpeg", key: "ProfileImage", data: image.jpegData(compressionQuality: 0.5), extention: "jpeg", mimeType: "image/jpeg")
-            //CoUserDataModel.currentUser?.Image = imageData.name
             self.callAddProfileImageAPI()
         }
         else if let image = info[.originalImage] as? UIImage {
             imgUser.image = image
             imageData = UploadDataModel(name: "image.jpeg", key: "ProfileImage", data: image.jpegData(compressionQuality: 0.5), extention: "jpeg", mimeType: "image/jpeg")
-            //CoUserDataModel.currentUser?.Image = imageData.name
             self.callAddProfileImageAPI()
         }
         
-//        // Segment Tracking
-//        if picker.sourceType == .camera {
-//            SegmentTracking.shared.trackEvent(name: "Camera Photo Added", traits: ["userId" : LoginDataModel.currentUser?.UserID ?? ""], trackingType: .track)
-//        }
-//        else {
-//            SegmentTracking.shared.trackEvent(name: "Gallery Photo Added", traits: ["userId" : LoginDataModel.currentUser?.UserID ?? ""], trackingType: .track)
-//        }
+        //        // Segment Tracking
+        //        if picker.sourceType == .camera {
+        //            SegmentTracking.shared.trackEvent(name: "Camera Photo Added", traits: ["userId" : LoginDataModel.currentUser?.UserID ?? ""], trackingType: .track)
+        //        }
+        //        else {
+        //            SegmentTracking.shared.trackEvent(name: "Gallery Photo Added", traits: ["userId" : LoginDataModel.currentUser?.UserID ?? ""], trackingType: .track)
+        //        }
         
         picker.dismiss(animated: true)
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         // Segment Tracking
-//        SegmentTracking.shared.trackEvent(name: "Profile Photo Cancelled", traits: ["userId" : LoginDataModel.currentUser?.UserID ?? ""], trackingType: .track)
+        //        SegmentTracking.shared.trackEvent(name: "Profile Photo Cancelled", traits: ["userId" : LoginDataModel.currentUser?.UserID ?? ""], trackingType: .track)
         
         picker.dismiss(animated: true, completion: nil)
     }

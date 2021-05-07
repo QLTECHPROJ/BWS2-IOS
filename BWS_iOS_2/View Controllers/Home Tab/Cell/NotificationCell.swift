@@ -23,8 +23,12 @@ class NotificationCell: UITableViewCell {
     // Configure Cell
     func configureCell(data : NotificationListDataModel) {
         lblTitle.text = data.Msg
+        lblSubTitle.text = data.Desc
         lblTime.text = data.DurationTime
-        lblSubTitle.isHidden = true
+        
+        lblTitle.isHidden = data.Msg.trim.count == 0
+        lblSubTitle.isHidden = data.Desc.trim.count == 0
+        lblTime.isHidden = data.DurationTime.trim.count == 0
         
         if let strUrl = data.Image.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let imgUrl = URL(string: strUrl) {
             imgView.sd_setImage(with: imgUrl, completed: nil)

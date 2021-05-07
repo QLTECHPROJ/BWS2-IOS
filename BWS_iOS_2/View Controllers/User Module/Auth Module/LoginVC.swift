@@ -37,6 +37,14 @@ class LoginVC: BaseViewController {
     // MARK:- VIEW LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        for (index,controller) in self.navigationController!.viewControllers.enumerated() {
+            if controller.isKind(of: SignUpVC.self) {
+                self.navigationController?.viewControllers.remove(at: index)
+                break
+            }
+        }
+        
         setupUI()
     }
     

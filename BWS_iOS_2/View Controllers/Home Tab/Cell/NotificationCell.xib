@@ -42,44 +42,47 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="umy-LT-0dI">
-                                <rect key="frame" x="77" y="10" width="255" height="24.5"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="xrn-6d-lHJ">
+                                <rect key="frame" x="77" y="14.5" width="255" height="41.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Playlist Reminder" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ig3-4I-XQy">
-                                        <rect key="frame" x="0.0" y="0.0" width="255" height="12"/>
-                                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="10"/>
-                                        <color key="textColor" name="DarkBlack"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Time to listen to your playlist" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c1E-cT-iY9">
-                                        <rect key="frame" x="0.0" y="15" width="255" height="9.5"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="umy-LT-0dI">
+                                        <rect key="frame" x="0.0" y="0.0" width="255" height="24.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Playlist Reminder" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ig3-4I-XQy">
+                                                <rect key="frame" x="0.0" y="0.0" width="255" height="12"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="10"/>
+                                                <color key="textColor" name="DarkBlack"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Time to listen to your playlist" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c1E-cT-iY9">
+                                                <rect key="frame" x="0.0" y="15" width="255" height="9.5"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="8"/>
+                                                <color key="textColor" name="DarkBlack"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Just Now" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kpg-h2-Z42">
+                                        <rect key="frame" x="0.0" y="31.5" width="255" height="10"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="10" id="gIs-za-dud"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="8"/>
                                         <color key="textColor" name="DarkBlack"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Playlist Reminder" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kpg-h2-Z42">
-                                <rect key="frame" x="77" y="46" width="62.5" height="10"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="10" id="gIs-za-dud"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="8"/>
-                                <color key="textColor" name="DarkBlack"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" name="F9F9F9"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="umy-LT-0dI" secondAttribute="trailing" constant="11" id="0cn-dc-noq"/>
-                            <constraint firstItem="umy-LT-0dI" firstAttribute="leading" secondItem="b2q-O7-Bb8" secondAttribute="trailing" constant="15" id="83n-9p-eJS"/>
                             <constraint firstItem="b2q-O7-Bb8" firstAttribute="leading" secondItem="3vw-ab-BlB" secondAttribute="leading" constant="12" id="9hA-a5-g4n"/>
-                            <constraint firstItem="umy-LT-0dI" firstAttribute="top" secondItem="b2q-O7-Bb8" secondAttribute="top" id="Efc-eZ-QLb"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Kpg-h2-Z42" secondAttribute="trailing" constant="11" id="Hhl-h3-ZBj"/>
-                            <constraint firstItem="Kpg-h2-Z42" firstAttribute="top" relation="greaterThanOrEqual" secondItem="umy-LT-0dI" secondAttribute="bottom" constant="7" id="MSi-Wo-rUu"/>
-                            <constraint firstAttribute="bottom" secondItem="Kpg-h2-Z42" secondAttribute="bottom" constant="14" id="PUI-NU-6TL"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="xrn-6d-lHJ" secondAttribute="bottom" constant="10" id="A4B-DE-weQ"/>
+                            <constraint firstItem="xrn-6d-lHJ" firstAttribute="centerY" secondItem="3vw-ab-BlB" secondAttribute="centerY" id="JBp-sX-JIC"/>
+                            <constraint firstItem="xrn-6d-lHJ" firstAttribute="leading" secondItem="b2q-O7-Bb8" secondAttribute="trailing" constant="15" id="TY9-RI-ouJ"/>
                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="b2q-O7-Bb8" secondAttribute="bottom" constant="10" id="Uh6-WN-u2j"/>
-                            <constraint firstItem="Kpg-h2-Z42" firstAttribute="leading" secondItem="b2q-O7-Bb8" secondAttribute="trailing" constant="15" id="WEZ-mz-prp"/>
+                            <constraint firstItem="xrn-6d-lHJ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="3vw-ab-BlB" secondAttribute="top" constant="10" id="fja-Sg-dCh"/>
+                            <constraint firstAttribute="trailing" secondItem="xrn-6d-lHJ" secondAttribute="trailing" constant="11" id="ks0-Er-WbC"/>
                             <constraint firstItem="b2q-O7-Bb8" firstAttribute="top" secondItem="3vw-ab-BlB" secondAttribute="top" constant="10" id="m2T-CK-cfU"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>

@@ -439,6 +439,7 @@ class NotificationListDataModel: EVObject {
     var ID = ""
     var Image = ""
     var Msg = ""
+    var Desc = ""
     var DurationTime = ""
 }
 

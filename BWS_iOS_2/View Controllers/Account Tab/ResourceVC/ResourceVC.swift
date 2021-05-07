@@ -129,9 +129,9 @@ class ResourceVC: BaseViewController {
         let font = UIFont(name:"Montserrat-Medium", size: 16)!
         
         //let bottomHairlineColor = Theme.colors.button_Background!
-        let bottomHairlineColor = hexStringToUIColor(hex: "#005BAA")
+        let bottomHairlineColor = Theme.colors.greenColor
         let menuBackColor = UIColor.white
-        let titleColor = Theme.colors.black
+        let titleColor = UIColor.black
         let shadowColor = UIColor.lightGray
         
         // Customize menu (Optional)
