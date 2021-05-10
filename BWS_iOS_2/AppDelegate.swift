@@ -29,11 +29,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // AudioSession Configuration
         let audioSession = AVAudioSession.sharedInstance()
         do {
-            try audioSession.setCategory(AVAudioSession.Category.playback, options: .allowAirPlay)
-            try audioSession.setActive(true)
-        } catch let error as NSError {
+            try? audioSession.setCategory(AVAudioSession.Category.playback, options: .allowAirPlay)
+        }
+        catch let error as NSError {
             print("Setting category to AVAudioSessionCategoryPlayback failed: \(error)")
         }
+        try? audioSession.setActive(true)
         
         // IQKeyboardManager Setup
         IQKeyboardManager.shared.enable = true

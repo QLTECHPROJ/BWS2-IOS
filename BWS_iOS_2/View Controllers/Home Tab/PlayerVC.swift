@@ -291,6 +291,7 @@ class PlayerVC: BaseViewController {
                 break
             }
         }
+        DJMusicPlayer.shared.updateInfoCenter()
     }
     
     override func handleDJMusicPlayerNotifications(notification: Notification) {

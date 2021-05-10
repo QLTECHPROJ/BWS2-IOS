@@ -39,6 +39,11 @@ class AssessmentVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        lbl1.text = ""
+        lbl2.text = ""
+        lbl3.text = ""
+        lbl4.text = ""
+        
         progressView.progress = 0
         
         collectionView.register(UINib(nibName:"SubColCell", bundle: nil), forCellWithReuseIdentifier:"SubColCell")

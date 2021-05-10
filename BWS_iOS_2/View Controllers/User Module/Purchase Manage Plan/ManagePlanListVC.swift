@@ -60,6 +60,9 @@ class ManagePlanListVC: BaseViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        lblTitle.text = ""
+        lblSubTitle.text = ""
+        
         collectionViewAudios.register(nibWithCellClass: AudioCollectionCell.self)
         collectionViewAudios.reloadData()
         

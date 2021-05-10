@@ -128,7 +128,7 @@ class DassAssessmentResultVC: BaseViewController {
     func handleNavigation() {
         let aVC = AppStoryBoard.main.viewController(viewControllerClass: ManageStartVC.self)
         aVC.strTitle = "You are Doing Good"
-        aVC.strSubTitle = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut"
+        aVC.strSubTitle = "We are analysing the information you provided and in the process of devising a personalised treatment plan for you."
         aVC.imageMain = UIImage(named: "manageStartWave")
         aVC.continueClicked = {
             self.goNext()
