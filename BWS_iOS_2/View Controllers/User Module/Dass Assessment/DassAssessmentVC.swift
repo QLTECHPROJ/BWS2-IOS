@@ -123,8 +123,8 @@ extension DassAssessmentVC : UITableViewDelegate, UITableViewDataSource {
         cell.buttonOption.setTitle(optionValue, for: .normal)
         
         if optionValue == selectedValue {
-            cell.buttonOption.borderColor = Theme.colors.orangeColor
-            cell.buttonOption.setTitleColor(Theme.colors.orangeColor, for: .normal)
+            cell.buttonOption.borderColor = Theme.colors.orange_F1646A
+            cell.buttonOption.setTitleColor(Theme.colors.orange_F1646A, for: .normal)
         } else {
             cell.buttonOption.borderColor = Theme.colors.gray_DDDDDD
             cell.buttonOption.setTitleColor(Theme.colors.textColor, for: .normal)

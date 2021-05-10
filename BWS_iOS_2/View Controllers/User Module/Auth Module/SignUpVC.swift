@@ -253,8 +253,26 @@ extension SignUpVC : UITextFieldDelegate {
                 return false
             }
         }
-        return true
         
+        if let text = textField.text,
+            let textRange = Range(range, in: text) {
+            let updatedText = text.replacingCharacters(in: textRange, with: string).trim
+            
+            let name = (textField == txtFName) ? updatedText : txtFName.text?.trim
+            let mobile = (textField == txtFMobileNo) ? updatedText : txtFMobileNo.text?.trim
+            let email = (textField == txtFEmailAdd) ? updatedText : txtFEmailAdd.text?.trim
+            let password = (textField == txtFPassWord) ? updatedText : txtFPassWord.text?.trim
+            
+            if name?.count == 0 || mobile?.count == 0 || email?.count == 0 || password?.count == 0 {
+                btnCreateAccount.isUserInteractionEnabled = false
+                btnCreateAccount.backgroundColor = Theme.colors.gray_7E7E7E
+            } else {
+                btnCreateAccount.isUserInteractionEnabled = true
+                btnCreateAccount.backgroundColor = Theme.colors.green_008892
+            }
+        }
+        
+        return true
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {

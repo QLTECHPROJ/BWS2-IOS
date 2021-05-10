@@ -85,10 +85,10 @@ class UserListVC: BaseViewController {
         
         if shouldEnable {
             btnLogin.isUserInteractionEnabled = true
-            btnLogin.backgroundColor = Theme.colors.greenColor
+            btnLogin.backgroundColor = Theme.colors.green_008892
             
             btnForgetPin.isUserInteractionEnabled = true
-            btnForgetPin.setTitleColor(Theme.colors.greenColor, for: .normal)
+            btnForgetPin.setTitleColor(Theme.colors.green_008892, for: .normal)
         } else {
             btnLogin.isUserInteractionEnabled = false
             btnLogin.backgroundColor = Theme.colors.gray_7E7E7E

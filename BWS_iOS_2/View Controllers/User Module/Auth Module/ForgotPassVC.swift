@@ -43,7 +43,7 @@ class ForgotPassVC: BaseViewController {
     func checkValidation() -> Bool {
         if txtFEmailAdd.text?.trim.count == 0 {
             lblErrorEmail.isHidden = false
-            lblErrorEmail.text = Theme.strings.alert_blank_email_error
+            lblErrorEmail.text = Theme.strings.alert_invalid_email_error
             return false
         } else if !txtFEmailAdd.text!.isValidEmail {
             lblErrorEmail.isHidden = false
@@ -90,6 +90,23 @@ extension ForgotPassVC : UITextFieldDelegate {
             btnDone.isUserInteractionEnabled = true
             btnDone.backgroundColor = #colorLiteral(red: 0, green: 0.5333333333, blue: 0.5725490196, alpha: 1)
         }
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if let text = textField.text,
+            let textRange = Range(range, in: text) {
+            let updatedText = text.replacingCharacters(in: textRange, with: string).trim
+            
+            if updatedText.count == 0 {
+                btnDone.isUserInteractionEnabled = false
+                btnDone.backgroundColor = #colorLiteral(red: 0.4941176471, green: 0.4941176471, blue: 0.4941176471, alpha: 1)
+            } else {
+                btnDone.isUserInteractionEnabled = true
+                btnDone.backgroundColor = #colorLiteral(red: 0, green: 0.5333333333, blue: 0.5725490196, alpha: 1)
+            }
+        }
+        
+        return true
     }
     
 }

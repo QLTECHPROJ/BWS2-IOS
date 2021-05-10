@@ -27,7 +27,7 @@ class PlaylistCollectionCell: UICollectionViewCell {
         super.awakeFromNib()
         btnAddtoPlaylist.isHidden = true
         imageView.contentMode = .scaleAspectFill
-        imageView.applyGradient(with: [UIColor.clear,Theme.colors.greenColor.withAlphaComponent(0.5),Theme.colors.greenColor])
+        imageView.applyGradient(with: [UIColor.clear,Theme.colors.green_008892.withAlphaComponent(0.5),Theme.colors.green_008892])
     }
     
     
@@ -37,7 +37,7 @@ class PlaylistCollectionCell: UICollectionViewCell {
         
         imageView.image = UIImage(named: "create_playlist")
         imageView.contentMode = .center
-        imageView.backgroundColor = Theme.colors.greenColor
+        imageView.backgroundColor = Theme.colors.green_008892
         imageView.applyGradient(with: [UIColor.clear])
         
         lblName.text = "Create \nNew Playlist"
@@ -58,7 +58,7 @@ class PlaylistCollectionCell: UICollectionViewCell {
         }
         
         imageView.contentMode = .scaleAspectFill
-        imageView.applyGradient(with: [UIColor.clear,UIColor.clear,Theme.colors.greenColor])
+        imageView.applyGradient(with: [UIColor.clear,UIColor.clear,Theme.colors.green_008892])
         
         lblName.text = playlistData.PlaylistName
         
@@ -86,7 +86,7 @@ class PlaylistCollectionCell: UICollectionViewCell {
         }
         
         imageView.contentMode = .scaleAspectFill
-        imageView.applyGradient(with: [UIColor.clear,UIColor.clear,Theme.colors.greenColor])
+        imageView.applyGradient(with: [UIColor.clear,UIColor.clear,Theme.colors.green_008892])
         
         lblName.text = playlistData.PlaylistName
         
@@ -118,7 +118,7 @@ class PlaylistCollectionCell: UICollectionViewCell {
         }
         
         imageView.contentMode = .scaleAspectFill
-        imageView.applyGradient(with: [UIColor.clear,UIColor.clear,Theme.colors.greenColor])
+        imageView.applyGradient(with: [UIColor.clear,UIColor.clear,Theme.colors.green_008892])
         
         lblName.text = audioData.Name
         

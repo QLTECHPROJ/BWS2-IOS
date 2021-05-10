@@ -26,7 +26,7 @@ class AlertPopUpVC: BaseViewController {
     var detailText = "Are you sure you want to delete Self-development playlist?"
     var firstButtonTitle = "DELETE"
     var secondButtonTitle = "CLOSE"
-    var firstButtonBackgroundColor = Theme.colors.greenColor
+    var firstButtonBackgroundColor = Theme.colors.green_008892
     var secondButtonBackgroundColor = UIColor.clear
     
     var hideFirstButton = false

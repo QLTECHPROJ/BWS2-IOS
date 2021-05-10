@@ -100,7 +100,7 @@ class AddProfileVC: BaseViewController {
         
         if shouldEnable {
             btnSendPin.isUserInteractionEnabled = true
-            btnSendPin.backgroundColor = Theme.colors.greenColor
+            btnSendPin.backgroundColor = Theme.colors.green_008892
         } else {
             btnSendPin.isUserInteractionEnabled = false
             btnSendPin.backgroundColor = Theme.colors.gray_7E7E7E

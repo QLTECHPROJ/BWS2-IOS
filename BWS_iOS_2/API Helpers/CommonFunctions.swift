@@ -55,7 +55,7 @@ func checkInternet() -> Bool {
 func showAlertToast(message : String) {
     if let Window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first {
         var toastStyle = ToastManager.shared.style
-        toastStyle.backgroundColor = Theme.colors.greenColor
+        toastStyle.backgroundColor = Theme.colors.green_008892
         toastStyle.titleColor = Theme.colors.white
         toastStyle.titleAlignment = .left
         toastStyle.titleFont = Theme.fonts.montserratFont(ofSize: 12, weight: .regular)

@@ -26,10 +26,9 @@ class SleepTimeCell: UICollectionViewCell {
         lblSleepTime.text = data.Name
         
         if data.isSelected {
-            self.borderColor = Theme.colors.orangeColor
-            lblSleepTime.textColor = Theme.colors.orangeColor
-        }
-        else {
+            self.borderColor = Theme.colors.orange_F1646A
+            lblSleepTime.textColor = Theme.colors.orange_F1646A
+        } else {
             self.borderColor = Theme.colors.gray_CDD4D9
             lblSleepTime.textColor = Theme.colors.textColor
         }
