@@ -46,7 +46,7 @@ class SelfDevCell: UITableViewCell {
         imgView.contentMode = .scaleAspectFill
         
         lblTitle.textColor = Theme.colors.textColor
-        lblDuration.textColor = Theme.colors.greenColor
+        lblDuration.textColor = Theme.colors.green_008892
         
         nowPlayingAnimationImageView.backgroundColor = UIColor.black.withAlphaComponent(0.3)
         nowPlayingAnimationImageView.startNowPlayingAnimation(false)
@@ -202,7 +202,7 @@ class SelfDevCell: UITableViewCell {
         self.backgroundColor = backgroundColor
         
         lblTitle.textColor = Theme.colors.textColor
-        lblDuration.textColor = Theme.colors.greenColor
+        lblDuration.textColor = Theme.colors.green_008892
         
         btnDownload.tintColor = buttonColor
         btnDelete.tintColor = buttonColor
@@ -222,7 +222,7 @@ class SelfDevCell: UITableViewCell {
         downloadProgressView.roundedCorners = false
         downloadProgressView.glowMode = .forward
         downloadProgressView.glowAmount = 0
-        downloadProgressView.set(colors: Theme.colors.greenColor)
+        downloadProgressView.set(colors: Theme.colors.orange_F89552)
         downloadProgressView.trackColor = Theme.colors.gray_DDDDDD
         downloadProgressView.backgroundColor = UIColor.clear
     }

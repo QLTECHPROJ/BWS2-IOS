@@ -129,7 +129,7 @@ class ResourceVC: BaseViewController {
         let font = UIFont(name:"Montserrat-Medium", size: 16)!
         
         //let bottomHairlineColor = Theme.colors.button_Background!
-        let bottomHairlineColor = Theme.colors.greenColor
+        let bottomHairlineColor = Theme.colors.green_008892
         let menuBackColor = UIColor.white
         let titleColor = UIColor.black
         let shadowColor = UIColor.lightGray
@@ -273,7 +273,7 @@ extension ResourceVC: SJSegmentedViewControllerDelegate {
     func didMoveToPage(_ controller: UIViewController, segment: SJSegmentTab?, index: Int) {
         selectedSegment?.titleColor(Theme.colors.gray_7E7E7E)
         selectedSegment = segment
-        segment?.titleColor(Theme.colors.greenColor)
+        segment?.titleColor(Theme.colors.green_008892)
         selectedController = controller
         self.refreshData()
     }

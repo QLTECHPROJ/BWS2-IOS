@@ -155,4 +155,24 @@ extension LoginVC : UITextFieldDelegate {
         }
     }
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if let text = textField.text,
+            let textRange = Range(range, in: text) {
+            let updatedText = text.replacingCharacters(in: textRange, with: string).trim
+            
+            let email = (textField == txtFEmailAdd) ? updatedText : txtFEmailAdd.text?.trim
+            let password = (textField == txtFPassWord) ? updatedText : txtFPassWord.text?.trim
+            
+            if email?.count == 0 || password?.count == 0 {
+                btnLogin.isUserInteractionEnabled = false
+                btnLogin.backgroundColor = Theme.colors.gray_7E7E7E
+            } else {
+                btnLogin.isUserInteractionEnabled = true
+                btnLogin.backgroundColor = Theme.colors.green_008892
+            }
+        }
+        
+        return true
+    }
+    
 }

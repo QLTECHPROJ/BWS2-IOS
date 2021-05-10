@@ -55,7 +55,7 @@ class ChangePassWordVC: BaseViewController {
         
         if shouldEnable {
             btnSave.isUserInteractionEnabled = true
-            btnSave.backgroundColor = Theme.colors.greenColor
+            btnSave.backgroundColor = Theme.colors.green_008892
         } else {
             btnSave.isUserInteractionEnabled = false
             btnSave.backgroundColor = Theme.colors.gray_7E7E7E

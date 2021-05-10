@@ -29,7 +29,7 @@ class TabBarController: UITabBarController {
         
         self.tabBar.barStyle = UIBarStyle.default
         self.tabBar.barTintColor = Theme.colors.off_white_F9F9F9
-        self.tabBar.tintColor = Theme.colors.greenColor
+        self.tabBar.tintColor = Theme.colors.green_008892
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         
         //        self.setShadowTabbar()

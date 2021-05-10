@@ -184,11 +184,13 @@ struct AppColors {
     let blue = UIColor.blue
     let red = UIColor.red
     
-    let greenColor = UIColor(hex: "008892")
+    let white_40_opacity = UIColor.black.withAlphaComponent(0.4)
+    let black_40_opacity = UIColor.black.withAlphaComponent(0.4)
+    let gray_313131_80_opacity = UIColor(hex: "313131").withAlphaComponent(0.8)
+    
     let indexScoreColor = UIColor(hex: "B8DAFF")
     
-    let black_40_opacity = UIColor.black.withAlphaComponent(0.4)
-    
+    let gray_313131 = UIColor(hex: "313131")
     let gray_DDDDDD = UIColor(hex: "DDDDDD")
     let gray_7E7E7E = UIColor(hex: "7E7E7E")
     let gray_707070 = UIColor(hex: "707070")
@@ -197,6 +199,8 @@ struct AppColors {
     let gray_CDD4D9 = UIColor(hex: "CDD4D9")
     
     let off_white_F9F9F9 = UIColor(hex: "F9F9F9")
+    
+    let skyBlue = UIColor(hex: "72C2DD")
     let sky_blue_light_E4F3F3 = UIColor(hex: "E4F3F3")
     
     let red_CE5060 = UIColor(hex: "CE5060")
@@ -204,16 +208,21 @@ struct AppColors {
     let pink_FFDFEA = UIColor(hex: "FFDFEA")
     let magenta_C44B6C = UIColor(hex: "C44B6C")
     
+    let green_008892 = UIColor(hex: "008892")
     let green_A2EEC5 = UIColor(hex: "A2EEC5")
     let green_27B86A = UIColor(hex: "27B86A")
+    let green_36C2D6 = UIColor(hex: "36C2D6")
+    let green_1597AA = UIColor(hex: "1597AA")
     
     let blue_B8E1F7 = UIColor(hex: "B8E1F7")
     let blue_38667E = UIColor(hex: "38667E")
     
     let orange_F89552 = UIColor(hex: "F89552")
-    let orangeColor = UIColor(hex: "F1646A")
+    let orange_FE8D7D = UIColor(hex: "FE8D7D")
+    let orange_F1646A = UIColor(hex: "F1646A")
+    
     let purple = UIColor(hex: "6C63FF")
-    let skyBlue = UIColor(hex: "72C2DD")
+    
     let textColor = UIColor(hex: "313131")
 }
 

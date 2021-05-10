@@ -42,11 +42,11 @@ class DownloadVC: BaseViewController {
         segmentController.segmentControllers = [firstVC,secondVC]
         
         segmentController.segmentTitleColor = Theme.colors.textColor
-        segmentController.segmentSelectedTitleColor = Theme.colors.greenColor
+        segmentController.segmentSelectedTitleColor = Theme.colors.green_008892
         segmentController.selectedSegmentViewHeight = 3.0
         segmentController.segmentTitleFont = Theme.fonts.montserratFont(ofSize: 13, weight: .medium)
         segmentController.delegate = self
-        segmentController.selectedSegmentViewColor = Theme.colors.greenColor
+        segmentController.selectedSegmentViewColor = Theme.colors.green_008892
         segmentController.segmentViewHeight = 50
         addChild(segmentController)
         self.viewSegment.addSubview(segmentController.view)

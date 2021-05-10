@@ -70,7 +70,7 @@ class PlayerVC: BaseViewController {
         downloadProgressView.roundedCorners = false
         downloadProgressView.glowMode = .forward
         downloadProgressView.glowAmount = 0
-        downloadProgressView.set(colors: Theme.colors.greenColor)
+        downloadProgressView.set(colors: Theme.colors.orange_F89552)
         downloadProgressView.trackColor = Theme.colors.gray_DDDDDD
         downloadProgressView.backgroundColor = UIColor.clear
     }
