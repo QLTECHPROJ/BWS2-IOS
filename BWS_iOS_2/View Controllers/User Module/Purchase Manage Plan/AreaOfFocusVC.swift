@@ -13,6 +13,8 @@ class AreaOfFocusVC: BaseViewController {
     // MARK:- OUTLETS
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet var footerView: UIView!
+    @IBOutlet weak var lblNoData: UILabel!
     
     // MARK:- VARIABLES
     var arrayAreaOfFocus = [AreaOfFocusModel]()
@@ -139,17 +141,20 @@ class AreaOfFocusVC: BaseViewController {
                 return model.View.lowercased().contains(searchText.lowercased())
             })
             
-            // if arrayCountrySearch.count > 0 {
-            //     lblNoData.isHidden = true
-            // } else {
-            //     lblNoData.isHidden = false
-            //     lblNoData.text = "Couldn't find " + updatedText + " Try searching again"
-            // }
-            // lblNoData.isHidden = arrayCountrySearch.count != 0
+             if arrayCategories.count > 0 {
+                tableView.tableFooterView = nil
+                lblNoData.isHidden = true
+             } else {
+                tableView.tableFooterView = footerView
+                lblNoData.isHidden = false
+                lblNoData.text = "Couldn't find " + searchText + " Try searching again"
+             }
+            lblNoData.isHidden = arrayCategories.count != 0
             tableView.reloadData()
         } else {
+            tableView.tableFooterView = nil
             arrayCategories = arrayCategoriesMain
-            // lblNoData.isHidden = true
+            lblNoData.isHidden = true
             tableView.reloadData()
         }
     }

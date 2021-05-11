@@ -28,6 +28,7 @@ class RecommendedCategoryHeaderCell: UITableViewCell {
         let normalString = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut"
         lblSubTitle.attributedText = normalString.attributedString(alignment: .left, lineSpacing: 10)
         
+        txtSearch.delegate = self
         btnClear.isHidden = true
         // txtSearch.isEnabled = false
         txtSearch.addTarget(self, action: #selector(textFieldValueChanged(textField:)), for: UIControl.Event.editingChanged)

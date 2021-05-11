@@ -32,7 +32,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MzF-gu-gSQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="457"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AverageSleepTime_Top" translatesAutoresizingMaskIntoConstraints="NO" id="Bmi-ng-4k4">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RecCategoryImage" translatesAutoresizingMaskIntoConstraints="NO" id="Bmi-ng-4k4">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="163"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m7W-QL-a8A">
@@ -204,8 +204,8 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="AverageSleepTime_Top" width="375" height="163"/>
         <image name="Back_Button_white" width="16" height="16"/>
+        <image name="RecCategoryImage" width="375" height="163"/>
         <image name="Search" width="15.5" height="15.5"/>
         <image name="closeBlack" width="17" height="17"/>
         <namedColor name="999999">

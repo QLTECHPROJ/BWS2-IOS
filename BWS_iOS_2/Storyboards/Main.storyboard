@@ -5056,10 +5056,30 @@ agree to our T&amp;Cs, Privacy Policy &amp; Disclaimer</string>
                         <viewLayoutGuide key="safeArea" id="eze-Xr-aVQ"/>
                     </view>
                     <connections>
+                        <outlet property="footerView" destination="srh-fp-lzG" id="VO1-1y-bkq"/>
+                        <outlet property="lblNoData" destination="nB3-Xz-Eqh" id="ruY-rA-5Vm"/>
                         <outlet property="tableView" destination="0Ur-dq-fHN" id="b9Z-o7-Gia"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qe4-BR-VdY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="srh-fp-lzG">
+                    <rect key="frame" x="0.0" y="0.0" width="379" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nB3-Xz-Eqh">
+                            <rect key="frame" x="169.66666666666666" y="54.333333333333336" width="39.666666666666657" height="19.333333333333336"/>
+                            <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="16"/>
+                            <color key="textColor" name="black"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstItem="nB3-Xz-Eqh" firstAttribute="centerY" secondItem="srh-fp-lzG" secondAttribute="centerY" id="7b9-tH-L74"/>
+                        <constraint firstItem="nB3-Xz-Eqh" firstAttribute="centerX" secondItem="srh-fp-lzG" secondAttribute="centerX" id="STn-5F-EFL"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="wKV-Ba-t4y"/>
+                </view>
             </objects>
             <point key="canvasLocation" x="3030" y="2325"/>
         </scene>
@@ -5606,7 +5626,7 @@ personalised playlist</string>
             <color red="0.97600001096725464" green="0.97600001096725464" blue="0.97600001096725464" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Green">
-            <color red="0.0" green="0.53299999237060547" blue="0.57300001382827759" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.53333333333333333" blue="0.5725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="black">
             <color red="0.16470588235294117" green="0.18823529411764706" blue="0.25882352941176473" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
