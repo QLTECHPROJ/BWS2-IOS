@@ -18,6 +18,11 @@ extension SplashVC {
         APICallManager.sharedInstance.callAPI(router: APIRouter.appversion(parameters), displayHud: false) { (response : AppVersionModel) in
             if response.ResponseCode == "200" {
                 SplashVC.isForceUpdate = response.ResponseData.IsForce
+                
+                // Segment Configuration
+                SegmentTracking.shared.segmentWriteKey = response.ResponseData.segmentKey
+                SegmentTracking.shared.configureSegment()
+                
                 self.handleAppUpdatePopup()
             } else {
                 self.handleRedirection()
@@ -58,6 +63,19 @@ extension SignUpVC {
         APICallManager.sharedInstance.callAPI(router: APIRouter.signup(parameters), displayHud: true, showToast: false) { (response : LoginModel) in
             if response.ResponseCode == "200" {
                 showAlertToast(message: response.ResponseMessage)
+                
+                // Segment Tracking
+                if let userDetails = response.ResponseData {
+                    let traits = ["UserID":userDetails.ID,
+                                  "name":userDetails.Name,
+                                  "countryCode":self.selectedCountry.Code,
+                                  "countryName":self.selectedCountry.Name,
+                                  "countryShortName":self.selectedCountry.ShortName,
+                                  "mobileNo":userDetails.MobileNo,
+                                  "email":userDetails.Email]
+                    SegmentTracking.shared.trackEvent(name: "User Sign up", traits: traits, trackingType: .track)
+                }
+                
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass:LoginVC.self)
                 self.navigationController?.pushViewController(aVC, animated: true)
             } else {
@@ -84,6 +102,15 @@ extension LoginVC {
         APICallManager.sharedInstance.callAPI(router: APIRouter.login(parameters), displayHud: true, showToast: false) { (response : LoginModel) in
             if response.ResponseCode == "200" {
                 LoginDataModel.currentUser = response.ResponseData
+                
+                // Segment Tracking
+                if let userDetails = response.ResponseData {
+                    let traits = ["UserID":userDetails.ID,
+                                  "name":userDetails.Name,
+                                  "mobileNo":userDetails.MobileNo,
+                                  "email":userDetails.Email]
+                    SegmentTracking.shared.trackEvent(name: "User Login", traits: traits, trackingType: .track)
+                }
                 
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass:UserListVC.self)
                 self.navigationController?.pushViewController(aVC, animated: true)
@@ -142,6 +169,9 @@ extension UserListVC {
                 self.tableView.reloadData()
                 self.maxUsers = Int(response.ResponseData.Maxuseradd) ?? 0
                 self.setupData()
+                
+                // Segment Tracking
+                self.trackScreenData()
             } else {
                 self.setupData()
             }
@@ -170,6 +200,10 @@ extension PinVC {
                     CoUserDataModel.lastCoUserID = lastCoUserID
                 }
                 
+                // Segment Tracking
+                SegmentTracking.shared.identifyUser()
+                SegmentTracking.shared.coUserEvent(name: "CoUser Login", trackingType: .track)
+                
                 // Clear Last User Data
                 AccountVC.clearUserData()
                 
@@ -194,6 +228,19 @@ extension AddProfileVC {
         APICallManager.sharedInstance.callAPI(router: APIRouter.addcouser(parameters), displayHud: true, showToast: false) { (response : CoUserModel) in
             if response.ResponseCode == "200" {
                 showAlertToast(message: response.ResponseMessage)
+                
+                // Segment Tracking
+                if self.selectedUser == nil {
+                    if let userDetails = response.ResponseData {
+                        let traits = ["CoUserId":userDetails.CoUserId,
+                                      "UserID":userDetails.UserID,
+                                      "name":userDetails.Name,
+                                      "mobileNo":userDetails.Mobile,
+                                      "email":userDetails.Email]
+                        SegmentTracking.shared.trackEvent(name: "Couser Added", traits: traits, trackingType: .track)
+                    }
+                }
+                
                 self.navigationController?.popViewController(animated: true)
             } else {
                 if response.ResponseMessage.trim.count > 0 {
@@ -237,6 +284,10 @@ extension ProfileForm6VC {
         APICallManager.sharedInstance.callAPI(router: APIRouter.profilesaveans(parameters)) { (response : CoUserModel) in
             if response.ResponseCode == "200" {
                 showAlertToast(message: response.ResponseMessage)
+                
+                // Segment Tracking
+                SegmentTracking.shared.trackEvent(name: "Profile Form Submitted", traits: parameters, trackingType: .track)
+                
                 ProfileFormModel.shared = ProfileFormModel()
                 CoUserDataModel.currentUser?.isProfileCompleted = "1"
                 CoUserDataModel.currentUser = CoUserDataModel.currentUser
@@ -272,6 +323,14 @@ extension AssessmentVC {
                 userData?.indexScore = response.ResponseData?.indexScore ?? "0"
                 userData?.ScoreLevel = response.ResponseData?.ScoreLevel ?? ""
                 CoUserDataModel.currentUser = userData
+                
+                // Segment Tracking
+                let traits = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+                              "UserID":CoUserDataModel.currentUser?.UserID ?? "",
+                              "indexScore":CoUserDataModel.currentUser?.indexScore ?? "",
+                              "ScoreLevel":CoUserDataModel.currentUser?.ScoreLevel ?? ""]
+                SegmentTracking.shared.trackEvent(name: "Assessment Form Submitted", traits: traits, trackingType: .track)
+                
                 showAlertToast(message: response.ResponseMessage)
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass: DassAssessmentResultVC.self)
                 aVC.isFromEdit = self.isFromEdit
@@ -292,6 +351,12 @@ extension UIViewController {
         APICallManager.sharedInstance.callAPI(router: APIRouter.getcouserdetails(parameters), displayHud: false) { (response : CoUserModel) in
             if response.ResponseCode == "200" {
                 CoUserDataModel.currentUser = response.ResponseData
+                
+                // Segment Tracking
+                if SegmentTracking.shared.userIdentityTracked == false {
+                    SegmentTracking.shared.identifyUser()
+                }
+                
                 DispatchQueue.main.async {
                     complitionBlock?(true)
                 }
@@ -785,10 +850,10 @@ extension AddAudioVC {
                           "SuggestedName":searchText]
         
         // Segment Tracking
-        //        let traits = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
-        //                      "source":isComeFromAddAudio ? "Add Audio Screen" : "Search Screen",
-        //                      "searchKeyword":searchText]
-        //        SegmentTracking.shared.trackEvent(name: "Audio/Playlist Searched", traits: traits, trackingType: .track)
+        let traits = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+                      "source":isComeFromAddAudio ? "Add Audio Screen" : "Search Screen",
+                      "searchKeyword":searchText]
+        SegmentTracking.shared.trackEvent(name: "Audio/Playlist Searched", traits: traits, trackingType: .track)
         
         APICallManager.sharedInstance.callAPI(router: APIRouter.searchonsuggestedlist(parameters)) { (response : AudioDetailsModel) in
             
@@ -1012,6 +1077,15 @@ extension HomeVC {
                 self.arrayPastIndexScore = response.ResponseData.PastIndexScore
                 self.arraySessionScore = response.ResponseData.SessionScore
                 self.arraySessionProgress = response.ResponseData.SessionProgress
+                
+                if response.ResponseData.shouldPlayDisclaimer == "1" {
+                    DisclaimerAudio.shared.shouldPlayDisclaimer = true
+                }
+                
+                if let disclaimer = response.ResponseData.disclaimerAudio {
+                    DisclaimerAudio.shared.disclaimerAudio = disclaimer
+                }
+                
                 self.setupData()
             } else {
                 self.setupData()
@@ -1124,6 +1198,16 @@ extension FAQVC {
             if response.ResponseCode == "200" {
                 self.arrayFAQ = response.ResponseData
                 self.setupData()
+                
+                // Segment Tracking
+                let traits : [String:Any] = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+                                             "faqCategories":self.arrTitle]
+                SegmentTracking.shared.trackEvent(name: "FAQ Viewed", traits: traits, trackingType: .track)
+            } else {
+                // Segment Tracking
+                let traits : [String:Any] = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+                                             "faqCategories":self.arrTitle]
+                SegmentTracking.shared.trackEvent(name: "FAQ Viewed", traits: traits, trackingType: .track)
             }
         }
     }
@@ -1149,11 +1233,11 @@ extension ReminderListVC {
                     self.tableView.isHidden = true
                 }
                 
-//                // Segment Tracking
-//                if self.isReminderScreenTracked == false {
-//                    self.isReminderScreenTracked = true
-//                    SegmentTracking.shared.trackReminderScreenViewed(arrayReminders: response.ResponseData)
-//                }
+                // Segment Tracking
+                if self.shouldTrackScreen == false {
+                    self.shouldTrackScreen = true
+                    SegmentTracking.shared.trackReminderScreenViewed(arrayReminders: response.ResponseData)
+                }
             }
         }
     }
@@ -1294,8 +1378,8 @@ extension EditProfileVC {
                     }
 
     
-//                    // Segment Tracking
-//                    SegmentTracking.shared.identifyUser(profileDetails: response.ResponseData)
+                    // Segment Tracking
+                    SegmentTracking.shared.identifyUser()
                 }
             }
         }

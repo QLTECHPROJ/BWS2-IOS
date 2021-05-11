@@ -161,16 +161,18 @@ func refreshPlayerDownloadedAudios() {
     
     if newIndex != nil {
         if DJMusicPlayer.shared.currentlyPlaying?.isDisclaimer == true {
-            let disclaimer = DisclaimerAudio.shared.fetchDisclaimerAudio(data: DJMusicPlayer.shared.currentlyPlaying!)
-            DJMusicPlayer.shared.nowPlayingList.insert(disclaimer, at: newIndex!)
+            if let disclaimer = DisclaimerAudio.shared.disclaimerAudio {
+                DJMusicPlayer.shared.nowPlayingList.insert(disclaimer, at: newIndex!)
+            }
             saveNowPlayingSongs()
         }
         DJMusicPlayer.shared.playIndex = newIndex!
     } else {
         if DJMusicPlayer.shared.nowPlayingList.count > currentIndex {
             if DJMusicPlayer.shared.currentlyPlaying?.isDisclaimer == true {
-                let disclaimer = DisclaimerAudio.shared.fetchDisclaimerAudio(data: DJMusicPlayer.shared.currentlyPlaying!)
-                DJMusicPlayer.shared.nowPlayingList.insert(disclaimer, at: currentIndex)
+                if let disclaimer = DisclaimerAudio.shared.disclaimerAudio {
+                    DJMusicPlayer.shared.nowPlayingList.insert(disclaimer, at: currentIndex)
+                }
                 saveNowPlayingSongs()
             }
             if DJMusicPlayer.shared.currentlyPlaying?.isDisclaimer == false {
@@ -182,8 +184,9 @@ func refreshPlayerDownloadedAudios() {
             }
         } else {
             if DJMusicPlayer.shared.currentlyPlaying?.isDisclaimer == true {
-                let disclaimer = DisclaimerAudio.shared.fetchDisclaimerAudio(data: DJMusicPlayer.shared.currentlyPlaying!)
-                DJMusicPlayer.shared.nowPlayingList.insert(disclaimer, at: 0)
+                if let disclaimer = DisclaimerAudio.shared.disclaimerAudio {
+                    DJMusicPlayer.shared.nowPlayingList.insert(disclaimer, at: 0)
+                }
                 saveNowPlayingSongs()
             }
             DJMusicPlayer.shared.playIndex = 0
@@ -320,16 +323,18 @@ func refreshNowPlayingSongs(playlistID : String, arraySongs : [AudioDetailsDataM
     
     if newIndex != nil {
         if DJMusicPlayer.shared.currentlyPlaying?.isDisclaimer == true {
-            let disclaimer = DisclaimerAudio.shared.fetchDisclaimerAudio(data: DJMusicPlayer.shared.currentlyPlaying!)
-            DJMusicPlayer.shared.nowPlayingList.insert(disclaimer, at: newIndex!)
+            if let disclaimer = DisclaimerAudio.shared.disclaimerAudio {
+                DJMusicPlayer.shared.nowPlayingList.insert(disclaimer, at: newIndex!)
+            }
             saveNowPlayingSongs()
         }
         DJMusicPlayer.shared.playIndex = newIndex!
     } else {
         if DJMusicPlayer.shared.nowPlayingList.count > currentIndex {
             if DJMusicPlayer.shared.currentlyPlaying?.isDisclaimer == true {
-                let disclaimer = DisclaimerAudio.shared.fetchDisclaimerAudio(data: DJMusicPlayer.shared.currentlyPlaying!)
-                DJMusicPlayer.shared.nowPlayingList.insert(disclaimer, at: currentIndex)
+                if let disclaimer = DisclaimerAudio.shared.disclaimerAudio {
+                    DJMusicPlayer.shared.nowPlayingList.insert(disclaimer, at: currentIndex)
+                }
                 saveNowPlayingSongs()
             }
             if DJMusicPlayer.shared.currentlyPlaying?.isDisclaimer == false {
@@ -341,8 +346,9 @@ func refreshNowPlayingSongs(playlistID : String, arraySongs : [AudioDetailsDataM
             }
         } else {
             if DJMusicPlayer.shared.currentlyPlaying?.isDisclaimer == true {
-                let disclaimer = DisclaimerAudio.shared.fetchDisclaimerAudio(data: DJMusicPlayer.shared.currentlyPlaying!)
-                DJMusicPlayer.shared.nowPlayingList.insert(disclaimer, at: 0)
+                if let disclaimer = DisclaimerAudio.shared.disclaimerAudio {
+                    DJMusicPlayer.shared.nowPlayingList.insert(disclaimer, at: 0)
+                }
                 saveNowPlayingSongs()
             }
             DJMusicPlayer.shared.playIndex = 0

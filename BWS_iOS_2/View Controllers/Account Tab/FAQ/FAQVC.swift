@@ -17,7 +17,7 @@ class FAQVC: BaseViewController {
     //MARK:- Variables
     var arrTitle = ["Audio","Playlist","General"]
     var arrayFAQ = [FAQDataModel]()
-    var arrayFilter = [FAQDataModel]()
+    
     
     //MARK:- View Life Cycle
     override func viewDidLoad() {
@@ -70,12 +70,10 @@ extension FAQVC:UITableViewDelegate,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         let aVC = AppStoryBoard.account.viewController(viewControllerClass: FAQListVC.self)
-        arrayFilter = arrayFAQ.filter { $0.Category == arrTitle[indexPath.section] }
-        aVC.arrayFilter = arrayFilter
+        aVC.arrayFilter = arrayFAQ.filter { $0.Category == arrTitle[indexPath.section] }
+        aVC.strCategory = arrTitle[indexPath.section]
         self.navigationController?.pushViewController(aVC, animated: true)
-        
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

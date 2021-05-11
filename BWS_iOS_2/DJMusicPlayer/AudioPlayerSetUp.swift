@@ -24,7 +24,8 @@ extension BaseViewController {
         DJMusicPlayer.shared.lastPlayerType = .audio
         DJMusicPlayer.shared.playerScreen = .miniPlayer
         DJMusicPlayer.shared.playingFrom = "Audios"
-        DJMusicPlayer.shared.shouldPlayDisclaimer = false
+        
+        DisclaimerAudio.shared.shouldPlayDisclaimer = false
         
         // Cancel All ongoing Downloads on logout
         SDDownloadManager.shared.cancelAllDownloads()
@@ -77,9 +78,10 @@ extension BaseViewController {
                 isFirstPlaybackAudio = false
             }
             
-            if DJMusicPlayer.shared.shouldPlayDisclaimer {
-                let disclaimer = DisclaimerAudio.shared.fetchDisclaimerAudio(data: audioList[playIndex])
-                audioList.insert(disclaimer, at: playIndex)
+            if DisclaimerAudio.shared.shouldPlayDisclaimer {
+                if let disclaimer = DisclaimerAudio.shared.disclaimerAudio {
+                    audioList.insert(disclaimer, at: playIndex)
+                }
             }
             
             if isFirstPlaybackAudio || DJMusicPlayer.shared.isFirstPlaybackAudio {

@@ -599,6 +599,8 @@ class HomeDataModel: EVObject {
     var shouldCheckIndexScore = ""
     var IndexScoreDiff = ""
     var ScoreIncDec = ""
+    var shouldPlayDisclaimer = ""
+    var disclaimerAudio : AudioDetailsDataModel?
     var SuggestedPlaylist : PlaylistDetailsModel?
     var PastIndexScore = [PastIndexScoreModel]()
     var SessionScore = [SessionScoreModel]()

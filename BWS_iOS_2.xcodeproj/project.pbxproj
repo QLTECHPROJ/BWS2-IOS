@@ -138,6 +138,10 @@
 		283F72F6261D999200554774 /* SubColCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 283F72F2261D999200554774 /* SubColCell.xib */; };
 		284C9B6A262E93D1008C4435 /* CryptLib.m in Sources */ = {isa = PBXBuildFile; fileRef = 284C9B68262E93D1008C4435 /* CryptLib.m */; };
 		284C9B6B262E93D1008C4435 /* CryptLib.m in Sources */ = {isa = PBXBuildFile; fileRef = 284C9B68262E93D1008C4435 /* CryptLib.m */; };
+		2865DB2C26495567009CDE7F /* Segment+Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2865DB2B26495567009CDE7F /* Segment+Functions.swift */; };
+		2865DB2D26495567009CDE7F /* Segment+Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2865DB2B26495567009CDE7F /* Segment+Functions.swift */; };
+		2865DB2F26495575009CDE7F /* Segment+ScreenTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2865DB2E26495575009CDE7F /* Segment+ScreenTracking.swift */; };
+		2865DB3026495575009CDE7F /* Segment+ScreenTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2865DB2E26495575009CDE7F /* Segment+ScreenTracking.swift */; };
 		2870B35825FB3A570014A4F6 /* BWS_iOS_2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 28F812AB25FB336F00DC6AF6 /* BWS_iOS_2.xcdatamodeld */; };
 		2870B35925FB3A570014A4F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F812A225FB336F00DC6AF6 /* AppDelegate.swift */; };
 		2870B35D25FB3A570014A4F6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28F812BD25FB367A00DC6AF6 /* Main.storyboard */; };
@@ -582,6 +586,8 @@
 		283F72F2261D999200554774 /* SubColCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubColCell.xib; sourceTree = "<group>"; };
 		284C9B68262E93D1008C4435 /* CryptLib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CryptLib.m; sourceTree = "<group>"; };
 		284C9B69262E93D1008C4435 /* CryptLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CryptLib.h; sourceTree = "<group>"; };
+		2865DB2B26495567009CDE7F /* Segment+Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Segment+Functions.swift"; sourceTree = "<group>"; };
+		2865DB2E26495575009CDE7F /* Segment+ScreenTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Segment+ScreenTracking.swift"; sourceTree = "<group>"; };
 		2870B36325FB3A570014A4F6 /* BWS 2 Staging.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BWS 2 Staging.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2870B36525FB3AE90014A4F6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2870B36825FB3B2B0014A4F6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1341,6 +1347,8 @@
 			children = (
 				28F812B925FB356000DC6AF6 /* Brain Wellness App.entitlements */,
 				28F812A225FB336F00DC6AF6 /* AppDelegate.swift */,
+				2865DB2B26495567009CDE7F /* Segment+Functions.swift */,
+				2865DB2E26495575009CDE7F /* Segment+ScreenTracking.swift */,
 				281DE3152626FD79002CCD9D /* DJMusicPlayer */,
 				2870B36A25FB3FEE0014A4F6 /* View Controllers */,
 				2870B36B25FB400D0014A4F6 /* API Helpers */,
@@ -1928,6 +1936,7 @@
 				28E0123E261847EA00B55967 /* AreaCell.swift in Sources */,
 				2870B44225FB41A10014A4F6 /* ReorderController.swift in Sources */,
 				28B27821262EED41005794E3 /* DownloadVC.swift in Sources */,
+				2865DB2D26495567009CDE7F /* Segment+Functions.swift in Sources */,
 				2870B3D825FB41A10014A4F6 /* NSAttributedString+Extension.swift in Sources */,
 				2870B3D225FB41A10014A4F6 /* DJTextField.swift in Sources */,
 				28E8093926130A8800CD80F7 /* ManageVC.swift in Sources */,
@@ -1995,6 +2004,7 @@
 				9A51DF2D26383A6D001364EA /* ChangePINVC.swift in Sources */,
 				281DE33A2626FD79002CCD9D /* ConnectionManager.swift in Sources */,
 				28E8093626130A7A00CD80F7 /* HomeVC.swift in Sources */,
+				2865DB3026495575009CDE7F /* Segment+ScreenTracking.swift in Sources */,
 				28E8093C26130A9800CD80F7 /* WellnessVC.swift in Sources */,
 				28B53553260CC4B000BD8147 /* CollectionViewFlowLayout.swift in Sources */,
 				28ED2F8125FB511300E59C56 /* ProfileFormStartVC.swift in Sources */,
@@ -2129,6 +2139,7 @@
 				28E0123B261847EA00B55967 /* NotificationCell.swift in Sources */,
 				28E0123D261847EA00B55967 /* AreaCell.swift in Sources */,
 				2870B45925FB44700014A4F6 /* NSCalendar+Timepiece.swift in Sources */,
+				2865DB2C26495567009CDE7F /* Segment+Functions.swift in Sources */,
 				28B27820262EED41005794E3 /* DownloadVC.swift in Sources */,
 				2870B44125FB41A10014A4F6 /* ReorderController.swift in Sources */,
 				2870B3D725FB41A10014A4F6 /* NSAttributedString+Extension.swift in Sources */,
@@ -2196,6 +2207,7 @@
 				9A51DF2C26383A4E001364EA /* ChangePINVC.swift in Sources */,
 				281DE3392626FD79002CCD9D /* ConnectionManager.swift in Sources */,
 				28E8093526130A7A00CD80F7 /* HomeVC.swift in Sources */,
+				2865DB2F26495575009CDE7F /* Segment+ScreenTracking.swift in Sources */,
 				28E8093B26130A9800CD80F7 /* WellnessVC.swift in Sources */,
 				28B53552260CC4B000BD8147 /* CollectionViewFlowLayout.swift in Sources */,
 				2870B43B25FB41A10014A4F6 /* ReadMore_Helper.swift in Sources */,

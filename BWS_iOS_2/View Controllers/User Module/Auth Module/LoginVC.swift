@@ -38,6 +38,9 @@ class LoginVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Segment Tracking
+        SegmentTracking.shared.trackEvent(name: "Login Screen Viewed", traits: nil, trackingType: .screen)
+        
         for (index,controller) in self.navigationController!.viewControllers.enumerated() {
             if controller.isKind(of: SignUpVC.self) {
                 self.navigationController?.viewControllers.remove(at: index)
@@ -57,13 +60,15 @@ class LoginVC: BaseViewController {
         txtFEmailAdd.delegate = self
         txtFPassWord.delegate = self
         
-        if txtFEmailAdd.text?.trim.count == 0 || txtFPassWord.text?.trim.count == 0 {
+        let email = txtFEmailAdd.text?.trim
+        let password = txtFPassWord.text?.trim
+        
+        if email?.count == 0 || password?.count == 0 {
             btnLogin.isUserInteractionEnabled = false
-            btnLogin.backgroundColor = #colorLiteral(red: 0.4941176471, green: 0.4941176471, blue: 0.4941176471, alpha: 1)
-            btnVisible.isUserInteractionEnabled = false
+            btnLogin.backgroundColor = Theme.colors.gray_7E7E7E
         } else {
             btnLogin.isUserInteractionEnabled = true
-            btnLogin.backgroundColor = #colorLiteral(red: 0, green: 0.5333333333, blue: 0.5725490196, alpha: 1)
+            btnLogin.backgroundColor = Theme.colors.green_008892
         }
     }
     
@@ -146,12 +151,15 @@ extension LoginVC : UITextFieldDelegate {
             btnVisible.setImage(UIImage(named: "PassDefault"), for: .normal)
         }
         
-        if txtFEmailAdd.text?.trim.count == 0 || txtFPassWord.text?.trim.count == 0 {
+        let email = txtFEmailAdd.text?.trim
+        let password = txtFPassWord.text?.trim
+        
+        if email?.count == 0 || password?.count == 0 {
             btnLogin.isUserInteractionEnabled = false
-            btnLogin.backgroundColor = #colorLiteral(red: 0.4941176471, green: 0.4941176471, blue: 0.4941176471, alpha: 1)
+            btnLogin.backgroundColor = Theme.colors.gray_7E7E7E
         } else {
             btnLogin.isUserInteractionEnabled = true
-            btnLogin.backgroundColor = #colorLiteral(red: 0, green: 0.5333333333, blue: 0.5725490196, alpha: 1)
+            btnLogin.backgroundColor = Theme.colors.green_008892
         }
     }
     

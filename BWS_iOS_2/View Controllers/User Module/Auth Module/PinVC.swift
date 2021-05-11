@@ -78,10 +78,10 @@ class PinVC: BaseViewController {
         if txtFPin1.text?.trim.count == 0 || txtFPin2.text?.trim.count == 0 ||
             txtFPin3.text?.trim.count == 0 || txtFPin4.text == "" {
             btnDone.isUserInteractionEnabled = false
-            btnDone.backgroundColor = #colorLiteral(red: 0.4941176471, green: 0.4941176471, blue: 0.4941176471, alpha: 1)
+            btnDone.backgroundColor = Theme.colors.gray_7E7E7E
         } else {
             btnDone.isUserInteractionEnabled = true
-            btnDone.backgroundColor = #colorLiteral(red: 0, green: 0.5333333333, blue: 0.5725490196, alpha: 1)
+            btnDone.backgroundColor = Theme.colors.green_008892
         }
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.viewTapped(_:)))
@@ -273,10 +273,10 @@ extension PinVC : UITextFieldDelegate, BackspaceTextFieldDelegate {
         if txtFPin1.text?.trim.count == 0 || txtFPin2.text?.trim.count == 0 ||
             txtFPin3.text?.trim.count == 0 || txtFPin4.text == "" {
             btnDone.isUserInteractionEnabled = false
-            btnDone.backgroundColor = #colorLiteral(red: 0.4941176471, green: 0.4941176471, blue: 0.4941176471, alpha: 1)
+            btnDone.backgroundColor = Theme.colors.gray_7E7E7E
         } else {
             btnDone.isUserInteractionEnabled = true
-            btnDone.backgroundColor = #colorLiteral(red: 0, green: 0.5333333333, blue: 0.5725490196, alpha: 1)
+            btnDone.backgroundColor = Theme.colors.green_008892
         }
     }
     

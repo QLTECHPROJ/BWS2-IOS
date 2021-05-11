@@ -26,6 +26,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Battery Level & State Observation
         self.startBatteryObservation()
         
+        // Segment Configuration
+        SegmentTracking.shared.configureSegment(launchOptions: launchOptions)
+        
         // AudioSession Configuration
         let audioSession = AVAudioSession.sharedInstance()
         do {

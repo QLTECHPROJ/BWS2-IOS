@@ -76,10 +76,10 @@ extension DownloadVC: SJSegmentedViewControllerDelegate {
         if let controller = self.selectedController {
             if controller.isKind(of: DownloadAudioVC.self) {
                 // Segment Tracking
-                // SegmentTracking.shared.trackDownloadedAudiosScreenViewed()
+                SegmentTracking.shared.trackDownloadedAudiosScreenViewed()
             } else if controller.isKind(of: DownloadPlaylistVC.self) {
                 // Segment Tracking
-                // SegmentTracking.shared.trackDownloadedPlaylistsScreenViewed()
+                SegmentTracking.shared.trackDownloadedPlaylistsScreenViewed()
             }
         }
     }

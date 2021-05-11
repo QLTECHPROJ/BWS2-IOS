@@ -384,7 +384,7 @@ class PlaylistAudiosVC: BaseViewController {
             CoreDataHelper.shared.saveAudio(audioData: details)
             
             // Segment Tracking
-            // SegmentTracking.shared.audioDetailsEvents(name: "Audio Download Started", audioData: details, source: "Playlist Player Screen", trackingType: .track)
+            SegmentTracking.shared.audioDetailsEvents(name: "Audio Download Started", audioData: details, source: "Playlist Player Screen", trackingType: .track)
             
         default:
             if objPlaylist!.Created == "1" {
@@ -453,7 +453,7 @@ class PlaylistAudiosVC: BaseViewController {
         }
         
         // Segment Tracking
-        // SegmentTracking.shared.playlistEvents(name: "Playlist Download Started", objPlaylist: objPlaylist, passPlaybackDetails: true, passPlayerType: true, audioData: nil, trackingType: .track)
+        SegmentTracking.shared.playlistEvents(name: "Playlist Download Started", objPlaylist: objPlaylist, passPlaybackDetails: true, passPlayerType: true, audioData: nil, trackingType: .track)
         
         if let playlistData = objPlaylist, playlistData.PlaylistSongs.count > 0 {
             CoreDataHelper.shared.savePlayist(playlistData: playlistData)
@@ -560,7 +560,7 @@ class PlaylistAudiosVC: BaseViewController {
         }
         
         // Segment Tracking
-        // SegmentTracking.shared.playlistEvents(name: "Playlist Search Clicked", objPlaylist: objPlaylist, trackingType: .track)
+        SegmentTracking.shared.playlistEvents(name: "Playlist Search Clicked", objPlaylist: objPlaylist, trackingType: .track)
         
         if let playlistID = objPlaylist?.PlaylistID {
             let aVC = AppStoryBoard.home.viewController(viewControllerClass: AddAudioVC.self)
@@ -793,7 +793,7 @@ extension PlaylistAudiosVC : AlertPopUpVCDelegate {
             if popUpTag == 1 {
                 if let playlistDetails = objPlaylist {
                     // Segment Tracking
-                    // SegmentTracking.shared.playlistEvents(name: "Downloaded Playlist Removed", objPlaylist: objPlaylist, trackingType: .track)
+                    SegmentTracking.shared.playlistEvents(name: "Downloaded Playlist Removed", objPlaylist: objPlaylist, trackingType: .track)
                     
                     CoreDataHelper.shared.deleteDownloadedPlaylist(playlistData: playlistDetails)
                 }
@@ -823,8 +823,8 @@ extension PlaylistAudiosVC : TableViewReorderDelegate {
         callSortingPlaylistAudioAPI(audioIds: strIds)
         
         // Segment Tracking
-        // let audioData = arraySearchSongs[finalDestinationIndexPath.row]
-        // SegmentTracking.shared.playlistEvents(name: "Playlist Audio Sorted", objPlaylist: objPlaylist, passPlaybackDetails: true, passPlayerType: false, audioData: audioData, audioSortPositons: (initialSourceIndexPath.row, finalDestinationIndexPath.row), trackingType: .track)
+        let audioData = arraySearchSongs[finalDestinationIndexPath.row]
+        SegmentTracking.shared.playlistEvents(name: "Playlist Audio Sorted", objPlaylist: objPlaylist, passPlaybackDetails: true, passPlayerType: false, audioData: audioData, audioSortPositons: (initialSourceIndexPath.row, finalDestinationIndexPath.row), trackingType: .track)
     }
     
     func tableView(_ tableView: UITableView, canReorderRowAt indexPath: IndexPath) -> Bool {

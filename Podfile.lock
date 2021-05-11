@@ -1,6 +1,7 @@
 PODS:
   - Alamofire (4.9.1)
   - ANActivityIndicator (1.2.0)
+  - Analytics (4.1.3)
   - AvailableHapticFeedback (1.0.2)
   - Charts (3.6.0):
     - Charts/Core (= 3.6.0)
@@ -117,6 +118,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 4.9.1)
   - ANActivityIndicator
+  - Analytics (~> 4.1)
   - Charts
   - EVReflection/Alamofire (~> 5.10.1)
   - Firebase/Analytics
@@ -137,6 +139,7 @@ SPEC REPOS:
   trunk:
     - Alamofire
     - ANActivityIndicator
+    - Analytics
     - AvailableHapticFeedback
     - Charts
     - EVReflection
@@ -168,6 +171,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   ANActivityIndicator: 44a996931d0c554cf157b31056603b23bbdbe76a
+  Analytics: 4c01e3e19d4be86705bad6581a1c2aa5a15a9d22
   AvailableHapticFeedback: 9b21b9f6d3e4566015988b5de35b40abefe6c09a
   Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
   EVReflection: 8124de482178d34ccd56473e16cd95990f9a1113
@@ -196,6 +200,6 @@ SPEC CHECKSUMS:
   TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
   youtube-ios-player-helper: 0185c57db23c80d63d6ca11251d110abb8a4ca61
 
-PODFILE CHECKSUM: ed5c2147bb3a788bd071fd41b4316a8c924d650d
+PODFILE CHECKSUM: 6c811c5e16ffa660fc7853ac0f7e9e8581b5991a
 
 COCOAPODS: 1.10.1

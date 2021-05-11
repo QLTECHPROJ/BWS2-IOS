@@ -256,7 +256,7 @@ class PlayerVC: BaseViewController {
                 self.sliderLastValue = playbackSlider.value
                 
                 // Segment Tracking
-                // SegmentTracking.shared.audioPlaybackEvents(name: "Audio Seek Started", audioData: self.audioDetails, trackingType: .track)
+                SegmentTracking.shared.audioPlaybackEvents(name: "Audio Seek Started", audioData: self.audioDetails, trackingType: .track)
                 break
                 
             case .moved:
@@ -270,9 +270,9 @@ class PlayerVC: BaseViewController {
                 // Segment Tracking
                 if let oldValue = sliderLastValue {
                     if playbackSlider.value < oldValue {
-                        // SegmentTracking.shared.audioPlaybackEvents(name: "Audio Seek Completed", audioData: self.audioDetails, seekDirection: "Forwarded", seekPosition: seconds, trackingType: .track)
+                        SegmentTracking.shared.audioPlaybackEvents(name: "Audio Seek Completed", audioData: self.audioDetails, seekDirection: "Forwarded", seekPosition: seconds, trackingType: .track)
                     } else {
-                        // SegmentTracking.shared.audioPlaybackEvents(name: "Audio Seek Completed", audioData: self.audioDetails, seekDirection: "Backwarded", seekPosition: seconds, trackingType: .track)
+                        SegmentTracking.shared.audioPlaybackEvents(name: "Audio Seek Completed", audioData: self.audioDetails, seekDirection: "Backwarded", seekPosition: seconds, trackingType: .track)
                     }
                     
                     sliderLastValue = nil
@@ -343,10 +343,6 @@ class PlayerVC: BaseViewController {
             return
         }
         
-        // Segment Tracking
-        // let eventName = DJMusicPlayer.shared.isPlaying ? "Audio Pause Clicked" : "Audio Play Clicked"
-        // SegmentTracking.shared.audioPlayerEvents(name: eventName, audioData: self.audioDetails, trackingType: .track)
-        
         DJMusicPlayer.shared.playerScreen = .mainPlayer
         
         if DJMusicPlayer.shared.playbackState == .stopped {
@@ -363,8 +359,8 @@ class PlayerVC: BaseViewController {
         DJMusicPlayer.shared.playerScreen = .mainPlayer
         
         // Segment Tracking
-        // let seconds : Double = DJMusicPlayer.shared.currentTime - 30
-        // SegmentTracking.shared.audioPlaybackEvents(name: "Audio Backwarded", audioData: self.audioDetails, seekDirection: "Backwarded", seekPosition: seconds, trackingType: .track)
+        let seconds : Double = DJMusicPlayer.shared.currentTime - 30
+         SegmentTracking.shared.audioPlaybackEvents(name: "Audio Backwarded", audioData: self.audioDetails, seekDirection: "Backwarded", seekPosition: seconds, trackingType: .track)
         
         DJMusicPlayer.shared.rewind()
     }
@@ -378,8 +374,8 @@ class PlayerVC: BaseViewController {
         DJMusicPlayer.shared.playerScreen = .mainPlayer
         
         // Segment Tracking
-        // let seconds : Double = DJMusicPlayer.shared.currentTime + 30
-        // SegmentTracking.shared.audioPlaybackEvents(name: "Audio Forwarded", audioData: self.audioDetails, seekDirection: "Forwarded", seekPosition: seconds, trackingType: .track)
+        let seconds : Double = DJMusicPlayer.shared.currentTime + 30
+        SegmentTracking.shared.audioPlaybackEvents(name: "Audio Forwarded", audioData: self.audioDetails, seekDirection: "Forwarded", seekPosition: seconds, trackingType: .track)
         
         DJMusicPlayer.shared.forward()
     }
@@ -403,7 +399,7 @@ class PlayerVC: BaseViewController {
             CoreDataHelper.shared.saveAudio(audioData: details)
             
             // Segment Tracking
-            // SegmentTracking.shared.audioDetailsEvents(name: "Audio Download Started", audioData: self.audioDetails, source: "Main Player", trackingType: .track)
+            SegmentTracking.shared.audioDetailsEvents(name: "Audio Download Started", audioData: self.audioDetails, source: "Main Player", trackingType: .track)
         }
     }
     
