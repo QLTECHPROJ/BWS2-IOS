@@ -13,6 +13,35 @@ class DisclaimerAudio {
     // MARK: - Properties
     public static let shared = DisclaimerAudio()
     
+    var shouldPlayDisclaimer : Bool {
+        get {
+            return UserDefaults.standard.bool(forKey: "shouldPlayDisclaimer")
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "shouldPlayDisclaimer")
+            UserDefaults.standard.synchronize()
+        }
+    }
+    
+    var disclaimerAudio : AudioDetailsDataModel? {
+        get {
+            if let audioData = UserDefaults.standard.data(forKey: "disclaimerAudio") {
+                return AudioDetailsDataModel(data: audioData)
+            }
+            return nil
+        }
+        set {
+            if let newData = newValue {
+                UserDefaults.standard.setValue(newData.toJsonData(), forKey: "disclaimerAudio")
+            }
+            else {
+                UserDefaults.standard.setValue(nil, forKey: "disclaimerAudio")
+            }
+            UserDefaults.standard.synchronize()
+        }
+    }
+    
+    /*
     func fetchDisclaimerAudio(data : AudioDetailsDataModel) -> AudioDetailsDataModel {
         
         self.saveDisclaimerAudioToDownloads()
@@ -68,5 +97,6 @@ class DisclaimerAudio {
             print(error)
         }
     }
+     */
     
 }

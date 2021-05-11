@@ -65,7 +65,7 @@ class ResourceVC: BaseViewController {
         callResourceCategoryListAPI()
         
         // Segment Tracking
-        // SegmentTracking.shared.trackEvent(name: "Resources Screen Viewed", traits: ["userId":LoginDataModel.currentUser?.UserID ?? ""], trackingType: .screen)
+        SegmentTracking.shared.trackEvent(name: "Resources Screen Viewed", traits: ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? ""], trackingType: .screen)
     }
     
     
@@ -189,7 +189,7 @@ class ResourceVC: BaseViewController {
             if controller.isKind(of: RecAudioBookVC.self) {
                 if let aVC =  controller as? RecAudioBookVC {
                     // Segment Tracking
-//                    SegmentTracking.shared.trackEvent(name: "Resources Screen Viewed", traits: ["userId":LoginDataModel.currentUser?.UserID ?? "", "resourceType":"Audio Books"], trackingType: .screen)
+                    SegmentTracking.shared.trackEvent(name: "Resources Screen Viewed", traits: ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "", "resourceType":"Audio Books"], trackingType: .screen)
                     
                     aVC.collectionView.reloadData()
                     if ResourceVC.audioData.count == 0 {
@@ -202,7 +202,7 @@ class ResourceVC: BaseViewController {
             else if controller.isKind(of: RecDocuVC.self) {
                 if let aVC =  controller as? RecDocuVC {
                     // Segment Tracking
-//                    SegmentTracking.shared.trackEvent(name: "Resources Screen Viewed", traits: ["userId":LoginDataModel.currentUser?.UserID ?? "", "resourceType":"Documentaries"], trackingType: .screen)
+                    SegmentTracking.shared.trackEvent(name: "Resources Screen Viewed", traits: ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "", "resourceType":"Documentaries"], trackingType: .screen)
                     
                     aVC.tableView.reloadData()
                     if ResourceVC.documentariesData.count == 0 {
@@ -215,7 +215,7 @@ class ResourceVC: BaseViewController {
             else if controller.isKind(of: RecPodCastsVC.self) {
                 if let aVC =  controller as? RecPodCastsVC {
                     // Segment Tracking
-//                    SegmentTracking.shared.trackEvent(name: "Resources Screen Viewed", traits: ["userId":LoginDataModel.currentUser?.UserID ?? "", "resourceType":"Podcasts"], trackingType: .screen)
+                    SegmentTracking.shared.trackEvent(name: "Resources Screen Viewed", traits: ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "", "resourceType":"Podcasts"], trackingType: .screen)
                     
                     aVC.tableView.reloadData()
                     if ResourceVC.podcastData.count == 0 {
@@ -228,7 +228,7 @@ class ResourceVC: BaseViewController {
             else if controller.isKind(of: RecWebSite.self) {
                 if let aVC =  controller as? RecWebSite {
                     // Segment Tracking
-//                    SegmentTracking.shared.trackEvent(name: "Resources Screen Viewed", traits: ["userId":LoginDataModel.currentUser?.UserID ?? "", "resourceType":"Websites"], trackingType: .screen)
+                    SegmentTracking.shared.trackEvent(name: "Resources Screen Viewed", traits: ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "", "resourceType":"Websites"], trackingType: .screen)
                     
                     aVC.tableView.reloadData()
                     if ResourceVC.websiteData.count == 0 {
@@ -241,7 +241,7 @@ class ResourceVC: BaseViewController {
             else if controller.isKind(of: RecApps.self) {
                 if let aVC =  controller as? RecApps {
                     // Segment Tracking
-//                    SegmentTracking.shared.trackEvent(name: "Resources Screen Viewed", traits: ["userId":LoginDataModel.currentUser?.UserID ?? "", "resourceType":"Apps"], trackingType: .screen)
+                    SegmentTracking.shared.trackEvent(name: "Resources Screen Viewed", traits: ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "", "resourceType":"Apps"], trackingType: .screen)
                     
                     aVC.collectionView.reloadData()
                     if ResourceVC.appsData.count == 0 {
@@ -338,7 +338,7 @@ extension ResourceVC : UITableViewDelegate, UITableViewDataSource {
         let allMasterCategory : [String] = ResourceVC.arrayCategories.map { $0.CategoryName }.filter { $0 != "All" }
         traits["allMasterCategory"] = allMasterCategory
         
-//        SegmentTracking.shared.trackEvent(name: "Resources Filter Clicked", traits: traits, trackingType: .track)
+        SegmentTracking.shared.trackEvent(name: "Resources Filter Clicked", traits: traits, trackingType: .track)
         
         self.setupData()
         self.refreshData()

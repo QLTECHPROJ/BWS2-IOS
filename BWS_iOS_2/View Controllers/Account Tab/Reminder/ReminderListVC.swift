@@ -22,6 +22,7 @@ class ReminderListVC: BaseViewController{
    var strStatus:String?
    var strRemID:String?
    var arrayRemDelete = [String]()
+    var shouldTrackScreen = false
     
     // MARK:- VIEW LIFE CYCLE
     override func viewDidLoad() {

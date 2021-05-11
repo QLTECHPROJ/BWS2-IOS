@@ -77,6 +77,9 @@ enum APIRouter: URLRequestConvertible {
     case removeprofileimg([String:String])
     case editprofile([String:String])
     
+    // Audio Interruption
+    case audiointerruption([String:Any])
+    
     var route: APIRoute {
         switch self {
         case .appversion(let data):
@@ -186,6 +189,10 @@ enum APIRouter: URLRequestConvertible {
             return APIRoute(path: "removeprofileimg", method: .post, data: data)
         case .editprofile(let data):
             return APIRoute(path: "editprofile", method: .post, data: data)
+            
+        // Audio Interruption
+        case .audiointerruption(let data):
+            return APIRoute(path: "audiointerruption", method: .post, data: data)
         }
     }
     

@@ -53,7 +53,7 @@ class ManageVC: BaseViewController {
         super.viewWillAppear(animated)
         
         // Segment Tracking
-        // SegmentTracking.shared.trackEvent(name: "Explore Screen Viewed", traits: ["userId":LoginDataModel.currentUser?.UserID ?? ""], trackingType: .screen)
+        SegmentTracking.shared.trackEvent(name: "Explore Screen Viewed", traits: ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? ""], trackingType: .screen)
         
         if checkInternet() == false {
             showAlertToast(message: Theme.strings.alert_check_internet)
@@ -303,7 +303,7 @@ class ManageVC: BaseViewController {
         let audioData = arrayAudioHomeData[sectionIndex].Details[audioIndex]
         
         // Segment Tracking
-        // SegmentTracking.shared.audioDetailsEvents(name: "Add to Playlist Clicked", audioData: audioData, source: sectionData.View, trackingType: .track)
+        SegmentTracking.shared.audioDetailsEvents(name: "Add to Playlist Clicked", audioData: audioData, source: arrayAudioHomeData[sectionIndex].View, trackingType: .track)
         
         let aVC = AppStoryBoard.home.viewController(viewControllerClass: AddToPlaylistVC.self)
         aVC.audioID = audioData.ID

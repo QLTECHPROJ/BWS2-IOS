@@ -40,6 +40,19 @@ class AddProfileVC: BaseViewController {
     // MARK:- VIEW LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Segment Tracking
+        if let userDetails = selectedUser {
+            let traits = ["CoUserId":userDetails.CoUserId,
+                          "UserID":userDetails.UserID,
+                          "name":userDetails.Name,
+                          "mobileNo":userDetails.Mobile,
+                          "email":userDetails.Email]
+            SegmentTracking.shared.trackEvent(name: "Forgot Pin Screen Viewed", traits: traits, trackingType: .screen)
+        } else {
+            SegmentTracking.shared.trackEvent(name: "Add Couser Screen Viewed", traits: nil, trackingType: .screen)
+        }
+        
         setupUI()
     }
     
@@ -178,8 +191,16 @@ class AddProfileVC: BaseViewController {
     }
     
     @IBAction func onTappedSendPin(_ sender: UIButton) {
-        if selectedUser != nil {
+        if let userDetails = selectedUser {
             callForgotPinAPI()
+            
+            // Segment Tracking
+            let traits = ["CoUserId":userDetails.CoUserId,
+                          "UserID":userDetails.UserID,
+                          "name":userDetails.Name,
+                          "mobileNo":userDetails.Mobile,
+                          "email":userDetails.Email]
+            SegmentTracking.shared.trackEvent(name: "Send New Pin Clicked", traits: traits, trackingType: .track)
         } else {
             if checkValidation() {
                 lblErrName.isHidden = true

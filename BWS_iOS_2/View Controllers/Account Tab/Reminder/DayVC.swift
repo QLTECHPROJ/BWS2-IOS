@@ -38,6 +38,10 @@ class DayVC: BaseViewController {
     // MARK:- VIEW LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Segment Tracking
+        SegmentTracking.shared.trackReminderDetails(objReminderDetail: self.arrayRemList)
+        
         setupUI()
         setupData()
         buttonEnableDisable()

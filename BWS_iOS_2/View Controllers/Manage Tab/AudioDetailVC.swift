@@ -157,7 +157,7 @@ class AudioDetailVC: BaseViewController {
     @IBAction func addToPlaylistClicked(sender : UIButton) {
         if let audioID = self.audioDetails?.ID {
             // Segment Tracking
-            // SegmentTracking.shared.audioDetailsEvents(name: "Add to Playlist Clicked", audioData: self.audioDetails, source: "Audio Details", trackingType: .track)
+            SegmentTracking.shared.audioDetailsEvents(name: "Add to Playlist Clicked", audioData: self.audioDetails, source: "Audio Details", trackingType: .track)
             
             let aVC = AppStoryBoard.home.viewController(viewControllerClass: AddToPlaylistVC.self)
             aVC.audioID = audioID
@@ -202,7 +202,7 @@ class AudioDetailVC: BaseViewController {
             CoreDataHelper.shared.saveAudio(audioData: details)
             
             // Segment Tracking
-            // SegmentTracking.shared.audioDetailsEvents(name: "Audio Download Started", audioData: self.audioDetails, source: "Audio Details", trackingType: .track)
+            SegmentTracking.shared.audioDetailsEvents(name: "Audio Download Started", audioData: self.audioDetails, source: "Audio Details", trackingType: .track)
         }
     }
     

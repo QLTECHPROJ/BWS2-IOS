@@ -10,73 +10,65 @@ import UIKit
 
 class FAQListVC: BaseViewController {
     
-    //MARK:- UIOutlet
-     @IBOutlet weak var tableView: UITableView!
+    // MARK:- OUTLETS
+    @IBOutlet weak var tableView: UITableView!
     
-    //MARK:- Variables
+    
+    // MARK:- VARIABLES
+    var strCategory = ""
     var arrayFilter = [FAQDataModel]()
     
-    //MARK:- View Life Cycle
+    
+    // MARK:- VIEW LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        
+        // Segment Tracking
+        var traits : [String:Any] = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+                                     "faqCategory":self.strCategory]
+        traits["FAQs"] = self.arrayFilter.map({ (faqModel) -> [String:Any] in
+            return ["faqTitle":faqModel.Category,"faqDescription":faqModel.Desc]
+        })
+        SegmentTracking.shared.trackEvent(name: "FAQ Clicked", traits: traits, trackingType: .track)
     }
     
-    //MARK:- Functions
+    
+    // MARK:- FUNCTIONS
     override func setupUI() {
         tableView.register(nibWithCellClass: FAQCell.self)
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 80
         tableView.reloadData()
-      
     }
     
     override func setupData() {
         
     }
     
-//    func fetchQuestions() {
-//        arrayQuestions.removeAll()
-//
-//        for i in 1...10 {
-//            let question = FAQDataModel()
-//            if i % 3 == 0 {
-//                question.Title = "\(i) - How can I cancel if I need to?"
-//                question.Desc = "\(i) - How do I purchase a subscription?"
-//            }
-//            else if i % 2 == 0 {
-//                question.Title = "\(i) - Is there a free trial?"
-//                question.Desc = "\(i) - Yes. Every plan comes with a 30-day free trial option"
-//            }
-//            else {
-//                question.Title = "\(i) - What are the benefits of signing up for the Membership Program"
-//                question.Desc = "\(i) - What's the best way to use the Membership? Where do I start?"
-//            }
-//            arrayQuestions.append(question)
-//        }
-//    }
     
-    //MARK:- IBAction Methods
+    // MARK:- ACTIONS
     @IBAction func backClicked(sender : UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
+    
 }
 
-extension FAQListVC:UITableViewDelegate,UITableViewDataSource {
-    
+
+// MARK:- UITableViewDelegate, UITableViewDataSource
+extension FAQListVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return arrayFilter.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-         let cell = tableView.dequeueReusableCell(withClass: FAQCell.self)
+        let cell = tableView.dequeueReusableCell(withClass: FAQCell.self)
         cell.configureCell(data: arrayFilter[indexPath.row])
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         var isSelected = arrayFilter[indexPath.row].isSelected
         
         for question in arrayFilter {
@@ -86,11 +78,10 @@ extension FAQListVC:UITableViewDelegate,UITableViewDataSource {
         isSelected.toggle()
         arrayFilter[indexPath.row].isSelected = isSelected
         tableView.reloadData()
-        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-         return UITableView.automaticDimension
+        return UITableView.automaticDimension
     }
     
 }

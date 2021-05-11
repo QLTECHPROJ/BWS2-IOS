@@ -36,16 +36,6 @@ open class DJMusicPlayer: NSObject {
         }
     }
     
-    var shouldPlayDisclaimer : Bool {
-        get {
-            return UserDefaults.standard.bool(forKey: "shouldPlayDisclaimer")
-        }
-        set {
-            UserDefaults.standard.set(newValue, forKey: "shouldPlayDisclaimer")
-            UserDefaults.standard.synchronize()
-        }
-    }
-    
     var isNowPresenting = false
     
     open var isPlaying: Bool {
@@ -270,25 +260,25 @@ open class DJMusicPlayer: NSObject {
         if isResume && isFirstPlaybackAudio == false {
             // Segment Tracking
             if currentlyPlaying?.isDisclaimer == true {
-                // SegmentTracking.shared.audioPlaybackEvents(name: "Disclaimer Resumed", audioData: nil, trackingType: .track)
+                SegmentTracking.shared.audioPlaybackEvents(name: "Disclaimer Resumed", audioData: nil, trackingType: .track)
             } else {
-                // SegmentTracking.shared.audioPlaybackEvents(name: "Audio Resumed", audioData: nil, trackingType: .track)
+                SegmentTracking.shared.audioPlaybackEvents(name: "Audio Resumed", audioData: nil, trackingType: .track)
             }
         } else {
             // Segment Tracking
             if isFirstPlaybackAudio {
                 isFirstPlaybackAudio = false
                 if playerType == .playlist || playerType == .downloadedPlaylist {
-                    // SegmentTracking.shared.playlistEvents(name: "Playlist Started", objPlaylist: self.currentPlaylist, passPlaybackDetails: true, passPlayerType: true, audioData: nil, trackingType: .track)
+                    SegmentTracking.shared.playlistEvents(name: "Playlist Started", objPlaylist: self.currentPlaylist, passPlaybackDetails: true, passPlayerType: true, audioData: nil, trackingType: .track)
                 } else {
-                    // SegmentTracking.shared.audioPlaybackEvents(name: "Audio Playback Started", audioData: nil, trackingType: .track)
+                    SegmentTracking.shared.audioPlaybackEvents(name: "Audio Playback Started", audioData: nil, trackingType: .track)
                 }
             }
             
             if currentlyPlaying?.isDisclaimer == true {
-                // SegmentTracking.shared.audioPlaybackEvents(name: "Disclaimer Started", audioData: nil, trackingType: .track)
+                SegmentTracking.shared.audioPlaybackEvents(name: "Disclaimer Started", audioData: nil, trackingType: .track)
             } else {
-                // SegmentTracking.shared.audioPlaybackEvents(name: "Audio Started", audioData: nil, trackingType: .track)
+                SegmentTracking.shared.audioPlaybackEvents(name: "Audio Started", audioData: nil, trackingType: .track)
             }
         }
         
@@ -308,16 +298,16 @@ open class DJMusicPlayer: NSObject {
         switch pauseReason {
         case .interruption:
             if currentlyPlaying?.isDisclaimer == true {
-                // SegmentTracking.shared.audioPlaybackEvents(name: "Disclaimer Interrupted", audioData: nil, interruptionMethod: interruptionMethod, trackingType: .track)
+                SegmentTracking.shared.audioPlaybackEvents(name: "Disclaimer Interrupted", audioData: nil, interruptionMethod: interruptionMethod, trackingType: .track)
             } else {
-                // SegmentTracking.shared.audioPlaybackEvents(name: "Audio Interrupted", audioData: nil, interruptionMethod: interruptionMethod, trackingType: .track)
+                SegmentTracking.shared.audioPlaybackEvents(name: "Audio Interrupted", audioData: nil, interruptionMethod: interruptionMethod, trackingType: .track)
             }
             break
         case .userAction:
             if currentlyPlaying?.isDisclaimer == true {
-                // SegmentTracking.shared.audioPlaybackEvents(name: "Disclaimer Paused", audioData: nil, trackingType: .track)
+                SegmentTracking.shared.audioPlaybackEvents(name: "Disclaimer Paused", audioData: nil, trackingType: .track)
             } else {
-                // SegmentTracking.shared.audioPlaybackEvents(name: "Audio Paused", audioData: nil, trackingType: .track)
+                SegmentTracking.shared.audioPlaybackEvents(name: "Audio Paused", audioData: nil, trackingType: .track)
             }
             break
         default:
@@ -334,9 +324,9 @@ open class DJMusicPlayer: NSObject {
         if shouldTrack == true {
             isFirstPlaybackAudio = true
             if playerType == .playlist || playerType == .downloadedPlaylist {
-                // SegmentTracking.shared.playlistEvents(name: "Playlist Completed", objPlaylist: self.currentPlaylist, passPlaybackDetails: true, passPlayerType: true, audioData: nil, trackingType: .track)
+                SegmentTracking.shared.playlistEvents(name: "Playlist Completed", objPlaylist: self.currentPlaylist, passPlaybackDetails: true, passPlayerType: true, audioData: nil, trackingType: .track)
             } else {
-                // SegmentTracking.shared.audioPlaybackEvents(name: "Audio Playback Completed", audioData: nil, trackingType: .track)
+                SegmentTracking.shared.audioPlaybackEvents(name: "Audio Playback Completed", audioData: nil, trackingType: .track)
             }
         }
     }
@@ -358,13 +348,13 @@ open class DJMusicPlayer: NSObject {
         
         // Segment Tracking
         if currentlyPlaying?.isDisclaimer == true {
-            // SegmentTracking.shared.audioPlaybackEvents(name: "Disclaimer Completed", audioData: nil, trackingType: .track)
+            SegmentTracking.shared.audioPlaybackEvents(name: "Disclaimer Completed", audioData: nil, trackingType: .track)
         } else {
-            // SegmentTracking.shared.audioPlaybackEvents(name: "Audio Completed", audioData: nil, trackingType: .track)
+            SegmentTracking.shared.audioPlaybackEvents(name: "Audio Completed", audioData: nil, trackingType: .track)
         }
         
         if self.currentlyPlaying?.isDisclaimer == true {
-            DJMusicPlayer.shared.shouldPlayDisclaimer = false
+            DisclaimerAudio.shared.shouldPlayDisclaimer = false
             self.currentlyPlaying = nil
             if nowPlayingList.count > playIndex {
                 nowPlayingList.remove(at: playIndex)
@@ -539,7 +529,7 @@ open class DJMusicPlayer: NSObject {
         
         // Segment Tracking
         if currentlyPlaying?.isDisclaimer == false {
-            // SegmentTracking.shared.audioPlaybackEvents(name: "Audio Buffer Started", audioData: nil, trackingType: .track)
+            SegmentTracking.shared.audioPlaybackEvents(name: "Audio Buffer Started", audioData: nil, trackingType: .track)
         }
     }
     
@@ -688,9 +678,9 @@ open class DJMusicPlayer: NSObject {
                 // Segment Tracking
                 if Int(self.currentTime) > 0 && Int(self.currentTime) % 300 == 0 {
                     if self.currentlyPlaying?.isDisclaimer == true {
-                        // SegmentTracking.shared.audioPlaybackEvents(name: "Disclaimer Playing", audioData: nil, trackingType: .track)
+                        SegmentTracking.shared.audioPlaybackEvents(name: "Disclaimer Playing", audioData: nil, trackingType: .track)
                     } else {
-                        // SegmentTracking.shared.audioPlaybackEvents(name: "Audio Playing", audioData: nil, trackingType: .track)
+                        SegmentTracking.shared.audioPlaybackEvents(name: "Audio Playing", audioData: nil, trackingType: .track)
                     }
                 }
             }
@@ -821,7 +811,7 @@ open class DJMusicPlayer: NSObject {
                     
                     // Segment Tracking
                     if currentlyPlaying?.isDisclaimer == false {
-                        // SegmentTracking.shared.audioPlaybackEvents(name: "Audio Buffer Started", audioData: nil, trackingType: .track)
+                        SegmentTracking.shared.audioPlaybackEvents(name: "Audio Buffer Started", audioData: nil, trackingType: .track)
                     }
                 }
                 break
@@ -832,7 +822,7 @@ open class DJMusicPlayer: NSObject {
                 if item.isPlaybackLikelyToKeepUp {
                     // Segment Tracking
                     if currentlyPlaying?.isDisclaimer == false {
-                        // SegmentTracking.shared.audioPlaybackEvents(name: "Audio Buffer Completed", audioData: nil, trackingType: .track)
+                        SegmentTracking.shared.audioPlaybackEvents(name: "Audio Buffer Completed", audioData: nil, trackingType: .track)
                     }
                 }
                 break
@@ -859,9 +849,9 @@ open class DJMusicPlayer: NSObject {
     }
     
     // MARK: Configure Background Audio Task
-     func configureBackgroundAudioTask() {
+    func configureBackgroundAudioTask() {
         backgroundIdentifier =  UIApplication.shared.beginBackgroundTask (expirationHandler: { () -> Void in
-//            UIApplication.shared.endBackgroundTask(self.backgroundIdentifier)
+            //            UIApplication.shared.endBackgroundTask(self.backgroundIdentifier)
             self.backgroundIdentifier = UIBackgroundTaskIdentifier.invalid
         })
     }

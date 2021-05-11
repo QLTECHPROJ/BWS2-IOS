@@ -45,6 +45,9 @@ class SignUpVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Segment Tracking
+        SegmentTracking.shared.trackEvent(name: "SignUp Screen Viewed", traits: nil, trackingType: .screen)
+        
         setupUI()
         setupData()
     }
@@ -64,14 +67,17 @@ class SignUpVC: BaseViewController {
         
         setupPrivacyLabel()
         
-        if txtFName.text?.trim.count == 0 || txtFMobileNo.text?.trim.count == 0 ||
-            txtFEmailAdd.text?.trim.count == 0 || txtFPassWord.text?.trim.count == 0 {
+        let name = txtFName.text?.trim
+        let mobile = txtFMobileNo.text?.trim
+        let email = txtFEmailAdd.text?.trim
+        let password = txtFPassWord.text?.trim
+        
+        if name?.count == 0 || mobile?.count == 0 || email?.count == 0 || password?.count == 0 {
             btnCreateAccount.isUserInteractionEnabled = false
-            btnCreateAccount.backgroundColor = #colorLiteral(red: 0.4941176471, green: 0.4941176471, blue: 0.4941176471, alpha: 1)
-            btnVisisble.isUserInteractionEnabled = false
+            btnCreateAccount.backgroundColor = Theme.colors.gray_7E7E7E
         } else {
             btnCreateAccount.isUserInteractionEnabled = true
-            btnCreateAccount.backgroundColor = #colorLiteral(red: 0, green: 0.5333333333, blue: 0.5725490196, alpha: 1)
+            btnCreateAccount.backgroundColor = Theme.colors.green_008892
         }
     }
     
@@ -281,13 +287,17 @@ extension SignUpVC : UITextFieldDelegate {
             btnVisisble.setImage(UIImage(named: "PassDefault"), for: .normal)
         }
         
-        if txtFName.text?.trim.count == 0 || txtFMobileNo.text?.trim.count == 0 ||
-            txtFEmailAdd.text?.trim.count == 0 || txtFPassWord.text?.trim.count == 0 {
+        let name = txtFName.text?.trim
+        let mobile = txtFMobileNo.text?.trim
+        let email = txtFEmailAdd.text?.trim
+        let password = txtFPassWord.text?.trim
+        
+        if name?.count == 0 || mobile?.count == 0 || email?.count == 0 || password?.count == 0 {
             btnCreateAccount.isUserInteractionEnabled = false
-            btnCreateAccount.backgroundColor = #colorLiteral(red: 0.4941176471, green: 0.4941176471, blue: 0.4941176471, alpha: 1)
+            btnCreateAccount.backgroundColor = Theme.colors.gray_7E7E7E
         } else {
             btnCreateAccount.isUserInteractionEnabled = true
-            btnCreateAccount.backgroundColor = #colorLiteral(red: 0, green: 0.5333333333, blue: 0.5725490196, alpha: 1)
+            btnCreateAccount.backgroundColor = Theme.colors.green_008892
         }
         
     }

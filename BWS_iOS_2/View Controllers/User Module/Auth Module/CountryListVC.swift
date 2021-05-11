@@ -28,6 +28,9 @@ class CountryListVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Segment Tracking
+        SegmentTracking.shared.trackEvent(name: "Country List Viewed", traits: nil, trackingType: .screen)
+        
         setupUI()
     }
     

@@ -175,7 +175,7 @@ class AddAudioVC: BaseViewController {
             } else {
                 // Segment Tracking
                 let source = audioData.Iscategory == "1" ? "Search Audio" : "Suggested Audio"
-                // SegmentTracking.shared.audioDetailsEvents(name: "Audio Add Clicked", audioData: audioData, source: source, trackingType: .track)
+                SegmentTracking.shared.audioDetailsEvents(name: "Audio Add Clicked", audioData: audioData, source: source, trackingType: .track)
                 
                 // Add Audio To Playlist
                 let aVC = AppStoryBoard.home.viewController(viewControllerClass: AddToPlaylistVC.self)
@@ -495,7 +495,7 @@ extension AddAudioVC : UITableViewDelegate, UITableViewDataSource {
                 }
                 
                 // Segment Tracking
-                // SegmentTracking.shared.audioDetailsEvents(name: "Suggested Audio Clicked", audioData: arrayAudio[indexPath.row], trackingType: .track)
+                SegmentTracking.shared.audioDetailsEvents(name: "Suggested Audio Clicked", audioData: arrayAudio[indexPath.row], trackingType: .track)
                 
                 self.presentAudioPlayer(playerData: arrayAudio[indexPath.row])
                 DJMusicPlayer.shared.playerType = .searchAudio
@@ -508,7 +508,7 @@ extension AddAudioVC : UITableViewDelegate, UITableViewDataSource {
                 showAlertToast(message: Theme.strings.alert_reactivate_plan)
             } else {
                 // Segment Tracking
-                // SegmentTracking.shared.playlistEvents(name: "Suggested Playlist Clicked", objPlaylist: arrayPlayList[indexPath.row], trackingType: .track)
+                SegmentTracking.shared.playlistEvents(name: "Suggested Playlist Clicked", objPlaylist: arrayPlayList[indexPath.row], trackingType: .track)
                 
                 let aVC = AppStoryBoard.manage.viewController(viewControllerClass: PlaylistDetailVC.self)
                 aVC.objPlaylist = arrayPlayList[indexPath.row]
@@ -530,7 +530,7 @@ extension AddAudioVC : UITableViewDelegate, UITableViewDataSource {
                     let data = arraySearch[indexPath.row]
                     if data.AudioFile.trim.count > 0 {
                         // Segment Tracking
-                        // SegmentTracking.shared.audioDetailsEvents(name: "Search Audio Clicked", audioData: data, trackingType: .track)
+                        SegmentTracking.shared.audioDetailsEvents(name: "Search Audio Clicked", audioData: data, trackingType: .track)
                         
                         self.presentAudioPlayer(playerData: data)
                         DJMusicPlayer.shared.playerType = .searchAudio
@@ -554,7 +554,7 @@ extension AddAudioVC : UITableViewDelegate, UITableViewDataSource {
                     playlistData.Totalminute = arrayPlayList[indexPath.row].Totalminute
                     
                     // Segment Tracking
-                    // SegmentTracking.shared.playlistEvents(name: "Search Playlist Clicked", objPlaylist: playlistData, trackingType: .track)
+                    SegmentTracking.shared.playlistEvents(name: "Search Playlist Clicked", objPlaylist: playlistData, trackingType: .track)
                     
                     let aVC = AppStoryBoard.manage.viewController(viewControllerClass: PlaylistDetailVC.self)
                     aVC.objPlaylist = playlistData
@@ -602,7 +602,7 @@ extension AddAudioVC : UICollectionViewDelegate,UICollectionViewDataSource,UICol
         }
         
         // Segment Tracking
-        // SegmentTracking.shared.playlistEvents(name: "Suggested Playlist Clicked", objPlaylist: arrayPlayList[indexPath.row], trackingType: .track)
+        SegmentTracking.shared.playlistEvents(name: "Suggested Playlist Clicked", objPlaylist: arrayPlayList[indexPath.row], trackingType: .track)
         
         let aVC = AppStoryBoard.manage.viewController(viewControllerClass: PlaylistDetailVC.self)
         aVC.objPlaylist = arrayPlayList[indexPath.row]

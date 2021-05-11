@@ -38,8 +38,21 @@ class EditProfileVC: BaseViewController {
     //MARK:- View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Segment Tracking
+        if let userData = CoUserDataModel.currentUser {
+            let userName = userData.Name.trim.count > 0 ? userData.Name : "Guest"
+            let dictUserDetails = ["CoUserId":userData.CoUserId,
+                                   "name":userName,
+                                   "phone":userData.Mobile,
+                                   "email":userData.Email]
+            SegmentTracking.shared.trackEvent(name: "User Profile Viewed", traits: dictUserDetails, trackingType: .screen)
+        } else {
+            SegmentTracking.shared.trackEvent(name: "User Profile Viewed", traits: ["CoUserId" : CoUserDataModel.currentUser?.CoUserId ?? ""], trackingType: .screen)
+        }
+        
         setupUI()
-        self.setupData()
+        setupData()
     }
     
     //MARK:- Functions

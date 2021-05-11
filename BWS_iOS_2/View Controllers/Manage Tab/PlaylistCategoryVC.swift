@@ -19,6 +19,7 @@ class PlaylistCategoryVC: BaseViewController {
     // MARK:- VARIABLES
     var arrayPlaylistHomeData = [PlaylistHomeDataModel]()
     var playlistIndexPath : IndexPath?
+    var shouldTrackScreen = false
     
     
     // MARK:- VIEW LIFE CYCLE

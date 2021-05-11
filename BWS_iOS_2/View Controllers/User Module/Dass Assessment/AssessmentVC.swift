@@ -39,6 +39,11 @@ class AssessmentVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Segment Tracking
+        let traits = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+                      "UserID":CoUserDataModel.currentUser?.UserID ?? ""]
+        SegmentTracking.shared.trackEvent(name: "Assessment Screen Viewed", traits: traits, trackingType: .screen)
+        
         lbl1.text = ""
         lbl2.text = ""
         lbl3.text = ""

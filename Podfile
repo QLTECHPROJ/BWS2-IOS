@@ -22,6 +22,9 @@ def shared_pods
     pod 'Firebase/Crashlytics'
     pod 'Firebase/Messaging'
     
+    #  Segment
+    pod 'Analytics', '~> 4.1'
+    
 end
 
 target 'BWS_iOS_2' do

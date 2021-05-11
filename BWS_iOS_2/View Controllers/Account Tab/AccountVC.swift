@@ -32,6 +32,13 @@ class AccountVC: BaseViewController {
         setupData()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Segment Tracking
+        SegmentTracking.shared.trackEvent(name: "Account Screen Viewed", traits: ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? ""], trackingType: .screen)
+    }
+    
     
     // MARK:- FUNCTIONS
     override func setupUI() {
@@ -70,8 +77,8 @@ class AccountVC: BaseViewController {
         DJMusicPlayer.shared.nowPlayingList = [AudioDetailsDataModel]()
         
         // Segment Event - Reset
-        // SegmentTracking.shared.flush()
-        // SegmentTracking.shared.reset()
+        SegmentTracking.shared.flush()
+        SegmentTracking.shared.reset()
         
         // Clear Assessment Questions Data
         AssessmentDetailModel.current = nil
@@ -85,7 +92,8 @@ class AccountVC: BaseViewController {
         DJMusicPlayer.shared.lastPlayerType = .audio
         DJMusicPlayer.shared.playerScreen = .miniPlayer
         DJMusicPlayer.shared.playingFrom = "Audios"
-        DJMusicPlayer.shared.shouldPlayDisclaimer = false
+        
+        DisclaimerAudio.shared.shouldPlayDisclaimer = false
         
         // Cancel All ongoing Downloads on logout
         SDDownloadManager.shared.cancelAllDownloads()
@@ -145,8 +153,8 @@ class AccountVC: BaseViewController {
         //        DJDownloadManager.shared.clearDocumentDirectory()
         
         // Segment Event - Reset
-        // SegmentTracking.shared.flush()
-        // SegmentTracking.shared.reset()
+        SegmentTracking.shared.flush()
+        SegmentTracking.shared.reset()
         
         // Login User Data
         CoUserDataModel.currentUser = nil
@@ -164,7 +172,8 @@ class AccountVC: BaseViewController {
         DJMusicPlayer.shared.lastPlayerType = .audio
         DJMusicPlayer.shared.playerScreen = .miniPlayer
         DJMusicPlayer.shared.playingFrom = "Audios"
-        DJMusicPlayer.shared.shouldPlayDisclaimer = false
+        
+        DisclaimerAudio.shared.shouldPlayDisclaimer = false
         
         // Cancel All ongoing Downloads on logout
         SDDownloadManager.shared.cancelAllDownloads()
@@ -345,20 +354,19 @@ extension AccountVC : UIImagePickerControllerDelegate, UINavigationControllerDel
             self.callAddProfileImageAPI()
         }
         
-        //        // Segment Tracking
-        //        if picker.sourceType == .camera {
-        //            SegmentTracking.shared.trackEvent(name: "Camera Photo Added", traits: ["userId" : LoginDataModel.currentUser?.UserID ?? ""], trackingType: .track)
-        //        }
-        //        else {
-        //            SegmentTracking.shared.trackEvent(name: "Gallery Photo Added", traits: ["userId" : LoginDataModel.currentUser?.UserID ?? ""], trackingType: .track)
-        //        }
+        // Segment Tracking
+        if picker.sourceType == .camera {
+            SegmentTracking.shared.trackEvent(name: "Camera Photo Added", traits: ["CoUserId" : CoUserDataModel.currentUser?.CoUserId ?? ""], trackingType: .track)
+        } else {
+            SegmentTracking.shared.trackEvent(name: "Gallery Photo Added", traits: ["CoUserId" : CoUserDataModel.currentUser?.CoUserId ?? ""], trackingType: .track)
+        }
         
         picker.dismiss(animated: true)
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         // Segment Tracking
-        //        SegmentTracking.shared.trackEvent(name: "Profile Photo Cancelled", traits: ["userId" : LoginDataModel.currentUser?.UserID ?? ""], trackingType: .track)
+        SegmentTracking.shared.trackEvent(name: "Profile Photo Cancelled", traits: ["CoUserId" : CoUserDataModel.currentUser?.CoUserId ?? ""], trackingType: .track)
         
         picker.dismiss(animated: true, completion: nil)
     }

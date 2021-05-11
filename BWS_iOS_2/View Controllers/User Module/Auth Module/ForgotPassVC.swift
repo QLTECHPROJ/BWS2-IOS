@@ -21,6 +21,10 @@ class ForgotPassVC: BaseViewController {
     // MARK:- VIEW LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Segment Tracking
+        SegmentTracking.shared.trackEvent(name: "Forgot Password Screen Viewed", traits: nil, trackingType: .screen)
+        
         setupUI()
     }
     
@@ -33,10 +37,10 @@ class ForgotPassVC: BaseViewController {
         
         if txtFEmailAdd.text?.trim.count == 0 {
             btnDone.isUserInteractionEnabled = false
-            btnDone.backgroundColor = #colorLiteral(red: 0.4941176471, green: 0.4941176471, blue: 0.4941176471, alpha: 1)
+            btnDone.backgroundColor = Theme.colors.gray_7E7E7E
         } else {
             btnDone.isUserInteractionEnabled = true
-            btnDone.backgroundColor = #colorLiteral(red: 0, green: 0.5333333333, blue: 0.5725490196, alpha: 1)
+            btnDone.backgroundColor = Theme.colors.green_008892
         }
     }
     
@@ -59,6 +63,9 @@ class ForgotPassVC: BaseViewController {
     @IBAction func onTappedDone(_ sender: UIButton) {
         if checkValidation() {
             lblErrorEmail.isHidden = true
+            
+            // Segment Tracking
+            SegmentTracking.shared.trackEvent(name: "Forgot Password Clicked", traits: ["email":txtFEmailAdd.text ?? ""], trackingType: .track)
             
             callForgotPasswordAPI()
         }
@@ -85,10 +92,10 @@ extension ForgotPassVC : UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         if txtFEmailAdd.text?.trim.count == 0 {
             btnDone.isUserInteractionEnabled = false
-            btnDone.backgroundColor = #colorLiteral(red: 0.4941176471, green: 0.4941176471, blue: 0.4941176471, alpha: 1)
+            btnDone.backgroundColor = Theme.colors.gray_7E7E7E
         } else {
             btnDone.isUserInteractionEnabled = true
-            btnDone.backgroundColor = #colorLiteral(red: 0, green: 0.5333333333, blue: 0.5725490196, alpha: 1)
+            btnDone.backgroundColor = Theme.colors.green_008892
         }
     }
     
@@ -99,10 +106,10 @@ extension ForgotPassVC : UITextFieldDelegate {
             
             if updatedText.count == 0 {
                 btnDone.isUserInteractionEnabled = false
-                btnDone.backgroundColor = #colorLiteral(red: 0.4941176471, green: 0.4941176471, blue: 0.4941176471, alpha: 1)
+                btnDone.backgroundColor = Theme.colors.gray_7E7E7E
             } else {
                 btnDone.isUserInteractionEnabled = true
-                btnDone.backgroundColor = #colorLiteral(red: 0, green: 0.5333333333, blue: 0.5725490196, alpha: 1)
+                btnDone.backgroundColor = Theme.colors.green_008892
             }
         }
         
