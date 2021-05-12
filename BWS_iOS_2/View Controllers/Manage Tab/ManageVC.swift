@@ -52,9 +52,6 @@ class ManageVC: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        // Segment Tracking
-        SegmentTracking.shared.trackEvent(name: "Explore Screen Viewed", traits: ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? ""], trackingType: .screen)
-        
         if checkInternet() == false {
             showAlertToast(message: Theme.strings.alert_check_internet)
             refreshAudioData = false

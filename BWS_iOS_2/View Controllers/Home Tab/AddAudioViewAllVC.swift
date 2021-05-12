@@ -38,7 +38,7 @@ class AddAudioViewAllVC: BaseViewController {
             self.callPlaylistAPI()
         } else {
             // Segment Tracking
-            // self.trackScreenData()
+            self.trackScreenData()
         }
         
         registerForPlayerNotifications()

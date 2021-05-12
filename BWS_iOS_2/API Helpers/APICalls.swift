@@ -489,6 +489,9 @@ extension ManageVC {
                     }
                     
                     self.setupData()
+                    
+                    // Segment Tracking
+                    self.trackScreenData()
                 }
             }
         }
@@ -546,6 +549,9 @@ extension PlaylistCategoryVC {
                     }
                 }
                 self.tableView.reloadData()
+                
+                // Segment Tracking
+                self.trackScreenData()
             }
         }
     }
@@ -919,6 +925,9 @@ extension AreaOfFocusVC {
                 userData?.AreaOfFocus = response.ResponseData?.CategoryData ?? [AreaOfFocusModel]()
                 CoUserDataModel.currentUser = userData
                 
+                // Segment Tracking
+                self.trackScreenData()
+                
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass: PreparingPlaylistVC.self)
                 aVC.isFromEdit = self.isFromEdit
                 self.navigationController?.pushViewController(aVC, animated: true)
@@ -969,7 +978,7 @@ extension AddAudioViewAllVC {
                 self.setupData()
                 
                 // Segment Tracking
-                // self.trackScreenData()
+                self.trackScreenData()
             }
         }
     }
@@ -1008,6 +1017,9 @@ extension UserListPopUpVC {
                 self.tableView.reloadData()
                 self.maxUsers = Int(response.ResponseData.Maxuseradd) ?? 0
                 self.setupData()
+                
+                // Segment Tracking
+                self.trackScreenData()
             } else {
                 self.setupData()
             }

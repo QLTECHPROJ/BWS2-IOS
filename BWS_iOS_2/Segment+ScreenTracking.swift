@@ -96,23 +96,74 @@ extension SegmentTracking {
 extension UserListVC {
     
     func trackScreenData() {
-        var traits : [String:Any] = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+        var traits : [String:Any] = ["UserID":CoUserDataModel.currentUser?.UserID ?? "",
                                      "maxuseradd":maxUsers]
         
         var users = [[String:String]]()
         
         for userData in arrayUsers {
             let userDetails = ["CoUserId":userData.CoUserId,
-                               "UserID":userData.UserID,
                                "Name":userData.Name,
                                "Mobile":userData.Mobile,
-                               "Email":userData.Email]
+                               "Email":userData.Email,
+                               "Image":userData.Image,
+                               "DOB":userData.DOB]
             users.append(userDetails)
         }
         
         traits["coUserList"] = users
         
         SegmentTracking.shared.trackEvent(name: "Couser List Viewed", traits: traits, trackingType: .screen)
+    }
+    
+}
+
+extension UserListPopUpVC {
+    
+    func trackScreenData() {
+        var traits : [String:Any] = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+                                     "UserID":CoUserDataModel.currentUser?.UserID ?? "",
+                                     "maxuseradd":maxUsers]
+        
+        var users = [[String:String]]()
+        
+        for userData in arrayUsers {
+            let userDetails = ["CoUserId":userData.CoUserId,
+                               "Name":userData.Name,
+                               "Mobile":userData.Mobile,
+                               "Email":userData.Email,
+                               "Image":userData.Image,
+                               "DOB":userData.DOB]
+            users.append(userDetails)
+        }
+        
+        traits["coUserList"] = users
+        
+        SegmentTracking.shared.trackEvent(name: "User List Popup Viewed", traits: traits, trackingType: .screen)
+    }
+    
+}
+
+extension AreaOfFocusVC {
+    
+    func trackScreenData() {
+        if let userDetails = CoUserDataModel.currentUser {
+            var dictUserDetails : [String:Any] = [
+                "CoUserId":userDetails.CoUserId,
+                "avgSleepTime":userDetails.AvgSleepTime
+            ]
+            
+            var areaOfFocusArray = [[String:Any]]()
+            
+            for areaOfFocus in userDetails.AreaOfFocus {
+                let objAreaOfFocus = ["MainCat":areaOfFocus.MainCat,"RecommendedCat":areaOfFocus.RecommendedCat]
+                areaOfFocusArray.append(objAreaOfFocus)
+            }
+            
+            dictUserDetails["areaOfFocus"] = areaOfFocusArray
+            
+            SegmentTracking.shared.trackEvent(name: "Area of Focus Saved", traits: dictUserDetails, trackingType: .track)
+        }
     }
     
 }
@@ -126,10 +177,12 @@ extension ManageVC {
             return
         }
         
+        shouldTrackScreen = false
+        
         var traits : [String:Any] = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? ""]
         let sections = self.arrayAudioHomeData.map { $0.View }
         traits["sections"] = sections
-        SegmentTracking.shared.trackEvent(name: "Explore Screen Viewed", traits: traits, trackingType: .screen)
+        SegmentTracking.shared.trackEvent(name: "Manage Screen Viewed", traits: traits, trackingType: .screen)
     }
     
 }
@@ -159,8 +212,7 @@ extension ViewAllAudioVC {
             default:
                 break
             }
-        }
-        else {
+        } else {
             screenName = "Top Categories Item Viewed"
             traits["categoryName"] = self.categoryName
         }
@@ -192,6 +244,8 @@ extension PlaylistCategoryVC {
         if shouldTrackScreen == false {
             return
         }
+        
+        shouldTrackScreen = false
         
         var traits : [String:Any] = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? ""]
         let sections = self.arrayPlaylistHomeData.map { $0.View }
@@ -235,7 +289,7 @@ extension ViewAllPlaylistVC {
 extension AddAudioViewAllVC {
     
     func trackScreenData() {
-        let eventName = isFromPlaylist ? "Recommended Playlist List Viewed" : "Recommended Audios List Viewed"
+        let eventName = isFromPlaylist ? "Suggested Playlist List Viewed" : "Suggested Audios List Viewed"
         var traits : [String:Any] = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
                                      "source": isComeFromAddAudio ? "Add Audio Screen" : "Search Screen"]
         

@@ -23,6 +23,9 @@ class NotificatonVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Segment Tracking
+        SegmentTracking.shared.trackEvent(name: "Notification List Viewed", traits: ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? ""], trackingType: .screen)
+        
         lblNoData.isHidden = true
         lblNoData.font = Theme.fonts.montserratFont(ofSize: 17, weight: .regular)
         

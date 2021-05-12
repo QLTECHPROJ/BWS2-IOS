@@ -19,6 +19,9 @@ class ThankYouVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Segment Tracking
+        SegmentTracking.shared.trackEvent(name: "Thank You Screen Viewed", traits: ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? ""], trackingType: .screen)
+        
         let normalString = "Congratulations on joining the Brain Wellness Spa Membership"
         lblSubTitle.attributedText = normalString.attributedString(alignment: .center, lineSpacing: 10)
         

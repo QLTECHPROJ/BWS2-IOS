@@ -60,6 +60,9 @@ class ManagePlanListVC: BaseViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        // Segment Tracking
+        SegmentTracking.shared.trackEvent(name: "Manage Plan Screen Viewed", traits: ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? ""], trackingType: .screen)
+        
         lblTitle.text = ""
         lblSubTitle.text = ""
         

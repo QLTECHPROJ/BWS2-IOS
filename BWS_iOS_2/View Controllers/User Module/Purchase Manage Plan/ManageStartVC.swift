@@ -36,7 +36,7 @@ class ManageStartVC: BaseViewController {
     
     // MARK:- ACTIONS
     @IBAction func continueClicked(sender : UIButton) {
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: false, completion: nil)
         self.continueClicked?()
     }
     

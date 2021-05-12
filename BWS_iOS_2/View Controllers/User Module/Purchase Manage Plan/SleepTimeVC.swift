@@ -21,6 +21,10 @@ class SleepTimeVC: BaseViewController {
     // MARK:- VIEW LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Segment Tracking
+        SegmentTracking.shared.trackEvent(name: "Sleep Time Screen Viewed", traits: ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? ""], trackingType: .screen)
+        
         collectionViewSleepTime.register(nibWithCellClass: SleepTimeCell.self)
         
         callSleepTimetAPI()

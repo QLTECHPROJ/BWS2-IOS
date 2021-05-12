@@ -28,7 +28,7 @@ class ContinueVC: BaseViewController {
     // MARK:- FUNCTIONS
     override func goNext() {
         let aVC = AppStoryBoard.main.viewController(viewControllerClass: ProfileForm1VC.self)
-        self.navigationController?.pushViewController(aVC, animated: true)
+        self.navigationController?.pushViewController(aVC, animated: false)
     }
     
     
@@ -42,7 +42,7 @@ class ContinueVC: BaseViewController {
             self.goNext()
         }
         aVC.modalPresentationStyle = .overFullScreen
-        self.present(aVC, animated: true, completion: nil)
+        self.present(aVC, animated: false, completion: nil)
     }
     
 }
