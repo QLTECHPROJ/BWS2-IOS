@@ -57,7 +57,7 @@ class DoDassAssessmentVC: BaseViewController {
     override func goNext() {
         let aVC = AppStoryBoard.main.viewController(viewControllerClass: AssessmentVC.self)
         aVC.isFromEdit = isFromEdit
-        self.navigationController?.pushViewController(aVC, animated: true)
+        self.navigationController?.pushViewController(aVC, animated: false)
     }
     
     // MARK:- ACTIONS
@@ -70,7 +70,7 @@ class DoDassAssessmentVC: BaseViewController {
             self.goNext()
         }
         aVC.modalPresentationStyle = .overFullScreen
-        self.present(aVC, animated: true, completion: nil)
+        self.present(aVC, animated: false, completion: nil)
     }
     
 }

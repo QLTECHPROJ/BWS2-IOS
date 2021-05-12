@@ -52,7 +52,7 @@ class StepVC: BaseViewController {
     
     // MARK:- ACTIONS
     @objc func tapGestureAction(gesturerecognizer : UIGestureRecognizer) {
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: false, completion: nil)
         self.viewTapped?()
     }
     

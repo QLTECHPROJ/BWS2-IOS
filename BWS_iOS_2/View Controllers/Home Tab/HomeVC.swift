@@ -55,6 +55,9 @@ class HomeVC: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        // Segment Tracking
+        SegmentTracking.shared.trackEvent(name: "Home Screen Viewed", traits: ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? ""], trackingType: .screen)
+        
         if checkInternet() {
             callHomeAPI()
         } else {

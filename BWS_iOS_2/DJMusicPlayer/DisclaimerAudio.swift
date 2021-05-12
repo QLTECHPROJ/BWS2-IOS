@@ -32,9 +32,9 @@ class DisclaimerAudio {
         }
         set {
             if let newData = newValue {
+                newData.isDisclaimer = true
                 UserDefaults.standard.setValue(newData.toJsonData(), forKey: "disclaimerAudio")
-            }
-            else {
+            } else {
                 UserDefaults.standard.setValue(nil, forKey: "disclaimerAudio")
             }
             UserDefaults.standard.synchronize()

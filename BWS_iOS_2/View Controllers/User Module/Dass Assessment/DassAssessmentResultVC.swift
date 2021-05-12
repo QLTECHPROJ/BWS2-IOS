@@ -125,10 +125,10 @@ class DassAssessmentResultVC: BaseViewController {
             let navVC = UINavigationController(rootViewController: aVC)
             navVC.isNavigationBarHidden = true
             navVC.modalPresentationStyle = .overFullScreen
-            self.navigationController?.present(navVC, animated: true, completion: nil)
+            self.navigationController?.present(navVC, animated: false, completion: nil)
         } else {
             let aVC = AppStoryBoard.main.viewController(viewControllerClass: SleepTimeVC.self)
-            self.navigationController?.pushViewController(aVC, animated: true)
+            self.navigationController?.pushViewController(aVC, animated: false)
         }
     }
     
@@ -141,7 +141,7 @@ class DassAssessmentResultVC: BaseViewController {
             self.goNext()
         }
         aVC.modalPresentationStyle = .overFullScreen
-        self.present(aVC, animated: true, completion: nil)
+        self.present(aVC, animated: false, completion: nil)
     }
     
     
@@ -162,7 +162,7 @@ class DassAssessmentResultVC: BaseViewController {
             self.handleNavigation()
         }
         aVC.modalPresentationStyle = .overFullScreen
-        self.present(aVC, animated: true, completion: nil)
+        self.present(aVC, animated: false, completion: nil)
     }
     
 }

@@ -42,6 +42,7 @@ class PlaylistCategoryVC: BaseViewController {
             addPlaylistDownloadsData()
             showAlertToast(message: Theme.strings.alert_check_internet)
         } else {
+            shouldTrackScreen = true
             refreshPlaylistData = false
             callPlaylistLibraryAPI()
             setupData()

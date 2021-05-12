@@ -28,6 +28,7 @@ class StartingVC: BaseViewController {
         lblSubTitle.attributedText = normalString.attributedString(alignment: .center, lineSpacing: 10)
     }
     
+    
     // MARK:- ACTIONS
     @IBAction func onTappedGetStarted(_ sender: UIButton) {
         let aVC = AppStoryBoard.main.viewController(viewControllerClass:SignUpVC.self)

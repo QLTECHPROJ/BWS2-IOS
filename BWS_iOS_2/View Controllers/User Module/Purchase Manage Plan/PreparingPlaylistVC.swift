@@ -26,6 +26,9 @@ class PreparingPlaylistVC: BaseViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        // Segment Tracking
+        SegmentTracking.shared.trackEvent(name: "Preparing Playlist Screen Viewed", traits: ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? ""], trackingType: .screen)
+        
         let titleString = "Preparing your \npersonalised playlist"
         lblTitle.attributedText = titleString.attributedString(alignment: .center, lineSpacing: 10)
         
@@ -36,6 +39,10 @@ class PreparingPlaylistVC: BaseViewController {
         animationView.startAnimating()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+            
+            // Segment Tracking
+            SegmentTracking.shared.trackEvent(name: "Suggested Playlist Created", traits: ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? ""], trackingType: .track)
+            
             let aVC = AppStoryBoard.main.viewController(viewControllerClass: ManageStartVC.self)
             aVC.strTitle = "You playlist is ready"
             aVC.strSubTitle = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut"
@@ -44,7 +51,7 @@ class PreparingPlaylistVC: BaseViewController {
                 self.goNext()
             }
             aVC.modalPresentationStyle = .overFullScreen
-            self.present(aVC, animated: true, completion: nil)
+            self.present(aVC, animated: false, completion: nil)
         }
     }
     
@@ -52,7 +59,7 @@ class PreparingPlaylistVC: BaseViewController {
     // MARK:- FUNCTIONS
     override func goNext() {
         if isFromEdit {
-            self.navigationController?.dismiss(animated: true, completion: nil)
+            self.navigationController?.dismiss(animated: false, completion: nil)
             NotificationCenter.default.post(name: .refreshData, object: nil)
         } else {
             APPDELEGATE.window?.rootViewController = AppStoryBoard.main.viewController(viewControllerClass: NavigationClass.self)

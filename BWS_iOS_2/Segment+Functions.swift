@@ -100,7 +100,7 @@ class SegmentTracking {
             
             let userName = userDetails.Name.trim.count > 0 ? userDetails.Name : "Guest"
             
-            let dictUserDetails : [String:Any] = [
+            var dictUserDetails : [String:Any] = [
                 "CoUserId":userDetails.CoUserId,
                 "id":userDetails.CoUserId,
                 "deviceId":DEVICE_UUID,
@@ -114,9 +114,18 @@ class SegmentTracking {
                 "isAssessmentCompleted":userDetails.isAssessmentCompleted,
                 "indexScore":userDetails.indexScore,
                 "scoreLevel":userDetails.ScoreLevel,
-                "areaOfFocus":userDetails.AreaOfFocus,
                 "avgSleepTime":userDetails.AvgSleepTime
             ]
+            
+            var areaOfFocusArray = [[String:Any]]()
+            
+            for areaOfFocus in userDetails.AreaOfFocus {
+                let objAreaOfFocus = ["MainCat":areaOfFocus.MainCat,"RecommendedCat":areaOfFocus.RecommendedCat]
+                areaOfFocusArray.append(objAreaOfFocus)
+            }
+            
+            dictUserDetails["areaOfFocus"] = areaOfFocusArray
+            
             // "Plan":userDetails.planDetails,
             // "PlanStatus":userDetails.PlanStatus,
             // "planStartDt":userDetails.PlanStartDt,
@@ -133,7 +142,7 @@ class SegmentTracking {
             
             let userName = userDetails.Name.trim.count > 0 ? userDetails.Name : "Guest"
             
-            let dictUserDetails : [String:Any] = [
+            var dictUserDetails : [String:Any] = [
                 "CoUserId":userDetails.CoUserId,
                 "id":userDetails.CoUserId,
                 "deviceId":DEVICE_UUID,
@@ -147,9 +156,18 @@ class SegmentTracking {
                 "isAssessmentCompleted":userDetails.isAssessmentCompleted,
                 "indexScore":userDetails.indexScore,
                 "scoreLevel":userDetails.ScoreLevel,
-                "areaOfFocus":userDetails.AreaOfFocus,
                 "avgSleepTime":userDetails.AvgSleepTime
             ]
+            
+            var areaOfFocusArray = [[String:Any]]()
+            
+            for areaOfFocus in userDetails.AreaOfFocus {
+                let objAreaOfFocus = ["MainCat":areaOfFocus.MainCat,"RecommendedCat":areaOfFocus.RecommendedCat]
+                areaOfFocusArray.append(objAreaOfFocus)
+            }
+            
+            dictUserDetails["areaOfFocus"] = areaOfFocusArray
+            
             // "Plan":userDetails.planDetails,
             // "PlanStatus":userDetails.PlanStatus,
             // "planStartDt":userDetails.PlanStartDt,
