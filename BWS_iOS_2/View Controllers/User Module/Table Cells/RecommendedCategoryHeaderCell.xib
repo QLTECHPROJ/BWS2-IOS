@@ -15,9 +15,6 @@
         <array key="Montserrat-Regular.ttf">
             <string>Montserrat-Regular</string>
         </array>
-        <array key="Montserrat-SemiBold.ttf">
-            <string>Montserrat-SemiBold</string>
-        </array>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -110,8 +107,8 @@
                                     </imageView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search for category" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hQc-3Q-Qqe">
                                         <rect key="frame" x="46" y="8" width="297" height="38"/>
-                                        <color key="textColor" name="999999"/>
-                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
+                                        <color key="textColor" name="textColor"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
                                             <outlet property="delegate" destination="KGk-i7-Jjw" id="Lec-jc-juu"/>
@@ -208,9 +205,6 @@
         <image name="RecCategoryImage" width="375" height="163"/>
         <image name="Search" width="15.5" height="15.5"/>
         <image name="closeBlack" width="17" height="17"/>
-        <namedColor name="999999">
-            <color red="0.60000002384185791" green="0.60000002384185791" blue="0.60000002384185791" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="DDDDDD">
             <color red="0.86699998378753662" green="0.86699998378753662" blue="0.86699998378753662" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

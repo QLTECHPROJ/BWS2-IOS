@@ -3665,7 +3665,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="487.33333333333331"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Continue" translatesAutoresizingMaskIntoConstraints="NO" id="SKC-2B-lXv">
-                                        <rect key="frame" x="-193" y="0.0" width="568" height="487.33333333333331"/>
+                                        <rect key="frame" x="-275" y="0.0" width="650" height="487.33333333333331"/>
                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                     </imageView>
                                 </subviews>
@@ -5245,7 +5245,7 @@ personalised playlist</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XzC-7J-p3Q">
-                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="674"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Heq-MU-zB4">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
@@ -5317,32 +5317,6 @@ personalised playlist</string>
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K8B-Kf-0jr">
-                                                <rect key="frame" x="16" y="740" width="50" height="30"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="30" id="94I-yo-ts5"/>
-                                                    <constraint firstAttribute="width" constant="50" id="UIM-hB-Bfh"/>
-                                                </constraints>
-                                                <state key="normal" image="arrowLeft">
-                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="onTappedPre:" destination="rRH-qX-gkj" eventType="touchUpInside" id="hCR-TH-Ptf"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xNx-Hy-jNA">
-                                                <rect key="frame" x="309" y="740" width="50" height="30"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="30" id="fK5-Q9-74w"/>
-                                                    <constraint firstAttribute="width" constant="50" id="kyK-Tr-5g0"/>
-                                                </constraints>
-                                                <state key="normal" image="arrowRight">
-                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="onTappedNext:" destination="rRH-qX-gkj" eventType="touchUpInside" id="LUt-6m-OzO"/>
-                                                </connections>
-                                            </button>
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="CX5-Lr-QAl" secondAttribute="trailing" constant="16" id="0ys-rQ-a7k"/>
@@ -5351,8 +5325,6 @@ personalised playlist</string>
                                             <constraint firstItem="ski-rW-yfo" firstAttribute="leading" secondItem="Heq-MU-zB4" secondAttribute="leading" constant="20" id="AhK-Wn-u1b"/>
                                             <constraint firstItem="m2p-wq-H2H" firstAttribute="leading" secondItem="Heq-MU-zB4" secondAttribute="leading" constant="20" id="KEQ-qe-lzl"/>
                                             <constraint firstItem="ski-rW-yfo" firstAttribute="top" secondItem="CX5-Lr-QAl" secondAttribute="bottom" constant="48" id="LAm-cA-PhK"/>
-                                            <constraint firstItem="K8B-Kf-0jr" firstAttribute="leading" secondItem="Heq-MU-zB4" secondAttribute="leading" constant="16" id="PSg-0N-EAY"/>
-                                            <constraint firstAttribute="bottom" secondItem="K8B-Kf-0jr" secondAttribute="bottom" constant="30" id="Swb-bj-Hc2"/>
                                             <constraint firstItem="m2p-wq-H2H" firstAttribute="top" secondItem="Heq-MU-zB4" secondAttribute="top" constant="16" id="TEQ-MP-LmK"/>
                                             <constraint firstAttribute="height" constant="800" id="XMo-eQ-6UJ"/>
                                             <constraint firstItem="CX5-Lr-QAl" firstAttribute="leading" secondItem="Heq-MU-zB4" secondAttribute="leading" constant="20" id="eFt-yY-Gi0"/>
@@ -5360,10 +5332,8 @@ personalised playlist</string>
                                             <constraint firstAttribute="trailing" secondItem="ski-rW-yfo" secondAttribute="trailing" constant="16" id="oMn-a9-2sK"/>
                                             <constraint firstAttribute="trailing" secondItem="m2p-wq-H2H" secondAttribute="trailing" constant="16" id="ptc-dF-a21"/>
                                             <constraint firstItem="CX5-Lr-QAl" firstAttribute="top" secondItem="m2p-wq-H2H" secondAttribute="bottom" constant="16" id="quh-Te-Jwb"/>
-                                            <constraint firstAttribute="bottom" secondItem="xNx-Hy-jNA" secondAttribute="bottom" constant="30" id="sHJ-RS-BOe"/>
                                             <constraint firstAttribute="trailing" secondItem="LhV-yA-gye" secondAttribute="trailing" id="tSz-y7-dnT"/>
                                             <constraint firstItem="vXb-TL-Hyk" firstAttribute="leading" secondItem="ski-rW-yfo" secondAttribute="leading" id="uxy-QY-4Ud"/>
-                                            <constraint firstAttribute="trailing" secondItem="xNx-Hy-jNA" secondAttribute="trailing" constant="16" id="vCu-T8-LL0"/>
                                             <constraint firstItem="LhV-yA-gye" firstAttribute="top" secondItem="vXb-TL-Hyk" secondAttribute="bottom" constant="16" id="ySY-Bz-UeT"/>
                                         </constraints>
                                     </view>
@@ -5377,12 +5347,42 @@ personalised playlist</string>
                                 <viewLayoutGuide key="contentLayoutGuide" id="BDX-gX-WET"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="7Z3-OE-NkD"/>
                             </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K8B-Kf-0jr">
+                                <rect key="frame" x="30" y="718" width="50" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="94I-yo-ts5"/>
+                                    <constraint firstAttribute="width" constant="50" id="UIM-hB-Bfh"/>
+                                </constraints>
+                                <state key="normal" image="arrowLeft">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="onTappedPre:" destination="rRH-qX-gkj" eventType="touchUpInside" id="hCR-TH-Ptf"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xNx-Hy-jNA">
+                                <rect key="frame" x="295" y="718" width="50" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="fK5-Q9-74w"/>
+                                    <constraint firstAttribute="width" constant="50" id="kyK-Tr-5g0"/>
+                                </constraints>
+                                <state key="normal" image="arrowRight">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="onTappedNext:" destination="rRH-qX-gkj" eventType="touchUpInside" id="LUt-6m-OzO"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="DfG-tf-cfx" firstAttribute="bottom" secondItem="XzC-7J-p3Q" secondAttribute="bottom" id="HeE-NF-ldM"/>
+                            <constraint firstItem="DfG-tf-cfx" firstAttribute="trailing" secondItem="xNx-Hy-jNA" secondAttribute="trailing" constant="30" id="A9E-gK-Z1W"/>
+                            <constraint firstItem="DfG-tf-cfx" firstAttribute="bottom" secondItem="xNx-Hy-jNA" secondAttribute="bottom" constant="30" id="Low-9D-Jig"/>
+                            <constraint firstItem="xNx-Hy-jNA" firstAttribute="top" secondItem="XzC-7J-p3Q" secondAttribute="bottom" id="MTr-07-j1H"/>
                             <constraint firstItem="DfG-tf-cfx" firstAttribute="trailing" secondItem="XzC-7J-p3Q" secondAttribute="trailing" id="MWL-h6-jJj"/>
+                            <constraint firstItem="K8B-Kf-0jr" firstAttribute="leading" secondItem="DfG-tf-cfx" secondAttribute="leading" constant="30" id="Vzg-0J-mfl"/>
                             <constraint firstItem="Heq-MU-zB4" firstAttribute="width" secondItem="hOK-by-8Bg" secondAttribute="width" id="hPn-FW-1ex"/>
+                            <constraint firstItem="DfG-tf-cfx" firstAttribute="bottom" secondItem="K8B-Kf-0jr" secondAttribute="bottom" constant="30" id="pWP-2P-uyM"/>
                             <constraint firstItem="XzC-7J-p3Q" firstAttribute="leading" secondItem="DfG-tf-cfx" secondAttribute="leading" id="wFk-u4-P1g"/>
                             <constraint firstItem="XzC-7J-p3Q" firstAttribute="top" secondItem="DfG-tf-cfx" secondAttribute="top" id="zyu-NX-swX"/>
                         </constraints>
@@ -5405,7 +5405,7 @@ personalised playlist</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dhF-pa-Sa0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3030" y="1591"/>
+            <point key="canvasLocation" x="3029.5999999999999" y="1590.8866995073893"/>
         </scene>
         <!--Profile Form6VC-->
         <scene sceneID="Xhr-AO-nll">
@@ -5586,7 +5586,7 @@ personalised playlist</string>
         <image name="AverageSleepTime_Top" width="375" height="163"/>
         <image name="BackButton" width="16" height="15.666666984558105"/>
         <image name="Checked" width="24.333333969116211" height="17.666666030883789"/>
-        <image name="Continue" width="284" height="451"/>
+        <image name="Continue" width="325" height="512"/>
         <image name="PassDefault" width="21" height="14"/>
         <image name="Search" width="15.666666984558105" height="15.666666984558105"/>
         <image name="ThankYouImage" width="135" height="160"/>

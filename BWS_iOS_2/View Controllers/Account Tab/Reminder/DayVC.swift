@@ -100,10 +100,11 @@ class DayVC: BaseViewController {
         if shouldEnable {
             btnSave.isUserInteractionEnabled = true
             btnSave.backgroundColor = Theme.colors.white
+            btnSave.setTitleColor( Theme.colors.green_008892, for: .normal)
         } else {
             btnSave.isUserInteractionEnabled = false
             btnSave.backgroundColor = Theme.colors.gray_7E7E7E
-            btnSave.setTitleColor(.white, for: .normal)
+            btnSave.setTitleColor(Theme.colors.white, for: .normal)
         }
     }
     

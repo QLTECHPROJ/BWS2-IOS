@@ -27,23 +27,21 @@ class ReminderListVC: BaseViewController{
     // MARK:- VIEW LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
-        callRemListAPI()
         setupUI()
        
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        callRemListAPI()
+    }
+    
     // MARK:- FUNCTIONS
     override func setupUI() {
-        
-         callRemListAPI()
         tableView.register(nibWithCellClass: ReminderListCell.self)
-        
     }
     
     override func setupData() {
-         
         tableView.reloadData()
-        
     }
     
     //MARK:-  IBAction
