@@ -78,7 +78,7 @@ class SuggestedPlaylistCell: UITableViewCell {
         }
         
         if playlistData.IsReminder == "1" {
-            btnReminder.setTitle("     Reminder(s)     ", for: .normal)
+            btnReminder.setTitle("     Update reminder     ", for: .normal)
         } else {
             btnReminder.setTitle("     Set reminder     ", for: .normal)
         }

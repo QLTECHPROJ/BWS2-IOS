@@ -512,6 +512,20 @@ extension ManageVC {
         }
     }
     
+    //Delete reminder API call
+    func callRemDeleteAPI(remID:String) {
+        
+        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "","ReminderId":remID]
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.deletereminder(parameters)) { (response :GeneralModel) in
+            
+            if response.ResponseCode == "200" {
+                self.setupData()
+                showAlertToast(message: response.ResponseMessage)
+            }
+        }
+    }
+    
 }
 
 extension ViewAllAudioVC {
@@ -692,6 +706,21 @@ extension PlaylistAudiosVC {
                 self.callPlaylistDetailAPI()
                 showAlertToast(message: response.ResponseMessage)
                 
+            }
+        }
+    }
+    
+    //Delete Reminder API Call
+    func callRemDeleteAPI(remID:String) {
+
+        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "","ReminderId":remID]
+
+        APICallManager.sharedInstance.callAPI(router: APIRouter.deletereminder(parameters)) { (response :GeneralModel) in
+
+            if response.ResponseCode == "200" {
+                
+                self.setupData()
+                showAlertToast(message: response.ResponseMessage)
             }
         }
     }
@@ -1115,6 +1144,21 @@ extension HomeVC {
             
             if response.ResponseCode == "200" {
                 self.callHomeAPI()
+                showAlertToast(message: response.ResponseMessage)
+            }
+        }
+    }
+    
+    //Delete Reminder API Call
+    func callRemDeleteAPI(remID:String) {
+
+        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "","ReminderId":remID]
+
+        APICallManager.sharedInstance.callAPI(router: APIRouter.deletereminder(parameters)) { (response :GeneralModel) in
+
+            if response.ResponseCode == "200" {
+                
+                self.setupData()
                 showAlertToast(message: response.ResponseMessage)
             }
         }

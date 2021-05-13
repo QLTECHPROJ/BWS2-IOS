@@ -14,6 +14,7 @@ class PinVC: BaseViewController {
     @IBOutlet weak var viewBack: UIView!
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var btnDone: UIButton!
+    @IBOutlet weak var constHorizontal: NSLayoutConstraint!
     
     // Textfield
     @IBOutlet weak var txtFPin1: BackspaceTextField!
@@ -195,6 +196,7 @@ extension PinVC : UITextFieldDelegate, BackspaceTextFieldDelegate {
             shadowRemove(view: viewCard3)
             shadowRemove(view: viewCard1)
         }
+        constHorizontal.constant = -70
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -278,6 +280,7 @@ extension PinVC : UITextFieldDelegate, BackspaceTextFieldDelegate {
             btnDone.isUserInteractionEnabled = true
             btnDone.backgroundColor = Theme.colors.green_008892
         }
+        constHorizontal.constant = 0
     }
     
 }

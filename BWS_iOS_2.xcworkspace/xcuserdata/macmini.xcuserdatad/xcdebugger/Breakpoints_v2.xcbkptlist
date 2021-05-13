@@ -190,8 +190,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "226"
             endingLineNumber = "226"
-            landmarkName = "AccountVC"
-            landmarkType = "3">
+            landmarkName = "handleCellSelctionAction(indexPath:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -367,6 +367,22 @@
             startingLineNumber = "97"
             endingLineNumber = "97"
             landmarkName = "buttonEnableDisable()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AC69374C-F5DB-469D-8875-AE2FD361A460"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BWS_iOS_2/API Helpers/APICalls.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1160"
+            endingLineNumber = "1160"
+            landmarkName = "callRemDeleteAPI(remID:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

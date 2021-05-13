@@ -107,8 +107,8 @@ class PlaylistAudiosVC: BaseViewController {
             lblAreaOfFocus.isHidden = false
             btnEdit.isHidden = false
             moonView.isHidden = false
-            collectionHeight.constant = 100
-            tableHeaderView.frame.size = CGSize(width: tableView.frame.width, height:600)
+            collectionHeight.constant = 70
+            tableHeaderView.frame.size = CGSize(width: tableView.frame.width, height:550)
         } else {
             collectionView.isHidden = true
             lblAreaOfFocus.isHidden = true
@@ -176,11 +176,11 @@ class PlaylistAudiosVC: BaseViewController {
             lblAreaOfFocus.isHidden = false
             btnEdit.isHidden = false
             moonView.isHidden = false
-            collectionHeight.constant = 100
+            collectionHeight.constant = 70
             if viewSearch.isHidden {
                 tableHeaderView.frame.size = CGSize(width: tableView.frame.width, height:550)
             } else {
-                tableHeaderView.frame.size = CGSize(width: tableView.frame.width, height:600)
+                tableHeaderView.frame.size = CGSize(width: tableView.frame.width, height:550)
             }
             
             areaOfFocus = CoUserDataModel.currentUser?.AreaOfFocus ?? [AreaOfFocusModel]()
@@ -269,7 +269,7 @@ class PlaylistAudiosVC: BaseViewController {
         }
         
         if details.IsReminder == "1" {
-            btnReminder.setTitle("     Reminder(s)     ", for: .normal)
+            btnReminder.setTitle("     Update reminder     ", for: .normal)
         } else {
             btnReminder.setTitle("     Set reminder     ", for: .normal)
         }
@@ -434,16 +434,16 @@ class PlaylistAudiosVC: BaseViewController {
     }
     
     @IBAction func setReminderClicked(_ sender: UIButton) {
-        if objPlaylist?.IsReminder == "1" {
-            callRemSatusAPI(status: "0")
-        } else if objPlaylist?.IsReminder == "0" {
-            let aVC = AppStoryBoard.account.viewController(viewControllerClass: DayVC.self)
-            aVC.objPlaylist = objPlaylist
-            self.navigationController?.pushViewController(aVC, animated: true)
-        } else {
-            let aVC = AppStoryBoard.account.viewController(viewControllerClass: DayVC.self)
-            self.navigationController?.pushViewController(aVC, animated: true)
-        }
+        
+        let aVC = AppStoryBoard.manage.viewController(viewControllerClass: AlertPopUpVC.self)
+        aVC.titleText = "Update Reminder"
+        aVC.detailText = "you can update or delete your deminder"
+        aVC.firstButtonTitle = "UPDATE"
+        aVC.secondButtonTitle = "DELETE"
+        aVC.modalPresentationStyle = .overFullScreen
+        aVC.delegate = self
+        self.present(aVC, animated: false, completion: nil)
+        
     }
     
     @IBAction func downloadClicked(_ sender: UIButton) {
@@ -805,6 +805,26 @@ extension PlaylistAudiosVC : AlertPopUpVCDelegate {
         }
     }
     
+//    func handleAction(sender: UIButton, popUpTag: Int) {
+//        if sender.tag == 0 {
+//            if objPlaylist?.IsReminder == "1" {
+//                callRemSatusAPI(status: "0")
+//            } else if objPlaylist?.IsReminder == "0" {
+//                let aVC = AppStoryBoard.account.viewController(viewControllerClass: DayVC.self)
+//                aVC.objPlaylist = objPlaylist
+//                self.navigationController?.pushViewController(aVC, animated: true)
+//            } else {
+//                let aVC = AppStoryBoard.account.viewController(viewControllerClass: DayVC.self)
+//                self.navigationController?.pushViewController(aVC, animated: true)
+//            }
+//        }else {
+//            if objPlaylist?.ReminderDay == "" {
+//                showAlertToast(message: "reminder not exist!")
+//            } else {
+//                callRemDeleteAPI(remID: objPlaylist?.PlaylistID ?? "")
+//            }
+//        }
+//    }
 }
 
 
@@ -886,3 +906,6 @@ extension PlaylistAudiosVC : UITextFieldDelegate {
     }
     
 }
+
+
+

@@ -365,7 +365,7 @@ extension AddAudioVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 1 && arrayAudio.count > 0 {
             let cell = tableView.dequeueReusableCell(withClass: ViewAllCell.self)
-            cell.lblTitle.text = "Suggested"
+            cell.lblTitle.text = "Suggested Audio"
             
             cell.btnViewAll.tag = section
             cell.btnViewAll.addTarget(self, action: #selector(onTappedViewAll(_:)), for: .touchUpInside)

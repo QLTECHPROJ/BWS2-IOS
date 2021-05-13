@@ -45,7 +45,10 @@ class DayVC: BaseViewController {
         setupUI()
         setupData()
         buttonEnableDisable()
+       
         viewDate.isHidden = true
+        
+        
     }
     
     //MARK:- Functions
@@ -84,7 +87,6 @@ class DayVC: BaseViewController {
            
         }
         }
-        
         //tableView.reloadData()
     }
     
@@ -102,9 +104,11 @@ class DayVC: BaseViewController {
             btnSave.backgroundColor = Theme.colors.white
             btnSave.setTitleColor( Theme.colors.green_008892, for: .normal)
         } else {
-            btnSave.isUserInteractionEnabled = false
-            btnSave.backgroundColor = Theme.colors.gray_7E7E7E
-            btnSave.setTitleColor(Theme.colors.white, for: .normal)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0) {
+                self.btnSave.isUserInteractionEnabled = false
+                self.btnSave.backgroundColor = Theme.colors.gray_7E7E7E
+                self.btnSave.setTitleColor(Theme.colors.white, for: .normal)
+            }
         }
     }
     

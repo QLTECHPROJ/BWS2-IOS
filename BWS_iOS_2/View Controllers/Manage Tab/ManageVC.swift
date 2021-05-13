@@ -118,7 +118,7 @@ class ManageVC: BaseViewController {
             }
             
             if playlistData.IsReminder == "1" {
-                btnReminder.setTitle("     Reminder(s)     ", for: .normal)
+                btnReminder.setTitle("     Update reminder     ", for: .normal)
             } else {
                 btnReminder.setTitle("     Set reminder     ", for: .normal)
             }
@@ -373,16 +373,14 @@ class ManageVC: BaseViewController {
     }
     
     @IBAction func setReminderClicked(sender : UIButton) {
-        if suggstedPlaylist?.IsReminder == "1" {
-            callRemSatusAPI(status: "0")
-        } else if suggstedPlaylist?.IsReminder == "0" {
-            let aVC = AppStoryBoard.account.viewController(viewControllerClass: DayVC.self)
-            aVC.objPlaylist = suggstedPlaylist
-            self.navigationController?.pushViewController(aVC, animated: true)
-        } else {
-            let aVC = AppStoryBoard.account.viewController(viewControllerClass: DayVC.self)
-            self.navigationController?.pushViewController(aVC, animated: true)
-        }
+        let aVC = AppStoryBoard.manage.viewController(viewControllerClass: AlertPopUpVC.self)
+        aVC.titleText = "Update Reminder"
+        aVC.detailText = "you can update or delete your deminder"
+        aVC.firstButtonTitle = "UPDATE"
+        aVC.secondButtonTitle = "DELETE"
+        aVC.modalPresentationStyle = .overFullScreen
+        aVC.delegate = self
+        self.present(aVC, animated: false, completion: nil)
     }
     
     @IBAction func playClicked(sender : UIButton) {
@@ -523,4 +521,29 @@ extension ManageVC : UITableViewDataSource, UITableViewDelegate {
         return 0
     }
     
+}
+
+// MARK:- AlertPopUpVCDelegate
+extension ManageVC : AlertPopUpVCDelegate {
+    
+    func handleAction(sender: UIButton, popUpTag: Int) {
+        if sender.tag == 0 {
+            if suggstedPlaylist?.IsReminder == "1" {
+                callRemSatusAPI(status: "0")
+            } else if suggstedPlaylist?.IsReminder == "0" {
+                let aVC = AppStoryBoard.account.viewController(viewControllerClass: DayVC.self)
+                aVC.objPlaylist = suggstedPlaylist
+                self.navigationController?.pushViewController(aVC, animated: true)
+            } else {
+                let aVC = AppStoryBoard.account.viewController(viewControllerClass: DayVC.self)
+                self.navigationController?.pushViewController(aVC, animated: true)
+            }
+        }else {
+            if suggstedPlaylist?.ReminderDay == "" {
+                showAlertToast(message: "reminder not exist!")
+            } else {
+                callRemDeleteAPI(remID: suggstedPlaylist?.PlaylistID ?? "")
+            }
+        }
+    }
 }

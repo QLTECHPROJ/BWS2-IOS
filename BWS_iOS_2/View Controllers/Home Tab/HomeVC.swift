@@ -42,7 +42,6 @@ class HomeVC: BaseViewController {
         // Fetch next audio to download on launch
         DJDownloadManager.shared.fetchNextDownload()
         
-        setupUI()
         setupData()
         registerForPlayerNotifications()
         
@@ -55,6 +54,7 @@ class HomeVC: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        setupUI()
         // Segment Tracking
         SegmentTracking.shared.trackEvent(name: "Home Screen Viewed", traits: ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? ""], trackingType: .screen)
         
@@ -75,7 +75,7 @@ class HomeVC: BaseViewController {
         tableView.register(nibWithCellClass: ProgressCell.self)
         
         tableView.refreshControl = refreshControl
-        
+        imgUser.loadUserProfileImage(fontSize: 30)
         lblUser.text = CoUserDataModel.currentUser?.Name ?? ""
         
         if let strUrl = CoUserDataModel.currentUser?.Image.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let imgUrl = URL(string: strUrl) {
@@ -129,16 +129,16 @@ class HomeVC: BaseViewController {
     }
     
     func setReminder() {
-        if suggstedPlaylist?.IsReminder == "1" {
-            callRemSatusAPI(status: "0")
-        } else if suggstedPlaylist?.IsReminder == "0" {
-            let aVC = AppStoryBoard.account.viewController(viewControllerClass: DayVC.self)
-            aVC.objPlaylist = suggstedPlaylist
-            self.navigationController?.pushViewController(aVC, animated: true)
-        } else {
-            let aVC = AppStoryBoard.account.viewController(viewControllerClass: DayVC.self)
-            self.navigationController?.pushViewController(aVC, animated: true)
-        }
+        
+        let aVC = AppStoryBoard.manage.viewController(viewControllerClass: AlertPopUpVC.self)
+        aVC.titleText = "Update Reminder"
+        aVC.detailText = "you can update or delete your deminder"
+        aVC.firstButtonTitle = "UPDATE"
+        aVC.secondButtonTitle = "DELETE"
+        aVC.modalPresentationStyle = .overFullScreen
+        aVC.delegate = self
+        self.present(aVC, animated: false, completion: nil)
+        
     }
     
     func playSuggestedPlaylist() {
@@ -360,3 +360,27 @@ extension HomeVC : UITableViewDelegate, UITableViewDataSource {
     
 }
 
+// MARK:- AlertPopUpVCDelegate
+extension HomeVC : AlertPopUpVCDelegate {
+    
+    func handleAction(sender: UIButton, popUpTag: Int) {
+        if sender.tag == 0 {
+            if suggstedPlaylist?.IsReminder == "1" {
+                callRemSatusAPI(status: "0")
+            } else if suggstedPlaylist?.IsReminder == "0" {
+                let aVC = AppStoryBoard.account.viewController(viewControllerClass: DayVC.self)
+                aVC.objPlaylist = suggstedPlaylist
+                self.navigationController?.pushViewController(aVC, animated: true)
+            } else {
+                let aVC = AppStoryBoard.account.viewController(viewControllerClass: DayVC.self)
+                self.navigationController?.pushViewController(aVC, animated: true)
+            }
+        }else {
+            if suggstedPlaylist?.ReminderDay == "" {
+                showAlertToast(message: "reminder not exist!")
+            } else {
+                callRemDeleteAPI(remID: suggstedPlaylist?.PlaylistID ?? "")
+            }
+        }
+    }
+}

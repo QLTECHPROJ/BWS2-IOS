@@ -21,7 +21,7 @@ class UserListCell: UITableViewCell {
     // Configure Cell
     func configureCell(data : CoUserDataModel) {
         lblName.text = data.Name
-        
+        imgView.loadUserProfileImage(fontSize: 30)
         if let strUrl = data.Image.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let imgUrl = URL(string: strUrl) {
             imgView.sd_setImage(with: imgUrl, completed: nil)
         }

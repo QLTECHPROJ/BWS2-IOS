@@ -681,7 +681,7 @@
                             </connections>
                         </collectionView>
                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A9b-sy-DIv">
-                            <rect key="frame" x="20" y="519.66666666666663" width="335" height="47"/>
+                            <rect key="frame" x="20" y="527.66666666666663" width="335" height="47"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Search" translatesAutoresizingMaskIntoConstraints="NO" id="hOZ-ux-Wvl">
                                     <rect key="frame" x="20" y="12.666666666666742" width="22" height="22"/>
@@ -755,7 +755,7 @@
                         <constraint firstItem="kWy-7T-Cn9" firstAttribute="leading" secondItem="dFv-LJ-kyg" secondAttribute="leading" id="kDE-QZ-4Vg"/>
                         <constraint firstItem="dFv-LJ-kyg" firstAttribute="trailing" secondItem="j5E-bz-Hfb" secondAttribute="trailing" constant="16" id="pPX-No-cvl"/>
                         <constraint firstItem="kWy-7T-Cn9" firstAttribute="trailing" secondItem="dFv-LJ-kyg" secondAttribute="trailing" id="qDa-dY-fCq"/>
-                        <constraint firstItem="A9b-sy-DIv" firstAttribute="top" secondItem="kWy-7T-Cn9" secondAttribute="bottom" id="wa3-di-XRC"/>
+                        <constraint firstItem="A9b-sy-DIv" firstAttribute="top" secondItem="kWy-7T-Cn9" secondAttribute="bottom" constant="8" id="wa3-di-XRC"/>
                         <constraint firstItem="dra-e5-OkV" firstAttribute="top" secondItem="6h2-Qp-BP4" secondAttribute="top" id="yAw-rn-Dtm"/>
                     </constraints>
                     <viewLayoutGuide key="safeArea" id="dFv-LJ-kyg"/>
@@ -804,8 +804,8 @@
                                             <action selector="onTappedBack:" destination="lgy-Dg-h8h" eventType="touchUpInside" id="1bb-TP-kxH"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Suggested Audios" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gbU-pr-jHn">
-                                        <rect key="frame" x="126" y="13.333333333333337" width="123.33333333333331" height="17.666666666666671"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Audio" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gbU-pr-jHn">
+                                        <rect key="frame" x="152.33333333333334" y="13.333333333333337" width="70.666666666666657" height="17.666666666666671"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="15"/>
                                         <color key="textColor" name="DarkBlack"/>
                                         <nil key="highlightedColor"/>
@@ -833,7 +833,7 @@
                                                     <constraint firstAttribute="height" constant="22" id="7Fc-ag-S6L"/>
                                                 </constraints>
                                             </imageView>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search for Audio" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ECu-Kf-yGd">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="search for audio" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ECu-Kf-yGd">
                                                 <rect key="frame" x="58" y="0.0" width="269" height="47"/>
                                                 <color key="textColor" name="textColor"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
