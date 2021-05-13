@@ -1376,32 +1376,29 @@ extension UIImageView {
                             CoUserDataModel.profileImage = profileImage
                             self.image = profileImage
                             if profileImage == nil {
-                                self.setInitialProfileImage(fontSize: fontSize)
+                                self.setUserInitialProfileImage(user: CoUserDataModel.currentUser, fontSize: fontSize)
                             }
                         }
-                    }
-                    catch {
+                    } catch {
                         print("Image Download Error : \(error.localizedDescription)")
-                        self.setInitialProfileImage(fontSize: fontSize)
+                        self.setUserInitialProfileImage(user: CoUserDataModel.currentUser, fontSize: fontSize)
                     }
-                }
-                else {
-                    self.setInitialProfileImage(fontSize: fontSize)
+                } else {
+                    self.setUserInitialProfileImage(user: CoUserDataModel.currentUser, fontSize: fontSize)
                 }
             }
         }
     }
     
-    func setInitialProfileImage(initial : String? = nil, fontSize : CGFloat) {
-        let userName = (CoUserDataModel.currentUser?.Name ?? "").trim.count > 0 ? (CoUserDataModel.currentUser?.Name ?? "") : "Guest"
-        var nameInitial : String = "\(userName.first ?? "G")"
-        
-        if initial != nil {
-            nameInitial = initial!
-        }
-        
+    func setUserInitialProfileImage(user : CoUserDataModel?, fontSize : CGFloat) {
+        let userName = (user?.Name ?? "").trim.count > 0 ? (user?.Name ?? "") : "Guest"
+        let nameInitial : String = "\(userName.first ?? "G")"
+        self.setInitialProfileImage(initial: nameInitial, fontSize: fontSize)
+    }
+    
+    func setInitialProfileImage(initial : String, fontSize : CGFloat) {
         DispatchQueue.main.async {
-            self.setImageWith(nameInitial, color: Theme.colors.blue_38667E, circular: false, textAttributes: [NSAttributedString.Key.font : UIFont(name: CustomFonts.MontserratSemiBold, size: fontSize) as Any, NSAttributedString.Key.foregroundColor : UIColor.white])
+            self.setImageWith(initial, color: Theme.colors.blue_38667E, circular: false, textAttributes: [NSAttributedString.Key.font : UIFont(name: CustomFonts.MontserratSemiBold, size: fontSize) as Any, NSAttributedString.Key.foregroundColor : UIColor.white])
         }
     }
     

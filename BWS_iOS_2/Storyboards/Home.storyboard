@@ -400,6 +400,7 @@
                         <outlet property="imgViewPlaylist" destination="hfd-Cy-rZp" id="Mn0-Yg-Rr2"/>
                         <outlet property="imgViewTransparent" destination="v2c-Qf-7GN" id="mRq-IK-jJf"/>
                         <outlet property="lblAreaOfFocus" destination="6gg-dH-cbQ" id="dvJ-sj-AGc"/>
+                        <outlet property="lblAreaOfFocusTopConst" destination="Dji-QS-5wI" id="Vpm-Tl-MsQ"/>
                         <outlet property="lblDesc" destination="Pga-Se-qVI" id="cF1-jE-FoA"/>
                         <outlet property="lblNoDataFooter" destination="NRf-ej-mRr" id="9Qm-ym-861"/>
                         <outlet property="lblPlaylistName" destination="CnT-bT-PPx" id="BU6-mf-uKD"/>
@@ -804,8 +805,8 @@
                                             <action selector="onTappedBack:" destination="lgy-Dg-h8h" eventType="touchUpInside" id="1bb-TP-kxH"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Audio" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gbU-pr-jHn">
-                                        <rect key="frame" x="152.33333333333334" y="13.333333333333337" width="70.666666666666657" height="17.666666666666671"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Suggested Audios" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gbU-pr-jHn">
+                                        <rect key="frame" x="126" y="13.333333333333337" width="123.33333333333331" height="17.666666666666671"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="15"/>
                                         <color key="textColor" name="DarkBlack"/>
                                         <nil key="highlightedColor"/>
@@ -833,7 +834,7 @@
                                                     <constraint firstAttribute="height" constant="22" id="7Fc-ag-S6L"/>
                                                 </constraints>
                                             </imageView>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="search for audio" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ECu-Kf-yGd">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search for audio" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ECu-Kf-yGd">
                                                 <rect key="frame" x="58" y="0.0" width="269" height="47"/>
                                                 <color key="textColor" name="textColor"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
@@ -904,6 +905,7 @@
                         <outlet property="btnClear" destination="WEE-9E-osd" id="sTJ-Uo-QKd"/>
                         <outlet property="collectionView" destination="bxr-d6-0bq" id="v36-wM-rD4"/>
                         <outlet property="lblNoData" destination="cAU-1g-PQZ" id="vGq-8u-XjP"/>
+                        <outlet property="lblTitle" destination="gbU-pr-jHn" id="TV6-Bd-YGn"/>
                         <outlet property="tableFooterView" destination="gxF-F3-vhA" id="lga-EW-JgW"/>
                         <outlet property="tableView" destination="iLl-S4-j2A" id="UeC-xj-zbS"/>
                         <outlet property="txtSearch" destination="ECu-Kf-yGd" id="rkp-Gl-H85"/>

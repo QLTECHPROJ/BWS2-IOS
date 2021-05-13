@@ -37,6 +37,8 @@ class AccountVC: BaseViewController {
         
         // Segment Tracking
         SegmentTracking.shared.trackEvent(name: "Account Screen Viewed", traits: ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? ""], trackingType: .screen)
+        
+        setupData()
     }
     
     
