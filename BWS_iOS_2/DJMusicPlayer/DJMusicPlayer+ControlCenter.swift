@@ -135,10 +135,10 @@ extension DJMusicPlayer {
             commandCenter.pauseCommand.addTarget(self, action: #selector(handlePauseCommand(event:)))
             
             // Add Next Command
-            commandCenter.nextTrackCommand.addTarget(self, action: #selector(handleNextCommand(event:)))
+           // commandCenter.nextTrackCommand.addTarget(self, action: #selector(handleNextCommand(event:)))
             
             // Add Previous Command
-            commandCenter.previousTrackCommand.addTarget(self, action: #selector(handlePreviousCommand(event:)))
+            //commandCenter.previousTrackCommand.addTarget(self, action: #selector(handlePreviousCommand(event:)))
         }
     }
     

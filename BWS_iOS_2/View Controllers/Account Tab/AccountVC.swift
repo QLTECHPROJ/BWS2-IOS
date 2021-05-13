@@ -20,7 +20,7 @@ class AccountVC: BaseViewController {
     
     // MARK:- VARIABLES
     var arrImage = ["UserName","UpgradePlan","download_account","Resources","Reminder","Billing","Invoices","FAQ","Logout"]
-    var arrTitle = ["Account Info","Upgrade Plan","Download","Resources","Reminder","Billing and Order","Invoices","FAQ","Log Out"]
+    var arrTitle = ["Account Info","Upgrade Plan","Downloads","Resources","Reminder","Billing and Order","Invoices","FAQ","Log Out"]
     var imageData = UploadDataModel()
     
     

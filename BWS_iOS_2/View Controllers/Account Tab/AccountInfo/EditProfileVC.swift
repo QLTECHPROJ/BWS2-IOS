@@ -76,13 +76,14 @@ class EditProfileVC: BaseViewController {
             
             txtFMobileNo.isEnabled = false
             txtFDOB.isEnabled = false
+            imgCheckMobile.isHidden = false
             imgCheckEmail.isHidden = false
             txtFEmailAdd.isEnabled = false
-            
-            txtFDOB.textColor = Theme.colors.gray_EEEEEE
-            txtFMobileNo.textColor = Theme.colors.gray_EEEEEE
-            txtFEmailAdd.textColor = Theme.colors.gray_EEEEEE
-            
+           DispatchQueue.main.asyncAfter(deadline: .now() + 0) {
+            self.txtFDOB.textColor = Theme.colors.gray_CDD4D9
+            self.txtFMobileNo.textColor = Theme.colors.gray_CDD4D9
+            self.txtFEmailAdd.textColor = Theme.colors.gray_CDD4D9
+            }
             self.initDOBPickerView()
             
             if txtFDOB.text == userData.DOB ||  txtFEmailAdd.text == userData.Email || txtFName.text == userName  {

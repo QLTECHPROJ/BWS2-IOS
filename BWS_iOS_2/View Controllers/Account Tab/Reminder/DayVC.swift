@@ -100,9 +100,11 @@ class DayVC: BaseViewController {
         }
         
         if shouldEnable {
-            btnSave.isUserInteractionEnabled = true
-            btnSave.backgroundColor = Theme.colors.white
-            btnSave.setTitleColor( Theme.colors.green_008892, for: .normal)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0) {
+                self.btnSave.isUserInteractionEnabled = true
+                self.btnSave.backgroundColor = Theme.colors.white
+                self.btnSave.setTitleColor( Theme.colors.green_008892, for: .normal)
+            }
         } else {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0) {
                 self.btnSave.isUserInteractionEnabled = false

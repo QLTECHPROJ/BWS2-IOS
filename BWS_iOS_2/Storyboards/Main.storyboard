@@ -3972,10 +3972,10 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IN7-2a-RT3">
-                                                                <rect key="frame" x="16" y="10" width="24" height="24"/>
+                                                                <rect key="frame" x="16" y="12" width="20" height="20"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="IN7-2a-RT3" secondAttribute="height" multiplier="1:1" id="f7b-Rz-gR3"/>
-                                                                    <constraint firstAttribute="height" constant="24" id="mim-AM-oJt"/>
+                                                                    <constraint firstAttribute="height" constant="20" id="mim-AM-oJt"/>
                                                                 </constraints>
                                                                 <inset key="imageEdgeInsets" minX="4" minY="4" maxX="4" maxY="4"/>
                                                                 <state key="normal" image="closeBlack"/>

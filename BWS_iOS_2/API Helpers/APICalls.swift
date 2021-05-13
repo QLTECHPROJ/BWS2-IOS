@@ -497,35 +497,6 @@ extension ManageVC {
         }
     }
     
-    // Change Reminder Status API Call
-    func callRemSatusAPI(status:String) {
-        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
-                          "ReminderStatus":status,
-                          "PlaylistId":suggstedPlaylist?.PlaylistID ?? ""]
-        
-        APICallManager.sharedInstance.callAPI(router: APIRouter.reminderstatus(parameters)) { (response :GeneralModel) in
-            
-            if response.ResponseCode == "200" {
-                self.callManageHomeAPI()
-                showAlertToast(message: response.ResponseMessage)
-            }
-        }
-    }
-    
-    //Delete reminder API call
-    func callRemDeleteAPI(remID:String) {
-        
-        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "","ReminderId":remID]
-        
-        APICallManager.sharedInstance.callAPI(router: APIRouter.deletereminder(parameters)) { (response :GeneralModel) in
-            
-            if response.ResponseCode == "200" {
-                self.setupData()
-                showAlertToast(message: response.ResponseMessage)
-            }
-        }
-    }
-    
 }
 
 extension ViewAllAudioVC {
@@ -689,38 +660,6 @@ extension PlaylistAudiosVC {
             if response.ResponseCode == "200" && response.ResponseData != nil {
                 showAlertToast(message: response.ResponseMessage)
                 self.callPlaylistDetailAPI()
-            }
-        }
-    }
-    
-    // Change Reminder Status API Call
-    func callRemSatusAPI(status:String) {
-        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
-                          "ReminderStatus":status,
-                          "PlaylistId":objPlaylist?.PlaylistID ?? ""]
-        
-        APICallManager.sharedInstance.callAPI(router: APIRouter.reminderstatus(parameters)) { (response :GeneralModel) in
-            
-            if response.ResponseCode == "200" {
-                
-                self.callPlaylistDetailAPI()
-                showAlertToast(message: response.ResponseMessage)
-                
-            }
-        }
-    }
-    
-    //Delete Reminder API Call
-    func callRemDeleteAPI(remID:String) {
-
-        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "","ReminderId":remID]
-
-        APICallManager.sharedInstance.callAPI(router: APIRouter.deletereminder(parameters)) { (response :GeneralModel) in
-
-            if response.ResponseCode == "200" {
-                
-                self.setupData()
-                showAlertToast(message: response.ResponseMessage)
             }
         }
     }
@@ -1130,36 +1069,6 @@ extension HomeVC {
                 self.setupData()
             } else {
                 self.setupData()
-            }
-        }
-    }
-    
-    // Change Reminder Status API Call
-    func callRemSatusAPI(status:String) {
-        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
-                          "ReminderStatus":status,
-                          "PlaylistId":suggstedPlaylist?.PlaylistID ?? ""]
-        
-        APICallManager.sharedInstance.callAPI(router: APIRouter.reminderstatus(parameters)) { (response :GeneralModel) in
-            
-            if response.ResponseCode == "200" {
-                self.callHomeAPI()
-                showAlertToast(message: response.ResponseMessage)
-            }
-        }
-    }
-    
-    //Delete Reminder API Call
-    func callRemDeleteAPI(remID:String) {
-
-        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "","ReminderId":remID]
-
-        APICallManager.sharedInstance.callAPI(router: APIRouter.deletereminder(parameters)) { (response :GeneralModel) in
-
-            if response.ResponseCode == "200" {
-                
-                self.setupData()
-                showAlertToast(message: response.ResponseMessage)
             }
         }
     }

@@ -435,14 +435,9 @@ class PlaylistAudiosVC: BaseViewController {
     
     @IBAction func setReminderClicked(_ sender: UIButton) {
         
-        let aVC = AppStoryBoard.manage.viewController(viewControllerClass: AlertPopUpVC.self)
-        aVC.titleText = "Update Reminder"
-        aVC.detailText = "you can update or delete your deminder"
-        aVC.firstButtonTitle = "UPDATE"
-        aVC.secondButtonTitle = "DELETE"
-        aVC.modalPresentationStyle = .overFullScreen
-        aVC.delegate = self
-        self.present(aVC, animated: false, completion: nil)
+        let aVC = AppStoryBoard.account.viewController(viewControllerClass: DayVC.self)
+        aVC.objPlaylist = objPlaylist
+        self.navigationController?.pushViewController(aVC, animated: true)
         
     }
     
@@ -804,27 +799,7 @@ extension PlaylistAudiosVC : AlertPopUpVCDelegate {
             }
         }
     }
-    
-//    func handleAction(sender: UIButton, popUpTag: Int) {
-//        if sender.tag == 0 {
-//            if objPlaylist?.IsReminder == "1" {
-//                callRemSatusAPI(status: "0")
-//            } else if objPlaylist?.IsReminder == "0" {
-//                let aVC = AppStoryBoard.account.viewController(viewControllerClass: DayVC.self)
-//                aVC.objPlaylist = objPlaylist
-//                self.navigationController?.pushViewController(aVC, animated: true)
-//            } else {
-//                let aVC = AppStoryBoard.account.viewController(viewControllerClass: DayVC.self)
-//                self.navigationController?.pushViewController(aVC, animated: true)
-//            }
-//        }else {
-//            if objPlaylist?.ReminderDay == "" {
-//                showAlertToast(message: "reminder not exist!")
-//            } else {
-//                callRemDeleteAPI(remID: objPlaylist?.PlaylistID ?? "")
-//            }
-//        }
-//    }
+   
 }
 
 

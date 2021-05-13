@@ -293,7 +293,7 @@ extension ResourceVC : UITableViewDelegate, UITableViewDataSource {
         if ResourceVC.selectedCategory  == "" {
             if indexPath.row == 0 {
                 cell.img.image = UIImage(named: "BlueArrow")
-                cell.lblFeature?.textColor = hexStringToUIColor(hex: "005BAA")
+                cell.lblFeature?.textColor = hexStringToUIColor(hex: "008892")
                 cell.img.isHidden = false
             }else {
                 cell.img.isHidden = true
@@ -303,7 +303,7 @@ extension ResourceVC : UITableViewDelegate, UITableViewDataSource {
         }
         else if ResourceVC.selectedCategory == ResourceVC.arrayCategories[indexPath.row].CategoryName {
             cell.img.image = UIImage(named: "BlueArrow")
-            cell.lblFeature?.textColor = hexStringToUIColor(hex: "005BAA")
+            cell.lblFeature?.textColor = hexStringToUIColor(hex: "008892")
             cell.img.isHidden = false
         }
         else {
@@ -326,7 +326,7 @@ extension ResourceVC : UITableViewDelegate, UITableViewDataSource {
         ResourceVC.selectedCategory = ResourceVC.arrayCategories[indexPath.row].CategoryName
         if ResourceVC.selectedCategory == ResourceVC.arrayCategories[indexPath.row].CategoryName {
             cell.img.image = UIImage(named: "BlueArrow")
-            cell.lblFeature?.textColor = hexStringToUIColor(hex: "005BAA")
+            cell.lblFeature?.textColor = hexStringToUIColor(hex: "#008892")
             cell.img.isHidden = false
         }
         
