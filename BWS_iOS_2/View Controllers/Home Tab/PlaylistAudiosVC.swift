@@ -37,6 +37,8 @@ class PlaylistAudiosVC: BaseViewController {
     
     @IBOutlet weak var lblSleepTime : UILabel!
     
+    @IBOutlet weak var lblAreaOfFocusTopConst: NSLayoutConstraint!
+    
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var collectionHeight: NSLayoutConstraint!
     
@@ -107,15 +109,36 @@ class PlaylistAudiosVC: BaseViewController {
             lblAreaOfFocus.isHidden = false
             btnEdit.isHidden = false
             moonView.isHidden = false
-            collectionHeight.constant = 70
-            tableHeaderView.frame.size = CGSize(width: tableView.frame.width, height:550)
+            
+            areaOfFocus = CoUserDataModel.currentUser?.AreaOfFocus ?? [AreaOfFocusModel]()
+            btnEdit.isHidden = ( areaOfFocus.count == 0 )
+            self.collectionView.reloadData()
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.lblAreaOfFocusTopConst.constant = 46
+                self.collectionHeight.constant = self.collectionView.contentSize.height // 70
+                let headerHeight = 480 + self.collectionView.contentSize.height
+                if self.viewSearch.isHidden {
+                    self.tableHeaderView.frame.size = CGSize(width: self.tableView.frame.width, height:headerHeight - 47)
+                } else {
+                    self.tableHeaderView.frame.size = CGSize(width: self.tableView.frame.width, height:headerHeight)
+                }
+                
+                self.tableView.reloadData()
+                self.view.layoutIfNeeded()
+            }
+            
+            imgViewPlaylist.image = nil
+            imgViewTransparent.image = UIImage(named: "cloud")
         } else {
             collectionView.isHidden = true
             lblAreaOfFocus.isHidden = true
             btnEdit.isHidden = true
             moonView.isHidden = true
+            
+            lblAreaOfFocusTopConst.constant = 0
             collectionHeight.constant = 0
-            tableHeaderView.frame.size = CGSize(width: tableView.frame.width, height:480)
+            tableHeaderView.frame.size = CGSize(width: tableView.frame.width, height:430)
         }
         
         viewSearch.isHidden = (objPlaylist?.PlaylistSongs.count ?? 0) == 0
@@ -128,7 +151,7 @@ class PlaylistAudiosVC: BaseViewController {
         tableView.reorder.delegate = self
         
         let layout = CollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
+        layout.scrollDirection = .vertical
         layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         layout.minimumLineSpacing = 7
         layout.minimumInteritemSpacing = 7
@@ -159,14 +182,16 @@ class PlaylistAudiosVC: BaseViewController {
         
         if details.Created == "1" && details.PlaylistSongs.count == 0 {
             tableView.tableFooterView = viewAddAudio
+            btnSearch.isHidden = true
         } else {
             tableView.tableFooterView = UIView()
+            btnSearch.isHidden = false
         }
         
-        if details.Created == "1" && details.PlaylistSongs.count > 0 {
-            btnSearch.isHidden = false
+        if details.Created == "1" {
+            txtSearch.placeholder = "Add and search for audio"
         } else {
-            btnSearch.isHidden = true
+            txtSearch.placeholder = "Search for audio"
         }
         
         viewSearch.isHidden = (objPlaylist?.PlaylistSongs.count ?? 0) == 0
@@ -176,16 +201,24 @@ class PlaylistAudiosVC: BaseViewController {
             lblAreaOfFocus.isHidden = false
             btnEdit.isHidden = false
             moonView.isHidden = false
-            collectionHeight.constant = 70
-            if viewSearch.isHidden {
-                tableHeaderView.frame.size = CGSize(width: tableView.frame.width, height:550)
-            } else {
-                tableHeaderView.frame.size = CGSize(width: tableView.frame.width, height:550)
-            }
             
             areaOfFocus = CoUserDataModel.currentUser?.AreaOfFocus ?? [AreaOfFocusModel]()
             btnEdit.isHidden = ( areaOfFocus.count == 0 )
             self.collectionView.reloadData()
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.lblAreaOfFocusTopConst.constant = 46
+                self.collectionHeight.constant = self.collectionView.contentSize.height // 70
+                let headerHeight = 480 + self.collectionView.contentSize.height
+                if self.viewSearch.isHidden {
+                    self.tableHeaderView.frame.size = CGSize(width: self.tableView.frame.width, height:headerHeight - 47)
+                } else {
+                    self.tableHeaderView.frame.size = CGSize(width: self.tableView.frame.width, height:headerHeight)
+                }
+                
+                self.tableView.reloadData()
+                self.view.layoutIfNeeded()
+            }
             
             imgViewPlaylist.image = nil
             imgViewTransparent.image = UIImage(named: "cloud")
@@ -194,12 +227,14 @@ class PlaylistAudiosVC: BaseViewController {
             lblAreaOfFocus.isHidden = true
             btnEdit.isHidden = true
             moonView.isHidden = true
+            
+            lblAreaOfFocusTopConst.constant = 0
             collectionHeight.constant = 0
             
             if viewSearch.isHidden {
                 tableHeaderView.frame.size = CGSize(width: tableView.frame.width, height:355)
             } else {
-                tableHeaderView.frame.size = CGSize(width: tableView.frame.width, height:480)
+                tableHeaderView.frame.size = CGSize(width: tableView.frame.width, height:430)
             }
             
             imgViewTransparent.image = nil
@@ -741,6 +776,11 @@ extension PlaylistAudiosVC : PlaylistOptionsVCDelegate {
     }
     
     func didClickedDelete() {
+        if isPlayingPlaylist(playlistID: objPlaylist?.PlaylistID ?? "") {
+            showAlertToast(message: Theme.strings.alert_playing_playlist_remove)
+            return
+        }
+        
         if let playlistDetails = objPlaylist {
             let playlistName = playlistDetails.PlaylistName
             

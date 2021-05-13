@@ -75,7 +75,7 @@ class HomeVC: BaseViewController {
         tableView.register(nibWithCellClass: ProgressCell.self)
         
         tableView.refreshControl = refreshControl
-        imgUser.loadUserProfileImage(fontSize: 30)
+        imgUser.loadUserProfileImage(fontSize: 20)
         lblUser.text = CoUserDataModel.currentUser?.Name ?? ""
         
         if let strUrl = CoUserDataModel.currentUser?.Image.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let imgUrl = URL(string: strUrl) {

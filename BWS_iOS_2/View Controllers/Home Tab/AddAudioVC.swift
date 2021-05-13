@@ -11,6 +11,7 @@ import UIKit
 class AddAudioVC: BaseViewController {
     
     // MARK:- OUTLETS
+    @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var txtSearch: UITextField!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -38,6 +39,8 @@ class AddAudioVC: BaseViewController {
             btnClear.isHidden = true
         } else {
             if isComeFromAddAudio {
+                lblTitle.text = "Add Audio"
+                txtSearch.placeholder = "Add and search for audio"
                 collectionView.isHidden = true
                 tableFooterView.isHidden = true
             } else {
@@ -104,7 +107,6 @@ class AddAudioVC: BaseViewController {
         lblNoData.isHidden = true
         btnClear.isHidden = true
         
-        txtSearch.placeholder = "Search for audio"
         txtSearch.delegate = self
         txtSearch.addTarget(self, action: #selector(textFieldValueChanged(textField:)), for: UIControl.Event.editingChanged)
         
@@ -365,7 +367,7 @@ extension AddAudioVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 1 && arrayAudio.count > 0 {
             let cell = tableView.dequeueReusableCell(withClass: ViewAllCell.self)
-            cell.lblTitle.text = "Suggested Audio"
+            cell.lblTitle.text = "Suggested Audios"
             
             cell.btnViewAll.tag = section
             cell.btnViewAll.addTarget(self, action: #selector(onTappedViewAll(_:)), for: .touchUpInside)
