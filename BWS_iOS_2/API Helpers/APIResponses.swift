@@ -262,6 +262,7 @@ class SaveCategoryDataModel : EVObject {
 class AreaOfFocusModel : EVObject {
     var MainCat = ""
     var RecommendedCat = ""
+    var CatId = ""
 }
 
 // MARK:- Add Co User API Models

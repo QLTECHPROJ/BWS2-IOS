@@ -27,7 +27,7 @@ class AddProfileVC: BaseViewController {
     @IBOutlet weak var imgCheckEmail: UIImageView!
     
     // Button
-    @IBOutlet weak var btnUserImage: UIButton!
+    @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var btnSendPin: UIButton!
     
     @IBOutlet weak var stackView: UIStackView!
@@ -59,8 +59,8 @@ class AddProfileVC: BaseViewController {
     
     // MARK:- FUNCTIONS
     override func setupUI() {
-        btnUserImage.cornerRadius = btnUserImage.frame.height / 2
-        btnUserImage.clipsToBounds = true
+        imgView.cornerRadius = imgView.frame.height / 2
+        imgView.clipsToBounds = true
         
         if let user = selectedUser {
             txtFName.text = user.Name
@@ -72,11 +72,9 @@ class AddProfileVC: BaseViewController {
             txtFEmailAdd.isEnabled = false
             
             if let strUrl = user.Image.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let imgUrl = URL(string: strUrl) {
-                UIImageView().sd_setImage(with: imgUrl) { (image, error, sdImageCacheType, imageUrl) in
-                    if let userImage = image {
-                        self.btnUserImage.setImage(userImage, for: .normal)
-                    }
-                }
+                imgView.sd_setImage(with: imgUrl, completed: nil)
+            } else {
+                imgView.setUserInitialProfileImage(user: user, fontSize: 80)
             }
             
             btnSendPin.setTitle("SEND NEW PIN", for: .normal)
@@ -184,10 +182,6 @@ class AddProfileVC: BaseViewController {
     // MARK:- ACTIONS
     @IBAction func onTappedBack(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
-    }
-    
-    @IBAction func userImageClicked(sender : UIButton) {
-        print("userImageClicked")
     }
     
     @IBAction func onTappedSendPin(_ sender: UIButton) {

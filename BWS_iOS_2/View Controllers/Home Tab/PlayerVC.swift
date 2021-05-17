@@ -55,6 +55,7 @@ class PlayerVC: BaseViewController {
         if self.sliderEvent == .ended {
             self.playbackSlider.value = DJMusicPlayer.shared.progress
         }
+        playbackSlider.tintColor = Theme.colors.white
         playbackSlider.maximumValue = 1.0
         playbackSlider.isContinuous = true
         playbackSlider.addTarget(self, action: #selector(playbackSliderValueChanged(playbackSlider:event:)), for: .valueChanged)
