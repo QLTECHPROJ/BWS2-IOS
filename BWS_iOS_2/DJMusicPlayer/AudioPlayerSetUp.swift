@@ -79,7 +79,7 @@ extension BaseViewController {
             }
             
             if DisclaimerAudio.shared.shouldPlayDisclaimer {
-                if let disclaimer = DisclaimerAudio.shared.disclaimerAudio {
+                if let disclaimer = DisclaimerAudio.shared.disclaimerAudio, checkInternet() {
                     audioList.insert(disclaimer, at: playIndex)
                 }
             }

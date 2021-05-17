@@ -16,6 +16,7 @@ class AccountVC: BaseViewController {
     @IBOutlet weak var lblUser: UILabel!
     @IBOutlet weak var imgUser: UIImageView!
     @IBOutlet weak var btnChange: UIButton!
+    @IBOutlet weak var lblAppVersion: UILabel!
     
     
     // MARK:- VARIABLES
@@ -49,6 +50,8 @@ class AccountVC: BaseViewController {
     }
     
     override func setupData() {
+        lblAppVersion.text = "Version \(APP_VERSION)"
+        
         if let userData = CoUserDataModel.currentUser {
             imgUser.loadUserProfileImage(fontSize: 50)
             
@@ -188,10 +191,19 @@ class AccountVC: BaseViewController {
         if indexPath.section == 0 {
             if indexPath.row == 0 {
                 //Account Info
+                if checkInternet() == false {
+                    showAlertToast(message: Theme.strings.alert_check_internet)
+                    return
+                }
+                
                 let aVC = AppStoryBoard.account.viewController(viewControllerClass: AccountInfoVC.self)
                 self.navigationController?.pushViewController(aVC, animated: true)
             } else if indexPath.row == 1 {
                 //Upgrade Plan
+                if checkInternet() == false {
+                    showAlertToast(message: Theme.strings.alert_check_internet)
+                    return
+                }
             }
         } else if indexPath.section == 1 {
             if indexPath.row == 0 {
@@ -200,16 +212,34 @@ class AccountVC: BaseViewController {
                 self.navigationController?.pushViewController(aVC, animated: true)
             } else if indexPath.row == 1 {
                 //Resources
+                if checkInternet() == false {
+                    showAlertToast(message: Theme.strings.alert_check_internet)
+                    return
+                }
+                
                 let aVC = AppStoryBoard.account.viewController(viewControllerClass: ResourceVC.self)
                 self.navigationController?.pushViewController(aVC, animated: true)
             } else if indexPath.row == 2 {
                 //Reminder
+                if checkInternet() == false {
+                    showAlertToast(message: Theme.strings.alert_check_internet)
+                    return
+                }
+                
                 let aVC = AppStoryBoard.account.viewController(viewControllerClass: ReminderListVC.self)
                 self.navigationController?.pushViewController(aVC, animated: true)
             } else if indexPath.row == 3 {
                 //Billing and Order
+                if checkInternet() == false {
+                    showAlertToast(message: Theme.strings.alert_check_internet)
+                    return
+                }
             } else if indexPath.row == 4 {
                 //Invoices
+                if checkInternet() == false {
+                    showAlertToast(message: Theme.strings.alert_check_internet)
+                    return
+                }
             }
         } else if indexPath.section == 2 {
             if indexPath.row == 1 {
@@ -229,6 +259,11 @@ class AccountVC: BaseViewController {
                 self.present(aVC, animated: false, completion: nil)
             } else {
                 //FAQ
+                if checkInternet() == false {
+                    showAlertToast(message: Theme.strings.alert_check_internet)
+                    return
+                }
+                
                 let aVC = AppStoryBoard.account.viewController(viewControllerClass: FAQVC.self)
                 self.navigationController?.pushViewController(aVC, animated: true)
             }
@@ -238,6 +273,11 @@ class AccountVC: BaseViewController {
     
     // MARK:- ACTIONS
     @IBAction func onTappedCamera(_ sender: UIButton) {
+        if checkInternet() == false {
+            showAlertToast(message: Theme.strings.alert_check_internet)
+            return
+        }
+        
         self.view.endEditing(true)
         var arrayTitles = ["Take a Photo","Choose from Gallary"]
         if let imageStr = CoUserDataModel.currentUser?.Image, imageStr.trim.count > 0 {
