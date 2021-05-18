@@ -64,16 +64,18 @@ class PlayerVC: BaseViewController {
         // Download Progress View
         downloadProgressView.isHidden = true
         downloadProgressView.startAngle = -90
-        downloadProgressView.progressThickness = 1
-        downloadProgressView.trackThickness = 1
+        downloadProgressView.progressThickness = 0.5
+        downloadProgressView.trackThickness = 0.5
         downloadProgressView.clockwise = true
         downloadProgressView.gradientRotateSpeed = 2
         downloadProgressView.roundedCorners = false
         downloadProgressView.glowMode = .forward
         downloadProgressView.glowAmount = 0
-        downloadProgressView.set(colors: Theme.colors.orange_F89552)
+        downloadProgressView.set(colors: Theme.colors.orange_F1646A)
         downloadProgressView.trackColor = Theme.colors.gray_DDDDDD
-        downloadProgressView.backgroundColor = UIColor.clear
+        downloadProgressView.backgroundColor = Theme.colors.white.withAlphaComponent(0.20)
+        downloadProgressView.cornerRadius = downloadProgressView.frame.size.height / 2
+        downloadProgressView.clipsToBounds = true
     }
     
     override func setupData() {
@@ -130,7 +132,7 @@ class PlayerVC: BaseViewController {
                 btnDownload.setImage(UIImage(named: "download_gray_round"), for: UIControl.State.normal)
             } else if isInDatabase {
                 btnDownload.isUserInteractionEnabled = false
-                btnDownload.setImage(UIImage(named: "download_orange_round"), for: UIControl.State.normal)
+                btnDownload.setImage(UIImage(named: "download_complete_round"), for: UIControl.State.normal)
                 self.updateDownloadProgress()
             } else {
                 btnDownload.isUserInteractionEnabled = true
@@ -213,7 +215,7 @@ class PlayerVC: BaseViewController {
             downloadProgressView.isHidden = true
             btnDownload.isUserInteractionEnabled = false
             btnDownload.alpha = 1
-            btnDownload.setImage(UIImage(named: "download_orange_round"), for: UIControl.State.normal)
+            btnDownload.setImage(UIImage(named: "download_complete_round"), for: UIControl.State.normal)
         } else if isInDatabase && isDownloading {
             btnDownload.alpha = 0
             btnDownload.isUserInteractionEnabled = false

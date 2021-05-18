@@ -163,16 +163,18 @@ class PlaylistAudiosVC: BaseViewController {
         // Download Progress View
         downloadProgressView.isHidden = true
         downloadProgressView.startAngle = -90
-        downloadProgressView.progressThickness = 1
-        downloadProgressView.trackThickness = 1
+        downloadProgressView.progressThickness = 0.5
+        downloadProgressView.trackThickness = 0.5
         downloadProgressView.clockwise = true
         downloadProgressView.gradientRotateSpeed = 2
         downloadProgressView.roundedCorners = false
         downloadProgressView.glowMode = .forward
         downloadProgressView.glowAmount = 0
-        downloadProgressView.set(colors: Theme.colors.orange_F89552)
+        downloadProgressView.set(colors: Theme.colors.orange_F1646A)
         downloadProgressView.trackColor = Theme.colors.gray_DDDDDD
-        downloadProgressView.backgroundColor = UIColor.clear
+        downloadProgressView.backgroundColor = Theme.colors.white.withAlphaComponent(0.20)
+        downloadProgressView.cornerRadius = downloadProgressView.frame.size.height / 2
+        downloadProgressView.clipsToBounds = true
     }
     
     override func setupData() {
@@ -290,7 +292,7 @@ class PlaylistAudiosVC: BaseViewController {
             if CoreDataHelper.shared.checkPlaylistDownloaded(playlistData: details) {
                 btnDownload.isUserInteractionEnabled = false
                 self.updateDownloadProgress()
-                btnDownload.setImage(UIImage(named: "download_orange_round"), for: UIControl.State.normal)
+                btnDownload.setImage(UIImage(named: "download_complete_round"), for: UIControl.State.normal)
             } else {
                 btnDownload.isUserInteractionEnabled = true
                 btnDownload.setImage(UIImage(named: "download_white_round"), for: UIControl.State.normal)
@@ -305,8 +307,10 @@ class PlaylistAudiosVC: BaseViewController {
         
         if details.IsReminder == "1" {
             btnReminder.setTitle("     Update reminder     ", for: .normal)
+            btnReminder.backgroundColor = Theme.colors.green_008892.withAlphaComponent(0.50)
         } else {
             btnReminder.setTitle("     Set reminder     ", for: .normal)
+            btnReminder.backgroundColor = Theme.colors.white.withAlphaComponent(0.20)
         }
         
         if isFromDownload {
@@ -373,7 +377,7 @@ class PlaylistAudiosVC: BaseViewController {
                 downloadProgressView.isHidden = true
                 btnDownload.isUserInteractionEnabled = false
                 btnDownload.alpha = 1
-                btnDownload.setImage(UIImage(named: "download_orange_round"), for: UIControl.State.normal)
+                btnDownload.setImage(UIImage(named: "download_complete_round"), for: UIControl.State.normal)
                 
                 if isFromDownload {
                     btnDownload.alpha = 0

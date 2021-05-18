@@ -215,14 +215,14 @@ class SelfDevCell: UITableViewCell {
         // Download Progress View
         downloadProgressView.isHidden = true
         downloadProgressView.startAngle = -90
-        downloadProgressView.progressThickness = 1
-        downloadProgressView.trackThickness = 1
+        downloadProgressView.progressThickness = 0.5
+        downloadProgressView.trackThickness = 0.5
         downloadProgressView.clockwise = true
         downloadProgressView.gradientRotateSpeed = 2
         downloadProgressView.roundedCorners = false
         downloadProgressView.glowMode = .forward
         downloadProgressView.glowAmount = 0
-        downloadProgressView.set(colors: Theme.colors.orange_F89552)
+        downloadProgressView.set(colors: Theme.colors.orange_F1646A)
         downloadProgressView.trackColor = Theme.colors.gray_DDDDDD
         downloadProgressView.backgroundColor = UIColor.clear
     }
