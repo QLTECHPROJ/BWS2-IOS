@@ -20,7 +20,12 @@ class ChangePassWordVC: BaseViewController {
     @IBOutlet weak var lblErrConfirmPass: UILabel!
     @IBOutlet weak var lblErrNewPass: UILabel!
     @IBOutlet weak var btnSave: UIButton!
+    
+    @IBOutlet weak var btnVisible: UIButton!
+    @IBOutlet weak var btnVisible2: UIButton!
+    @IBOutlet weak var btnVisible1: UIButton!
     //MARK:- Variables
+    var iconClick = true
     
     //MARK:- View Life Cycle
     override func viewDidLoad() {
@@ -59,6 +64,9 @@ class ChangePassWordVC: BaseViewController {
         } else {
             btnSave.isUserInteractionEnabled = false
             btnSave.backgroundColor = Theme.colors.gray_7E7E7E
+            btnVisible.setImage(UIImage(named: "PassDefault"), for: .normal)
+            btnVisible1.setImage(UIImage(named: "PassDefault"), for: .normal)
+            btnVisible2.setImage(UIImage(named: "PassDefault"), for: .normal)
         }
     }
     
@@ -107,6 +115,18 @@ class ChangePassWordVC: BaseViewController {
         return isValid
     }
     
+    func showHidePass(textfield:UITextField,sender : UIButton)  {
+        iconClick.toggle()
+        
+        if iconClick {
+            textfield.isSecureTextEntry = false
+            sender.setImage(UIImage(named: "PassShow"), for: .normal)
+        } else {
+            textfield.isSecureTextEntry = true
+            sender.setImage(UIImage(named: "PassHide"), for: .normal)
+        }
+    }
+    
     //MARK:- IBAction Methods
     @IBAction func backClicked(sender : UIButton) {
         self.navigationController?.popViewController(animated: true)
@@ -118,6 +138,19 @@ class ChangePassWordVC: BaseViewController {
             callChangePasswordAPI()
         }
     }
+    
+    @IBAction func onTappedEye(_ sender: UIButton) {
+        
+        if sender.tag == 0 {
+            showHidePass(textfield: txtfOldPassword, sender: sender)
+        }else if sender.tag == 1 {
+            showHidePass(textfield: txtFNewPassword, sender: sender)
+        }else {
+           showHidePass(textfield: txtFConfirmPassword, sender: sender)
+        }
+        
+    }
+    
 }
 
 // MARK:- UITextFieldDelegate
@@ -127,6 +160,17 @@ extension ChangePassWordVC : UITextFieldDelegate {
         lblErrOldPass.isHidden = true
         lblErrNewPass.isHidden = true
         lblErrConfirmPass.isHidden = true
+        
+        if textField == txtfOldPassword {
+            btnVisible.setImage(UIImage(named: "PassHide"), for: .normal)
+            btnVisible.isUserInteractionEnabled = true
+        }else if textField == txtFNewPassword {
+            btnVisible1.setImage(UIImage(named: "PassHide"), for: .normal)
+            btnVisible1.isUserInteractionEnabled = true
+        }else {
+            btnVisible2.setImage(UIImage(named: "PassHide"), for: .normal)
+            btnVisible2.isUserInteractionEnabled = true
+        }
        
     }
     

@@ -24,6 +24,7 @@ class EditProfileVC: BaseViewController {
     @IBOutlet weak var lblErrEmailAdd: UILabel!
     @IBOutlet weak var lblErrDOB: UILabel!
     
+    @IBOutlet weak var lblDOB: UILabel!
     // Image
     @IBOutlet weak var imgCheckMobile: UIImageView!
     @IBOutlet weak var imgCheckEmail: UIImageView!
@@ -61,7 +62,8 @@ class EditProfileVC: BaseViewController {
         txtFEmailAdd.delegate = self
         txtFDOB.delegate = self
         txtFName.delegate = self
-        
+        lblDOB.text = ""
+        lblDOB.numberOfLines = 0
         buttonEnableDisable()
     }
     
@@ -79,6 +81,8 @@ class EditProfileVC: BaseViewController {
             imgCheckMobile.isHidden = false
             imgCheckEmail.isHidden = false
             txtFEmailAdd.isEnabled = false
+            lblDOB.text = "Date of Birth"
+            
            DispatchQueue.main.asyncAfter(deadline: .now() + 0) {
             self.txtFDOB.textColor = Theme.colors.gray_CDD4D9
             self.txtFMobileNo.textColor = Theme.colors.gray_CDD4D9
@@ -253,6 +257,7 @@ extension EditProfileVC : UITextFieldDelegate {
         lblErrMobileNo.isHidden = true
         lblErrEmailAdd.isHidden = true
         lblErrDOB.isHidden = true
+        lblDOB.text = "Date of Birth"
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -286,7 +291,8 @@ extension EditProfileVC : UITextFieldDelegate {
         
         imgCheckMobile.isHidden = !isMobileNumberValid(strMobile: txtFMobileNo.text?.trim ?? "")
         imgCheckEmail.isHidden = !isEmailAddressValid(strEmail: txtFEmailAdd.text?.trim ?? "")
-        
+        lblDOB.text = ""
+        lblDOB.numberOfLines = 0
         buttonEnableDisable()
     }
     
