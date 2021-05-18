@@ -45,17 +45,16 @@ class AreaOfFocusVC: BaseViewController {
     
     // MARK:- FUNCTIONS
     override func setupData() {
-        arrayAreaOfFocus.removeAll()
+        guard let selectedCategories = CoUserDataModel.currentUser?.AreaOfFocus else {
+            return
+        }
         
-        for category in arrayCategories {
-            for subCategory in category.Details {
-                if subCategory.isSelected {
-                    let cat = AreaOfFocusModel()
-                    cat.MainCat = category.View
-                    cat.RecommendedCat = subCategory.ProblemName
-                    arrayAreaOfFocus.append(cat)
-                }
-            }
+        arrayAreaOfFocus.removeAll()
+        for category in selectedCategories {
+            let cat = AreaOfFocusModel()
+            cat.MainCat = category.MainCat
+            cat.RecommendedCat = category.RecommendedCat
+            arrayAreaOfFocus.append(cat)
         }
         
         tableView.reloadData()
@@ -118,24 +117,6 @@ class AreaOfFocusVC: BaseViewController {
         }
         
         tableView.reloadData()
-        
-        //        if arrayAresOfFocus.count < 3 || isSelected == true {
-        //            for (section,categoy) in arrayCategories.enumerated() {
-        //                if indexPath.section == section {
-        //                    var isSelected = categoy.Details[indexPath.row].isSelected
-        //                    for subCategory in categoy.Details {
-        //                        subCategory.isSelected = false
-        //                    }
-        //
-        //                    isSelected.toggle()
-        //                    categoy.Details[indexPath.row].isSelected = isSelected
-        //                }
-        //            }
-        //        } else {
-        //            showAlertToast(message: Theme.strings.alert_max_category)
-        //        }
-        //
-        //        self.setupData()
     }
     
     func searchCategory(searchText : String) {

@@ -34,13 +34,13 @@ class AddAudioVC: BaseViewController {
         
         lblNoData.isHidden = true
         
+        lblTitle.text = isComeFromAddAudio ? "Add Audio" : "Search Audio"
+        
         if checkInternet() == false {
             tableView.isHidden = true
             btnClear.isHidden = true
         } else {
             if isComeFromAddAudio {
-                lblTitle.text = "Add Audio"
-                txtSearch.placeholder = "Add and search for audio"
                 collectionView.isHidden = true
                 tableFooterView.isHidden = true
             } else {

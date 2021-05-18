@@ -208,7 +208,7 @@
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iMh-nW-BJw">
                                             <rect key="frame" x="111.66666666666669" y="92" width="120" height="120"/>
-                                            <state key="normal" image="play"/>
+                                            <state key="normal" image="play_white"/>
                                             <connections>
                                                 <action selector="playClickedWithSender:" destination="eSe-Sw-1oo" eventType="touchUpInside" id="bJ7-TX-91Z"/>
                                             </connections>
@@ -1350,7 +1350,7 @@ QXJlIHlvdSBzdXJlIHlvdSB3YW50IHRvIGRlbGV0ZQtTZWxmLWRldmVsb3BtZW50IHBsYXlsaXN0Pw
         <image name="manage_tab" width="26" height="26"/>
         <image name="manage_tab_top_wave" width="375" height="213.33332824707031"/>
         <image name="moon_zzzz" width="48" height="45"/>
-        <image name="play" width="60" height="60"/>
+        <image name="play_white" width="60" height="60"/>
         <image name="remove_white" width="20" height="21"/>
         <image name="searchWhite" width="20" height="20"/>
         <image name="search_black" width="15.666666984558105" height="15.666666984558105"/>

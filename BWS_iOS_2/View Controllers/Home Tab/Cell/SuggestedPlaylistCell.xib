@@ -107,7 +107,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gwH-Ov-Aed">
                                         <rect key="frame" x="111.5" y="92.5" width="120" height="120"/>
-                                        <state key="normal" image="play"/>
+                                        <state key="normal" image="play_white"/>
                                         <connections>
                                             <action selector="playClickedWithSender:" destination="Y33-l9-hBD" eventType="touchUpInside" id="ybJ-fL-UfD"/>
                                         </connections>
@@ -211,7 +211,7 @@
     <resources>
         <image name="cloud" width="343" height="253"/>
         <image name="moon_zzzz" width="48" height="45"/>
-        <image name="play" width="60" height="60"/>
+        <image name="play_white" width="60" height="60"/>
         <namedColor name="green_1597AA">
             <color red="0.082352941176470587" green="0.59215686274509804" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

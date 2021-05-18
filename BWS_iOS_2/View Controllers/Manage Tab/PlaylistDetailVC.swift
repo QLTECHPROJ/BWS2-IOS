@@ -143,12 +143,10 @@ class PlaylistDetailVC: BaseViewController {
         // For Download
         if CoreDataHelper.shared.checkPlaylistDownloaded(playlistData: details) {
             btnDownload.isUserInteractionEnabled = false
-            btnDownload.setImage(UIImage(named: "download_orange"), for: UIControl.State.normal)
-            btnDownload.setTitleColor(Theme.colors.orange_F89552, for: UIControl.State.normal)
+            btnDownload.setImage(UIImage(named: "download_complete"), for: UIControl.State.normal)
         } else {
             btnDownload.isUserInteractionEnabled = true
             btnDownload.setImage(UIImage(named: "download_white"), for: UIControl.State.normal)
-            btnDownload.setTitleColor(Theme.colors.white, for: UIControl.State.normal)
         }
     }
     

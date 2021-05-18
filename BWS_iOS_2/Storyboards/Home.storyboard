@@ -471,7 +471,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="355"/>
                                     <color key="backgroundColor" name="green_36C2D6"/>
                                 </imageView>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D8m-rm-H2b">
+                                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D8m-rm-H2b">
                                     <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gdz-K9-4nz">
@@ -515,7 +515,7 @@
                                                         <constraint firstAttribute="height" constant="30" id="F1w-PI-Av8"/>
                                                         <constraint firstAttribute="width" secondItem="se0-1V-Eix" secondAttribute="height" multiplier="1:1" id="v6y-0P-eCG"/>
                                                     </constraints>
-                                                    <state key="normal" image="Download"/>
+                                                    <state key="normal" image="download_white_round"/>
                                                     <connections>
                                                         <action selector="downloadClicked:" destination="wVS-Jv-0PE" eventType="touchUpInside" id="QKD-4Y-0ap"/>
                                                     </connections>
@@ -538,25 +538,25 @@
                                             </constraints>
                                         </stackView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ild-ag-1ar" customClass="KDCircularProgress" customModule="BWS_2_Staging" customModuleProvider="target">
-                                            <rect key="frame" x="289" y="7" width="30" height="30"/>
+                                            <rect key="frame" x="293" y="11" width="22" height="22"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         </view>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstItem="Ild-ag-1ar" firstAttribute="leading" secondItem="se0-1V-Eix" secondAttribute="leading" id="7Up-Xv-QVY"/>
+                                        <constraint firstItem="Ild-ag-1ar" firstAttribute="leading" secondItem="se0-1V-Eix" secondAttribute="leading" constant="4" id="7Up-Xv-QVY"/>
                                         <constraint firstItem="gdz-K9-4nz" firstAttribute="centerY" secondItem="D8m-rm-H2b" secondAttribute="centerY" id="A6s-wb-TO5"/>
-                                        <constraint firstItem="Ild-ag-1ar" firstAttribute="trailing" secondItem="se0-1V-Eix" secondAttribute="trailing" id="LBX-6U-SVK"/>
+                                        <constraint firstItem="Ild-ag-1ar" firstAttribute="trailing" secondItem="se0-1V-Eix" secondAttribute="trailing" constant="-4" id="LBX-6U-SVK"/>
                                         <constraint firstItem="gdz-K9-4nz" firstAttribute="leading" secondItem="D8m-rm-H2b" secondAttribute="leading" constant="16" id="R6Z-lv-se5"/>
                                         <constraint firstItem="MAQ-t7-yOG" firstAttribute="centerY" secondItem="gdz-K9-4nz" secondAttribute="centerY" id="Rav-iS-MQf"/>
-                                        <constraint firstItem="Ild-ag-1ar" firstAttribute="top" secondItem="se0-1V-Eix" secondAttribute="top" id="WaQ-eQ-G3r"/>
+                                        <constraint firstItem="Ild-ag-1ar" firstAttribute="top" secondItem="se0-1V-Eix" secondAttribute="top" constant="4" id="WaQ-eQ-G3r"/>
                                         <constraint firstAttribute="trailing" secondItem="MAQ-t7-yOG" secondAttribute="trailing" constant="16" id="ZN9-NV-BrI"/>
-                                        <constraint firstItem="Ild-ag-1ar" firstAttribute="bottom" secondItem="se0-1V-Eix" secondAttribute="bottom" id="oN7-dB-tsy"/>
+                                        <constraint firstItem="Ild-ag-1ar" firstAttribute="bottom" secondItem="se0-1V-Eix" secondAttribute="bottom" constant="-4" id="oN7-dB-tsy"/>
                                         <constraint firstAttribute="height" constant="44" id="pqE-XI-zN8"/>
                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="t0k-Zn-ogc"/>
                                     </constraints>
                                 </view>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0na-9P-YcT">
+                                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0na-9P-YcT">
                                     <rect key="frame" x="157.66666666666666" y="117.66666666666669" width="60" height="60"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="60" id="8yx-sE-pUl"/>
@@ -567,13 +567,13 @@
                                         <action selector="playClicked:" destination="wVS-Jv-0PE" eventType="touchUpInside" id="yn0-ug-6Gg"/>
                                     </connections>
                                 </button>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ultimate anger relief" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CnT-bT-PPx">
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ultimate anger relief" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CnT-bT-PPx">
                                     <rect key="frame" x="16" y="185.66666666666666" width="343" height="29.333333333333343"/>
                                     <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="25"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pga-Se-qVI">
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pga-Se-qVI">
                                     <rect key="frame" x="16" y="223" width="343" height="35"/>
                                     <string key="text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</string>
                                     <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="10"/>
@@ -646,13 +646,13 @@
                                 <constraint firstItem="Pga-Se-qVI" firstAttribute="top" secondItem="CnT-bT-PPx" secondAttribute="bottom" constant="8" id="teR-pj-xgz"/>
                             </constraints>
                         </view>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Area of focus" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6gg-dH-cbQ">
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Area of focus" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6gg-dH-cbQ">
                             <rect key="frame" x="16" y="401" width="95" height="18.666666666666686"/>
                             <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="16"/>
                             <color key="textColor" name="black"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j5E-bz-Hfb">
+                        <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j5E-bz-Hfb">
                             <rect key="frame" x="329" y="395.33333333333331" width="30" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="j5E-bz-Hfb" secondAttribute="height" multiplier="1:1" id="6nK-eE-wQP"/>
@@ -1172,13 +1172,13 @@
                                             <constraint firstAttribute="height" constant="30" id="OOM-fW-KKO"/>
                                             <constraint firstAttribute="width" secondItem="SxZ-fX-8qZ" secondAttribute="height" multiplier="1:1" id="Zut-fQ-FDH"/>
                                         </constraints>
-                                        <state key="normal" image="Download"/>
+                                        <state key="normal" image="download_white_round"/>
                                         <connections>
                                             <action selector="downloadClickedWithSender:" destination="e0k-gf-p6S" eventType="touchUpInside" id="Alb-4V-GcC"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b8Z-CT-vtS" customClass="KDCircularProgress" customModule="BWS_2_Staging" customModuleProvider="target">
-                                        <rect key="frame" x="295" y="7" width="30" height="30"/>
+                                        <rect key="frame" x="299" y="11" width="22" height="22"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vgp-sw-YMW">
@@ -1196,8 +1196,8 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="b8Z-CT-vtS" firstAttribute="leading" secondItem="SxZ-fX-8qZ" secondAttribute="leading" id="6iy-DD-5IY"/>
-                                    <constraint firstItem="b8Z-CT-vtS" firstAttribute="top" secondItem="SxZ-fX-8qZ" secondAttribute="top" id="GHT-td-YRZ"/>
+                                    <constraint firstItem="b8Z-CT-vtS" firstAttribute="leading" secondItem="SxZ-fX-8qZ" secondAttribute="leading" constant="4" id="6iy-DD-5IY"/>
+                                    <constraint firstItem="b8Z-CT-vtS" firstAttribute="top" secondItem="SxZ-fX-8qZ" secondAttribute="top" constant="4" id="GHT-td-YRZ"/>
                                     <constraint firstItem="6SK-PX-Jv4" firstAttribute="top" secondItem="ywf-Be-5sf" secondAttribute="top" id="HDI-DF-FVO"/>
                                     <constraint firstAttribute="bottom" secondItem="6SK-PX-Jv4" secondAttribute="bottom" id="HfW-YQ-4mR"/>
                                     <constraint firstItem="Vgp-sw-YMW" firstAttribute="centerY" secondItem="ywf-Be-5sf" secondAttribute="centerY" id="K87-Tc-DcJ"/>
@@ -1205,9 +1205,9 @@
                                     <constraint firstAttribute="trailing" secondItem="Vgp-sw-YMW" secondAttribute="trailing" constant="16" id="QaD-Cm-tfH"/>
                                     <constraint firstAttribute="height" constant="44" id="WgE-db-g57"/>
                                     <constraint firstItem="tAA-kP-6Bo" firstAttribute="centerY" secondItem="ywf-Be-5sf" secondAttribute="centerY" id="arQ-Ac-PSH"/>
-                                    <constraint firstItem="b8Z-CT-vtS" firstAttribute="trailing" secondItem="SxZ-fX-8qZ" secondAttribute="trailing" id="qYB-aP-TVK"/>
+                                    <constraint firstItem="b8Z-CT-vtS" firstAttribute="trailing" secondItem="SxZ-fX-8qZ" secondAttribute="trailing" constant="-4" id="qYB-aP-TVK"/>
                                     <constraint firstItem="SxZ-fX-8qZ" firstAttribute="centerY" secondItem="ywf-Be-5sf" secondAttribute="centerY" id="rDn-RN-G7R"/>
-                                    <constraint firstItem="b8Z-CT-vtS" firstAttribute="bottom" secondItem="SxZ-fX-8qZ" secondAttribute="bottom" id="rfY-1m-amq"/>
+                                    <constraint firstItem="b8Z-CT-vtS" firstAttribute="bottom" secondItem="SxZ-fX-8qZ" secondAttribute="bottom" constant="-4" id="rfY-1m-amq"/>
                                     <constraint firstItem="6SK-PX-Jv4" firstAttribute="leading" secondItem="ywf-Be-5sf" secondAttribute="leading" constant="4" id="tsb-M2-REd"/>
                                     <constraint firstItem="SxZ-fX-8qZ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="tAA-kP-6Bo" secondAttribute="trailing" constant="10" id="x8P-Ql-LsP"/>
                                     <constraint firstItem="tAA-kP-6Bo" firstAttribute="centerX" secondItem="ywf-Be-5sf" secondAttribute="centerX" id="yi6-Cm-x2g"/>
@@ -1332,7 +1332,6 @@
         <image name="BackButton" width="16" height="15.666666984558105"/>
         <image name="Back_Button_white" width="16" height="15.666666984558105"/>
         <image name="Detail" width="4" height="16"/>
-        <image name="Download" width="20" height="20"/>
         <image name="DropDown" width="11.333333015441895" height="6.6666665077209473"/>
         <image name="Notification" width="12.333333015441895" height="15"/>
         <image name="Play" width="100" height="100"/>
@@ -1343,6 +1342,7 @@
         <image name="addNew" width="41.666667938232422" height="41.666667938232422"/>
         <image name="closeBlack" width="17.333333969116211" height="17.333333969116211"/>
         <image name="close_white" width="13.666666984558105" height="13.666666984558105"/>
+        <image name="download_white_round" width="22" height="22"/>
         <image name="edit" width="15.333333015441895" height="15"/>
         <image name="home_tab" width="30" height="26"/>
         <image name="info" width="22" height="22"/>

@@ -177,6 +177,11 @@ class PlaylistCategoryVC: BaseViewController {
     }
     
     @IBAction func createPlaylistClicked(sender : UIButton) {
+        if checkInternet() == false {
+            showAlertToast(message: Theme.strings.alert_check_internet)
+            return
+        }
+        
         if arrayPlaylistHomeData[0].IsLock == "1" {
             openInactivePopup(controller: self)
         } else if arrayPlaylistHomeData[0].IsLock == "2" {

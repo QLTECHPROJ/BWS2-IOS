@@ -119,8 +119,10 @@ class ManageVC: BaseViewController {
             
             if playlistData.IsReminder == "1" {
                 btnReminder.setTitle("     Update reminder     ", for: .normal)
+                btnReminder.backgroundColor = Theme.colors.green_008892.withAlphaComponent(0.50)
             } else {
                 btnReminder.setTitle("     Set reminder     ", for: .normal)
+                btnReminder.backgroundColor = Theme.colors.white.withAlphaComponent(0.20)
             }
             
             tableHeaderView.frame = CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: 447)
@@ -356,6 +358,11 @@ class ManageVC: BaseViewController {
     }
     
     func createPlaylist(sectionIndex : Int) {
+        if checkInternet() == false {
+            showAlertToast(message: Theme.strings.alert_check_internet)
+            return
+        }
+        
         if arrayPlaylistHomeData[sectionIndex].IsLock == "1" {
             openInactivePopup(controller: self)
         } else if arrayPlaylistHomeData[sectionIndex].IsLock == "2" {
@@ -368,6 +375,11 @@ class ManageVC: BaseViewController {
     
     // MARK:- ACTIONS
     @IBAction func searchClicked(sender : UIButton) {
+        if checkInternet() == false {
+            showAlertToast(message: Theme.strings.alert_check_internet)
+            return
+        }
+        
         let aVC = AppStoryBoard.home.viewController(viewControllerClass: AddAudioVC.self)
         self.navigationController?.pushViewController(aVC, animated: true)
     }
