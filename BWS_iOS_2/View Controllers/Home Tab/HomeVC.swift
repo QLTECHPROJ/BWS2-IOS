@@ -194,6 +194,11 @@ class HomeVC: BaseViewController {
     
     // MARK:- ACTIONS
     @IBAction func onTappedChangeUser(_ sender: UIButton) {
+        if checkInternet() == false {
+            showAlertToast(message: Theme.strings.alert_check_internet)
+            return
+        }
+        
         let aVC = AppStoryBoard.home.viewController(viewControllerClass:UserListPopUpVC.self)
         let navVC = UINavigationController(rootViewController: aVC)
         navVC.navigationBar.isHidden = true

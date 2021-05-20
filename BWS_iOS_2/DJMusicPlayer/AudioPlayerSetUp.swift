@@ -49,6 +49,8 @@ extension BaseViewController {
     
     // MARK:- Present Player for Multiple Audio
     func presentAudioPlayer(arrayPlayerData : [AudioDetailsDataModel]?, index : Int? = nil) {
+        let oldAudioID = DJMusicPlayer.shared.currentlyPlaying?.ID ?? ""
+        
         if var audioList = arrayPlayerData, audioList.count > 0 {
             let playIndex = index ?? 0
             if DJMusicPlayer.shared.canPlayFromDownloads(playerData: audioList[playIndex]) == false && checkInternet() == false {
@@ -76,6 +78,8 @@ extension BaseViewController {
                 isFirstPlaybackAudio = false
             } else if isPlayingAudioFrom(playerType: PlayerType.popular) {
                 isFirstPlaybackAudio = false
+            } else if isPlayingSingleAudio() {
+                isFirstPlaybackAudio = false
             }
             
             if DisclaimerAudio.shared.shouldPlayDisclaimer {
@@ -88,7 +92,11 @@ extension BaseViewController {
                 DJMusicPlayer.shared.isFirstPlaybackAudio = true
             }
             
-            DJMusicPlayer.shared.currentlyPlaying = nil
+            if DJMusicPlayer.shared.isFirstPlaybackAudio || oldAudioID != audioList[playIndex].ID {
+                DJMusicPlayer.shared.currentlyPlaying = nil
+            }
+            
+            // DJMusicPlayer.shared.currentlyPlaying = nil
             DJMusicPlayer.shared.playIndex = 0
             DJMusicPlayer.shared.nowPlayingList = audioList
             DJMusicPlayer.shared.isNowPresenting = true
@@ -125,7 +133,22 @@ extension BaseViewController {
             aVC.modalPresentationStyle = .overFullScreen
             self.present(aVC, animated: true, completion: nil)
             
-            DJMusicPlayer.shared.requestToPlay()
+            if DJMusicPlayer.shared.isFirstPlaybackAudio {
+                DJMusicPlayer.shared.requestToPlay()
+            } else {
+                if oldAudioID == data.ID {
+                    if DJMusicPlayer.shared.playbackState == .stopped {
+                        DJMusicPlayer.shared.currentlyPlaying = nil
+                        DJMusicPlayer.shared.latestPlayRequest = nil
+                        DJMusicPlayer.shared.resetPlayer()
+                        DJMusicPlayer.shared.requestToPlay()
+                    } else if DJMusicPlayer.shared.playbackState == .paused {
+                        DJMusicPlayer.shared.play(isResume: true)
+                    }
+                } else {
+                    DJMusicPlayer.shared.requestToPlay()
+                }
+            }
         }
     }
     

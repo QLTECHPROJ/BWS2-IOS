@@ -452,7 +452,12 @@ extension ManageVC : UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return arrayPlaylistHomeData.count
+            if arrayPlaylistHomeData.count > 0 {
+                return arrayPlaylistHomeData.count
+            } else if CoreDataHelper.shared.fetchAllPlaylists().count > 0 {
+                return 1
+            }
+            return 0
         } else {
             return arrayAudioHomeData.count
         }
@@ -465,7 +470,12 @@ extension ManageVC : UITableViewDataSource, UITableViewDelegate {
             cell.showCreatePlaylist = true
             cell.btnViewAll.tag = indexPath.row
             cell.btnViewAll.addTarget(self, action: #selector(viewAllPlaylistClicked(sender:)), for: UIControl.Event.touchUpInside)
-            cell.configureCell(data: arrayPlaylistHomeData[indexPath.row])
+            
+            if arrayPlaylistHomeData.count > 0 {
+                cell.configureCell(data: arrayPlaylistHomeData[indexPath.row])
+            } else if CoreDataHelper.shared.fetchAllPlaylists().count > 0 {
+                cell.configureCell()
+            }
             
             cell.lblTitle.text = "Playlist"
             
@@ -516,6 +526,8 @@ extension ManageVC : UITableViewDataSource, UITableViewDelegate {
                     height = height + 68
                     return height
                 }
+            } else if CoreDataHelper.shared.fetchAllPlaylists().count > 0 {
+                return 280 - 212 // cell height - collectionview height
             }
         } else {
             if arrayAudioHomeData.count > 0 {

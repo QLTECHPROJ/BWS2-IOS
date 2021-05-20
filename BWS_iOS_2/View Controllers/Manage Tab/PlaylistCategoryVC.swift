@@ -39,11 +39,13 @@ class PlaylistCategoryVC: BaseViewController {
         
         if checkInternet() == false {
             refreshPlaylistData = false
+            tableView.tableHeaderView = UIView()
             addPlaylistDownloadsData()
             showAlertToast(message: Theme.strings.alert_check_internet)
         } else {
             shouldTrackScreen = true
             refreshPlaylistData = false
+            tableView.tableHeaderView = tableHeaderView
             callPlaylistLibraryAPI()
             setupData()
         }
@@ -72,8 +74,10 @@ class PlaylistCategoryVC: BaseViewController {
     
     override func handleRefresh(_ refreshControl: UIRefreshControl) {
         if checkInternet() == false {
+            tableView.tableHeaderView = UIView()
             addPlaylistDownloadsData()
         } else {
+            tableView.tableHeaderView = tableHeaderView
             callPlaylistLibraryAPI()
         }
         refreshControl.endRefreshing()
@@ -81,14 +85,20 @@ class PlaylistCategoryVC: BaseViewController {
     
     @objc override func refreshDownloadData() {
         if checkInternet() == false {
+            tableView.tableHeaderView = UIView()
             addPlaylistDownloadsData()
         } else {
+            tableView.tableHeaderView = tableHeaderView
             for data in arrayPlaylistHomeData {
                 if data.View == "My Downloads" {
                     data.Details = CoreDataHelper.shared.fetchAllPlaylists()
                 }
             }
             self.tableView.reloadData()
+            
+            if arrayPlaylistHomeData.count <= 1 {
+                callPlaylistLibraryAPI()
+            }
         }
     }
     

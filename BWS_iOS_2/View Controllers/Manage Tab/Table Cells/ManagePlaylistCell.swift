@@ -44,8 +44,8 @@ class ManagePlaylistCell: UITableViewCell {
     // MARK:- FUNCTIONS
     // Configure Cell
     func configureCell(data : PlaylistHomeDataModel) {
-        btnViewAll.clipsToBounds = true
         self.clipsToBounds = true
+        btnViewAll.clipsToBounds = true
         
         homeData = data
         if data.Details.count > 0 {
@@ -73,6 +73,17 @@ class ManagePlaylistCell: UITableViewCell {
         if homeData.View == "Top Categories" {
             btnViewAll.isHidden = true
         }
+        
+        collectionView.reloadData()
+    }
+    
+    func configureCell() {
+        self.clipsToBounds = true
+        btnViewAll.clipsToBounds = true
+        btnViewAll.isHidden = false
+        
+        homeData = PlaylistHomeDataModel()
+        arrayPlaylistDetails.removeAll()
         
         collectionView.reloadData()
     }
