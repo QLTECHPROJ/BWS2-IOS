@@ -37,7 +37,7 @@ class AccountVC: BaseViewController {
         super.viewWillAppear(animated)
         
         // Segment Tracking
-        SegmentTracking.shared.trackEvent(name: "Account Screen Viewed", traits: ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? ""], trackingType: .screen)
+        SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.account)
         
         setupData()
     }
@@ -398,9 +398,9 @@ extension AccountVC : UIImagePickerControllerDelegate, UINavigationControllerDel
         
         // Segment Tracking
         if picker.sourceType == .camera {
-            SegmentTracking.shared.trackEvent(name: "Camera Photo Added", traits: ["CoUserId" : CoUserDataModel.currentUser?.CoUserId ?? ""], trackingType: .track)
+            SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.Camera_Photo_Added)
         } else {
-            SegmentTracking.shared.trackEvent(name: "Gallery Photo Added", traits: ["CoUserId" : CoUserDataModel.currentUser?.CoUserId ?? ""], trackingType: .track)
+            SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.Gallery_Photo_Added)
         }
         
         picker.dismiss(animated: true)
@@ -408,7 +408,7 @@ extension AccountVC : UIImagePickerControllerDelegate, UINavigationControllerDel
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         // Segment Tracking
-        SegmentTracking.shared.trackEvent(name: "Profile Photo Cancelled", traits: ["CoUserId" : CoUserDataModel.currentUser?.CoUserId ?? ""], trackingType: .track)
+        SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.Profile_Photo_Cancelled)
         
         picker.dismiss(animated: true, completion: nil)
     }

@@ -85,7 +85,7 @@ class AddAudioViewAllVC: BaseViewController {
                 callAddAudioToPlaylistAPI(audioToAdd: audioData.ID, playlistToAdd: "")
             } else {
                 // Segment Tracking
-                SegmentTracking.shared.audioDetailsEvents(name: "Audio Add Clicked", audioData: audioData, source: "Suggested Audio", trackingType: .track)
+                SegmentTracking.shared.audioDetailsEvents(name: SegmentTracking.eventNames.Audio_Add_Clicked, audioData: audioData, source: "Suggested Audio", trackingType: .track)
                 
                 // Add Audio To Playlist
                 let aVC = AppStoryBoard.home.viewController(viewControllerClass: AddToPlaylistVC.self)
@@ -184,7 +184,7 @@ extension AddAudioViewAllVC : UITableViewDelegate, UITableViewDataSource {
                 showAlertToast(message: Theme.strings.alert_reactivate_plan)
             } else {
                 // Segment Tracking
-                SegmentTracking.shared.playlistEvents(name: "Suggested Playlist Clicked", objPlaylist: arrayPlayList[indexPath.row], trackingType: .track)
+                //                SegmentTracking.shared.playlistEvents(name: SegmentTracking.eventNames.Suggested_Playlist_Clicked, objPlaylist: arrayPlayList[indexPath.row], trackingType: .track)
                 
                 let aVC = AppStoryBoard.manage.viewController(viewControllerClass: PlaylistDetailVC.self)
                 aVC.objPlaylist = arrayPlayList[indexPath.row]
@@ -203,7 +203,7 @@ extension AddAudioViewAllVC : UITableViewDelegate, UITableViewDataSource {
                 }
                 
                 // Segment Tracking
-                SegmentTracking.shared.audioDetailsEvents(name: "Suggested Audio Clicked", audioData: arrayAudio[indexPath.row], trackingType: .track)
+                //                SegmentTracking.shared.audioDetailsEvents(name: SegmentTracking.eventNames.Suggested_Audio_Clicked, audioData: arrayAudio[indexPath.row], trackingType: .track)
                 
                 self.presentAudioPlayer(playerData: arrayAudio[indexPath.row])
                 DJMusicPlayer.shared.playerType = .searchAudio

@@ -30,7 +30,8 @@ class FAQListVC: BaseViewController {
         traits["FAQs"] = self.arrayFilter.map({ (faqModel) -> [String:Any] in
             return ["faqTitle":faqModel.Category,"faqDescription":faqModel.Desc]
         })
-        SegmentTracking.shared.trackEvent(name: "FAQ Clicked", traits: traits, trackingType: .track)
+        
+        SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.FAQ_Clicked, traits: traits)
     }
     
     

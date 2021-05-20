@@ -34,9 +34,7 @@ class OrderSummaryVC: BaseViewController {
         super.viewDidLoad()
         
         // Segment Tracking
-        let traits : [String:Any] = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
-                                     "plan":planData.toDictionary()]
-        SegmentTracking.shared.trackEvent(name: "Order Summary Viewed", traits: traits, trackingType: .screen)
+        SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.orderSummary, traits: ["plan":planData.toDictionary()])
         
         setupData()
     }
@@ -66,9 +64,7 @@ class OrderSummaryVC: BaseViewController {
     
     @IBAction func checkoutClicked(sender: UIButton) {
         // Segment Tracking
-        let traits : [String:Any] = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
-                                     "plan":planData.toDictionary()]
-        SegmentTracking.shared.trackEvent(name: "Checkout Proceeded", traits: traits, trackingType: .track)
+        SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.Checkout_Proceeded, traits: ["plan":planData.toDictionary()])
         
         let aVC = AppStoryBoard.main.viewController(viewControllerClass:ThankYouVC.self)
         self.navigationController?.pushViewController(aVC, animated: true)

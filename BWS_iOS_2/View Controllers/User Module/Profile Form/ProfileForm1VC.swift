@@ -28,9 +28,7 @@ class ProfileForm1VC: BaseViewController {
         // Do any additional setup after loading the view.
         
         // Segment Tracking
-        let traits = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
-                      "UserID":CoUserDataModel.currentUser?.UserID ?? ""]
-        SegmentTracking.shared.trackEvent(name: "Profile Form Screen Viewed", traits: traits, trackingType: .screen)
+        SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.profileForm)
         
         setupUI()
     }

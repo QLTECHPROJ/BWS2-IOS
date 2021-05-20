@@ -119,7 +119,7 @@ class ManageVC: BaseViewController {
             
             if playlistData.IsReminder == "1" {
                 btnReminder.setTitle("     Update reminder     ", for: .normal)
-                btnReminder.backgroundColor = Theme.colors.green_008892.withAlphaComponent(0.50)
+                btnReminder.backgroundColor = Theme.colors.gray_313131.withAlphaComponent(0.30)
             } else {
                 btnReminder.setTitle("     Set reminder     ", for: .normal)
                 btnReminder.backgroundColor = Theme.colors.white.withAlphaComponent(0.20)
@@ -302,7 +302,7 @@ class ManageVC: BaseViewController {
         let audioData = arrayAudioHomeData[sectionIndex].Details[audioIndex]
         
         // Segment Tracking
-        SegmentTracking.shared.audioDetailsEvents(name: "Add to Playlist Clicked", audioData: audioData, source: arrayAudioHomeData[sectionIndex].View, trackingType: .track)
+        SegmentTracking.shared.audioDetailsEvents(name: SegmentTracking.eventNames.Add_to_Playlist_Clicked, audioData: audioData, source: arrayAudioHomeData[sectionIndex].View, trackingType: .track)
         
         let aVC = AppStoryBoard.home.viewController(viewControllerClass: AddToPlaylistVC.self)
         aVC.audioID = audioData.ID
@@ -368,6 +368,9 @@ class ManageVC: BaseViewController {
         } else if arrayPlaylistHomeData[sectionIndex].IsLock == "2" {
             showAlertToast(message: Theme.strings.alert_reactivate_plan)
         } else {
+            // Segment Tracking
+            SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.Create_Playlist_Clicked, traits: ["source":"Manage Screen"])
+            
             let aVC = AppStoryBoard.manage.viewController(viewControllerClass: CreatePlaylistVC.self)
             self.navigationController?.pushViewController(aVC, animated: true)
         }
@@ -385,6 +388,9 @@ class ManageVC: BaseViewController {
     }
     
     @IBAction func setReminderClicked(sender : UIButton) {
+        // Segment Tracking
+        SegmentTracking.shared.playlistEvents(name: SegmentTracking.eventNames.Playlist_Reminder_Clicked, objPlaylist: suggstedPlaylist, trackingType: .track)
+        
         let aVC = AppStoryBoard.account.viewController(viewControllerClass: DayVC.self)
         aVC.objPlaylist = suggstedPlaylist
         self.navigationController?.pushViewController(aVC, animated: true)

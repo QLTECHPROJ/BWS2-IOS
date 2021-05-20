@@ -73,7 +73,7 @@ extension SignUpVC {
                                   "countryShortName":self.selectedCountry.ShortName,
                                   "mobileNo":userDetails.MobileNo,
                                   "email":userDetails.Email]
-                    SegmentTracking.shared.trackEvent(name: "User Sign up", traits: traits, trackingType: .track)
+                    SegmentTracking.shared.trackEvent(name: SegmentTracking.eventNames.User_Sign_up, traits: traits, trackingType: .track)
                 }
                 
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass:LoginVC.self)
@@ -109,7 +109,7 @@ extension LoginVC {
                                   "name":userDetails.Name,
                                   "mobileNo":userDetails.MobileNo,
                                   "email":userDetails.Email]
-                    SegmentTracking.shared.trackEvent(name: "User Login", traits: traits, trackingType: .track)
+                    SegmentTracking.shared.trackEvent(name: SegmentTracking.eventNames.User_Login, traits: traits, trackingType: .track)
                 }
                 
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass:UserListVC.self)
@@ -202,7 +202,7 @@ extension PinVC {
                 
                 // Segment Tracking
                 SegmentTracking.shared.identifyUser()
-                SegmentTracking.shared.coUserEvent(name: "CoUser Login", trackingType: .track)
+                SegmentTracking.shared.coUserEvent(name: SegmentTracking.eventNames.CoUser_Login, trackingType: .track)
                 
                 // Clear Last User Data
                 AccountVC.clearUserData()
@@ -232,12 +232,10 @@ extension AddProfileVC {
                 // Segment Tracking
                 if self.selectedUser == nil {
                     if let userDetails = response.ResponseData {
-                        let traits = ["CoUserId":userDetails.CoUserId,
-                                      "UserID":userDetails.UserID,
-                                      "name":userDetails.Name,
+                        let traits = ["name":userDetails.Name,
                                       "mobileNo":userDetails.Mobile,
                                       "email":userDetails.Email]
-                        SegmentTracking.shared.trackEvent(name: "Couser Added", traits: traits, trackingType: .track)
+                        SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.Couser_Added, traits: traits)
                     }
                 }
                 
@@ -286,7 +284,7 @@ extension ProfileForm6VC {
                 showAlertToast(message: response.ResponseMessage)
                 
                 // Segment Tracking
-                SegmentTracking.shared.trackEvent(name: "Profile Form Submitted", traits: parameters, trackingType: .track)
+                SegmentTracking.shared.trackEvent(name: SegmentTracking.eventNames.Profile_Form_Submitted, traits: parameters, trackingType: .track)
                 
                 ProfileFormModel.shared = ProfileFormModel()
                 CoUserDataModel.currentUser?.isProfileCompleted = "1"
@@ -325,11 +323,9 @@ extension AssessmentVC {
                 CoUserDataModel.currentUser = userData
                 
                 // Segment Tracking
-                let traits = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
-                              "UserID":CoUserDataModel.currentUser?.UserID ?? "",
-                              "indexScore":CoUserDataModel.currentUser?.indexScore ?? "",
+                let traits = ["indexScore":CoUserDataModel.currentUser?.indexScore ?? "",
                               "ScoreLevel":CoUserDataModel.currentUser?.ScoreLevel ?? ""]
-                SegmentTracking.shared.trackEvent(name: "Assessment Form Submitted", traits: traits, trackingType: .track)
+                SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.Assessment_Form_Submitted, traits: traits, passUserID: true)
                 
                 showAlertToast(message: response.ResponseMessage)
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass: DassAssessmentResultVC.self)
@@ -378,6 +374,7 @@ extension UIViewController {
         APICallManager.sharedInstance.callAPI(router: APIRouter.logout(parameters)) { (response : GeneralModel) in
             
             if response.ResponseCode == "200" {
+                SegmentTracking.shared.coUserEvent(name: SegmentTracking.eventNames.CoUser_Logout, trackingType: .track)
                 complitionBlock?()
             } else {
                 complitionBlock?()
@@ -512,6 +509,9 @@ extension ViewAllAudioVC {
             if response.ResponseCode == "200", let responseData = response.ResponseData {
                 self.homeData = responseData
                 self.objCollectionView.reloadData()
+                
+                // Segment Tracking
+                self.trackScreenData()
             }
         }
     }
@@ -555,6 +555,9 @@ extension ViewAllPlaylistVC {
             if response.ResponseCode == "200", let responseData = response.ResponseData {
                 self.homeData = responseData
                 self.objCollectionView.reloadData()
+                
+                // Segment Tracking
+                self.trackScreenData()
             }
         }
     }
@@ -638,6 +641,9 @@ extension PlaylistAudiosVC {
         APICallManager.sharedInstance.callAPI(router: APIRouter.removeaudiofromplaylist(parameters)) { (response : GeneralModel) in
             
             if response.ResponseCode == "200" {
+                // Segment Tracking
+                SegmentTracking.shared.playlistEvents(name: SegmentTracking.eventNames.Audio_Removed_From_Playlist, objPlaylist: self.objPlaylist, passPlaybackDetails: true, passPlayerType: true, audioData: self.arraySearchSongs[index], trackingType: .track)
+                
                 if let indexToDelete = self.objPlaylist?.PlaylistSongs.firstIndex(of: self.arraySearchSongs[index]) {
                     self.objPlaylist?.PlaylistSongs.remove(at: indexToDelete)
                 }
@@ -699,6 +705,9 @@ extension AddToPlaylistVC {
                     self.arrayPlaylist = self.arrayPlaylist.filter { $0.PlaylistID != self.playlistID }
                 }
                 self.tableView.reloadData()
+                
+                // Segment Tracking
+                self.trackScreenData()
             }
         }
     }
@@ -757,8 +766,11 @@ extension AudioDetailVC {
                 showAlertToast(message: response.ResponseMessage)
                 
                 self.callPlaylistDetailAPI(playlistId: playlistID)
-            }
-            else {
+                
+                self.dismiss(animated: true) {
+                    self.didClosePlayerDetail?()
+                }
+            } else {
                 self.handleRemoveFromPlaylist()
             }
         }
@@ -824,10 +836,9 @@ extension AddAudioVC {
                           "SuggestedName":searchText]
         
         // Segment Tracking
-        let traits = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
-                      "source":isComeFromAddAudio ? "Add Audio Screen" : "Search Screen",
+        let traits = ["source":isComeFromAddAudio ? "Add Audio Screen" : "Search Screen",
                       "searchKeyword":searchText]
-        SegmentTracking.shared.trackEvent(name: "Audio/Playlist Searched", traits: traits, trackingType: .track)
+        SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.Audio_Playlist_Searched, traits: traits)
         
         APICallManager.sharedInstance.callAPI(router: APIRouter.searchonsuggestedlist(parameters)) { (response : AudioDetailsModel) in
             
@@ -1130,6 +1141,9 @@ extension ChangePINVC {
         APICallManager.sharedInstance.callAPI(router: APIRouter.changepin(parameters)) { (response :GeneralModel) in
             
             if response.ResponseCode == "200" {
+                // Segment Tracking
+                SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.eventNames.Login_Pin_Changed)
+                
                 showAlertToast(message: response.ResponseMessage)
                 self.navigationController?.popViewController(animated: true)
             }
@@ -1148,6 +1162,9 @@ extension ChangePassWordVC {
         APICallManager.sharedInstance.callAPI(router: APIRouter.changepassword(parameters)) { (response :GeneralModel) in
             
             if response.ResponseCode == "200" {
+                // Segment Tracking
+                SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.eventNames.Password_Changed)
+                
                 showAlertToast(message: response.ResponseMessage)
                 self.navigationController?.popViewController(animated: true)
             }
@@ -1165,14 +1182,12 @@ extension FAQVC {
                 self.setupData()
                 
                 // Segment Tracking
-                let traits : [String:Any] = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
-                                             "faqCategories":self.arrTitle]
-                SegmentTracking.shared.trackEvent(name: "FAQ Viewed", traits: traits, trackingType: .track)
+                let traits : [String:Any] = ["faqCategories":self.arrTitle]
+                SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.faq_screen, traits: traits)
             } else {
                 // Segment Tracking
-                let traits : [String:Any] = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
-                                             "faqCategories":self.arrTitle]
-                SegmentTracking.shared.trackEvent(name: "FAQ Viewed", traits: traits, trackingType: .track)
+                let traits : [String:Any] = ["faqCategories":self.arrTitle]
+                SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.faq_screen, traits: traits)
             }
         }
     }
@@ -1342,6 +1357,7 @@ extension EditProfileVC {
     
                     // Segment Tracking
                     SegmentTracking.shared.identifyUser()
+                    SegmentTracking.shared.coUserEvent(name: SegmentTracking.eventNames.Profile_Changes_Saved, trackingType: .track)
                 }
             }
         }

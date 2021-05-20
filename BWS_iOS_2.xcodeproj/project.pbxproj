@@ -307,6 +307,8 @@
 		2891E2AB2643CCF800658B49 /* TimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2891E29A2643CCF800658B49 /* TimeView.swift */; };
 		2891E2AC2643CCF800658B49 /* TimeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2891E29B2643CCF800658B49 /* TimeVC.swift */; };
 		2891E2AD2643CCF800658B49 /* TimeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2891E29B2643CCF800658B49 /* TimeVC.swift */; };
+		289F1F262654F15A00E94290 /* Segment+EventsNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289F1F252654F15A00E94290 /* Segment+EventsNames.swift */; };
+		289F1F272654F15A00E94290 /* Segment+EventsNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289F1F252654F15A00E94290 /* Segment+EventsNames.swift */; };
 		28B27820262EED41005794E3 /* DownloadVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B2781F262EED41005794E3 /* DownloadVC.swift */; };
 		28B27821262EED41005794E3 /* DownloadVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B2781F262EED41005794E3 /* DownloadVC.swift */; };
 		28B27823262EEECC005794E3 /* DownloadAudioVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B27822262EEECC005794E3 /* DownloadAudioVC.swift */; };
@@ -673,6 +675,7 @@
 		2891E2992643CCF800658B49 /* TimeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimeView.xib; sourceTree = "<group>"; };
 		2891E29A2643CCF800658B49 /* TimeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeView.swift; sourceTree = "<group>"; };
 		2891E29B2643CCF800658B49 /* TimeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeVC.swift; sourceTree = "<group>"; };
+		289F1F252654F15A00E94290 /* Segment+EventsNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Segment+EventsNames.swift"; sourceTree = "<group>"; };
 		28B2781F262EED41005794E3 /* DownloadVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadVC.swift; sourceTree = "<group>"; };
 		28B27822262EEECC005794E3 /* DownloadAudioVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadAudioVC.swift; sourceTree = "<group>"; };
 		28B27824262EEEE1005794E3 /* DownloadPlaylistVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadPlaylistVC.swift; sourceTree = "<group>"; };
@@ -1348,6 +1351,7 @@
 				28F812B925FB356000DC6AF6 /* Brain Wellness App.entitlements */,
 				28F812A225FB336F00DC6AF6 /* AppDelegate.swift */,
 				2865DB2B26495567009CDE7F /* Segment+Functions.swift */,
+				289F1F252654F15A00E94290 /* Segment+EventsNames.swift */,
 				2865DB2E26495575009CDE7F /* Segment+ScreenTracking.swift */,
 				281DE3152626FD79002CCD9D /* DJMusicPlayer */,
 				2870B36A25FB3FEE0014A4F6 /* View Controllers */,
@@ -1957,6 +1961,7 @@
 				2870B3E225FB41A10014A4F6 /* UIImage+Extension.swift in Sources */,
 				2870B42A25FB41A10014A4F6 /* BackspaceTextField.swift in Sources */,
 				2870B44A25FB41A10014A4F6 /* TabBarController.swift in Sources */,
+				289F1F272654F15A00E94290 /* Segment+EventsNames.swift in Sources */,
 				28B5354B260CC2B800BD8147 /* CategoryCollectionCell.swift in Sources */,
 				28E0123A261847EA00B55967 /* CreatePlayListCell.swift in Sources */,
 				281DE3262626FD79002CCD9D /* DJDownloadManager+Helper.swift in Sources */,
@@ -2160,6 +2165,7 @@
 				2870B37025FB404B0014A4F6 /* APIRoute.swift in Sources */,
 				2870B44325FB41A10014A4F6 /* ReorderController+GestureRecognizer.swift in Sources */,
 				2870B3E125FB41A10014A4F6 /* UIImage+Extension.swift in Sources */,
+				289F1F262654F15A00E94290 /* Segment+EventsNames.swift in Sources */,
 				2870B42925FB41A10014A4F6 /* BackspaceTextField.swift in Sources */,
 				28B5354A260CC2B800BD8147 /* CategoryCollectionCell.swift in Sources */,
 				28E01239261847EA00B55967 /* CreatePlayListCell.swift in Sources */,

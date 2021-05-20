@@ -39,7 +39,7 @@ class LoginVC: BaseViewController {
         super.viewDidLoad()
         
         // Segment Tracking
-        SegmentTracking.shared.trackEvent(name: "Login Screen Viewed", traits: nil, trackingType: .screen)
+        SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.login)
         
         for (index,controller) in self.navigationController!.viewControllers.enumerated() {
             if controller.isKind(of: SignUpVC.self) {

@@ -167,7 +167,7 @@ extension DownloadAudioVC : AlertPopUpVCDelegate {
         if sender.tag == 0 {
             if deleteIndex != nil {
                 // Segment Tracking
-                SegmentTracking.shared.audioDetailsEvents(name: "Downloaded Audio Removed", audioData: downloadedAudios[deleteIndex ?? 0], trackingType: .track)
+                SegmentTracking.shared.audioDetailsEvents(name: SegmentTracking.eventNames.Downloaded_Audio_Removed, audioData: downloadedAudios[deleteIndex ?? 0], trackingType: .track)
                 
                 CoreDataHelper.shared.deleteDownloadedAudio(audioData: downloadedAudios[deleteIndex!])
                 setupData()

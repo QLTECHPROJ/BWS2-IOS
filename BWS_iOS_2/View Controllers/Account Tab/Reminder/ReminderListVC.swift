@@ -99,15 +99,15 @@ class ReminderListVC: BaseViewController{
         } else {
             if (sender.isOn == true) {
                 print("on")
-                sender.onTintColor = hexStringToUIColor(hex: "005BAA")
-                sender.thumbTintColor = hexStringToUIColor(hex: "000000")
+                sender.onTintColor = Theme.colors.green_008892
+                sender.thumbTintColor = Theme.colors.gray_313131
                 self.strRemID = arrayRemList[sender.tag].PlaylistId
                 self.strStatus = "1"
             } else {
                 print("off")
                 sender.setOn(false, animated: true)
-                sender.onTintColor = hexStringToUIColor(hex: "EEEEEE")
-                sender.thumbTintColor = .gray
+                sender.onTintColor = Theme.colors.gray_EEEEEE
+                sender.thumbTintColor = Theme.colors.gray_7E7E7E
                 self.strRemID = arrayRemList[sender.tag].PlaylistId
                 self.strStatus = "0"
             }
@@ -127,14 +127,14 @@ class ReminderListVC: BaseViewController{
             arrayRemDelete.append(arrayRemList[sender.tag].ReminderId)
             tableView.tableHeaderView = viewHeader
             tableView.tableFooterView = viewFooter
-            lblSelected.text = "\(sender.tag + 1)" + " Selected"
+            lblSelected.text = "\(arrayRemDelete.count)" + " Selected"
         }else {
             arrayRemDelete.removeAll(where: { $0 == arrayRemList[sender.tag].ReminderId })
             if arrayRemDelete.count == 0 {
                 tableView.tableHeaderView = nil
                 tableView.tableFooterView = nil
             }
-            lblSelected.text = "\(sender.tag)" + " Selected"
+            lblSelected.text = "\(arrayRemDelete.count)" + " Selected"
         }
         tableView.reloadData()
     }

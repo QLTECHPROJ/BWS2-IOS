@@ -40,9 +40,7 @@ class AssessmentVC: BaseViewController {
         super.viewDidLoad()
         
         // Segment Tracking
-        let traits = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
-                      "UserID":CoUserDataModel.currentUser?.UserID ?? ""]
-        SegmentTracking.shared.trackEvent(name: "Assessment Screen Viewed", traits: traits, trackingType: .screen)
+        SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.assessmentForm)
         
         lbl1.text = ""
         lbl2.text = ""

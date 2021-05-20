@@ -133,7 +133,7 @@ extension DownloadPlaylistVC : AlertPopUpVCDelegate {
             if deleteIndex != nil {
                 // Segment Tracking
                 downloadedPlaylists[deleteIndex ?? 0].sectionName = "Downloaded Playlists"
-                SegmentTracking.shared.playlistEvents(name: "Downloaded Playlist Removed", objPlaylist: downloadedPlaylists[deleteIndex ?? 0], trackingType: .track)
+                SegmentTracking.shared.playlistEvents(name: SegmentTracking.eventNames.Downloaded_Playlist_Removed, objPlaylist: downloadedPlaylists[deleteIndex ?? 0], trackingType: .track)
                 
                 CoreDataHelper.shared.deleteDownloadedPlaylist(playlistData: downloadedPlaylists[deleteIndex!])
                 setupData()

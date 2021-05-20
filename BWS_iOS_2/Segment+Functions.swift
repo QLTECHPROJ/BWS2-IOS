@@ -20,6 +20,9 @@ class SegmentTracking {
     
     static var shared = SegmentTracking()
     
+    static var screenNames = ScreenNames()
+    static var eventNames = EventNames()
+    
     var isConfigured = false
     
     // Segment Write Keys

@@ -34,18 +34,16 @@ class ResourceDetailVC: BaseViewController {
         lblScreenTitle.text = screenTitle
         
         if let data = objDetail {
-            
-//            // Segment Tracking
-//            let traits = ["userId":"",
-//                          "resourceId":data.ID,
-//                          "resourceName":data.title,
-//                          "resourceType":screenTitle,
-//                          "author":data.author,
-//                          "resourceDesc":data.ResourceDesc,
-//                          "masterCategory":data.master_category,
-//                          "subCategory":data.sub_category,
-//                          "resourceLink":data.resource_link_1]
-//            SegmentTracking.shared.trackEvent(name: "Resource Details Viewed", traits: traits, trackingType: .screen)
+            // Segment Tracking
+            let traits = ["resourceId":data.ID,
+                          "resourceName":data.title,
+                          "resourceType":screenTitle,
+                          "author":data.author,
+                          "resourceDesc":data.ResourceDesc,
+                          "masterCategory":data.master_category,
+                          "subCategory":data.sub_category,
+                          "resourceLink":data.resource_link_1]
+            SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.resourceDetails, traits: traits)
         }
     }
     
@@ -62,12 +60,12 @@ class ResourceDetailVC: BaseViewController {
             lblDesc.text = data.ResourceDesc
             
             let paragraphStyle = NSMutableParagraphStyle()
-//            paragraphStyle.lineSpacing = 40
+            //            paragraphStyle.lineSpacing = 40
             paragraphStyle.lineHeightMultiple = 1.3
-
+            
             let attrString = NSMutableAttributedString(string: data.ResourceDesc)
             attrString.addAttribute(.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attrString.length))
-
+            
             lblDesc.attributedText = attrString
             
             switch data.type {
@@ -106,17 +104,16 @@ class ResourceDetailVC: BaseViewController {
             case "APPS":
                 break
             default:
-//                // Segment Tracking
-//                let traits = ["userId":LoginDataModel.currentUser?.UserID ?? "",
-//                              "resourceId":data.ID,
-//                              "resourceName":data.title,
-//                              "resourceType":screenTitle,
-//                              "author":data.author,
-//                              "resourceDesc":data.ResourceDesc,
-//                              "masterCategory":data.master_category,
-//                              "subCategory":data.sub_category,
-//                              "resourceLink":data.resource_link_1]
-//                SegmentTracking.shared.trackEvent(name: "Resource External Link Clicked", traits: traits, trackingType: .screen)
+                // Segment Tracking
+                let traits = ["resourceId":data.ID,
+                              "resourceName":data.title,
+                              "resourceType":screenTitle,
+                              "author":data.author,
+                              "resourceDesc":data.ResourceDesc,
+                              "masterCategory":data.master_category,
+                              "subCategory":data.sub_category,
+                              "resourceLink":data.resource_link_1]
+                SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.Resource_External_Link_Clicked, traits: traits)
                 
                 openUrl(urlString: data.resource_link_1)
                 break
@@ -141,16 +138,15 @@ class ResourceDetailVC: BaseViewController {
             switch data.type {
             case "APPS":
                 // Segment Tracking
-//                let traits = ["userId":LoginDataModel.currentUser?.UserID ?? "",
-//                              "resourceId":data.ID,
-//                              "resourceName":data.title,
-//                              "resourceType":screenTitle,
-//                              "author":data.author,
-//                              "resourceDesc":data.ResourceDesc,
-//                              "masterCategory":data.master_category,
-//                              "subCategory":data.sub_category,
-//                              "resourceLink":data.resource_link_2]
-//                SegmentTracking.shared.trackEvent(name: "Resource External Link Clicked", traits: traits, trackingType: .screen)
+                let traits = ["resourceId":data.ID,
+                              "resourceName":data.title,
+                              "resourceType":screenTitle,
+                              "author":data.author,
+                              "resourceDesc":data.ResourceDesc,
+                              "masterCategory":data.master_category,
+                              "subCategory":data.sub_category,
+                              "resourceLink":data.resource_link_2]
+                SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.Resource_External_Link_Clicked, traits: traits)
                 
                 openUrl(urlString: data.resource_link_2)
                 break

@@ -20,7 +20,7 @@ class ThankYouVC: BaseViewController {
         super.viewDidLoad()
         
         // Segment Tracking
-        SegmentTracking.shared.trackEvent(name: "Thank You Screen Viewed", traits: ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? ""], trackingType: .screen)
+        SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.thankYou)
         
         let normalString = "Congratulations on joining the Brain Wellness Spa Membership"
         lblSubTitle.attributedText = normalString.attributedString(alignment: .center, lineSpacing: 10)

@@ -188,10 +188,10 @@
                                             <rect key="frame" x="0.0" y="14" width="343" height="253"/>
                                         </imageView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HKj-hP-CvE">
-                                            <rect key="frame" x="16" y="14" width="77" height="22"/>
+                                            <rect key="frame" x="16" y="14" width="77" height="24"/>
                                             <color key="backgroundColor" white="1" alpha="0.24713720034246575" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="22" id="DEA-Zr-AV4"/>
+                                                <constraint firstAttribute="height" constant="24" id="DEA-Zr-AV4"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="9"/>
                                             <state key="normal" title="     Set reminder     ">
@@ -199,7 +199,7 @@
                                             </state>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                    <real key="value" value="11"/>
+                                                    <real key="value" value="12"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                             <connections>

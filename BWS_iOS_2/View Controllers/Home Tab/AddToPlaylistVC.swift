@@ -58,6 +58,9 @@ class AddToPlaylistVC: BaseViewController {
     }
     
     @IBAction func newPlaylistClicked(sender : UIButton) {
+        // Segment Tracking
+        SegmentTracking.shared.trackEvent(name: SegmentTracking.eventNames.Create_Playlist_Clicked, traits: ["source":"Add To Playlist Screen"], trackingType: .track)
+        
         let aVC = AppStoryBoard.manage.viewController(viewControllerClass: CreatePlaylistVC.self)
         aVC.audioToAdd = self.audioID
         aVC.playlistToAdd = self.playlistID

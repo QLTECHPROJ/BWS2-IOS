@@ -43,13 +43,12 @@ class EditProfileVC: BaseViewController {
         // Segment Tracking
         if let userData = CoUserDataModel.currentUser {
             let userName = userData.Name.trim.count > 0 ? userData.Name : "Guest"
-            let dictUserDetails = ["CoUserId":userData.CoUserId,
-                                   "name":userName,
+            let dictUserDetails = ["name":userName,
                                    "phone":userData.Mobile,
                                    "email":userData.Email]
-            SegmentTracking.shared.trackEvent(name: "User Profile Viewed", traits: dictUserDetails, trackingType: .screen)
+            SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.edit_profile, traits: dictUserDetails)
         } else {
-            SegmentTracking.shared.trackEvent(name: "User Profile Viewed", traits: ["CoUserId" : CoUserDataModel.currentUser?.CoUserId ?? ""], trackingType: .screen)
+            SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.edit_profile)
         }
         
         setupUI()

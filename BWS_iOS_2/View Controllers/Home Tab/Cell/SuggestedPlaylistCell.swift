@@ -79,7 +79,7 @@ class SuggestedPlaylistCell: UITableViewCell {
         
         if playlistData.IsReminder == "1" {
             btnReminder.setTitle("     Update reminder     ", for: .normal)
-            btnReminder.backgroundColor = Theme.colors.green_008892.withAlphaComponent(0.50)
+            btnReminder.backgroundColor = Theme.colors.gray_313131.withAlphaComponent(0.30)
         } else {
             btnReminder.setTitle("     Set reminder     ", for: .normal)
             btnReminder.backgroundColor = Theme.colors.white.withAlphaComponent(0.20)

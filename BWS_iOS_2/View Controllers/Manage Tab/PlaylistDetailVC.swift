@@ -57,6 +57,7 @@ class PlaylistDetailVC: BaseViewController {
         
         // Segment Tracking
         self.objPlaylist?.sectionName = self.sectionName
+        SegmentTracking.shared.playlistEvents(name: SegmentTracking.screenNames.playlist_details_viewed, objPlaylist: objPlaylist, trackingType: .screen)
         
         callPlaylistDetailAPI()
     }
@@ -173,6 +174,9 @@ class PlaylistDetailVC: BaseViewController {
     }
     
     @IBAction func renameClicked(sender : UIButton) {
+        // Segment Tracking
+        SegmentTracking.shared.playlistEvents(name: SegmentTracking.eventNames.Playlist_Rename_Clicked, objPlaylist: objPlaylist, trackingType: .track)
+        
         self.dismiss(animated: true) {
             self.delegate?.didClickedRename()
         }
@@ -194,6 +198,13 @@ class PlaylistDetailVC: BaseViewController {
         if checkInternet() == false {
             showAlertToast(message: Theme.strings.alert_check_internet)
             return
+        }
+        
+        // Segment Tracking
+        SegmentTracking.shared.playlistEvents(name: SegmentTracking.eventNames.Playlist_Download_Started, objPlaylist: objPlaylist, passPlaybackDetails: true, passPlayerType: true, audioData: nil, trackingType: .track)
+        
+        if let playlistData = objPlaylist, playlistData.PlaylistSongs.count > 0 {
+            CoreDataHelper.shared.savePlayist(playlistData: playlistData)
         }
         
         // Handle Playist Download

@@ -23,7 +23,7 @@ class SleepTimeVC: BaseViewController {
         super.viewDidLoad()
         
         // Segment Tracking
-        SegmentTracking.shared.trackEvent(name: "Sleep Time Screen Viewed", traits: ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? ""], trackingType: .screen)
+        SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.sleepTime)
         
         collectionViewSleepTime.register(nibWithCellClass: SleepTimeCell.self)
         

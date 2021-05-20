@@ -22,7 +22,7 @@ class StartingVC: BaseViewController {
         super.viewDidLoad()
         
         // Segment Tracking
-        SegmentTracking.shared.trackEvent(name: "Launch Screen Viewed", traits: nil, trackingType: .screen)
+        SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.launch)
         
         let normalString = "Your one-stop solution for mental & emotional health challenges"
         lblSubTitle.attributedText = normalString.attributedString(alignment: .center, lineSpacing: 10)

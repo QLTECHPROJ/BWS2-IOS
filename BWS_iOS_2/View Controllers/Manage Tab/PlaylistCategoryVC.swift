@@ -187,6 +187,9 @@ class PlaylistCategoryVC: BaseViewController {
         } else if arrayPlaylistHomeData[0].IsLock == "2" {
             showAlertToast(message: Theme.strings.alert_reactivate_plan)
         } else {
+            // Segment Tracking
+            SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.Create_Playlist_Clicked, traits: ["source":"Playlist Screen"])
+            
             let aVC = AppStoryBoard.manage.viewController(viewControllerClass: CreatePlaylistVC.self)
             self.navigationController?.pushViewController(aVC, animated: true)
         }

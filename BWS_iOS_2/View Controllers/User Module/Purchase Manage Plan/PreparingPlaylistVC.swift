@@ -27,7 +27,7 @@ class PreparingPlaylistVC: BaseViewController {
         // Do any additional setup after loading the view.
         
         // Segment Tracking
-        SegmentTracking.shared.trackEvent(name: "Preparing Playlist Screen Viewed", traits: ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? ""], trackingType: .screen)
+        SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.preparingPlaylist)
         
         let titleString = "Preparing your \npersonalised playlist"
         lblTitle.attributedText = titleString.attributedString(alignment: .center, lineSpacing: 10)
@@ -41,7 +41,7 @@ class PreparingPlaylistVC: BaseViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
             
             // Segment Tracking
-            SegmentTracking.shared.trackEvent(name: "Suggested Playlist Created", traits: ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? ""], trackingType: .track)
+            SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.Suggested_Playlist_Created)
             
             let aVC = AppStoryBoard.main.viewController(viewControllerClass: ManageStartVC.self)
             aVC.strTitle = "You playlist is ready"

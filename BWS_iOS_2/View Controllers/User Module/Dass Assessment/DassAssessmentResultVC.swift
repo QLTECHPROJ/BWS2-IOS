@@ -51,11 +51,9 @@ class DassAssessmentResultVC: BaseViewController {
         // Do any additional setup after loading the view.
         
         // Segment Tracking
-        let traits = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
-                      "UserID":CoUserDataModel.currentUser?.UserID ?? "",
-                      "indexScore":CoUserDataModel.currentUser?.indexScore ?? "",
+        let traits = ["indexScore":CoUserDataModel.currentUser?.indexScore ?? "",
                       "ScoreLevel":CoUserDataModel.currentUser?.ScoreLevel ?? ""]
-        SegmentTracking.shared.trackEvent(name: "Index Score Screen Viewed", traits: traits, trackingType: .screen)
+        SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.indexScore, traits: traits, passUserID: true)
         
         // Clear Assessment Questions Data
         AssessmentDetailModel.current = nil

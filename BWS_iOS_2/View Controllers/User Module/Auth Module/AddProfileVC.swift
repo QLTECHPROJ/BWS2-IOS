@@ -43,14 +43,12 @@ class AddProfileVC: BaseViewController {
         
         // Segment Tracking
         if let userDetails = selectedUser {
-            let traits = ["CoUserId":userDetails.CoUserId,
-                          "UserID":userDetails.UserID,
-                          "name":userDetails.Name,
+            let traits = ["name":userDetails.Name,
                           "mobileNo":userDetails.Mobile,
                           "email":userDetails.Email]
-            SegmentTracking.shared.trackEvent(name: "Forgot Pin Screen Viewed", traits: traits, trackingType: .screen)
+            SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.forgotPin, traits: traits, passUserID: true)
         } else {
-            SegmentTracking.shared.trackEvent(name: "Add Couser Screen Viewed", traits: nil, trackingType: .screen)
+            SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.addCoUser)
         }
         
         setupUI()
@@ -189,12 +187,10 @@ class AddProfileVC: BaseViewController {
             callForgotPinAPI()
             
             // Segment Tracking
-            let traits = ["CoUserId":userDetails.CoUserId,
-                          "UserID":userDetails.UserID,
-                          "name":userDetails.Name,
+            let traits = ["name":userDetails.Name,
                           "mobileNo":userDetails.Mobile,
                           "email":userDetails.Email]
-            SegmentTracking.shared.trackEvent(name: "Send New Pin Clicked", traits: traits, trackingType: .track)
+            SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.Send_New_Pin_Clicked, traits: traits, passUserID: true)
         } else {
             if checkValidation() {
                 lblErrName.isHidden = true

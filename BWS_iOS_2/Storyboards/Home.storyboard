@@ -487,13 +487,13 @@
                                             </connections>
                                         </button>
                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="MAQ-t7-yOG">
-                                            <rect key="frame" x="202" y="7" width="157" height="30"/>
+                                            <rect key="frame" x="209" y="7" width="150" height="30"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Azn-LA-cyy">
-                                                    <rect key="frame" x="0.0" y="4" width="77" height="22"/>
+                                                    <rect key="frame" x="0.0" y="3" width="77" height="24"/>
                                                     <color key="backgroundColor" white="1" alpha="0.2471372003" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="22" id="yyk-NR-JjZ"/>
+                                                        <constraint firstAttribute="height" constant="24" id="yyk-NR-JjZ"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="9"/>
                                                     <state key="normal" title="     Set reminder     ">
@@ -501,59 +501,64 @@
                                                     </state>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                            <real key="value" value="11"/>
+                                                            <real key="value" value="12"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                     <connections>
                                                         <action selector="setReminderClicked:" destination="wVS-Jv-0PE" eventType="touchUpInside" id="RQe-zl-heF"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="se0-1V-Eix">
-                                                    <rect key="frame" x="87" y="0.0" width="30" height="30"/>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="30" id="F1w-PI-Av8"/>
-                                                        <constraint firstAttribute="width" secondItem="se0-1V-Eix" secondAttribute="height" multiplier="1:1" id="v6y-0P-eCG"/>
-                                                    </constraints>
-                                                    <state key="normal" image="download_white_round"/>
-                                                    <connections>
-                                                        <action selector="downloadClicked:" destination="wVS-Jv-0PE" eventType="touchUpInside" id="QKD-4Y-0ap"/>
-                                                    </connections>
-                                                </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Si5-Rs-XyR">
-                                                    <rect key="frame" x="127" y="0.0" width="30" height="30"/>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="30" id="0E4-SG-Bmt"/>
-                                                        <constraint firstAttribute="width" secondItem="Si5-Rs-XyR" secondAttribute="height" multiplier="1:1" id="kYN-le-fFi"/>
-                                                    </constraints>
-                                                    <state key="normal" image="Detail"/>
-                                                    <connections>
-                                                        <action selector="optionClicked:" destination="wVS-Jv-0PE" eventType="touchUpInside" id="KOh-Qf-Q5s"/>
-                                                    </connections>
-                                                </button>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="iMT-sx-Hh7">
+                                                    <rect key="frame" x="87" y="0.0" width="63" height="30"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="se0-1V-Eix">
+                                                            <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="30" id="F1w-PI-Av8"/>
+                                                                <constraint firstAttribute="width" secondItem="se0-1V-Eix" secondAttribute="height" multiplier="1:1" id="v6y-0P-eCG"/>
+                                                            </constraints>
+                                                            <state key="normal" image="download_white_round"/>
+                                                            <connections>
+                                                                <action selector="downloadClicked:" destination="wVS-Jv-0PE" eventType="touchUpInside" id="QKD-4Y-0ap"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Si5-Rs-XyR">
+                                                            <rect key="frame" x="33" y="0.0" width="30" height="30"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="30" id="0E4-SG-Bmt"/>
+                                                                <constraint firstAttribute="width" secondItem="Si5-Rs-XyR" secondAttribute="height" multiplier="1:1" id="kYN-le-fFi"/>
+                                                            </constraints>
+                                                            <state key="normal" image="Detail"/>
+                                                            <connections>
+                                                                <action selector="optionClicked:" destination="wVS-Jv-0PE" eventType="touchUpInside" id="KOh-Qf-Q5s"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
+                                                </stackView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="YJX-Fk-ZcO"/>
                                             </constraints>
                                         </stackView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ild-ag-1ar" customClass="KDCircularProgress" customModule="BWS_2_Staging" customModuleProvider="target">
-                                            <rect key="frame" x="293" y="11" width="22" height="22"/>
+                                            <rect key="frame" x="300" y="11" width="22" height="22"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         </view>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstItem="Ild-ag-1ar" firstAttribute="leading" secondItem="se0-1V-Eix" secondAttribute="leading" constant="4" id="7Up-Xv-QVY"/>
                                         <constraint firstItem="gdz-K9-4nz" firstAttribute="centerY" secondItem="D8m-rm-H2b" secondAttribute="centerY" id="A6s-wb-TO5"/>
-                                        <constraint firstItem="Ild-ag-1ar" firstAttribute="trailing" secondItem="se0-1V-Eix" secondAttribute="trailing" constant="-4" id="LBX-6U-SVK"/>
+                                        <constraint firstItem="Ild-ag-1ar" firstAttribute="trailing" secondItem="se0-1V-Eix" secondAttribute="trailing" constant="-4" id="Hng-zf-kSM"/>
+                                        <constraint firstItem="Ild-ag-1ar" firstAttribute="bottom" secondItem="se0-1V-Eix" secondAttribute="bottom" constant="-4" id="LWx-lB-vcq"/>
                                         <constraint firstItem="gdz-K9-4nz" firstAttribute="leading" secondItem="D8m-rm-H2b" secondAttribute="leading" constant="16" id="R6Z-lv-se5"/>
                                         <constraint firstItem="MAQ-t7-yOG" firstAttribute="centerY" secondItem="gdz-K9-4nz" secondAttribute="centerY" id="Rav-iS-MQf"/>
-                                        <constraint firstItem="Ild-ag-1ar" firstAttribute="top" secondItem="se0-1V-Eix" secondAttribute="top" constant="4" id="WaQ-eQ-G3r"/>
                                         <constraint firstAttribute="trailing" secondItem="MAQ-t7-yOG" secondAttribute="trailing" constant="16" id="ZN9-NV-BrI"/>
-                                        <constraint firstItem="Ild-ag-1ar" firstAttribute="bottom" secondItem="se0-1V-Eix" secondAttribute="bottom" constant="-4" id="oN7-dB-tsy"/>
+                                        <constraint firstItem="Ild-ag-1ar" firstAttribute="top" secondItem="se0-1V-Eix" secondAttribute="top" constant="4" id="h8f-QB-gXm"/>
                                         <constraint firstAttribute="height" constant="44" id="pqE-XI-zN8"/>
                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="t0k-Zn-ogc"/>
+                                        <constraint firstItem="Ild-ag-1ar" firstAttribute="leading" secondItem="se0-1V-Eix" secondAttribute="leading" constant="4" id="uON-W3-fCd"/>
                                     </constraints>
                                 </view>
                                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0na-9P-YcT">
@@ -567,14 +572,14 @@
                                         <action selector="playClicked:" destination="wVS-Jv-0PE" eventType="touchUpInside" id="yn0-ug-6Gg"/>
                                     </connections>
                                 </button>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ultimate anger relief" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CnT-bT-PPx">
-                                    <rect key="frame" x="16" y="185.66666666666666" width="343" height="29.333333333333343"/>
-                                    <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="25"/>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ultimate anger relief" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CnT-bT-PPx">
+                                    <rect key="frame" x="16" y="185.66666666666666" width="343" height="25.666666666666657"/>
+                                    <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="22"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pga-Se-qVI">
-                                    <rect key="frame" x="16" y="223" width="343" height="35"/>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pga-Se-qVI">
+                                    <rect key="frame" x="16" y="219.33333333333334" width="343" height="35"/>
                                     <string key="text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</string>
                                     <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="10"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

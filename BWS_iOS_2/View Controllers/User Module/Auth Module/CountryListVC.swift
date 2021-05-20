@@ -29,7 +29,7 @@ class CountryListVC: BaseViewController {
         super.viewDidLoad()
         
         // Segment Tracking
-        SegmentTracking.shared.trackEvent(name: "Country List Viewed", traits: nil, trackingType: .screen)
+        SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.countryList)
         
         setupUI()
     }

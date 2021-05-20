@@ -23,6 +23,13 @@ class AccountInfoVC: BaseViewController {
         setupUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Segment Tracking
+        SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.account_info)
+    }
+    
     //MARK:- Functions
     override func setupUI() {
         tableView.register(nibWithCellClass:AccountCell.self)

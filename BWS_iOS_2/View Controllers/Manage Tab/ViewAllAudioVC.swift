@@ -105,6 +105,9 @@ class ViewAllAudioVC: BaseViewController {
         setAllDeselected()
         let audioData = homeData.Details[sender.tag]
         
+        // Segment Tracking
+        SegmentTracking.shared.audioDetailsEvents(name: SegmentTracking.eventNames.Add_to_Playlist_Clicked, audioData: audioData, source: self.homeData.View, trackingType: .track)
+        
         let aVC = AppStoryBoard.home.viewController(viewControllerClass: AddToPlaylistVC.self)
         aVC.audioID = audioData.ID
         aVC.source = "Audio View All Screen"

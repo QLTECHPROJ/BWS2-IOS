@@ -55,8 +55,9 @@ class HomeVC: BaseViewController {
         super.viewWillAppear(animated)
         
         setupUI()
+        
         // Segment Tracking
-        SegmentTracking.shared.trackEvent(name: "Home Screen Viewed", traits: ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? ""], trackingType: .screen)
+        SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.home)
         
         if checkInternet() {
             callHomeAPI()
@@ -129,11 +130,12 @@ class HomeVC: BaseViewController {
     }
     
     func setReminder() {
+        // Segment Tracking
+        SegmentTracking.shared.playlistEvents(name: SegmentTracking.eventNames.Playlist_Reminder_Clicked, objPlaylist: suggstedPlaylist, trackingType: .track)
         
         let aVC = AppStoryBoard.account.viewController(viewControllerClass: DayVC.self)
         aVC.objPlaylist = suggstedPlaylist
         self.navigationController?.pushViewController(aVC, animated: true)
-       
     }
     
     func playSuggestedPlaylist() {

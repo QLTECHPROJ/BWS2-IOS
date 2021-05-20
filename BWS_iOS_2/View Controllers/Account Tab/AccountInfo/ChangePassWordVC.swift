@@ -30,6 +30,10 @@ class ChangePassWordVC: BaseViewController {
     //MARK:- View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Segment Tracking
+        SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.change_password)
+        
         setupUI()
     }
     

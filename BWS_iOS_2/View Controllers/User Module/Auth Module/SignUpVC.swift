@@ -46,7 +46,7 @@ class SignUpVC: BaseViewController {
         super.viewDidLoad()
         
         // Segment Tracking
-        SegmentTracking.shared.trackEvent(name: "SignUp Screen Viewed", traits: nil, trackingType: .screen)
+        SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.signUp)
         
         setupUI()
         setupData()

@@ -65,6 +65,15 @@ class AudioDetailVC: BaseViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(refreshDownloadData), name: .refreshDownloadData, object: nil)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Segment Tracking
+        SegmentTracking.shared.audioDetailsEvents(name: SegmentTracking.screenNames.audio_details, audioData: self.audioDetails, source: self.source, audioSortPositons: nil, trackingType: .screen)
+    }
+    
+    
+    // MARK:- FUNCTIONS
     override func setupData() {
         guard let details = audioDetails else {
             return
@@ -155,7 +164,7 @@ class AudioDetailVC: BaseViewController {
     @IBAction func addToPlaylistClicked(sender : UIButton) {
         if let audioID = self.audioDetails?.ID {
             // Segment Tracking
-            SegmentTracking.shared.audioDetailsEvents(name: "Add to Playlist Clicked", audioData: self.audioDetails, source: "Audio Details", trackingType: .track)
+            SegmentTracking.shared.audioDetailsEvents(name: SegmentTracking.eventNames.Add_to_Playlist_Clicked, audioData: self.audioDetails, source: "Audio Details", trackingType: .track)
             
             let aVC = AppStoryBoard.home.viewController(viewControllerClass: AddToPlaylistVC.self)
             aVC.audioID = audioID
@@ -200,7 +209,7 @@ class AudioDetailVC: BaseViewController {
             CoreDataHelper.shared.saveAudio(audioData: details)
             
             // Segment Tracking
-            SegmentTracking.shared.audioDetailsEvents(name: "Audio Download Started", audioData: self.audioDetails, source: "Audio Details", trackingType: .track)
+            SegmentTracking.shared.audioDetailsEvents(name: SegmentTracking.eventNames.Audio_Download_Started, audioData: self.audioDetails, source: "Audio Details", trackingType: .track)
         }
     }
     

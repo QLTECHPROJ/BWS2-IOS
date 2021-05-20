@@ -23,7 +23,7 @@ class ForgotPassVC: BaseViewController {
         super.viewDidLoad()
         
         // Segment Tracking
-        SegmentTracking.shared.trackEvent(name: "Forgot Password Screen Viewed", traits: nil, trackingType: .screen)
+        SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.forgotPassword)
         
         setupUI()
     }
@@ -65,7 +65,7 @@ class ForgotPassVC: BaseViewController {
             lblErrorEmail.isHidden = true
             
             // Segment Tracking
-            SegmentTracking.shared.trackEvent(name: "Forgot Password Clicked", traits: ["email":txtFEmailAdd.text ?? ""], trackingType: .track)
+            SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.Forgot_Password_Clicked, traits: ["email":txtFEmailAdd.text ?? ""], passUserID: false)
             
             callForgotPasswordAPI()
         }

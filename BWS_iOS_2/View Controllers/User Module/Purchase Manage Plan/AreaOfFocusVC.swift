@@ -29,7 +29,7 @@ class AreaOfFocusVC: BaseViewController {
         super.viewDidLoad()
         
         // Segment Tracking
-        SegmentTracking.shared.trackEvent(name: "Recommeded Category Screen Viewed", traits: ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? ""], trackingType: .screen)
+        SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.recommededCategory)
         
         tableView.register(nibWithCellClass: RecommendedCategoryHeaderCell.self)
         tableView.register(nibWithCellClass: CategoryTableCell.self)

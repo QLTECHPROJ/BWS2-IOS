@@ -36,18 +36,38 @@ class ViewAllPlaylistVC: BaseViewController {
         objCollectionView.addGestureRecognizer(lpgr)
     }
     
-    override func handleRefresh(_ refreshControl: UIRefreshControl) {
-        fetchData()
-        refreshControl.endRefreshing()
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         fetchData()
     }
     
+    override func handleRefresh(_ refreshControl: UIRefreshControl) {
+        fetchData()
+        refreshControl.endRefreshing()
+    }
+    
+    @objc override func refreshDownloadData() {
+        self.fetchData()
+    }
+    
     func fetchData() {
-        callPlaylistOnGetLibraryAPI()
+        if libraryTitle == "My Downloads" {
+            NotificationCenter.default.addObserver(self, selector: #selector(refreshDownloadData), name: .refreshDownloadData, object: nil)
+            
+            let downloadDataModel = PlaylistHomeDataModel()
+            downloadDataModel.GetLibraryID = "2"
+            downloadDataModel.View = "My Downloads"
+            downloadDataModel.CoUserId = (CoUserDataModel.currentUser?.CoUserId ?? "")
+            downloadDataModel.UserID = (CoUserDataModel.currentUser?.UserID ?? "")
+            downloadDataModel.Details = CoreDataHelper.shared.fetchAllPlaylists()
+            downloadDataModel.IsLock = shouldLockDownloads() ? "1" : "0"
+            self.homeData = downloadDataModel
+            
+            // Segment Tracking
+            self.trackScreenData()
+        } else {
+            callPlaylistOnGetLibraryAPI()
+        }
     }
     
     // Handle Long Press For Add To Playlist Button
@@ -146,10 +166,22 @@ extension ViewAllPlaylistVC : UICollectionViewDataSource, UICollectionViewDelega
         } else if homeData.IsLock == "2" {
             showAlertToast(message: Theme.strings.alert_reactivate_plan)
         } else {
-            let aVC = AppStoryBoard.home.viewController(viewControllerClass: PlaylistAudiosVC.self)
-            aVC.objPlaylist = homeData.Details[indexPath.row]
-            aVC.sectionName = homeData.View
-            self.navigationController?.pushViewController(aVC, animated: true)
+            if homeData.View == "My Downloads" {
+                let aVC = AppStoryBoard.home.viewController(viewControllerClass: PlaylistAudiosVC.self)
+                aVC.objPlaylist = homeData.Details[indexPath.row]
+                aVC.isFromDownload = true
+                aVC.sectionName = "Downloaded Playlists"
+                self.navigationController?.pushViewController(aVC, animated: true)
+            }
+            else {
+                let aVC = AppStoryBoard.home.viewController(viewControllerClass: PlaylistAudiosVC.self)
+                aVC.objPlaylist = homeData.Details[indexPath.row]
+                aVC.sectionName = homeData.View
+                self.navigationController?.pushViewController(aVC, animated: true)
+            }
+            
+            // Segment Tracking
+            // SegmentTracking.shared.playlistEvents(name: "Playlist Clicked", sectionName: playlistData!.View, objPlaylist: playlistData!.Details![indexPath.row], audioData: nil, trackingType: .track)
         }
     }
     
@@ -168,8 +200,32 @@ extension ViewAllPlaylistVC : PlaylistOptionsVCDelegate {
     }
     
     func didClickedDelete() {
-        if let index = playlistIndex {
-            let playlistName = homeData.Details[index].PlaylistName
+        guard let index = playlistIndex else {
+            return
+        }
+        
+        let playlistName = homeData.Details[index].PlaylistName
+        
+        if homeData.View == "My Downloads" {
+            if isPlayingPlaylistFromDownloads(playlistID: homeData.Details[index].PlaylistID) == true {
+                showAlertToast(message: Theme.strings.alert_playing_playlist_remove)
+                return
+            }
+            
+            let aVC = AppStoryBoard.manage.viewController(viewControllerClass: AlertPopUpVC.self)
+            aVC.modalPresentationStyle = .overFullScreen
+            aVC.delegate = self
+            aVC.titleText = "Delete playlist"
+            aVC.detailText = "Are you sure you want to remove the \(playlistName) from downloads?"
+            aVC.firstButtonTitle = "DELETE"
+            aVC.secondButtonTitle = "CLOSE"
+            aVC.popUpTag = 1
+            self.present(aVC, animated: false, completion: nil)
+        } else {
+            if checkInternet() == false {
+                showAlertToast(message: Theme.strings.alert_check_internet)
+                return
+            }
             
             let aVC = AppStoryBoard.manage.viewController(viewControllerClass: AlertPopUpVC.self)
             aVC.modalPresentationStyle = .overFullScreen
