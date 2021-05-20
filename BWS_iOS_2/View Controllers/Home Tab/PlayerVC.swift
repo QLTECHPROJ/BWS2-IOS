@@ -94,9 +94,15 @@ class PlayerVC: BaseViewController {
         }
         
         if let details = data {
-            lblCategory.text = details.Audiomastercat
+            if DJMusicPlayer.shared.playerType == .playlist || DJMusicPlayer.shared.playerType == .downloadedPlaylist {
+                lblCategory.text = DJMusicPlayer.shared.currentPlaylist?.PlaylistName ?? details.Audiomastercat
+                lblAudioName.text = details.Name
+            } else {
+                lblCategory.text = details.Name
+                lblAudioName.isHidden = true
+            }
+            
             lblDuration.text = details.AudioDuration
-            lblAudioName.text = details.Name
             
             lblPlayTime.text = getPlayTime()
             

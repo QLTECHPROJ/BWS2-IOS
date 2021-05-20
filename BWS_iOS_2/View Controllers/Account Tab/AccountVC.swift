@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MediaPlayer
 
 class AccountVC: BaseViewController {
     
@@ -182,6 +183,10 @@ class AccountVC: BaseViewController {
         
         // Cancel All ongoing Downloads on logout
         SDDownloadManager.shared.cancelAllDownloads()
+        
+        // Dismiss Notification Audio Player Bar
+        MPNowPlayingInfoCenter.default().nowPlayingInfo = nil
+        UIApplication.shared.endReceivingRemoteControlEvents()
         
         // Redirect User to Login screen
         APPDELEGATE.logout()

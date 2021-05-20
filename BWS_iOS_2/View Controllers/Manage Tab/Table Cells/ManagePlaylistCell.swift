@@ -32,6 +32,7 @@ class ManagePlaylistCell: UITableViewCell {
     // MARK:- VIEW LIFE CYCLE
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.backgroundColor = Theme.colors.white
         collectionView.register(nibWithCellClass: PlaylistCollectionCell.self)
         
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))

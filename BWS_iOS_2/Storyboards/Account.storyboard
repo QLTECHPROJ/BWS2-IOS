@@ -668,7 +668,7 @@
                                                         <rect key="frame" x="16" y="8" width="319" height="50"/>
                                                         <color key="textColor" name="textColor"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" secureTextEntry="YES"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="floatingLabelTextColor">
                                                                 <color key="value" name="black_40_opacity"/>
@@ -721,7 +721,7 @@
                                                         <rect key="frame" x="16" y="8" width="319" height="50"/>
                                                         <color key="textColor" name="textColor"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" secureTextEntry="YES"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="floatingLabelTextColor">
                                                                 <color key="value" name="black_40_opacity"/>
@@ -774,7 +774,7 @@
                                                         <rect key="frame" x="16" y="8" width="311" height="50"/>
                                                         <color key="textColor" name="textColor"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" secureTextEntry="YES"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="floatingLabelTextColor">
                                                                 <color key="value" name="black_40_opacity"/>
