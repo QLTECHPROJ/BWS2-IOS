@@ -300,7 +300,7 @@ class PlaylistAudiosVC: BaseViewController {
             btnReminder.isEnabled = false
             btnReminder.alpha = 0
             btnDownload.alpha = 0
-            btnOption.setImage(UIImage(named: "trash_black"), for: UIControl.State.normal)
+            btnOption.setImage(UIImage(named: "trash_white"), for: UIControl.State.normal)
         }
         
         self.updateDownloadProgress()
