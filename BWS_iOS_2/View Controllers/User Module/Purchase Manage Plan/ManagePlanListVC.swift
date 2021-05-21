@@ -61,7 +61,7 @@ class ManagePlanListVC: BaseViewController {
         // Do any additional setup after loading the view.
         
         // Segment Tracking
-        SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.managePlanList)
+        SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.enrichPlanList)
         
         lblTitle.text = ""
         lblSubTitle.text = ""

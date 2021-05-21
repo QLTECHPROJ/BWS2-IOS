@@ -23,7 +23,7 @@ struct ScreenNames {
     let assessmentForm = "Assessment Screen Viewed"
     let indexScore = "Index Score Screen Viewed"
     
-    let managePlanList = "Manage Plan Screen Viewed"
+    let enrichPlanList = "Enrich Plan Screen Viewed"
     let orderSummary = "Order Summary Viewed"
     let thankYou = "Thank You Screen Viewed"
     
@@ -35,7 +35,7 @@ struct ScreenNames {
     let userListPopup = "User List Popup Viewed"
     let notificationList = "Notification List Viewed"
     
-    let manage = "Manage Screen Viewed"
+    let enrich = "Enrich Screen Viewed"
     
     let search_screen = "Search Screen Viewed"
     let suggested_audio_list = "Suggested Audios List Viewed"

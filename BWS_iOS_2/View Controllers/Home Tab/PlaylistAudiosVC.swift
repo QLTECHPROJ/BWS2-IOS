@@ -105,6 +105,21 @@ class PlaylistAudiosVC: BaseViewController {
         tableView.register(nibWithCellClass: SelfDevCell.self)
         collectionView.register(nibWithCellClass: AreaOfFocusCell.self)
         
+        tableView.tableHeaderView = tableHeaderView
+        tableView.rowHeight = 70
+        tableView.reorder.delegate = self
+        tableView.reloadData()
+        
+        let layout = CollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        layout.minimumLineSpacing = 7
+        layout.minimumInteritemSpacing = 7
+        layout.sectionInset = UIEdgeInsets(top: 7, left: 16, bottom: 7, right: 16)
+        collectionView.collectionViewLayout = layout
+        collectionView.reloadData()
+        collectionView.layoutIfNeeded()
+        
         txtSearch.delegate = self
         txtSearch.addTarget(self, action: #selector(textFieldValueChanged(textField:)), for: UIControl.Event.editingChanged)
         
@@ -147,22 +162,8 @@ class PlaylistAudiosVC: BaseViewController {
         
         viewSearch.isHidden = (objPlaylist?.PlaylistSongs.count ?? 0) == 0
         
-        tableView.tableHeaderView = tableHeaderView
         btnDownload.alpha = 0
         btnPlay.isHidden = true
-        
-        tableView.rowHeight = 70
-        tableView.reorder.delegate = self
-        
-        let layout = CollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-        layout.minimumLineSpacing = 7
-        layout.minimumInteritemSpacing = 7
-        layout.sectionInset = UIEdgeInsets(top: 7, left: 16, bottom: 7, right: 16)
-        collectionView.collectionViewLayout = layout
-        collectionView.reloadData()
-        collectionView.layoutIfNeeded()
         
         // Download Progress View
         downloadProgressView.isHidden = true
