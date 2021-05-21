@@ -25,6 +25,9 @@ def shared_pods
     #  Segment
     pod 'Analytics', '~> 4.1'
     
+    # In App Purchase
+    pod 'SwiftyStoreKit'
+    
 end
 
 target 'BWS_iOS_2' do

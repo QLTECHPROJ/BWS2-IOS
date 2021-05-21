@@ -110,6 +110,7 @@ PODS:
   - SJSegmentedScrollView (1.5.0)
   - SVProgressHUD (2.2.5)
   - SweeterSwift (1.1.4)
+  - SwiftyStoreKit (0.16.1)
   - TagListView (1.4.1)
   - Toast-Swift (5.0.1)
   - TTTAttributedLabel (2.0.0)
@@ -130,6 +131,7 @@ DEPENDENCIES:
   - SDWebImage
   - SJSegmentedScrollView
   - SVProgressHUD
+  - SwiftyStoreKit
   - TagListView
   - Toast-Swift
   - TTTAttributedLabel
@@ -163,6 +165,7 @@ SPEC REPOS:
     - SJSegmentedScrollView
     - SVProgressHUD
     - SweeterSwift
+    - SwiftyStoreKit
     - TagListView
     - Toast-Swift
     - TTTAttributedLabel
@@ -195,11 +198,12 @@ SPEC CHECKSUMS:
   SJSegmentedScrollView: 67ca97389a9c3a409d3b54c88781f031f5091c61
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SweeterSwift: 8a90cf3156f5a1b6f39785c479369a16633b5ea9
+  SwiftyStoreKit: 6b9c08810269f030586dac1fae8e75871a82e84a
   TagListView: a1c236d17960a0cf64156725a76ce6d73ebce2be
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
   TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
   youtube-ios-player-helper: 0185c57db23c80d63d6ca11251d110abb8a4ca61
 
-PODFILE CHECKSUM: 6c811c5e16ffa660fc7853ac0f7e9e8581b5991a
+PODFILE CHECKSUM: 91e153a42138e4c1b4ee6aa9dca8bd42402d172e
 
 COCOAPODS: 1.10.1
