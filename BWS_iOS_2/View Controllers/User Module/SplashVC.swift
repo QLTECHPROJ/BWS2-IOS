@@ -21,9 +21,9 @@ class SplashVC: BaseViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        NetworkActivityIndicatorManager.networkOperationStarted()
+        showHud()
         IAPHelper.shared.verifyReceipt { result in
-            NetworkActivityIndicatorManager.networkOperationFinished()
+            hideHud()
             IAPHelper.shared.showAlert(IAPHelper.shared.alertForVerifyReceipt(result))
         }
         

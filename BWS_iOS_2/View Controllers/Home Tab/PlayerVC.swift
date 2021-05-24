@@ -404,8 +404,7 @@ class PlayerVC: BaseViewController {
         }
         
         if let details = self.audioDetails {
-            details.isSingleAudio = "1"
-            CoreDataHelper.shared.saveAudio(audioData: details)
+            CoreDataHelper.shared.saveAudio(audioData: details, isSingleAudio: true)
             
             // Segment Tracking
             SegmentTracking.shared.audioDetailsEvents(name: SegmentTracking.eventNames.Audio_Download_Started, audioData: self.audioDetails, source: "Main Player", trackingType: .track)

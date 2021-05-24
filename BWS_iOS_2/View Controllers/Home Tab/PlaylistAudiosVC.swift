@@ -402,8 +402,7 @@ class PlaylistAudiosVC: BaseViewController {
             
         case 3:
             let details = self.arraySearchSongs[arrayIndex]
-            details.isSingleAudio = "1"
-            CoreDataHelper.shared.saveAudio(audioData: details)
+            CoreDataHelper.shared.saveAudio(audioData: details, isSingleAudio: true)
             
             // Segment Tracking
             SegmentTracking.shared.audioDetailsEvents(name: SegmentTracking.eventNames.Audio_Download_Started, audioData: details, source: "Playlist Player Screen", trackingType: .track)
@@ -647,7 +646,8 @@ extension PlaylistAudiosVC : UITableViewDelegate, UITableViewDataSource {
             } else {
                 cell.configureOptionCell(data: arraySearchSongs[indexPath.row])
             }
-            cell.btnChangePosition.isEnabled = isFromDownload == false
+            
+            cell.btnChangePosition.isEnabled = checkInternet()
         }
         
         // Now Playing Animation

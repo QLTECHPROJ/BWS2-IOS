@@ -17,7 +17,6 @@ class ManageVC: BaseViewController {
     @IBOutlet weak var playlistBottomView : UIView!
     @IBOutlet weak var btnReminder : UIButton!
     @IBOutlet weak var btnPlay : UIButton!
-    @IBOutlet weak var progressView : UIProgressView!
     
     @IBOutlet weak var lblPlaylistName : UILabel!
     @IBOutlet weak var lblPlaylistDirection : UILabel!
@@ -67,8 +66,6 @@ class ManageVC: BaseViewController {
     
     // MARK:- FUNCTIONS
     override func setupUI() {
-        progressView.isHidden = true
-        
         tableView.tableHeaderView = UIView()
         tableView.register(nibWithCellClass: ManageAudioCell.self)
         tableView.register(nibWithCellClass: ManagePlaylistCell.self)
