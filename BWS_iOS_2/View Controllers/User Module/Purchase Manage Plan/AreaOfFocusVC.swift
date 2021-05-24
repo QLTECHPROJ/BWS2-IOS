@@ -91,6 +91,8 @@ class AreaOfFocusVC: BaseViewController {
             if let removeIndex = arrayAreaOfFocus.firstIndex(of: cat) {
                 arrayAreaOfFocus.remove(at: removeIndex)
             }
+            
+            tableView.reloadData()
         } else {
             if arrayAreaOfFocus.count < 3 {
                 for subCategory in arrayCategories[indexPath.section].Details {
@@ -111,35 +113,59 @@ class AreaOfFocusVC: BaseViewController {
                 cat.MainCat = arrayCategories[indexPath.section].View
                 cat.RecommendedCat = arrayCategories[indexPath.section].Details[indexPath.row].ProblemName
                 arrayAreaOfFocus.append(cat)
+                tableView.reloadData()
             } else {
                 showAlertToast(message: Theme.strings.alert_max_category)
             }
         }
-        
-        tableView.reloadData()
     }
     
     func searchCategory(searchText : String) {
         if searchText.trim.count > 0 {
-            arrayCategories = arrayCategoriesMain.filter({ (model:CategoryListModel) -> Bool in
-                return model.View.lowercased().contains(searchText.lowercased())
+            var categories = [CategoryListModel]()
+            
+            for category in arrayCategoriesMain {
+                let newCat = CategoryListModel()
+                newCat.ID = category.ID
+                newCat.View = category.View
+                newCat.Details = category.Details.filter({ (model:CategoryDataModel) -> Bool in
+                    return model.ProblemName.lowercased().contains(searchText.lowercased())
+                })
+                
+                categories.append(newCat)
+            }
+            
+            //            arrayCategories = arrayCategoriesMain.filter({ (model:CategoryListModel) -> Bool in
+            //                return model.View.lowercased().contains(searchText.lowercased())
+            //            })
+            
+            arrayCategories = categories
+            
+            let categoryList = arrayCategories.filter({ (model:CategoryListModel) -> Bool in
+                return model.Details.count > 0
             })
             
-             if arrayCategories.count > 0 {
+            if categoryList.count > 0 {
                 tableView.tableFooterView = nil
                 lblNoData.isHidden = true
-             } else {
+            } else {
                 tableView.tableFooterView = footerView
                 lblNoData.isHidden = false
                 lblNoData.text = "Couldn't find " + searchText + " Try searching again"
-             }
-            lblNoData.isHidden = arrayCategories.count != 0
+            }
+            
+            lblNoData.isHidden = categoryList.count != 0
+            
             tableView.reloadData()
+            tableView.scrollToBottom()
+            tableView.scrollToTop()
         } else {
             tableView.tableFooterView = nil
             arrayCategories = arrayCategoriesMain
             lblNoData.isHidden = true
             tableView.reloadData()
+            tableView.scrollToBottom()
+            tableView.scrollToTop()
         }
     }
     
@@ -212,6 +238,16 @@ extension AreaOfFocusVC : UITableViewDataSource, UITableViewDelegate {
             
             return cell
         }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 1 {
+            if arrayCategories[indexPath.row].Details.count == 0 {
+                return 0
+            }
+        }
+        
+        return UITableView.automaticDimension
     }
     
 }

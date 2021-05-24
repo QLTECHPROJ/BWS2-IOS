@@ -113,32 +113,19 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ultimate Anger Relief" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="e3X-Kl-3t6">
-                                        <rect key="frame" x="27" y="239.5" width="289" height="16.5"/>
+                                        <rect key="frame" x="27" y="258.5" width="289" height="16.5"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="14"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sleep start in your brain" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="JlA-lV-o2I">
-                                        <rect key="frame" x="27" y="258" width="242" height="12"/>
+                                        <rect key="frame" x="27" y="277" width="242" height="12"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="10"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <progressView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="y1S-pN-rme">
-                                        <rect key="frame" x="27" y="280" width="289" height="4"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="4" id="Z5O-sJ-pTv"/>
-                                        </constraints>
-                                        <color key="progressTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="trackTintColor" white="1" alpha="0.24967893839999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="2"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </progressView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="07:10:47" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="7Np-Lw-xfM">
-                                        <rect key="frame" x="277" y="258" width="39" height="12"/>
+                                        <rect key="frame" x="277" y="277" width="39" height="12"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="10"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -146,17 +133,13 @@
                                 </subviews>
                                 <color key="backgroundColor" name="green_36C2D6"/>
                                 <constraints>
-                                    <constraint firstItem="y1S-pN-rme" firstAttribute="leading" secondItem="JlA-lV-o2I" secondAttribute="leading" id="07N-kh-54l"/>
-                                    <constraint firstItem="y1S-pN-rme" firstAttribute="trailing" secondItem="e3X-Kl-3t6" secondAttribute="trailing" id="4di-St-7eZ"/>
                                     <constraint firstItem="URN-bo-e7K" firstAttribute="leading" secondItem="BI9-bt-JXS" secondAttribute="leading" constant="16" id="5e9-TF-H4b"/>
                                     <constraint firstItem="JlA-lV-o2I" firstAttribute="leading" secondItem="e3X-Kl-3t6" secondAttribute="leading" id="7rK-k6-1vv"/>
-                                    <constraint firstItem="7Np-Lw-xfM" firstAttribute="trailing" secondItem="y1S-pN-rme" secondAttribute="trailing" id="JKu-z1-f0B"/>
                                     <constraint firstItem="7Np-Lw-xfM" firstAttribute="centerY" secondItem="JlA-lV-o2I" secondAttribute="centerY" id="MOh-rQ-38E"/>
                                     <constraint firstAttribute="trailing" secondItem="e3X-Kl-3t6" secondAttribute="trailing" constant="27" id="Pev-b8-fCL"/>
+                                    <constraint firstAttribute="bottom" secondItem="JlA-lV-o2I" secondAttribute="bottom" constant="16" id="PuB-pc-6Zz"/>
                                     <constraint firstAttribute="bottom" secondItem="U0T-vh-0cu" secondAttribute="bottom" constant="37" id="RGi-ws-nxB"/>
-                                    <constraint firstAttribute="bottom" secondItem="y1S-pN-rme" secondAttribute="bottom" constant="21" id="aRG-6i-g21"/>
                                     <constraint firstAttribute="trailing" secondItem="U0T-vh-0cu" secondAttribute="trailing" id="dZo-iu-Iac"/>
-                                    <constraint firstItem="y1S-pN-rme" firstAttribute="top" secondItem="JlA-lV-o2I" secondAttribute="bottom" constant="10" id="kPi-8a-RJs"/>
                                     <constraint firstItem="gwH-Ov-Aed" firstAttribute="centerX" secondItem="BI9-bt-JXS" secondAttribute="centerX" id="l59-y0-oi1"/>
                                     <constraint firstItem="U0T-vh-0cu" firstAttribute="leading" secondItem="BI9-bt-JXS" secondAttribute="leading" id="mw7-oZ-v4e"/>
                                     <constraint firstItem="gwH-Ov-Aed" firstAttribute="centerY" secondItem="BI9-bt-JXS" secondAttribute="centerY" id="ovo-rP-KDx"/>
@@ -164,6 +147,7 @@
                                     <constraint firstItem="U0T-vh-0cu" firstAttribute="top" secondItem="BI9-bt-JXS" secondAttribute="top" constant="14" id="pfb-oL-C2v"/>
                                     <constraint firstItem="7Np-Lw-xfM" firstAttribute="leading" secondItem="JlA-lV-o2I" secondAttribute="trailing" constant="8" id="q1G-r2-nQe"/>
                                     <constraint firstItem="e3X-Kl-3t6" firstAttribute="leading" secondItem="BI9-bt-JXS" secondAttribute="leading" constant="27" id="wjx-dS-5ge"/>
+                                    <constraint firstItem="7Np-Lw-xfM" firstAttribute="trailing" secondItem="e3X-Kl-3t6" secondAttribute="trailing" id="y26-sL-N2l"/>
                                     <constraint firstItem="JlA-lV-o2I" firstAttribute="top" secondItem="e3X-Kl-3t6" secondAttribute="bottom" constant="2" id="yw8-tl-tlY"/>
                                 </constraints>
                             </view>
@@ -202,7 +186,6 @@
                 <outlet property="lblPlaylistDuration" destination="7Np-Lw-xfM" id="ojf-8X-W16"/>
                 <outlet property="lblPlaylistName" destination="e3X-Kl-3t6" id="jZa-x5-eD3"/>
                 <outlet property="lblSleepTime" destination="i17-vE-Q0b" id="Af5-a7-XpB"/>
-                <outlet property="progressView" destination="y1S-pN-rme" id="208-60-sqM"/>
                 <outlet property="viewBack" destination="f14-D8-YUN" id="gpq-aj-u9V"/>
             </connections>
             <point key="canvasLocation" x="145.6521739130435" y="199.88839285714286"/>

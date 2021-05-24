@@ -15,7 +15,6 @@ class SuggestedPlaylistCell: UITableViewCell {
     
     @IBOutlet weak var btnReminder : UIButton!
     @IBOutlet weak var btnPlay : UIButton!
-    @IBOutlet weak var progressView : UIProgressView!
     
     @IBOutlet weak var lblPlaylistName : UILabel!
     @IBOutlet weak var lblPlaylistDirection : UILabel!
@@ -35,7 +34,6 @@ class SuggestedPlaylistCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        progressView.isHidden = true
     }
     
     // Configure Cell

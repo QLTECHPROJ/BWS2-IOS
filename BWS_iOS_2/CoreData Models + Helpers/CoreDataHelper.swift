@@ -22,11 +22,11 @@ class CoreDataHelper {
     var arrayDownloadedAudios = [AudioDownloads]()
     var arrayDownloadedPlayist = [PlaylistDownloads]()
     
-    func saveAudio(audioData : AudioDetailsDataModel) {
+    func saveAudio(audioData : AudioDetailsDataModel, isSingleAudio : Bool) {
         
         let _ = fetchAllAudios()
         let objects = arrayDownloadedAudios.filter {
-            $0.id == audioData.ID && $0.playlistID == audioData.PlaylistID && $0.isSingleAudio == audioData.isSingleAudio
+            $0.id == audioData.ID && $0.playlistID == audioData.PlaylistID && $0.isSingleAudio == (isSingleAudio ? "1" : "")
         }
         
         if objects.count > 0 {
@@ -50,7 +50,7 @@ class CoreDataHelper {
         downloadAudio.bitrate = audioData.Bitrate
         downloadAudio.download = "1" //audioData.Download
         downloadAudio.downloadLocation = audioData.downloadLocation
-        downloadAudio.isSingleAudio = audioData.isSingleAudio
+        downloadAudio.isSingleAudio = isSingleAudio ? "1" : ""
         downloadAudio.sortId = audioData.sortId
         
         do {
@@ -358,7 +358,7 @@ extension CoreDataHelper {
         
         for audio in playlistData.PlaylistSongs {
             audio.isSingleAudio = ""
-            self.saveAudio(audioData: audio)
+            self.saveAudio(audioData: audio, isSingleAudio: false)
         }
         
         do {

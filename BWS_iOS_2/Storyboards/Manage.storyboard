@@ -87,7 +87,6 @@
                         <outlet property="playlistBottomView" destination="qhi-Ku-osb" id="Leh-OV-9TC"/>
                         <outlet property="playlistMainView" destination="kwT-eT-c1w" id="z8B-vX-sJ3"/>
                         <outlet property="playlistTopView" destination="r26-ls-N9c" id="2eb-Od-buq"/>
-                        <outlet property="progressView" destination="J6j-Bo-ddX" id="ROJ-E7-wai"/>
                         <outlet property="tableHeaderView" destination="SK6-n2-AZw" id="mZJ-kq-qCH"/>
                         <outlet property="tableView" destination="lqM-C2-2GD" id="XZt-cj-l2k"/>
                     </connections>
@@ -214,32 +213,19 @@
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ultimate Anger Relief" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="w5u-m7-2fu">
-                                            <rect key="frame" x="27" y="239" width="289" height="16.333333333333343"/>
+                                            <rect key="frame" x="27" y="257" width="289" height="17.333333333333314"/>
                                             <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="14"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sleep start in your brain" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="LzN-uj-Zor">
-                                            <rect key="frame" x="27" y="257.33333333333331" width="242" height="11.666666666666686"/>
+                                            <rect key="frame" x="27" y="276.33333333333331" width="242" height="11.666666666666686"/>
                                             <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="10"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <progressView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="J6j-Bo-ddX">
-                                            <rect key="frame" x="27" y="279" width="289" height="4"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="4" id="46Y-bW-vIq"/>
-                                            </constraints>
-                                            <color key="progressTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <color key="trackTintColor" white="1" alpha="0.24967893835616439" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                    <real key="value" value="2"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
-                                        </progressView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="07:10:47" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="7EF-JT-8nx">
-                                            <rect key="frame" x="277" y="257.33333333333331" width="39" height="11.666666666666686"/>
+                                            <rect key="frame" x="277" y="276.33333333333331" width="39" height="11.666666666666686"/>
                                             <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="10"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
@@ -250,22 +236,19 @@
                                         <constraint firstItem="HKj-hP-CvE" firstAttribute="leading" secondItem="r26-ls-N9c" secondAttribute="leading" constant="16" id="1kq-XZ-YE4"/>
                                         <constraint firstAttribute="trailing" secondItem="w5u-m7-2fu" secondAttribute="trailing" constant="27" id="8hf-Tv-GfF"/>
                                         <constraint firstItem="w5u-m7-2fu" firstAttribute="leading" secondItem="r26-ls-N9c" secondAttribute="leading" constant="27" id="BG6-9Y-LUK"/>
-                                        <constraint firstItem="J6j-Bo-ddX" firstAttribute="trailing" secondItem="w5u-m7-2fu" secondAttribute="trailing" id="BTa-kX-OBf"/>
                                         <constraint firstItem="Dex-Eb-aUL" firstAttribute="leading" secondItem="r26-ls-N9c" secondAttribute="leading" id="FI9-A5-a29"/>
-                                        <constraint firstItem="7EF-JT-8nx" firstAttribute="trailing" secondItem="J6j-Bo-ddX" secondAttribute="trailing" id="Q33-Bf-M6y"/>
+                                        <constraint firstItem="7EF-JT-8nx" firstAttribute="trailing" secondItem="w5u-m7-2fu" secondAttribute="trailing" id="RlN-mL-9yr"/>
                                         <constraint firstItem="LzN-uj-Zor" firstAttribute="leading" secondItem="w5u-m7-2fu" secondAttribute="leading" id="SWU-Vl-tQl"/>
                                         <constraint firstAttribute="bottom" secondItem="Dex-Eb-aUL" secondAttribute="bottom" constant="37" id="XWN-TM-ujW"/>
                                         <constraint firstAttribute="height" constant="304" id="YLt-yA-Wgo"/>
+                                        <constraint firstAttribute="bottom" secondItem="LzN-uj-Zor" secondAttribute="bottom" constant="16" id="ZJo-x3-cyA"/>
                                         <constraint firstItem="7EF-JT-8nx" firstAttribute="centerY" secondItem="LzN-uj-Zor" secondAttribute="centerY" id="bCA-Ln-nix"/>
                                         <constraint firstItem="iMh-nW-BJw" firstAttribute="centerY" secondItem="r26-ls-N9c" secondAttribute="centerY" id="coI-cB-tVf"/>
                                         <constraint firstItem="LzN-uj-Zor" firstAttribute="top" secondItem="w5u-m7-2fu" secondAttribute="bottom" constant="2" id="fFj-t8-jaZ"/>
                                         <constraint firstItem="Dex-Eb-aUL" firstAttribute="top" secondItem="r26-ls-N9c" secondAttribute="top" constant="14" id="fYr-em-62x"/>
                                         <constraint firstAttribute="trailing" secondItem="Dex-Eb-aUL" secondAttribute="trailing" id="gFg-lI-g7f"/>
-                                        <constraint firstItem="J6j-Bo-ddX" firstAttribute="top" secondItem="LzN-uj-Zor" secondAttribute="bottom" constant="10" id="jqB-ML-kaP"/>
                                         <constraint firstItem="HKj-hP-CvE" firstAttribute="top" secondItem="r26-ls-N9c" secondAttribute="top" constant="14" id="mnG-2j-hST"/>
-                                        <constraint firstItem="J6j-Bo-ddX" firstAttribute="leading" secondItem="LzN-uj-Zor" secondAttribute="leading" id="tCB-as-pjw"/>
                                         <constraint firstItem="7EF-JT-8nx" firstAttribute="leading" secondItem="LzN-uj-Zor" secondAttribute="trailing" constant="8" id="tOu-rt-Brm"/>
-                                        <constraint firstAttribute="bottom" secondItem="J6j-Bo-ddX" secondAttribute="bottom" constant="21" id="xub-Ut-ixd"/>
                                         <constraint firstItem="iMh-nW-BJw" firstAttribute="centerX" secondItem="r26-ls-N9c" secondAttribute="centerX" id="yF1-HU-mom"/>
                                     </constraints>
                                 </view>
