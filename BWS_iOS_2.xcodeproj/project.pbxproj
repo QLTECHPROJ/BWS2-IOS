@@ -471,6 +471,9 @@
 		9A51DF2D26383A6D001364EA /* ChangePINVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A51DF2B26383A4E001364EA /* ChangePINVC.swift */; };
 		9A51DF2F26384034001364EA /* ChangePassWordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A51DF2E26384034001364EA /* ChangePassWordVC.swift */; };
 		9A51DF3026384034001364EA /* ChangePassWordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A51DF2E26384034001364EA /* ChangePassWordVC.swift */; };
+		9A63D461265778D800B596D7 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A63D460265778D800B596D7 /* IAPHelper.swift */; };
+		9A63D462265778D800B596D7 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A63D460265778D800B596D7 /* IAPHelper.swift */; };
+		9A7505C726578C4900177738 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A7505C626578C4900177738 /* StoreKit.framework */; };
 		9AC066FC2639178E00287A44 /* RecAudioBookVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC066EC2639178E00287A44 /* RecAudioBookVC.swift */; };
 		9AC066FD2639178E00287A44 /* RecAudioBookVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC066EC2639178E00287A44 /* RecAudioBookVC.swift */; };
 		9AC066FE2639178F00287A44 /* RecDocuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC066ED2639178E00287A44 /* RecDocuVC.swift */; };
@@ -766,6 +769,9 @@
 		9A51DF2826382DFC001364EA /* EditProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileVC.swift; sourceTree = "<group>"; };
 		9A51DF2B26383A4E001364EA /* ChangePINVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePINVC.swift; sourceTree = "<group>"; };
 		9A51DF2E26384034001364EA /* ChangePassWordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePassWordVC.swift; sourceTree = "<group>"; };
+		9A63D460265778D800B596D7 /* IAPHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
+		9A63D4672657864E00B596D7 /* SwiftyStoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftyStoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A7505C626578C4900177738 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		9AC066EC2639178E00287A44 /* RecAudioBookVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecAudioBookVC.swift; sourceTree = "<group>"; };
 		9AC066ED2639178E00287A44 /* RecDocuVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecDocuVC.swift; sourceTree = "<group>"; };
 		9AC066EE2639178E00287A44 /* RecApps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecApps.swift; sourceTree = "<group>"; };
@@ -796,6 +802,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D8C9DBD48B974EAF0900A669 /* Pods_BWS_iOS_2_Staging.framework in Frameworks */,
+				9A7505C726578C4900177738 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -813,6 +820,8 @@
 		27589461E8F380AE98C1E9ED /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9A7505C626578C4900177738 /* StoreKit.framework */,
+				9A63D4672657864E00B596D7 /* SwiftyStoreKit.framework */,
 				2297DCB35FF63C0665FDF246 /* Pods_BWS_iOS_2.framework */,
 				8A9C109FCD0C02CB81D9724A /* Pods_BWS_iOS_2_Staging.framework */,
 			);
@@ -1350,6 +1359,7 @@
 			children = (
 				28F812B925FB356000DC6AF6 /* Brain Wellness App.entitlements */,
 				28F812A225FB336F00DC6AF6 /* AppDelegate.swift */,
+				9A63D463265785D100B596D7 /* IAP */,
 				2865DB2B26495567009CDE7F /* Segment+Functions.swift */,
 				289F1F252654F15A00E94290 /* Segment+EventsNames.swift */,
 				2865DB2E26495575009CDE7F /* Segment+ScreenTracking.swift */,
@@ -1402,6 +1412,14 @@
 				282441622609CB4E0060292E /* GoogleService-Info.plist */,
 			);
 			path = Live;
+			sourceTree = "<group>";
+		};
+		9A63D463265785D100B596D7 /* IAP */ = {
+			isa = PBXGroup;
+			children = (
+				9A63D460265778D800B596D7 /* IAPHelper.swift */,
+			);
+			path = IAP;
 			sourceTree = "<group>";
 		};
 		9AC066E92639174B00287A44 /* Download */ = {
@@ -1838,6 +1856,7 @@
 				2870B41E25FB41A10014A4F6 /* UIImageView+Letters.m in Sources */,
 				2824413B2609AB9C0060292E /* CountryListVC.swift in Sources */,
 				283F72F0261D994900554774 /* AssessmentVC.swift in Sources */,
+				9A63D462265778D800B596D7 /* IAPHelper.swift in Sources */,
 				2891E29D2643CCF800658B49 /* DayVC.swift in Sources */,
 				2870B42C25FB41A10014A4F6 /* AnimationFrames.swift in Sources */,
 				2824413C2609ABA10060292E /* SignUpVC.swift in Sources */,
@@ -2042,6 +2061,7 @@
 				2870B41D25FB41A10014A4F6 /* UIImageView+Letters.m in Sources */,
 				2870B42B25FB41A10014A4F6 /* AnimationFrames.swift in Sources */,
 				283F72EF261D994900554774 /* AssessmentVC.swift in Sources */,
+				9A63D461265778D800B596D7 /* IAPHelper.swift in Sources */,
 				2891E29C2643CCF800658B49 /* DayVC.swift in Sources */,
 				2870B45F25FB44700014A4F6 /* String+Timepiece.swift in Sources */,
 				2870B3E725FB41A10014A4F6 /* UIViewController+Extension.swift in Sources */,

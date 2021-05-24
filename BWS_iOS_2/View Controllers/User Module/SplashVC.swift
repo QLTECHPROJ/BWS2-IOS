@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import StoreKit
+import SwiftyStoreKit
 
 class SplashVC: BaseViewController {
     
@@ -18,6 +20,12 @@ class SplashVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        NetworkActivityIndicatorManager.networkOperationStarted()
+        IAPHelper.shared.verifyReceipt { result in
+            NetworkActivityIndicatorManager.networkOperationFinished()
+            IAPHelper.shared.showAlert(IAPHelper.shared.alertForVerifyReceipt(result))
+        }
         
         if checkInternet() == false {
             handleRedirection()

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import StoreKit
+import SwiftyStoreKit
 
 class OrderSummaryVC: BaseViewController {
     
@@ -27,7 +29,7 @@ class OrderSummaryVC: BaseViewController {
     
     // MARK:- VARIABLES
     var planData = PlanDetailsModel()
-    
+    var arrProdID = ["manage_2_profiles_annually","manage_2_profiles_monthly","manage_2_profiles_sixmonthly","manage_2_profiles_weekly","manage_3_profiles_annually","manage_3_profiles_monthly","manage_3_profiles_sixmonthly","manage_3_profiles_weekly"]
     
     // MARK:- VIEW LIFE CYCLE
     override func viewDidLoad() {
@@ -36,6 +38,7 @@ class OrderSummaryVC: BaseViewController {
         // Segment Tracking
         SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.orderSummary, traits: ["plan":planData.toDictionary()])
         
+        IAPHelper.shared.productRetrive(arrProdID: arrProdID, subName: planData.SubName)
         setupData()
     }
     
@@ -59,15 +62,19 @@ class OrderSummaryVC: BaseViewController {
     
     // MARK:- ACTIONS
     @IBAction func backClicked(sender : UIButton) {
+        IAPHelper.shared.arrPlanData.removeAll()
         self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func checkoutClicked(sender: UIButton) {
         // Segment Tracking
         SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.Checkout_Proceeded, traits: ["plan":planData.toDictionary()])
+        IAPHelper.shared.purchaseSubscriptions(atomically: true)
         
-        let aVC = AppStoryBoard.main.viewController(viewControllerClass:ThankYouVC.self)
-        self.navigationController?.pushViewController(aVC, animated: true)
+        IAPHelper.shared.successPurchase = {
+            let aVC = AppStoryBoard.main.viewController(viewControllerClass: ThankYouVC.self)
+            self.navigationController?.pushViewController(aVC, animated: true)
+        }
     }
     
 }

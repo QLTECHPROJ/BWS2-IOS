@@ -127,7 +127,7 @@ class SelfDevCell: UITableViewCell {
         self.configureCell(backgroundColor: .white, buttonColor: UIColor.black, hideDownload: true, hideDelete: true, hideChangePosition: false)
         
         lblTitle.textColor = Theme.colors.textColor
-        lblDuration.textColor = Theme.colors.gray_DDDDDD
+        //lblDuration.textColor = Theme.colors.gray_DDDDDD
         
         btnDownload.setImage(nil, for: UIControl.State.normal)
         btnChangePosition.setImage(UIImage(named: "threeDot_Vertical_green"), for: UIControl.State.normal)

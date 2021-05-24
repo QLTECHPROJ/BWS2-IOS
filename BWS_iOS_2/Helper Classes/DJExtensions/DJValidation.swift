@@ -34,3 +34,30 @@ func convertStringToDictionary(_ text: String) -> [String:AnyObject]? {
     return nil
 }
 
+func convertIntoJSONString(arrayObject: [Any]) -> String? {
+    
+    do {
+        let jsonData: Data = try JSONSerialization.data(withJSONObject: arrayObject, options: [])
+        if  let jsonString = NSString(data: jsonData, encoding: String.Encoding.utf8.rawValue) {
+            return jsonString as String
+        }
+        
+    } catch let error as NSError {
+        print("Array convertIntoJSON - \(error.description)")
+    }
+    return nil
+}
+
+func convertIntoJSON(arrayObject: [String:AnyObject]) -> String? {
+       
+       do {
+           let jsonData: Data = try JSONSerialization.data(withJSONObject: arrayObject, options: [])
+           if  let jsonString = NSString(data: jsonData, encoding: String.Encoding.utf8.rawValue) {
+               return jsonString as String
+           }
+           
+       } catch let error as NSError {
+           print("Array convertIntoJSON - \(error.description)")
+       }
+       return nil
+   }

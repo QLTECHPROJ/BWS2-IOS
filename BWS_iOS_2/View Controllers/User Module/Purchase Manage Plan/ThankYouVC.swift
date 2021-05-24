@@ -46,6 +46,7 @@ class ThankYouVC: BaseViewController {
     
     // MARK:- ACTIONS
     @IBAction func exploreAppClicked(sender: UIButton) {
+        IAPHelper.shared.verifySubscriptions()
         self.handleCoUserRedirection()
     }
     
