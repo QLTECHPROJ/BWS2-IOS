@@ -38,7 +38,7 @@ class OrderSummaryVC: BaseViewController {
         // Segment Tracking
         SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.orderSummary, traits: ["plan":planData.toDictionary()])
         
-        IAPHelper.shared.productRetrive(arrProdID: arrProdID, subName: planData.SubName)
+        IAPHelper.shared.productRetrive(arrProdID:[planData.IOSplanId])
         setupData()
     }
     

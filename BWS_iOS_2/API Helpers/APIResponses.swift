@@ -176,6 +176,7 @@ class PlanDetailsModel:EVObject {
     var RecommendedFlag = ""
     var PlanFlag = ""
     var isSelected = false
+    var IOSplanId = ""
 }
 
 class PlanFeatureModel:EVObject {

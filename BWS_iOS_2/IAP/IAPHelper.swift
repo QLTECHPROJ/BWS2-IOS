@@ -18,27 +18,26 @@ class IAPHelper : UIViewController {
     
     //MARK:- product fetch
     
-    func productRetrive(arrProdID:[String],subName:String) {
+    func productRetrive(arrProdID:[String]) {
         //Retrieve Data from ProductID
         
         showHud()
         let productIDS = Set(arrProdID)
         SwiftyStoreKit.retrieveProductsInfo(productIDS) { result in
             hideHud()
-            self.alertForProductRetrievalInfo(result, subName: subName)
+            self.alertForProductRetrievalInfo(result)
         }
     }
     
-    func alertForProductRetrievalInfo(_ result: RetrieveResults,subName:String) {
+    func alertForProductRetrievalInfo(_ result: RetrieveResults) {
         
         let prod = result.retrievedProducts
         print(prod)
+        
         for i in prod {
-           
-            if subName == i.localizedDescription {
-                arrPlanData.append(i)
-                 print("1.PLAN_NAME:-",i.localizedTitle,"2. USER:-",i.localizedDescription, "3.PRICE:-",i.localizedPrice! , "4.LOCAL_PRICE:-",i.priceLocale,"5.PRICENEW:-",i.price)
-            }
+            arrPlanData = [i]
+            print("1.PLAN_NAME:-",i.localizedTitle,"2. USER:-",i.localizedDescription, "3.PRICE:-",i.localizedPrice! , "4.LOCAL_PRICE:-",i.priceLocale,"5.PRICENEW:-",i.price)
+            
         }
     }
     
