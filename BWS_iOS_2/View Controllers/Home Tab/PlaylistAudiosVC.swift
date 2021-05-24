@@ -11,6 +11,7 @@ import UIKit
 class PlaylistAudiosVC: BaseViewController {
     
     // MARK:- OUTLETS
+    @IBOutlet weak var viewPlaylist : UIView!
     @IBOutlet weak var imgViewPlaylist : UIImageView!
     @IBOutlet weak var imgViewTransparent : UIImageView!
     @IBOutlet weak var lblPlaylistName: UILabel!
@@ -20,32 +21,28 @@ class PlaylistAudiosVC: BaseViewController {
     @IBOutlet weak var btnReminder : UIButton!
     @IBOutlet weak var btnDownload : UIButton!
     @IBOutlet weak var btnOption: UIButton!
+    @IBOutlet weak var downloadProgressView : KDCircularProgress!
     
-    @IBOutlet weak var btnAddAudio: UIButton!
-    @IBOutlet weak var viewAddAudio: UIView!
-    
-    @IBOutlet weak var tableView: UITableView!
-    
-    @IBOutlet weak var tableHeaderView: UIView!
     @IBOutlet weak var moonView: UIView!
-    @IBOutlet weak var btnSearch: UIButton!
-    @IBOutlet weak var lblAreaOfFocus: UILabel!
-    @IBOutlet weak var btnEdit: UIButton!
-    @IBOutlet weak var viewSearch: UIView!
-    @IBOutlet weak var txtSearch: UITextField!
-    @IBOutlet weak var btnClear: UIButton!
-    
     @IBOutlet weak var lblSleepTime : UILabel!
     
-    @IBOutlet weak var lblAreaOfFocusTopConst: NSLayoutConstraint!
-    
+    @IBOutlet weak var viewAreaOfFocus: UIView!
+    @IBOutlet weak var lblAreaOfFocus: UILabel!
+    @IBOutlet weak var btnEdit: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var collectionHeight: NSLayoutConstraint!
     
+    @IBOutlet weak var viewSearch: UIView!
+    @IBOutlet weak var txtSearch: UITextField!
+    @IBOutlet weak var btnClear: UIButton!
+    @IBOutlet weak var btnSearch: UIButton!
+    
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableViewHeightConst: NSLayoutConstraint!
     @IBOutlet weak var tableFooterView : UIView!
     @IBOutlet weak var lblNoDataFooter : UILabel!
-    
-    @IBOutlet weak var downloadProgressView : KDCircularProgress!
+    @IBOutlet weak var btnAddAudio: UIButton!
+    @IBOutlet weak var viewAddAudio: UIView!
     
     
     // MARK:- VARIABLES
@@ -67,6 +64,9 @@ class PlaylistAudiosVC: BaseViewController {
                 break
             }
         }
+        
+        tableViewHeightConst.constant = 0
+        self.view.layoutIfNeeded()
         
         NotificationCenter.default.addObserver(self, selector: #selector(callPlaylistDetailAPI), name: .refreshPlaylist, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(refreshDownloadData), name: .refreshDownloadData, object: nil)
@@ -105,7 +105,6 @@ class PlaylistAudiosVC: BaseViewController {
         tableView.register(nibWithCellClass: SelfDevCell.self)
         collectionView.register(nibWithCellClass: AreaOfFocusCell.self)
         
-        tableView.tableHeaderView = tableHeaderView
         tableView.rowHeight = 70
         tableView.reorder.delegate = self
         tableView.reloadData()
@@ -125,39 +124,26 @@ class PlaylistAudiosVC: BaseViewController {
         
         if objPlaylist?.Created == "2" {
             collectionView.isHidden = false
-            lblAreaOfFocus.isHidden = false
-            btnEdit.isHidden = false
+            viewAreaOfFocus.isHidden = false
             moonView.isHidden = false
             
             areaOfFocus = CoUserDataModel.currentUser?.AreaOfFocus ?? [AreaOfFocusModel]()
             btnEdit.isHidden = ( areaOfFocus.count == 0 )
             self.collectionView.reloadData()
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                self.lblAreaOfFocusTopConst.constant = 46
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 self.collectionHeight.constant = self.collectionView.contentSize.height // 70
-                let headerHeight = 480 + self.collectionView.contentSize.height
-                if self.viewSearch.isHidden {
-                    self.tableHeaderView.frame.size = CGSize(width: self.tableView.frame.width, height:headerHeight - 47)
-                } else {
-                    self.tableHeaderView.frame.size = CGSize(width: self.tableView.frame.width, height:headerHeight)
-                }
-                
-                self.tableView.reloadData()
                 self.view.layoutIfNeeded()
             }
-            
-            imgViewPlaylist.image = nil
-            imgViewTransparent.image = UIImage(named: "cloud")
         } else {
             collectionView.isHidden = true
-            lblAreaOfFocus.isHidden = true
-            btnEdit.isHidden = true
+            viewAreaOfFocus.isHidden = true
             moonView.isHidden = true
             
-            lblAreaOfFocusTopConst.constant = 0
-            collectionHeight.constant = 0
-            tableHeaderView.frame.size = CGSize(width: tableView.frame.width, height:430)
+            DispatchQueue.main.async {
+                self.collectionHeight.constant = 0
+                self.view.layoutIfNeeded()
+            }
         }
         
         viewSearch.isHidden = (objPlaylist?.PlaylistSongs.count ?? 0) == 0
@@ -189,41 +175,38 @@ class PlaylistAudiosVC: BaseViewController {
         
         if details.Created == "1" && details.PlaylistSongs.count == 0 {
             tableView.tableFooterView = viewAddAudio
-            btnSearch.isHidden = true
+            tableViewHeightConst.constant = 300 + 50
+            self.view.layoutIfNeeded()
         } else {
             tableView.tableFooterView = UIView()
-            btnSearch.isHidden = false
+            tableViewHeightConst.constant = CGFloat((details.PlaylistSongs.count * 70) + 50)
+            self.view.layoutIfNeeded()
         }
         
         if details.Created == "1" {
             txtSearch.placeholder = "Add and search for audio"
+            btnSearch.isHidden = details.PlaylistSongs.count == 0
+        } else if details.Created == "2" {
+            txtSearch.placeholder = "Search for audio"
+            btnSearch.isHidden = true
         } else {
             txtSearch.placeholder = "Search for audio"
+            btnSearch.isHidden = true
         }
         
         viewSearch.isHidden = (objPlaylist?.PlaylistSongs.count ?? 0) == 0
         
         if details.Created == "2" {
             collectionView.isHidden = false
-            lblAreaOfFocus.isHidden = false
-            btnEdit.isHidden = false
+            viewAreaOfFocus.isHidden = false
             moonView.isHidden = false
             
             areaOfFocus = CoUserDataModel.currentUser?.AreaOfFocus ?? [AreaOfFocusModel]()
             btnEdit.isHidden = ( areaOfFocus.count == 0 )
             self.collectionView.reloadData()
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                self.lblAreaOfFocusTopConst.constant = 46
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 self.collectionHeight.constant = self.collectionView.contentSize.height // 70
-                let headerHeight = 480 + self.collectionView.contentSize.height
-                if self.viewSearch.isHidden {
-                    self.tableHeaderView.frame.size = CGSize(width: self.tableView.frame.width, height:headerHeight - 47)
-                } else {
-                    self.tableHeaderView.frame.size = CGSize(width: self.tableView.frame.width, height:headerHeight)
-                }
-                
-                self.tableView.reloadData()
                 self.view.layoutIfNeeded()
             }
             
@@ -231,17 +214,12 @@ class PlaylistAudiosVC: BaseViewController {
             imgViewTransparent.image = UIImage(named: "cloud")
         } else {
             collectionView.isHidden = true
-            lblAreaOfFocus.isHidden = true
-            btnEdit.isHidden = true
+            viewAreaOfFocus.isHidden = true
             moonView.isHidden = true
             
-            lblAreaOfFocusTopConst.constant = 0
-            collectionHeight.constant = 0
-            
-            if viewSearch.isHidden {
-                tableHeaderView.frame.size = CGSize(width: tableView.frame.width, height:355)
-            } else {
-                tableHeaderView.frame.size = CGSize(width: tableView.frame.width, height:430)
+            DispatchQueue.main.async {
+                self.collectionHeight.constant = 0
+                self.view.layoutIfNeeded()
             }
             
             imgViewTransparent.image = nil
@@ -322,7 +300,7 @@ class PlaylistAudiosVC: BaseViewController {
             btnReminder.isEnabled = false
             btnReminder.alpha = 0
             btnDownload.alpha = 0
-            btnOption.setImage(UIImage(named: "trash_black"), for: UIControl.State.normal)
+            btnOption.setImage(UIImage(named: "trash_white"), for: UIControl.State.normal)
         }
         
         self.updateDownloadProgress()
@@ -631,8 +609,12 @@ class PlaylistAudiosVC: BaseViewController {
         if let songs = objPlaylist?.PlaylistSongs, songs.count > 0 {
             arraySearchSongs = songs
             tableView.tableFooterView = UIView()
+            tableViewHeightConst.constant = CGFloat((arraySearchSongs.count * 70) + 50)
+            self.view.layoutIfNeeded()
         } else {
             tableView.tableFooterView = viewAddAudio
+            tableViewHeightConst.constant = 300 + 50
+            self.view.layoutIfNeeded()
         }
         
         btnClear.isHidden = true
@@ -735,6 +717,7 @@ extension PlaylistAudiosVC : UITableViewDelegate, UITableViewDataSource {
         }
         
         let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 50))
+        headerView.backgroundColor = .white
         
         let label = UILabel()
         label.frame = CGRect.init(x: 16, y: 10, width: headerView.frame.width - 32, height: headerView.frame.height - 20)
@@ -894,6 +877,10 @@ extension PlaylistAudiosVC : TableViewReorderDelegate {
 // MARK:- UITextFieldDelegate
 extension PlaylistAudiosVC : UITextFieldDelegate {
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        return textField.resignFirstResponder()
+    }
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         guard let songs = objPlaylist?.PlaylistSongs else {
@@ -913,9 +900,13 @@ extension PlaylistAudiosVC : UITextFieldDelegate {
             
             if arraySearchSongs.count > 0 {
                 tableView.tableFooterView = UIView()
+                tableViewHeightConst.constant = CGFloat((arraySearchSongs.count * 70) + 50)
+                self.view.layoutIfNeeded()
             } else {
                 tableView.tableFooterView = tableFooterView
                 lblNoDataFooter.text = "Couldn't find " + updatedText + " Try searching again"
+                tableViewHeightConst.constant = 300 + 50
+                self.view.layoutIfNeeded()
             }
             
             
@@ -927,9 +918,13 @@ extension PlaylistAudiosVC : UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         if arraySearchSongs.count > 0 {
             tableView.tableFooterView = UIView()
+            tableViewHeightConst.constant = CGFloat((arraySearchSongs.count * 70) + 50)
+            self.view.layoutIfNeeded()
         } else {
             tableView.tableFooterView = tableFooterView
             lblNoDataFooter.text = "Couldn't find " + (textField.text ?? "") + " Try searching again"
+            tableViewHeightConst.constant = 300 + 50
+            self.view.layoutIfNeeded()
         }
     }
     

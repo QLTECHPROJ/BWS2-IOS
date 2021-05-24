@@ -77,6 +77,9 @@ class SegmentTracking {
             }
         }
         
+        newTraits["AppType"] = APP_TYPE
+        newTraits["AppVersion"] = APP_VERSION
+        newTraits["DeviceID"] = DEVICE_UUID
         newTraits["batteryLevel"] = NSString(format: "%0.0f",APPDELEGATE.batteryLevel)
         newTraits["batteryState"] = APPDELEGATE.batteryState
         
@@ -413,8 +416,15 @@ class SegmentTracking {
                           "playlistId":playlistDetails.PlaylistID,
                           "playlistName":playlistDetails.PlaylistName,
                           "playlistDescription":playlistDetails.PlaylistDesc,
-                          "audioCount":playlistDetails.TotalAudio,
-                          "playlistType":playlistDetails.Created == "1" ? "Created" : "Default"]
+                          "audioCount":playlistDetails.TotalAudio]
+            
+            if playlistDetails.Created == "1" {
+                traits["playlistType"] = "Created"
+            } else if playlistDetails.Created == "2" {
+                traits["playlistType"] = "Suggested"
+            } else {
+                traits["playlistType"] = "Default"
+            }
             
             let totalhour = playlistDetails.Totalhour.trim.count > 0 ? playlistDetails.Totalhour : "0"
             let totalminute = playlistDetails.Totalminute.trim.count > 0 ? playlistDetails.Totalminute : "0"
