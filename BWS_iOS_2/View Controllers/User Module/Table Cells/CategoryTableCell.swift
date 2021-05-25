@@ -16,7 +16,7 @@ class CategoryTableCell: UITableViewCell {
     var mainCategory = ""
     var arrayAreaOfFocus = [AreaOfFocusModel]()
     var arrayCategories = [CategoryDataModel]()
-    var categoryClicked : ((Int) -> Void)?
+    var categoryClicked : ((Int,UICollectionView) -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -62,7 +62,7 @@ extension CategoryTableCell : UICollectionViewDelegate, UICollectionViewDelegate
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.categoryClicked?(indexPath.row)
+        self.categoryClicked?(indexPath.row, collectionView)
     }
     
 }

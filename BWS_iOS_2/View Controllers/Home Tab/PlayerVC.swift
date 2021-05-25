@@ -175,6 +175,7 @@ class PlayerVC: BaseViewController {
         btnInfo.isEnabled = enableOptions
         
         DJMusicPlayer.shared.updateInfoCenter()
+        DJMusicPlayer.shared.updateNowPlaying()
     }
     
     @objc override func refreshDownloadData() {

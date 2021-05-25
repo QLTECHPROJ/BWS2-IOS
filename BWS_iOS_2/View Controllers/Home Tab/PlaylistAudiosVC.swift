@@ -705,6 +705,7 @@ extension PlaylistAudiosVC : UITableViewDelegate, UITableViewDataSource {
             DJMusicPlayer.shared.playingFrom = objPlaylist!.PlaylistName
         }
          DJMusicPlayer.shared.updateInfoCenter()
+        DJMusicPlayer.shared.updateNowPlaying()
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

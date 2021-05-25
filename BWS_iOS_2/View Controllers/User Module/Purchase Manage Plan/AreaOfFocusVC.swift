@@ -78,7 +78,7 @@ class AreaOfFocusVC: BaseViewController {
         self.setupData()
     }
     
-    func categoryClicked(indexPath : IndexPath) {
+    func categoryClicked(indexPath : IndexPath,collectionview:UICollectionView) {
         
         let isSelected = arrayCategories[indexPath.section].Details[indexPath.row].isSelected
         
@@ -113,6 +113,7 @@ class AreaOfFocusVC: BaseViewController {
                 cat.MainCat = arrayCategories[indexPath.section].View
                 cat.RecommendedCat = arrayCategories[indexPath.section].Details[indexPath.row].ProblemName
                 arrayAreaOfFocus.append(cat)
+                collectionview.reloadData()
                 tableView.reloadData()
             } else {
                 showAlertToast(message: Theme.strings.alert_max_category)
@@ -232,8 +233,8 @@ extension AreaOfFocusVC : UITableViewDataSource, UITableViewDelegate {
             cell.arrayAreaOfFocus = self.arrayAreaOfFocus
             cell.configureCell(data: arrayCategories[indexPath.row])
             
-            cell.categoryClicked = { rowIndex in
-                self.categoryClicked(indexPath: IndexPath(row: rowIndex, section: indexPath.row))
+            cell.categoryClicked = { rowIndex,collectionview in
+                self.categoryClicked(indexPath: IndexPath(row: rowIndex, section: indexPath.row), collectionview: collectionview)
             }
             
             return cell

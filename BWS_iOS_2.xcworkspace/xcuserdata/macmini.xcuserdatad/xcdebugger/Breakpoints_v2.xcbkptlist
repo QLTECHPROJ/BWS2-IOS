@@ -364,9 +364,9 @@
             filePath = "BWS_iOS_2/View Controllers/Home Tab/PlaylistAudiosVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "784"
-            endingLineNumber = "784"
-            landmarkName = "didClickedRename()"
+            startingLineNumber = "783"
+            endingLineNumber = "783"
+            landmarkName = "didClickedDelete()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -380,9 +380,9 @@
             filePath = "BWS_iOS_2/View Controllers/Home Tab/PlaylistAudiosVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "805"
-            endingLineNumber = "805"
-            landmarkName = "didClickedDelete()"
+            startingLineNumber = "804"
+            endingLineNumber = "804"
+            landmarkName = "didClickedAddToPlaylist()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -399,22 +399,6 @@
             startingLineNumber = "79"
             endingLineNumber = "79"
             landmarkName = "alertForPurchaseResult(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "02E33885-5B3D-4FE1-9049-D8FFA7B35B5B"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BWS_iOS_2/View Controllers/Home Tab/PlayerVC.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "409"
-            endingLineNumber = "409"
-            landmarkName = "downloadClicked(sender:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
