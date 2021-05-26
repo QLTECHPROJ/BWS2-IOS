@@ -156,7 +156,6 @@ class PlayerVC: BaseViewController {
         if audioDetails?.isDisclaimer == true {
             enableOptions = false
             
-            lblCategory.text = ""
             playbackSlider.isUserInteractionEnabled = false
             
             btnForward.isEnabled = false
