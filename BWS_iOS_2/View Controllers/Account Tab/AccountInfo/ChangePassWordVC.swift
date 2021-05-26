@@ -99,6 +99,10 @@ class ChangePassWordVC: BaseViewController {
             isValid = false
             lblErrNewPass.isHidden = false
             lblErrNewPass.text = Theme.strings.alert_invalid_password_error
+        }else if txtFNewPassword.text!.isValidPassword() {
+            isValid = false
+            lblErrNewPass.isHidden = false
+            lblErrNewPass.text = "Password should contain at least one uppercase, one lowercase, one special symbol and minimum 8 character long"
         }
         
         if strPin3.count == 0 {

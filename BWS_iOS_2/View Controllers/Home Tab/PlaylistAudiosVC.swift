@@ -288,7 +288,7 @@ class PlaylistAudiosVC: BaseViewController {
             btnPlay.isHidden = true
         }
         
-        if details.IsReminder == "1" {
+        if details.IsReminder == "1" || details.IsReminder == "2"{
             btnReminder.setTitle("     Update reminder     ", for: .normal)
             btnReminder.backgroundColor = Theme.colors.gray_313131.withAlphaComponent(0.30)
         } else {

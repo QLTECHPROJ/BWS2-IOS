@@ -130,10 +130,15 @@ class SignUpVC: BaseViewController {
             isValid = false
             lblErrPass.isHidden = false
             lblErrPass.text = Theme.strings.alert_invalid_password_error
-        } else if txtFPassWord.text!.trim.count < 8 {
+        }
+        else if txtFPassWord.text!.trim.count < 8 {
             isValid = false
             lblErrPass.isHidden = false
             lblErrPass.text = Theme.strings.alert_invalid_password_error
+        }else if txtFPassWord.text!.isValidPassword() {
+            isValid = false
+            lblErrPass.isHidden = false
+            lblErrPass.text = "Password should contain at least one uppercase, one lowercase, one special symbol and minimum 8 character long"
         }
         
         return isValid

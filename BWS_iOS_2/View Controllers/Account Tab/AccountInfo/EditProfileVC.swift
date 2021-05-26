@@ -76,7 +76,9 @@ class EditProfileVC: BaseViewController {
             txtFDOB.text = userData.DOB
             
             txtFMobileNo.isEnabled = false
-            txtFDOB.isEnabled = false
+            if txtFDOB.text != "" {
+                txtFDOB.isEnabled = false
+            }
             imgCheckMobile.isHidden = false
             imgCheckEmail.isHidden = false
             txtFEmailAdd.isEnabled = false
