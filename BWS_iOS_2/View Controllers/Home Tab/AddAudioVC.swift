@@ -106,6 +106,8 @@ class AddAudioVC: BaseViewController {
         btnClear.isHidden = true
         
         txtSearch.delegate = self
+        txtSearch.autocorrectionType = .no
+        txtSearch.autocapitalizationType = .none
         txtSearch.addTarget(self, action: #selector(textFieldValueChanged(textField:)), for: UIControl.Event.editingChanged)
         
         collectionView.register(nibWithCellClass: PlaylistCollectionCell.self)
@@ -315,7 +317,20 @@ extension AddAudioVC : UITextFieldDelegate {
             let updatedText = text.replacingCharacters(in: textRange, with: string).trim
             if updatedText.count > 0 {
                 self.callSearchAPI(searchText: updatedText)
+            } else {
+                txtSearch.text = ""
+                arraySearch.removeAll()
+                btnClear.isHidden = true
+                lblNoData.text = "Couldn't find " + (txtSearch.text ?? "") + " Try searching again"
+                lblNoData.isHidden = true
+                tableView.reloadData()
             }
+        } else {
+            arraySearch.removeAll()
+            btnClear.isHidden = true
+            lblNoData.text = "Couldn't find " + (txtSearch.text ?? "") + " Try searching again"
+            lblNoData.isHidden = true
+            tableView.reloadData()
         }
         
         return true

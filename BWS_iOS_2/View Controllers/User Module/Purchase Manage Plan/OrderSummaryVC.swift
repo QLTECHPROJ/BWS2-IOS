@@ -69,12 +69,17 @@ class OrderSummaryVC: BaseViewController {
     @IBAction func checkoutClicked(sender: UIButton) {
         // Segment Tracking
         SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.Checkout_Proceeded, traits: ["plan":planData.toDictionary()])
-        IAPHelper.shared.purchaseSubscriptions(atomically: true)
         
-        IAPHelper.shared.successPurchase = {
-            let aVC = AppStoryBoard.main.viewController(viewControllerClass: ThankYouVC.self)
-            self.navigationController?.pushViewController(aVC, animated: true)
-        }
+        let aVC = AppStoryBoard.main.viewController(viewControllerClass: ThankYouVC.self)
+        self.navigationController?.pushViewController(aVC, animated: true)
+        
+        // IAP Purchase Subscription
+        //        IAPHelper.shared.purchaseSubscriptions(atomically: true)
+        //
+        //        IAPHelper.shared.successPurchase = {
+        //            let aVC = AppStoryBoard.main.viewController(viewControllerClass: ThankYouVC.self)
+        //            self.navigationController?.pushViewController(aVC, animated: true)
+        //        }
     }
     
 }
