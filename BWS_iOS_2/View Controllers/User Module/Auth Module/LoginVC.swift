@@ -126,6 +126,17 @@ class LoginVC: BaseViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+    func visiblityValidate(textField:UITextField)  {
+        if textField == txtFPassWord {
+            if textField.text == "" {
+                btnVisible.setImage(UIImage(named: "PassDefault"), for: .normal)
+            }else {
+                txtFPassWord.isSecureTextEntry = true
+                btnVisible.setImage(UIImage(named: "PassHide"), for: .normal)
+            }
+        }
+    }
+    
 }
 
 
@@ -135,9 +146,9 @@ extension LoginVC : UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         lblErrPass.isHidden = true
         lblErrEmail.isHidden = true
+        
         if textField == txtFPassWord {
-            btnVisible.setImage(UIImage(named: "PassHide"), for: .normal)
-            btnVisible.isUserInteractionEnabled = true
+            visiblityValidate(textField:textField)
         }
     }
     
@@ -147,8 +158,8 @@ extension LoginVC : UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         
-        if txtFPassWord.text == "" {
-            btnVisible.setImage(UIImage(named: "PassDefault"), for: .normal)
+        if textField == txtFPassWord {
+            visiblityValidate(textField:textField)
         }
         
         let email = txtFEmailAdd.text?.trim

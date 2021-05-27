@@ -219,13 +219,28 @@ class SignUpVC: BaseViewController {
     
     @IBAction func onTappedShowPass(_ sender: UIButton) {
         iconClick.toggle()
+        showHidePass()
+    }
+    
+    func showHidePass() {
         
         if iconClick {
             txtFPassWord.isSecureTextEntry = false
-            sender.setImage(UIImage(named: "PassShow"), for: .normal)
+            btnVisisble.setImage(UIImage(named: "PassShow"), for: .normal)
         } else {
             txtFPassWord.isSecureTextEntry = true
-            sender.setImage(UIImage(named: "PassHide"), for: .normal)
+            btnVisisble.setImage(UIImage(named: "PassHide"), for: .normal)
+        }
+    }
+    
+    func visiblityValidate(textField:UITextField)  {
+        if textField == txtFPassWord {
+            if textField.text == "" {
+                btnVisisble.setImage(UIImage(named: "PassDefault"), for: .normal)
+            }else {
+                txtFPassWord.isSecureTextEntry = true
+                btnVisisble.setImage(UIImage(named: "PassHide"), for: .normal)
+            }
         }
     }
     
@@ -246,8 +261,7 @@ extension SignUpVC : UITextFieldDelegate {
         lblErrEmail.isHidden = true
         
         if textField == txtFPassWord {
-            btnVisisble.setImage(UIImage(named: "PassHide"), for: .normal)
-            btnVisisble.isUserInteractionEnabled = true
+            visiblityValidate(textField:textField)
         }
     }
     
@@ -288,10 +302,9 @@ extension SignUpVC : UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         
-        if txtFPassWord.text == "" {
-            btnVisisble.setImage(UIImage(named: "PassDefault"), for: .normal)
+        if textField == txtFPassWord {
+            visiblityValidate(textField:textField)
         }
-        
         let name = txtFName.text?.trim
         let mobile = txtFMobileNo.text?.trim
         let email = txtFEmailAdd.text?.trim

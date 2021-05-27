@@ -184,6 +184,10 @@ extension ReminderListVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if checkInternet() == false {
+            showAlertToast(message: Theme.strings.alert_check_internet)
+            return
+        }
         let aVC = AppStoryBoard.account.viewController(viewControllerClass: DayVC.self)
         aVC.arrayRemList = arrayRemList[indexPath.row]
         aVC.isCome = "ReminderList"

@@ -67,12 +67,24 @@ extension AccountInfoVC:UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
+            if checkInternet() == false {
+                showAlertToast(message: Theme.strings.alert_check_internet)
+                return
+            }
             let aVC = AppStoryBoard.account.viewController(viewControllerClass: EditProfileVC.self)
             self.navigationController?.pushViewController(aVC, animated: true)
         }else if indexPath.section == 1 {
+            if checkInternet() == false {
+                showAlertToast(message: Theme.strings.alert_check_internet)
+                return
+            }
             let aVC = AppStoryBoard.account.viewController(viewControllerClass: ChangePassWordVC.self)
             self.navigationController?.pushViewController(aVC, animated: true)
         }else {
+            if checkInternet() == false {
+                showAlertToast(message: Theme.strings.alert_check_internet)
+                return
+            }
             let aVC = AppStoryBoard.account.viewController(viewControllerClass: ChangePINVC.self)
             self.navigationController?.pushViewController(aVC, animated: true)
         }

@@ -172,9 +172,6 @@ class PlayerVC: BaseViewController {
         }
         
         btnInfo.isEnabled = enableOptions
-        
-        DJMusicPlayer.shared.updateInfoCenter()
-        DJMusicPlayer.shared.updateNowPlaying()
     }
     
     @objc override func refreshDownloadData() {
@@ -245,7 +242,6 @@ class PlayerVC: BaseViewController {
         if self.sliderEvent == .ended {
             self.playbackSlider.value = DJMusicPlayer.shared.progress
         }
-        DJMusicPlayer.shared.updateNowPlaying()
     }
     
     @objc func updatePlayerData() {
@@ -253,7 +249,6 @@ class PlayerVC: BaseViewController {
         if self.sliderEvent == .ended {
             self.playbackSlider.value = DJMusicPlayer.shared.progress
         }
-        DJMusicPlayer.shared.updateInfoCenter()
     }
     
     @objc func playbackSliderValueChanged(playbackSlider:UISlider, event: UIEvent) {
@@ -300,7 +295,6 @@ class PlayerVC: BaseViewController {
                 break
             }
         }
-        DJMusicPlayer.shared.updateInfoCenter()
     }
     
     override func handleDJMusicPlayerNotifications(notification: Notification) {

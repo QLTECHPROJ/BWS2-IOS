@@ -527,7 +527,6 @@ class PlaylistAudiosVC: BaseViewController {
             }
             else {
                 DJMusicPlayer.shared.togglePlaying()
-                DJMusicPlayer.shared.updateInfoCenter()
             }
             
             setupData()
@@ -704,8 +703,6 @@ extension PlaylistAudiosVC : UITableViewDelegate, UITableViewDataSource {
             self.presentAudioPlayer(arrayPlayerData: arraySearchSongs, index: indexPath.row)
             DJMusicPlayer.shared.playingFrom = objPlaylist!.PlaylistName
         }
-         DJMusicPlayer.shared.updateInfoCenter()
-        DJMusicPlayer.shared.updateNowPlaying()
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

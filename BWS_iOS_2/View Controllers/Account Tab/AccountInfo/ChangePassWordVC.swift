@@ -65,12 +65,10 @@ class ChangePassWordVC: BaseViewController {
         if shouldEnable {
             btnSave.isUserInteractionEnabled = true
             btnSave.backgroundColor = Theme.colors.green_008892
+            
         } else {
             btnSave.isUserInteractionEnabled = false
             btnSave.backgroundColor = Theme.colors.gray_7E7E7E
-            btnVisible.setImage(UIImage(named: "PassDefault"), for: .normal)
-            btnVisible1.setImage(UIImage(named: "PassDefault"), for: .normal)
-            btnVisible2.setImage(UIImage(named: "PassDefault"), for: .normal)
         }
     }
     
@@ -135,6 +133,25 @@ class ChangePassWordVC: BaseViewController {
         }
     }
     
+    func visiblityValidate(textField:UITextField)  {
+        if textField == txtfOldPassword {
+            btnVisible.setImage(UIImage(named: "PassHide"), for: .normal)
+            if textField.text == "" {
+                btnVisible.setImage(UIImage(named: "PassDefault"), for: .normal)
+            }
+        }else if textField == txtFNewPassword {
+            btnVisible1.setImage(UIImage(named: "PassHide"), for: .normal)
+            if textField.text == "" {
+                btnVisible1.setImage(UIImage(named: "PassDefault"), for: .normal)
+            }
+        }else {
+            btnVisible2.setImage(UIImage(named: "PassHide"), for: .normal)
+            if textField.text == "" {
+                btnVisible2.setImage(UIImage(named: "PassDefault"), for: .normal)
+            }
+        }
+    }
+    
     //MARK:- IBAction Methods
     @IBAction func backClicked(sender : UIButton) {
         self.navigationController?.popViewController(animated: true)
@@ -150,11 +167,11 @@ class ChangePassWordVC: BaseViewController {
     @IBAction func onTappedEye(_ sender: UIButton) {
         
         if sender.tag == 0 {
-            showHidePass(textfield: txtfOldPassword, sender: sender)
+            showHidePass(textfield: txtfOldPassword, sender: btnVisible)
         }else if sender.tag == 1 {
-            showHidePass(textfield: txtFNewPassword, sender: sender)
+            showHidePass(textfield: txtFNewPassword, sender: btnVisible1)
         }else {
-           showHidePass(textfield: txtFConfirmPassword, sender: sender)
+           showHidePass(textfield: txtFConfirmPassword, sender: btnVisible2)
         }
         
     }
@@ -169,17 +186,7 @@ extension ChangePassWordVC : UITextFieldDelegate {
         lblErrNewPass.isHidden = true
         lblErrConfirmPass.isHidden = true
         
-        if textField == txtfOldPassword {
-            btnVisible.setImage(UIImage(named: "PassHide"), for: .normal)
-            btnVisible.isUserInteractionEnabled = true
-        }else if textField == txtFNewPassword {
-            btnVisible1.setImage(UIImage(named: "PassHide"), for: .normal)
-            btnVisible1.isUserInteractionEnabled = true
-        }else {
-            btnVisible2.setImage(UIImage(named: "PassHide"), for: .normal)
-            btnVisible2.isUserInteractionEnabled = true
-        }
-       
+        visiblityValidate(textField:textField)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -189,6 +196,7 @@ extension ChangePassWordVC : UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         
+        visiblityValidate(textField:textField)
         buttonEnableDisable()
     }
     

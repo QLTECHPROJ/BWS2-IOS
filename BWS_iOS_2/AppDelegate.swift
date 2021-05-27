@@ -18,24 +18,13 @@ import SwiftyStoreKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
+    var navigationController: UINavigationController?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        SwiftyStoreKit.completeTransactions(atomically: true) { purchases in
-            for purchase in purchases {
-                switch purchase.transaction.transactionState {
-                case .purchased, .restored:
-                    if purchase.needsFinishTransaction {
-                        // Deliver content from server, then:
-                        SwiftyStoreKit.finishTransaction(purchase.transaction)
-                    }
-                    // Unlock content
-                case .failed, .purchasing, .deferred:
-                    break // do nothing
-                }
-            }
-        }
+        completeTransactions()
+        
         // Set App Notification Count to "0" on App Launch
         UIApplication.shared.applicationIconBadgeNumber = 0
         
@@ -202,6 +191,15 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         
         print("Notification Payload :- ",userInfo)
+        let playlistID = (userInfo["id"] as? String) ?? ""
+        let info = self.extractUserInfo(userInfo: userInfo)
+        let dictPlayListDetails = ["userId":LoginDataModel.currentUser?.ID ?? "",
+                                   "playlistID": playlistID,
+                                   "title": info.title,
+                                   "message":info.body]
+        SegmentTracking.shared.trackEvent(name:"Push Notification Received", traits: dictPlayListDetails, trackingType: .track)
+        
+        
         completionHandler(UIBackgroundFetchResult.newData)
     }
     
@@ -209,6 +207,43 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         
         let userInfo = response.notification.request.content.userInfo
         print("Notification Payload :- ",userInfo)
+        let flag = (userInfo["flag"] as? String) ?? ""
+        let playlistID = (userInfo["id"] as? String) ?? ""
+        let lock = (userInfo["IsLock"] as? String) ?? ""
+        let info = self.extractUserInfo(userInfo: userInfo)
+        print(info.title)
+        print(info.body)
+        print("playlistID :- ",playlistID)
+        print(userInfo)
+        
+        let dictPlayListDetails = ["userId":LoginDataModel.currentUser?.ID ?? "",
+                                   "playlistId": playlistID,
+                                   "title": info.title,
+                                   "message":info.body]
+        SegmentTracking.shared.trackEvent(name:"Push Notification Tapped", traits: dictPlayListDetails, trackingType: .track)
+        
+        if flag == "Playlist" {
+            if playlistID.trim.count != 0 {
+                if lock == "1" || lock == "2" {
+                    let aVC = AppStoryBoard.main.viewController(viewControllerClass: TabBarController.self)
+                    navigationController = UINavigationController(rootViewController: aVC)
+                    aVC.navigationController?.navigationBar.isHidden = true
+                    self.window?.rootViewController = navigationController
+                    self.window?.makeKeyAndVisible()
+                }
+                else {
+                    let aVC = AppStoryBoard.home.viewController(viewControllerClass: PlaylistAudiosVC.self)
+                    let playlist = PlaylistDetailsModel()
+                    playlist.PlaylistID = playlistID
+                    aVC.objPlaylist = playlist
+                   // aVC.isCome = "Delegate"
+                    navigationController = UINavigationController(rootViewController: aVC)
+                    aVC.navigationController?.navigationBar.isHidden = true
+                    self.window?.rootViewController = navigationController
+                    self.window?.makeKeyAndVisible()
+                }
+            }
+        }
     }
     
 }
@@ -261,4 +296,35 @@ extension AppDelegate {
         print(batteryState)
     }
     
+}
+
+extension AppDelegate {
+    //MARK:- functions
+    //userinfo data
+    func extractUserInfo(userInfo: [AnyHashable : Any]) -> (title: String, body: String) {
+        var info = (title: "", body: "")
+        guard let aps = userInfo["aps"] as? [String: Any] else { return info }
+        guard let alert = aps["alert"] as? [String: Any] else { return info }
+        let title = alert["title"] as? String ?? ""
+        let body = alert["body"] as? String ?? ""
+        info = (title: title, body: body)
+        return info
+    }
+    
+    func completeTransactions()  {
+        SwiftyStoreKit.completeTransactions(atomically: true) { purchases in
+            for purchase in purchases {
+                switch purchase.transaction.transactionState {
+                case .purchased, .restored:
+                    if purchase.needsFinishTransaction {
+                        // Deliver content from server, then:
+                        SwiftyStoreKit.finishTransaction(purchase.transaction)
+                    }
+                    // Unlock content
+                case .failed, .purchasing, .deferred:
+                    break // do nothing
+                }
+            }
+        }
+    }
 }
