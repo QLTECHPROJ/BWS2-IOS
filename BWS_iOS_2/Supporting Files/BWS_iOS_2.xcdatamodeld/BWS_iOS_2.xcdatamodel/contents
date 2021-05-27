@@ -8,6 +8,7 @@
         <attribute name="audiomastercat" attributeType="String"/>
         <attribute name="audioSubCategory" attributeType="String"/>
         <attribute name="bitrate" attributeType="String"/>
+        <attribute name="coUserID" optional="YES" attributeType="String"/>
         <attribute name="download" attributeType="String"/>
         <attribute name="downloadLocation" attributeType="String"/>
         <attribute name="id" attributeType="String"/>
@@ -20,6 +21,7 @@
         <attribute name="sortId" attributeType="String"/>
     </entity>
     <entity name="PlaylistDownloads" representedClassName="PlaylistDownloads" syncable="YES">
+        <attribute name="coUserID" optional="YES" attributeType="String"/>
         <attribute name="created" attributeType="String"/>
         <attribute name="download" attributeType="String"/>
         <attribute name="playlistDesc" attributeType="String"/>
@@ -36,7 +38,7 @@
         <attribute name="totalminute" attributeType="String"/>
     </entity>
     <elements>
-        <element name="AudioDownloads" positionX="-63" positionY="-18" width="128" height="298"/>
-        <element name="PlaylistDownloads" positionX="-54" positionY="117" width="128" height="253"/>
+        <element name="AudioDownloads" positionX="-63" positionY="-18" width="128" height="313"/>
+        <element name="PlaylistDownloads" positionX="-54" positionY="117" width="128" height="268"/>
     </elements>
 </model>

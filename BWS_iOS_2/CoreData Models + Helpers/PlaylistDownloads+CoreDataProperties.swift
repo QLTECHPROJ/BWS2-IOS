@@ -11,11 +11,12 @@ import CoreData
 
 
 extension PlaylistDownloads {
-
+    
     @nonobjc public class func fetchRequest() -> NSFetchRequest<PlaylistDownloads> {
         return NSFetchRequest<PlaylistDownloads>(entityName: "PlaylistDownloads")
     }
-
+    
+    @NSManaged public var coUserID: String?
     @NSManaged public var created: String?
     @NSManaged public var download: String?
     @NSManaged public var playlistDesc: String?
@@ -30,5 +31,5 @@ extension PlaylistDownloads {
     @NSManaged public var totalDuration: String?
     @NSManaged public var totalhour: String?
     @NSManaged public var totalminute: String?
-
+    
 }

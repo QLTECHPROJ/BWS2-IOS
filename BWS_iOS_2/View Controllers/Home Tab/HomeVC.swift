@@ -34,7 +34,7 @@ class HomeVC: BaseViewController {
         super.viewDidLoad()
         
         // Clear All Downloads
-        AccountVC.clearDownloadData()
+        // AccountVC.clearDownloadData()
         
         // Cancel All Downloads on launch
         SDDownloadManager.shared.cancelAllDownloads()
