@@ -59,11 +59,7 @@ class HomeVC: BaseViewController {
         // Segment Tracking
         SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.home)
         
-        if checkInternet() {
-            callHomeAPI()
-        } else {
-            tableView.isHidden = true
-        }
+        refreshData()
     }
     
     
@@ -95,23 +91,30 @@ class HomeVC: BaseViewController {
     
     // Pull To Refresh Screen Data
     override func handleRefresh(_ refreshControl: UIRefreshControl) {
-        if checkInternet() {
-            callHomeAPI()
-        } else {
-            tableView.isHidden = true
-        }
+        refreshData()
         refreshControl.endRefreshing()
     }
     
     @objc func refreshData() {
-        callHomeAPI()
+        if checkInternet() {
+            removeOfflineController()
+            callHomeAPI()
+        } else {
+            addOfflineController()
+            tableView.isHidden = true
+        }
     }
     
     override func handleDJMusicPlayerNotifications(notification: Notification) {
         switch notification.name {
         case .playbackProgressDidChange:
+            DJMusicPlayer.shared.updateInfoCenter()
+            DJMusicPlayer.shared.updateNowPlaying()
             break
         case .playerItemDidChange:
+            DJMusicPlayer.shared.updateInfoCenter()
+            DJMusicPlayer.shared.updateNowPlaying()
+            
             if tableView.numberOfSections > 0 {
                 if tableView.numberOfRows(inSection: 0) > 0 {
                     self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
@@ -119,6 +122,9 @@ class HomeVC: BaseViewController {
             }
             break
         case .playerQueueDidUpdate, .playbackStateDidChange, .playerStateDidChange:
+            DJMusicPlayer.shared.updateInfoCenter()
+            DJMusicPlayer.shared.updateNowPlaying()
+            
             if tableView.numberOfSections > 0 {
                 if tableView.numberOfRows(inSection: 0) > 0 {
                     self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
@@ -130,6 +136,10 @@ class HomeVC: BaseViewController {
     }
     
     func setReminder() {
+        if checkInternet(showToast: true) == false {
+            return
+        }
+        
         // Segment Tracking
         SegmentTracking.shared.playlistEvents(name: SegmentTracking.eventNames.Playlist_Reminder_Clicked, objPlaylist: suggstedPlaylist, trackingType: .track)
         
@@ -183,7 +193,11 @@ class HomeVC: BaseViewController {
     }
     
     func editAreaOfFocus() {
-        let aVC = AppStoryBoard.main.viewController(viewControllerClass:AreaOfFocusVC.self)
+        if checkInternet(showToast: true) == false {
+            return
+        }
+        
+        let aVC = AppStoryBoard.main.viewController(viewControllerClass: AreaOfFocusVC.self)
         aVC.averageSleepTime = CoUserDataModel.currentUser?.AvgSleepTime ?? ""
         aVC.isFromEdit = true
         let navVC = UINavigationController(rootViewController: aVC)
@@ -194,8 +208,7 @@ class HomeVC: BaseViewController {
     
     // MARK:- ACTIONS
     @IBAction func onTappedChangeUser(_ sender: UIButton) {
-        if checkInternet() == false {
-            showAlertToast(message: Theme.strings.alert_check_internet)
+        if checkInternet(showToast: true) == false {
             return
         }
         
@@ -207,6 +220,10 @@ class HomeVC: BaseViewController {
     }
     
     @IBAction func onTappedNotification(_ sender: UIButton) {
+        if checkInternet(showToast: true) == false {
+            return
+        }
+        
         let aVC = AppStoryBoard.home.viewController(viewControllerClass:NotificatonVC.self)
         self.navigationController?.pushViewController(aVC, animated: true)
     }
@@ -338,6 +355,10 @@ extension HomeVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
+            if checkInternet(showToast: true) == false {
+                return
+            }
+            
             if let objPlaylist = suggstedPlaylist {
                 let aVC = AppStoryBoard.home.viewController(viewControllerClass: PlaylistAudiosVC.self)
                 aVC.objPlaylist = objPlaylist

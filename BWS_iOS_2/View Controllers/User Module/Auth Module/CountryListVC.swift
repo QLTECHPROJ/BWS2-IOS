@@ -46,9 +46,8 @@ class CountryListVC: BaseViewController {
         btnClear.isHidden = true
         lblNoData.isHidden = true
         
-        if checkInternet() == false {
+        if checkInternet(showToast: true) == false {
             txtSearch.isUserInteractionEnabled = false
-            showAlertToast(message: Theme.strings.alert_check_internet)
             lblNoData.isHidden = true
         } else {
             txtSearch.isUserInteractionEnabled = true

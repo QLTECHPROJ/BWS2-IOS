@@ -345,6 +345,8 @@
 		28B53553260CC4B000BD8147 /* CollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B53551260CC4B000BD8147 /* CollectionViewFlowLayout.swift */; };
 		28C1E0202615F18900600041 /* ViewAllAudioVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C1E01F2615F18900600041 /* ViewAllAudioVC.swift */; };
 		28C1E0212615F18900600041 /* ViewAllAudioVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C1E01F2615F18900600041 /* ViewAllAudioVC.swift */; };
+		28D33F38265E375100733F61 /* OfflineVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D33F37265E375100733F61 /* OfflineVC.swift */; };
+		28D33F39265E375100733F61 /* OfflineVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D33F37265E375100733F61 /* OfflineVC.swift */; };
 		28D755682618999F00EA63FE /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D755672618999F00EA63FE /* iCarousel.m */; };
 		28D755692618999F00EA63FE /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D755672618999F00EA63FE /* iCarousel.m */; };
 		28D7556D2618A33F00EA63FE /* PlayVideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D7556B2618A33F00EA63FE /* PlayVideoCell.swift */; };
@@ -697,6 +699,7 @@
 		28B5354E260CC44100BD8147 /* DynamicHeightCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicHeightCollectionView.swift; sourceTree = "<group>"; };
 		28B53551260CC4B000BD8147 /* CollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		28C1E01F2615F18900600041 /* ViewAllAudioVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewAllAudioVC.swift; sourceTree = "<group>"; };
+		28D33F37265E375100733F61 /* OfflineVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineVC.swift; sourceTree = "<group>"; };
 		28D755662618999F00EA63FE /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
 		28D755672618999F00EA63FE /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
 		28D7556B2618A33F00EA63FE /* PlayVideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayVideoCell.swift; sourceTree = "<group>"; };
@@ -1218,6 +1221,7 @@
 			children = (
 				28E01211261847EA00B55967 /* Cell */,
 				28E8093426130A7A00CD80F7 /* HomeVC.swift */,
+				28D33F37265E375100733F61 /* OfflineVC.swift */,
 				28E011FF2618470100B55967 /* UserListPopUpVC.swift */,
 				28E012022618471500B55967 /* NotificatonVC.swift */,
 				28E012052618474000B55967 /* PlaylistAudiosVC.swift */,
@@ -1903,6 +1907,7 @@
 				2824414F2609AD240060292E /* ForgotPassVC.swift in Sources */,
 				28ED2F8225FB511800E59C56 /* SplashVC.swift in Sources */,
 				2870B3EA25FB41A10014A4F6 /* String+Extension.swift in Sources */,
+				28D33F39265E375100733F61 /* OfflineVC.swift in Sources */,
 				281DE3342626FD79002CCD9D /* DJMusicPlayer.swift in Sources */,
 				281DE3222626FD79002CCD9D /* SDDownloadManager.swift in Sources */,
 				2870B41425FB41A10014A4F6 /* UIViewExtension.swift in Sources */,
@@ -2108,6 +2113,7 @@
 				2870B37625FB40660014A4F6 /* APIResponses.swift in Sources */,
 				2824414E2609AD240060292E /* ForgotPassVC.swift in Sources */,
 				2870B3E925FB41A10014A4F6 /* String+Extension.swift in Sources */,
+				28D33F38265E375100733F61 /* OfflineVC.swift in Sources */,
 				2870B41325FB41A10014A4F6 /* UIViewExtension.swift in Sources */,
 				281DE3332626FD79002CCD9D /* DJMusicPlayer.swift in Sources */,
 				281DE3212626FD79002CCD9D /* SDDownloadManager.swift in Sources */,

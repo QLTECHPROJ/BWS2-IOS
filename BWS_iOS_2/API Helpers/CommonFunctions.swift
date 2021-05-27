@@ -39,11 +39,12 @@ func shouldLockDownloads() -> Bool {
 
 /************************ Check network connection ************************/
 
-func checkInternet() -> Bool {
+func checkInternet(showToast : Bool = false) -> Bool {
     
     let status = DJReachability().connectionStatus()
     switch status {
     case .unknown, .offline:
+        showAlertToast(message: Theme.strings.alert_check_internet)
         return false
     case .online(.wwan), .online(.wiFi):
         return true

@@ -196,8 +196,7 @@ class AccountVC: BaseViewController {
         if indexPath.section == 0 {
             if indexPath.row == 0 {
                 //Account Info
-                if checkInternet() == false {
-                    showAlertToast(message: Theme.strings.alert_check_internet)
+                if checkInternet(showToast: true) == false {
                     return
                 }
                 
@@ -205,8 +204,7 @@ class AccountVC: BaseViewController {
                 self.navigationController?.pushViewController(aVC, animated: true)
             } else if indexPath.row == 1 {
                 //Upgrade Plan
-                if checkInternet() == false {
-                    showAlertToast(message: Theme.strings.alert_check_internet)
+                if checkInternet(showToast: true) == false {
                     return
                 }
             }
@@ -217,8 +215,7 @@ class AccountVC: BaseViewController {
                 self.navigationController?.pushViewController(aVC, animated: true)
             } else if indexPath.row == 1 {
                 //Resources
-                if checkInternet() == false {
-                    showAlertToast(message: Theme.strings.alert_check_internet)
+                if checkInternet(showToast: true) == false {
                     return
                 }
                 
@@ -226,8 +223,7 @@ class AccountVC: BaseViewController {
                 self.navigationController?.pushViewController(aVC, animated: true)
             } else if indexPath.row == 2 {
                 //Reminder
-                if checkInternet() == false {
-                    showAlertToast(message: Theme.strings.alert_check_internet)
+                if checkInternet(showToast: true) == false {
                     return
                 }
                 
@@ -235,22 +231,19 @@ class AccountVC: BaseViewController {
                 self.navigationController?.pushViewController(aVC, animated: true)
             } else if indexPath.row == 3 {
                 //Billing and Order
-                if checkInternet() == false {
-                    showAlertToast(message: Theme.strings.alert_check_internet)
+                if checkInternet(showToast: true) == false {
                     return
                 }
             } else if indexPath.row == 4 {
                 //Invoices
-                if checkInternet() == false {
-                    showAlertToast(message: Theme.strings.alert_check_internet)
+                if checkInternet(showToast: true) == false {
                     return
                 }
             }
         } else if indexPath.section == 2 {
             if indexPath.row == 1 {
                 // LogOut
-                if checkInternet() == false {
-                    showAlertToast(message: Theme.strings.alert_check_internet)
+                if checkInternet(showToast: true) == false {
                     return
                 }
                 
@@ -264,8 +257,7 @@ class AccountVC: BaseViewController {
                 self.present(aVC, animated: false, completion: nil)
             } else {
                 //FAQ
-                if checkInternet() == false {
-                    showAlertToast(message: Theme.strings.alert_check_internet)
+                if checkInternet(showToast: true) == false {
                     return
                 }
                 
@@ -278,8 +270,7 @@ class AccountVC: BaseViewController {
     
     // MARK:- ACTIONS
     @IBAction func onTappedCamera(_ sender: UIButton) {
-        if checkInternet() == false {
-            showAlertToast(message: Theme.strings.alert_check_internet)
+        if checkInternet(showToast: true) == false {
             return
         }
         
@@ -371,8 +362,7 @@ extension AccountVC : AlertPopUpVCDelegate {
     
     func handleAction(sender: UIButton, popUpTag: Int) {
         if sender.tag == 0 {
-            if checkInternet() == false {
-                showAlertToast(message: Theme.strings.alert_check_internet)
+            if checkInternet(showToast: true) == false {
                 return
             }
             

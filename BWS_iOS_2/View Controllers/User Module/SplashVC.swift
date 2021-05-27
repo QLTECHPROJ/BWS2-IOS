@@ -27,9 +27,8 @@ class SplashVC: BaseViewController {
             IAPHelper.shared.showAlert(IAPHelper.shared.alertForVerifyReceipt(result))
         }
         
-        if checkInternet() == false {
+        if checkInternet(showToast: true) == false {
             handleRedirection()
-            showAlertToast(message: Theme.strings.alert_check_internet)
         } else {
             callAppVersionAPI()
         }

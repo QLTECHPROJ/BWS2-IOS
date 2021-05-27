@@ -325,8 +325,7 @@ class PlayerVC: BaseViewController {
     }
     
     @IBAction func infoClicked(sender : UIButton) {
-        if checkInternet() == false {
-            showAlertToast(message: Theme.strings.alert_check_internet)
+        if checkInternet(showToast: true) == false {
             return
         }
         
@@ -390,8 +389,7 @@ class PlayerVC: BaseViewController {
     }
     
     @IBAction func downloadClicked(sender : UIButton) {
-        if checkInternet() == false {
-            showAlertToast(message: Theme.strings.alert_check_internet)
+        if checkInternet(showToast: true) == false {
             return
         }
         

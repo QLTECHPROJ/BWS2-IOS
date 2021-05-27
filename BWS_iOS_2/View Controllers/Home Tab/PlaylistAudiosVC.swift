@@ -379,8 +379,7 @@ class PlaylistAudiosVC: BaseViewController {
     }
     
     func handleAudioCellActions(arrayIndex : Int, buttonIndex : Int) {
-        if checkInternet() == false {
-            showAlertToast(message: Theme.strings.alert_check_internet)
+        if checkInternet(showToast: true) == false {
             return
         }
         
@@ -425,16 +424,6 @@ class PlaylistAudiosVC: BaseViewController {
         }
     }
     
-    func editAreaOfFocus() {
-        let aVC = AppStoryBoard.main.viewController(viewControllerClass:AreaOfFocusVC.self)
-        aVC.averageSleepTime = CoUserDataModel.currentUser?.AvgSleepTime ?? ""
-        aVC.isFromEdit = true
-        let navVC = UINavigationController(rootViewController: aVC)
-        navVC.navigationBar.isHidden = true
-        navVC.modalPresentationStyle = .overFullScreen
-        self.present(navVC, animated: true, completion: nil)
-    }
-    
     @objc func refreshData() {
         self.setupData()
     }
@@ -451,10 +440,24 @@ class PlaylistAudiosVC: BaseViewController {
     }
     
     @IBAction func editClicked(_ sender: UIButton) {
-        self.editAreaOfFocus()
+        if checkInternet(showToast: true) == false {
+            return
+        }
+        
+        let aVC = AppStoryBoard.main.viewController(viewControllerClass: AreaOfFocusVC.self)
+        aVC.averageSleepTime = CoUserDataModel.currentUser?.AvgSleepTime ?? ""
+        aVC.isFromEdit = true
+        let navVC = UINavigationController(rootViewController: aVC)
+        navVC.navigationBar.isHidden = true
+        navVC.modalPresentationStyle = .overFullScreen
+        self.present(navVC, animated: true, completion: nil)
     }
     
     @IBAction func setReminderClicked(_ sender: UIButton) {
+        if checkInternet(showToast: true) == false {
+            return
+        }
+        
         // Segment Tracking
         SegmentTracking.shared.playlistEvents(name: SegmentTracking.eventNames.Playlist_Reminder_Clicked, objPlaylist: objPlaylist, trackingType: .track)
         
@@ -464,8 +467,7 @@ class PlaylistAudiosVC: BaseViewController {
     }
     
     @IBAction func downloadClicked(_ sender: UIButton) {
-        if checkInternet() == false {
-            showAlertToast(message: Theme.strings.alert_check_internet)
+        if checkInternet(showToast: true) == false {
             return
         }
         
@@ -494,8 +496,7 @@ class PlaylistAudiosVC: BaseViewController {
             aVC.modalPresentationStyle = .overFullScreen
             self.present(aVC, animated: false, completion: nil)
         } else {
-            if checkInternet() == false {
-                showAlertToast(message: Theme.strings.alert_check_internet)
+            if checkInternet(showToast: true) == false {
                 return
             }
             

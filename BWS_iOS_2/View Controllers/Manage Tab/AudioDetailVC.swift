@@ -191,8 +191,7 @@ class AudioDetailVC: BaseViewController {
     }
     
     @IBAction func downloadClicked(sender : UIButton) {
-        if checkInternet() == false {
-            showAlertToast(message: Theme.strings.alert_check_internet)
+        if checkInternet(showToast: true) == false {
             return
         }
         
