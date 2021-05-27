@@ -162,6 +162,10 @@ class AudioDetailVC: BaseViewController {
     }
     
     @IBAction func addToPlaylistClicked(sender : UIButton) {
+        if checkInternet(showToast: true) == false {
+            return
+        }
+        
         if let audioID = self.audioDetails?.ID {
             // Segment Tracking
             SegmentTracking.shared.audioDetailsEvents(name: SegmentTracking.eventNames.Add_to_Playlist_Clicked, audioData: self.audioDetails, source: "Audio Details", trackingType: .track)
@@ -177,6 +181,10 @@ class AudioDetailVC: BaseViewController {
     }
     
     @IBAction func removeFromPlaylistClicked(sender : UIButton) {
+        if checkInternet(showToast: true) == false {
+            return
+        }
+        
         if let playlistID = audioDetails?.PlaylistID {
             if isPlayingPlaylist(playlistID: playlistID) {
                 if DJMusicPlayer.shared.nowPlayingList.count > 1 {

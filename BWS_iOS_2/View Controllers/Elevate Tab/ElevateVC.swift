@@ -10,9 +10,24 @@ import UIKit
 
 class ElevateVC: BaseViewController {
     
+    // MARK:- VIEW LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshData), name: .refreshData, object: nil)
+        
+        refreshData()
+    }
+    
+    
+    // MARK:- FUNCTIONS
+    @objc func refreshData() {
+        if checkInternet() {
+            removeOfflineController()
+        } else {
+            addOfflineController()
+        }
     }
     
 }

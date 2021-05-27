@@ -55,13 +55,6 @@ class ViewAllAudioVC: BaseViewController {
     
     // Refresh Data
     @objc func refreshData() {
-        if checkInternet() {
-            removeOfflineController()
-        } else {
-            addOfflineController()
-            return
-        }
-        
         if libraryTitle == "My Downloads" {
             NotificationCenter.default.addObserver(self, selector: #selector(refreshDownloadData), name: .refreshDownloadData, object: nil)
             
@@ -73,6 +66,8 @@ class ViewAllAudioVC: BaseViewController {
             downloadDataModel.Details = CoreDataHelper.shared.fetchSingleAudios()
             downloadDataModel.IsLock = shouldLockDownloads() ? "1" : "0"
             self.homeData = downloadDataModel
+            
+            self.objCollectionView.reloadData()
         } else {
             callViewAllAudioAPI()
         }
@@ -80,6 +75,10 @@ class ViewAllAudioVC: BaseViewController {
     
     // Handle Long Press For Add To Playlist Button
     @objc func handleLongPress(gestureReconizer: UILongPressGestureRecognizer) {
+        if checkInternet(showToast: true) == false {
+            return
+        }
+        
         let point = gestureReconizer.location(in: objCollectionView)
         let indexPath = self.objCollectionView.indexPathForItem(at: point)
         
@@ -113,6 +112,11 @@ class ViewAllAudioVC: BaseViewController {
     
     @objc func addPlaylistToPlaylist(sender : UIButton) {
         setAllDeselected()
+        
+        if checkInternet(showToast: true) == false {
+            return
+        }
+        
         let audioData = homeData.Details[sender.tag]
         
         // Segment Tracking
@@ -128,6 +132,10 @@ class ViewAllAudioVC: BaseViewController {
     }
     
     @objc func openAudioDetails(sender : UIButton) {
+        if checkInternet(showToast: true) == false {
+            return
+        }
+        
         let aVC = AppStoryBoard.manage.viewController(viewControllerClass: AudioDetailVC.self)
         aVC.audioDetails = homeData.Details[sender.tag]
         aVC.source = "Queue Player Screen"

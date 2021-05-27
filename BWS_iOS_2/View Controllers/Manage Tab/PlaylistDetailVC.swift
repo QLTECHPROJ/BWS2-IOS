@@ -174,6 +174,10 @@ class PlaylistDetailVC: BaseViewController {
     }
     
     @IBAction func renameClicked(sender : UIButton) {
+        if checkInternet(showToast: true) == false {
+            return
+        }
+        
         // Segment Tracking
         SegmentTracking.shared.playlistEvents(name: SegmentTracking.eventNames.Playlist_Rename_Clicked, objPlaylist: objPlaylist, trackingType: .track)
         
@@ -211,6 +215,10 @@ class PlaylistDetailVC: BaseViewController {
     }
     
     @IBAction func addToPlaylistClicked(sender : UIButton) {
+        if checkInternet(showToast: true) == false {
+            return
+        }
+        
         self.dismiss(animated: true) {
             self.delegate?.didClickedAddToPlaylist()
         }

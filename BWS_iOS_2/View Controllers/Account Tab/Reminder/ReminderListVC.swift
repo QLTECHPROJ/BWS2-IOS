@@ -30,6 +30,8 @@ class ReminderListVC: BaseViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshData), name: .refreshData, object: nil)
+        
         setupUI()
     }
     
@@ -45,6 +47,11 @@ class ReminderListVC: BaseViewController{
     }
     
     override func setupData() {
+        tableView.reloadData()
+    }
+    
+    // MARK:- FUNCTIONS
+    @objc func refreshData() {
         tableView.reloadData()
     }
     
@@ -90,6 +97,11 @@ class ReminderListVC: BaseViewController{
     }
     
     @objc func switchValueDidChange(_ sender: UISwitch!) {
+        if checkInternet(showToast: true) == false {
+            sender.isOn.toggle()
+            return
+        }
+        
         if arrayRemList[sender.tag].IsLock == "1" {
             openInactivePopup(controller: self)
             sender.isOn.toggle()
@@ -170,7 +182,12 @@ extension ReminderListVC : UITableViewDelegate, UITableViewDataSource {
             }
         }
         
-        cell.swtchReminder.addTarget(self, action: #selector(switchValueDidChange(_:)), for: .valueChanged)
+        if checkInternet() {
+            cell.swtchReminder.isUserInteractionEnabled = true
+            cell.swtchReminder.addTarget(self, action: #selector(switchValueDidChange(_:)), for: .valueChanged)
+        } else {
+            cell.swtchReminder.isUserInteractionEnabled = false
+        }
         
         if arrayRemDelete.contains(arrayRemList[indexPath.row].ReminderId) {
             cell.btnSelect.setImage(UIImage(named: "Check"), for: .normal)
@@ -184,10 +201,10 @@ extension ReminderListVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if checkInternet() == false {
-            showAlertToast(message: Theme.strings.alert_check_internet)
+        if checkInternet(showToast: true) == false {
             return
         }
+        
         let aVC = AppStoryBoard.account.viewController(viewControllerClass: DayVC.self)
         aVC.arrayRemList = arrayRemList[indexPath.row]
         aVC.isCome = "ReminderList"
