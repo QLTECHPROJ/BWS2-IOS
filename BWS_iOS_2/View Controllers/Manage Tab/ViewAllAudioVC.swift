@@ -30,6 +30,8 @@ class ViewAllAudioVC: BaseViewController {
         objCollectionView.register(nibWithCellClass: PlaylistCollectionCell.self)
         objCollectionView.refreshControl = refreshControl
         
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshData), name: .refreshData, object: nil)
+        
         let lpgr = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
         lpgr.minimumPressDuration = 0.5
         lpgr.delaysTouchesBegan = true
@@ -39,19 +41,27 @@ class ViewAllAudioVC: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        fetchData()
+        refreshData()
     }
     
     override func handleRefresh(_ refreshControl: UIRefreshControl) {
-        fetchData()
+        refreshData()
         refreshControl.endRefreshing()
     }
     
     @objc override func refreshDownloadData() {
-        self.fetchData()
+        refreshData()
     }
     
-    func fetchData() {
+    // Refresh Data
+    @objc func refreshData() {
+        if checkInternet() {
+            removeOfflineController()
+        } else {
+            addOfflineController()
+            return
+        }
+        
         if libraryTitle == "My Downloads" {
             NotificationCenter.default.addObserver(self, selector: #selector(refreshDownloadData), name: .refreshDownloadData, object: nil)
             

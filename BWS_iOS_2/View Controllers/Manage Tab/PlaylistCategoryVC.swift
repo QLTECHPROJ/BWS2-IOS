@@ -37,11 +37,10 @@ class PlaylistCategoryVC: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if checkInternet() == false {
+        if checkInternet(showToast: true) == false {
             refreshPlaylistData = false
             tableView.tableHeaderView = UIView()
             addPlaylistDownloadsData()
-            showAlertToast(message: Theme.strings.alert_check_internet)
         } else {
             shouldTrackScreen = true
             refreshPlaylistData = false
@@ -187,8 +186,7 @@ class PlaylistCategoryVC: BaseViewController {
     }
     
     @IBAction func createPlaylistClicked(sender : UIButton) {
-        if checkInternet() == false {
-            showAlertToast(message: Theme.strings.alert_check_internet)
+        if checkInternet(showToast: true) == false {
             return
         }
         

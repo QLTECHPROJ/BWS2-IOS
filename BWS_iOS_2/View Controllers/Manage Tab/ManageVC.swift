@@ -51,16 +51,9 @@ class ManageVC: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if checkInternet() == false {
-            showAlertToast(message: Theme.strings.alert_check_internet)
-            refreshAudioData = false
-            addAudioDownloadsData()
-        } else {
-            shouldTrackScreen = true
-            refreshAudioData = false
-            callManageHomeAPI()
-            self.tableView.reloadData()
-        }
+        shouldTrackScreen = true
+        refreshAudioData = false
+        refreshData()
     }
     
     
@@ -138,35 +131,39 @@ class ManageVC: BaseViewController {
     
     // Pull To Refresh Screen Data
     override func handleRefresh(_ refreshControl: UIRefreshControl) {
-        if checkInternet() == false {
-            addAudioDownloadsData()
-        } else {
-            callManageHomeAPI()
-        }
+        refreshData()
         refreshControl.endRefreshing()
     }
     
     // Refresh Data
     @objc func refreshData() {
-        if checkInternet() == false {
-            addAudioDownloadsData()
-        } else {
+        if checkInternet() {
+            removeOfflineController()
+            tableView.isHidden = false
             callManageHomeAPI()
+        } else {
+            addOfflineController()
+            tableView.isHidden = true
         }
     }
     
     // Refresh Screen Data after Download Completed
     @objc override func refreshDownloadData() {
-        if checkInternet() == false {
-            addAudioDownloadsData()
-        } else {
+        if checkInternet() {
+            removeOfflineController()
+            
             for data in arrayAudioHomeData {
                 if data.View == "My Downloads" {
                     data.Details = CoreDataHelper.shared.fetchSingleAudios()
                     lockDownloads = data.IsLock
                 }
             }
-            self.tableView.reloadData()
+            
+            tableView.isHidden = false
+            tableView.reloadData()
+        } else {
+            addOfflineController()
+            tableView.isHidden = true
         }
     }
     
@@ -185,6 +182,10 @@ class ManageVC: BaseViewController {
     }
     
     @objc func playlistTapped(_ sender: UITapGestureRecognizer) {
+        if checkInternet(showToast: true) == false {
+            return
+        }
+        
         if let objPlaylist = suggstedPlaylist {
             let aVC = AppStoryBoard.home.viewController(viewControllerClass: PlaylistAudiosVC.self)
             aVC.objPlaylist = objPlaylist
@@ -355,8 +356,7 @@ class ManageVC: BaseViewController {
     }
     
     func createPlaylist(sectionIndex : Int) {
-        if checkInternet() == false {
-            showAlertToast(message: Theme.strings.alert_check_internet)
+        if checkInternet(showToast: true) == false {
             return
         }
         
@@ -375,8 +375,7 @@ class ManageVC: BaseViewController {
     
     // MARK:- ACTIONS
     @IBAction func searchClicked(sender : UIButton) {
-        if checkInternet() == false {
-            showAlertToast(message: Theme.strings.alert_check_internet)
+        if checkInternet(showToast: true) == false {
             return
         }
         
@@ -385,6 +384,10 @@ class ManageVC: BaseViewController {
     }
     
     @IBAction func setReminderClicked(sender : UIButton) {
+        if checkInternet(showToast: true) == false {
+            return
+        }
+        
         // Segment Tracking
         SegmentTracking.shared.playlistEvents(name: SegmentTracking.eventNames.Playlist_Reminder_Clicked, objPlaylist: suggstedPlaylist, trackingType: .track)
         

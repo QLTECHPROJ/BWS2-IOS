@@ -29,7 +29,8 @@ class ConnectionManager {
         switch reachability.connection {
         case .cellular:
             print("Network available via Cellular Data.")
-            NotificationCenter.default.post(name: NSNotification.Name.refreshDownloadData, object: nil)
+            NotificationCenter.default.post(name: .refreshDownloadData, object: nil)
+            NotificationCenter.default.post(name: .refreshData, object: nil)
             if DJMusicPlayer.shared.isStoppedBecauseOfNetwork {
                 DJMusicPlayer.shared.currentlyPlaying = DJMusicPlayer.shared.currentlyPlaying
                 DJMusicPlayer.shared.isStoppedBecauseOfNetwork = false
@@ -37,7 +38,8 @@ class ConnectionManager {
             break
         case .wifi:
             print("Network available via WiFi.")
-            NotificationCenter.default.post(name: NSNotification.Name.refreshDownloadData, object: nil)
+            NotificationCenter.default.post(name: .refreshDownloadData, object: nil)
+            NotificationCenter.default.post(name: .refreshData, object: nil)
             if DJMusicPlayer.shared.isStoppedBecauseOfNetwork {
                 DJMusicPlayer.shared.currentlyPlaying = DJMusicPlayer.shared.currentlyPlaying
                 DJMusicPlayer.shared.isStoppedBecauseOfNetwork = false
@@ -45,7 +47,8 @@ class ConnectionManager {
             break
         case .none:
             print("Network is not available.")
-            NotificationCenter.default.post(name: NSNotification.Name.refreshDownloadData, object: nil)
+            NotificationCenter.default.post(name: .refreshDownloadData, object: nil)
+            NotificationCenter.default.post(name: .refreshData, object: nil)
             break
         }
     }

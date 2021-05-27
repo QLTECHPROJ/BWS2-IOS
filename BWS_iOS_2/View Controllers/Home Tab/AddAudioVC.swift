@@ -68,8 +68,7 @@ class AddAudioVC: BaseViewController {
                                      "sections":["Suggested Audios","Suggested Playlists"]]
         SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.search_screen, traits: traits)
         
-        if checkInternet() == false {
-            showAlertToast(message: Theme.strings.alert_check_internet)
+        if checkInternet(showToast: true) == false {
             tableView.isHidden = true
         } else {
             txtSearch.text = ""
@@ -95,8 +94,7 @@ class AddAudioVC: BaseViewController {
         tableView.refreshControl = refreshControl
         tableView.reloadData()
         
-        if checkInternet() == false {
-            showAlertToast(message: Theme.strings.alert_check_internet)
+        if checkInternet(showToast: true) == false {
             txtSearch.isUserInteractionEnabled = false
         } else {
             txtSearch.isUserInteractionEnabled = true

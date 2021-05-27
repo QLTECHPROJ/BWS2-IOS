@@ -222,8 +222,7 @@ extension ViewAllPlaylistVC : PlaylistOptionsVCDelegate {
             aVC.popUpTag = 1
             self.present(aVC, animated: false, completion: nil)
         } else {
-            if checkInternet() == false {
-                showAlertToast(message: Theme.strings.alert_check_internet)
+            if checkInternet(showToast: true) == false {
                 return
             }
             
