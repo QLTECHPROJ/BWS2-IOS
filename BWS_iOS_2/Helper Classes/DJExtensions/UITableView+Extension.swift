@@ -14,7 +14,7 @@ extension UITableView {
             return
         }
         
-        let row = self.numberOfRows(inSection: section)
+        let row = self.numberOfRows(inSection: 0)
         if row < 0 {
             return
         }

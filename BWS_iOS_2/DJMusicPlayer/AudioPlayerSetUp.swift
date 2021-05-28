@@ -55,7 +55,9 @@ extension BaseViewController {
             let playIndex = index ?? 0
             if DJMusicPlayer.shared.canPlayFromDownloads(playerData: audioList[playIndex]) == false && checkInternet() == false {
                 //                showAlertToast(message: Theme.strings.alert_check_internet)
-                return
+                if isPlayingAudio(audioID: audioList[playIndex].ID) == false {
+                    return
+                }
             }
             
             var isFirstPlaybackAudio = true
@@ -125,7 +127,9 @@ extension BaseViewController {
         if arrayPlayerData != nil {
             if DJMusicPlayer.shared.canPlayFromDownloads(playerData: data) == false && checkInternet() == false {
                 //            showAlertToast(message: Theme.strings.alert_check_internet)
-                return
+                if isPlayingAudio(audioID: data.ID) == false {
+                    return
+                }
             }
             
             let aVC = AppStoryBoard.home.viewController(viewControllerClass: PlayerVC.self)
