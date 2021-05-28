@@ -15,6 +15,8 @@ class AreaOfFocusVC: BaseViewController {
     
     @IBOutlet var footerView: UIView!
     @IBOutlet weak var lblNoData: UILabel!
+    @IBOutlet weak var btnCategory: UIButton!
+    
     
     // MARK:- VARIABLES
     var arrayAreaOfFocus = [AreaOfFocusModel]()
@@ -58,6 +60,7 @@ class AreaOfFocusVC: BaseViewController {
         }
         
         tableView.reloadData()
+        buttonEnableDisable()
     }
     
     func setInitialData() {
@@ -119,6 +122,8 @@ class AreaOfFocusVC: BaseViewController {
                 showAlertToast(message: Theme.strings.alert_max_category)
             }
         }
+        
+        buttonEnableDisable()
     }
     
     func searchCategory(searchText : String) {
@@ -169,6 +174,17 @@ class AreaOfFocusVC: BaseViewController {
             tableView.scrollToTop()
         }
     }
+    
+    override func buttonEnableDisable() {
+        if arrayAreaOfFocus.count > 0 {
+            btnCategory.isUserInteractionEnabled = true
+            btnCategory.backgroundColor = Theme.colors.green_008892
+        } else {
+            btnCategory.isUserInteractionEnabled = false
+            btnCategory.backgroundColor = Theme.colors.gray_7E7E7E
+        }
+    }
+    
     
     // MARK:- ACTIONS
     @IBAction func continueClicked() {

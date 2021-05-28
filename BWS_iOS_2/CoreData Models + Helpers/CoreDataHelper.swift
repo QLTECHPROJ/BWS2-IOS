@@ -35,6 +35,7 @@ class CoreDataHelper {
         }
         
         let downloadAudio = AudioDownloads(context: context)
+        downloadAudio.coUserID = CoUserDataModel.currentCoUserId
         downloadAudio.id = audioData.ID
         downloadAudio.name = audioData.Name
         downloadAudio.audioFile = audioData.AudioFile
@@ -77,8 +78,11 @@ class CoreDataHelper {
     
     func fetchAllAudios() -> [AudioDetailsDataModel] {
         
+        let fetchRequest = AudioDownloads.fetchRequest() as NSFetchRequest
+        fetchRequest.predicate = NSPredicate(format: "coUserID == %@", CoUserDataModel.currentCoUserId)
+        
         do {
-            arrayDownloadedAudios = try context.fetch(AudioDownloads.fetchRequest())
+            arrayDownloadedAudios = try context.fetch(fetchRequest)
             var arrayAudioData = [AudioDetailsDataModel]()
             for audio in arrayDownloadedAudios {
                 let audioData = AudioDetailsDataModel()
@@ -113,7 +117,7 @@ class CoreDataHelper {
     func fetchSingleAudios() -> [AudioDetailsDataModel] {
         
         let fetchRequest = AudioDownloads.fetchRequest() as NSFetchRequest
-        fetchRequest.predicate = NSPredicate(format: "isSingleAudio == %@", "1")
+        fetchRequest.predicate = NSPredicate(format: "coUserID == %@ && isSingleAudio == %@", CoUserDataModel.currentCoUserId, "1")
         
         do {
             arrayDownloadedAudios = try context.fetch(fetchRequest)
@@ -152,7 +156,7 @@ class CoreDataHelper {
     func fetchPlaylistAudios(playlistID : String) -> [AudioDetailsDataModel] {
         
         let fetchRequest = AudioDownloads.fetchRequest() as NSFetchRequest
-        fetchRequest.predicate = NSPredicate(format: "playlistID == %@ && isSingleAudio != %@", playlistID, "1")
+        fetchRequest.predicate = NSPredicate(format: "coUserID == %@ && playlistID == %@ && isSingleAudio != %@", CoUserDataModel.currentCoUserId, playlistID, "1")
         
         do {
             let audiosToFetch = try context.fetch(fetchRequest)
@@ -190,7 +194,7 @@ class CoreDataHelper {
     func fetchPlaylistDownloadedAudios(playlistID : String) -> [AudioDetailsDataModel] {
         
         let fetchRequest = AudioDownloads.fetchRequest() as NSFetchRequest
-        fetchRequest.predicate = NSPredicate(format: "playlistID == %@ && isSingleAudio != %@", playlistID, "1")
+        fetchRequest.predicate = NSPredicate(format: "coUserID == %@ && playlistID == %@ && isSingleAudio != %@", CoUserDataModel.currentCoUserId, playlistID, "1")
         
         do {
             let audiosToFetch = try context.fetch(fetchRequest)
@@ -230,13 +234,14 @@ class CoreDataHelper {
     
     func checkAudioInDatabase(audioData : AudioDetailsDataModel) -> Bool {
         
-        let _ = fetchAllAudios()
-        let objects = arrayDownloadedAudios.filter {
-            $0.audioFile == audioData.AudioFile && $0.isSingleAudio == "1"
-        }
+        let fetchRequest = AudioDownloads.fetchRequest() as NSFetchRequest
+        fetchRequest.predicate = NSPredicate(format: "coUserID == %@ && audioFile == %@ && isSingleAudio == %@", CoUserDataModel.currentCoUserId, audioData.AudioFile, "1")
         
-        if objects.count > 0 {
-            return true
+        do {
+            let items = try context.fetch(fetchRequest)
+            return items.count > 0
+        } catch {
+            print("Error :- ",error.localizedDescription)
         }
         
         return false
@@ -245,7 +250,7 @@ class CoreDataHelper {
     func checkAudioFileInDatabase(filePath : String) -> Bool {
         
         let fetchRequest = AudioDownloads.fetchRequest() as NSFetchRequest
-        fetchRequest.predicate = NSPredicate(format: "audioFile == %@", filePath)
+        fetchRequest.predicate = NSPredicate(format: "coUserID == %@ && audioFile == %@", CoUserDataModel.currentCoUserId, filePath)
         
         do {
             let items = try context.fetch(fetchRequest)
@@ -341,6 +346,7 @@ extension CoreDataHelper {
         }
         
         let downloadPlaylist = PlaylistDownloads(context: context)
+        downloadPlaylist.coUserID = CoUserDataModel.currentCoUserId
         downloadPlaylist.playlistID = playlistData.PlaylistID
         downloadPlaylist.playlistName = playlistData.PlaylistName
         downloadPlaylist.playlistDesc = playlistData.PlaylistDesc
@@ -379,8 +385,11 @@ extension CoreDataHelper {
     
     func fetchAllPlaylists() -> [PlaylistDetailsModel] {
         
+        let fetchRequest = PlaylistDownloads.fetchRequest() as NSFetchRequest
+        fetchRequest.predicate = NSPredicate(format: "coUserID == %@", CoUserDataModel.currentCoUserId)
+        
         do {
-            arrayDownloadedPlayist = try context.fetch(PlaylistDownloads.fetchRequest())
+            arrayDownloadedPlayist = try context.fetch(fetchRequest)
             var arrayPlaylistData = [PlaylistDetailsModel]()
             for playlist in arrayDownloadedPlayist {
                 let data = PlaylistDetailsModel()
@@ -413,7 +422,7 @@ extension CoreDataHelper {
     func fetchPlaylistDetails(playlistID : String) -> PlaylistDetailsModel? {
         
         let fetchRequest = PlaylistDownloads.fetchRequest() as NSFetchRequest
-        fetchRequest.predicate = NSPredicate(format: "playlistID == %@", playlistID)
+        fetchRequest.predicate = NSPredicate(format: "coUserID == %@ && playlistID == %@", CoUserDataModel.currentCoUserId, playlistID)
         
         do {
             guard let playlist = try context.fetch(fetchRequest).first else {
@@ -447,7 +456,7 @@ extension CoreDataHelper {
     func checkPlaylistDownloaded(playlistData : PlaylistDetailsModel) -> Bool {
         
         let fetchRequest = PlaylistDownloads.fetchRequest() as NSFetchRequest
-        fetchRequest.predicate = NSPredicate(format: "playlistID == %@", playlistData.PlaylistID)
+        fetchRequest.predicate = NSPredicate(format: "coUserID == %@ && playlistID == %@", CoUserDataModel.currentCoUserId, playlistData.PlaylistID)
         
         do {
             let items = try context.fetch(fetchRequest)
@@ -464,7 +473,7 @@ extension CoreDataHelper {
     func deleteDownloadedPlaylist(playlistData : PlaylistDetailsModel) {
         
         let fetchRequest = PlaylistDownloads.fetchRequest() as NSFetchRequest
-        fetchRequest.predicate = NSPredicate(format: "playlistID == %@", playlistData.PlaylistID)
+        fetchRequest.predicate = NSPredicate(format: "coUserID == %@ && playlistID == %@", CoUserDataModel.currentCoUserId, playlistData.PlaylistID)
         
         do {
             let items = try context.fetch(fetchRequest)
@@ -487,7 +496,7 @@ extension CoreDataHelper {
     func deletePlaylistAudios(playlistID : String) {
         
         let fetchRequest = AudioDownloads.fetchRequest() as NSFetchRequest
-        fetchRequest.predicate = NSPredicate(format: "playlistID == %@ && isSingleAudio != %@", playlistID, "1")
+        fetchRequest.predicate = NSPredicate(format: "coUserID == %@ && playlistID == %@ && isSingleAudio != %@", CoUserDataModel.currentCoUserId, playlistID, "1")
         
         do {
             let items = try context.fetch(fetchRequest)
@@ -519,7 +528,7 @@ extension CoreDataHelper {
     func updatePlaylistDownloadProgress(playlistID : String) -> Double {
         
         let fetchRequest = AudioDownloads.fetchRequest() as NSFetchRequest
-        fetchRequest.predicate = NSPredicate(format: "playlistID == %@ && isSingleAudio != %@", playlistID, "1")
+        fetchRequest.predicate = NSPredicate(format: "coUserID == %@ && playlistID == %@ && isSingleAudio != %@", CoUserDataModel.currentCoUserId, playlistID, "1")
         
         do {
             let audiosToFetch = try context.fetch(fetchRequest)

@@ -110,6 +110,10 @@ class LoginDataModel : EVObject {
     var MobileNo = ""
     var errormsg = ""
     
+    class var currentUserId : String {
+        return LoginDataModel.currentUser?.ID ?? ""
+    }
+    
     class var currentUser : LoginDataModel? {
         get {
             if let userData = UserDefaults.standard.data(forKey: "UserData") {
@@ -293,6 +297,14 @@ class CoUserDataModel : EVObject {
     var isSelected = false
     
     static var profileImage : UIImage?
+    
+    class var currentUserId : String {
+        return CoUserDataModel.currentUser?.UserID ?? ""
+    }
+    
+    class var currentCoUserId : String {
+        return CoUserDataModel.currentUser?.CoUserId ?? ""
+    }
     
     class var currentUser : CoUserDataModel? {
         get {

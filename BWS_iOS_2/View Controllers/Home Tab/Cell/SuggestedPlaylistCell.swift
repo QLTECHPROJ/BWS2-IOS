@@ -75,9 +75,12 @@ class SuggestedPlaylistCell: UITableViewCell {
             btnPlay.isHidden = true
         }
         
-        if playlistData.IsReminder == "1" || playlistData.IsReminder == "2"{
+        if playlistData.IsReminder == "1" {
             btnReminder.setTitle("     Update reminder     ", for: .normal)
             btnReminder.backgroundColor = Theme.colors.gray_313131.withAlphaComponent(0.30)
+        } else if playlistData.IsReminder == "2" {
+            btnReminder.setTitle("     Update reminder     ", for: .normal)
+            btnReminder.backgroundColor = Theme.colors.white.withAlphaComponent(0.20)
         } else {
             btnReminder.setTitle("     Set reminder     ", for: .normal)
             btnReminder.backgroundColor = Theme.colors.white.withAlphaComponent(0.20)

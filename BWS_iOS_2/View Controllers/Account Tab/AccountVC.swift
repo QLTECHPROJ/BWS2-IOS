@@ -109,9 +109,9 @@ class AccountVC: BaseViewController {
         }
         
         // Download Related Data
-        CoreDataHelper.shared.deleteAllAudio()
-        CoreDataHelper.shared.deleteAllPlaylist()
-        DJDownloadManager.shared.clearDocumentDirectory()
+        //        CoreDataHelper.shared.deleteAllAudio()
+        //        CoreDataHelper.shared.deleteAllPlaylist()
+        //        DJDownloadManager.shared.clearDocumentDirectory()
     }
     
     func handleImageOptions(buttonTitle : String) {
