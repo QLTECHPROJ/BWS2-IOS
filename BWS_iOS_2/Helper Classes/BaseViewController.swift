@@ -77,7 +77,7 @@ class BaseViewController: UIViewController {
         // Handle DJMusicPlayer Notifications
     }
     
-    func addOfflineController() {
+    func addOfflineController(parentView : UIView) {
         var shouldAdd = true
         for subView in self.view.subviews {
             if subView.accessibilityIdentifier == "OfflineVC" {
@@ -87,16 +87,16 @@ class BaseViewController: UIViewController {
         
         if shouldAdd {
             let aVC = AppStoryBoard.home.viewController(viewControllerClass: OfflineVC.self)
-            addChild(aVC)
+            // addChild(aVC)
             aVC.view.accessibilityIdentifier = "OfflineVC"
-            aVC.view.frame = self.view.frame
-            self.view.addSubview(aVC.view)
-            aVC.didMove(toParent: self)
+            aVC.view.frame = parentView.bounds
+            parentView.addSubview(aVC.view)
+            // aVC.didMove(toParent: self)
         }
     }
     
-    func removeOfflineController() {
-        for subView in self.view.subviews {
+    func removeOfflineController(parentView : UIView) {
+        for subView in parentView.subviews {
             if subView.accessibilityIdentifier == "OfflineVC" {
                 subView.removeFromSuperview()
             }

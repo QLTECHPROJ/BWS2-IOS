@@ -225,6 +225,8 @@ class APICallManager {
     
     static let sharedInstance = APICallManager()
     
+    var apiRequest : DataRequest?
+    
     func generateToken()-> String {
         let arrToken = ["AES:OsEUHhecSs4gRGcy2vMQs1s/XajBrLGADR71cKMRNtA=","RSA:KlWxBHfKPGkkeTjkT7IEo32bZW8GlVCPq/nvVFuYfIY=","TDES:1dpra0SZhVPpiUQvikMvkDxEp7qLLJL9pe9G6Apg01g=","SHA1:Ey8rBCHsqITEbh7KQKRmYObCGBXqFnvtL5GjMFQWHQo=","MD5:/qc2rO3RB8Z/XA+CmHY0tCaJch9a5BdlQW1xb7db+bg="]
         let randomElement = arrToken.randomElement()
@@ -294,7 +296,7 @@ class APICallManager {
             showHud()
         }
         
-        Alamofire.request(router).responseObject { (responseObj : DataResponse<M>) in
+        self.apiRequest = Alamofire.request(router).responseObject { (responseObj : DataResponse<M>) in
             
             hideHud()
             

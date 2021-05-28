@@ -37,11 +37,7 @@ class PlaylistCategoryVC: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if checkInternet(showToast: true) == false {
-            refreshPlaylistData = false
-            tableView.tableHeaderView = UIView()
-            addPlaylistDownloadsData()
-        } else {
+        if checkInternet(showToast: true) {
             shouldTrackScreen = true
             refreshPlaylistData = false
             tableView.tableHeaderView = tableHeaderView
@@ -72,10 +68,7 @@ class PlaylistCategoryVC: BaseViewController {
     }
     
     override func handleRefresh(_ refreshControl: UIRefreshControl) {
-        if checkInternet() == false {
-            tableView.tableHeaderView = UIView()
-            addPlaylistDownloadsData()
-        } else {
+        if checkInternet() {
             tableView.tableHeaderView = tableHeaderView
             callPlaylistLibraryAPI()
         }
@@ -83,10 +76,7 @@ class PlaylistCategoryVC: BaseViewController {
     }
     
     @objc override func refreshDownloadData() {
-        if checkInternet() == false {
-            tableView.tableHeaderView = UIView()
-            addPlaylistDownloadsData()
-        } else {
+        if checkInternet() {
             tableView.tableHeaderView = tableHeaderView
             for data in arrayPlaylistHomeData {
                 if data.View == "My Downloads" {
@@ -115,30 +105,20 @@ class PlaylistCategoryVC: BaseViewController {
     }
     
     func openPlaylist(playlistIndex : Int, sectionIndex : Int) {
-        if arrayPlaylistHomeData[sectionIndex].View == "My Downloads" {
-            let aVC = AppStoryBoard.home.viewController(viewControllerClass: PlaylistAudiosVC.self)
-            aVC.objPlaylist = arrayPlaylistHomeData[sectionIndex].Details[playlistIndex]
-            aVC.sectionName = arrayPlaylistHomeData[sectionIndex].View
-            aVC.isFromDownload = true
-            aVC.sectionName = "Downloaded Playlists"
-            self.navigationController?.pushViewController(aVC, animated: true)
+        if checkInternet(showToast: true) == false && arrayPlaylistHomeData[sectionIndex].View != "My Downloads" {
             return
         }
         
         let aVC = AppStoryBoard.home.viewController(viewControllerClass: PlaylistAudiosVC.self)
         aVC.objPlaylist = arrayPlaylistHomeData[sectionIndex].Details[playlistIndex]
         aVC.sectionName = arrayPlaylistHomeData[sectionIndex].View
+        
+        if arrayPlaylistHomeData[sectionIndex].View == "My Downloads" {
+            aVC.isFromDownload = true
+            aVC.sectionName = "Downloaded Playlists"
+        }
+        
         self.navigationController?.pushViewController(aVC, animated: true)
-    }
-    
-    func openPlaylistDetails(playlistIndex : Int, sectionIndex : Int) {
-        self.playlistIndexPath = IndexPath(row: playlistIndex, section: sectionIndex)
-        let aVC = AppStoryBoard.manage.viewController(viewControllerClass: PlaylistDetailVC.self)
-        aVC.objPlaylist = arrayPlaylistHomeData[sectionIndex].Details[playlistIndex]
-        aVC.sectionName = arrayPlaylistHomeData[sectionIndex].View
-        aVC.delegate = self
-        aVC.modalPresentationStyle = .overFullScreen
-        self.present(aVC, animated: true, completion: nil)
     }
     
     func setAllDeselected() {
@@ -152,6 +132,10 @@ class PlaylistCategoryVC: BaseViewController {
     }
     
     func didLongPressAt(playlistIndex : Int, sectionIndex : Int) {
+        if checkInternet(showToast: true) == false {
+            return
+        }
+        
         self.setAllDeselected()
         
         arrayPlaylistHomeData[sectionIndex].Details[playlistIndex].isSelected = true
@@ -174,6 +158,10 @@ class PlaylistCategoryVC: BaseViewController {
     }
     
     @objc func viewAllClicked(sender : UIButton) {
+        if checkInternet(showToast: true) == false && arrayPlaylistHomeData[sender.tag].View != "My Downloads" {
+            return
+        }
+        
         let aVC = AppStoryBoard.manage.viewController(viewControllerClass: ViewAllPlaylistVC.self)
         aVC.libraryId = arrayPlaylistHomeData[sender.tag].GetLibraryID
         aVC.libraryTitle = arrayPlaylistHomeData[sender.tag].View
@@ -232,10 +220,6 @@ extension PlaylistCategoryVC : UITableViewDataSource, UITableViewDelegate {
             self.addPlaylistToPlaylist(playlistIndex: playlistIndex, sectionIndex: indexPath.row)
         }
         
-        cell.didClickOptionAtIndex = { playlistIndex in
-            self.openPlaylistDetails(playlistIndex: playlistIndex, sectionIndex: indexPath.row)
-        }
-        
         return cell
     }
     
@@ -246,57 +230,6 @@ extension PlaylistCategoryVC : UITableViewDataSource, UITableViewDelegate {
         var height = (tableView.frame.width - 48) / 2
         height = height + 68
         return height
-    }
-    
-}
-
-// MARK:- PlaylistOptionsVCDelegate
-extension PlaylistCategoryVC : PlaylistOptionsVCDelegate {
-    
-    func didClickedRename() {
-        if let indexPath = playlistIndexPath {
-            let aVC = AppStoryBoard.manage.viewController(viewControllerClass: CreatePlaylistVC.self)
-            aVC.objPlaylist = arrayPlaylistHomeData[indexPath.section].Details[indexPath.row]
-            self.navigationController?.pushViewController(aVC, animated: true)
-        }
-    }
-    
-    func didClickedDelete() {
-        if let indexPath = playlistIndexPath {
-            let playlistName = arrayPlaylistHomeData[indexPath.section].Details[indexPath.row].PlaylistName
-            
-            let aVC = AppStoryBoard.manage.viewController(viewControllerClass: AlertPopUpVC.self)
-            aVC.modalPresentationStyle = .overFullScreen
-            aVC.delegate = self
-            aVC.titleText = "Delete playlist"
-            aVC.detailText = "Are you sure you want to delete \(playlistName) playlist?"
-            aVC.firstButtonTitle = "DELETE"
-            aVC.secondButtonTitle = "CLOSE"
-            self.present(aVC, animated: false, completion: nil)
-        }
-    }
-    
-    func didClickedFind() {
-        if let indexPath = playlistIndexPath {
-            let aVC = AppStoryBoard.home.viewController(viewControllerClass: PlaylistAudiosVC.self)
-            aVC.objPlaylist = arrayPlaylistHomeData[indexPath.section].Details[indexPath.row]
-            aVC.sectionName = arrayPlaylistHomeData[indexPath.section].View
-            self.navigationController?.pushViewController(aVC, animated: true)
-        }
-    }
-    
-    func didClickedAddToPlaylist() {
-        if let indexPath = playlistIndexPath {
-            let playlistID = arrayPlaylistHomeData[indexPath.section].Details[indexPath.section].PlaylistID
-            
-            let aVC = AppStoryBoard.home.viewController(viewControllerClass: AddToPlaylistVC.self)
-            aVC.playlistID = playlistID
-            aVC.source = "Playlist Details Screen"
-            let navVC = UINavigationController(rootViewController: aVC)
-            navVC.navigationBar.isHidden = true
-            navVC.modalPresentationStyle = .fullScreen
-            self.present(navVC, animated: true, completion: nil)
-        }
     }
     
 }
