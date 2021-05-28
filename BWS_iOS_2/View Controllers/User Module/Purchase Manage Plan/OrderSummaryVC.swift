@@ -38,7 +38,7 @@ class OrderSummaryVC: BaseViewController {
         // Segment Tracking
         SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.orderSummary, traits: ["plan":planData.toDictionary()])
         
-        IAPHelper.shared.productRetrive(arrProdID:[planData.IOSplanId])
+       // IAPHelper.shared.productRetrive(arrProdID:[planData.IOSplanId])
         setupData()
     }
     
@@ -62,7 +62,7 @@ class OrderSummaryVC: BaseViewController {
     
     // MARK:- ACTIONS
     @IBAction func backClicked(sender : UIButton) {
-        IAPHelper.shared.arrPlanData.removeAll()
+       // IAPHelper.shared.arrPlanData.removeAll()
         self.navigationController?.popViewController(animated: true)
     }
     

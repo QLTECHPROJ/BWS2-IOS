@@ -186,7 +186,7 @@ extension ChangePassWordVC : UITextFieldDelegate {
         lblErrNewPass.isHidden = true
         lblErrConfirmPass.isHidden = true
         
-        visiblityValidate(textField:textField)
+        //visiblityValidate(textField:textField)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -195,7 +195,7 @@ extension ChangePassWordVC : UITextFieldDelegate {
     
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        
+       
         visiblityValidate(textField:textField)
         buttonEnableDisable()
     }

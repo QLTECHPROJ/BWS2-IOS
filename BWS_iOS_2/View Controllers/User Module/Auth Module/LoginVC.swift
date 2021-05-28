@@ -147,9 +147,9 @@ extension LoginVC : UITextFieldDelegate {
         lblErrPass.isHidden = true
         lblErrEmail.isHidden = true
         
-        if textField == txtFPassWord {
-            visiblityValidate(textField:textField)
-        }
+//        if textField == txtFPassWord {
+//            visiblityValidate(textField:textField)
+//        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

@@ -260,6 +260,9 @@ class ResourceVC: BaseViewController {
     }
     
     @IBAction func filterClicked(sender : UIButton) {
+        if checkInternet(showToast: true) == false {
+            return
+        }
         viewFilter.isHidden.toggle()
         viewSegment.isUserInteractionEnabled = viewFilter.isHidden
     }
