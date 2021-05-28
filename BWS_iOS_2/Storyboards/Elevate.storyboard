@@ -4,9 +4,18 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Bold.ttf">
+            <string>Montserrat-Bold</string>
+        </array>
+        <array key="Montserrat-Regular.ttf">
+            <string>Montserrat-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Elevate-->
         <scene sceneID="Bp2-4R-2yj">
@@ -30,21 +39,54 @@
         <!--ElevateVC-->
         <scene sceneID="qwd-cu-P9F">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="I1Y-R3-wqe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="ElevateVC" id="4Vn-bu-4CR" customClass="ElevateVC" customModule="BWS_2_Staging" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Fxa-vW-Y7N">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="under_construction" translatesAutoresizingMaskIntoConstraints="NO" id="VCP-9m-tXl">
+                                <rect key="frame" x="26" y="219" width="323" height="293"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The page is under construction" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="qNv-H7-D3q">
+                                <rect key="frame" x="26" y="552" width="323" height="21"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="18"/>
+                                <color key="textColor" name="666666"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We're working on it" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v7k-FB-nUV">
+                                <rect key="frame" x="26" y="583" width="323" height="16.333333333333371"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                                <color key="textColor" name="666666"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="VCP-9m-tXl" firstAttribute="centerX" secondItem="Fxa-vW-Y7N" secondAttribute="centerX" id="1ui-gq-hL7"/>
+                            <constraint firstItem="VCP-9m-tXl" firstAttribute="leading" secondItem="ye5-RD-rvf" secondAttribute="leading" constant="26" id="A35-7r-XYp"/>
+                            <constraint firstItem="qNv-H7-D3q" firstAttribute="trailing" secondItem="VCP-9m-tXl" secondAttribute="trailing" id="DbS-3w-fi4"/>
+                            <constraint firstItem="VCP-9m-tXl" firstAttribute="centerY" secondItem="Fxa-vW-Y7N" secondAttribute="centerY" multiplier="0.9" id="Nsn-cn-2ZS"/>
+                            <constraint firstItem="v7k-FB-nUV" firstAttribute="top" secondItem="qNv-H7-D3q" secondAttribute="bottom" constant="10" id="Sv9-Ze-iAG"/>
+                            <constraint firstItem="qNv-H7-D3q" firstAttribute="top" secondItem="VCP-9m-tXl" secondAttribute="bottom" constant="40" id="XQB-vS-yt3"/>
+                            <constraint firstItem="v7k-FB-nUV" firstAttribute="leading" secondItem="qNv-H7-D3q" secondAttribute="leading" id="aiQ-lE-KOh"/>
+                            <constraint firstItem="qNv-H7-D3q" firstAttribute="leading" secondItem="VCP-9m-tXl" secondAttribute="leading" id="fEr-XU-mRV"/>
+                            <constraint firstItem="VCP-9m-tXl" firstAttribute="width" secondItem="VCP-9m-tXl" secondAttribute="height" multiplier="54:49" id="fgp-aq-ecf"/>
+                            <constraint firstItem="v7k-FB-nUV" firstAttribute="trailing" secondItem="qNv-H7-D3q" secondAttribute="trailing" id="t9f-xM-xAG"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="ye5-RD-rvf"/>
                     </view>
                     <navigationItem key="navigationItem" id="Zfy-zh-kBb"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I1Y-R3-wqe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1132" y="117"/>
         </scene>
     </scenes>
     <resources>
         <image name="elevate_tab" width="26" height="26"/>
+        <image name="under_construction" width="324" height="293.33334350585938"/>
+        <namedColor name="666666">
+            <color red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>
