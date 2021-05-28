@@ -4,9 +4,18 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Bold.ttf">
+            <string>Montserrat-Bold</string>
+        </array>
+        <array key="Montserrat-Regular.ttf">
+            <string>Montserrat-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Empower-->
         <scene sceneID="VLO-bt-UX2">
@@ -34,7 +43,38 @@
                     <view key="view" contentMode="scaleToFill" id="2d4-dG-jz4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="under_construction" translatesAutoresizingMaskIntoConstraints="NO" id="TK2-qA-7NF">
+                                <rect key="frame" x="26" y="219" width="323" height="293"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="TK2-qA-7NF" secondAttribute="height" multiplier="54:49" id="d0Q-fe-yHh"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The page is under construction" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="6hs-sd-Jt2">
+                                <rect key="frame" x="26" y="552" width="323" height="21"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="18"/>
+                                <color key="textColor" name="666666"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We're working on it" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rH5-hz-TNf">
+                                <rect key="frame" x="26" y="583" width="323" height="16.333333333333371"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                                <color key="textColor" name="666666"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="6hs-sd-Jt2" firstAttribute="trailing" secondItem="TK2-qA-7NF" secondAttribute="trailing" id="801-n6-eEC"/>
+                            <constraint firstItem="rH5-hz-TNf" firstAttribute="leading" secondItem="6hs-sd-Jt2" secondAttribute="leading" id="AqO-dJ-bSL"/>
+                            <constraint firstItem="rH5-hz-TNf" firstAttribute="trailing" secondItem="6hs-sd-Jt2" secondAttribute="trailing" id="Stk-XT-DH1"/>
+                            <constraint firstItem="TK2-qA-7NF" firstAttribute="centerY" secondItem="2d4-dG-jz4" secondAttribute="centerY" multiplier="0.9" id="WVC-UL-2on"/>
+                            <constraint firstItem="TK2-qA-7NF" firstAttribute="leading" secondItem="anw-zy-nox" secondAttribute="leading" constant="26" id="amL-mX-ZPy"/>
+                            <constraint firstItem="6hs-sd-Jt2" firstAttribute="leading" secondItem="TK2-qA-7NF" secondAttribute="leading" id="b71-LH-Mjo"/>
+                            <constraint firstItem="TK2-qA-7NF" firstAttribute="centerX" secondItem="2d4-dG-jz4" secondAttribute="centerX" id="cPO-b4-nN6"/>
+                            <constraint firstItem="rH5-hz-TNf" firstAttribute="top" secondItem="6hs-sd-Jt2" secondAttribute="bottom" constant="10" id="uYR-4a-cfz"/>
+                            <constraint firstItem="6hs-sd-Jt2" firstAttribute="top" secondItem="TK2-qA-7NF" secondAttribute="bottom" constant="40" id="zc3-VS-tjg"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="anw-zy-nox"/>
                     </view>
                     <navigationItem key="navigationItem" id="Vp9-Bo-69n"/>
@@ -46,5 +86,9 @@
     </scenes>
     <resources>
         <image name="empower_tab" width="26" height="23"/>
+        <image name="under_construction" width="324" height="293.33334350585938"/>
+        <namedColor name="666666">
+            <color red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>
