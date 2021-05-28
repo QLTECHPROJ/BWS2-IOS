@@ -36,6 +36,7 @@ class AreaOfFocusVC: BaseViewController {
         tableView.register(nibWithCellClass: RecommendedCategoryHeaderCell.self)
         tableView.register(nibWithCellClass: CategoryTableCell.self)
         
+        buttonEnableDisable()
         callGetRecommendedCategoryAPI()
         
         // DispatchQueue.main.asyncAfter(deadline: .now() + 10) {

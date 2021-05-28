@@ -26,12 +26,12 @@ extension String {
     }
    
     func isValidPassword() -> Bool {
-        let regularExpression = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&])[A-Za-z\\d$@$!%*?&]{8,}"
-        let passwordValidation = NSPredicate.init(format: "SELF MATCHES %@", regularExpression)
 
-        return passwordValidation.evaluate(with: self)
+           let password = self.trimmingCharacters(in: CharacterSet.whitespaces)
+           let passwordRegx = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[#?!@$%^&<>*~:`-]).{8,}$"
+           let passwordCheck = NSPredicate(format: "SELF MATCHES %@",passwordRegx)
+           return passwordCheck.evaluate(with: password)
     }
-   
     
     var floatValue: Float {
         return (self as NSString).floatValue

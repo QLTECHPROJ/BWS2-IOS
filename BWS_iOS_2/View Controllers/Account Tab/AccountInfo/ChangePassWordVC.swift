@@ -35,6 +35,7 @@ class ChangePassWordVC: BaseViewController {
         SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.change_password)
         
         setupUI()
+        iconClick = false
     }
     
     //MARK:- Functions
@@ -82,48 +83,38 @@ class ChangePassWordVC: BaseViewController {
         if strPin1.count == 0 {
             isValid = false
             lblErrOldPass.isHidden = false
-            lblErrOldPass.text = Theme.strings.alert_invalid_password_error
-        }else if txtfOldPassword.text!.trim.count < 8 {
-            isValid = false
-            lblErrOldPass.isHidden = false
-            lblErrOldPass.text = Theme.strings.alert_invalid_password_error
+            lblErrOldPass.text = Theme.strings.alert_blank_password_error
         }
         
         if strPin2.count == 0 {
             isValid = false
             lblErrNewPass.isHidden = false
-            lblErrNewPass.text = Theme.strings.alert_invalid_password_error
+            lblErrNewPass.text = Theme.strings.alert_blank_password_error
         }else if txtFNewPassword.text!.trim.count < 8 {
             isValid = false
             lblErrNewPass.isHidden = false
             lblErrNewPass.text = Theme.strings.alert_invalid_password_error
-        }else if txtFNewPassword.text!.isValidPassword() {
+        }else if !txtFNewPassword.text!.isValidPassword() {
             isValid = false
             lblErrNewPass.isHidden = false
-            lblErrNewPass.text = "Password should contain at least one uppercase, one lowercase, one special symbol and minimum 8 character long"
+            lblErrNewPass.text = Theme.strings.alert_invalid_password_error
         }
         
         if strPin3.count == 0 {
             isValid = false
             lblErrConfirmPass.isHidden = false
-            lblErrConfirmPass.text = Theme.strings.alert_invalid_password_error
-        }else if txtFConfirmPassword.text!.trim.count < 8 {
-            isValid = false
-            lblErrConfirmPass.isHidden = false
-            lblErrConfirmPass.text = Theme.strings.alert_invalid_password_error
+            lblErrConfirmPass.text = Theme.strings.alert_blank_password_error
         }
         
         if strPin2 != strPin3 {
             isValid = false
             lblErrConfirmPass.isHidden = false
-            lblErrConfirmPass.text = "Password is not same"
+            lblErrConfirmPass.text = Theme.strings.alert_password_not_match
         }
         return isValid
     }
     
     func showHidePass(textfield:UITextField,sender : UIButton)  {
-        iconClick.toggle()
-        
         if iconClick {
             textfield.isSecureTextEntry = false
             sender.setImage(UIImage(named: "PassShow"), for: .normal)
@@ -135,19 +126,22 @@ class ChangePassWordVC: BaseViewController {
     
     func visiblityValidate(textField:UITextField)  {
         if textField == txtfOldPassword {
-            btnVisible.setImage(UIImage(named: "PassHide"), for: .normal)
             if textField.text == "" {
                 btnVisible.setImage(UIImage(named: "PassDefault"), for: .normal)
+            }else {
+                showHidePass(textfield:textField,sender : btnVisible)
             }
         }else if textField == txtFNewPassword {
-            btnVisible1.setImage(UIImage(named: "PassHide"), for: .normal)
             if textField.text == "" {
                 btnVisible1.setImage(UIImage(named: "PassDefault"), for: .normal)
+            }else {
+                showHidePass(textfield:textField,sender : btnVisible1)
             }
         }else {
-            btnVisible2.setImage(UIImage(named: "PassHide"), for: .normal)
             if textField.text == "" {
                 btnVisible2.setImage(UIImage(named: "PassDefault"), for: .normal)
+            }else {
+                showHidePass(textfield:textField,sender : btnVisible2)
             }
         }
     }
@@ -165,7 +159,7 @@ class ChangePassWordVC: BaseViewController {
     }
     
     @IBAction func onTappedEye(_ sender: UIButton) {
-        
+        iconClick.toggle()
         if sender.tag == 0 {
             showHidePass(textfield: txtfOldPassword, sender: btnVisible)
         }else if sender.tag == 1 {

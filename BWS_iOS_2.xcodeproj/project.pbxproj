@@ -476,6 +476,7 @@
 		9A63D461265778D800B596D7 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A63D460265778D800B596D7 /* IAPHelper.swift */; };
 		9A63D462265778D800B596D7 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A63D460265778D800B596D7 /* IAPHelper.swift */; };
 		9A7505C726578C4900177738 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A7505C626578C4900177738 /* StoreKit.framework */; };
+		9ABB10892660C5A000A4C221 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A7505C626578C4900177738 /* StoreKit.framework */; };
 		9AC066FC2639178E00287A44 /* RecAudioBookVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC066EC2639178E00287A44 /* RecAudioBookVC.swift */; };
 		9AC066FD2639178E00287A44 /* RecAudioBookVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC066EC2639178E00287A44 /* RecAudioBookVC.swift */; };
 		9AC066FE2639178F00287A44 /* RecDocuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC066ED2639178E00287A44 /* RecDocuVC.swift */; };
@@ -814,6 +815,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E0C944874ACC5E9D7BB97CCB /* Pods_BWS_iOS_2.framework in Frameworks */,
+				9ABB10892660C5A000A4C221 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

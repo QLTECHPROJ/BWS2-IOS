@@ -309,7 +309,8 @@ struct AppStrings {
     let alert_camera_not_available = "Camera is not available on this device."
     
     let alert_blank_password_error = "Please enter password"
-    let alert_invalid_password_error = "Password length must be atleast 8 characters"
+    let alert_invalid_password_error = "Password should contain at least one uppercase, one lowercase, one special symbol and minimum 8 character long"
+    let alert_password_not_match = "Password and confirm password not match"
     
     let alert_select_login_user = "Please select atleast one to proceed"
     

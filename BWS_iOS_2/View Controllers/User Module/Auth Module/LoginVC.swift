@@ -47,7 +47,7 @@ class LoginVC: BaseViewController {
                 break
             }
         }
-        
+        iconClick = false
         setupUI()
     }
     
@@ -112,18 +112,22 @@ class LoginVC: BaseViewController {
     
     @IBAction func onTappedShowPass(_ sender: UIButton) {
         iconClick.toggle()
-        
-        if iconClick {
-            txtFPassWord.isSecureTextEntry = false
-            sender.setImage(UIImage(named: "PassShow"), for: .normal)
-        } else {
-            txtFPassWord.isSecureTextEntry = true
-            sender.setImage(UIImage(named: "PassHide"), for: .normal)
-        }
+        showHidePass()
     }
     
     @IBAction func onTappedBack(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    func showHidePass()  {
+        
+        if iconClick {
+            txtFPassWord.isSecureTextEntry = false
+            btnVisible.setImage(UIImage(named: "PassShow"), for: .normal)
+        } else {
+            txtFPassWord.isSecureTextEntry = true
+            btnVisible.setImage(UIImage(named: "PassHide"), for: .normal)
+        }
     }
     
     func visiblityValidate(textField:UITextField)  {
@@ -131,8 +135,7 @@ class LoginVC: BaseViewController {
             if textField.text == "" {
                 btnVisible.setImage(UIImage(named: "PassDefault"), for: .normal)
             }else {
-                txtFPassWord.isSecureTextEntry = true
-                btnVisible.setImage(UIImage(named: "PassHide"), for: .normal)
+                showHidePass()
             }
         }
     }
@@ -146,10 +149,6 @@ extension LoginVC : UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         lblErrPass.isHidden = true
         lblErrEmail.isHidden = true
-        
-//        if textField == txtFPassWord {
-//            visiblityValidate(textField:textField)
-//        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
