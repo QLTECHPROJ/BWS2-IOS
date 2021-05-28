@@ -61,7 +61,8 @@ class DayVC: BaseViewController {
         if isCome == "ReminderList" {
             if let playlistData = arrayRemList {
                 strPlaylistID = playlistData.PlaylistId
-                lblTime.text = playlistData.ReminderTime
+                let time =  playlistData.ReminderTime.UTCToLocal(incomingFormat: "h:mm a", outGoingFormat: "h:mm a")
+                lblTime.text = time
                 lblPlaylist.text = playlistData.PlaylistName
                 let listItems = playlistData.RDay.components(separatedBy: ",")
                 let myIntArrSafe = listItems.map { Int($0) ?? 0 }
@@ -71,7 +72,8 @@ class DayVC: BaseViewController {
         if let playlistData = objPlaylist {
             if objPlaylist?.ReminderDay != "" {
                 strPlaylistID = playlistData.PlaylistID
-                lblTime.text = playlistData.ReminderTime
+                let time =  playlistData.ReminderTime.UTCToLocal(incomingFormat: "h:mm a", outGoingFormat: "h:mm a")
+                lblTime.text = time
                 lblPlaylist.text = playlistData.PlaylistName
                 let listItems = playlistData.ReminderDay.components(separatedBy: ",")
                 let myIntArrSafe = listItems.map { Int($0) ?? 0 }

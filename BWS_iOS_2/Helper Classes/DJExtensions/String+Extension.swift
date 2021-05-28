@@ -331,6 +331,33 @@ extension String {
         return nil
     }
     
+    //MARK:- Convert UTC To Local Date by passing date formats value
+    func UTCToLocal(incomingFormat: String, outGoingFormat: String) -> String {
+      let dateFormatter = DateFormatter()
+      dateFormatter.dateFormat = incomingFormat
+      dateFormatter.timeZone = TimeZone(abbreviation: "GMT+08:00") // Australian TimeZone
+
+      let dt = dateFormatter.date(from: self)
+      dateFormatter.timeZone = TimeZone.current
+      dateFormatter.dateFormat = outGoingFormat
+
+      return dateFormatter.string(from: dt ?? Date())
+    }
+
+    //MARK:- Convert Local To UTC Date by passing date formats value
+    func localToUTC(incomingFormat: String, outGoingFormat: String) -> String {
+      let dateFormatter = DateFormatter()
+      dateFormatter.dateFormat = incomingFormat
+      dateFormatter.calendar = NSCalendar.current
+      dateFormatter.timeZone = TimeZone.current
+
+      let dt = dateFormatter.date(from: self)
+      dateFormatter.timeZone = TimeZone(abbreviation: "GMT+08:00") // Australian TimeZone
+      dateFormatter.dateFormat = outGoingFormat
+
+      return dateFormatter.string(from: dt ?? Date())
+    }
+    
 }
 
 extension NSString {

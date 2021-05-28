@@ -21,11 +21,11 @@ class SplashVC: BaseViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        showHud()
-        IAPHelper.shared.verifyReceipt { result in
-            hideHud()
-            IAPHelper.shared.showAlert(IAPHelper.shared.alertForVerifyReceipt(result))
-        }
+        //        showHud()
+        //        IAPHelper.shared.verifyReceipt { result in
+        //            hideHud()
+        //            IAPHelper.shared.showAlert(IAPHelper.shared.alertForVerifyReceipt(result))
+        //        }
         
         if checkInternet(showToast: true) == false {
             handleRedirection()

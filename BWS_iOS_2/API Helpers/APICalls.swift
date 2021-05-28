@@ -1264,11 +1264,12 @@ extension DayVC {
         
         let strDay =  (arrSelectDays.map{String($0)}).joined(separator: ",")
         print(strDay)
+        let time = lblTime.text?.localToUTC(incomingFormat: "h:mm a", outGoingFormat: "h:mm a") ?? ""
 
         let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
                           "PlaylistId":strPlaylistID ?? "",
                           "IsSingle":"1",
-                          "ReminderTime":lblTime.text ?? "" ,
+                          "ReminderTime":time,
                           "ReminderDay":strDay]
 
         APICallManager.sharedInstance.callAPI(router: APIRouter.setreminder(parameters)) { (response : GeneralModel) in

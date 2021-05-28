@@ -236,7 +236,7 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
                     let playlist = PlaylistDetailsModel()
                     playlist.PlaylistID = playlistID
                     aVC.objPlaylist = playlist
-                   // aVC.isCome = "Delegate"
+                    aVC.isCome = "Delegate"
                     navigationController = UINavigationController(rootViewController: aVC)
                     aVC.navigationController?.navigationBar.isHidden = true
                     self.window?.rootViewController = navigationController

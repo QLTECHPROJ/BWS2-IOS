@@ -165,8 +165,8 @@ extension ReminderListVC : UITableViewDelegate, UITableViewDataSource {
         cell.btnHeight.constant = 20
         cell.lblTitle.text = arrayRemList[indexPath.row].PlaylistName
         cell.lblSubTitle.text = arrayRemList[indexPath.row].ReminderDay
-        
-        cell.lblTime.text = arrayRemList[indexPath.row].ReminderTime
+       let time =  arrayRemList[indexPath.row].ReminderTime.UTCToLocal(incomingFormat: "h:mm a", outGoingFormat: "h:mm a")
+        cell.lblTime.text = time
         cell.swtchReminder.set(width: 35, height: 20)
         cell.swtchReminder.tag = indexPath.row
         
