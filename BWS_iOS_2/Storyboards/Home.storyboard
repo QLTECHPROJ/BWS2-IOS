@@ -118,32 +118,45 @@
                                     <constraint firstItem="cPV-Em-I74" firstAttribute="leading" secondItem="XGi-BS-Afj" secondAttribute="trailing" id="vb4-xN-8pq"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4In-dX-tdg">
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bAI-IX-Lye">
                                 <rect key="frame" x="0.0" y="88" width="375" height="641"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4In-dX-tdg">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="641"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="VMf-9o-nJE" id="OI9-ky-sGQ"/>
+                                            <outlet property="delegate" destination="VMf-9o-nJE" id="uhs-0C-M1R"/>
+                                        </connections>
+                                    </tableView>
+                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="VMf-9o-nJE" id="OI9-ky-sGQ"/>
-                                    <outlet property="delegate" destination="VMf-9o-nJE" id="uhs-0C-M1R"/>
-                                </connections>
-                            </tableView>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="4In-dX-tdg" secondAttribute="bottom" id="Dng-EQ-UdH"/>
+                                    <constraint firstItem="4In-dX-tdg" firstAttribute="leading" secondItem="bAI-IX-Lye" secondAttribute="leading" id="Qfk-JM-rRF"/>
+                                    <constraint firstAttribute="trailing" secondItem="4In-dX-tdg" secondAttribute="trailing" id="WG9-t0-Tge"/>
+                                    <constraint firstItem="4In-dX-tdg" firstAttribute="top" secondItem="bAI-IX-Lye" secondAttribute="top" id="aM4-TY-8Ul"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Sxd-PB-ede" firstAttribute="leading" secondItem="iez-2C-znJ" secondAttribute="leading" id="1sL-HZ-etV"/>
                             <constraint firstItem="Sxd-PB-ede" firstAttribute="top" secondItem="iez-2C-znJ" secondAttribute="top" id="7gh-jV-xan"/>
-                            <constraint firstItem="4In-dX-tdg" firstAttribute="top" secondItem="Sxd-PB-ede" secondAttribute="bottom" id="88S-rh-5eB"/>
                             <constraint firstItem="4jL-rz-TrD" firstAttribute="top" secondItem="tuq-45-qHu" secondAttribute="top" id="Bsv-oY-USH"/>
                             <constraint firstItem="Sxd-PB-ede" firstAttribute="trailing" secondItem="iez-2C-znJ" secondAttribute="trailing" id="ISW-CO-BIV"/>
+                            <constraint firstItem="bAI-IX-Lye" firstAttribute="top" secondItem="Sxd-PB-ede" secondAttribute="bottom" id="L3l-Ze-9ef"/>
+                            <constraint firstItem="bAI-IX-Lye" firstAttribute="leading" secondItem="iez-2C-znJ" secondAttribute="leading" id="YDf-XQ-JUQ"/>
+                            <constraint firstItem="bAI-IX-Lye" firstAttribute="trailing" secondItem="iez-2C-znJ" secondAttribute="trailing" id="dcZ-L1-djp"/>
+                            <constraint firstItem="bAI-IX-Lye" firstAttribute="bottom" secondItem="iez-2C-znJ" secondAttribute="bottom" id="nt4-o7-87E"/>
                             <constraint firstItem="4jL-rz-TrD" firstAttribute="leading" secondItem="iez-2C-znJ" secondAttribute="leading" id="olQ-Vl-gPc"/>
-                            <constraint firstItem="4In-dX-tdg" firstAttribute="leading" secondItem="iez-2C-znJ" secondAttribute="leading" id="rMX-Ue-kM6"/>
-                            <constraint firstItem="iez-2C-znJ" firstAttribute="bottom" secondItem="4In-dX-tdg" secondAttribute="bottom" id="rR3-e0-5pz"/>
                             <constraint firstItem="iez-2C-znJ" firstAttribute="trailing" secondItem="4jL-rz-TrD" secondAttribute="trailing" id="u6H-sg-wsP"/>
-                            <constraint firstItem="iez-2C-znJ" firstAttribute="trailing" secondItem="4In-dX-tdg" secondAttribute="trailing" id="vEV-yT-3Gl"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="iez-2C-znJ"/>
                     </view>
                     <navigationItem key="navigationItem" id="JfR-rm-0j3"/>
                     <connections>
+                        <outlet property="backView" destination="bAI-IX-Lye" id="pQY-zF-kHT"/>
                         <outlet property="btnChangeUser" destination="cPV-Em-I74" id="eEl-iA-vhk"/>
                         <outlet property="btnNotification" destination="ohE-Ho-pLg" id="qWm-6k-vy9"/>
                         <outlet property="imgUser" destination="jvx-r2-zbz" id="WcD-AQ-4kP"/>

@@ -76,6 +76,10 @@ class AddAudioViewAllVC: BaseViewController {
     }
     
     func addAudioToPlaylist(audioData : AudioDetailsDataModel) {
+        if checkInternet(showToast: true) == false {
+            return
+        }
+        
         if audioData.IsLock == "1" {
             openInactivePopup(controller: self)
         } else if audioData.IsLock == "2" {
@@ -100,6 +104,10 @@ class AddAudioViewAllVC: BaseViewController {
     }
     
     func addPlaylistToPlaylist(playlistID : String, lock:String) {
+        if checkInternet(showToast: true) == false {
+            return
+        }
+        
         if lock == "1" {
             openInactivePopup(controller: self)
         } else if lock == "2" {
@@ -178,6 +186,10 @@ extension AddAudioViewAllVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if isFromPlaylist {
+            if checkInternet(showToast: true) == false {
+                return
+            }
+            
             if arrayPlayList[indexPath.row].IsLock == "1" {
                 openInactivePopup(controller: self)
             } else if  arrayPlayList[indexPath.row].IsLock == "2" {

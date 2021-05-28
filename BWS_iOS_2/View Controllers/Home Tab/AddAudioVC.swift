@@ -68,9 +68,7 @@ class AddAudioVC: BaseViewController {
                                      "sections":["Suggested Audios","Suggested Playlists"]]
         SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.search_screen, traits: traits)
         
-        if checkInternet(showToast: true) == false {
-            tableView.isHidden = true
-        } else {
+        if checkInternet(showToast: true) {
             txtSearch.text = ""
             btnClear.isHidden = true
             lblNoData.text = ""
@@ -165,6 +163,10 @@ class AddAudioVC: BaseViewController {
     }
     
     func addAudioToPlaylist(audioData : AudioDetailsDataModel) {
+        if checkInternet(showToast: true) == false {
+            return
+        }
+            
         if audioData.IsLock == "1" {
            openInactivePopup(controller: self)
         } else if audioData.IsLock == "2" {
@@ -190,6 +192,10 @@ class AddAudioVC: BaseViewController {
     }
     
     func addPlaylistToPlaylist(playlistID : String, lock : String, source : String) {
+        if checkInternet(showToast: true) == false {
+            return
+        }
+        
         if lock == "1" {
             openInactivePopup(controller: self)
         } else if lock == "2" {
@@ -252,6 +258,10 @@ class AddAudioVC: BaseViewController {
     }
     
     func didLongPressAt(playlistIndex : Int) {
+        if checkInternet(showToast: true) == false {
+            return
+        }
+        
         setAllDeselected()
         
         arrayPlayList[playlistIndex].isSelected = true
@@ -259,6 +269,10 @@ class AddAudioVC: BaseViewController {
     }
     
     @objc func addPlaylistToPlaylist(sender : UIButton) {
+        if checkInternet(showToast: true) == false {
+            return
+        }
+        
         setAllDeselected()
         
         let aVC = AppStoryBoard.home.viewController(viewControllerClass: AddToPlaylistVC.self)
@@ -515,6 +529,10 @@ extension AddAudioVC : UITableViewDelegate, UITableViewDataSource {
                 DJMusicPlayer.shared.playingFrom = "Suggested Audio"
             }
         } else if indexPath.section == 2 {
+            if checkInternet(showToast: true) == false {
+                return
+            }
+            
             if arrayPlayList[indexPath.row].IsLock == "1" {
                 openInactivePopup(controller: self)
             } else if arrayPlayList[indexPath.row].IsLock == "2" {
@@ -551,6 +569,10 @@ extension AddAudioVC : UITableViewDelegate, UITableViewDataSource {
                     }
                 }
             } else {
+                if checkInternet(showToast: true) == false {
+                    return
+                }
+                
                 if arraySearch[indexPath.row].IsLock == "1" {
                     openInactivePopup(controller: self)
                 } else if arraySearch[indexPath.row].IsLock == "2" {
@@ -605,6 +627,9 @@ extension AddAudioVC : UICollectionViewDelegate,UICollectionViewDataSource,UICol
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if checkInternet(showToast: true) == false {
+            return
+        }
         
         if arrayPlayList[indexPath.row].IsLock == "1" {
             openInactivePopup(controller: self)

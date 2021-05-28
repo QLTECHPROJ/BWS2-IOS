@@ -11,11 +11,13 @@ import UIKit
 class HomeVC: BaseViewController {
     
     // MARK:- OUTLETS
-    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var imgUser: UIImageView!
     @IBOutlet weak var lblUser: UILabel!
     @IBOutlet weak var btnChangeUser: UIButton!
     @IBOutlet weak var btnNotification: UIButton!
+    
+    @IBOutlet weak var backView: UIView!
+    @IBOutlet weak var tableView: UITableView!
     
     
     // MARK:- VARIABLES
@@ -32,6 +34,11 @@ class HomeVC: BaseViewController {
     // MARK:- VIEW LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if checkInternet() == false {
+            addOfflineController(parentView: backView)
+            tableView.isHidden = true
+        }
         
         // Clear All Downloads
         // AccountVC.clearDownloadData()
@@ -97,11 +104,12 @@ class HomeVC: BaseViewController {
     
     @objc func refreshData() {
         if checkInternet() {
-            removeOfflineController()
+            removeOfflineController(parentView: backView)
+            tableView.isHidden = false
+            tableView.refreshControl = refreshControl
             callHomeAPI()
         } else {
-            addOfflineController()
-            tableView.isHidden = true
+            tableView.refreshControl = nil
         }
     }
     
@@ -367,6 +375,10 @@ extension HomeVC : UITableViewDelegate, UITableViewDataSource {
             }
             
         case 2:
+            if checkInternet(showToast: true) == false {
+                return
+            }
+            
             if self.shouldCheckIndexScore == "1" {
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass: DoDassAssessmentVC.self)
                 aVC.isFromEdit = true

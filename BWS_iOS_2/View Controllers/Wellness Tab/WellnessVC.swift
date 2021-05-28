@@ -15,6 +15,10 @@ class WellnessVC: BaseViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        if checkInternet() == false {
+            addOfflineController(parentView: self.view)
+        }
+        
         NotificationCenter.default.addObserver(self, selector: #selector(refreshData), name: .refreshData, object: nil)
         
         refreshData()
@@ -24,9 +28,7 @@ class WellnessVC: BaseViewController {
     // MARK:- FUNCTIONS
     @objc func refreshData() {
         if checkInternet() {
-            removeOfflineController()
-        } else {
-            addOfflineController()
+            removeOfflineController(parentView: self.view)
         }
     }
     

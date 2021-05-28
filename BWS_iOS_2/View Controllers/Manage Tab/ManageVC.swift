@@ -11,6 +11,8 @@ import UIKit
 class ManageVC: BaseViewController {
     
     // MARK:- OUTLETS
+    @IBOutlet weak var backView: UIView!
+    
     @IBOutlet weak var tableHeaderView : UIView!
     @IBOutlet weak var playlistMainView : UIView!
     @IBOutlet weak var playlistTopView : UIView!
@@ -39,6 +41,11 @@ class ManageVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        if checkInternet() == false {
+            addOfflineController(parentView: backView)
+            tableView.isHidden = true
+        }
         
         refreshAudioData = true
         setupUI()
@@ -118,14 +125,14 @@ class ManageVC: BaseViewController {
                 btnReminder.backgroundColor = Theme.colors.white.withAlphaComponent(0.20)
             }
             
-            tableHeaderView.frame = CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: 447)
+            tableHeaderView.frame = CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: 403) // safe area height - 403
             tableView.tableHeaderView = tableHeaderView
             
             let tapGesture = UITapGestureRecognizer(target: self, action: #selector(playlistTapped(_:)))
             playlistMainView.addGestureRecognizer(tapGesture)
         } else {
             playlistMainView.isHidden = true
-            tableHeaderView.frame = CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: 44)
+            tableHeaderView.frame = CGRect.zero
             tableView.tableHeaderView = tableHeaderView
         }
         
@@ -141,19 +148,19 @@ class ManageVC: BaseViewController {
     // Refresh Data
     @objc func refreshData() {
         if checkInternet() {
-            removeOfflineController()
+            removeOfflineController(parentView: backView)
             tableView.isHidden = false
+            tableView.refreshControl = refreshControl
             callManageHomeAPI()
         } else {
-            addOfflineController()
-            tableView.isHidden = true
+            tableView.refreshControl = nil
         }
     }
     
     // Refresh Screen Data after Download Completed
     @objc override func refreshDownloadData() {
         if checkInternet() {
-            removeOfflineController()
+            removeOfflineController(parentView: backView)
             
             for data in arrayAudioHomeData {
                 if data.View == "My Downloads" {
@@ -163,10 +170,10 @@ class ManageVC: BaseViewController {
             }
             
             tableView.isHidden = false
+            tableView.refreshControl = refreshControl
             tableView.reloadData()
         } else {
-            addOfflineController()
-            tableView.isHidden = true
+            tableView.refreshControl = nil
         }
     }
     
@@ -224,6 +231,10 @@ class ManageVC: BaseViewController {
         print("Data :- \(audioData)")
         print("ViewType :- \(sectionData.View)")
         if sectionData.View == "Top Categories" {
+            if checkInternet(showToast: true) == false {
+                return
+            }
+            
             let aVC = AppStoryBoard.manage.viewController(viewControllerClass: ViewAllAudioVC.self)
             aVC.libraryId = sectionData.HomeAudioID
             aVC.libraryTitle = audioData.CategoryName
@@ -291,6 +302,10 @@ class ManageVC: BaseViewController {
     }
     
     func didLongPressAt(audioIndex : Int, sectionIndex : Int) {
+        if checkInternet(showToast: true) == false {
+            return
+        }
+        
         self.setAllDeselected()
         
         arrayAudioHomeData[sectionIndex].Details[audioIndex].isSelected = true
@@ -316,6 +331,10 @@ class ManageVC: BaseViewController {
     
     // Handle View All Click Event
     @objc func viewAllClicked(sender : UIButton) {
+        if checkInternet(showToast: true) == false {
+            return
+        }
+        
         if arrayAudioHomeData[sender.tag].View != "Top Categories" {
             let aVC = AppStoryBoard.manage.viewController(viewControllerClass: ViewAllAudioVC.self)
             aVC.libraryId = arrayAudioHomeData[sender.tag].HomeAudioID
@@ -325,6 +344,10 @@ class ManageVC: BaseViewController {
     }
     
     func openPlaylist(playlistIndex : Int, sectionIndex : Int) {
+        if checkInternet(showToast: true) == false {
+            return
+        }
+        
         let aVC = AppStoryBoard.home.viewController(viewControllerClass: PlaylistAudiosVC.self)
         aVC.objPlaylist = arrayPlaylistHomeData[sectionIndex].Details[playlistIndex]
         aVC.sectionName = arrayPlaylistHomeData[sectionIndex].View
@@ -332,6 +355,10 @@ class ManageVC: BaseViewController {
     }
     
     func didLongPressAt(playlistIndex : Int, sectionIndex : Int) {
+        if checkInternet(showToast: true) == false {
+            return
+        }
+        
         self.setAllDeselected()
         
         arrayPlaylistHomeData[sectionIndex].Details[playlistIndex].isSelected = true
@@ -339,6 +366,10 @@ class ManageVC: BaseViewController {
     }
     
     func addPlaylistToPlaylist(playlistIndex : Int, sectionIndex : Int) {
+        if checkInternet(showToast: true) == false {
+            return
+        }
+        
         self.setAllDeselected()
         
         let sectionData = arrayPlaylistHomeData[sectionIndex]
@@ -354,6 +385,10 @@ class ManageVC: BaseViewController {
     }
     
     @objc func viewAllPlaylistClicked(sender : UIButton) {
+        if checkInternet(showToast: true) == false {
+            return
+        }
+        
         let aVC = AppStoryBoard.manage.viewController(viewControllerClass: PlaylistCategoryVC.self)
         self.navigationController?.pushViewController(aVC, animated: true)
     }

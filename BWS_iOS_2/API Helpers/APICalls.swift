@@ -840,15 +840,17 @@ extension AddAudioVC {
                       "searchKeyword":searchText]
         SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.Audio_Playlist_Searched, traits: traits)
         
+        APICallManager.sharedInstance.apiRequest?.cancel()
+        
         APICallManager.sharedInstance.callAPI(router: APIRouter.searchonsuggestedlist(parameters)) { (response : AudioDetailsModel) in
             
             self.arraySearch.removeAll()
             if response.ResponseCode == "200" {
-                self.arraySearch = response.ResponseData
-                if self.arraySearch.count > 0 {
-                    self.arraySearch = self.arraySearch.filter { $0.Iscategory == "1" }
-                    self.reloadSearchData()
+                self.arraySearch.removeAll()
+                if (self.txtSearch.text?.trim.count ?? 0) > 0 {
+                    self.arraySearch = response.ResponseData.filter { $0.Iscategory == "1" }
                 }
+                self.reloadSearchData()
             } else {
                 self.arraySearch.removeAll()
                 self.reloadSearchData()
