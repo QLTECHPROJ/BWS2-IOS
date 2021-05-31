@@ -404,7 +404,7 @@ class ManageVC: BaseViewController {
             showAlertToast(message: Theme.strings.alert_reactivate_plan)
         } else {
             // Segment Tracking
-            SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.Create_Playlist_Clicked, traits: ["source":"Enrich Screen"])
+            SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.Create_Playlist_Clicked, traits: ["source":"Enhance Screen"])
             
             let aVC = AppStoryBoard.manage.viewController(viewControllerClass: CreatePlaylistVC.self)
             self.navigationController?.pushViewController(aVC, animated: true)
@@ -459,8 +459,9 @@ class ManageVC: BaseViewController {
         }
         
         let isDownloaded = DJDownloadManager.shared.checkFileExists(fileName: playlistData.PlaylistSongs[0].AudioFile)
+        let isInDatabase = CoreDataHelper.shared.checkAudioInDatabase(audioData: playlistData.PlaylistSongs[0])
         
-        if isDownloaded == false && checkInternet() == false {
+        if isInDatabase == true && isDownloaded == false && checkInternet() == false {
             showAlertToast(message: Theme.strings.alert_redownload_playlist)
             return
         }

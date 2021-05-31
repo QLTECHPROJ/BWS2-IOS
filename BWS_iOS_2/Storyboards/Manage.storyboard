@@ -24,11 +24,11 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Enrich-->
+        <!--Enhance-->
         <scene sceneID="zm0-Dw-Naf">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="ubp-Iz-Psu" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Enrich" image="enrich_tab" id="K1A-dP-h6T"/>
+                    <tabBarItem key="tabBarItem" title="Enhance" image="enhance_tab" id="K1A-dP-h6T"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ixz-jX-Fjn">
@@ -57,8 +57,8 @@
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tpc-eG-Tmf">
                                 <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enrich" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J5z-09-zjH">
-                                        <rect key="frame" x="16.000000000000004" y="12.999999999999998" width="42.333333333333343" height="18.333333333333329"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enhance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J5z-09-zjH">
+                                        <rect key="frame" x="15.999999999999996" y="12.999999999999998" width="58.666666666666657" height="18.333333333333329"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="15"/>
                                         <color key="textColor" name="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -666,18 +666,10 @@ New Playlist</string>
                                                     <inset key="sectionInset" minX="16" minY="10" maxX="16" maxY="10"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="F9u-TB-Hyv">
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="F9u-TB-Hyv">
                                                         <rect key="frame" x="16" y="0.0" width="128" height="50"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="gzq-XD-AEA">
-                                                            <rect key="frame" x="0.0" y="0.0" width="128" height="50"/>
-                                                            <autoresizingMask key="autoresizingMask"/>
-                                                        </collectionViewCellContentView>
-                                                    </collectionViewCell>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Czc-L4-L9R">
-                                                        <rect key="frame" x="154" y="0.0" width="128" height="50"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="WG1-aI-m2a">
                                                             <rect key="frame" x="0.0" y="0.0" width="128" height="50"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                         </collectionViewCellContentView>
@@ -1026,18 +1018,10 @@ QXJlIHlvdSBzdXJlIHlvdSB3YW50IHRvIGRlbGV0ZQtTZWxmLWRldmVsb3BtZW50IHBsYXlsaXN0Pw
                                                     <inset key="sectionInset" minX="16" minY="10" maxX="16" maxY="10"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ypt-lb-FYv">
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="ypt-lb-FYv">
                                                         <rect key="frame" x="16" y="0.0" width="128" height="50"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="xrm-33-nyu">
-                                                            <rect key="frame" x="0.0" y="0.0" width="128" height="50"/>
-                                                            <autoresizingMask key="autoresizingMask"/>
-                                                        </collectionViewCellContentView>
-                                                    </collectionViewCell>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="r61-Dd-RtC">
-                                                        <rect key="frame" x="154" y="0.0" width="128" height="50"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="VdG-Qu-sXr">
                                                             <rect key="frame" x="0.0" y="0.0" width="128" height="50"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                         </collectionViewCellContentView>
@@ -1342,7 +1326,7 @@ QXJlIHlvdSBzdXJlIHlvdSB3YW50IHRvIGRlbGV0ZQtTZWxmLWRldmVsb3BtZW50IHBsYXlsaXN0Pw
         <image name="delete_playlist" width="17" height="17"/>
         <image name="download_white" width="22" height="22"/>
         <image name="edit_white" width="19" height="19"/>
-        <image name="enrich_tab" width="26" height="26"/>
+        <image name="enhance_tab" width="26" height="26"/>
         <image name="lock" width="30" height="30"/>
         <image name="manage_tab_top_wave" width="375" height="213.33332824707031"/>
         <image name="moon_zzzz" width="48" height="45"/>

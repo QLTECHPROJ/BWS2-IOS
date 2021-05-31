@@ -817,9 +817,10 @@ open class DJMusicPlayer: NSObject {
                 break
                 
             case "playbackLikelyToKeepUp":
-                self.state = item.isPlaybackLikelyToKeepUp ? .loadingFinished : .loading
-                
+                // self.state = item.isPlaybackLikelyToKeepUp ? .loadingFinished : .loading
                 if item.isPlaybackLikelyToKeepUp {
+                    self.state = .loadingFinished
+                    
                     // Segment Tracking
                     if currentlyPlaying?.isDisclaimer == false {
                         SegmentTracking.shared.audioPlaybackEvents(name: SegmentTracking.eventNames.Audio_Buffer_Completed, audioData: nil, trackingType: .track)
@@ -828,7 +829,10 @@ open class DJMusicPlayer: NSObject {
                 break
                 
             case "playbackBufferFull":
-                self.state = item.isPlaybackBufferFull ? .loadingFinished : .loading
+                // self.state = item.isPlaybackBufferFull ? .loadingFinished : .loading
+                if item.isPlaybackBufferFull {
+                    self.state = .loadingFinished
+                }
                 break
                 
             case "timedMetadata":
@@ -839,6 +843,9 @@ open class DJMusicPlayer: NSObject {
             case "timeControlStatus":
                 if audioPlayer.timeControlStatus == .playing || audioPlayer.timeControlStatus == .paused {
                     // self.state = (item.isPlaybackLikelyToKeepUp || item.isPlaybackBufferFull) ? .loadingFinished : .loading
+                    if item.isPlaybackLikelyToKeepUp || item.isPlaybackBufferFull {
+                        self.state = .loadingFinished
+                    }
                 }
                 break
                 

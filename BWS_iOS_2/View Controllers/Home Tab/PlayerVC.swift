@@ -341,19 +341,25 @@ class PlayerVC: BaseViewController {
     }
     
     @IBAction func playClicked(sender : UIButton) {
-        if DJMusicPlayer.shared.canPlayFromDownloads(playerData: audioDetails!) == false && checkInternet() == false {
-            return
-        }
-        
         DJMusicPlayer.shared.playerScreen = .mainPlayer
         
         if DJMusicPlayer.shared.playbackState == .stopped {
+            if DJMusicPlayer.shared.canPlayFromDownloads(playerData: audioDetails!) == false && checkInternet() == false {
+                // return
+            }
+            
             DJMusicPlayer.shared.currentlyPlaying = nil
             DJMusicPlayer.shared.latestPlayRequest = nil
             DJMusicPlayer.shared.resetPlayer()
             DJMusicPlayer.shared.requestToPlay()
+        } else if DJMusicPlayer.shared.playbackState == .paused {
+            if DJMusicPlayer.shared.canPlayFromDownloads(playerData: audioDetails!) == false && checkInternet() == false {
+                // return
+            }
+            
+            DJMusicPlayer.shared.play(isResume: true)
         } else {
-            DJMusicPlayer.shared.togglePlaying()
+            DJMusicPlayer.shared.pause(pauseReason: .userAction)
         }
     }
     

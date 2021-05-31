@@ -198,7 +198,7 @@ class EditProfileVC: BaseViewController {
         let components = calendar.dateComponents([.year, .month, .day], from: date)
         let currentDate = calendar.date(from: components)!
         
-        var dateComponents = DateComponents()
+        let dateComponents = DateComponents()
         //        dateComponents.year = -4
         
         var tenYearsAgo = Calendar.current.date(byAdding: dateComponents, to: currentDate)

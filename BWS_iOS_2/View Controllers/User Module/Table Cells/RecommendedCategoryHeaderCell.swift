@@ -89,11 +89,11 @@ extension RecommendedCategoryHeaderCell : UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
-        if let text = textField.text,
-            let textRange = Range(range, in: text) {
-            let updatedText = text.replacingCharacters(in: textRange, with: string).trim
-            // self.searchText?(updatedText)
-        }
+        //        if let text = textField.text,
+        //            let textRange = Range(range, in: text) {
+        //            let updatedText = text.replacingCharacters(in: textRange, with: string).trim
+        //            // self.searchText?(updatedText)
+        //        }
         
         return true
     }

@@ -181,8 +181,9 @@ class HomeVC: BaseViewController {
         }
         
         let isDownloaded = DJDownloadManager.shared.checkFileExists(fileName: playlistData.PlaylistSongs[0].AudioFile)
+        let isInDatabase = CoreDataHelper.shared.checkAudioInDatabase(audioData: playlistData.PlaylistSongs[0])
         
-        if isDownloaded == false && checkInternet() == false {
+        if isInDatabase == true && isDownloaded == false && checkInternet() == false {
             showAlertToast(message: Theme.strings.alert_redownload_playlist)
             return
         }

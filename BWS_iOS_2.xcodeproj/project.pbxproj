@@ -305,8 +305,6 @@
 		2891E2A92643CCF800658B49 /* TimeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2891E2992643CCF800658B49 /* TimeView.xib */; };
 		2891E2AA2643CCF800658B49 /* TimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2891E29A2643CCF800658B49 /* TimeView.swift */; };
 		2891E2AB2643CCF800658B49 /* TimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2891E29A2643CCF800658B49 /* TimeView.swift */; };
-		2891E2AC2643CCF800658B49 /* TimeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2891E29B2643CCF800658B49 /* TimeVC.swift */; };
-		2891E2AD2643CCF800658B49 /* TimeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2891E29B2643CCF800658B49 /* TimeVC.swift */; };
 		289F1F262654F15A00E94290 /* Segment+EventsNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289F1F252654F15A00E94290 /* Segment+EventsNames.swift */; };
 		289F1F272654F15A00E94290 /* Segment+EventsNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289F1F252654F15A00E94290 /* Segment+EventsNames.swift */; };
 		28B27820262EED41005794E3 /* DownloadVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B2781F262EED41005794E3 /* DownloadVC.swift */; };
@@ -680,7 +678,6 @@
 		2891E2982643CCF800658B49 /* SelectPlayListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectPlayListCell.xib; sourceTree = "<group>"; };
 		2891E2992643CCF800658B49 /* TimeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimeView.xib; sourceTree = "<group>"; };
 		2891E29A2643CCF800658B49 /* TimeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeView.swift; sourceTree = "<group>"; };
-		2891E29B2643CCF800658B49 /* TimeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeVC.swift; sourceTree = "<group>"; };
 		289F1F252654F15A00E94290 /* Segment+EventsNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Segment+EventsNames.swift"; sourceTree = "<group>"; };
 		28B2781F262EED41005794E3 /* DownloadVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadVC.swift; sourceTree = "<group>"; };
 		28B27822262EEECC005794E3 /* DownloadAudioVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadAudioVC.swift; sourceTree = "<group>"; };
@@ -1108,7 +1105,6 @@
 				2891E2942643CCF800658B49 /* Cell */,
 				2891E2922643CCF800658B49 /* DayVC.swift */,
 				2891E2932643CCF800658B49 /* ReminderListVC.swift */,
-				2891E29B2643CCF800658B49 /* TimeVC.swift */,
 			);
 			path = Reminder;
 			sourceTree = "<group>";
@@ -1951,7 +1947,6 @@
 				28E012072618474000B55967 /* PlaylistAudiosVC.swift in Sources */,
 				283153BA2614401E004001CE /* ManagePlaylistCell.swift in Sources */,
 				283153C2261448C9004001CE /* CreatePlaylistVC.swift in Sources */,
-				2891E2AD2643CCF800658B49 /* TimeVC.swift in Sources */,
 				28E8093F26130AA500CD80F7 /* ElevateVC.swift in Sources */,
 				2870B3EC25FB41A10014A4F6 /* UINavigationBar+Extension.swift in Sources */,
 				9AC067192639178F00287A44 /* RecWebSite.swift in Sources */,
@@ -2157,7 +2152,6 @@
 				28E012062618474000B55967 /* PlaylistAudiosVC.swift in Sources */,
 				283153B92614401E004001CE /* ManagePlaylistCell.swift in Sources */,
 				283153C1261448C9004001CE /* CreatePlaylistVC.swift in Sources */,
-				2891E2AC2643CCF800658B49 /* TimeVC.swift in Sources */,
 				28E8093E26130AA500CD80F7 /* ElevateVC.swift in Sources */,
 				282441382609AB6E0060292E /* SignUpVC.swift in Sources */,
 				9AC067182639178F00287A44 /* RecWebSite.swift in Sources */,
@@ -2258,7 +2252,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "BWS_iOS_2/Brain Wellness App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = MT25J55822;
 				ENABLE_BITCODE = NO;
@@ -2268,7 +2262,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.8;
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.brainwellnessspa.staging;
 				PRODUCT_NAME = "BWS 2 Staging";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/BWS_iOS_2/Supporting Files/BWS-Bridging-Header.h";
@@ -2284,7 +2278,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "BWS_iOS_2/Brain Wellness App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = MT25J55822;
 				ENABLE_BITCODE = NO;
@@ -2294,7 +2288,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.8;
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.brainwellnessspa.staging;
 				PRODUCT_NAME = "BWS 2 Staging";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/BWS_iOS_2/Supporting Files/BWS-Bridging-Header.h";
@@ -2424,7 +2418,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "BWS_iOS_2/Brain Wellness App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = MT25J55822;
 				ENABLE_BITCODE = NO;
@@ -2434,7 +2428,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.8;
+				MARKETING_VERSION = 1.9;
 				PRODUCT_BUNDLE_IDENTIFIER = com.brainwellnessspa;
 				PRODUCT_NAME = "Brain Wellness App";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/BWS_iOS_2/Supporting Files/BWS-Bridging-Header.h";
@@ -2450,7 +2444,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "BWS_iOS_2/Brain Wellness App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = MT25J55822;
 				ENABLE_BITCODE = NO;
@@ -2460,7 +2454,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.8;
+				MARKETING_VERSION = 1.9;
 				PRODUCT_BUNDLE_IDENTIFIER = com.brainwellnessspa;
 				PRODUCT_NAME = "Brain Wellness App";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/BWS_iOS_2/Supporting Files/BWS-Bridging-Header.h";

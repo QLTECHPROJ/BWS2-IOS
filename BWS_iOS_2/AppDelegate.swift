@@ -323,6 +323,8 @@ extension AppDelegate {
                     // Unlock content
                 case .failed, .purchasing, .deferred:
                     break // do nothing
+                @unknown default:
+                    break
                 }
             }
         }

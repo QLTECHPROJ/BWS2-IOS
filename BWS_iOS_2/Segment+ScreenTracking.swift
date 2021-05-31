@@ -228,7 +228,7 @@ extension ManageVC {
         var traits : [String:Any] = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? ""]
         let sections = self.arrayAudioHomeData.map { $0.View }
         traits["sections"] = sections
-        SegmentTracking.shared.trackEvent(name: SegmentTracking.screenNames.enrich, traits: traits, trackingType: .screen)
+        SegmentTracking.shared.trackEvent(name: SegmentTracking.screenNames.enhance, traits: traits, trackingType: .screen)
     }
     
 }

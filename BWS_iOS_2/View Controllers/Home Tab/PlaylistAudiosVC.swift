@@ -306,6 +306,9 @@ class PlaylistAudiosVC: BaseViewController {
             btnOption.setImage(UIImage(named: "trash_white"), for: UIControl.State.normal)
         }
         
+        DJMusicPlayer.shared.updateInfoCenter()
+        DJMusicPlayer.shared.updateNowPlaying()
+        
         self.updateDownloadProgress()
         self.tableView.reloadData()
     }
@@ -542,8 +545,9 @@ class PlaylistAudiosVC: BaseViewController {
         }
         
         let isDownloaded = DJDownloadManager.shared.checkFileExists(fileName: arraySearchSongs[0].AudioFile)
+        let isInDatabase = CoreDataHelper.shared.checkAudioInDatabase(audioData: arraySearchSongs[0])
         
-        if isDownloaded == false && checkInternet() == false {
+        if isInDatabase == true && isDownloaded == false && checkInternet() == false {
             showAlertToast(message: Theme.strings.alert_redownload_playlist)
             return
         }
