@@ -220,12 +220,17 @@ extension AddProfileVC : UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
-        if let text = textField.text,
-            let textRange = Range(range, in: text) {
-            let updatedText = text.replacingCharacters(in: textRange, with: string).trim
-            if textField == txtFMobileNo && updatedText.count > 10 {
-                return false
-            }
+        guard let text = textField.text,
+            let textRange = Range(range, in: text) else {
+            return false
+        }
+        
+        let updatedText = text.replacingCharacters(in: textRange, with: string).trim
+        
+        if textField == txtFName && updatedText.count > 16 {
+            return false
+        } else if textField == txtFMobileNo && updatedText.count > 10 {
+            return false
         }
         
         return true

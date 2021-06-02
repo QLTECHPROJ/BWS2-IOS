@@ -267,30 +267,30 @@ extension SignUpVC : UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
-        if let text = textField.text,
-            let textRange = Range(range, in: text) {
-            let updatedText = text.replacingCharacters(in: textRange, with: string).trim
-            if textField == txtFMobileNo && updatedText.count > 10 {
-                return false
-            }
+        guard let text = textField.text,
+            let textRange = Range(range, in: text) else {
+            return false
         }
         
-        if let text = textField.text,
-            let textRange = Range(range, in: text) {
-            let updatedText = text.replacingCharacters(in: textRange, with: string).trim
-            
-            let name = (textField == txtFName) ? updatedText : txtFName.text?.trim
-            let mobile = (textField == txtFMobileNo) ? updatedText : txtFMobileNo.text?.trim
-            let email = (textField == txtFEmailAdd) ? updatedText : txtFEmailAdd.text?.trim
-            let password = (textField == txtFPassWord) ? updatedText : txtFPassWord.text?.trim
-            
-            if name?.count == 0 || mobile?.count == 0 || email?.count == 0 || password?.count == 0 {
-                btnCreateAccount.isUserInteractionEnabled = false
-                btnCreateAccount.backgroundColor = Theme.colors.gray_7E7E7E
-            } else {
-                btnCreateAccount.isUserInteractionEnabled = true
-                btnCreateAccount.backgroundColor = Theme.colors.green_008892
-            }
+        let updatedText = text.replacingCharacters(in: textRange, with: string).trim
+        
+        if textField == txtFName && updatedText.count > 16 {
+            return false
+        } else if textField == txtFMobileNo && updatedText.count > 10 {
+            return false
+        }
+        
+        let name = (textField == txtFName) ? updatedText : txtFName.text?.trim
+        let mobile = (textField == txtFMobileNo) ? updatedText : txtFMobileNo.text?.trim
+        let email = (textField == txtFEmailAdd) ? updatedText : txtFEmailAdd.text?.trim
+        let password = (textField == txtFPassWord) ? updatedText : txtFPassWord.text?.trim
+        
+        if name?.count == 0 || mobile?.count == 0 || email?.count == 0 || password?.count == 0 {
+            btnCreateAccount.isUserInteractionEnabled = false
+            btnCreateAccount.backgroundColor = Theme.colors.gray_7E7E7E
+        } else {
+            btnCreateAccount.isUserInteractionEnabled = true
+            btnCreateAccount.backgroundColor = Theme.colors.green_008892
         }
         
         return true

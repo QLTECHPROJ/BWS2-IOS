@@ -34,20 +34,12 @@ extension DJMusicPlayer {
         nowPlayingInfo[MPMediaItemPropertyArtist] = item.Name as AnyObject?
         nowPlayingInfo[MPMediaItemPropertyAlbumTitle] = item.AudioSubCategory as AnyObject?
         
-        if item.isDisclaimer == true {
-            if let disclaimerImage = UIImage(named: "Disclaimer") {
-                nowPlayingInfo[MPMediaItemPropertyArtwork] = MPMediaItemArtwork(boundsSize: disclaimerImage.size) { size in
-                    return disclaimerImage
-                }
-            }
-        } else {
-            if let imgUrl = URL(string: item.ImageFile.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
-                UIImageView().sd_setImage(with: imgUrl, placeholderImage: nil, options: .refreshCached) { (audioImage, error, sdImageCacheType, imageUrl) in
-                    
-                    if audioImage != nil {
-                        nowPlayingInfo[MPMediaItemPropertyArtwork] = MPMediaItemArtwork(boundsSize: audioImage!.size) { size in
-                            return audioImage!
-                        }
+        if let imgUrl = URL(string: item.ImageFile.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+            UIImageView().sd_setImage(with: imgUrl, placeholderImage: nil, options: .refreshCached) { (audioImage, error, sdImageCacheType, imageUrl) in
+                
+                if audioImage != nil {
+                    nowPlayingInfo[MPMediaItemPropertyArtwork] = MPMediaItemArtwork(boundsSize: audioImage!.size) { size in
+                        return audioImage!
                     }
                 }
             }
@@ -110,6 +102,7 @@ extension DJMusicPlayer {
         if item.isDisclaimer == true {
             commandCenter.playCommand.removeTarget(self)
             commandCenter.pauseCommand.removeTarget(self)
+            commandCenter.changePlaybackPositionCommand.removeTarget(self)
             
             // Add Play Command
             commandCenter.playCommand.addTarget(self, action: #selector(handlePlayCommand(event:)))
@@ -119,14 +112,17 @@ extension DJMusicPlayer {
             
             commandCenter.previousTrackCommand.isEnabled = false
             commandCenter.nextTrackCommand.isEnabled = false
+            commandCenter.changePlaybackPositionCommand.isEnabled = false
         } else {
             commandCenter.previousTrackCommand.removeTarget(self)
             commandCenter.nextTrackCommand.removeTarget(self)
             commandCenter.playCommand.removeTarget(self)
             commandCenter.pauseCommand.removeTarget(self)
+            commandCenter.changePlaybackPositionCommand.removeTarget(self)
             
-            commandCenter.previousTrackCommand.isEnabled = !DJMusicPlayer.shared.isPlayingFirst
-            commandCenter.nextTrackCommand.isEnabled = !DJMusicPlayer.shared.isPlayingLast
+            commandCenter.previousTrackCommand.isEnabled = false // !DJMusicPlayer.shared.isPlayingFirst
+            commandCenter.nextTrackCommand.isEnabled = false // !DJMusicPlayer.shared.isPlayingLast
+            commandCenter.changePlaybackPositionCommand.isEnabled = true
             
             // Add Play Command
             commandCenter.playCommand.addTarget(self, action: #selector(handlePlayCommand(event:)))
@@ -135,10 +131,13 @@ extension DJMusicPlayer {
             commandCenter.pauseCommand.addTarget(self, action: #selector(handlePauseCommand(event:)))
             
             // Add Next Command
-           // commandCenter.nextTrackCommand.addTarget(self, action: #selector(handleNextCommand(event:)))
+            // commandCenter.nextTrackCommand.addTarget(self, action: #selector(handleNextCommand(event:)))
             
             // Add Previous Command
-            //commandCenter.previousTrackCommand.addTarget(self, action: #selector(handlePreviousCommand(event:)))
+            // commandCenter.previousTrackCommand.addTarget(self, action: #selector(handlePreviousCommand(event:)))
+            
+            // Add Change Playback Position Command
+            commandCenter.changePlaybackPositionCommand.addTarget(self, action: #selector(handleChangePlaybackPositionCommand(event:)))
         }
     }
     
@@ -175,6 +174,12 @@ extension DJMusicPlayer {
         DJMusicPlayer.shared.playerScreen = .notificationPlayer
 
         DJMusicPlayer.shared.playPrevious()
+        return .success
+    }
+    
+    @objc func handleChangePlaybackPositionCommand(event : MPChangePlaybackPositionCommandEvent) -> MPRemoteCommandHandlerStatus {
+        DJMusicPlayer.shared.seek(toSecond: event.positionTime)
+        
         return .success
     }
     
