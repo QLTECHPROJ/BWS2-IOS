@@ -301,15 +301,15 @@ extension ManagePlanListVC : TTTAttributedLabelDelegate {
     func attributedLabel(_ label: TTTAttributedLabel!, didSelectLinkWith url: URL!) {
         print("link clicked")
         if url.absoluteString == "action://TC" {
-            self.openUrl(urlString: "https://brainwellnessspa.com.au/terms-conditions")
+            self.openUrl(urlString: TERMS_AND_CONDITION_URL)
         }
         else if url.absoluteString == "action://Policy" {
-            self.openUrl(urlString: "https://brainwellnessspa.com.au/privacy-policy")
+            self.openUrl(urlString: PRIVACY_POLICY_URL)
         }
         else if url.absoluteString == "action://Disclaimer" {
             let aVC = AppStoryBoard.main.viewController(viewControllerClass: DescriptionPopupVC.self)
-            aVC.strDesc = "The Brain Wellness App offers a unique, alternative and drug free method created by our founder Terri Bowman aimed to assist people encountering struggles in their daily lives, to find inner peace and overcome negative thoughts and emotions (the Brain Wellness App Method). \n\nThe Brain Wellness App Method is not a scientific method. \n\nThe testimonials of our clients speak for themselves and we are so proud of the incredible results they have achieved – we want to help you and are committed to assisting you find a way to live a better life. However, as with any service, we accept that it may not be right for everyone and that results may vary from client to client. Accordingly, we make no promises or representations that our service will work for you but we invite you to try it for yourself."
-            aVC.strTitle = "Disclaimer"
+            aVC.strTitle = Theme.strings.disclaimer_title
+            aVC.strDesc = Theme.strings.disclaimer_description
             aVC.isOkButtonHidden = true
             aVC.modalPresentationStyle = .overFullScreen
             self.present(aVC, animated: false, completion: nil)

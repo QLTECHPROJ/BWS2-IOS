@@ -113,9 +113,9 @@ extension SplashVC : AlertPopUpVCDelegate {
     func handleAction(sender: UIButton, popUpTag: Int) {
         if sender.tag == 0 {
             if SplashVC.isForceUpdate == "1" {
-                self.openUrl(urlString: APP_AppStore_Link)
+                self.openUrl(urlString: APP_APPSTORE_URL)
             } else {
-                self.openUrl(urlString: APP_AppStore_Link)
+                self.openUrl(urlString: APP_APPSTORE_URL)
                 self.handleRedirection()
             }
         } else {

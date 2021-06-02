@@ -12,11 +12,14 @@ import UIKit
 // Application Constants
 let APP_VERSION = (Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String) ?? "1"
 let APP_TYPE = "0" // 0 = IOS , 1 = Android
-var APP_NAME = "Brain Wellness App"
-var APP_AppStore_Link = "https://apps.apple.com/us/app/brain-wellness-spa/id1534412422"
-var DEVICE_UUID = UIDevice.current.identifierForVendor!.uuidString
+let APP_NAME = "Brain Wellness App"
+let DEVICE_UUID = UIDevice.current.identifierForVendor!.uuidString
 
-var APPDELEGATE = UIApplication.shared.delegate as! AppDelegate
+let APP_APPSTORE_URL = "https://apps.apple.com/us/app/brain-wellness-spa/id1534412422"
+let TERMS_AND_CONDITION_URL = "https://brainwellnessspa.com.au/terms-conditions"
+let PRIVACY_POLICY_URL = "https://brainwellnessspa.com.au/privacy-policy"
+
+let APPDELEGATE = UIApplication.shared.delegate as! AppDelegate
 let SCREEN_SIZE = UIScreen.main.bounds.size
 
 // Screen Height / Width
