@@ -50,7 +50,7 @@ class DoDassAssessmentVC: BaseViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        let normalString = "We're done with the first part. \n\nIn the next step, you will have to fill an assessment form which will help us assess your mental health."
+        let normalString = Theme.strings.do_the_assessment_subtitle_one + " \n\n" + Theme.strings.do_the_assessment_subtitle_two
         lblSubTitle.attributedText = normalString.attributedString(alignment: .left, lineSpacing: 10)
     }
     
@@ -63,8 +63,8 @@ class DoDassAssessmentVC: BaseViewController {
     // MARK:- ACTIONS
     @IBAction func doTheAssessmentClicked(sender : UIButton) {
         let aVC = AppStoryBoard.main.viewController(viewControllerClass: StepVC.self)
-        aVC.strTitle = "Step 2"
-        aVC.strSubTitle = "Let's assess how you are \ncurrently doing"
+        aVC.strTitle = Theme.strings.step_2_title
+        aVC.strSubTitle = Theme.strings.step_2_subtitle
         aVC.imageMain = UIImage(named: "dass_form_image")
         aVC.viewTapped = {
             self.goNext()

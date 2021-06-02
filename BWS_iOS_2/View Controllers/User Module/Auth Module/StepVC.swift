@@ -18,8 +18,8 @@ class StepVC: BaseViewController {
     
     
     // MARK:- VARIABLES
-    var strTitle = "STEP 1"
-    var strSubTitle = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam"
+    var strTitle = Theme.strings.step_1_title
+    var strSubTitle = Theme.strings.step_1_subtitle
     var imageMain = UIImage(named: "profileForm")
     var viewTapped : (() -> Void)?
     
@@ -39,6 +39,7 @@ class StepVC: BaseViewController {
     override func setupUI() {
         lblTitle.text = strTitle.uppercased()
         lblSubTitle.attributedText = strSubTitle.attributedString(alignment: .center, lineSpacing: 10)
+        lblTapAnywhere.text = Theme.strings.tap_anywhere_to_continue.uppercased()
         imageView.image = imageMain
         
         lblTitle.isHidden = hideTitle

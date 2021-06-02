@@ -132,8 +132,8 @@ class DassAssessmentResultVC: BaseViewController {
     
     func handleNavigation() {
         let aVC = AppStoryBoard.main.viewController(viewControllerClass: ManageStartVC.self)
-        aVC.strTitle = "You are Doing Good"
-        aVC.strSubTitle = "We are analysing the information you provided and in the process of devising a personalised treatment plan for you."
+        aVC.strTitle = Theme.strings.you_are_doing_good_title
+        aVC.strSubTitle = Theme.strings.you_are_doing_good_subtitle
         aVC.imageMain = UIImage(named: "manageStartWave")
         aVC.continueClicked = {
             self.goNext()
@@ -152,8 +152,8 @@ class DassAssessmentResultVC: BaseViewController {
         }
         
         let aVC = AppStoryBoard.main.viewController(viewControllerClass: StepVC.self)
-        aVC.strTitle = "Step 3"
-        aVC.strSubTitle = "we're analysing your inputs"
+        aVC.strTitle = Theme.strings.step_3_title
+        aVC.strSubTitle = Theme.strings.step_3_subtitle
         aVC.imageMain = UIImage(named: "analyze")
         aVC.hideTapAnywhere = true
         aVC.viewTapped = {

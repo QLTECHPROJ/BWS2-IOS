@@ -70,7 +70,7 @@ class IndexScoreCell: UITableViewCell {
     }
     
     func configureCheckIndexScoreCell() {
-        lblTitle.text = "Index Score"
+        lblTitle.text = "Your Mental health check up"
         
         viewGraph.isHidden = true
         viewJoinNow.isHidden = true

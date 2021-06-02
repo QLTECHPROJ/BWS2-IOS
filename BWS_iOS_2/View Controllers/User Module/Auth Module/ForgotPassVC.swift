@@ -12,6 +12,9 @@ import JVFloatLabeledTextField
 class ForgotPassVC: BaseViewController {
     
     // MARK:- OUTLETS
+    @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var lblSubTitle: UILabel!
+    
     @IBOutlet weak var txtFEmailAdd: JVFloatLabeledTextField!
     @IBOutlet weak var lblErrorEmail: UILabel!
     @IBOutlet weak var btnDone: UIButton!
@@ -31,6 +34,9 @@ class ForgotPassVC: BaseViewController {
     
     // MARK:- FUNCTIONS
     override func setupUI() {
+        lblTitle.attributedText = Theme.strings.forgot_password_title.attributedString(alignment: .left, lineSpacing: 10)
+        lblSubTitle.attributedText = Theme.strings.forgot_password_subtitle.attributedString(alignment: .left, lineSpacing: 10)
+        
         lblErrorEmail.isHidden = true
         
         txtFEmailAdd.delegate = self

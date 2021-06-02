@@ -14,6 +14,9 @@ import IQKeyboardManagerSwift
 class SignUpVC: BaseViewController {
     
     // MARK:- OUTLETS
+    @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var lblSubTitle: UILabel!
+    
     @IBOutlet weak var stackView: UIStackView!
     
     // Textfield
@@ -56,6 +59,9 @@ class SignUpVC: BaseViewController {
     
     // MARK:- FUNCTIONS
     override func setupUI() {
+        lblTitle.attributedText = Theme.strings.register_title.attributedString(alignment: .left, lineSpacing: 10)
+        lblSubTitle.attributedText = Theme.strings.register_subtitle.attributedString(alignment: .left, lineSpacing: 10)
+        
         lblErrName.isHidden = true
         lblErrPass.isHidden = true
         lblErrMobileNo.isHidden = true

@@ -18,6 +18,8 @@ class OrderSummaryVC: BaseViewController {
     @IBOutlet weak var lblPlanPrice: UILabel!
     @IBOutlet weak var lblPlanPriceDesc: UILabel!
     
+    @IBOutlet weak var lblEnhanceProgram : UILabel!
+    
     @IBOutlet weak var lblPlanPrice1: UILabel!
     @IBOutlet weak var lblPlanPriceDesc1: UILabel!
     
@@ -49,6 +51,8 @@ class OrderSummaryVC: BaseViewController {
         lblPlanDesc.text = planData.FreeTrial
         lblPlanPrice.text = "$" + planData.PlanAmount
         lblPlanPriceDesc.text = planData.SubName
+        
+        lblEnhanceProgram.text = Theme.strings.enhance_program
         
         lblPlanPrice1.text = "$" + planData.PlanAmount
         lblPlanPriceDesc1.text = planData.SubName

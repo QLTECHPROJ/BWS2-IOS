@@ -23,6 +23,8 @@ class ContinueVC: BaseViewController {
         if let name = CoUserDataModel.currentUser?.Name {
             lblName.text = "Hi, \(name)"
         }
+        
+        lblDesc.attributedText = Theme.strings.couser_welcome_subtitle.attributedString(alignment: .center, lineSpacing: 10)
     }
     
     // MARK:- FUNCTIONS
@@ -35,8 +37,8 @@ class ContinueVC: BaseViewController {
     // MARK:- ACTIONS
     @IBAction func onTappedContinue(_ sender: UIButton) {
         let aVC = AppStoryBoard.main.viewController(viewControllerClass:StepVC.self)
-        aVC.strTitle = "Step 1"
-        aVC.strSubTitle = "Simply fill in your assessment form and we'll recommend the programs best suited to your needs"
+        aVC.strTitle = Theme.strings.step_1_title
+        aVC.strSubTitle = Theme.strings.step_1_subtitle
         aVC.imageMain = UIImage(named: "profileForm")
         aVC.viewTapped = {
             self.goNext()

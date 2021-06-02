@@ -12,6 +12,7 @@ class UserListVC: BaseViewController {
     
     // MARK:- OUTLETS
     @IBOutlet weak var btnBack: UIButton!
+    @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblSubTitle: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var btnLogin: UIButton!
@@ -44,8 +45,8 @@ class UserListVC: BaseViewController {
     override func setupUI() {
         btnBack.isHidden = hideBackButton
         
-        let normalString = "Simply sign-in to your account and continue your journey towards mental & emotional transformation"
-        lblSubTitle.attributedText = normalString.attributedString(alignment: .left, lineSpacing: 10)
+        lblTitle.attributedText = Theme.strings.couser_listing_title.attributedString(alignment: .left, lineSpacing: 10)
+        lblSubTitle.attributedText = Theme.strings.couser_listing_subtitle.attributedString(alignment: .left, lineSpacing: 10)
         
         tableView.register(nibWithCellClass: UserListCell.self)
         

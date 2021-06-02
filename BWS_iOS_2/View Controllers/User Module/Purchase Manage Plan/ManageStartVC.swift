@@ -17,8 +17,8 @@ class ManageStartVC: BaseViewController {
     
     
     // MARK:- VARIABLES
-    var strTitle = "You are Doing Good"
-    var strSubTitle = "We are analysing the information you provided and in the process of devising a personalised treatment plan for you."
+    var strTitle = Theme.strings.you_are_doing_good_title
+    var strSubTitle = Theme.strings.you_are_doing_good_subtitle
     var imageMain = UIImage(named: "manageStartWave")
     var continueClicked : (() -> Void)?
     

@@ -25,8 +25,7 @@ class RecommendedCategoryHeaderCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        let normalString = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut"
-        lblSubTitle.attributedText = normalString.attributedString(alignment: .left, lineSpacing: 10)
+        lblSubTitle.attributedText = Theme.strings.recommended_category_subtitle.attributedString(alignment: .left, lineSpacing: 10)
         
         txtSearch.delegate = self
         btnClear.isHidden = true

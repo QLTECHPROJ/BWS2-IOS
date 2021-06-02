@@ -29,10 +29,10 @@ class PreparingPlaylistVC: BaseViewController {
         // Segment Tracking
         SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.preparingPlaylist)
         
-        let titleString = "Preparing your \npersonalised playlist"
+        let titleString = Theme.strings.preparing_playlist_title
         lblTitle.attributedText = titleString.attributedString(alignment: .center, lineSpacing: 10)
         
-        let subTitleString = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut"
+        let subTitleString = Theme.strings.preparing_playlist_subtitle
         lblSubTitle.attributedText = subTitleString.attributedString(alignment: .center, lineSpacing: 10)
         
         animationView.animationType = .ballSpinFadeLoader
@@ -44,8 +44,8 @@ class PreparingPlaylistVC: BaseViewController {
             SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.Suggested_Playlist_Created)
             
             let aVC = AppStoryBoard.main.viewController(viewControllerClass: ManageStartVC.self)
-            aVC.strTitle = "You playlist is ready"
-            aVC.strSubTitle = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut"
+            aVC.strTitle = Theme.strings.you_playlist_is_ready_title
+            aVC.strSubTitle = Theme.strings.you_playlist_is_ready_subtitle
             aVC.imageMain = UIImage(named: "playlistReadyWave")
             aVC.continueClicked = {
                 self.goNext()

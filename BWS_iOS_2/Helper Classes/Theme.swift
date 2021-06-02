@@ -271,20 +271,83 @@ struct AppDateFormats {
 // MARK: - Application Strings
 struct AppStrings {
     
-    /*    UserDefault Keys    */
+    /* UserDefault Keys */
     let logged_in_user = "logged_in_user"
     
-    /*    Button Titles    */
+    /* Button Titles */
     let ok = "OK"
     let cancel = "CANCEL"
     let yes = "YES"
     let no = "NO"
     let logout = "LOG OUT"
     
-    /*    Common Strings    */
+    /* App Update Popup */
+    let update = "UPDATE"
+    let not_now = "NOT NOW"
+    
+    let normal_update_title = "Update Brain Wellness App"
+    let normal_update_subtitle = "Brain Wellness App recommends that you update to the latest version"
+    
+    let force_update_title = "Update Required"
+    let force_update_subtitle = "To keep using Brain Wellness App, download the latest version"
+    
+    /* Common Strings */
     let please_wait = "Please wait"
     
-    /*    Alert Strings    */
+    /* Screen Contents */
+    let welcome_title = "The Brain Wellness Spa App"
+    let welcome_subtitle = "Your one-stop solution for mental & emotional health challenges"
+    
+    let register_title = "Welcome to Brain wellness spa"
+    let register_subtitle = "We just need few details to get you started!!"
+    
+    let login_title = "Welcome back..."
+    let login_subtitle = "Hope you're feeling much better than you felt before!!"
+    
+    let forgot_password_title = "Forgot your password"
+    let forgot_password_subtitle = "Give us your registered email ID and we'll send you everything that you'll need to change your password"
+    
+    let couser_listing_title = "Welcome to Brain wellness spa"
+    let couser_listing_subtitle = "Simply sign-in to your account and continue your journey towards mental & emotional transformation"
+    
+    let couser_welcome_subtitle = "It's good to have you here..."
+    
+    let tap_anywhere_to_continue = "TAP anywhere to continue"
+    let step_1_title = "Step 1"
+    let step_2_title = "Step 2"
+    let step_3_title = "Step 3"
+    
+    let step_1_subtitle = "Simply fill in your assessment form and we'll recommend the programs best suited for your needs"
+    let step_2_subtitle = "Let's assess how you are \ncurrently doing"
+    let step_3_subtitle = "we're analysing your inputs"
+    
+    let prev_drug_use_subtitle = "Have you ever taken any illicit drugs in your life?"
+    
+    let do_the_assessment_subtitle_one = "We're done with the first part."
+    let do_the_assessment_subtitle_two = "In the next step, you will have to fill an assessment form which will help us assess your mental health."
+    
+    let index_score_subtitle = "The index score determines the intensity of your mental health challenge and based on your score we will recommend the programs to help you."
+    
+    let you_are_doing_good_title = "You are Doing Good"
+    let you_are_doing_good_subtitle = "We are analysing the information you have provided and devising a personalised treatment plan for just for you."
+    
+    let manage_plan_list_access_audios = "Access More Than 75 Audio Programs."
+    let manage_plan_list_introductory_session = "Self reported date of 2173 clients before and after the introductory session"
+    let manage_plan_list_testimonials = "SEE REAL TESTIMONIALS \nFROM REAL CUSTOMERS"
+    
+    let enhance_program = "Enhance Program"
+    
+    let thank_you_subtitle = "Congratulations on joining the Brain Wellness Spa Membership"
+    
+    let recommended_category_subtitle = "You can select upto three areas of focus to further customise your journey towards mental transformation."
+    
+    let preparing_playlist_title = "Preparing your \npersonalised playlist"
+    let preparing_playlist_subtitle = "Thank you for providing us with the information, We are preparing personlalised playlists for you."
+    
+    let you_playlist_is_ready_title = "You playlist is ready"
+    let you_playlist_is_ready_subtitle = "We recommend that you listen to the audios while going to sleep to experience to get the maximum benefits from the program."
+    
+    /* Alert Strings */
     let alert_check_internet = "Internet connection seems to be offline."
     let alert_something_went_wrong = "Something went wrong"
     

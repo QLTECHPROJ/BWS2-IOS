@@ -24,8 +24,8 @@ class StartingVC: BaseViewController {
         // Segment Tracking
         SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.launch)
         
-        let normalString = "Your one-stop solution for mental & emotional health challenges"
-        lblSubTitle.attributedText = normalString.attributedString(alignment: .center, lineSpacing: 10)
+        lblTitle.attributedText = Theme.strings.welcome_title.attributedString(alignment: .center, lineSpacing: 10)
+        lblSubTitle.attributedText = Theme.strings.welcome_subtitle.attributedString(alignment: .center, lineSpacing: 10)
     }
     
     

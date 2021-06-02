@@ -39,19 +39,19 @@ class SplashVC: BaseViewController {
     func handleAppUpdatePopup() {
         if SplashVC.isForceUpdate == "1" {
             let aVC = AppStoryBoard.manage.viewController(viewControllerClass: AlertPopUpVC.self)
-            aVC.titleText = "Update Required"
-            aVC.detailText = "To keep using Brain Wellness App, download the latest version"
-            aVC.firstButtonTitle = "UPDATE"
+            aVC.titleText = Theme.strings.force_update_title
+            aVC.detailText = Theme.strings.force_update_subtitle
+            aVC.firstButtonTitle = Theme.strings.update
             aVC.hideSecondButton = true
             aVC.modalPresentationStyle = .overFullScreen
             aVC.delegate = self
             self.present(aVC, animated: false, completion: nil)
         } else if SplashVC.isForceUpdate == "0" {
             let aVC = AppStoryBoard.manage.viewController(viewControllerClass: AlertPopUpVC.self)
-            aVC.titleText = "Update Brain Wellness App"
-            aVC.detailText = "Brain Wellness App recommends that you update to the latest version"
-            aVC.firstButtonTitle = "UPDATE"
-            aVC.secondButtonTitle = "NOT NOW"
+            aVC.titleText = Theme.strings.normal_update_title
+            aVC.detailText = Theme.strings.normal_update_subtitle
+            aVC.firstButtonTitle = Theme.strings.update
+            aVC.secondButtonTitle = Theme.strings.not_now
             aVC.modalPresentationStyle = .overFullScreen
             aVC.delegate = self
             self.present(aVC, animated: false, completion: nil)

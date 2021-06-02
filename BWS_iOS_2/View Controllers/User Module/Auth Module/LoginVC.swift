@@ -14,6 +14,9 @@ import JVFloatLabeledTextField
 class LoginVC: BaseViewController {
     
     // MARK:- OUTLETS
+    @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var lblSubTitle: UILabel!
+    
     // Textfield
     @IBOutlet weak var txtFEmailAdd: JVFloatLabeledTextField!
     @IBOutlet weak var txtFPassWord: JVFloatLabeledTextField!
@@ -54,6 +57,9 @@ class LoginVC: BaseViewController {
     
     // MARK:- FUNCTIONS
     override func setupUI() {
+        lblTitle.attributedText = Theme.strings.login_title.attributedString(alignment: .left, lineSpacing: 10)
+        lblSubTitle.attributedText = Theme.strings.login_subtitle.attributedString(alignment: .left, lineSpacing: 10)
+        
         lblErrPass.isHidden = true
         lblErrEmail.isHidden = true
         
