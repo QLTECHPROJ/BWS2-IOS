@@ -82,7 +82,7 @@ class EditProfileVC: BaseViewController {
             imgCheckMobile.isHidden = false
             imgCheckEmail.isHidden = false
             txtFEmailAdd.isEnabled = false
-            lblDOB.text = "Date of Birth"
+            lblDOB.text = Theme.strings.date_of_birth
             
            DispatchQueue.main.asyncAfter(deadline: .now() + 0) {
             self.txtFDOB.textColor = Theme.colors.gray_CDD4D9
@@ -93,10 +93,10 @@ class EditProfileVC: BaseViewController {
             
             if txtFDOB.text == userData.DOB ||  txtFEmailAdd.text == userData.Email || txtFName.text == userName  {
                 btnSave.isUserInteractionEnabled = false
-                btnSave.backgroundColor = hexStringToUIColor(hex: "7E7E7E")
+                btnSave.backgroundColor = Theme.colors.gray_7E7E7E
             } else {
                 btnSave.isUserInteractionEnabled = true
-                btnSave.backgroundColor = hexStringToUIColor(hex: "#008892")
+                btnSave.backgroundColor = Theme.colors.green_008892
             }
         }
     }
@@ -258,7 +258,7 @@ extension EditProfileVC : UITextFieldDelegate {
         lblErrMobileNo.isHidden = true
         lblErrEmailAdd.isHidden = true
         lblErrDOB.isHidden = true
-        lblDOB.text = "Date of Birth"
+        lblDOB.text = Theme.strings.date_of_birth
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

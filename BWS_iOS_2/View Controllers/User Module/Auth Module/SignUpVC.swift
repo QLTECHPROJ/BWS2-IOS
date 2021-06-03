@@ -59,8 +59,8 @@ class SignUpVC: BaseViewController {
     
     // MARK:- FUNCTIONS
     override func setupUI() {
-        lblTitle.attributedText = Theme.strings.register_title.attributedString(alignment: .left, lineSpacing: 10)
-        lblSubTitle.attributedText = Theme.strings.register_subtitle.attributedString(alignment: .left, lineSpacing: 10)
+        lblTitle.text = Theme.strings.register_title
+        lblSubTitle.attributedText = Theme.strings.register_subtitle.attributedString(alignment: .left, lineSpacing: 5)
         
         lblErrName.isHidden = true
         lblErrPass.isHidden = true

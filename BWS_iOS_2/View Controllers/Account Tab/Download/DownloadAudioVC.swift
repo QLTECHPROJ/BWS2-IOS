@@ -36,7 +36,7 @@ class DownloadAudioVC: BaseViewController {
         tableView.rowHeight = 70
         tableView.tableFooterView = UIView()
         lblNoData.isHidden = true
-        lblNoData.text = "Your downloaded audios will appear here"
+        lblNoData.text = Theme.strings.no_downloaded_audios
         lblNoData.font = Theme.fonts.montserratFont(ofSize: 17, weight: .regular)
     }
     
@@ -92,10 +92,10 @@ class DownloadAudioVC: BaseViewController {
         let aVC = AppStoryBoard.manage.viewController(viewControllerClass: AlertPopUpVC.self)
         aVC.modalPresentationStyle = .overFullScreen
         aVC.delegate = self
-        aVC.titleText = "Delete audio"
+        aVC.titleText = Theme.strings.delete_audio
         aVC.detailText = "Are you sure you want to remove the \(downloadedAudios[index].Name)  from downloads?"
-        aVC.firstButtonTitle = "DELETE"
-        aVC.secondButtonTitle = "CLOSE"
+        aVC.firstButtonTitle = Theme.strings.delete
+        aVC.secondButtonTitle = Theme.strings.close
         self.present(aVC, animated: false, completion: nil)
     }
     
@@ -153,7 +153,7 @@ extension DownloadAudioVC:UITableViewDelegate , UITableViewDataSource {
             
             self.presentAudioPlayer(arrayPlayerData: downloadedAudios, index: indexPath.row)
             DJMusicPlayer.shared.playerType = .downloadedAudios
-            DJMusicPlayer.shared.playingFrom = "My Downloads"
+            DJMusicPlayer.shared.playingFrom = Theme.strings.my_downloads
         }
     }
     

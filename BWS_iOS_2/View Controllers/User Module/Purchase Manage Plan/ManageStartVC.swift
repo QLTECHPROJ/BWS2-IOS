@@ -29,7 +29,7 @@ class ManageStartVC: BaseViewController {
         // Do any additional setup after loading the view.
         
         lblTitle.text = strTitle
-        lblSubTitle.attributedText = strSubTitle.attributedString(alignment: .center, lineSpacing: 10)
+        lblSubTitle.attributedText = strSubTitle.attributedString(alignment: .center, lineSpacing: 5)
         imageView.image = self.imageMain
     }
     

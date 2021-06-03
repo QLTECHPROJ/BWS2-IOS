@@ -43,10 +43,10 @@ class AddToPlaylistVC: BaseViewController {
     
     func showGoToPlaylistPopUp() {
         let aVC = AppStoryBoard.manage.viewController(viewControllerClass: AlertPopUpVC.self)
-        aVC.titleText = "Playlist"
-        aVC.detailText = "Successfully added to playlist"
-        aVC.firstButtonTitle = "GO TO PLAYLIST"
-        aVC.secondButtonTitle = "Cancel"
+        aVC.titleText = Theme.strings.playlist
+        aVC.detailText = Theme.strings.successfully_added_to_playlist
+        aVC.firstButtonTitle = Theme.strings.go_to_playlist
+        aVC.secondButtonTitle = Theme.strings.cancel
         aVC.modalPresentationStyle = .overFullScreen
         aVC.delegate = self
         self.present(aVC, animated: false, completion: nil)

@@ -34,8 +34,8 @@ class ForgotPassVC: BaseViewController {
     
     // MARK:- FUNCTIONS
     override func setupUI() {
-        lblTitle.attributedText = Theme.strings.forgot_password_title.attributedString(alignment: .left, lineSpacing: 10)
-        lblSubTitle.attributedText = Theme.strings.forgot_password_subtitle.attributedString(alignment: .left, lineSpacing: 10)
+        lblTitle.text = Theme.strings.forgot_password_title
+        lblSubTitle.attributedText = Theme.strings.forgot_password_subtitle.attributedString(alignment: .left, lineSpacing: 5)
         
         lblErrorEmail.isHidden = true
         

@@ -116,7 +116,7 @@ class AccountVC: BaseViewController {
     
     func handleImageOptions(buttonTitle : String) {
         switch buttonTitle {
-        case "Take a Photo":
+        case Theme.strings.take_a_photo:
             DispatchQueue.main.async {
                 if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera) {
                     let picker = UIImagePickerController()
@@ -129,7 +129,7 @@ class AccountVC: BaseViewController {
                     showAlertToast(message: Theme.strings.alert_camera_not_available)
                 }
             }
-        case "Choose from Gallary":
+        case Theme.strings.choose_from_gallary:
             DispatchQueue.main.async {
                 let picker = UIImagePickerController()
                 picker.sourceType = .photoLibrary
@@ -137,7 +137,7 @@ class AccountVC: BaseViewController {
                 picker.allowsEditing = true
                 self.present(picker, animated: true, completion: nil)
             }
-        case "Remove Photo":
+        case Theme.strings.remove_photo:
             self.callRemoveProfileImageAPI()
         default:
             break
@@ -248,10 +248,10 @@ class AccountVC: BaseViewController {
                 }
                 
                 let aVC = AppStoryBoard.manage.viewController(viewControllerClass: AlertPopUpVC.self)
-                aVC.titleText = "Log out"
-                aVC.detailText = "Are you sure you want to log out \nBrain Wellness App?"
-                aVC.firstButtonTitle = "OK"
-                aVC.secondButtonTitle = "CLOSE"
+                aVC.titleText = Theme.strings.logout
+                aVC.detailText = Theme.strings.alert_logout_message
+                aVC.firstButtonTitle = Theme.strings.ok
+                aVC.secondButtonTitle = Theme.strings.close
                 aVC.modalPresentationStyle = .overFullScreen
                 aVC.delegate = self
                 self.present(aVC, animated: false, completion: nil)
@@ -275,12 +275,12 @@ class AccountVC: BaseViewController {
         }
         
         self.view.endEditing(true)
-        var arrayTitles = ["Take a Photo","Choose from Gallary"]
+        var arrayTitles = [Theme.strings.take_a_photo, Theme.strings.choose_from_gallary]
         if let imageStr = CoUserDataModel.currentUser?.Image, imageStr.trim.count > 0 {
-            arrayTitles.append("Remove Photo")
+            arrayTitles.append(Theme.strings.remove_photo)
         }
         
-        showActionSheet(title: "", message: "Profile Image Options", titles: arrayTitles, cancelButtonTitle: "Cancel") { (buttonTitle) in
+        showActionSheet(title: "", message: Theme.strings.profile_image_options, titles: arrayTitles, cancelButtonTitle: Theme.strings.cancel_small) { (buttonTitle) in
             DispatchQueue.main.async {
                 self.handleImageOptions(buttonTitle: buttonTitle)
             }

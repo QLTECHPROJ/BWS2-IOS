@@ -36,7 +36,7 @@ class DownloadPlaylistVC: BaseViewController {
         tableView.tableFooterView = UIView()
         
         lblNoData.isHidden = true
-        lblNoData.text = "Your downloaded playlists will appear here"
+        lblNoData.text = Theme.strings.no_downloaded_playlists
         lblNoData.font = Theme.fonts.montserratFont(ofSize: 17, weight: .regular)
     }
     
@@ -78,10 +78,10 @@ class DownloadPlaylistVC: BaseViewController {
         let aVC = AppStoryBoard.manage.viewController(viewControllerClass: AlertPopUpVC.self)
         aVC.modalPresentationStyle = .overFullScreen
         aVC.delegate = self
-        aVC.titleText = "Delete playlist"
+        aVC.titleText = Theme.strings.delete_playlist
         aVC.detailText = "Are you sure you want to remove the \(downloadedPlaylists[index].PlaylistName) from downloads?"
-        aVC.firstButtonTitle = "DELETE"
-        aVC.secondButtonTitle = "CLOSE"
+        aVC.firstButtonTitle = Theme.strings.delete
+        aVC.secondButtonTitle = Theme.strings.close
         self.present(aVC, animated: false, completion: nil)
     }
     
@@ -117,7 +117,7 @@ extension DownloadPlaylistVC : UITableViewDelegate, UITableViewDataSource {
             let aVC = AppStoryBoard.home.viewController(viewControllerClass: PlaylistAudiosVC.self)
             aVC.objPlaylist = downloadedPlaylists[indexPath.row]
             aVC.isFromDownload = true
-            aVC.sectionName = "Downloaded Playlists"
+            aVC.sectionName = Theme.strings.downloaded_playlists
             self.navigationController?.pushViewController(aVC, animated: true)
         }
     }
@@ -132,7 +132,7 @@ extension DownloadPlaylistVC : AlertPopUpVCDelegate {
         if sender.tag == 0 {
             if deleteIndex != nil {
                 // Segment Tracking
-                downloadedPlaylists[deleteIndex ?? 0].sectionName = "Downloaded Playlists"
+                downloadedPlaylists[deleteIndex ?? 0].sectionName = Theme.strings.downloaded_playlists
                 SegmentTracking.shared.playlistEvents(name: SegmentTracking.eventNames.Downloaded_Playlist_Removed, objPlaylist: downloadedPlaylists[deleteIndex ?? 0], trackingType: .track)
                 
                 CoreDataHelper.shared.deleteDownloadedPlaylist(playlistData: downloadedPlaylists[deleteIndex!])

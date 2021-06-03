@@ -259,31 +259,31 @@ class SegmentTracking {
         
         switch DJMusicPlayer.shared.playerType {
         case .playlist:
-            traits["source"] = "Playlist"
+            traits["source"] = Theme.strings.playlist
             break
         case .downloadedPlaylist:
-            traits["source"] = "Downloaded Playlists"
+            traits["source"] = Theme.strings.downloaded_playlists
             break
         case .topCategories:
-            traits["source"] = "Top Categories"
+            traits["source"] = Theme.strings.top_categories
             break
         case .downloadedAudios:
-            traits["source"] = "Downloaded Audios"
+            traits["source"] = Theme.strings.downloaded_audios
             break
         case .likedAudios:
             traits["source"] = "Liked Audios"
             break
         case .recentlyPlayed:
-            traits["source"] = "Recently Played"
+            traits["source"] = Theme.strings.recently_played
             break
         case .library:
-            traits["source"] = "Library"
+            traits["source"] = Theme.strings.library
             break
         case .getInspired:
-            traits["source"] = "Get Inspired"
+            traits["source"] = Theme.strings.get_inspired
             break
         case .popular:
-            traits["source"] = "Popular"
+            traits["source"] = Theme.strings.popular_audio
             break
         case .searchAudio:
             traits["source"] = DJMusicPlayer.shared.playingFrom

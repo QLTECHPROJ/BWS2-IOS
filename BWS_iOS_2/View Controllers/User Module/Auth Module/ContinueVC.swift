@@ -24,7 +24,7 @@ class ContinueVC: BaseViewController {
             lblName.text = "Hi, \(name)"
         }
         
-        lblDesc.attributedText = Theme.strings.couser_welcome_subtitle.attributedString(alignment: .center, lineSpacing: 10)
+        lblDesc.attributedText = Theme.strings.couser_welcome_subtitle.attributedString(alignment: .center, lineSpacing: 5)
     }
     
     // MARK:- FUNCTIONS

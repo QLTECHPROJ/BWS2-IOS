@@ -55,12 +55,12 @@ class ViewAllAudioVC: BaseViewController {
     
     // Refresh Data
     @objc func refreshData() {
-        if libraryTitle == "My Downloads" {
+        if libraryTitle == Theme.strings.my_downloads {
             NotificationCenter.default.addObserver(self, selector: #selector(refreshDownloadData), name: .refreshDownloadData, object: nil)
             
             let downloadDataModel = AudioHomeDataModel()
             downloadDataModel.HomeAudioID = "1"
-            downloadDataModel.View = "My Downloads"
+            downloadDataModel.View = Theme.strings.my_downloads
             downloadDataModel.UserID = (CoUserDataModel.currentUser?.UserID ?? "")
             downloadDataModel.CoUserId = (CoUserDataModel.currentUser?.CoUserId ?? "")
             downloadDataModel.Details = CoreDataHelper.shared.fetchSingleAudios()
@@ -138,7 +138,7 @@ class ViewAllAudioVC: BaseViewController {
         
         let aVC = AppStoryBoard.manage.viewController(viewControllerClass: AudioDetailVC.self)
         aVC.audioDetails = homeData.Details[sender.tag]
-        aVC.source = "Queue Player Screen"
+        aVC.source = "Audio View All Screen"
         aVC.modalPresentationStyle = .overFullScreen
         self.present(aVC, animated: true, completion: nil)
     }
@@ -185,7 +185,7 @@ extension ViewAllAudioVC : UICollectionViewDataSource, UICollectionViewDelegate,
             showAlertToast(message: Theme.strings.alert_reactivate_plan)
             return
         } else {
-            if homeData.View == "Top Categories" {
+            if homeData.View == Theme.strings.top_categories {
                 if DJMusicPlayer.shared.currentlyPlaying?.isDisclaimer == true {
                     showAlertToast(message: Theme.strings.alert_disclaimer_playing)
                     return
@@ -210,15 +210,15 @@ extension ViewAllAudioVC : UICollectionViewDataSource, UICollectionViewDelegate,
                 var playerType = PlayerType.audio
                 
                 switch homeData.View {
-                case "Recently Played":
+                case Theme.strings.recently_played:
                     playerType = .recentlyPlayed
-                case "My Downloads":
+                case Theme.strings.my_downloads:
                     playerType = .downloadedAudios
-                case "Library":
+                case Theme.strings.library:
                     playerType = .library
-                case "Get Inspired":
+                case Theme.strings.get_inspired:
                     playerType = .getInspired
-                case "Popular":
+                case Theme.strings.popular_audio:
                     playerType = .popular
                 default:
                     playerType = .audio

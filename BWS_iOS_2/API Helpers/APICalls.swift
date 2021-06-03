@@ -207,6 +207,8 @@ extension PinVC {
                 // Clear Last User Data
                 AccountVC.clearUserData()
                 
+                showAlertToast(message: "Welcome \(CoUserDataModel.currentUser?.Name ?? "Guest")!!")
+                
                 self.pinVerified?()
             } else {
                 showAlertToast(message: response.ResponseMessage)
@@ -477,7 +479,7 @@ extension ManageVC {
                     self.arrayPlaylistHomeData = responseData.Playlist
                     
                     for data in self.arrayAudioHomeData {
-                        if data.View == "My Downloads" {
+                        if data.View == Theme.strings.my_downloads {
                             data.Details = CoreDataHelper.shared.fetchSingleAudios()
                             lockDownloads = data.IsLock
                             // setDownloadsExpiryDate(expireDateString: data.expireDate)
@@ -529,7 +531,7 @@ extension PlaylistCategoryVC {
             if response.ResponseCode == "200" {
                 self.arrayPlaylistHomeData = response.ResponseData
                 for data in self.arrayPlaylistHomeData {
-                    if data.View == "My Downloads" {
+                    if data.View == Theme.strings.my_downloads {
                         data.Details = CoreDataHelper.shared.fetchAllPlaylists()
                     }
                 }

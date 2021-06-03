@@ -38,7 +38,7 @@ class StepVC: BaseViewController {
     
     override func setupUI() {
         lblTitle.text = strTitle.uppercased()
-        lblSubTitle.attributedText = strSubTitle.attributedString(alignment: .center, lineSpacing: 10)
+        lblSubTitle.attributedText = strSubTitle.attributedString(alignment: .center, lineSpacing: 5)
         lblTapAnywhere.text = Theme.strings.tap_anywhere_to_continue.uppercased()
         imageView.image = imageMain
         

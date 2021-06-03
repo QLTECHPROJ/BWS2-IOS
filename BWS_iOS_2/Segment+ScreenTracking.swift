@@ -240,7 +240,7 @@ extension ViewAllAudioVC {
         var traits : [String:Any] = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
                                      "source":libraryView]
         
-        if libraryView == "Top Categories" {
+        if libraryView == Theme.strings.top_categories {
             traits["categoryName"] = self.categoryName
         }
         

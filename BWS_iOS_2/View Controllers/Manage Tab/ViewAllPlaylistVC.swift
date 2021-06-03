@@ -51,12 +51,12 @@ class ViewAllPlaylistVC: BaseViewController {
     }
     
     func fetchData() {
-        if libraryTitle == "My Downloads" {
+        if libraryTitle == Theme.strings.my_downloads {
             NotificationCenter.default.addObserver(self, selector: #selector(refreshDownloadData), name: .refreshDownloadData, object: nil)
             
             let downloadDataModel = PlaylistHomeDataModel()
             downloadDataModel.GetLibraryID = "2"
-            downloadDataModel.View = "My Downloads"
+            downloadDataModel.View = Theme.strings.my_downloads
             downloadDataModel.CoUserId = (CoUserDataModel.currentUser?.CoUserId ?? "")
             downloadDataModel.UserID = (CoUserDataModel.currentUser?.UserID ?? "")
             downloadDataModel.Details = CoreDataHelper.shared.fetchAllPlaylists()
@@ -157,11 +157,11 @@ extension ViewAllPlaylistVC : UICollectionViewDataSource, UICollectionViewDelega
         } else if homeData.IsLock == "2" {
             showAlertToast(message: Theme.strings.alert_reactivate_plan)
         } else {
-            if homeData.View == "My Downloads" {
+            if homeData.View == Theme.strings.my_downloads {
                 let aVC = AppStoryBoard.home.viewController(viewControllerClass: PlaylistAudiosVC.self)
                 aVC.objPlaylist = homeData.Details[indexPath.row]
                 aVC.isFromDownload = true
-                aVC.sectionName = "Downloaded Playlists"
+                aVC.sectionName = Theme.strings.downloaded_playlists
                 self.navigationController?.pushViewController(aVC, animated: true)
             }
             else {

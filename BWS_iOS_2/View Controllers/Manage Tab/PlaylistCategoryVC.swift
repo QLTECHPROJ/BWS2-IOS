@@ -79,7 +79,7 @@ class PlaylistCategoryVC: BaseViewController {
         if checkInternet() {
             tableView.tableHeaderView = tableHeaderView
             for data in arrayPlaylistHomeData {
-                if data.View == "My Downloads" {
+                if data.View == Theme.strings.my_downloads {
                     data.Details = CoreDataHelper.shared.fetchAllPlaylists()
                 }
             }
@@ -95,7 +95,7 @@ class PlaylistCategoryVC: BaseViewController {
         self.arrayPlaylistHomeData = [PlaylistHomeDataModel]()
         let downloadDataModel = PlaylistHomeDataModel()
         downloadDataModel.GetLibraryID = "2"
-        downloadDataModel.View = "My Downloads"
+        downloadDataModel.View = Theme.strings.my_downloads
         downloadDataModel.UserID = (CoUserDataModel.currentUser?.UserID ?? "")
         downloadDataModel.CoUserId = (CoUserDataModel.currentUser?.CoUserId ?? "")
         downloadDataModel.Details = CoreDataHelper.shared.fetchAllPlaylists()
@@ -105,7 +105,7 @@ class PlaylistCategoryVC: BaseViewController {
     }
     
     func openPlaylist(playlistIndex : Int, sectionIndex : Int) {
-        if checkInternet(showToast: true) == false && arrayPlaylistHomeData[sectionIndex].View != "My Downloads" {
+        if checkInternet(showToast: true) == false && arrayPlaylistHomeData[sectionIndex].View != Theme.strings.my_downloads {
             return
         }
         
@@ -113,9 +113,9 @@ class PlaylistCategoryVC: BaseViewController {
         aVC.objPlaylist = arrayPlaylistHomeData[sectionIndex].Details[playlistIndex]
         aVC.sectionName = arrayPlaylistHomeData[sectionIndex].View
         
-        if arrayPlaylistHomeData[sectionIndex].View == "My Downloads" {
+        if arrayPlaylistHomeData[sectionIndex].View == Theme.strings.my_downloads {
             aVC.isFromDownload = true
-            aVC.sectionName = "Downloaded Playlists"
+            aVC.sectionName = Theme.strings.downloaded_playlists
         }
         
         self.navigationController?.pushViewController(aVC, animated: true)
@@ -158,7 +158,7 @@ class PlaylistCategoryVC: BaseViewController {
     }
     
     @objc func viewAllClicked(sender : UIButton) {
-        if checkInternet(showToast: true) == false && arrayPlaylistHomeData[sender.tag].View != "My Downloads" {
+        if checkInternet(showToast: true) == false && arrayPlaylistHomeData[sender.tag].View != Theme.strings.my_downloads {
             return
         }
         

@@ -107,12 +107,16 @@ class AssessmentVC: BaseViewController {
     }
     
     override func setupUI() {
-        if arrNewSection.count > 0 {
-            progressView.progress = Float(pageIndex + 1) / Float(arrNewSection.count)
-        }
-        
         collectionView.reloadData()
         buttonEnableDisable()
+        
+        if arrNewSection.count > 0 {
+            if btnNext.isEnabled {
+                progressView.progress = Float(pageIndex + 1) / Float(arrNewSection.count)
+            } else {
+                progressView.progress = Float(pageIndex) / Float(arrNewSection.count)
+            }
+        }
     }
     
     override func buttonEnableDisable() {

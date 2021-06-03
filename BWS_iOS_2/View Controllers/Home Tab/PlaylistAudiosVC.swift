@@ -184,13 +184,13 @@ class PlaylistAudiosVC: BaseViewController {
         }
         
         if details.Created == "1" {
-            txtSearch.placeholder = "Add and search for audio"
+            txtSearch.placeholder = Theme.strings.add_and_search_audio
             btnSearch.isHidden = details.PlaylistSongs.count == 0
         } else if details.Created == "2" {
-            txtSearch.placeholder = "Search for audio"
+            txtSearch.placeholder = Theme.strings.search_for_audio
             btnSearch.isHidden = true
         } else {
-            txtSearch.placeholder = "Search for audio"
+            txtSearch.placeholder = Theme.strings.search_for_audio
             btnSearch.isHidden = true
         }
         
@@ -289,13 +289,13 @@ class PlaylistAudiosVC: BaseViewController {
         }
         
         if details.IsReminder == "1" {
-            btnReminder.setTitle("     Update reminder     ", for: .normal)
+            btnReminder.setTitle(Theme.strings.update_reminder, for: .normal)
             btnReminder.backgroundColor = Theme.colors.gray_313131.withAlphaComponent(0.30)
         } else if details.IsReminder == "2" {
-            btnReminder.setTitle("     Update reminder     ", for: .normal)
+            btnReminder.setTitle(Theme.strings.update_reminder, for: .normal)
             btnReminder.backgroundColor = Theme.colors.white.withAlphaComponent(0.20)
         } else {
-            btnReminder.setTitle("     Set reminder     ", for: .normal)
+            btnReminder.setTitle(Theme.strings.set_reminder, for: .normal)
             btnReminder.backgroundColor = Theme.colors.white.withAlphaComponent(0.20)
         }
         
@@ -494,10 +494,10 @@ class PlaylistAudiosVC: BaseViewController {
             
             let aVC = AppStoryBoard.manage.viewController(viewControllerClass: AlertPopUpVC.self)
             aVC.delegate = self
-            aVC.titleText = "Delete playlist"
+            aVC.titleText = Theme.strings.delete_playlist
             aVC.detailText = "Are you sure you want to remove the \(objPlaylist?.PlaylistName ?? "") from downloads?"
-            aVC.firstButtonTitle = "DELETE"
-            aVC.secondButtonTitle = "CLOSE"
+            aVC.firstButtonTitle = Theme.strings.delete
+            aVC.secondButtonTitle = Theme.strings.close
             aVC.popUpTag = 1
             aVC.modalPresentationStyle = .overFullScreen
             self.present(aVC, animated: false, completion: nil)
@@ -789,10 +789,10 @@ extension PlaylistAudiosVC : PlaylistOptionsVCDelegate {
             let aVC = AppStoryBoard.manage.viewController(viewControllerClass: AlertPopUpVC.self)
             aVC.modalPresentationStyle = .overFullScreen
             aVC.delegate = self
-            aVC.titleText = "Delete playlist"
+            aVC.titleText = Theme.strings.delete_playlist
             aVC.detailText = "Are you sure you want to delete \(playlistName) playlist?"
-            aVC.firstButtonTitle = "DELETE"
-            aVC.secondButtonTitle = "CLOSE"
+            aVC.firstButtonTitle = Theme.strings.delete
+            aVC.secondButtonTitle = Theme.strings.close
             self.present(aVC, animated: false, completion: nil)
         }
     }

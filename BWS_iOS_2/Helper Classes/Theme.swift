@@ -271,6 +271,7 @@ struct AppDateFormats {
 // MARK: - Application Strings
 struct AppStrings {
     
+    /* Disclaimer Popup */
     let disclaimer_title = "Disclaimer"
     let disclaimer_description = "The Brain Wellness App offers a unique, alternative and drug free method created by our founder Terri Bowman aimed to assist people encountering struggles in their daily lives, to find inner peace and overcome negative thoughts and emotions (the Brain Wellness App Method). \n\nThe Brain Wellness App Method is not a scientific method. \n\nThe testimonials of our clients speak for themselves and we are so proud of the incredible results they have achieved – we want to help you and are committed to assisting you find a way to live a better life. However, as with any service, we accept that it may not be right for everyone and that results may vary from client to client. Accordingly, we make no promises or representations that our service will work for you but we invite you to try it for yourself."
     
@@ -280,9 +281,12 @@ struct AppStrings {
     /* Button Titles */
     let ok = "OK"
     let cancel = "CANCEL"
+    let cancel_small = "Cancel"
     let yes = "YES"
     let no = "NO"
-    let logout = "LOG OUT"
+    let logout = "Log out"
+    let delete = "DELETE"
+    let close = "CLOSE"
     
     /* App Update Popup */
     let update = "UPDATE"
@@ -297,11 +301,45 @@ struct AppStrings {
     /* Common Strings */
     let please_wait = "Please wait"
     
+    let playlist = "Playlist"
+    let successfully_added_to_playlist = "Successfully added to playlist"
+    let go_to_playlist = "GO TO PLAYLIST"
+    
+    let delete_audio = "Delete audio"
+    let delete_playlist = "Delete playlist"
+    let update_reminder = "     Update reminder     "
+    let set_reminder = "     Set reminder     "
+    let add_and_search_audio = "Add and search for audio"
+    let search_for_audio = "Search for audio"
+    
+    let add_audio = "Add Audio"
+    let search_audio = "Search Audio"
+    
+    let library = "Library"
+    let top_categories = "Top Categories"
+    let my_downloads = "My Downloads"
+    let recently_played = "Recently Played"
+    let get_inspired = "Get Inspired"
+    let popular_audio = "Popular Audio"
+    let downloaded_playlists = "Downloaded Playlists"
+    let downloaded_audios = "Downloaded Audios"
+    
+    let date_of_birth = "Date of Birth"
+    let rename_your_playlist = "Rename your playlist."
+    
+    let no_downloaded_audios = "Your downloaded audios will appear here"
+    let no_downloaded_playlists = "Your downloaded playlists will appear here"
+    
+    let take_a_photo = "Take a Photo"
+    let choose_from_gallary = "Choose from Gallary"
+    let remove_photo = "Remove Photo"
+    let profile_image_options = "Profile Image Options"
+    
     /* Screen Contents */
     let welcome_title = "The Brain Wellness Spa App"
     let welcome_subtitle = "Your one-stop solution for mental & emotional health challenges"
     
-    let register_title = "Welcome to Brain wellness spa"
+    let register_title = "Welcome to \nBrain wellness spa"
     let register_subtitle = "We just need few details to get you started!!"
     
     let login_title = "Welcome back..."
@@ -310,7 +348,7 @@ struct AppStrings {
     let forgot_password_title = "Forgot your password"
     let forgot_password_subtitle = "Give us your registered email ID and we'll send you everything that you'll need to change your password"
     
-    let couser_listing_title = "Welcome to Brain wellness spa"
+    let couser_listing_title = "Welcome to \nBrain wellness spa"
     let couser_listing_subtitle = "Simply sign-in to your account and continue your journey towards mental & emotional transformation"
     
     let couser_welcome_subtitle = "It's good to have you here..."
@@ -354,7 +392,7 @@ struct AppStrings {
     let alert_check_internet = "Internet connection seems to be offline."
     let alert_something_went_wrong = "Something went wrong"
     
-    let alert_logout = "Are you sure want to logout?"
+    let alert_logout_message = "Are you sure you want to log out \nBrain Wellness App?"
     let alert_blank_inputField_error = "Please fill required details"
     
     let alert_search_term_not_found = "Search term not found please use another one"
@@ -376,42 +414,44 @@ struct AppStrings {
     
     let alert_blank_password_error = "Please enter password"
     let alert_invalid_password_error = "Password should contain at least one uppercase, one lowercase, one special symbol and minimum 8 character long"
-    let alert_password_not_match = "Password and confirm password not match"
+    let alert_password_not_match = "Please check if both the passwords are same"
+    
+    let alert_blank_pin_error = "Please enter pin"
+    let alert_black_new_pin = "Please provide the latest PIN to login"
+    let alert_pin_not_match = "Pin and confirm pin not match"
     
     let alert_select_login_user = "Please select atleast one to proceed"
     
-    // Audio
+    /* Audio */
     let alert_blank_search = "Please enter search text"
     
-    // Playlist
+    /* Playlist */
     let alert_blank_playlist_name = "Playlist name is required"
     
-    // Billing Current Plan
+    let alert_select_category = "Please select a category"
+    let alert_max_category = "You can choose maximus of three areas of focus. In case you wish to change your choices then simply unselct the ones you had selected earlier."
+    
+    /* Membership Plan */
+    let alert_reactivate_plan = "Please re-activate your membership plan"
     let alert_plan_already_canceled = "Your membership plan has been already canceled."
     
-    // Billing Address
+    /* Billing Address */
     let alert_blank_country = "Please enter a valid country"
     let alert_blank_addressLine = "Address Line is required"
     let alert_blank_City = "Suburb / Town / City is required"
     let alert_blank_State = "State is required"
     let alert_blank_postalCode = "Postcode is required"
     
-    let alert_reactivate_plan = "Please re-activate your membership plan"
-    
+    /* Player */
     let alert_disclaimer_playing = "The audio shall start playing after the disclaimer."
     let alert_disclaimer_playlist_add = "The audio shall add after playing the disclaimer"
     let alert_disclaimer_playlist_sorting = "The audio shall sort after the disclaimer"
     let alert_disclaimer_playlist_remove = "Currently you play this playlist, you can't remove last audio"
-    
     let alert_playing_playlist_remove = "Currently this playlist is in player,so you can't delete this playlist as of now."
     let alert_playing_audio_remove = "Currently this audio is in player,so you can't delete this audio as of now."
     
-    let alert_select_category = "Please Select Category"
-    let alert_max_category = "You can select maximum 3 categories"
-    
+    /* Download */
     let alert_removed_from_downloads = "Removed from your downloads"
-    
-    // Download
     let alert_audio_already_downloaded = "Audio has been already added to download list."
     let alert_audio_download_started = "Audio download has been started."
     let alert_audio_downloaded = "Audio download complete and added to your downloads"
