@@ -22,10 +22,10 @@ class AlertPopUpVC: BaseViewController {
     @IBOutlet weak var btnClose : UIButton!
     
     // MARK:- VARIABLES
-    var titleText = "Delete playlist"
+    var titleText = Theme.strings.delete_playlist
     var detailText = "Are you sure you want to delete Self-development playlist?"
-    var firstButtonTitle = "DELETE"
-    var secondButtonTitle = "CLOSE"
+    var firstButtonTitle = Theme.strings.delete
+    var secondButtonTitle = Theme.strings.close
     var firstButtonBackgroundColor = Theme.colors.green_008892
     var secondButtonBackgroundColor = UIColor.clear
     

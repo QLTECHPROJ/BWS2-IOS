@@ -24,8 +24,8 @@ class StartingVC: BaseViewController {
         // Segment Tracking
         SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.launch)
         
-        lblTitle.attributedText = Theme.strings.welcome_title.attributedString(alignment: .center, lineSpacing: 10)
-        lblSubTitle.attributedText = Theme.strings.welcome_subtitle.attributedString(alignment: .center, lineSpacing: 10)
+        lblTitle.text = Theme.strings.welcome_title
+        lblSubTitle.attributedText = Theme.strings.welcome_subtitle.attributedString(alignment: .center, lineSpacing: 5)
     }
     
     

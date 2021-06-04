@@ -22,7 +22,7 @@ class ThankYouVC: BaseViewController {
         // Segment Tracking
         SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.thankYou)
         
-        lblSubTitle.attributedText = Theme.strings.thank_you_subtitle.attributedString(alignment: .center, lineSpacing: 10)
+        lblSubTitle.attributedText = Theme.strings.thank_you_subtitle.attributedString(alignment: .center, lineSpacing: 5)
         
         let attributes : [NSAttributedString.Key : Any] = [NSAttributedString.Key.foregroundColor : Theme.colors.textColor,
                                                            NSAttributedString.Key.underlineStyle : NSUnderlineStyle.single.rawValue,
@@ -45,7 +45,10 @@ class ThankYouVC: BaseViewController {
     
     // MARK:- ACTIONS
     @IBAction func exploreAppClicked(sender: UIButton) {
-      //  IAPHelper.shared.verifySubscriptions()
+        if IAPHelper.shared.isIAPEnabled {
+            // IAP Verify Purchase
+            IAPHelper.shared.verifySubscriptions()
+        }
         self.handleCoUserRedirection()
     }
     

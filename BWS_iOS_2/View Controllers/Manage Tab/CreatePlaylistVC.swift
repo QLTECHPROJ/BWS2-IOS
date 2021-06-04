@@ -47,7 +47,7 @@ class CreatePlaylistVC: BaseViewController {
     // MARK:- FUNCTIONS
     override func setupData() {
         if let details = objPlaylist {
-            lblTitle.text = "Rename your playlist."
+            lblTitle.text = Theme.strings.rename_your_playlist
             txtName.text = details.PlaylistName
             btnCreate.setTitle("SAVE", for: UIControl.State.normal)
         }

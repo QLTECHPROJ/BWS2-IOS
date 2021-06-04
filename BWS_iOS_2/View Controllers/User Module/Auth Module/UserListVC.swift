@@ -45,8 +45,8 @@ class UserListVC: BaseViewController {
     override func setupUI() {
         btnBack.isHidden = hideBackButton
         
-        lblTitle.attributedText = Theme.strings.couser_listing_title.attributedString(alignment: .left, lineSpacing: 10)
-        lblSubTitle.attributedText = Theme.strings.couser_listing_subtitle.attributedString(alignment: .left, lineSpacing: 10)
+        lblTitle.text = Theme.strings.couser_listing_title
+        lblSubTitle.attributedText = Theme.strings.couser_listing_subtitle.attributedString(alignment: .left, lineSpacing: 5)
         
         tableView.register(nibWithCellClass: UserListCell.self)
         

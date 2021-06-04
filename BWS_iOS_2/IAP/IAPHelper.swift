@@ -12,12 +12,14 @@ import SwiftyStoreKit
 
 class IAPHelper : UIViewController {
     
+    // MARK:- VARIABLES
     static var shared = IAPHelper()
+    var isIAPEnabled = false
     var arrPlanData = [SKProduct]()
     var successPurchase : ( () -> Void )?
     
-    //MARK:- product fetch
     
+    //MARK:- product fetch
     func productRetrive(arrProdID:[String]) {
         //Retrieve Data from ProductID
         

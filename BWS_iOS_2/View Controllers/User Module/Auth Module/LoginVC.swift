@@ -57,8 +57,8 @@ class LoginVC: BaseViewController {
     
     // MARK:- FUNCTIONS
     override func setupUI() {
-        lblTitle.attributedText = Theme.strings.login_title.attributedString(alignment: .left, lineSpacing: 10)
-        lblSubTitle.attributedText = Theme.strings.login_subtitle.attributedString(alignment: .left, lineSpacing: 10)
+        lblTitle.text = Theme.strings.login_title
+        lblSubTitle.attributedText = Theme.strings.login_subtitle.attributedString(alignment: .left, lineSpacing: 5)
         
         lblErrPass.isHidden = true
         lblErrEmail.isHidden = true

@@ -76,13 +76,13 @@ class SuggestedPlaylistCell: UITableViewCell {
         }
         
         if playlistData.IsReminder == "1" {
-            btnReminder.setTitle("     Update reminder     ", for: .normal)
+            btnReminder.setTitle(Theme.strings.update_reminder, for: .normal)
             btnReminder.backgroundColor = Theme.colors.gray_313131.withAlphaComponent(0.30)
         } else if playlistData.IsReminder == "2" {
-            btnReminder.setTitle("     Update reminder     ", for: .normal)
+            btnReminder.setTitle(Theme.strings.update_reminder, for: .normal)
             btnReminder.backgroundColor = Theme.colors.white.withAlphaComponent(0.20)
         } else {
-            btnReminder.setTitle("     Set reminder     ", for: .normal)
+            btnReminder.setTitle(Theme.strings.set_reminder, for: .normal)
             btnReminder.backgroundColor = Theme.colors.white.withAlphaComponent(0.20)
         }
     }

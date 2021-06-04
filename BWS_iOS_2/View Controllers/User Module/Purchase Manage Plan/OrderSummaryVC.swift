@@ -31,7 +31,7 @@ class OrderSummaryVC: BaseViewController {
     
     // MARK:- VARIABLES
     var planData = PlanDetailsModel()
-    var arrProdID = ["manage_2_profiles_annually","manage_2_profiles_monthly","manage_2_profiles_sixmonthly","manage_2_profiles_weekly","manage_3_profiles_annually","manage_3_profiles_monthly","manage_3_profiles_sixmonthly","manage_3_profiles_weekly"]
+    
     
     // MARK:- VIEW LIFE CYCLE
     override func viewDidLoad() {
@@ -40,7 +40,11 @@ class OrderSummaryVC: BaseViewController {
         // Segment Tracking
         SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.orderSummary, traits: ["plan":planData.toDictionary()])
         
-       // IAPHelper.shared.productRetrive(arrProdID:[planData.IOSplanId])
+        if IAPHelper.shared.isIAPEnabled {
+            // IAP Purchase Retrive Products
+            IAPHelper.shared.productRetrive(arrProdID:[planData.IOSplanId])
+        }
+        
         setupData()
     }
     
@@ -66,7 +70,9 @@ class OrderSummaryVC: BaseViewController {
     
     // MARK:- ACTIONS
     @IBAction func backClicked(sender : UIButton) {
-       // IAPHelper.shared.arrPlanData.removeAll()
+        if IAPHelper.shared.isIAPEnabled {
+            IAPHelper.shared.arrPlanData.removeAll()
+        }
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -74,16 +80,18 @@ class OrderSummaryVC: BaseViewController {
         // Segment Tracking
         SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.Checkout_Proceeded, traits: ["plan":planData.toDictionary()])
         
-        let aVC = AppStoryBoard.main.viewController(viewControllerClass: ThankYouVC.self)
-        self.navigationController?.pushViewController(aVC, animated: true)
-        
-        // IAP Purchase Subscription
-        //        IAPHelper.shared.purchaseSubscriptions(atomically: true)
-        //
-        //        IAPHelper.shared.successPurchase = {
-        //            let aVC = AppStoryBoard.main.viewController(viewControllerClass: ThankYouVC.self)
-        //            self.navigationController?.pushViewController(aVC, animated: true)
-        //        }
+        if IAPHelper.shared.isIAPEnabled {
+            // IAP Purchase Subscription
+            IAPHelper.shared.purchaseSubscriptions(atomically: true)
+            
+            IAPHelper.shared.successPurchase = {
+                let aVC = AppStoryBoard.main.viewController(viewControllerClass: ThankYouVC.self)
+                self.navigationController?.pushViewController(aVC, animated: true)
+            }
+        } else {
+            let aVC = AppStoryBoard.main.viewController(viewControllerClass: ThankYouVC.self)
+            self.navigationController?.pushViewController(aVC, animated: true)
+        }
     }
     
 }

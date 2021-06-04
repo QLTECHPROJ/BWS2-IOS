@@ -29,11 +29,8 @@ class PreparingPlaylistVC: BaseViewController {
         // Segment Tracking
         SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.preparingPlaylist)
         
-        let titleString = Theme.strings.preparing_playlist_title
-        lblTitle.attributedText = titleString.attributedString(alignment: .center, lineSpacing: 10)
-        
-        let subTitleString = Theme.strings.preparing_playlist_subtitle
-        lblSubTitle.attributedText = subTitleString.attributedString(alignment: .center, lineSpacing: 10)
+        lblTitle.attributedText = Theme.strings.preparing_playlist_title.attributedString(alignment: .center, lineSpacing: 5)
+        lblSubTitle.attributedText = Theme.strings.preparing_playlist_subtitle.attributedString(alignment: .center, lineSpacing: 5)
         
         animationView.animationType = .ballSpinFadeLoader
         animationView.startAnimating()

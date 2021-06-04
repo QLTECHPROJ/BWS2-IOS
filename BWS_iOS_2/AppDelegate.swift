@@ -220,9 +220,9 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
                                    "playlistId": playlistID,
                                    "title": info.title,
                                    "message":info.body]
-        SegmentTracking.shared.trackEvent(name:"Push Notification Tapped", traits: dictPlayListDetails, trackingType: .track)
+        SegmentTracking.shared.trackEvent(name: SegmentTracking.eventNames.Push_Notification_Tapped, traits: dictPlayListDetails, trackingType: .track)
         
-        if flag == "Playlist" {
+        if flag == Theme.strings.playlist {
             if playlistID.trim.count != 0 {
                 if lock == "1" || lock == "2" {
                     let aVC = AppStoryBoard.main.viewController(viewControllerClass: TabBarController.self)

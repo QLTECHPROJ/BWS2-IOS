@@ -56,7 +56,7 @@ class ManageAudioCell: UITableViewCell {
         
         let count = arrayAudioDetails.count
         
-        if homeData.View == "Recently Played" || homeData.View == "My Downloads" || homeData.View == "Popular" {
+        if homeData.View == Theme.strings.recently_played || homeData.View == Theme.strings.my_downloads || homeData.View == Theme.strings.popular_audio {
             if (count > 6) {
                 btnViewAll.isHidden = false
             } else {
@@ -70,7 +70,7 @@ class ManageAudioCell: UITableViewCell {
             }
         }
         
-        if homeData.View == "Top Categories" {
+        if homeData.View == Theme.strings.top_categories {
             btnViewAll.isHidden = true
         }
         
@@ -83,7 +83,7 @@ class ManageAudioCell: UITableViewCell {
         let indexPath = self.collectionView.indexPathForItem(at: point)
         
         if let indexPath = indexPath {
-            if homeData.IsLock == "1" || homeData.IsLock == "2" || homeData.View == "Top Categories" {
+            if homeData.IsLock == "1" || homeData.IsLock == "2" || homeData.View == Theme.strings.top_categories {
                 print("Do nothing")
             } else {
                 self.didLongPressAtIndex?(indexPath.row)
@@ -106,9 +106,9 @@ extension ManageAudioCell : UICollectionViewDelegate, UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         var count = arrayAudioDetails.count
         
-        if homeData.View == "Top Categories" {
+        if homeData.View == Theme.strings.top_categories {
             return count
-        } else if homeData.View == "Recently Played" || homeData.View == "My Downloads" || homeData.View == "Popular" {
+        } else if homeData.View == Theme.strings.recently_played || homeData.View == Theme.strings.my_downloads || homeData.View == Theme.strings.popular_audio {
             if (count > 6) {
                 count = 6
             }
@@ -140,7 +140,7 @@ extension ManageAudioCell : UICollectionViewDelegate, UICollectionViewDataSource
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if homeData.View == "Top Categories" {
+        if homeData.View == Theme.strings.top_categories {
             didSelectAudioAtIndex?(indexPath.row)
         } else {
             if homeData.IsLock == "1" {

@@ -60,8 +60,7 @@ class DassAssessmentResultVC: BaseViewController {
         UserDefaults.standard.removeObject(forKey: "ArrayPage")
         UserDefaults.standard.synchronize()
         
-        let normalString = "The index score determines the intensity of your mental health challenge and based on your score we will recommend the programs to help you."
-        lblSubTitle.attributedText = normalString.attributedString(alignment: .center, lineSpacing: 10)
+        lblSubTitle.attributedText = Theme.strings.index_score_subtitle.attributedString(alignment: .center, lineSpacing: 5)
         
         indexScoreLabelView.isHidden = true
         indexScoreLabelView.cornerRadius = indexScoreLabelView.frame.size.height / 2

@@ -39,8 +39,7 @@ class DescriptionPopupVC: UIViewController {
         lblTitle.text = strTitle
         lblTitle.isHidden = ( strTitle.trim.count == 0 )
         
-        let normalString = strDesc
-        lblDesc.attributedText = normalString.attributedString(alignment: .left, lineSpacing: 2)
+        lblDesc.attributedText = strDesc.attributedString(alignment: .left, lineSpacing: 2)
         
         btnOK.isHidden = isOkButtonHidden
         btnClose.isHidden = !isOkButtonHidden

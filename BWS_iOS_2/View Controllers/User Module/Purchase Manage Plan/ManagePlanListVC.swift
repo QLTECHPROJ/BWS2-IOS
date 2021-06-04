@@ -116,13 +116,13 @@ class ManagePlanListVC: BaseViewController {
         
         lblTitle.text = dataModel.Title
         
-        lblSubTitle.attributedText = dataModel.Desc.attributedString(alignment: .center, lineSpacing: 10)
+        lblSubTitle.attributedText = dataModel.Desc.attributedString(alignment: .center, lineSpacing: 5)
         
-        lblAccessAudioTitle.attributedText = Theme.strings.manage_plan_list_access_audios.attributedString(alignment: .center, lineSpacing: 10)
+        lblAccessAudioTitle.attributedText = Theme.strings.manage_plan_list_access_audios.attributedString(alignment: .center, lineSpacing: 5)
         
-        lblIntroductorySubTitle.attributedText = Theme.strings.manage_plan_list_introductory_session.attributedString(alignment: .center, lineSpacing: 10)
+        lblIntroductorySubTitle.attributedText = Theme.strings.manage_plan_list_introductory_session.attributedString(alignment: .center, lineSpacing: 5)
         
-        lblFeedbackTitle.attributedText = Theme.strings.manage_plan_list_testimonials.attributedString(alignment: .center, lineSpacing: 10)
+        lblFeedbackTitle.attributedText = Theme.strings.manage_plan_list_testimonials.attributedString(alignment: .center, lineSpacing: 5)
         
         setStartButtonTitle()
         

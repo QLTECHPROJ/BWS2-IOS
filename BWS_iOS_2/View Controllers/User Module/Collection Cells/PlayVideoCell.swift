@@ -32,7 +32,7 @@ class PlayVideoCell: UICollectionViewCell {
         let commentString = """
         \(data.VideoDesc)
         """
-        lblComment.attributedText = commentString.attributedString(alignment: .left, lineSpacing: 8)
+        lblComment.attributedText = commentString.attributedString(alignment: .left, lineSpacing: 5)
         
         let videoURLComponents = data.VideoLink.components(separatedBy: "v=")
         let videoID = videoURLComponents.count > 1 ? videoURLComponents[1] : videoURLComponents.first

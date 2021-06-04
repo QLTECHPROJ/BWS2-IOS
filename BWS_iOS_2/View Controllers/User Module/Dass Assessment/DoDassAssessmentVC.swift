@@ -51,7 +51,7 @@ class DoDassAssessmentVC: BaseViewController {
         // Do any additional setup after loading the view.
         
         let normalString = Theme.strings.do_the_assessment_subtitle_one + " \n\n" + Theme.strings.do_the_assessment_subtitle_two
-        lblSubTitle.attributedText = normalString.attributedString(alignment: .left, lineSpacing: 10)
+        lblSubTitle.attributedText = normalString.attributedString(alignment: .left, lineSpacing: 5)
     }
     
     override func goNext() {

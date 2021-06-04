@@ -124,7 +124,7 @@ class PlaylistCollectionCell: UICollectionViewCell {
         
         btnOptions.isHidden = hideOptionButton
         
-        if homeData.IsLock == "1" || homeData.IsLock == "2" || homeData.View == "Top Categories" || audioData.isSelected == false {
+        if homeData.IsLock == "1" || homeData.IsLock == "2" || homeData.View == Theme.strings.top_categories || audioData.isSelected == false {
             btnAddtoPlaylist.isHidden = true
             btnAddtoPlaylist.isUserInteractionEnabled = false
         } else {

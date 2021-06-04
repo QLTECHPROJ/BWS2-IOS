@@ -115,13 +115,13 @@ class ManageVC: BaseViewController {
             }
             
             if playlistData.IsReminder == "1" {
-                btnReminder.setTitle("     Update reminder     ", for: .normal)
+                btnReminder.setTitle(Theme.strings.update_reminder, for: .normal)
                 btnReminder.backgroundColor = Theme.colors.gray_313131.withAlphaComponent(0.30)
             } else if playlistData.IsReminder == "2" {
-                btnReminder.setTitle("     Update reminder     ", for: .normal)
+                btnReminder.setTitle(Theme.strings.update_reminder, for: .normal)
                 btnReminder.backgroundColor = Theme.colors.white.withAlphaComponent(0.20)
             } else {
-                btnReminder.setTitle("     Set reminder     ", for: .normal)
+                btnReminder.setTitle(Theme.strings.set_reminder, for: .normal)
                 btnReminder.backgroundColor = Theme.colors.white.withAlphaComponent(0.20)
             }
             
@@ -163,7 +163,7 @@ class ManageVC: BaseViewController {
             removeOfflineController(parentView: backView)
             
             for data in arrayAudioHomeData {
-                if data.View == "My Downloads" {
+                if data.View == Theme.strings.my_downloads {
                     data.Details = CoreDataHelper.shared.fetchSingleAudios()
                     lockDownloads = data.IsLock
                 }
@@ -209,7 +209,7 @@ class ManageVC: BaseViewController {
         self.arrayAudioHomeData = [AudioHomeDataModel]()
         let downloadDataModel = AudioHomeDataModel()
         downloadDataModel.HomeAudioID = "6"
-        downloadDataModel.View = "My Downloads"
+        downloadDataModel.View = Theme.strings.my_downloads
         downloadDataModel.UserID = (CoUserDataModel.currentUser?.UserID ?? "")
         downloadDataModel.CoUserId = (CoUserDataModel.currentUser?.CoUserId ?? "")
         downloadDataModel.Details = CoreDataHelper.shared.fetchSingleAudios()
@@ -230,7 +230,7 @@ class ManageVC: BaseViewController {
         
         print("Data :- \(audioData)")
         print("ViewType :- \(sectionData.View)")
-        if sectionData.View == "Top Categories" {
+        if sectionData.View == Theme.strings.top_categories {
             if checkInternet(showToast: true) == false {
                 return
             }
@@ -247,15 +247,15 @@ class ManageVC: BaseViewController {
                 var playerType = PlayerType.audio
                 
                 switch sectionData.View {
-                case "Recently Played":
+                case Theme.strings.recently_played:
                     playerType = .recentlyPlayed
-                case "My Downloads":
+                case Theme.strings.my_downloads:
                     playerType = .downloadedAudios
-                case "Library":
+                case Theme.strings.library:
                     playerType = .library
-                case "Get Inspired":
+                case Theme.strings.get_inspired:
                     playerType = .getInspired
-                case "Popular":
+                case Theme.strings.popular_audio:
                     playerType = .popular
                 default:
                     playerType = .audio
@@ -335,7 +335,7 @@ class ManageVC: BaseViewController {
             return
         }
         
-        if arrayAudioHomeData[sender.tag].View != "Top Categories" {
+        if arrayAudioHomeData[sender.tag].View != Theme.strings.top_categories {
             let aVC = AppStoryBoard.manage.viewController(viewControllerClass: ViewAllAudioVC.self)
             aVC.libraryId = arrayAudioHomeData[sender.tag].HomeAudioID
             aVC.libraryTitle = arrayAudioHomeData[sender.tag].View
@@ -516,7 +516,7 @@ extension ManageVC : UITableViewDataSource, UITableViewDelegate {
                 cell.configureCell()
             }
             
-            cell.lblTitle.text = "Playlist"
+            cell.lblTitle.text = Theme.strings.playlist
             
             cell.didClickCreatePlaylist = {
                 self.createPlaylist(sectionIndex: indexPath.row)
@@ -571,9 +571,9 @@ extension ManageVC : UITableViewDataSource, UITableViewDelegate {
         } else {
             if arrayAudioHomeData.count > 0 {
                 if arrayAudioHomeData[indexPath.row].Details.count > 0 {
-                    if arrayAudioHomeData[indexPath.row].View == "Popular Audio" {
+                    if arrayAudioHomeData[indexPath.row].View == Theme.strings.popular_audio {
                         return 210
-                    } else if arrayAudioHomeData[indexPath.row].View == "Top Categories" {
+                    } else if arrayAudioHomeData[indexPath.row].View == Theme.strings.top_categories {
                         return 230
                     } else {
                         return 280

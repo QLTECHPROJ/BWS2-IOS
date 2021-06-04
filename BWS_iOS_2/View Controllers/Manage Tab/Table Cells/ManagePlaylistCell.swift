@@ -57,7 +57,7 @@ class ManagePlaylistCell: UITableViewCell {
         
         arrayPlaylistDetails = data.Details
         
-        if homeData.View == "Recently Played" || homeData.View == "My Downloads" || homeData.View == "Popular" {
+        if homeData.View == Theme.strings.recently_played || homeData.View == Theme.strings.my_downloads || homeData.View == Theme.strings.popular_audio {
             if (arrayPlaylistDetails.count > 6) {
                 btnViewAll.isHidden = false
             } else {
@@ -71,7 +71,7 @@ class ManagePlaylistCell: UITableViewCell {
             }
         }
         
-        if homeData.View == "Top Categories" {
+        if homeData.View == Theme.strings.top_categories {
             btnViewAll.isHidden = true
         }
         
@@ -95,7 +95,7 @@ class ManagePlaylistCell: UITableViewCell {
         let indexPath = self.collectionView.indexPathForItem(at: point)
         
         if let indexPath = indexPath {
-            if homeData.IsLock == "1" || homeData.IsLock == "2" || homeData.View == "Top Categories" {
+            if homeData.IsLock == "1" || homeData.IsLock == "2" || homeData.View == Theme.strings.top_categories {
                 print("Do nothing")
             } else {
                 self.didLongPressAtIndex?(indexPath.row)
@@ -133,9 +133,9 @@ extension ManagePlaylistCell : UICollectionViewDelegate, UICollectionViewDataSou
         
         var count = arrayPlaylistDetails.count
         
-        if homeData.View == "Top Categories" {
+        if homeData.View == Theme.strings.top_categories {
             return count
-        } else if homeData.View == "Recently Played" || homeData.View == "My Downloads" || homeData.View == "Popular" {
+        } else if homeData.View == Theme.strings.recently_played || homeData.View == Theme.strings.my_downloads || homeData.View == Theme.strings.popular_audio {
             if (count > 6) {
                 count = 6
             }

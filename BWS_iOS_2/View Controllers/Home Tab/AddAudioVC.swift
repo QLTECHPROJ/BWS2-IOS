@@ -34,7 +34,7 @@ class AddAudioVC: BaseViewController {
         
         lblNoData.isHidden = true
         
-        lblTitle.text = isComeFromAddAudio ? "Add Audio" : "Search Audio"
+        lblTitle.text = isComeFromAddAudio ? Theme.strings.add_audio : Theme.strings.search_audio
         
         if checkInternet() == false {
             tableView.isHidden = true
@@ -490,7 +490,7 @@ extension AddAudioVC : UITableViewDelegate, UITableViewDataSource {
                     cell.nowPlayingAnimationImageView.startNowPlayingAnimation(false)
                 }
             } else {
-                cell.lblDuration.text = "PlayList"
+                cell.lblDuration.text = Theme.strings.playlist
             }
             
             cell.buttonClicked = { index in

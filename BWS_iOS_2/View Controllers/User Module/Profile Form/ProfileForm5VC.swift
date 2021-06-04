@@ -40,7 +40,7 @@ class ProfileForm5VC: BaseViewController {
         tableViewHeightConst.constant = CGFloat(96 * arrayOptions.count)
         self.view.layoutIfNeeded()
         
-        lblSubTitle.attributedText = Theme.strings.prev_drug_use_subtitle.attributedString(alignment: .left, lineSpacing: 10)
+        lblSubTitle.attributedText = Theme.strings.prev_drug_use_subtitle.attributedString(alignment: .left, lineSpacing: 5)
         
         progressView.progress = 0.6
         btnPrev.isEnabled = true

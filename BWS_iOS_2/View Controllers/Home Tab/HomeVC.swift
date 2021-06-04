@@ -364,29 +364,33 @@ extension HomeVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
-            if checkInternet(showToast: true) == false {
-                return
-            }
-            
-            if let objPlaylist = suggstedPlaylist {
-                let aVC = AppStoryBoard.home.viewController(viewControllerClass: PlaylistAudiosVC.self)
-                aVC.objPlaylist = objPlaylist
-                aVC.sectionName = "Suggested Playlist"
-                self.navigationController?.pushViewController(aVC, animated: true)
+            DispatchQueue.main.async {
+                if checkInternet(showToast: true) == false {
+                    return
+                }
+                
+                if let objPlaylist = self.suggstedPlaylist {
+                    let aVC = AppStoryBoard.home.viewController(viewControllerClass: PlaylistAudiosVC.self)
+                    aVC.objPlaylist = objPlaylist
+                    aVC.sectionName = "Suggested Playlist"
+                    self.navigationController?.pushViewController(aVC, animated: true)
+                }
             }
             
         case 2:
-            if checkInternet(showToast: true) == false {
-                return
-            }
-            
-            if self.shouldCheckIndexScore == "1" {
-                let aVC = AppStoryBoard.main.viewController(viewControllerClass: DoDassAssessmentVC.self)
-                aVC.isFromEdit = true
-                let navVC = UINavigationController(rootViewController: aVC)
-                navVC.navigationBar.isHidden = true
-                navVC.modalPresentationStyle = .overFullScreen
-                self.present(navVC, animated: true, completion: nil)
+            DispatchQueue.main.async {
+                if checkInternet(showToast: true) == false {
+                    return
+                }
+                
+                if self.shouldCheckIndexScore == "1" {
+                    let aVC = AppStoryBoard.main.viewController(viewControllerClass: DoDassAssessmentVC.self)
+                    aVC.isFromEdit = true
+                    let navVC = UINavigationController(rootViewController: aVC)
+                    navVC.navigationBar.isHidden = true
+                    navVC.modalPresentationStyle = .overFullScreen
+                    self.present(navVC, animated: true, completion: nil)
+                }
             }
             
         default:

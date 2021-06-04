@@ -28,13 +28,13 @@ class AudioCollectionCell: UICollectionViewCell {
     // Configure Cell
     func configureCell(audioData : AudioDetailsDataModel, homeData : AudioHomeDataModel) {
         
-        if homeData.View == "Popular Audio" || homeData.View == "Top Categories" {
+        if homeData.View == Theme.strings.popular_audio || homeData.View == Theme.strings.top_categories {
             lblName.font = Theme.fonts.montserratFont(ofSize: 15, weight: .semibold)
         } else {
             lblName.font = Theme.fonts.montserratFont(ofSize: 17, weight: .semibold)
         }
         
-        if homeData.View == "Top Categories" {
+        if homeData.View == Theme.strings.top_categories {
             imgLock.isHidden = true
             
             if let imgUrl = URL(string: audioData.CatImage.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
@@ -68,7 +68,7 @@ class AudioCollectionCell: UICollectionViewCell {
             lblName.text = audioData.Name
         }
         
-        if homeData.IsLock == "1" || homeData.IsLock == "2" || homeData.View == "Top Categories" || audioData.isSelected == false {
+        if homeData.IsLock == "1" || homeData.IsLock == "2" || homeData.View == Theme.strings.top_categories || audioData.isSelected == false {
             btnAddtoPlaylist.isHidden = true
             btnAddtoPlaylist.isUserInteractionEnabled = false
         } else {

@@ -21,11 +21,13 @@ class SplashVC: BaseViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        //        showHud()
-        //        IAPHelper.shared.verifyReceipt { result in
-        //            hideHud()
-        //            IAPHelper.shared.showAlert(IAPHelper.shared.alertForVerifyReceipt(result))
-        //        }
+        if IAPHelper.shared.isIAPEnabled {
+            showHud()
+            IAPHelper.shared.verifyReceipt { result in
+                hideHud()
+                IAPHelper.shared.showAlert(IAPHelper.shared.alertForVerifyReceipt(result))
+            }
+        }
         
         if checkInternet(showToast: true) == false {
             handleRedirection()
@@ -92,9 +94,9 @@ class SplashVC: BaseViewController {
             } else if coUser.isAssessmentCompleted == "0" {
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass: DoDassAssessmentVC.self)
                 self.navigationController?.pushViewController(aVC, animated: true)
-            } else if coUser.planDetails?.count == 0 {
-                let aVC = AppStoryBoard.main.viewController(viewControllerClass: DassAssessmentResultVC.self)
-                self.navigationController?.pushViewController(aVC, animated: true)
+                //            } else if coUser.planDetails?.count == 0 {
+                //                let aVC = AppStoryBoard.main.viewController(viewControllerClass: DassAssessmentResultVC.self)
+                //                self.navigationController?.pushViewController(aVC, animated: true)
             } else if coUser.AvgSleepTime.trim.count == 0 || coUser.AreaOfFocus.count == 0 {
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass: SleepTimeVC.self)
                 self.navigationController?.pushViewController(aVC, animated: true)
