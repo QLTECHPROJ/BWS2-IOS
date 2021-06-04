@@ -471,6 +471,32 @@
 		9A51DF2D26383A6D001364EA /* ChangePINVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A51DF2B26383A4E001364EA /* ChangePINVC.swift */; };
 		9A51DF2F26384034001364EA /* ChangePassWordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A51DF2E26384034001364EA /* ChangePassWordVC.swift */; };
 		9A51DF3026384034001364EA /* ChangePassWordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A51DF2E26384034001364EA /* ChangePassWordVC.swift */; };
+		9A55EB212668B309006E398A /* BillingOrderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A55EB202668B309006E398A /* BillingOrderVC.swift */; };
+		9A55EB222668B309006E398A /* BillingOrderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A55EB202668B309006E398A /* BillingOrderVC.swift */; };
+		9A55EB252668BE97006E398A /* CurrentPlanCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A55EB232668BE97006E398A /* CurrentPlanCell.swift */; };
+		9A55EB262668BE97006E398A /* CurrentPlanCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A55EB232668BE97006E398A /* CurrentPlanCell.swift */; };
+		9A55EB272668BE97006E398A /* CurrentPlanCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A55EB242668BE97006E398A /* CurrentPlanCell.xib */; };
+		9A55EB282668BE97006E398A /* CurrentPlanCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A55EB242668BE97006E398A /* CurrentPlanCell.xib */; };
+		9A55EB2A2668CA54006E398A /* CurrPlanVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A55EB292668CA54006E398A /* CurrPlanVC.swift */; };
+		9A55EB2B2668CA54006E398A /* CurrPlanVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A55EB292668CA54006E398A /* CurrPlanVC.swift */; };
+		9A55EB2D2668E90B006E398A /* UpgradePlanVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A55EB2C2668E90B006E398A /* UpgradePlanVC.swift */; };
+		9A55EB2E2668E90B006E398A /* UpgradePlanVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A55EB2C2668E90B006E398A /* UpgradePlanVC.swift */; };
+		9A55EB302668EA29006E398A /* BillingAddressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A55EB2F2668EA29006E398A /* BillingAddressVC.swift */; };
+		9A55EB312668EA29006E398A /* BillingAddressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A55EB2F2668EA29006E398A /* BillingAddressVC.swift */; };
+		9A55EB332668EA34006E398A /* CancelSubVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A55EB322668EA33006E398A /* CancelSubVC.swift */; };
+		9A55EB342668EA34006E398A /* CancelSubVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A55EB322668EA33006E398A /* CancelSubVC.swift */; };
+		9A55EB3D2668EA58006E398A /* InvoiceMembershipVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A55EB362668EA58006E398A /* InvoiceMembershipVC.swift */; };
+		9A55EB3E2668EA58006E398A /* InvoiceMembershipVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A55EB362668EA58006E398A /* InvoiceMembershipVC.swift */; };
+		9A55EB3F2668EA58006E398A /* InvoiceAppointmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A55EB372668EA58006E398A /* InvoiceAppointmentVC.swift */; };
+		9A55EB402668EA58006E398A /* InvoiceAppointmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A55EB372668EA58006E398A /* InvoiceAppointmentVC.swift */; };
+		9A55EB412668EA58006E398A /* InvoiceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A55EB382668EA58006E398A /* InvoiceVC.swift */; };
+		9A55EB422668EA58006E398A /* InvoiceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A55EB382668EA58006E398A /* InvoiceVC.swift */; };
+		9A55EB432668EA58006E398A /* InvoiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A55EB3A2668EA58006E398A /* InvoiceCell.swift */; };
+		9A55EB442668EA58006E398A /* InvoiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A55EB3A2668EA58006E398A /* InvoiceCell.swift */; };
+		9A55EB452668EA58006E398A /* InvoiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A55EB3B2668EA58006E398A /* InvoiceCell.xib */; };
+		9A55EB462668EA58006E398A /* InvoiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A55EB3B2668EA58006E398A /* InvoiceCell.xib */; };
+		9A55EB472668EA58006E398A /* InvoiceDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A55EB3C2668EA58006E398A /* InvoiceDetailVC.swift */; };
+		9A55EB482668EA58006E398A /* InvoiceDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A55EB3C2668EA58006E398A /* InvoiceDetailVC.swift */; };
 		9A63D461265778D800B596D7 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A63D460265778D800B596D7 /* IAPHelper.swift */; };
 		9A63D462265778D800B596D7 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A63D460265778D800B596D7 /* IAPHelper.swift */; };
 		9A7505C726578C4900177738 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A7505C626578C4900177738 /* StoreKit.framework */; };
@@ -770,6 +796,19 @@
 		9A51DF2826382DFC001364EA /* EditProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileVC.swift; sourceTree = "<group>"; };
 		9A51DF2B26383A4E001364EA /* ChangePINVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePINVC.swift; sourceTree = "<group>"; };
 		9A51DF2E26384034001364EA /* ChangePassWordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePassWordVC.swift; sourceTree = "<group>"; };
+		9A55EB202668B309006E398A /* BillingOrderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillingOrderVC.swift; sourceTree = "<group>"; };
+		9A55EB232668BE97006E398A /* CurrentPlanCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentPlanCell.swift; sourceTree = "<group>"; };
+		9A55EB242668BE97006E398A /* CurrentPlanCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrentPlanCell.xib; sourceTree = "<group>"; };
+		9A55EB292668CA54006E398A /* CurrPlanVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrPlanVC.swift; sourceTree = "<group>"; };
+		9A55EB2C2668E90B006E398A /* UpgradePlanVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpgradePlanVC.swift; sourceTree = "<group>"; };
+		9A55EB2F2668EA29006E398A /* BillingAddressVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillingAddressVC.swift; sourceTree = "<group>"; };
+		9A55EB322668EA33006E398A /* CancelSubVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CancelSubVC.swift; sourceTree = "<group>"; };
+		9A55EB362668EA58006E398A /* InvoiceMembershipVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvoiceMembershipVC.swift; sourceTree = "<group>"; };
+		9A55EB372668EA58006E398A /* InvoiceAppointmentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvoiceAppointmentVC.swift; sourceTree = "<group>"; };
+		9A55EB382668EA58006E398A /* InvoiceVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvoiceVC.swift; sourceTree = "<group>"; };
+		9A55EB3A2668EA58006E398A /* InvoiceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvoiceCell.swift; sourceTree = "<group>"; };
+		9A55EB3B2668EA58006E398A /* InvoiceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InvoiceCell.xib; sourceTree = "<group>"; };
+		9A55EB3C2668EA58006E398A /* InvoiceDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvoiceDetailVC.swift; sourceTree = "<group>"; };
 		9A63D460265778D800B596D7 /* IAPHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
 		9A63D4672657864E00B596D7 /* SwiftyStoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftyStoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A7505C626578C4900177738 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -1250,6 +1289,8 @@
 		28E809472613497B00CD80F7 /* Account Tab */ = {
 			isa = PBXGroup;
 			children = (
+				9A55EB352668EA58006E398A /* Invoices */,
+				9A55EB1D2668B267006E398A /* BillingOrder */,
 				9AD558242636DFC0007ED68F /* Cell */,
 				9AC066EA2639176700287A44 /* AccountInfo */,
 				9AC066E92639174B00287A44 /* Download */,
@@ -1414,6 +1455,65 @@
 				282441622609CB4E0060292E /* GoogleService-Info.plist */,
 			);
 			path = Live;
+			sourceTree = "<group>";
+		};
+		9A55EB1D2668B267006E398A /* BillingOrder */ = {
+			isa = PBXGroup;
+			children = (
+				9A55EB1F2668B27D006E398A /* VC */,
+				9A55EB1E2668B27A006E398A /* Cell */,
+			);
+			path = BillingOrder;
+			sourceTree = "<group>";
+		};
+		9A55EB1E2668B27A006E398A /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				9A55EB232668BE97006E398A /* CurrentPlanCell.swift */,
+				9A55EB242668BE97006E398A /* CurrentPlanCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		9A55EB1F2668B27D006E398A /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				9A55EB202668B309006E398A /* BillingOrderVC.swift */,
+				9A55EB292668CA54006E398A /* CurrPlanVC.swift */,
+				9A55EB2C2668E90B006E398A /* UpgradePlanVC.swift */,
+				9A55EB2F2668EA29006E398A /* BillingAddressVC.swift */,
+				9A55EB322668EA33006E398A /* CancelSubVC.swift */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		9A55EB352668EA58006E398A /* Invoices */ = {
+			isa = PBXGroup;
+			children = (
+				9A55EB4926690DA1006E398A /* VC */,
+				9A55EB392668EA58006E398A /* Cell */,
+			);
+			path = Invoices;
+			sourceTree = "<group>";
+		};
+		9A55EB392668EA58006E398A /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				9A55EB3A2668EA58006E398A /* InvoiceCell.swift */,
+				9A55EB3B2668EA58006E398A /* InvoiceCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		9A55EB4926690DA1006E398A /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				9A55EB3C2668EA58006E398A /* InvoiceDetailVC.swift */,
+				9A55EB362668EA58006E398A /* InvoiceMembershipVC.swift */,
+				9A55EB372668EA58006E398A /* InvoiceAppointmentVC.swift */,
+				9A55EB382668EA58006E398A /* InvoiceVC.swift */,
+			);
+			path = VC;
 			sourceTree = "<group>";
 		};
 		9A63D463265785D100B596D7 /* IAP */ = {
@@ -1588,6 +1688,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A55EB282668BE97006E398A /* CurrentPlanCell.xib in Resources */,
 				2824414A2609ACE30060292E /* CountryCell.xib in Resources */,
 				281F882626030CAB0078110E /* GoogleService-Info.plist in Resources */,
 				28E8092A261308ED00CD80F7 /* Manage.storyboard in Resources */,
@@ -1632,6 +1733,7 @@
 				9AC067132639178F00287A44 /* WebsiteCell.xib in Resources */,
 				9AC0670D2639178F00287A44 /* DocumentryCell.xib in Resources */,
 				283E1241262879A80007B280 /* Declaimer.jpeg in Resources */,
+				9A55EB462668EA58006E398A /* InvoiceCell.xib in Resources */,
 				28E01228261847EA00B55967 /* GraphCell.xib in Resources */,
 				28ED2F8C25FB58DF00E59C56 /* Montserrat-Medium.ttf in Resources */,
 				28ED2F9425FB58E000E59C56 /* Montserrat-Regular.ttf in Resources */,
@@ -1651,6 +1753,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A55EB272668BE97006E398A /* CurrentPlanCell.xib in Resources */,
 				28ED2F8D25FB58DF00E59C56 /* Montserrat-Light.ttf in Resources */,
 				2870B43725FB41A10014A4F6 /* DJPageMenuCell.xib in Resources */,
 				28E80929261308ED00CD80F7 /* Manage.storyboard in Resources */,
@@ -1695,6 +1798,7 @@
 				9AC067122639178F00287A44 /* WebsiteCell.xib in Resources */,
 				9AC0670C2639178F00287A44 /* DocumentryCell.xib in Resources */,
 				283E1240262879A80007B280 /* Declaimer.jpeg in Resources */,
+				9A55EB452668EA58006E398A /* InvoiceCell.xib in Resources */,
 				28E01227261847EA00B55967 /* GraphCell.xib in Resources */,
 				28ED2F8B25FB58DF00E59C56 /* Montserrat-Medium.ttf in Resources */,
 				28ED2F9325FB58E000E59C56 /* Montserrat-Regular.ttf in Resources */,
@@ -1842,6 +1946,7 @@
 				28B2F4AC2642C143009A4E5B /* PlanFeaturesCell.swift in Sources */,
 				28E809532613591400CD80F7 /* AudioCollectionCell.swift in Sources */,
 				2891E2A12643CCF800658B49 /* SelectPlayListCell.swift in Sources */,
+				9A55EB2B2668CA54006E398A /* CurrPlanVC.swift in Sources */,
 				2870B44825FB41A10014A4F6 /* ReorderController+AutoScroll.swift in Sources */,
 				28ED2FB625FB8C6E00E59C56 /* ProfileForm4VC.swift in Sources */,
 				2891E2AB2643CCF800658B49 /* TimeView.swift in Sources */,
@@ -1865,6 +1970,7 @@
 				2870B46025FB44700014A4F6 /* String+Timepiece.swift in Sources */,
 				2870B3E825FB41A10014A4F6 /* UIViewController+Extension.swift in Sources */,
 				2830F7E9263AB4730020A086 /* ProfileForm6VC.swift in Sources */,
+				9A55EB2E2668E90B006E398A /* UpgradePlanVC.swift in Sources */,
 				2819848E2638214E00DA5A66 /* SuggestedPlaylistCell.swift in Sources */,
 				288621492615BF880087730D /* ViewAllPlaylistVC.swift in Sources */,
 				280C48F62600729900063C03 /* ManageStartVC.swift in Sources */,
@@ -1882,8 +1988,10 @@
 				28B53545260CC29700BD8147 /* CategoryTableCell.swift in Sources */,
 				28B53531260C635000BD8147 /* SleepTimeVC.swift in Sources */,
 				2824414C2609ACE30060292E /* CountryCell.swift in Sources */,
+				9A55EB402668EA58006E398A /* InvoiceAppointmentVC.swift in Sources */,
 				2870B37A25FB40710014A4F6 /* CommonFunctions.swift in Sources */,
 				9A51DF27263821EF001364EA /* AccountInfoVC.swift in Sources */,
+				9A55EB312668EA29006E398A /* BillingAddressVC.swift in Sources */,
 				2870B43025FB41A10014A4F6 /* GradientView.swift in Sources */,
 				2870B41825FB41A10014A4F6 /* MediaType.swift in Sources */,
 				2870B3CE25FB41A10014A4F6 /* DJCheckBox.swift in Sources */,
@@ -1891,6 +1999,7 @@
 				2870B46425FB44700014A4F6 /* WWCalendarTimeSelector.swift in Sources */,
 				9AD5582A2636E6C3007ED68F /* AccountCell.swift in Sources */,
 				2870B43625FB41A10014A4F6 /* DJPageMenuController.swift in Sources */,
+				9A55EB482668EA58006E398A /* InvoiceDetailVC.swift in Sources */,
 				282441362609AB5A0060292E /* StartingVC.swift in Sources */,
 				9AC067172639178F00287A44 /* ResourceVC.swift in Sources */,
 				282441402609AC840060292E /* LoginVC.swift in Sources */,
@@ -1918,6 +2027,7 @@
 				282441462609ACE30060292E /* UserListCell.swift in Sources */,
 				282441522609AD2E0060292E /* UserListVC.swift in Sources */,
 				287E807C262D3F760006A925 /* AddAudioViewAllVC.swift in Sources */,
+				9A55EB422668EA58006E398A /* InvoiceVC.swift in Sources */,
 				2891E29F2643CCF800658B49 /* ReminderListVC.swift in Sources */,
 				28E012042618471500B55967 /* NotificatonVC.swift in Sources */,
 				28ED2FB325FB8C6600E59C56 /* ProfileForm3VC.swift in Sources */,
@@ -1937,6 +2047,7 @@
 				2870B3F825FB41A10014A4F6 /* BaseViewController.swift in Sources */,
 				281DE3202626FD79002CCD9D /* SDDownloadObject.swift in Sources */,
 				2870B45825FB44700014A4F6 /* NSDateComponents+Timepiece.swift in Sources */,
+				9A55EB222668B309006E398A /* BillingOrderVC.swift in Sources */,
 				2870B44625FB41A10014A4F6 /* ReorderController+DestinationRow.swift in Sources */,
 				28B27826262EEEE1005794E3 /* DownloadPlaylistVC.swift in Sources */,
 				2870B3EE25FB41A10014A4F6 /* DJValidation.swift in Sources */,
@@ -1965,6 +2076,8 @@
 				2870B3D825FB41A10014A4F6 /* NSAttributedString+Extension.swift in Sources */,
 				2870B3D225FB41A10014A4F6 /* DJTextField.swift in Sources */,
 				28E8093926130A8800CD80F7 /* ManageVC.swift in Sources */,
+				9A55EB3E2668EA58006E398A /* InvoiceMembershipVC.swift in Sources */,
+				9A55EB342668EA34006E398A /* CancelSubVC.swift in Sources */,
 				2830F1C92617479000E46F89 /* PlaylistDetailVC.swift in Sources */,
 				283153BF2614489E004001CE /* PlaylistCategoryVC.swift in Sources */,
 				2870B3E625FB41A10014A4F6 /* ImagePicker.swift in Sources */,
@@ -1997,6 +2110,7 @@
 				9AC067032639178F00287A44 /* RecPodCastsVC.swift in Sources */,
 				28E01234261847EA00B55967 /* GraphCell.swift in Sources */,
 				2870B3F625FB41A10014A4F6 /* UITableView+Extension.swift in Sources */,
+				9A55EB442668EA58006E398A /* InvoiceCell.swift in Sources */,
 				281DE32A2626FD79002CCD9D /* AudioDownloads+CoreDataClass.swift in Sources */,
 				2870B3F425FB41A10014A4F6 /* NSDate+Extension.swift in Sources */,
 				28D7556E2618A33F00EA63FE /* PlayVideoCell.swift in Sources */,
@@ -2025,6 +2139,7 @@
 				2870B46225FB44700014A4F6 /* Duration.swift in Sources */,
 				2870B42025FB41A10014A4F6 /* NavigationClass.swift in Sources */,
 				28E0120A2618475E00B55967 /* AddAudioVC.swift in Sources */,
+				9A55EB262668BE97006E398A /* CurrentPlanCell.swift in Sources */,
 				9AC066FF2639178F00287A44 /* RecDocuVC.swift in Sources */,
 				2870B43C25FB41A10014A4F6 /* ReadMore_Helper.swift in Sources */,
 				9A51DF2D26383A6D001364EA /* ChangePINVC.swift in Sources */,
@@ -2047,6 +2162,7 @@
 				28B2F4AB2642C143009A4E5B /* PlanFeaturesCell.swift in Sources */,
 				28E809522613591400CD80F7 /* AudioCollectionCell.swift in Sources */,
 				2891E2A02643CCF800658B49 /* SelectPlayListCell.swift in Sources */,
+				9A55EB2A2668CA54006E398A /* CurrPlanVC.swift in Sources */,
 				2870B44725FB41A10014A4F6 /* ReorderController+AutoScroll.swift in Sources */,
 				28ED2FB525FB8C6E00E59C56 /* ProfileForm4VC.swift in Sources */,
 				2891E2AA2643CCF800658B49 /* TimeView.swift in Sources */,
@@ -2070,6 +2186,7 @@
 				280C48F52600729900063C03 /* ManageStartVC.swift in Sources */,
 				2870B3DD25FB41A10014A4F6 /* Int+Extension.swift in Sources */,
 				2830F7E8263AB4730020A086 /* ProfileForm6VC.swift in Sources */,
+				9A55EB2D2668E90B006E398A /* UpgradePlanVC.swift in Sources */,
 				2819848D2638214E00DA5A66 /* SuggestedPlaylistCell.swift in Sources */,
 				288621482615BF880087730D /* ViewAllPlaylistVC.swift in Sources */,
 				2870B43325FB41A10014A4F6 /* DJPageMenuConfiguration.swift in Sources */,
@@ -2087,8 +2204,10 @@
 				28B53544260CC29700BD8147 /* CategoryTableCell.swift in Sources */,
 				28B53530260C635000BD8147 /* SleepTimeVC.swift in Sources */,
 				2824414B2609ACE30060292E /* CountryCell.swift in Sources */,
+				9A55EB3F2668EA58006E398A /* InvoiceAppointmentVC.swift in Sources */,
 				2870B41725FB41A10014A4F6 /* MediaType.swift in Sources */,
 				9A51DF26263820FD001364EA /* AccountInfoVC.swift in Sources */,
+				9A55EB302668EA29006E398A /* BillingAddressVC.swift in Sources */,
 				2870B3CD25FB41A10014A4F6 /* DJCheckBox.swift in Sources */,
 				2870B43F25FB41A10014A4F6 /* ReorderController+SnapshotView.swift in Sources */,
 				2870B46325FB44700014A4F6 /* WWCalendarTimeSelector.swift in Sources */,
@@ -2096,6 +2215,7 @@
 				282441352609AB3D0060292E /* StartingVC.swift in Sources */,
 				9AD558282636DFFA007ED68F /* AccountCell.swift in Sources */,
 				2870B3FD25FB41A10014A4F6 /* KDCircularProgress.swift in Sources */,
+				9A55EB472668EA58006E398A /* InvoiceDetailVC.swift in Sources */,
 				2870B40F25FB41A10014A4F6 /* Config.swift in Sources */,
 				9AC067162639178F00287A44 /* ResourceVC.swift in Sources */,
 				28B27823262EEECC005794E3 /* DownloadAudioVC.swift in Sources */,
@@ -2123,6 +2243,7 @@
 				2870B37325FB405D0014A4F6 /* APICalls.swift in Sources */,
 				282441452609ACE30060292E /* UserListCell.swift in Sources */,
 				282441512609AD2E0060292E /* UserListVC.swift in Sources */,
+				9A55EB412668EA58006E398A /* InvoiceVC.swift in Sources */,
 				2891E29E2643CCF800658B49 /* ReminderListVC.swift in Sources */,
 				287E807B262D3F760006A925 /* AddAudioViewAllVC.swift in Sources */,
 				28E012032618471500B55967 /* NotificatonVC.swift in Sources */,
@@ -2142,6 +2263,7 @@
 				2824413A2609AB9A0060292E /* CountryListVC.swift in Sources */,
 				2870B3F725FB41A10014A4F6 /* BaseViewController.swift in Sources */,
 				281DE31F2626FD79002CCD9D /* SDDownloadObject.swift in Sources */,
+				9A55EB212668B309006E398A /* BillingOrderVC.swift in Sources */,
 				2870B45725FB44700014A4F6 /* NSDateComponents+Timepiece.swift in Sources */,
 				2870B44525FB41A10014A4F6 /* ReorderController+DestinationRow.swift in Sources */,
 				28ED2FBF25FB931800E59C56 /* OptionsCell.swift in Sources */,
@@ -2170,6 +2292,8 @@
 				28B27820262EED41005794E3 /* DownloadVC.swift in Sources */,
 				2870B44125FB41A10014A4F6 /* ReorderController.swift in Sources */,
 				2870B3D725FB41A10014A4F6 /* NSAttributedString+Extension.swift in Sources */,
+				9A55EB3D2668EA58006E398A /* InvoiceMembershipVC.swift in Sources */,
+				9A55EB332668EA34006E398A /* CancelSubVC.swift in Sources */,
 				28E8093826130A8800CD80F7 /* ManageVC.swift in Sources */,
 				2830F1C82617479000E46F89 /* PlaylistDetailVC.swift in Sources */,
 				283153BE2614489E004001CE /* PlaylistCategoryVC.swift in Sources */,
@@ -2202,6 +2326,7 @@
 				9AC067022639178F00287A44 /* RecPodCastsVC.swift in Sources */,
 				28E01233261847EA00B55967 /* GraphCell.swift in Sources */,
 				2870B3E325FB41A10014A4F6 /* DJContants.swift in Sources */,
+				9A55EB432668EA58006E398A /* InvoiceCell.swift in Sources */,
 				281DE3292626FD79002CCD9D /* AudioDownloads+CoreDataClass.swift in Sources */,
 				2870B3F525FB41A10014A4F6 /* UITableView+Extension.swift in Sources */,
 				28D7556D2618A33F00EA63FE /* PlayVideoCell.swift in Sources */,
@@ -2230,6 +2355,7 @@
 				2870B3DB25FB41A10014A4F6 /* DJExtensions.swift in Sources */,
 				2870B46125FB44700014A4F6 /* Duration.swift in Sources */,
 				28E012092618475E00B55967 /* AddAudioVC.swift in Sources */,
+				9A55EB252668BE97006E398A /* CurrentPlanCell.swift in Sources */,
 				9AC066FE2639178F00287A44 /* RecDocuVC.swift in Sources */,
 				2870B41F25FB41A10014A4F6 /* NavigationClass.swift in Sources */,
 				9A51DF2C26383A4E001364EA /* ChangePINVC.swift in Sources */,

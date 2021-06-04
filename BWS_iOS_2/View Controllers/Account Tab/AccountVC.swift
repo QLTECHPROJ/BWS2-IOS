@@ -234,11 +234,16 @@ class AccountVC: BaseViewController {
                 if checkInternet(showToast: true) == false {
                     return
                 }
+                let aVC = AppStoryBoard.account.viewController(viewControllerClass: BillingOrderVC.self)
+                self.navigationController?.pushViewController(aVC, animated: true)
             } else if indexPath.row == 4 {
                 //Invoices
                 if checkInternet(showToast: true) == false {
                     return
                 }
+                
+                let aVC = AppStoryBoard.account.viewController(viewControllerClass: InvoiceVC.self)
+                self.navigationController?.pushViewController(aVC, animated: true)
             }
         } else if indexPath.section == 2 {
             if indexPath.row == 1 {
