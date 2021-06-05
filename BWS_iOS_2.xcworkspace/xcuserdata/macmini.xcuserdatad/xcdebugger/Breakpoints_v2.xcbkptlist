@@ -142,8 +142,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "226"
             endingLineNumber = "226"
-            landmarkName = "handleCellSelctionAction(indexPath:)"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -300,8 +300,8 @@
             filePath = "BWS_iOS_2/View Controllers/Home Tab/PlaylistAudiosVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "783"
-            endingLineNumber = "783"
+            startingLineNumber = "793"
+            endingLineNumber = "793"
             landmarkName = "didClickedDelete()"
             landmarkType = "7">
          </BreakpointContent>
@@ -316,8 +316,8 @@
             filePath = "BWS_iOS_2/View Controllers/Home Tab/PlaylistAudiosVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "804"
-            endingLineNumber = "804"
+            startingLineNumber = "814"
+            endingLineNumber = "814"
             landmarkName = "didClickedAddToPlaylist()"
             landmarkType = "7">
          </BreakpointContent>
@@ -416,6 +416,38 @@
             endingLineNumber = "846"
             landmarkName = "unknown"
             landmarkType = "0">
+            <Locations>
+               <Location
+                  uuid = "F5FDEAB4-C680-4B50-A364-3A34A29B85A9 - c12e9a3d26224549"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BWS_2_Staging.AddAudioVC.callSearchAPI(searchText: Swift.String) -&gt; ()"
+                  moduleName = "BWS 2 Staging"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/macmini/Desktop/BWS_iOS_2/BWS_iOS_2/API%20Helpers/APICalls.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "847"
+                  endingLineNumber = "847"
+                  offsetFromSymbolStart = "1380">
+               </Location>
+               <Location
+                  uuid = "F5FDEAB4-C680-4B50-A364-3A34A29B85A9 - 600337477ebda52f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (BWS_2_Staging.AudioDetailsModel) -&gt; () in BWS_2_Staging.AddAudioVC.callSearchAPI(searchText: Swift.String) -&gt; ()"
+                  moduleName = "BWS 2 Staging"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/macmini/Desktop/BWS_iOS_2/BWS_iOS_2/API%20Helpers/APICalls.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "849"
+                  endingLineNumber = "849"
+                  offsetFromSymbolStart = "72">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -432,6 +464,70 @@
             endingLineNumber = "47"
             landmarkName = "String"
             landmarkType = "21">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "22394CC3-92C7-4162-876F-9CA297C026DF"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BWS_iOS_2/View Controllers/Home Tab/PlaylistAudiosVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
+            landmarkName = "setupUI()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C11CF7D7-E8A7-4282-8B96-FD26FC6DB038"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BWS_iOS_2/View Controllers/Home Tab/PlaylistAudiosVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "134"
+            endingLineNumber = "134"
+            landmarkName = "setupUI()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "C11CF7D7-E8A7-4282-8B96-FD26FC6DB038 - 2e3d49edb93859dd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BWS_2_Staging.PlaylistAudiosVC.setupUI() -&gt; ()"
+                  moduleName = "BWS 2 Staging"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/macmini/Desktop/BWS_iOS_2/BWS_iOS_2/View%20Controllers/Home%20Tab/PlaylistAudiosVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "134"
+                  endingLineNumber = "134"
+                  offsetFromSymbolStart = "4140">
+               </Location>
+               <Location
+                  uuid = "C11CF7D7-E8A7-4282-8B96-FD26FC6DB038 - 67e4fc5800e922a8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in BWS_2_Staging.PlaylistAudiosVC.setupUI() -&gt; ()"
+                  moduleName = "BWS 2 Staging"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/macmini/Desktop/BWS_iOS_2/BWS_iOS_2/View%20Controllers/Home%20Tab/PlaylistAudiosVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "135"
+                  endingLineNumber = "135"
+                  offsetFromSymbolStart = "48">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

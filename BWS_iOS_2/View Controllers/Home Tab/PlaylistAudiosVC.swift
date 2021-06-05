@@ -140,9 +140,14 @@ class PlaylistAudiosVC: BaseViewController {
             viewAreaOfFocus.isHidden = true
             moonView.isHidden = true
             
-            DispatchQueue.main.async {
-                self.collectionHeight.constant = 0
+            if isCome == "Delegate" {
+                self.collectionHeight.constant = self.collectionView.contentSize.height // 70
                 self.view.layoutIfNeeded()
+            }else {
+                DispatchQueue.main.async {
+                    self.collectionHeight.constant = 0
+                    self.view.layoutIfNeeded()
+                }
             }
         }
         
@@ -217,9 +222,14 @@ class PlaylistAudiosVC: BaseViewController {
             viewAreaOfFocus.isHidden = true
             moonView.isHidden = true
             
-            DispatchQueue.main.async {
-                self.collectionHeight.constant = 0
+            if isCome == "Delegate" {
+                self.collectionHeight.constant = self.collectionView.contentSize.height // 70
                 self.view.layoutIfNeeded()
+            }else {
+                DispatchQueue.main.async {
+                    self.collectionHeight.constant = 0
+                    self.view.layoutIfNeeded()
+                }
             }
             
             imgViewTransparent.image = nil
