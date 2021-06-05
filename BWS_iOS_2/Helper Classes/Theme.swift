@@ -312,6 +312,9 @@ struct AppStrings {
     let add_and_search_audio = "Add and search for audio"
     let search_for_audio = "Search for audio"
     
+    let delete_reminder = "Delete Reminder"
+    let alert_delete_remidner = "Are you sure you want to remove the reminder?"
+    
     let add_audio = "Add Audio"
     let search_audio = "Search Audio"
     
@@ -401,11 +404,11 @@ struct AppStrings {
     // Auth & Profile
     let alert_blank_mobile_error = "Please enter your mobile number"
     let alert_invalid_mobile_error = "Please provide a valid mobile number"
-    let alert_invalid_otp = "Please enter the SMS code"
+    let alert_invalid_otp = "Please use a valid PIN to access your account"
     
     let alert_blank_fullname_error = "Please provide a Name"
     let alert_blank_dob_error = "Date of Birth should not be blank"
-    let alert_dob_error = "You must be 18 years of age to register"
+    let alert_dob_error = "Please confirm whether you are above 18 years of age"
     let alert_invalid_fullname_error = "Please enter valid Name"
     
     let alert_blank_email_error = "Email address is required"
@@ -447,23 +450,23 @@ struct AppStrings {
     let alert_disclaimer_playlist_add = "The audio shall add after playing the disclaimer"
     let alert_disclaimer_playlist_sorting = "The audio shall sort after the disclaimer"
     let alert_disclaimer_playlist_remove = "Currently you play this playlist, you can't remove last audio"
-    let alert_playing_playlist_remove = "Currently this playlist is in player,so you can't delete this playlist as of now."
-    let alert_playing_audio_remove = "Currently this audio is in player,so you can't delete this audio as of now."
+    let alert_playing_playlist_remove = "Unable to remove as this playlist is in player right now"
+    let alert_playing_audio_remove = "The audio is currently in play mode"
     
     /* Download */
-    let alert_removed_from_downloads = "Removed from your downloads"
+    let alert_removed_from_downloads = "Audio has been removed"
     let alert_audio_already_downloaded = "Audio has been already added to download list."
-    let alert_audio_download_started = "Audio download has been started."
-    let alert_audio_downloaded = "Audio download complete and added to your downloads"
+    let alert_audio_download_started = "Downloading the audio right now"
+    let alert_audio_downloaded = "Your audio has been downloaded"
     let alert_redownload_audio = "Audio download was incomplete, will be downloaded automatically when online."
     let alert_audio_download_error = "An errored while downloading audio."
     let alert_audio_delete_error = "An error occured while deleting audio."
     let alert_audios_delete_error = "An error occured while deleting audios."
     
-    let alert_playlist_removed = "Playlist has been removed."
+    let alert_playlist_removed = "Playlist has been removed"
     let alert_playlist_already_downloaded = "Playlist has been already added to download list."
-    let alert_playlist_download_started = "Playlist download has been started."
-    let alert_playlist_downloaded = "Playlist download complete and added to your downloads"
+    let alert_playlist_download_started = "Downloading the playlist right now"
+    let alert_playlist_downloaded = "Your playlist has been downloaded"
     let alert_redownload_playlist = "Playlist download was incomplete, will be downloaded automatically when online."
     let alert_playlist_download_error = "An errored while downloading playlist."
     let alert_playlist_delete_error = "An error occured while deleting playlist."

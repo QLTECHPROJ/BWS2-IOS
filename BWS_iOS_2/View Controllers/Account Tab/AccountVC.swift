@@ -13,7 +13,8 @@ class AccountVC: BaseViewController {
     
     // MARK:- OUTLETS
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var HeaderView: UIView!
+    @IBOutlet weak var tableHeaderView: UIView!
+    @IBOutlet weak var tableFooterView: UIView!
     @IBOutlet weak var lblUser: UILabel!
     @IBOutlet weak var imgUser: UIImageView!
     @IBOutlet weak var btnChange: UIButton!
@@ -47,7 +48,8 @@ class AccountVC: BaseViewController {
     // MARK:- FUNCTIONS
     override func setupUI() {
         tableView.register(nibWithCellClass:AccountCell.self)
-        tableView.tableHeaderView = HeaderView
+        tableView.tableHeaderView = tableHeaderView
+        tableView.tableFooterView = tableFooterView
     }
     
     override func setupData() {

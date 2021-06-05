@@ -58,9 +58,14 @@ class ReminderListVC: BaseViewController{
     
     // MARK:- ACTIONS
     @IBAction func onTappedDelete(_ sender: UIButton) {
-        let strID =  (arrayRemDelete.map{String($0)}).joined(separator: ",")
-        print(strID)
-        callRemDeleteAPI(remID: strID)
+        let aVC = AppStoryBoard.manage.viewController(viewControllerClass: AlertPopUpVC.self)
+        aVC.modalPresentationStyle = .overFullScreen
+        aVC.delegate = self
+        aVC.titleText = Theme.strings.delete_reminder
+        aVC.detailText = Theme.strings.alert_delete_remidner
+        aVC.firstButtonTitle = Theme.strings.delete
+        aVC.secondButtonTitle = Theme.strings.close
+        self.present(aVC, animated: false, completion: nil)
     }
     
     //    @IBAction func onTappedAll(_ sender: Any) {
@@ -221,6 +226,20 @@ extension UISwitch {
         let heightRatio = height / standardHeight
         let widthRatio = width / standardWidth
         transform = CGAffineTransform(scaleX: widthRatio, y: heightRatio)
+    }
+    
+}
+
+
+// MARK:- AlertPopUpVCDelegate
+extension ReminderListVC : AlertPopUpVCDelegate {
+    
+    func handleAction(sender: UIButton, popUpTag: Int) {
+        if sender.tag == 0 {
+            let strID =  (arrayRemDelete.map{String($0)}).joined(separator: ",")
+            print(strID)
+            callRemDeleteAPI(remID: strID)
+        }
     }
     
 }
