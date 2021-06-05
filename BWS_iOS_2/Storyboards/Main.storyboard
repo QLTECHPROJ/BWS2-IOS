@@ -2599,7 +2599,7 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rym-vX-Eq5">
-                                        <rect key="frame" x="16" y="304" width="114" height="26"/>
+                                        <rect key="frame" x="16" y="298" width="114" height="26"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="12"/>
                                         <state key="normal" title="I forgot my password">
                                             <color key="titleColor" name="Green"/>
@@ -2609,7 +2609,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fw9-PS-Xck">
-                                        <rect key="frame" x="37.666666666666657" y="364" width="300" height="50"/>
+                                        <rect key="frame" x="37.666666666666657" y="358" width="300" height="50"/>
                                         <color key="backgroundColor" name="7E7E7E"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="W1A-Ji-76c"/>
@@ -2639,7 +2639,7 @@
                                     <constraint firstItem="Rym-vX-Eq5" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="3AQ-oN-gx8" secondAttribute="trailing" id="GaG-a9-1Sw"/>
                                     <constraint firstAttribute="trailing" secondItem="dHP-tx-ZDZ" secondAttribute="trailing" constant="26" id="LJX-G2-gAu"/>
                                     <constraint firstAttribute="trailing" secondItem="3AQ-oN-gx8" secondAttribute="trailing" constant="16" id="LLn-M5-Fy7"/>
-                                    <constraint firstItem="Rym-vX-Eq5" firstAttribute="top" secondItem="3AQ-oN-gx8" secondAttribute="bottom" constant="18" id="YDF-mc-rTp"/>
+                                    <constraint firstItem="Rym-vX-Eq5" firstAttribute="top" secondItem="3AQ-oN-gx8" secondAttribute="bottom" constant="12" id="YDF-mc-rTp"/>
                                     <constraint firstItem="Rym-vX-Eq5" firstAttribute="leading" secondItem="3AQ-oN-gx8" secondAttribute="leading" id="YdI-Gm-SH5"/>
                                     <constraint firstItem="fw9-PS-Xck" firstAttribute="top" secondItem="Rym-vX-Eq5" secondAttribute="bottom" constant="34" id="Z9J-MU-gpF"/>
                                     <constraint firstItem="kd7-u6-bgP" firstAttribute="trailing" secondItem="dHP-tx-ZDZ" secondAttribute="trailing" id="Zhl-x8-ucl"/>
@@ -2889,7 +2889,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Bb9-nL-y0d">
-                                        <rect key="frame" x="0.0" y="160" width="375" height="436"/>
+                                        <rect key="frame" x="0.0" y="160" width="375" height="442"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <connections>
                                             <outlet property="dataSource" destination="xXc-FW-IIg" id="3xo-c4-gEF"/>
@@ -2897,7 +2897,7 @@
                                         </connections>
                                     </tableView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="43G-V4-W5a">
-                                        <rect key="frame" x="37.666666666666657" y="612" width="300" height="50"/>
+                                        <rect key="frame" x="37.666666666666657" y="618" width="300" height="50"/>
                                         <color key="backgroundColor" name="Green"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="kMH-LT-Jrh"/>
@@ -2935,7 +2935,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="q1p-Uf-bZL" firstAttribute="leading" secondItem="SyV-GX-xQ5" secondAttribute="leading" id="08u-NE-sTM"/>
-                                    <constraint firstItem="4Wz-vI-RW0" firstAttribute="top" secondItem="43G-V4-W5a" secondAttribute="bottom" constant="12" id="AUD-Wv-SE8"/>
+                                    <constraint firstItem="4Wz-vI-RW0" firstAttribute="top" secondItem="43G-V4-W5a" secondAttribute="bottom" constant="6" id="AUD-Wv-SE8"/>
                                     <constraint firstItem="q1p-Uf-bZL" firstAttribute="trailing" secondItem="SyV-GX-xQ5" secondAttribute="trailing" id="Aqd-8P-rMb"/>
                                     <constraint firstItem="43G-V4-W5a" firstAttribute="top" secondItem="Bb9-nL-y0d" secondAttribute="bottom" constant="16" id="IBR-eR-OVf"/>
                                     <constraint firstAttribute="bottom" secondItem="4Wz-vI-RW0" secondAttribute="bottom" constant="30" id="JsH-sE-zBd"/>

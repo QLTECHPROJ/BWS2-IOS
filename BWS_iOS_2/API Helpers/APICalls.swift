@@ -1067,6 +1067,10 @@ extension HomeVC {
             if response.ResponseCode == "200" {
                 self.tableView.isHidden = false
                 
+                let userData = CoUserDataModel.currentUser
+                userData?.indexScore = response.ResponseData.IndexScore
+                CoUserDataModel.currentUser = userData
+                
                 self.shouldCheckIndexScore = response.ResponseData.shouldCheckIndexScore
                 self.IndexScoreDiff = response.ResponseData.IndexScoreDiff
                 self.ScoreIncDec = response.ResponseData.ScoreIncDec
