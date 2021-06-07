@@ -149,7 +149,7 @@ class AddAudioVC: BaseViewController {
             lblNoData.isHidden = false
             
             if checkInternet() {
-                lblNoData.text = "Couldn't find " + (txtSearch.text ?? "") + " Try searching again"
+                lblNoData.text = Theme.strings.alert_search_term_not_found // "Couldn't find " + (txtSearch.text ?? "") + " Try searching again"
             } else {
                 lblNoData.text = Theme.strings.alert_check_internet
             }

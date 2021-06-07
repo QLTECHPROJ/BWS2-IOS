@@ -920,7 +920,7 @@ extension PlaylistAudiosVC : UITextFieldDelegate {
                 self.view.layoutIfNeeded()
             } else {
                 tableView.tableFooterView = tableFooterView
-                lblNoDataFooter.text = "Couldn't find " + updatedText + " Try searching again"
+                lblNoDataFooter.text = Theme.strings.alert_search_term_not_found // "Couldn't find " + updatedText + " Try searching again"
                 tableViewHeightConst.constant = 300 + 50
                 self.view.layoutIfNeeded()
             }
@@ -938,7 +938,7 @@ extension PlaylistAudiosVC : UITextFieldDelegate {
             self.view.layoutIfNeeded()
         } else {
             tableView.tableFooterView = tableFooterView
-            lblNoDataFooter.text = "Couldn't find " + (textField.text ?? "") + " Try searching again"
+            lblNoDataFooter.text = Theme.strings.alert_search_term_not_found // "Couldn't find " + (textField.text ?? "") + " Try searching again"
             tableViewHeightConst.constant = 300 + 50
             self.view.layoutIfNeeded()
         }
