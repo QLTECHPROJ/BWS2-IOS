@@ -52,7 +52,7 @@ class CountryListVC: BaseViewController {
         } else {
             txtSearch.isUserInteractionEnabled = true
             lblNoData.isHidden = false
-            lblNoData.text = Theme.strings.alert_search_term_not_found
+            lblNoData.text = Theme.strings.alert_country_search
         }
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.viewTapped(_:)))

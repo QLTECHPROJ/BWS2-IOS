@@ -398,7 +398,7 @@ struct AppStrings {
     let alert_logout_message = "Are you sure you want to log out \nBrain Wellness App?"
     let alert_blank_inputField_error = "Please fill required details"
     
-    let alert_search_term_not_found = "Search term not found please use another one"
+    let alert_search_term_not_found = "Please use another term and try searching again"
     let alert_country_search = "Sorry we are not available in this country yet"
     
     // Auth & Profile
