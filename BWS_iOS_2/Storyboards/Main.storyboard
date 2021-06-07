@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bRP-8z-Gal">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bRP-8z-Gal">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -4806,7 +4806,7 @@ agree to our T&amp;Cs, Privacy Policy &amp; Disclaimer</string>
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <subviews>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yg3-wF-YoV">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="712.33333333333337"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="706.33333333333337"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ThankYouImage" translatesAutoresizingMaskIntoConstraints="NO" id="eIl-Pd-lDL">
                                                 <rect key="frame" x="120" y="108" width="135" height="160"/>
@@ -4844,7 +4844,7 @@ agree to our T&amp;Cs, Privacy Policy &amp; Disclaimer</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lW0-oT-4Bb">
-                                                <rect key="frame" x="151" y="634.33333333333337" width="73" height="28"/>
+                                                <rect key="frame" x="151" y="628.33333333333337" width="73" height="28"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="13"/>
                                                 <state key="normal" title="View Invoice">
                                                     <color key="titleColor" name="textColor"/>
@@ -4868,7 +4868,7 @@ agree to our T&amp;Cs, Privacy Policy &amp; Disclaimer</string>
                                             <constraint firstItem="ZaO-K8-zp5" firstAttribute="top" secondItem="eIl-Pd-lDL" secondAttribute="bottom" constant="105" id="dwm-B1-Oxi"/>
                                             <constraint firstItem="eIl-Pd-lDL" firstAttribute="top" secondItem="Yg3-wF-YoV" secondAttribute="top" constant="108" id="ggd-oV-FFd"/>
                                             <constraint firstItem="ZaO-K8-zp5" firstAttribute="leading" secondItem="Yg3-wF-YoV" secondAttribute="leading" constant="16" id="qEb-Bw-TNV"/>
-                                            <constraint firstItem="lW0-oT-4Bb" firstAttribute="top" secondItem="Y4S-Kk-8gX" secondAttribute="bottom" constant="30" id="sGT-d8-9ib"/>
+                                            <constraint firstItem="lW0-oT-4Bb" firstAttribute="top" secondItem="Y4S-Kk-8gX" secondAttribute="bottom" constant="24" id="sGT-d8-9ib"/>
                                             <constraint firstItem="NXc-gc-pP4" firstAttribute="trailing" secondItem="ZaO-K8-zp5" secondAttribute="trailing" id="une-Fo-43v"/>
                                         </constraints>
                                     </view>
@@ -5661,9 +5661,6 @@ personalised playlist</string>
         <namedColor name="transparent_313131_80">
             <color red="0.19215686274509805" green="0.19215686274509805" blue="0.19215686274509805" alpha="0.80000001192092896" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="darkTextColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="darkTextColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
