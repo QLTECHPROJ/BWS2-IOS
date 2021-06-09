@@ -104,10 +104,15 @@ class EditProfileVC: BaseViewController {
     override func buttonEnableDisable() {
         var shouldEnable = true
         
-        if txtFEmailAdd.text?.trim.count == 0 || txtFName.text?.trim.count == 0 || txtFMobileNo.text?.trim.count == 0 || txtFDOB.text?.trim.count == 0{
+        if txtFEmailAdd.text?.trim.count == 0 || txtFName.text?.trim.count == 0 ||
+            txtFMobileNo.text?.trim.count == 0 || txtFDOB.text?.trim.count == 0 {
             shouldEnable = false
         } else {
             shouldEnable = true
+        }
+        
+        if txtFName.text == CoUserDataModel.currentUser?.Name ?? "" {
+            shouldEnable = false
         }
         
 //        if selectedUser != nil {

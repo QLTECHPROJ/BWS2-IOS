@@ -59,9 +59,9 @@ class CoreDataHelper {
             
             
             let isDownloaded = DJDownloadManager.shared.checkFileExists(fileName: audioData.AudioFile)
-            if isDownloaded && audioData.isSingleAudio == "1" {
+            if isDownloaded && isSingleAudio {
                 showAlertToast(message: Theme.strings.alert_audio_downloaded)
-            } else if audioData.isSingleAudio == "1" {
+            } else if isSingleAudio {
                 showAlertToast(message: Theme.strings.alert_audio_download_started)
             }
             

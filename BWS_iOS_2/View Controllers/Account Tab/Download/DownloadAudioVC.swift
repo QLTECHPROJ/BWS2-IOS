@@ -147,6 +147,14 @@ extension DownloadAudioVC:UITableViewDelegate , UITableViewDataSource {
                 return
             }
             
+            if isPlayingAudioFromDownloads(audioID: downloadedAudios[indexPath.row].ID) {
+                let aVC = AppStoryBoard.home.viewController(viewControllerClass: PlayerVC.self)
+                aVC.audioDetails = downloadedAudios[indexPath.row]
+                aVC.modalPresentationStyle = .overFullScreen
+                self.present(aVC, animated: true, completion: nil)
+                return
+            }
+            
             if DJMusicPlayer.shared.playerType != .downloadedAudios {
                 DJMusicPlayer.shared.playerType = .audio
             }
