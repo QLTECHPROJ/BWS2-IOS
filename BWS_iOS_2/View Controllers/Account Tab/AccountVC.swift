@@ -9,6 +9,18 @@
 import UIKit
 import MediaPlayer
 
+enum AccountMenu : String {
+    case accountInfo = "Account Info"
+    case upgradePlan = "Upgrade Plan"
+    case downloads = "Downloads"
+    case resources = "Resources"
+    case reminder = "Reminder"
+    case billingAndOrder = "Billing and Order"
+    case invoices = "Invoices"
+    case faq = "FAQ"
+    case logout = "Log Out"
+}
+
 class AccountVC: BaseViewController {
     
     // MARK:- OUTLETS
@@ -22,9 +34,19 @@ class AccountVC: BaseViewController {
     
     
     // MARK:- VARIABLES
-    var arrImage = ["UserName","UpgradePlan","download_account","Resources","Reminder","Billing","Invoices","FAQ","Logout"]
-    var arrTitle = ["Account Info","Upgrade Plan","Downloads","Resources","Reminder","Billing and Order","Invoices","FAQ","Log Out"]
     var imageData = UploadDataModel()
+    
+    var arrayImage : [[String]] = [
+        ["UserName", "UpgradePlan"],
+        ["download_account", "Resources", "Reminder", "Billing", "Invoices"],
+        ["FAQ", "Logout"]
+    ]
+    
+    var arrayTitle : [[AccountMenu]] = [
+        [AccountMenu.accountInfo, AccountMenu.upgradePlan],
+        [AccountMenu.downloads, AccountMenu.resources, AccountMenu.reminder, AccountMenu.billingAndOrder, AccountMenu.invoices],
+        [AccountMenu.faq, AccountMenu.logout]
+    ]
     
     
     // MARK:- VIEW LIFE CYCLE
@@ -195,82 +217,90 @@ class AccountVC: BaseViewController {
     }
     
     func handleCellSelctionAction(indexPath : IndexPath) {
-        if indexPath.section == 0 {
-            if indexPath.row == 0 {
-                //Account Info
-                if checkInternet(showToast: true) == false {
-                    return
-                }
-                
-                let aVC = AppStoryBoard.account.viewController(viewControllerClass: AccountInfoVC.self)
-                self.navigationController?.pushViewController(aVC, animated: true)
-            } else if indexPath.row == 1 {
-                //Upgrade Plan
-                if checkInternet(showToast: true) == false {
-                    return
-                }
+        
+        switch arrayTitle[indexPath.section][indexPath.row] {
+        case .accountInfo:
+            if checkInternet(showToast: true) == false {
+                return
             }
-        } else if indexPath.section == 1 {
-            if indexPath.row == 0 {
-                //Downloads
-                let aVC = AppStoryBoard.account.viewController(viewControllerClass: DownloadVC.self)
-                self.navigationController?.pushViewController(aVC, animated: true)
-            } else if indexPath.row == 1 {
-                //Resources
-                if checkInternet(showToast: true) == false {
-                    return
-                }
-                
-                let aVC = AppStoryBoard.account.viewController(viewControllerClass: ResourceVC.self)
-                self.navigationController?.pushViewController(aVC, animated: true)
-            } else if indexPath.row == 2 {
-                //Reminder
-                if checkInternet(showToast: true) == false {
-                    return
-                }
-                
-                let aVC = AppStoryBoard.account.viewController(viewControllerClass: ReminderListVC.self)
-                self.navigationController?.pushViewController(aVC, animated: true)
-            } else if indexPath.row == 3 {
-                //Billing and Order
-                if checkInternet(showToast: true) == false {
-                    return
-                }
-                let aVC = AppStoryBoard.account.viewController(viewControllerClass: BillingOrderVC.self)
-                self.navigationController?.pushViewController(aVC, animated: true)
-            } else if indexPath.row == 4 {
-                //Invoices
-                if checkInternet(showToast: true) == false {
-                    return
-                }
-                
-                let aVC = AppStoryBoard.account.viewController(viewControllerClass: InvoiceVC.self)
-                self.navigationController?.pushViewController(aVC, animated: true)
+            
+            let aVC = AppStoryBoard.account.viewController(viewControllerClass: AccountInfoVC.self)
+            self.navigationController?.pushViewController(aVC, animated: true)
+            break
+            
+        case .upgradePlan:
+            if checkInternet(showToast: true) == false {
+                return
             }
-        } else if indexPath.section == 2 {
-            if indexPath.row == 1 {
-                // LogOut
-                if checkInternet(showToast: true) == false {
-                    return
-                }
-                
-                let aVC = AppStoryBoard.manage.viewController(viewControllerClass: AlertPopUpVC.self)
-                aVC.titleText = Theme.strings.logout
-                aVC.detailText = Theme.strings.alert_logout_message
-                aVC.firstButtonTitle = Theme.strings.ok
-                aVC.secondButtonTitle = Theme.strings.close
-                aVC.modalPresentationStyle = .overFullScreen
-                aVC.delegate = self
-                self.present(aVC, animated: false, completion: nil)
-            } else {
-                //FAQ
-                if checkInternet(showToast: true) == false {
-                    return
-                }
-                
-                let aVC = AppStoryBoard.account.viewController(viewControllerClass: FAQVC.self)
-                self.navigationController?.pushViewController(aVC, animated: true)
+            
+            let aVC = AppStoryBoard.account.viewController(viewControllerClass: UpgradePlanVC.self)
+            self.navigationController?.pushViewController(aVC, animated: true)
+            break
+            
+        case .downloads:
+            let aVC = AppStoryBoard.account.viewController(viewControllerClass: DownloadVC.self)
+            self.navigationController?.pushViewController(aVC, animated: true)
+            break
+            
+        case .resources:
+            if checkInternet(showToast: true) == false {
+                return
             }
+            
+            let aVC = AppStoryBoard.account.viewController(viewControllerClass: ResourceVC.self)
+            self.navigationController?.pushViewController(aVC, animated: true)
+            break
+            
+        case .reminder:
+            if checkInternet(showToast: true) == false {
+                return
+            }
+            
+            let aVC = AppStoryBoard.account.viewController(viewControllerClass: ReminderListVC.self)
+            self.navigationController?.pushViewController(aVC, animated: true)
+            break
+            
+        case .billingAndOrder:
+            if checkInternet(showToast: true) == false {
+                return
+            }
+            
+            let aVC = AppStoryBoard.account.viewController(viewControllerClass: BillingOrderVC.self)
+            self.navigationController?.pushViewController(aVC, animated: true)
+            break
+            
+        case .invoices:
+            if checkInternet(showToast: true) == false {
+                return
+            }
+            
+            let aVC = AppStoryBoard.account.viewController(viewControllerClass: InvoiceVC.self)
+            self.navigationController?.pushViewController(aVC, animated: true)
+            break
+            
+        case .faq:
+            if checkInternet(showToast: true) == false {
+                return
+            }
+            
+            let aVC = AppStoryBoard.account.viewController(viewControllerClass: FAQVC.self)
+            self.navigationController?.pushViewController(aVC, animated: true)
+            break
+            
+        case .logout:
+            if checkInternet(showToast: true) == false {
+                return
+            }
+            
+            let aVC = AppStoryBoard.manage.viewController(viewControllerClass: AlertPopUpVC.self)
+            aVC.titleText = Theme.strings.logout
+            aVC.detailText = Theme.strings.alert_logout_message
+            aVC.firstButtonTitle = Theme.strings.ok
+            aVC.secondButtonTitle = Theme.strings.close
+            aVC.modalPresentationStyle = .overFullScreen
+            aVC.delegate = self
+            self.present(aVC, animated: false, completion: nil)
+            break
         }
     }
     
@@ -303,34 +333,19 @@ class AccountVC: BaseViewController {
 extension AccountVC:UITableViewDelegate,UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        4
+        return arrayTitle.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return 2
-        } else if section == 1 {
-            return 5
-        } else if section == 2 {
-            return 2
-        } else {
-            return 0
-        }
+        return arrayTitle[section].count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withClass: AccountCell.self)
-        if indexPath.section == 0 {
-            cell.lblTitle.text = arrTitle[indexPath.row]
-            cell.img.image = UIImage(named: arrImage[indexPath.row])
-        } else if indexPath.section == 1 {
-            cell.lblTitle.text = arrTitle[indexPath.row+2]
-            cell.img.image = UIImage(named: arrImage[indexPath.row+2])
-        } else if indexPath.section == 2 {
-            cell.lblTitle.text = arrTitle[indexPath.row+7]
-            cell.img.image = UIImage(named: arrImage[indexPath.row+7])
-        }
-        
+            
+        cell.lblTitle.text = arrayTitle[indexPath.section][indexPath.row].rawValue
+        cell.img.image = UIImage(named: arrayImage[indexPath.section][indexPath.row])
+
         cell.backgroundColor = .white
         cell.lblLine.isHidden = true
         tableView.separatorStyle = .singleLine
