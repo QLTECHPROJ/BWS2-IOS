@@ -225,17 +225,22 @@ class PlaylistAudiosVC: BaseViewController {
             if isCome == "Delegate" {
                 self.collectionHeight.constant = self.collectionView.contentSize.height // 70
                 self.view.layoutIfNeeded()
-            }else {
+            } else {
                 DispatchQueue.main.async {
                     self.collectionHeight.constant = 0
                     self.view.layoutIfNeeded()
                 }
             }
             
-            imgViewTransparent.image = nil
-            
-            if let strUrl = details.PlaylistImageDetail.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let imgUrl = URL(string: strUrl) {
-                imgViewPlaylist.sd_setImage(with: imgUrl, completed: nil)
+            if isFromDownload && details.selfCreated == "2" {
+                imgViewPlaylist.image = nil
+                imgViewTransparent.image = UIImage(named: "cloud")
+            } else {
+                imgViewTransparent.image = nil
+                
+                if let strUrl = details.PlaylistImageDetail.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let imgUrl = URL(string: strUrl) {
+                    imgViewPlaylist.sd_setImage(with: imgUrl, completed: nil)
+                }
             }
         }
         
