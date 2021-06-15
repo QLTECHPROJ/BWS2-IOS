@@ -101,13 +101,13 @@ class DassAssessmentResultVC: BaseViewController {
     override func setupData() {
         scoreValue = 0
         lblScore.text = "\(scoreValue)"
-        
-        lblScoreLevel.text = CoUserDataModel.currentUser?.ScoreLevel ?? ""
+        lblScoreLevel.text = "Normal"
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             UIView.animate(withDuration: 1) {
                 self.scoreValue = Int(CoUserDataModel.currentUser?.indexScore ?? "") ?? 0
                 self.lblScore.text = "\(self.scoreValue)"
+                self.lblScoreLevel.text = CoUserDataModel.currentUser?.ScoreLevel ?? ""
             }
         }
     }
