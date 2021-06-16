@@ -37,7 +37,7 @@ class InvoiceVC: UIViewController {
         
         let secondVC:InvoiceAppointmentVC = storyboard!
             .instantiateViewController(withIdentifier:"InvoiceAppointmentVC") as! InvoiceAppointmentVC
-        secondVC.title = "Appointment"
+        secondVC.title = "Enhance"
         
         segmentController.segmentControllers = [firstVC,secondVC]
         

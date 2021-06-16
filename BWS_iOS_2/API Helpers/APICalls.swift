@@ -891,6 +891,7 @@ extension AreaOfFocusVC {
                 self.arrayCategoriesMain = response.ResponseData
                 self.arrayCategories = response.ResponseData
                 self.tableView.reloadData()
+                self.footerCollectionview.reloadData()
                 self.setInitialData()
             }
         }

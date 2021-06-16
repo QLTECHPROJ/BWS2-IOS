@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -80,7 +81,7 @@
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="ZKI-8L-4vy" customClass="DynamicHeightCollectionView" customModule="BWS_2_Staging" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="308" width="375" height="62"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="7" minimumInteritemSpacing="7" id="KpL-om-Hjg">
                                     <size key="itemSize" width="50" height="20"/>
                                     <size key="estimatedItemSize" width="20" height="20"/>
@@ -150,7 +151,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="ZKI-8L-4vy" firstAttribute="top" secondItem="PJ8-ej-cZm" secondAttribute="bottom" constant="10" id="0Y3-HD-R2a"/>
                             <constraint firstAttribute="trailing" secondItem="ZKI-8L-4vy" secondAttribute="trailing" id="7Vb-bC-Rvb"/>
@@ -185,11 +186,11 @@
                     <constraint firstAttribute="bottom" secondItem="MzF-gu-gSQ" secondAttribute="bottom" id="k1a-W3-uAO"/>
                 </constraints>
             </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="XjX-Yn-A17"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="m7W-QL-a8A" firstAttribute="top" secondItem="XjX-Yn-A17" secondAttribute="top" id="RTK-cU-hdg"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="XjX-Yn-A17"/>
             <connections>
                 <outlet property="btnClear" destination="t1e-iN-RFM" id="WZD-Wk-jkm"/>
                 <outlet property="collectionView" destination="ZKI-8L-4vy" id="I2b-Jp-Euu"/>
@@ -210,5 +211,8 @@
         <namedColor name="textColor">
             <color red="0.19215686274509805" green="0.19215686274509805" blue="0.19215686274509805" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

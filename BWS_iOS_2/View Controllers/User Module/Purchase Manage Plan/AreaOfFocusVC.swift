@@ -17,6 +17,10 @@ class AreaOfFocusVC: BaseViewController {
     @IBOutlet weak var lblNoData: UILabel!
     @IBOutlet weak var btnCategory: UIButton!
     
+    @IBOutlet weak var HeaderCollectionview: DynamicHeightCollectionView!
+    @IBOutlet var viewHeader: UIView!
+    @IBOutlet var footerCollectionview: UICollectionView!
+    let collectionViewHeaderFooterReuseIdentifier = "MyHeaderFooterClass"
     
     // MARK:- VARIABLES
     var arrayAreaOfFocus = [AreaOfFocusModel]()
@@ -35,6 +39,8 @@ class AreaOfFocusVC: BaseViewController {
         
         tableView.register(nibWithCellClass: RecommendedCategoryHeaderCell.self)
         tableView.register(nibWithCellClass: CategoryTableCell.self)
+        footerCollectionview.register(MyHeaderFooterClass.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: collectionViewHeaderFooterReuseIdentifier)
+        footerCollectionview.register(nibWithCellClass: CategoryCollectionCell.self)
         
         buttonEnableDisable()
         callGetRecommendedCategoryAPI()
@@ -43,10 +49,23 @@ class AreaOfFocusVC: BaseViewController {
         //     let aVC = AppStoryBoard.main.viewController(viewControllerClass: PreparingPlaylistVC.self)
         //     self.navigationController?.pushViewController(aVC, animated: true)
         // }
+        setupUI()
+        
     }
     
     
     // MARK:- FUNCTIONS
+    override func setupUI() {
+        footerCollectionview.delegate = self
+        footerCollectionview.dataSource = self
+        let layout = TagFlowLayout()
+        layout.estimatedItemSize = CGSize(width: 140, height: 40)
+        footerCollectionview.collectionViewLayout = layout
+        footerCollectionview.reloadData()
+        footerCollectionview.layoutIfNeeded()
+        
+        tableView.tableFooterView = footerCollectionview
+    }
     override func setupData() {
         guard let selectedCategories = CoUserDataModel.currentUser?.AreaOfFocus else {
             return
@@ -61,6 +80,7 @@ class AreaOfFocusVC: BaseViewController {
         }
         
         tableView.reloadData()
+        footerCollectionview.reloadData()
         buttonEnableDisable()
     }
     
@@ -84,47 +104,50 @@ class AreaOfFocusVC: BaseViewController {
     
     func categoryClicked(indexPath : IndexPath,collectionview:UICollectionView) {
         
-        let isSelected = arrayCategories[indexPath.section].Details[indexPath.row].isSelected
-        
-        if isSelected {
-            arrayCategories[indexPath.section].Details[indexPath.row].isSelected = false
-            let cat = AreaOfFocusModel()
-            cat.MainCat = arrayCategories[indexPath.section].View
-            cat.RecommendedCat = arrayCategories[indexPath.section].Details[indexPath.row].ProblemName
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
+            let isSelected = self.arrayCategories[indexPath.section].Details[indexPath.item].isSelected
             
-            if let removeIndex = arrayAreaOfFocus.firstIndex(of: cat) {
-                arrayAreaOfFocus.remove(at: removeIndex)
-            }
-            
-            tableView.reloadData()
-        } else {
-            if arrayAreaOfFocus.count < 3 {
-                for subCategory in arrayCategories[indexPath.section].Details {
-                    subCategory.isSelected = false
-                    
-                    let cat = AreaOfFocusModel()
-                    cat.MainCat = arrayCategories[indexPath.section].View
-                    cat.RecommendedCat = subCategory.ProblemName
-                    
-                    if let removeIndex = arrayAreaOfFocus.firstIndex(of: cat) {
-                        arrayAreaOfFocus.remove(at: removeIndex)
-                    }
+            if isSelected {
+                self.arrayCategories[indexPath.section].Details[indexPath.item].isSelected = false
+                let cat = AreaOfFocusModel()
+                cat.MainCat = self.arrayCategories[indexPath.section].View
+                cat.RecommendedCat = self.arrayCategories[indexPath.section].Details[indexPath.item].ProblemName
+                
+                if let removeIndex = self.arrayAreaOfFocus.firstIndex(of: cat) {
+                    self.arrayAreaOfFocus.remove(at: removeIndex)
                 }
                 
-                arrayCategories[indexPath.section].Details[indexPath.row].isSelected = true
-                
-                let cat = AreaOfFocusModel()
-                cat.MainCat = arrayCategories[indexPath.section].View
-                cat.RecommendedCat = arrayCategories[indexPath.section].Details[indexPath.row].ProblemName
-                arrayAreaOfFocus.append(cat)
-                collectionview.reloadData()
-                tableView.reloadData()
             } else {
-                showAlertToast(message: Theme.strings.alert_max_category)
+                if self.arrayAreaOfFocus.count < 3 {
+                    for subCategory in self.arrayCategories[indexPath.section].Details {
+                        subCategory.isSelected = false
+                        
+                        let cat = AreaOfFocusModel()
+                        cat.MainCat = self.arrayCategories[indexPath.section].View
+                        cat.RecommendedCat = subCategory.ProblemName
+                        
+                        if let removeIndex = self.arrayAreaOfFocus.firstIndex(of: cat) {
+                            self.arrayAreaOfFocus.remove(at: removeIndex)
+                        }
+                    }
+                    
+                    self.arrayCategories[indexPath.section].Details[indexPath.item].isSelected = true
+                    
+                    let cat = AreaOfFocusModel()
+                    cat.MainCat = self.arrayCategories[indexPath.section].View
+                    cat.RecommendedCat = self.arrayCategories[indexPath.section].Details[indexPath.item].ProblemName
+                    self.arrayAreaOfFocus.append(cat)
+                } else {
+                    showAlertToast(message: Theme.strings.alert_max_category)
+                }
             }
+            
+            self.tableView.alwaysBounceVertical = false
+            self.footerCollectionview.reloadData()
+            self.tableView.reloadData()
+            self.buttonEnableDisable()
+            
         }
-        
-        buttonEnableDisable()
     }
     
     func searchCategory(searchText : String) {
@@ -153,9 +176,11 @@ class AreaOfFocusVC: BaseViewController {
             })
             
             if categoryList.count > 0 {
-                tableView.tableFooterView = nil
+                //tableView.tableFooterView = nil
+                footerCollectionview.isHidden = false
                 lblNoData.isHidden = true
             } else {
+                footerCollectionview.isHidden = true
                 tableView.tableFooterView = footerView
                 lblNoData.isHidden = false
                 lblNoData.text = "Couldn't find " + searchText + " Try searching again"
@@ -166,13 +191,16 @@ class AreaOfFocusVC: BaseViewController {
             tableView.reloadData()
             tableView.scrollToBottom()
             tableView.scrollToTop()
+            footerCollectionview.reloadData()
         } else {
-            tableView.tableFooterView = nil
+            tableView.tableFooterView = footerCollectionview
+            footerCollectionview.isHidden = false
             arrayCategories = arrayCategoriesMain
             lblNoData.isHidden = true
             tableView.reloadData()
             tableView.scrollToBottom()
             tableView.scrollToTop()
+            footerCollectionview.reloadData()
         }
     }
     
@@ -214,58 +242,106 @@ class AreaOfFocusVC: BaseViewController {
 
 // MARK:- UITableViewDataSource, UITableViewDelegate
 extension AreaOfFocusVC : UITableViewDataSource, UITableViewDelegate {
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
-    }
-    
+  
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return 1
-        } else {
-            return arrayCategories.count
-        }
+        return 1
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withClass: RecommendedCategoryHeaderCell.self)
-            cell.configureCell(data: arrayAreaOfFocus)
-            
-            cell.searchText = { keyword in
-                self.searchCategory(searchText: keyword)
-            }
-            
-            cell.backClicked = {
-                if self.isFromEdit {
-                    self.navigationController?.dismiss(animated: true, completion: nil)
-                } else {
-                    self.navigationController?.popViewController(animated: true)
-                }
-            }
-            
-            return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(withClass: CategoryTableCell.self)
-            cell.arrayAreaOfFocus = self.arrayAreaOfFocus
-            cell.configureCell(data: arrayCategories[indexPath.row])
-            
-            cell.categoryClicked = { rowIndex,collectionview in
-                self.categoryClicked(indexPath: IndexPath(row: rowIndex, section: indexPath.row), collectionview: collectionview)
-            }
-            
-            return cell
+        
+        let cell = tableView.dequeueReusableCell(withClass: RecommendedCategoryHeaderCell.self)
+        cell.configureCell(data: arrayAreaOfFocus)
+        
+        cell.searchText = { keyword in
+            self.searchCategory(searchText: keyword)
         }
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 1 {
-            if arrayCategories[indexPath.row].Details.count == 0 {
-                return 0
+        
+        cell.backClicked = {
+            if self.isFromEdit {
+                self.navigationController?.dismiss(animated: true, completion: nil)
+            } else {
+                self.navigationController?.popViewController(animated: true)
             }
         }
         
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
     
 }
+
+
+extension AreaOfFocusVC : UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return arrayCategories.count
+    }
+   
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return arrayCategories[section].Details.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withClass: CategoryCollectionCell.self, for: indexPath)
+        cell.lblCategory.text = arrayCategories[indexPath.section].Details[indexPath.item].ProblemName
+        cell.arrayAreaOfFocus = self.arrayAreaOfFocus
+        cell.configureCell(mainCategory: arrayCategories[indexPath.section].View, data: arrayCategories[indexPath.section].Details[indexPath.item])
+        return cell
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        categoryClicked(indexPath: indexPath, collectionview: collectionView)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        viewForSupplementaryElementOfKind kind: String,
+                        at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        switch kind {
+        
+        case UICollectionView.elementKindSectionHeader:
+            
+            
+            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: collectionViewHeaderFooterReuseIdentifier, for: indexPath)
+            
+            let label = UILabel()
+            label.frame = CGRect.init(x: 0, y: 5, width: headerView.frame.width, height: headerView.frame.height-10)
+            label.text = arrayCategories[indexPath.section].View
+            label.font = .systemFont(ofSize: 16)
+            label.textColor = .black
+            label.backgroundColor = .white
+            headerView.addSubview(label)
+            headerView.backgroundColor = UIColor.white
+            return headerView
+            
+            
+        case UICollectionView.elementKindSectionFooter:
+            let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: collectionViewHeaderFooterReuseIdentifier, for: indexPath)
+            
+            footerView.backgroundColor = UIColor.green
+            return footerView
+            
+        default:
+            assert(false, "Unexpected element kind")
+        }
+        return UICollectionReusableView()
+    }
+    
+    
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        
+        if arrayCategories[section].Details.count == 0 {
+            return CGSize(width: 140, height: 0)
+        }
+        return CGSize(width: 140, height: 50)
+        
+    }
+}
+
