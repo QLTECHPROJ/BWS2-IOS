@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bRP-8z-Gal">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bRP-8z-Gal">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -1407,14 +1407,14 @@
                                                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HC3-Pb-Os0">
                                                                         <rect key="frame" x="105" y="130.66666666666666" width="84" height="87.333333333333343"/>
                                                                         <subviews>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="46" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Vgm-Op-ihU">
-                                                                                <rect key="frame" x="18" y="11.666666666666682" width="48" height="46.666666666666657"/>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="100" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Vgm-Op-ihU">
+                                                                                <rect key="frame" x="12" y="9.9999999999999964" width="60" height="46.666666666666657"/>
                                                                                 <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="40"/>
                                                                                 <color key="textColor" name="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Severe" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="yTG-pr-wcL">
-                                                                                <rect key="frame" x="18" y="48.333333333333343" width="48" height="14"/>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Extremly Severe" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="yTG-pr-wcL">
+                                                                                <rect key="frame" x="8" y="46.666666666666657" width="68" height="32.666666666666657"/>
                                                                                 <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="12"/>
                                                                                 <color key="textColor" name="textColor"/>
                                                                                 <nil key="highlightedColor"/>
@@ -1422,12 +1422,13 @@
                                                                         </subviews>
                                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <constraints>
-                                                                            <constraint firstItem="Vgm-Op-ihU" firstAttribute="leading" secondItem="HC3-Pb-Os0" secondAttribute="leading" constant="18" id="Eyc-bY-VNf"/>
-                                                                            <constraint firstItem="yTG-pr-wcL" firstAttribute="trailing" secondItem="Vgm-Op-ihU" secondAttribute="trailing" id="Q8F-lp-n4y"/>
-                                                                            <constraint firstItem="yTG-pr-wcL" firstAttribute="leading" secondItem="Vgm-Op-ihU" secondAttribute="leading" id="Se8-Pj-ghi"/>
+                                                                            <constraint firstItem="yTG-pr-wcL" firstAttribute="centerX" secondItem="HC3-Pb-Os0" secondAttribute="centerX" id="B3p-eQ-oOB"/>
+                                                                            <constraint firstItem="Vgm-Op-ihU" firstAttribute="leading" secondItem="HC3-Pb-Os0" secondAttribute="leading" constant="12" id="GjG-po-TPb"/>
+                                                                            <constraint firstItem="Vgm-Op-ihU" firstAttribute="top" secondItem="HC3-Pb-Os0" secondAttribute="top" constant="10" id="PeA-84-9Tt"/>
                                                                             <constraint firstItem="Vgm-Op-ihU" firstAttribute="centerX" secondItem="HC3-Pb-Os0" secondAttribute="centerX" id="Zb9-76-PS5"/>
+                                                                            <constraint firstAttribute="bottom" secondItem="yTG-pr-wcL" secondAttribute="bottom" constant="8" id="cDN-yX-LDi"/>
+                                                                            <constraint firstItem="yTG-pr-wcL" firstAttribute="leading" secondItem="HC3-Pb-Os0" secondAttribute="leading" constant="8" id="dmE-ie-j1Q"/>
                                                                             <constraint firstItem="yTG-pr-wcL" firstAttribute="top" secondItem="Vgm-Op-ihU" secondAttribute="bottom" constant="-10" id="jV8-jL-yLF"/>
-                                                                            <constraint firstItem="Vgm-Op-ihU" firstAttribute="centerY" secondItem="HC3-Pb-Os0" secondAttribute="centerY" multiplier="0.8" id="ysK-7b-pzQ"/>
                                                                         </constraints>
                                                                     </view>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your index score is" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cxp-im-2QT">
@@ -5661,6 +5662,9 @@ personalised playlist</string>
         <namedColor name="transparent_313131_80">
             <color red="0.19215686274509805" green="0.19215686274509805" blue="0.19215686274509805" alpha="0.80000001192092896" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="darkTextColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="darkTextColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

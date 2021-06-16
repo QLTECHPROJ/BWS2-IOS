@@ -225,17 +225,22 @@ class PlaylistAudiosVC: BaseViewController {
             if isCome == "Delegate" {
                 self.collectionHeight.constant = self.collectionView.contentSize.height // 70
                 self.view.layoutIfNeeded()
-            }else {
+            } else {
                 DispatchQueue.main.async {
                     self.collectionHeight.constant = 0
                     self.view.layoutIfNeeded()
                 }
             }
             
-            imgViewTransparent.image = nil
-            
-            if let strUrl = details.PlaylistImageDetail.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let imgUrl = URL(string: strUrl) {
-                imgViewPlaylist.sd_setImage(with: imgUrl, completed: nil)
+            if isFromDownload && details.selfCreated == "2" {
+                imgViewPlaylist.image = nil
+                imgViewTransparent.image = UIImage(named: "cloud")
+            } else {
+                imgViewTransparent.image = nil
+                
+                if let strUrl = details.PlaylistImageDetail.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let imgUrl = URL(string: strUrl) {
+                    imgViewPlaylist.sd_setImage(with: imgUrl, completed: nil)
+                }
             }
         }
         
@@ -562,31 +567,22 @@ class PlaylistAudiosVC: BaseViewController {
             return
         }
         
-        if isFromDownload {
-            if DJMusicPlayer.shared.currentlyPlaying?.isDisclaimer == true {
-                showAlertToast(message: Theme.strings.alert_disclaimer_playing)
-                return
-            }
-            
-            DJMusicPlayer.shared.playerType = .downloadedPlaylist
-            DJMusicPlayer.shared.currentPlaylist = objPlaylist
-            self.presentAudioPlayer(arrayPlayerData: arraySearchSongs)
-            DJMusicPlayer.shared.playingFrom = objPlaylist!.PlaylistName
-            return
-        }
-        
         if DJMusicPlayer.shared.currentlyPlaying?.isDisclaimer == true {
             showAlertToast(message: Theme.strings.alert_disclaimer_playing)
             return
         }
         
-        if arraySearchSongs.count != 0 {
+        if isFromDownload {
+            DJMusicPlayer.shared.playerType = .downloadedPlaylist
+            DJMusicPlayer.shared.currentPlaylist = objPlaylist
+            self.presentAudioPlayer(arrayPlayerData: arraySearchSongs)
+            DJMusicPlayer.shared.playingFrom = objPlaylist!.PlaylistName
+        } else {
             DJMusicPlayer.shared.playerType = .playlist
             DJMusicPlayer.shared.currentPlaylist = objPlaylist
             self.presentAudioPlayer(arrayPlayerData: arraySearchSongs, index: 0)
             DJMusicPlayer.shared.playingFrom = objPlaylist!.PlaylistName
         }
-        
     }
     
     @IBAction func searchAudioClicked(_ sender: UIButton) {
@@ -697,25 +693,41 @@ extension PlaylistAudiosVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if isFromDownload {
-            if DJMusicPlayer.shared.currentlyPlaying?.isDisclaimer == true {
-                showAlertToast(message: Theme.strings.alert_disclaimer_playing)
-                return
-            }
-            
-            DJMusicPlayer.shared.playerType = .downloadedPlaylist
-            DJMusicPlayer.shared.currentPlaylist = objPlaylist
-            self.presentAudioPlayer(arrayPlayerData: arraySearchSongs, index: indexPath.row)
-            DJMusicPlayer.shared.playingFrom = objPlaylist!.PlaylistName
-            return
-        }
-        
         if DJMusicPlayer.shared.currentlyPlaying?.isDisclaimer == true {
             showAlertToast(message: Theme.strings.alert_disclaimer_playing)
             return
         }
         
-        if arraySearchSongs.count != 0 {
+        var isAudioPlaying = false
+        
+        if isFromDownload
+            && isPlayingPlaylistFromDownloads(playlistID: objPlaylist!.PlaylistID)
+            && isPlayingAudio(audioID: arraySearchSongs[indexPath.row].ID) {
+            isAudioPlaying = true
+        } else if isFromDownload == false
+                    && isPlayingPlaylist(playlistID: objPlaylist!.PlaylistID)
+                    && isPlayingAudio(audioID: arraySearchSongs[indexPath.row].ID) {
+            isAudioPlaying = true
+        }
+        
+        if isAudioPlaying {
+            if DJMusicPlayer.shared.isPlaying == false {
+                DJMusicPlayer.shared.play(isResume: true)
+            }
+            
+            let aVC = AppStoryBoard.home.viewController(viewControllerClass: PlayerVC.self)
+            aVC.audioDetails = arraySearchSongs[indexPath.row]
+            aVC.modalPresentationStyle = .overFullScreen
+            self.present(aVC, animated: true, completion: nil)
+            return
+        }
+        
+        if isFromDownload {
+            DJMusicPlayer.shared.playerType = .downloadedPlaylist
+            DJMusicPlayer.shared.currentPlaylist = objPlaylist
+            self.presentAudioPlayer(arrayPlayerData: arraySearchSongs, index: indexPath.row)
+            DJMusicPlayer.shared.playingFrom = objPlaylist!.PlaylistName
+        } else {
             DJMusicPlayer.shared.playerType = .playlist
             DJMusicPlayer.shared.currentPlaylist = objPlaylist
             self.presentAudioPlayer(arrayPlayerData: arraySearchSongs, index: indexPath.row)

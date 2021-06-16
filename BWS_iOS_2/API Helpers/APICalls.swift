@@ -576,6 +576,8 @@ extension CreatePlaylistVC {
         APICallManager.sharedInstance.callAPI(router: APIRouter.createplaylist(parameters)) { (response : CreatePlaylistModel) in
             
             if response.ResponseCode == "200" {
+                showAlertToast(message: response.ResponseMessage)
+                
                 if let id = response.ResponseData?.PlaylistID, let name = response.ResponseData?.PlaylistName {
                     if self.playlistToAdd.trim.count > 0 || self.audioToAdd.trim.count > 0 {
                         self.delegate?.didCreateNewPlaylist(createdPlaylistID: id)
@@ -1341,36 +1343,37 @@ extension UIImageView {
 }
 
 extension EditProfileVC {
-      //Update Profile Detail API
-        func callUpdateProfileDetailAPI() {
-            var DOB = selectedDOB.stringFromFormat(Theme.dateFormats.DOB_Backend)
     
-            if txtFDOB.text?.trim.count == 0 {
-                DOB = ""
-            }
-    
-            let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
-                              "Name":txtFName.text!,
-                              "Dob":DOB ,
-                              "MobileNo":txtFMobileNo.text!,
-                              "EmailId":txtFEmailAdd.text!]
-    
-            APICallManager.sharedInstance.callAPI(router: APIRouter.editprofile(parameters)) { (response : CoUserModel) in
-    
-                if response.ResponseCode == "200" {
-                    showAlertToast(message: response.ResponseMessage)
-                    self.callGetCoUserDetailsAPI { (success) in
-                        if success {
-                           self.setupData()
-                           self.navigationController?.popViewController(animated: true)
-                        }
+    //Update Profile Detail API
+    func callUpdateProfileDetailAPI() {
+        var DOB = selectedDOB.stringFromFormat(Theme.dateFormats.DOB_Backend)
+        
+        if txtFDOB.text?.trim.count == 0 {
+            DOB = ""
+        }
+        
+        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+                          "Name":txtFName.text!,
+                          "Dob":DOB ,
+                          "MobileNo":txtFMobileNo.text!,
+                          "EmailId":txtFEmailAdd.text!]
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.editprofile(parameters)) { (response : CoUserModel) in
+            
+            if response.ResponseCode == "200" {
+                showAlertToast(message: response.ResponseMessage)
+                
+                self.callGetCoUserDetailsAPI { (success) in
+                    if success {
+                        self.setupData()
+                        self.navigationController?.popViewController(animated: true)
+                        
+                        // Segment Tracking
+                        SegmentTracking.shared.identifyUser()
+                        SegmentTracking.shared.coUserEvent(name: SegmentTracking.eventNames.Profile_Changes_Saved, trackingType: .track)
                     }
-
-    
-                    // Segment Tracking
-                    SegmentTracking.shared.identifyUser()
-                    SegmentTracking.shared.coUserEvent(name: SegmentTracking.eventNames.Profile_Changes_Saved, trackingType: .track)
                 }
             }
         }
+    }
 }

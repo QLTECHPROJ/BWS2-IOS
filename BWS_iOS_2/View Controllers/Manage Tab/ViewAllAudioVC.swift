@@ -200,8 +200,33 @@ extension ViewAllAudioVC : UICollectionViewDataSource, UICollectionViewDelegate,
                 if lockDownloads == "1" || lockDownloads == "2" {
                     let arrayPlayableAudios = homeData.Details.filter { $0.IsPlay == "1" }
                     let newAudioIndex = arrayPlayableAudios.firstIndex(of: homeData.Details[indexPath.row]) ?? 0
+                    
+                    if isPlayingSingleAudio() && isPlayingAudio(audioID: arrayPlayableAudios[newAudioIndex].ID) {
+                        if DJMusicPlayer.shared.isPlaying == false {
+                            DJMusicPlayer.shared.play(isResume: true)
+                        }
+                        
+                        let aVC = AppStoryBoard.home.viewController(viewControllerClass: PlayerVC.self)
+                        aVC.audioDetails = arrayPlayableAudios[newAudioIndex]
+                        aVC.modalPresentationStyle = .overFullScreen
+                        self.present(aVC, animated: true, completion: nil)
+                        return
+                    }
+                    
                     self.presentAudioPlayer(arrayPlayerData: arrayPlayableAudios, index: newAudioIndex)
                 } else {
+                    if isPlayingSingleAudio() && isPlayingAudio(audioID: homeData.Details[indexPath.row].ID) {
+                        if DJMusicPlayer.shared.isPlaying == false {
+                            DJMusicPlayer.shared.play(isResume: true)
+                        }
+                        
+                        let aVC = AppStoryBoard.home.viewController(viewControllerClass: PlayerVC.self)
+                        aVC.audioDetails = homeData.Details[indexPath.row]
+                        aVC.modalPresentationStyle = .overFullScreen
+                        self.present(aVC, animated: true, completion: nil)
+                        return
+                    }
+                    
                     self.presentAudioPlayer(arrayPlayerData: homeData.Details, index: indexPath.row)
                 }
                 
@@ -236,8 +261,33 @@ extension ViewAllAudioVC : UICollectionViewDataSource, UICollectionViewDelegate,
                 if lockDownloads == "1" || lockDownloads == "2" {
                     let arrayPlayableAudios = homeData.Details.filter { $0.IsPlay == "1" }
                     let newAudioIndex = arrayPlayableAudios.firstIndex(of: homeData.Details[indexPath.row]) ?? 0
+                    
+                    if isPlayingSingleAudio() && isPlayingAudio(audioID: arrayPlayableAudios[newAudioIndex].ID) {
+                        if DJMusicPlayer.shared.isPlaying == false {
+                            DJMusicPlayer.shared.play(isResume: true)
+                        }
+                        
+                        let aVC = AppStoryBoard.home.viewController(viewControllerClass: PlayerVC.self)
+                        aVC.audioDetails = arrayPlayableAudios[newAudioIndex]
+                        aVC.modalPresentationStyle = .overFullScreen
+                        self.present(aVC, animated: true, completion: nil)
+                        return
+                    }
+                    
                     self.presentAudioPlayer(arrayPlayerData: arrayPlayableAudios, index: newAudioIndex)
                 } else {
+                    if isPlayingSingleAudio() && isPlayingAudio(audioID: homeData.Details[indexPath.row].ID) {
+                        if DJMusicPlayer.shared.isPlaying == false {
+                            DJMusicPlayer.shared.play(isResume: true)
+                        }
+                        
+                        let aVC = AppStoryBoard.home.viewController(viewControllerClass: PlayerVC.self)
+                        aVC.audioDetails = homeData.Details[indexPath.row]
+                        aVC.modalPresentationStyle = .overFullScreen
+                        self.present(aVC, animated: true, completion: nil)
+                        return
+                    }
+                    
                     self.presentAudioPlayer(arrayPlayerData: homeData.Details, index: indexPath.row)
                 }
                 

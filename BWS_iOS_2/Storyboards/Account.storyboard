@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9Tl-Ar-V2m">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9Tl-Ar-V2m">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -84,7 +84,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tS3-a7-oIA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <view contentMode="scaleToFill" id="bTa-y5-slj">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="185"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="192"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Fg-ZZ-CEv">
@@ -165,8 +165,8 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version 1.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xyn-N5-24v">
-                            <rect key="frame" x="153.66666666666666" y="44" width="68" height="16"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version 1.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xyn-N5-24v">
+                            <rect key="frame" x="153.66666666666666" y="32" width="67.666666666666657" height="16"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="16" id="9jT-qX-bnl"/>
                             </constraints>
@@ -178,8 +178,9 @@
                     <viewLayoutGuide key="safeArea" id="ihe-BE-RKm"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
+                        <constraint firstItem="Xyn-N5-24v" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ihe-BE-RKm" secondAttribute="leading" constant="16" id="Nhg-YI-lYr"/>
+                        <constraint firstItem="Xyn-N5-24v" firstAttribute="centerY" secondItem="Sl9-Cp-hqU" secondAttribute="centerY" id="OEQ-s5-lIg"/>
                         <constraint firstItem="Xyn-N5-24v" firstAttribute="centerX" secondItem="Sl9-Cp-hqU" secondAttribute="centerX" id="OWe-KN-Z2q"/>
-                        <constraint firstItem="Xyn-N5-24v" firstAttribute="top" secondItem="ihe-BE-RKm" secondAttribute="top" id="W8c-Sb-7y1"/>
                     </constraints>
                 </view>
             </objects>
@@ -2206,7 +2207,7 @@
         <!--Billing OrderVC-->
         <scene sceneID="XZS-mb-Olx">
             <objects>
-                <viewController storyboardIdentifier="BillingOrderVC" id="g49-BE-R3O" customClass="BillingOrderVC" customModule="BWS_2_Staging" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BillingOrderVC" hidesBottomBarWhenPushed="YES" id="g49-BE-R3O" customClass="BillingOrderVC" customModule="BWS_2_Staging" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eJb-HV-pBU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2561,7 +2562,7 @@
         <!--Upgrade PlanVC-->
         <scene sceneID="LjW-Yb-IkI">
             <objects>
-                <viewController storyboardIdentifier="UpgradePlanVC" id="qcN-JD-jkd" customClass="UpgradePlanVC" customModule="BWS_2_Staging" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UpgradePlanVC" hidesBottomBarWhenPushed="YES" id="qcN-JD-jkd" customClass="UpgradePlanVC" customModule="BWS_2_Staging" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5Gp-5K-Jf9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="900"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

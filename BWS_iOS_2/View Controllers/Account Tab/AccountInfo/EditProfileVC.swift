@@ -11,7 +11,7 @@ import JVFloatLabeledTextField
 
 class EditProfileVC: BaseViewController {
     
-    //MARK:- UIOutlet
+    // MARK:- OUTLETS
     // Textfield
     @IBOutlet weak var txtFDOB: DJPickerView!
     @IBOutlet weak var txtFName: JVFloatLabeledTextField!
@@ -23,20 +23,24 @@ class EditProfileVC: BaseViewController {
     @IBOutlet weak var lblErrMobileNo: UILabel!
     @IBOutlet weak var lblErrEmailAdd: UILabel!
     @IBOutlet weak var lblErrDOB: UILabel!
-    
     @IBOutlet weak var lblDOB: UILabel!
+    
     // Image
     @IBOutlet weak var imgCheckMobile: UIImageView!
     @IBOutlet weak var imgCheckEmail: UIImageView!
     
     // Button
     @IBOutlet weak var btnSave: UIButton!
+    
+    // StackView
     @IBOutlet weak var stackView: UIStackView!
     
-    //MARK:- Variables
+    
+    // MARK:- VARIABLES
     var selectedDOB = Date()
     
-    //MARK:- View Life Cycle
+    
+    // MARK:- VIEW LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -55,64 +59,62 @@ class EditProfileVC: BaseViewController {
         setupData()
     }
     
-    //MARK:- Functions
+    
+    // MARK:- FUNCTIONS
     override func setupUI() {
         txtFMobileNo.delegate = self
         txtFEmailAdd.delegate = self
         txtFDOB.delegate = self
         txtFName.delegate = self
-        lblDOB.text = ""
+        
+        txtFDOB.addTarget(self, action: #selector(textFieldValueChanged(textField:)), for: .editingChanged)
+        
+        lblDOB.text = Theme.strings.date_of_birth
         lblDOB.numberOfLines = 0
+        
         buttonEnableDisable()
     }
     
     override func setupData() {
-        if let userData = CoUserDataModel.currentUser {
-            let userName = userData.Name.trim.count > 0 ? userData.Name : "Guest"
-            
-            txtFName.text = userName
-            txtFMobileNo.text = userData.Mobile
-            txtFEmailAdd.text = userData.Email
-            txtFDOB.text = userData.DOB
-            
-            txtFMobileNo.isEnabled = false
-            if txtFDOB.text != "" {
-                txtFDOB.isEnabled = false
-            }
-            imgCheckMobile.isHidden = false
-            imgCheckEmail.isHidden = false
-            txtFEmailAdd.isEnabled = false
-            lblDOB.text = Theme.strings.date_of_birth
-            
-           DispatchQueue.main.asyncAfter(deadline: .now() + 0) {
-            self.txtFDOB.textColor = Theme.colors.gray_CDD4D9
-            self.txtFMobileNo.textColor = Theme.colors.gray_CDD4D9
-            self.txtFEmailAdd.textColor = Theme.colors.gray_CDD4D9
-            }
-            self.initDOBPickerView()
-            
-            if txtFDOB.text == userData.DOB ||  txtFEmailAdd.text == userData.Email || txtFName.text == userName  {
-                btnSave.isUserInteractionEnabled = false
-                btnSave.backgroundColor = Theme.colors.gray_7E7E7E
-            } else {
-                btnSave.isUserInteractionEnabled = true
-                btnSave.backgroundColor = Theme.colors.green_008892
-            }
+        guard let userData = CoUserDataModel.currentUser else {
+            return
         }
+        
+        let userName = userData.Name.trim.count > 0 ? userData.Name : "Guest"
+        
+        txtFName.text = userName
+        txtFMobileNo.text = userData.Mobile
+        txtFEmailAdd.text = userData.Email
+        txtFDOB.text = userData.DOB
+        
+        imgCheckMobile.isHidden = false
+        imgCheckEmail.isHidden = false
+        
+        self.initDOBPickerView()
+        
+        buttonEnableDisable()
     }
     
     override func buttonEnableDisable() {
+        guard let userData = CoUserDataModel.currentUser else {
+            return
+        }
+        
         var shouldEnable = true
         
-        if txtFEmailAdd.text?.trim.count == 0 || txtFName.text?.trim.count == 0 || txtFMobileNo.text?.trim.count == 0 || txtFDOB.text?.trim.count == 0{
+        if txtFEmailAdd.text?.trim.count == 0 || txtFName.text?.trim.count == 0 ||
+            txtFMobileNo.text?.trim.count == 0 || txtFDOB.text?.trim.count == 0 {
             shouldEnable = false
         } else {
             shouldEnable = true
         }
         
-//        if selectedUser != nil {
-//            shouldEnable = true
-//        }
+        if txtFName.text == userData.Name &&
+            txtFDOB.text == userData.DOB &&
+            txtFMobileNo.text == userData.Mobile &&
+            txtFEmailAdd.text == userData.Email {
+            shouldEnable = false
+        }
         
         if shouldEnable {
             btnSave.isUserInteractionEnabled = true
@@ -159,8 +161,7 @@ class EditProfileVC: BaseViewController {
             lblErrEmailAdd.text = Theme.strings.alert_invalid_email_error
         }
         
-         if txtFDOB.text?.trim.count != 0 && selectedDOB.differenceWith(Date(), inUnit: NSCalendar.Unit.year) < 18{
-          //  showAlertToast(message: Theme.strings.alert_dob_error)
+        if txtFDOB.text?.trim.count != 0 && selectedDOB.differenceWith(Date(), inUnit: NSCalendar.Unit.year) < 18 {
             lblErrDOB.isHidden = false
             lblErrDOB.text = Theme.strings.alert_dob_error
             return false
@@ -222,7 +223,7 @@ class EditProfileVC: BaseViewController {
             txtFDOB.text = dateFormatter.string(from: tenYearsAgo!)
             txtFDOB.datePicker?.date = tenYearsAgo!
             selectedDOB = tenYearsAgo!
-            //lblDobPlaceholder.isHidden = txtFDOB.text?.count == 0
+            lblDOB.isHidden = txtFDOB.text?.count == 0
             CoUserDataModel.currentUser?.DOB = txtFDOB.text ?? ""
         }
         
@@ -230,25 +231,24 @@ class EditProfileVC: BaseViewController {
     }
     
     @objc func textFieldValueChanged(textField : UITextField ) {
-       // lblDobPlaceholder.isHidden = txtDOB.text?.count == 0
-       // txtDOBTopConst.constant = (txtDOB.text?.count == 0) ? 0 : 10
+        lblDOB.text = (txtFDOB.text?.count == 0) ? "" : Theme.strings.date_of_birth
         self.view.layoutIfNeeded()
     }
     
-    //MARK:- IBAction Methods
+    
+    // MARK:- ACTIONS
     @IBAction func backClicked(sender : UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func onTappedSave(_ sender: UIButton) {
-        
         if checkValidation() {
             callUpdateProfileDetailAPI()
         }
     }
     
-  
 }
+
 
 // MARK:- UITextFieldDelegate
 extension EditProfileVC : UITextFieldDelegate {
@@ -258,7 +258,6 @@ extension EditProfileVC : UITextFieldDelegate {
         lblErrMobileNo.isHidden = true
         lblErrEmailAdd.isHidden = true
         lblErrDOB.isHidden = true
-        lblDOB.text = Theme.strings.date_of_birth
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -266,9 +265,8 @@ extension EditProfileVC : UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
         guard let text = textField.text,
-            let textRange = Range(range, in: text) else {
+              let textRange = Range(range, in: text) else {
             return false
         }
         
@@ -290,29 +288,27 @@ extension EditProfileVC : UITextFieldDelegate {
         }
         
         return !inValidCharacterSet.contains(firstChar)
-        
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        
         imgCheckMobile.isHidden = !isMobileNumberValid(strMobile: txtFMobileNo.text?.trim ?? "")
         imgCheckEmail.isHidden = !isEmailAddressValid(strEmail: txtFEmailAdd.text?.trim ?? "")
-        lblDOB.text = ""
-        lblDOB.numberOfLines = 0
         buttonEnableDisable()
     }
     
 }
 
 
+// MARK:- DJPickerViewDelegate
 extension EditProfileVC : DJPickerViewDelegate {
     
     func textPickerView(_ textPickerView: DJPickerView, didSelectDate date: Date) {
         print("Date :- ",date)
         selectedDOB = date
-        //lblDobPlaceholder.isHidden = txtDOB.text?.count == 0
-        //txtDOBTopConst.constant = (txtDOB.text?.count == 0) ? 0 : 10
+        lblDOB.text = (txtFDOB.text?.count == 0) ? "" : Theme.strings.date_of_birth
         self.view.layoutIfNeeded()
+        
+        buttonEnableDisable()
     }
     
 }

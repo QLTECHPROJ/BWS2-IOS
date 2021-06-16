@@ -386,7 +386,7 @@ struct AppStrings {
     let recommended_category_subtitle = "You can select upto three areas of focus to further customise your journey towards mental transformation."
     
     let preparing_playlist_title = "Preparing your \npersonalised playlist"
-    let preparing_playlist_subtitle = "Thank you for providing us with the information, We are preparing personlalised playlists for you."
+    let preparing_playlist_subtitle = "Thank you for providing us with the information, We are preparing personalised playlists for you."
     
     let you_playlist_is_ready_title = "You playlist is ready"
     let you_playlist_is_ready_subtitle = "We recommend that you listen to the audios while going to sleep to experience to get the maximum benefits from the program."
@@ -421,7 +421,7 @@ struct AppStrings {
     
     let alert_blank_pin_error = "Please enter pin"
     let alert_black_new_pin = "Please provide the latest PIN to login"
-    let alert_pin_not_match = "Pin and confirm pin not match"
+    let alert_pin_not_match = "Please provide the latest PIN to login"
     
     let alert_select_login_user = "Please select atleast one to proceed"
     
@@ -432,7 +432,7 @@ struct AppStrings {
     let alert_blank_playlist_name = "Playlist name is required"
     
     let alert_select_category = "Please select a category"
-    let alert_max_category = "You can choose maximus of three areas of focus. In case you wish to change your choices then simply unselct the ones you had selected earlier."
+    let alert_max_category = "You can choose maximum of three areas of focus. In case you wish to change your choices then simply unselect the ones you had selected earlier."
     
     /* Membership Plan */
     let alert_reactivate_plan = "Please re-activate your membership plan"

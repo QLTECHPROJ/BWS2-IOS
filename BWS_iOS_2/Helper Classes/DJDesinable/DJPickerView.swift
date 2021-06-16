@@ -126,6 +126,9 @@ public class DJPickerView: DJTextField {
     private func _initDatePicker() {
         dataPicker = nil
         datePicker = UIDatePicker()
+        if #available(iOS 13.4, *) {
+            datePicker?.preferredDatePickerStyle = .wheels
+        }
         datePicker?.backgroundColor = .white
         //datePicker?.locale = Locale(identifier: "en_US")
         //        datePicker?.setValue(UIColor.white, forKeyPath: "textColor")

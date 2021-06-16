@@ -217,6 +217,18 @@ extension AddAudioViewAllVC : UITableViewDelegate, UITableViewDataSource {
                 // Segment Tracking
                 //                SegmentTracking.shared.audioDetailsEvents(name: SegmentTracking.eventNames.Suggested_Audio_Clicked, audioData: arrayAudio[indexPath.row], trackingType: .track)
                 
+                if isPlayingSingleAudio() && isPlayingAudio(audioID: arrayAudio[indexPath.row].ID) {
+                    if DJMusicPlayer.shared.isPlaying == false {
+                        DJMusicPlayer.shared.play(isResume: true)
+                    }
+                    
+                    let aVC = AppStoryBoard.home.viewController(viewControllerClass: PlayerVC.self)
+                    aVC.audioDetails = arrayAudio[indexPath.row]
+                    aVC.modalPresentationStyle = .overFullScreen
+                    self.present(aVC, animated: true, completion: nil)
+                    return
+                }
+                
                 self.presentAudioPlayer(playerData: arrayAudio[indexPath.row])
                 DJMusicPlayer.shared.playerType = .searchAudio
                 DJMusicPlayer.shared.playingFrom = "Suggested Audio"
