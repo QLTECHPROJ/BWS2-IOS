@@ -56,13 +56,17 @@ func checkInternet(showToast : Bool = false) -> Bool {
 /************************ Show Alert Toast ************************/
 
 func showAlertToast(message : String) {
-    if let Window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first {
+    if let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first {
         var toastStyle = ToastManager.shared.style
         toastStyle.backgroundColor = Theme.colors.green_008892
         toastStyle.titleColor = Theme.colors.white
         toastStyle.titleAlignment = .left
         toastStyle.titleFont = Theme.fonts.montserratFont(ofSize: 12, weight: .regular)
-        Window.makeToast(message, style: toastStyle)
+        // window.makeToast(message, style: toastStyle)
+        
+        let newX = Int(SCREEN_WIDTH / 2)
+        let newY = Int(SCREEN_HEIGHT * 0.8)
+        window.makeToast(message, duration: 3.0, point: CGPoint(x: newX, y: newY), title: nil, image: nil, style: toastStyle, completion: nil)
     }
 }
 
