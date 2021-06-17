@@ -10,6 +10,10 @@ import Foundation
 import UIKit
 import EVReflection
 
+struct APIParameters {
+    static let UserId = "UserId"
+    static let MainAccountID = "MainAccountID"
+}
 
 // MARK:- General API Models
 class GeneralModel : EVObject {
@@ -259,7 +263,7 @@ class SaveCategoryModel : EVObject {
 }
 
 class SaveCategoryDataModel : EVObject {
-    var CoUserId = ""
+    var UserId = ""
     var AvgSleepTime = ""
     var CategoryData = [AreaOfFocusModel]()
 }
@@ -279,8 +283,8 @@ class CoUserModel : EVObject {
 }
 
 class CoUserDataModel : EVObject {
-    var UserID = ""
-    var CoUserId = ""
+    var UserId = ""
+    var MainAccountID = ""
     var Name = ""
     var Email = ""
     var Mobile = ""
@@ -298,12 +302,12 @@ class CoUserDataModel : EVObject {
     
     static var profileImage : UIImage?
     
-    class var currentUserId : String {
-        return CoUserDataModel.currentUser?.UserID ?? ""
+    class var currentMainAccountId : String {
+        return CoUserDataModel.currentUser?.MainAccountID ?? ""
     }
     
-    class var currentCoUserId : String {
-        return CoUserDataModel.currentUser?.CoUserId ?? ""
+    class var currentUserId : String {
+        return CoUserDataModel.currentUser?.UserId ?? ""
     }
     
     class var currentUser : CoUserDataModel? {
@@ -325,12 +329,12 @@ class CoUserDataModel : EVObject {
         }
     }
     
-    class var lastCoUserID : String? {
+    class var lastUserID : String? {
         get {
-            return UserDefaults.standard.string(forKey: "LastCoUserID")
+            return UserDefaults.standard.string(forKey: "LastUserID")
         }
         set {
-            UserDefaults.standard.set(newValue, forKey: "LastCoUserID")
+            UserDefaults.standard.set(newValue, forKey: "LastUserID")
             UserDefaults.standard.synchronize()
         }
     }
@@ -348,7 +352,7 @@ class UserListModel : EVObject {
 
 class UserListDataModel : EVObject {
     var Maxuseradd = ""
-    var CoUserList = [CoUserDataModel]()
+    var UserList = [CoUserDataModel]()
     var errormsg = ""
 }
 
@@ -384,8 +388,7 @@ class AudioViewAllModel: EVObject {
 class AudioHomeDataModel: EVObject {
     var HomeAudioID = ""
     var View = ""
-    var UserID = ""
-    var CoUserId = ""
+    var UserId = ""
     var Details = [AudioDetailsDataModel]()
     var IsLock = ""
 }
@@ -476,8 +479,7 @@ class PlaylistLibraryModel: EVObject {
 class PlaylistHomeDataModel: EVObject {
     var GetLibraryID = ""
     var View = ""
-    var UserID = ""
-    var CoUserId = ""
+    var UserId = ""
     var Details = [PlaylistDetailsModel]()
     var IsLock = ""
 }
@@ -710,5 +712,5 @@ class AddProfileImageModel: EVObject {
 
 class AddProfileImageDataModel: EVObject {
     var ProfileImage = ""
-    var UserID = ""
+    var UserId = ""
 }

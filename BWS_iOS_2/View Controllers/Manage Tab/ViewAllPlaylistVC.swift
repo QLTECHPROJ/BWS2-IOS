@@ -57,8 +57,7 @@ class ViewAllPlaylistVC: BaseViewController {
             let downloadDataModel = PlaylistHomeDataModel()
             downloadDataModel.GetLibraryID = "2"
             downloadDataModel.View = Theme.strings.my_downloads
-            downloadDataModel.CoUserId = (CoUserDataModel.currentUser?.CoUserId ?? "")
-            downloadDataModel.UserID = (CoUserDataModel.currentUser?.UserID ?? "")
+            downloadDataModel.UserId = CoUserDataModel.currentUserId
             downloadDataModel.Details = CoreDataHelper.shared.fetchAllPlaylists()
             downloadDataModel.IsLock = shouldLockDownloads() ? "1" : "0"
             self.homeData = downloadDataModel

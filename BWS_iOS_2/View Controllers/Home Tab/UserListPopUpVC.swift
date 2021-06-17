@@ -84,7 +84,7 @@ class UserListPopUpVC: BaseViewController {
         self.viewUserList.isHidden = false
         
         for user in arrayUsers {
-            if user.CoUserId == CoUserDataModel.currentUser?.CoUserId {
+            if user.UserId == CoUserDataModel.currentUserId {
                 user.isSelected = true
             }
         }
@@ -154,7 +154,7 @@ extension UserListPopUpVC : UITableViewDelegate, UITableViewDataSource {
         selectedUser = arrayUsers[indexPath.row]
         
         DispatchQueue.main.async {
-            if self.selectedUser?.CoUserId == CoUserDataModel.currentUser?.CoUserId {
+            if self.selectedUser?.UserId == CoUserDataModel.currentUserId {
                 self.dismiss(animated: true, completion: nil)
             } else {
                 self.newUserLogin()

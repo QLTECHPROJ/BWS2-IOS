@@ -86,11 +86,11 @@ class AccountVC: BaseViewController {
     }
     
     class func clearDownloadData() {
-        if CoUserDataModel.currentUser?.CoUserId == CoUserDataModel.lastCoUserID {
+        if CoUserDataModel.currentUserId == CoUserDataModel.lastUserID {
             return
         }
         
-        CoUserDataModel.lastCoUserID = CoUserDataModel.currentUser?.CoUserId
+        CoUserDataModel.lastUserID = CoUserDataModel.currentUserId
         
         // Download Related Data
         CoreDataHelper.shared.deleteAllAudio()
@@ -128,7 +128,7 @@ class AccountVC: BaseViewController {
         // Cancel All ongoing Downloads on logout
         SDDownloadManager.shared.cancelAllDownloads()
         
-        if CoUserDataModel.currentUser?.CoUserId == CoUserDataModel.lastCoUserID {
+        if CoUserDataModel.currentUserId == CoUserDataModel.lastUserID {
             return
         }
         

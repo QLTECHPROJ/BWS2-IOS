@@ -107,8 +107,8 @@ class SegmentTracking {
             let userName = userDetails.Name.trim.count > 0 ? userDetails.Name : "Guest"
             
             var dictUserDetails : [String:Any] = [
-                "CoUserId":userDetails.CoUserId,
-                "id":userDetails.CoUserId,
+                "CoUserId":CoUserDataModel.currentUserId,
+                "id":CoUserDataModel.currentUserId,
                 "deviceId":DEVICE_UUID,
                 "deviceType":"iOS",
                 "name":userName,
@@ -139,7 +139,7 @@ class SegmentTracking {
             // "countryCode":userDetails.CountryCode,
             // "countryName":userDetails.CountryName]
             
-            SegmentTracking.shared.trackEvent(name: userDetails.UserID, traits: dictUserDetails, trackingType: .identify)
+            SegmentTracking.shared.trackEvent(name: CoUserDataModel.currentUserId, traits: dictUserDetails, trackingType: .identify)
         }
     }
     
@@ -149,8 +149,8 @@ class SegmentTracking {
             let userName = userDetails.Name.trim.count > 0 ? userDetails.Name : "Guest"
             
             var dictUserDetails : [String:Any] = [
-                "CoUserId":userDetails.CoUserId,
-                "id":userDetails.CoUserId,
+                "CoUserId":CoUserDataModel.currentUserId,
+                "id":CoUserDataModel.currentUserId,
                 "deviceId":DEVICE_UUID,
                 "deviceType":"iOS",
                 "name":userName,
@@ -227,7 +227,7 @@ class SegmentTracking {
             return
         }
         
-        var traits = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+        var traits = ["CoUserId":CoUserDataModel.currentUserId,
                       "audioId":audioDetails.ID,
                       "audioName":audioDetails.Name,
                       "audioDescription":audioDetails.AudioDescription,
@@ -238,7 +238,7 @@ class SegmentTracking {
                       "bitRate":audioDetails.Bitrate]
         
         if audioDetails.isDisclaimer == true {
-            traits = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+            traits = ["CoUserId":CoUserDataModel.currentUserId,
                       "bitRate":audioDetails.Bitrate]
         }
         
@@ -319,7 +319,7 @@ class SegmentTracking {
             return
         }
         
-        var traits = ["CoUserId":CoUserDataModel.currentUser?.UserID ?? "",
+        var traits = ["CoUserId":CoUserDataModel.currentUserId,
                       "audioId":audioDetails.ID,
                       "audioName":audioDetails.Name,
                       "audioDescription":audioDetails.AudioDescription,
@@ -330,7 +330,7 @@ class SegmentTracking {
                       "bitRate":audioDetails.Bitrate]
         
         if audioDetails.isDisclaimer == true {
-            traits = ["CoUserId":CoUserDataModel.currentUser?.UserID ?? "",
+            traits = ["CoUserId":CoUserDataModel.currentUserId,
                       "bitRate":audioDetails.Bitrate]
         }
         
@@ -365,7 +365,7 @@ class SegmentTracking {
             return
         }
         
-        var traits = ["CoUserId":CoUserDataModel.currentUser?.UserID ?? "",
+        var traits = ["CoUserId":CoUserDataModel.currentUserId,
                       "audioId":audioDetails.ID,
                       "audioName":audioDetails.Name,
                       "audioDescription":audioDetails.AudioDescription,
@@ -376,7 +376,7 @@ class SegmentTracking {
                       "bitRate":audioDetails.Bitrate]
         
         if audioDetails.isDisclaimer == true {
-            traits = ["CoUserId":CoUserDataModel.currentUser?.UserID ?? "",
+            traits = ["CoUserId":CoUserDataModel.currentUserId,
                       "bitRate":audioDetails.Bitrate]
         }
         
@@ -412,7 +412,7 @@ class SegmentTracking {
     // Track Playlist Events
     func playlistEvents(name : String, objPlaylist : PlaylistDetailsModel?, passPlaybackDetails : Bool = false, passPlayerType : Bool = false, audioData : AudioDetailsDataModel? = nil, audioSortPositons : (Int,Int)? = nil, trackingType : TrackingType) {
         if let playlistDetails = objPlaylist {
-            var traits = ["CoUserId":CoUserDataModel.currentUser?.UserID ?? "",
+            var traits = ["CoUserId":CoUserDataModel.currentUserId,
                           "playlistId":playlistDetails.PlaylistID,
                           "playlistName":playlistDetails.PlaylistName,
                           "playlistDescription":playlistDetails.PlaylistDesc,

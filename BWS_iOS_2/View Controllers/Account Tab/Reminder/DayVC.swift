@@ -123,6 +123,10 @@ class DayVC: BaseViewController {
         datePicker.backgroundColor = UIColor.white
         datePicker.datePickerMode = .time
         datePicker.autoresizingMask = .flexibleWidth
+        
+        if #available(iOS 13.4, *) {
+            datePicker.preferredDatePickerStyle = .wheels
+        }
                 
         //datePicker.addTarget(self, action: #selector(self.dateChanged(_:)), for: .valueChanged)
 //        datePicker.frame = CGRect(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 300)
