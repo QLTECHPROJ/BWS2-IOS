@@ -61,8 +61,7 @@ class ViewAllAudioVC: BaseViewController {
             let downloadDataModel = AudioHomeDataModel()
             downloadDataModel.HomeAudioID = "1"
             downloadDataModel.View = Theme.strings.my_downloads
-            downloadDataModel.UserID = (CoUserDataModel.currentUser?.UserID ?? "")
-            downloadDataModel.CoUserId = (CoUserDataModel.currentUser?.CoUserId ?? "")
+            downloadDataModel.UserId = CoUserDataModel.currentUserId
             downloadDataModel.Details = CoreDataHelper.shared.fetchSingleAudios()
             downloadDataModel.IsLock = shouldLockDownloads() ? "1" : "0"
             self.homeData = downloadDataModel

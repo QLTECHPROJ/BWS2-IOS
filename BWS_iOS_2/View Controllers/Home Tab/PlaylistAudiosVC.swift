@@ -436,7 +436,7 @@ class PlaylistAudiosVC: BaseViewController {
                 aVC.audioDetails = self.arraySearchSongs[arrayIndex]
                 aVC.source = "Playlist Player Screen"
                 aVC.modalPresentationStyle = .overFullScreen
-                if objPlaylist?.Created != CoUserDataModel.currentUser?.CoUserId {
+                if objPlaylist?.Created != CoUserDataModel.currentUserId {
                     aVC.selfCreated = false
                 }
                 self.present(aVC, animated: true, completion: nil)

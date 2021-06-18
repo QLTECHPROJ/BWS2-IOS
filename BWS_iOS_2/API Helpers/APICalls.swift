@@ -161,11 +161,11 @@ extension UserListVC {
         tableView.reloadData()
         buttonEnableDisable()
         
-        let parameters = ["UserID":LoginDataModel.currentUser?.ID ?? ""]
+        let parameters = [APIParameters.MainAccountID:LoginDataModel.currentUserId]
         
         APICallManager.sharedInstance.callAPI(router: APIRouter.userlist(parameters)) { (response : UserListModel) in
             if response.ResponseCode == "200" {
-                self.arrayUsers = response.ResponseData.CoUserList
+                self.arrayUsers = response.ResponseData.UserList
                 self.tableView.reloadData()
                 self.maxUsers = Int(response.ResponseData.Maxuseradd) ?? 0
                 self.setupData()
@@ -185,10 +185,10 @@ extension PinVC {
     // Verify Pin API Call
     func callVerifyPinAPI() {
         let strCode = txtFPin1.text! + txtFPin2.text! + txtFPin3.text! + txtFPin4.text!
-        let parameters = ["CoUserId":selectedUser?.CoUserId ?? "",
+        let parameters = [APIParameters.UserId:selectedUser?.UserId ?? "",
                           "Pin":strCode]
         
-        let coUserID = CoUserDataModel.currentUser?.CoUserId
+        let lastUserID = CoUserDataModel.currentUserId
         
         APICallManager.sharedInstance.callAPI(router: APIRouter.verifypin(parameters)) { (response : CoUserModel) in
             if response.ResponseCode == "200" {
@@ -196,8 +196,8 @@ extension PinVC {
                 
                 CoUserDataModel.currentUser = response.ResponseData
                 
-                if let lastCoUserID = coUserID {
-                    CoUserDataModel.lastCoUserID = lastCoUserID
+                if lastUserID.trim.count > 0 {
+                    CoUserDataModel.lastUserID = lastUserID
                 }
                 
                 // Segment Tracking
@@ -222,7 +222,7 @@ extension AddProfileVC {
     
     // Add User Profile API Call
     func callAddUserProfileAPI() {
-        let parameters = ["UserID":LoginDataModel.currentUser?.ID ?? "",
+        let parameters = [APIParameters.MainAccountID:LoginDataModel.currentUserId,
                           "UserName":txtFName.text ?? "",
                           "Email":txtFEmailAdd.text ?? "",
                           "MobileNo":txtFMobileNo.text ?? ""]
@@ -253,8 +253,7 @@ extension AddProfileVC {
     
     // Forgot Pin API Call
     func callForgotPinAPI() {
-        let parameters = ["UserID":selectedUser?.UserID ?? "",
-                          "CoUserId":selectedUser?.CoUserId ?? "",
+        let parameters = [APIParameters.UserId:selectedUser?.UserId ?? "",
                           "Email":selectedUser?.Email ?? ""]
         
         APICallManager.sharedInstance.callAPI(router: APIRouter.forgotpin(parameters)) { (response : GeneralModel) in
@@ -271,8 +270,7 @@ extension ProfileForm6VC {
     
     // Profile Answer Save API Call
     func callProfileAnsSaveAPI() {
-        let parameters = ["UserID":CoUserDataModel.currentUser?.UserID ?? "",
-                          "CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
                           "profileType":ProfileFormModel.shared.profileType,
                           "gender":ProfileFormModel.shared.gender,
                           "genderX":ProfileFormModel.shared.genderX,
@@ -313,8 +311,7 @@ extension AssessmentVC {
     
     // Fetch Dass Assessment answer save API Call
     func callSaveAnsAssessmentAPI(arrAns:String) {
-        let parameters = ["UserID":CoUserDataModel.currentUser?.UserID ?? "",
-                          "CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
                           "ans":arrAns]
         
         APICallManager.sharedInstance.callAPI(router: APIRouter.assesmentsaveans(parameters)) { (response : GeneralModel) in
@@ -343,8 +340,7 @@ extension UIViewController {
     
     // Call Get Co User Details API
     func callGetCoUserDetailsAPI(complitionBlock : ((Bool) -> ())?) {
-        let parameters = ["UserID":CoUserDataModel.currentUser?.UserID ?? "",
-                          "CoUserId":CoUserDataModel.currentUser?.CoUserId ?? ""]
+        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId]
         
         APICallManager.sharedInstance.callAPI(router: APIRouter.getcouserdetails(parameters), displayHud: false) { (response : CoUserModel) in
             if response.ResponseCode == "200" {
@@ -369,7 +365,7 @@ extension UIViewController {
     
     // Call Log Out API
     func callLogoutAPI(complitionBlock : (() -> ())?) {
-        let parameters = ["UserID":LoginDataModel.currentUser?.ID ?? "",
+        let parameters = [APIParameters.UserId:LoginDataModel.currentUserId,
                           "Token":FCM_TOKEN,
                           "DeviceType":APP_TYPE]
         
@@ -390,7 +386,7 @@ extension UIViewController {
             return
         }
         
-        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
                           "AudioId":audioID]
         APICallManager.sharedInstance.callAPI(router: APIRouter.recentlyplayed(parameters), displayHud: false) { (response : GeneralModel) in
             if response.ResponseCode == "200" {
@@ -402,7 +398,7 @@ extension UIViewController {
     
     // Delete Playlist API Call
     func callDeletePlaylistAPI(objPlaylist : PlaylistDetailsModel, complitionBlock : (() -> ())?) {
-        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
                           "PlaylistId":objPlaylist.PlaylistID]
         
         APICallManager.sharedInstance.callAPI(router: APIRouter.deleteplaylist(parameters)) { (response : GeneralModel) in
@@ -425,7 +421,7 @@ extension UIViewController {
             CategoryName = ""
         }
         
-        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
                           "ResourceTypeId":resourceID,
                           "Category":CategoryName]
         
@@ -469,7 +465,7 @@ extension ManageVC {
     
     // Manage Home API Call
     func callManageHomeAPI() {
-        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? ""]
+        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId]
         
         APICallManager.sharedInstance.callAPI(router: APIRouter.managehomescreen(parameters)) { (response : ManageHomeModel) in
             if response.ResponseCode == "200" {
@@ -502,7 +498,7 @@ extension ViewAllAudioVC {
     
     // Get All Audio API Call
     @objc func callViewAllAudioAPI() {
-        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
                           "GetHomeAudioId":libraryId,
                           "CategoryName":categoryName]
         
@@ -524,7 +520,7 @@ extension PlaylistCategoryVC {
     
     // Playlist Library API Call
     @objc func callPlaylistLibraryAPI() {
-        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? ""]
+        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId]
         
         APICallManager.sharedInstance.callAPI(router: APIRouter.playlistlibrary(parameters)) { (response : PlaylistHomeModel) in
             
@@ -549,7 +545,7 @@ extension ViewAllPlaylistVC {
     
     // Playlist On Get Library API Call
     @objc func callPlaylistOnGetLibraryAPI() {
-        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
                           "GetLibraryId":libraryId]
         
         APICallManager.sharedInstance.callAPI(router: APIRouter.playlistonviewall(parameters)) { (response : PlaylistLibraryModel) in
@@ -570,7 +566,7 @@ extension CreatePlaylistVC {
     
     // Create Playlist API Call
     func callCreatePlaylistAPI(PlaylistName : String) {
-        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
                           "PlaylistName":PlaylistName]
         
         APICallManager.sharedInstance.callAPI(router: APIRouter.createplaylist(parameters)) { (response : CreatePlaylistModel) in
@@ -600,7 +596,7 @@ extension CreatePlaylistVC {
     
     // Rename Playlist API Call
     func callRenamePlaylistAPI(PlaylistName : String) {
-        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
                           "PlaylistId":objPlaylist!.PlaylistID,
                           "PlaylistNewName":PlaylistName]
         
@@ -620,7 +616,7 @@ extension PlaylistAudiosVC {
     
     // Playlist Detail API Call
     @objc func callPlaylistDetailAPI() {
-        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
                           "PlaylistId":objPlaylist!.PlaylistID]
         
         APICallManager.sharedInstance.callAPI(router: APIRouter.playlistdetails(parameters)) { (response : PlaylistDetailsAPIModel) in
@@ -638,7 +634,7 @@ extension PlaylistAudiosVC {
     
     // Remove Audio From Playlist API Call
     func callRemoveAudioFromPlaylistAPI(index : Int) {
-        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
                           "PlaylistId":arraySearchSongs[index].PlaylistID,
                           "AudioId":arraySearchSongs[index].ID]
         
@@ -661,7 +657,7 @@ extension PlaylistAudiosVC {
     
     // Playlist Sprting API Call
     func callSortingPlaylistAudioAPI(audioIds : String) {
-        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
                           "PlaylistId":objPlaylist!.PlaylistID,
                           "PlaylistAudioId":audioIds]
         
@@ -680,7 +676,7 @@ extension PlaylistDetailVC {
     
     // Playlist Detail API Call
     @objc func callPlaylistDetailAPI() {
-        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
                           "PlaylistId":objPlaylist!.PlaylistID]
         
         APICallManager.sharedInstance.callAPI(router: APIRouter.playlistdetails(parameters)) { (response : PlaylistDetailsAPIModel) in
@@ -699,7 +695,7 @@ extension AddToPlaylistVC {
     
     // My Playlist API Call
     func callMyPlaylistAPI() {
-        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? ""]
+        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId]
         
         APICallManager.sharedInstance.callAPI(router: APIRouter.getcreatedplaylist(parameters)) { (response : PlaylistListingModel) in
             
@@ -719,7 +715,7 @@ extension AddToPlaylistVC {
     func callAddAudioToPlaylistAPI(playlistID : String) {
         self.view.endEditing(true)
         
-        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
                           "PlaylistId":playlistID,
                           "AudioId":self.audioID,
                           "FromPlaylistId":self.playlistID]
@@ -738,7 +734,7 @@ extension AudioDetailVC {
     
     // Audio Detail API Call
     func callAudioDetailsAPI() {
-        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
                           "AudioId":(audioDetails?.ID ?? "")]
         
         APICallManager.sharedInstance.callAPI(router: APIRouter.audiodetail(parameters)) { (response : AudioDetailsModel) in
@@ -757,7 +753,7 @@ extension AudioDetailVC {
     
     // Remove Audio From Playlist API Call
     func callRemoveAudioFromPlaylistAPI() {
-        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
                           "PlaylistId":audioDetails!.PlaylistID,
                           "AudioId":audioDetails!.ID]
         
@@ -790,7 +786,7 @@ extension AudioDetailVC {
     
     // Playlist Detail API Call
     @objc func callPlaylistDetailAPI(playlistId : String) {
-        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
                           "PlaylistId":playlistId]
         
         APICallManager.sharedInstance.callAPI(router: APIRouter.playlistdetails(parameters)) { (response : PlaylistDetailsAPIModel) in
@@ -810,7 +806,7 @@ extension AddAudioVC {
     
     //call audio list
     func callAudioAPI() {
-        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? ""]
+        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId]
         APICallManager.sharedInstance.callAPI(router: APIRouter.suggestedaudio(parameters)) { (response :AudioDetailsModel) in
             
             if response.ResponseCode == "200" {
@@ -824,7 +820,7 @@ extension AddAudioVC {
     
     //call playlist
     func callPlaylistAPI() {
-        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? ""]
+        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId]
         APICallManager.sharedInstance.callAPI(router: APIRouter.suggestedplaylist(parameters)) { (response :PlaylistListingModel) in
             
             if response.ResponseCode == "200" {
@@ -836,7 +832,7 @@ extension AddAudioVC {
     
     //call search
     func callSearchAPI(searchText : String) {
-        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
                           "SuggestedName":searchText]
         
         // Segment Tracking
@@ -865,7 +861,7 @@ extension AddAudioVC {
     func callAddAudioToPlaylistAPI(audioToAdd : String = "" , playlistToAdd : String = "") {
         self.view.endEditing(true)
         
-        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
                           "PlaylistId":self.playlistID,
                           "AudioId":audioToAdd,
                           "FromPlaylistId":playlistToAdd]
@@ -885,7 +881,7 @@ extension AreaOfFocusVC {
     
     // Fetch Recommended Category list
     func callGetRecommendedCategoryAPI() {
-        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? ""]
+        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId]
         
         APICallManager.sharedInstance.callAPI(router: APIRouter.getrecommendedcategory(parameters)) { (response :CategoryModel) in
             
@@ -901,7 +897,7 @@ extension AreaOfFocusVC {
     
     // Save Category & Sleep Time
     func callSaveCategoryAPI(areaOfFocus : [[String:Any]]) {
-        let parameters : [String : Any] = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+        let parameters : [String : Any] = [APIParameters.UserId:CoUserDataModel.currentUserId,
                                            "AvgSleepTime":self.averageSleepTime,
                                            "CatName":areaOfFocus.toJSON() ?? ""]
         
@@ -942,7 +938,7 @@ extension ManagePlanListVC {
     
     // Fetch Plan List & Other Data
     func callManagePlanListAPI() {
-        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? ""]
+        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId]
         APICallManager.sharedInstance.callAPI(router: APIRouter.planlist(parameters)) { (response :PlanListModel) in
             
             if response.ResponseCode == "200" {
@@ -958,7 +954,7 @@ extension AddAudioViewAllVC {
     
     //call playlist
     func callPlaylistAPI() {
-        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? ""]
+        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId]
         APICallManager.sharedInstance.callAPI(router: APIRouter.suggestedplaylist(parameters)) { (response :PlaylistListingModel) in
             
             if response.ResponseCode == "200" {
@@ -974,7 +970,7 @@ extension AddAudioViewAllVC {
     func callAddAudioToPlaylistAPI(audioToAdd : String = "" , playlistToAdd : String = "") {
         self.view.endEditing(true)
         
-        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
                           "PlaylistId":self.playlistID,
                           "AudioId":audioToAdd,
                           "FromPlaylistId":playlistToAdd]
@@ -997,11 +993,11 @@ extension UserListPopUpVC {
         arrayUsers.removeAll()
         tableView.reloadData()
         
-        let parameters = ["UserID":LoginDataModel.currentUser?.ID ?? ""]
+        let parameters = [APIParameters.MainAccountID:LoginDataModel.currentUserId]
         
         APICallManager.sharedInstance.callAPI(router: APIRouter.userlist(parameters)) { (response : UserListModel) in
             if response.ResponseCode == "200" {
-                self.arrayUsers = response.ResponseData.CoUserList
+                self.arrayUsers = response.ResponseData.UserList
                 self.tableView.reloadData()
                 self.maxUsers = Int(response.ResponseData.Maxuseradd) ?? 0
                 self.setupData()
@@ -1020,8 +1016,7 @@ extension NotificatonVC {
     
     // Notification List API Call
     func callNotificationListAPI() {
-        let parameters = ["UserID":CoUserDataModel.currentUser?.UserID ?? "",
-                          "CoUserId":CoUserDataModel.currentUser?.CoUserId ?? ""]
+        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId]
         
         APICallManager.sharedInstance.callAPI(router: APIRouter.getnotificationlist(parameters)) { (response : NotificationListModel) in
             if response.ResponseCode == "200" {
@@ -1039,7 +1034,7 @@ extension NotificatonVC {
 extension ResourceVC {
     
     func callResourceCategoryListAPI() {
-        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? ""]
+        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId]
         
         APICallManager.sharedInstance.callAPI(router: APIRouter.resourcecatlist(parameters)) { (response : ResourceCategoryModel) in
             
@@ -1064,7 +1059,7 @@ extension HomeVC {
     
     // Home API Call
     func callHomeAPI() {
-        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? ""]
+        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId]
         
         APICallManager.sharedInstance.callAPI(router: APIRouter.homescreen(parameters)) { (response : HomeModel) in
             if response.ResponseCode == "200" {
@@ -1103,14 +1098,14 @@ extension AccountVC {
     
     // Add Profile Image API
     func callAddProfileImageAPI() {
-        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? ""]
+        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId]
         
         var uploadData = [UploadDataModel]()
         if imageData.data != nil {
             uploadData = [imageData]
         }
         
-        APICallManager.sharedInstance.callUploadWebService(apiUrl: APIRouter.updateprofileimg(parameters).urlRequest!.url!.absoluteString, includeHeader: true, parameters: parameters, uploadParameters: uploadData, httpMethod: .post) { (response : CoUserModel) in
+        APICallManager.sharedInstance.callUploadWebService(apiUrl: APIRouter.updateprofileimg(parameters).urlRequest!.url!.absoluteString, includeHeader: true, parameters: parameters, uploadParameters: uploadData, httpMethod: .post) { (response : AddProfileImageModel) in
             
             if response.ResponseCode == "200" {
                 self.imageData = UploadDataModel()
@@ -1126,7 +1121,7 @@ extension AccountVC {
     
     // Remove Profile Image API
     func callRemoveProfileImageAPI() {
-        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? ""]
+        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId]
         
         APICallManager.sharedInstance.callAPI(router: APIRouter.removeprofileimg(parameters)) { (response : GeneralModel) in
             
@@ -1147,8 +1142,7 @@ extension ChangePINVC {
     
     //call change pin
     func callChangePinAPI() {
-        let parameters = ["UserID":LoginDataModel.currentUser?.ID ?? "",
-                          "CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
                           "OldPin":txtFOldPIN.text ?? "",
                           "NewPin":txtFConfirmPIN.text ?? ""]
         APICallManager.sharedInstance.callAPI(router: APIRouter.changepin(parameters)) { (response :GeneralModel) in
@@ -1168,8 +1162,8 @@ extension ChangePassWordVC {
     
     //call change pin
     func callChangePasswordAPI() {
-        let parameters = ["UserID":LoginDataModel.currentUser?.ID ?? "",
-                          "CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+        let parameters = [APIParameters.MainAccountID:LoginDataModel.currentUserId,
+                          APIParameters.UserId:CoUserDataModel.currentUserId,
                           "OldPassword":txtfOldPassword.text ?? "",
                           "NewPassword":txtFConfirmPassword.text ?? ""]
         APICallManager.sharedInstance.callAPI(router: APIRouter.changepassword(parameters)) { (response :GeneralModel) in
@@ -1210,7 +1204,7 @@ extension FAQVC {
 extension ReminderListVC {
     
     func callRemListAPI() {
-        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? ""]
+        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId]
         
         APICallManager.sharedInstance.callAPI(router: APIRouter.reminderlist(parameters)) { (response :ReminderModel) in
             
@@ -1236,7 +1230,7 @@ extension ReminderListVC {
     }
     func callRemSatusAPI(status:String) {
         
-        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
                           "ReminderStatus":status,
                           "PlaylistId":strRemID ?? ""]
         
@@ -1253,7 +1247,8 @@ extension ReminderListVC {
     
     func callRemDeleteAPI(remID:String) {
 
-        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "","ReminderId":remID]
+        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
+                          "ReminderId":remID]
 
         APICallManager.sharedInstance.callAPI(router: APIRouter.deletereminder(parameters)) { (response :GeneralModel) in
 
@@ -1275,7 +1270,7 @@ extension DayVC {
         print(strDay)
         let time = lblTime.text?.localToUTC(incomingFormat: "h:mm a", outGoingFormat: "h:mm a") ?? ""
 
-        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
                           "PlaylistId":strPlaylistID ?? "",
                           "IsSingle":"1",
                           "ReminderTime":time,
@@ -1352,7 +1347,8 @@ extension EditProfileVC {
             DOB = ""
         }
         
-        let parameters = ["CoUserId":CoUserDataModel.currentUser?.CoUserId ?? "",
+        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
+                          APIParameters.MainAccountID:LoginDataModel.currentUserId,
                           "Name":txtFName.text!,
                           "Dob":DOB ,
                           "MobileNo":txtFMobileNo.text!,
