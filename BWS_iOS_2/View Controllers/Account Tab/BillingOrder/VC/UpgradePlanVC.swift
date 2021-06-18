@@ -12,16 +12,20 @@ class UpgradePlanVC: BaseViewController {
     
     //MARK:- UIOutlet
     
+    @IBOutlet weak var lblSubTitle: UILabel!
+    @IBOutlet weak var lblTitle: UILabel!
     //MARK:- Variables
     
     //MARK:- View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setupUI()
     }
     
     //MARK:- Functions
     override func setupUI() {
+        
+        lblSubTitle.attributedText = Theme.strings.upgradePlan_subtitle.attributedString(alignment: .center, lineSpacing: 5)
         
     }
     

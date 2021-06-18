@@ -31,8 +31,7 @@ class ProfileFormStartVC: BaseViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        let normalString = "Lorem ipsum dolor sit amet, \nconsetetur sadipscing elitr, sed diam"
-        lblSubTitle.attributedText = normalString.attributedString(alignment: .center, lineSpacing: 5)
+        lblSubTitle.attributedText = Theme.strings.step_1_subtitle.attributedString(alignment: .center, lineSpacing: 5)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapGestureAction(gesturerecognizer:)))
         self.view.addGestureRecognizer(tapGesture)

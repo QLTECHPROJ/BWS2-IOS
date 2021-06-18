@@ -361,16 +361,19 @@ struct AppStrings {
     let step_2_title = "Step 2"
     let step_3_title = "Step 3"
     
-    let step_1_subtitle = "Simply fill in your assessment form and we'll recommend the programs best suited for your needs"
+    //let step_1_subtitle = "Simply fill in your assessment form and we'll recommend the programs best suited for your needs"
+    let step_1_subtitle = "Simply complete the profile and we'll recommend the programs best suited for your needs"
     let step_2_subtitle = "Let's assess how you are \ncurrently doing"
     let step_3_subtitle = "we're analysing your inputs"
     
     let prev_drug_use_subtitle = "Have you ever taken any illicit drugs in your life?"
     
     let do_the_assessment_subtitle_one = "We're done with the first part."
-    let do_the_assessment_subtitle_two = "In the next step, you will have to fill an assessment form which will help us assess your mental health."
+   // let do_the_assessment_subtitle_two = "In the next step, you will have to fill an assessment form which will help us assess your mental health."
+    let do_the_assessment_subtitle_two = "Now all you have to do is fill out an assessment for that will help us ascertain your current mental & emotional state. Based on your answers we will recommend the audios, best suited to manage your mental & emotional growth."
     
     let index_score_subtitle = "The index score determines the intensity of your mental health challenge and based on your score we will recommend the programs to help you."
+    let index_score_title = "What is Index Score ?"
     
     let you_are_doing_good_title = "You are Doing Good"
     let you_are_doing_good_subtitle = "We are analysing the information you have provided and devising a personalised treatment plan for just for you."
@@ -390,6 +393,9 @@ struct AppStrings {
     
     let you_playlist_is_ready_title = "You playlist is ready"
     let you_playlist_is_ready_subtitle = "We recommend that you listen to the audios while going to sleep to experience to get the maximum benefits from the program."
+    
+    //Billing order
+    let upgradePlan_subtitle = "Get the most out of the Brain Wellness App. Now you can add additional accounts get your loved ones started on their journey towards mental & emotional transformation. Upgrade your subscription plan right now!!"
     
     /* Alert Strings */
     let alert_check_internet = "Internet connection seems to be offline."
@@ -449,7 +455,7 @@ struct AppStrings {
     let alert_disclaimer_playing = "The audio shall start playing after the disclaimer."
     let alert_disclaimer_playlist_add = "The audio shall add after playing the disclaimer"
     let alert_disclaimer_playlist_sorting = "The audio shall sort after the disclaimer"
-    let alert_disclaimer_playlist_remove = "Currently you play this playlist, you can't remove last audio"
+    let alert_disclaimer_playlist_remove = "Currently, you play this playlist,you can't remove the last audio."
     let alert_playing_playlist_remove = "Unable to remove as this playlist is in player right now"
     let alert_playing_audio_remove = "The audio is currently in play mode"
     

@@ -60,7 +60,7 @@ class DassAssessmentResultVC: BaseViewController {
         UserDefaults.standard.removeObject(forKey: "ArrayPage")
         UserDefaults.standard.synchronize()
         
-        lblSubTitle.attributedText = Theme.strings.index_score_subtitle.attributedString(alignment: .center, lineSpacing: 5)
+        lblSubTitle.attributedText =  Theme.strings.index_score_subtitle.attributedString(alignment: .center, lineSpacing: 5)
         
         indexScoreLabelView.isHidden = true
         indexScoreLabelView.cornerRadius = indexScoreLabelView.frame.size.height / 2
