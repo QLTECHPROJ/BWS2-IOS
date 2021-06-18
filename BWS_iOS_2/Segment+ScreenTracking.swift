@@ -21,11 +21,7 @@ extension SegmentTracking {
         newTraits["CoUserId"] = CoUserDataModel.currentUserId
         
         if passUserID {
-            if CoUserDataModel.currentMainAccountId.count > 0 {
-                newTraits["UserId"] = CoUserDataModel.currentMainAccountId
-            } else if LoginDataModel.currentUserId.count > 0 {
-                newTraits["UserId"] = LoginDataModel.currentUserId
-            }
+            newTraits["UserId"] = LoginDataModel.currentUserId
         }
         
         SegmentTracking.shared.trackEvent(name: name, traits: newTraits, trackingType: .screen)
@@ -42,11 +38,7 @@ extension SegmentTracking {
         newTraits["CoUserId"] = CoUserDataModel.currentUserId
         
         if passUserID {
-            if CoUserDataModel.currentMainAccountId.count > 0 {
-                newTraits["UserId"] = CoUserDataModel.currentMainAccountId
-            } else if LoginDataModel.currentUserId.count > 0 {
-                newTraits["UserId"] = LoginDataModel.currentUserId
-            }
+            newTraits["UserId"] = LoginDataModel.currentUserId
         }
         
         SegmentTracking.shared.trackEvent(name: name, traits: newTraits, trackingType: .track)
@@ -164,7 +156,7 @@ extension UserListPopUpVC {
     
     func trackScreenData() {
         var traits : [String:Any] = ["CoUserId":CoUserDataModel.currentUserId,
-                                     "UserID":CoUserDataModel.currentMainAccountId,
+                                     "UserID":LoginDataModel.currentUserId,
                                      "maxuseradd":maxUsers]
         
         var users = [[String:String]]()

@@ -25,8 +25,7 @@ class FAQListVC: BaseViewController {
         setupUI()
         
         // Segment Tracking
-        var traits : [String:Any] = ["CoUserId":CoUserDataModel.currentUserId,
-                                     "faqCategory":self.strCategory]
+        var traits : [String:Any] = ["faqCategory":self.strCategory]
         traits["FAQs"] = self.arrayFilter.map({ (faqModel) -> [String:Any] in
             return ["faqTitle":faqModel.Category,"faqDescription":faqModel.Desc]
         })
