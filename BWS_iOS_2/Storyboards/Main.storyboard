@@ -1570,6 +1570,7 @@
                         <outlet property="lblScore" destination="Vgm-Op-ihU" id="CIL-jy-8qE"/>
                         <outlet property="lblScoreLevel" destination="yTG-pr-wcL" id="q6F-zD-SPx"/>
                         <outlet property="lblSubTitle" destination="00d-p0-zsF" id="Vug-1F-JpE"/>
+                        <outlet property="lblTitle" destination="1LK-hz-wne" id="9Mk-sw-oY7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="az2-0K-h9e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

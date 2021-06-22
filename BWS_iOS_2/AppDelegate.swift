@@ -150,6 +150,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension AppDelegate {
     
     func applicationWillEnterForeground(_ application: UIApplication) {
+        // Set App Notification Count to "0" on App Launch
+        UIApplication.shared.applicationIconBadgeNumber = 0
+        
         if SplashVC.isForceUpdate == "1" {
             window?.rootViewController = AppStoryBoard.main.intialViewController()
         }

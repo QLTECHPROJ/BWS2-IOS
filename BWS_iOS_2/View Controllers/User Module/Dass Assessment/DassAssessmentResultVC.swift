@@ -11,6 +11,7 @@ import UIKit
 class DassAssessmentResultVC: BaseViewController {
     
     // MARK:- OUTLETS
+    @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblSubTitle : UILabel!
     @IBOutlet weak var indexScoreView : UIView!
     @IBOutlet weak var indexScoreLabelView : UIView!
@@ -60,6 +61,7 @@ class DassAssessmentResultVC: BaseViewController {
         UserDefaults.standard.removeObject(forKey: "ArrayPage")
         UserDefaults.standard.synchronize()
         
+        lblTitle.attributedText = Theme.strings.index_score_title.attributedString(alignment: .center, lineSpacing: 5)
         lblSubTitle.attributedText =  Theme.strings.index_score_subtitle.attributedString(alignment: .center, lineSpacing: 5)
         
         indexScoreLabelView.isHidden = true

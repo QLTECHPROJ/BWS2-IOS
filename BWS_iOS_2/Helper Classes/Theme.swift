@@ -456,7 +456,7 @@ struct AppStrings {
     let alert_disclaimer_playlist_add = "The audio shall add after playing the disclaimer"
     let alert_disclaimer_playlist_sorting = "The audio shall sort after the disclaimer"
     let alert_disclaimer_playlist_remove = "Currently, you play this playlist,you can't remove the last audio."
-    let alert_playing_playlist_remove = "Unable to remove as this playlist is in player right now"
+    let alert_playing_playlist_remove = "Currently, this playlist is in the player,so you can't remove this playlist as of now."
     let alert_playing_audio_remove = "The audio is currently in play mode"
     
     /* Download */
