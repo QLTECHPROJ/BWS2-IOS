@@ -12,6 +12,8 @@ class OTPVC: BaseViewController {
     
     // MARK:- OUTLETS
     @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var lblSubTitle: UILabel!
+    
     @IBOutlet weak var btnDone: UIButton!
     @IBOutlet weak var constHorizontal: NSLayoutConstraint!
     
@@ -26,7 +28,10 @@ class OTPVC: BaseViewController {
     @IBOutlet weak var lblLine2: UILabel!
     @IBOutlet weak var lblLine3: UILabel!
     @IBOutlet weak var lblLine4: UILabel!
+    
+    @IBOutlet weak var lblSMSSent: UILabel!
     @IBOutlet weak var lblError: UILabel!
+    
     
     // UIView
     @IBOutlet weak var viewCard1: CardView!
@@ -34,7 +39,8 @@ class OTPVC: BaseViewController {
     @IBOutlet weak var viewCard3: CardView!
     @IBOutlet weak var viewCard4: CardView!
     
-    //MARK:- Variables
+    
+    // MARK:- VARIABLES
     var textFields: [BackspaceTextField] {
         return [txtFPin1, txtFPin2, txtFPin3, txtFPin4]
     }
@@ -43,9 +49,14 @@ class OTPVC: BaseViewController {
         return [lblLine1, lblLine2, lblLine3, lblLine4]
     }
     
-    var objLogindata : LoginDataModel?
+    var signUpFlag = ""
+    var strName = ""
+    var selectedCountry = CountrylistDataModel()
+    var strMobile = ""
+    var strEmail = ""
     
-    //MARK:- View Life Cycle
+    
+    // MARK:- VIEW LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -54,11 +65,13 @@ class OTPVC: BaseViewController {
         }
     }
     
-    //MARK:- Functions
+    
     // MARK:- FUNCTIONS
     override func setupUI() {
+        lblSubTitle.attributedText = Theme.strings.otp_subtitle.attributedString(alignment: .center, lineSpacing: 5)
         
-        //lblTitle.text = ""
+        let strSMSSent = "we sent an SMS with a 4-digit code to +\(selectedCountry.Code)\(strMobile)."
+        lblSMSSent.attributedText = strSMSSent.attributedString(alignment: .center, lineSpacing: 5)
         
         for textfield in textFields {
             textfield.tintColor = UIColor.clear
@@ -95,9 +108,9 @@ class OTPVC: BaseViewController {
     }
     
     func checkValidation() -> Bool {
-        let strCode = txtFPin1.text! + txtFPin2.text! + txtFPin3.text! + txtFPin4.text!
+        let strOTP = txtFPin1.text! + txtFPin2.text! + txtFPin3.text! + txtFPin4.text!
         
-        if strCode.count < 4 {
+        if strOTP.count < 4 {
             self.lblError.text = Theme.strings.alert_invalid_otp
             return false
         }
@@ -110,21 +123,15 @@ class OTPVC: BaseViewController {
     }
     
     
-    // MARK:- function
-   
-    
-    override func setupData() {
-        
-    }
-    
-    //MARK:- IBAction Methods
+    // MARK:- ACTIONS
     @IBAction func onTappedResendSMS(_ sender: UIButton) {
-        let index = objLogindata?.MobileNo.index((objLogindata?.MobileNo.startIndex)!, offsetBy: 2)
-        let countryCode = objLogindata?.MobileNo.prefix(upTo: index!)
-        
-        let mobile = objLogindata?.MobileNo.chopPrefix(2)
-        callSignUpAPI(strSignUpFlag: "0", strCountryCode: String(countryCode ?? ""), strMobileNo: mobile ?? "", strName: objLogindata?.Name ?? "", strEmail: objLogindata?.Email ?? "", complitionBlock: nil)
+        callLoginAPI(signUpFlag: signUpFlag, country: selectedCountry, mobileNo: strMobile, username: strName, email: strEmail, resendOTP: "1") { (response : SendOTPModel) in
+            if response.ResponseCode != "200" {
+                showAlertToast(message: response.ResponseMessage)
+            }
+        }
     }
+    
     @IBAction func onTappedEditNum(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
@@ -132,18 +139,21 @@ class OTPVC: BaseViewController {
     @IBAction func onTappedBack(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
+    
     @IBAction func onTappedCreateAccount(_ sender: UIButton) {
-        
         if checkValidation() {
             lblLine1.isHidden = true
             lblLine2.isHidden = true
             lblLine3.isHidden = true
             lblLine4.isHidden = true
-            callAuthOTPAPI()
+            
+            let strOTP = txtFPin1.text! + txtFPin2.text! + txtFPin3.text! + txtFPin4.text!
+            callAuthOTPAPI(otp: strOTP)
         }
     }
     
 }
+
 
 // MARK:- UITextFieldDelegate, BackspaceTextFieldDelegate
 extension OTPVC : UITextFieldDelegate, BackspaceTextFieldDelegate {

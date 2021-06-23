@@ -63,8 +63,8 @@ class DoDassAssessmentVC: BaseViewController {
     // MARK:- ACTIONS
     @IBAction func doTheAssessmentClicked(sender : UIButton) {
         let aVC = AppStoryBoard.main.viewController(viewControllerClass: StepVC.self)
-        aVC.strTitle = Theme.strings.step_2_title
-        aVC.strSubTitle = Theme.strings.step_2_subtitle
+        aVC.strTitle = Theme.strings.step_1_title
+        aVC.strSubTitle = Theme.strings.step_1_subtitle
         aVC.imageMain = UIImage(named: "dass_form_image")
         aVC.viewTapped = {
             self.goNext()

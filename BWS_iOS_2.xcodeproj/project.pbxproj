@@ -58,8 +58,6 @@
 		281DE34626270085002CCD9D /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281DE34526270085002CCD9D /* AppConstants.swift */; };
 		281DE34726270085002CCD9D /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281DE34526270085002CCD9D /* AppConstants.swift */; };
 		281F882626030CAB0078110E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 281F882526030CAA0078110E /* GoogleService-Info.plist */; };
-		282441352609AB3D0060292E /* StartingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282441342609AB3D0060292E /* StartingVC.swift */; };
-		282441362609AB5A0060292E /* StartingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282441342609AB3D0060292E /* StartingVC.swift */; };
 		282441382609AB6E0060292E /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282441372609AB6E0060292E /* SignUpVC.swift */; };
 		2824413A2609AB9A0060292E /* CountryListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282441392609AB9A0060292E /* CountryListVC.swift */; };
 		2824413B2609AB9C0060292E /* CountryListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282441392609AB9A0060292E /* CountryListVC.swift */; };
@@ -74,14 +72,10 @@
 		2824414A2609ACE30060292E /* CountryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 282441432609ACE20060292E /* CountryCell.xib */; };
 		2824414B2609ACE30060292E /* CountryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282441442609ACE30060292E /* CountryCell.swift */; };
 		2824414C2609ACE30060292E /* CountryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282441442609ACE30060292E /* CountryCell.swift */; };
-		2824414E2609AD240060292E /* ForgotPassVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2824414D2609AD240060292E /* ForgotPassVC.swift */; };
-		2824414F2609AD240060292E /* ForgotPassVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2824414D2609AD240060292E /* ForgotPassVC.swift */; };
 		282441512609AD2E0060292E /* UserListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282441502609AD2E0060292E /* UserListVC.swift */; };
 		282441522609AD2E0060292E /* UserListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282441502609AD2E0060292E /* UserListVC.swift */; };
 		282441542609AD3A0060292E /* AddProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282441532609AD3A0060292E /* AddProfileVC.swift */; };
 		282441552609AD3A0060292E /* AddProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282441532609AD3A0060292E /* AddProfileVC.swift */; };
-		282441572609AD440060292E /* ContinueVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282441562609AD440060292E /* ContinueVC.swift */; };
-		282441582609AD440060292E /* ContinueVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282441562609AD440060292E /* ContinueVC.swift */; };
 		2824415A2609AD4E0060292E /* StepVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282441592609AD4E0060292E /* StepVC.swift */; };
 		2824415B2609AD4E0060292E /* StepVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282441592609AD4E0060292E /* StepVC.swift */; };
 		2824415D2609AD590060292E /* PinVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2824415C2609AD590060292E /* PinVC.swift */; };
@@ -584,7 +578,6 @@
 		281DE31E2626FD79002CCD9D /* DJMusicPlayer+Functionalities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DJMusicPlayer+Functionalities.swift"; sourceTree = "<group>"; };
 		281DE34526270085002CCD9D /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		281F882526030CAA0078110E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		282441342609AB3D0060292E /* StartingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingVC.swift; sourceTree = "<group>"; };
 		282441372609AB6E0060292E /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		282441392609AB9A0060292E /* CountryListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListVC.swift; sourceTree = "<group>"; };
 		2824413E2609AC820060292E /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -592,10 +585,8 @@
 		282441422609ACE20060292E /* UserListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserListCell.xib; sourceTree = "<group>"; };
 		282441432609ACE20060292E /* CountryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CountryCell.xib; sourceTree = "<group>"; };
 		282441442609ACE30060292E /* CountryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryCell.swift; sourceTree = "<group>"; };
-		2824414D2609AD240060292E /* ForgotPassVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassVC.swift; sourceTree = "<group>"; };
 		282441502609AD2E0060292E /* UserListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListVC.swift; sourceTree = "<group>"; };
 		282441532609AD3A0060292E /* AddProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProfileVC.swift; sourceTree = "<group>"; };
-		282441562609AD440060292E /* ContinueVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContinueVC.swift; sourceTree = "<group>"; };
 		282441592609AD4E0060292E /* StepVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepVC.swift; sourceTree = "<group>"; };
 		2824415C2609AD590060292E /* PinVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinVC.swift; sourceTree = "<group>"; };
 		2824415F2609AD620060292E /* DescriptionPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionPopupVC.swift; sourceTree = "<group>"; };
@@ -932,18 +923,16 @@
 		2824413D2609AC490060292E /* Auth Module */ = {
 			isa = PBXGroup;
 			children = (
-				282441372609AB6E0060292E /* SignUpVC.swift */,
 				282441392609AB9A0060292E /* CountryListVC.swift */,
 				2824413E2609AC820060292E /* LoginVC.swift */,
-				2824414D2609AD240060292E /* ForgotPassVC.swift */,
+				282441372609AB6E0060292E /* SignUpVC.swift */,
+				9A9A1C6B2682060E009CF46E /* OTPVC.swift */,
+				9A62E91C26820D3400883BBD /* EmailVerifyVC.swift */,
 				282441502609AD2E0060292E /* UserListVC.swift */,
 				282441532609AD3A0060292E /* AddProfileVC.swift */,
 				2824415C2609AD590060292E /* PinVC.swift */,
-				282441562609AD440060292E /* ContinueVC.swift */,
 				282441592609AD4E0060292E /* StepVC.swift */,
 				2824415F2609AD620060292E /* DescriptionPopupVC.swift */,
-				9A9A1C6B2682060E009CF46E /* OTPVC.swift */,
-				9A62E91C26820D3400883BBD /* EmailVerifyVC.swift */,
 			);
 			path = "Auth Module";
 			sourceTree = "<group>";
@@ -1347,11 +1336,10 @@
 				28B53532260C684800BD8147 /* Collection Cells */,
 				28ED2FC325FB931E00E59C56 /* Table Cells */,
 				28ED2F7C25FB494600E59C56 /* SplashVC.swift */,
-				282441342609AB3D0060292E /* StartingVC.swift */,
 				2824413D2609AC490060292E /* Auth Module */,
-				28252FA025FF344F00C2EB50 /* Profile Form */,
 				28252FA725FF358E00C2EB50 /* Dass Assessment */,
 				28B5352E260C627100BD8147 /* Purchase Manage Plan */,
+				28252FA025FF344F00C2EB50 /* Profile Form */,
 			);
 			path = "User Module";
 			sourceTree = "<group>";
@@ -2017,7 +2005,6 @@
 				9AD5582A2636E6C3007ED68F /* AccountCell.swift in Sources */,
 				2870B43625FB41A10014A4F6 /* DJPageMenuController.swift in Sources */,
 				9A55EB482668EA58006E398A /* InvoiceDetailVC.swift in Sources */,
-				282441362609AB5A0060292E /* StartingVC.swift in Sources */,
 				9AC067172639178F00287A44 /* ResourceVC.swift in Sources */,
 				282441402609AC840060292E /* LoginVC.swift in Sources */,
 				9A51DF2A2638319E001364EA /* EditProfileVC.swift in Sources */,
@@ -2028,7 +2015,6 @@
 				281DE3322626FD79002CCD9D /* PlaylistDownloads+CoreDataProperties.swift in Sources */,
 				2870B42225FB41A10014A4F6 /* NotificationName+Extention.swift in Sources */,
 				2870B37725FB40660014A4F6 /* APIResponses.swift in Sources */,
-				2824414F2609AD240060292E /* ForgotPassVC.swift in Sources */,
 				28ED2F8225FB511800E59C56 /* SplashVC.swift in Sources */,
 				2870B3EA25FB41A10014A4F6 /* String+Extension.swift in Sources */,
 				28D33F39265E375100733F61 /* OfflineVC.swift in Sources */,
@@ -2078,7 +2064,6 @@
 				28E8093F26130AA500CD80F7 /* ElevateVC.swift in Sources */,
 				2870B3EC25FB41A10014A4F6 /* UINavigationBar+Extension.swift in Sources */,
 				9AC067192639178F00287A44 /* RecWebSite.swift in Sources */,
-				282441582609AD440060292E /* ContinueVC.swift in Sources */,
 				28E8094226130ACE00CD80F7 /* AccountVC.swift in Sources */,
 				2870B45A25FB44700014A4F6 /* NSCalendar+Timepiece.swift in Sources */,
 				9A51DF3026384034001364EA /* ChangePassWordVC.swift in Sources */,
@@ -2233,7 +2218,6 @@
 				2870B43F25FB41A10014A4F6 /* ReorderController+SnapshotView.swift in Sources */,
 				2870B46325FB44700014A4F6 /* WWCalendarTimeSelector.swift in Sources */,
 				2870B43525FB41A10014A4F6 /* DJPageMenuController.swift in Sources */,
-				282441352609AB3D0060292E /* StartingVC.swift in Sources */,
 				9AD558282636DFFA007ED68F /* AccountCell.swift in Sources */,
 				2870B3FD25FB41A10014A4F6 /* KDCircularProgress.swift in Sources */,
 				9A55EB472668EA58006E398A /* InvoiceDetailVC.swift in Sources */,
@@ -2249,7 +2233,6 @@
 				281DE3312626FD79002CCD9D /* PlaylistDownloads+CoreDataProperties.swift in Sources */,
 				28ED2F7D25FB494600E59C56 /* SplashVC.swift in Sources */,
 				2870B37625FB40660014A4F6 /* APIResponses.swift in Sources */,
-				2824414E2609AD240060292E /* ForgotPassVC.swift in Sources */,
 				2870B3E925FB41A10014A4F6 /* String+Extension.swift in Sources */,
 				28D33F38265E375100733F61 /* OfflineVC.swift in Sources */,
 				2870B41325FB41A10014A4F6 /* UIViewExtension.swift in Sources */,
@@ -2298,7 +2281,6 @@
 				28E8093E26130AA500CD80F7 /* ElevateVC.swift in Sources */,
 				282441382609AB6E0060292E /* SignUpVC.swift in Sources */,
 				9AC067182639178F00287A44 /* RecWebSite.swift in Sources */,
-				282441572609AD440060292E /* ContinueVC.swift in Sources */,
 				28E8094126130ACE00CD80F7 /* AccountVC.swift in Sources */,
 				2870B3EB25FB41A10014A4F6 /* UINavigationBar+Extension.swift in Sources */,
 				9A51DF2F26384034001364EA /* ChangePassWordVC.swift in Sources */,

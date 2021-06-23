@@ -80,6 +80,7 @@ struct EventNames {
     
     let Forgot_Password_Clicked = "Forgot Password Clicked"
     
+    let OTP_Sent = "OTP Sent"
     let User_Sign_up = "User Sign up"
     let User_Login = "User Login"
     let Couser_Added = "Couser Added"

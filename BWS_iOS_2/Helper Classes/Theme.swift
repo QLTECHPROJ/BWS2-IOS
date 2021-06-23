@@ -345,6 +345,8 @@ struct AppStrings {
     let register_title = "Welcome to \nBrain wellness spa"
     let register_subtitle = "We just need few details to get you started!!"
     
+    let otp_subtitle = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor."
+    
     let login_title = "Welcome back..."
     let login_subtitle = "Hope you're feeling much better than you felt before!!"
     
@@ -361,10 +363,9 @@ struct AppStrings {
     let step_2_title = "Step 2"
     let step_3_title = "Step 3"
     
-    //let step_1_subtitle = "Simply fill in your assessment form and we'll recommend the programs best suited for your needs"
-    let step_1_subtitle = "Simply complete the profile and we'll recommend the programs best suited for your needs"
-    let step_2_subtitle = "Let's assess how you are \ncurrently doing"
-    let step_3_subtitle = "we're analysing your inputs"
+    let step_1_subtitle = "Let's assess how you are \ncurrently doing"
+    let step_2_subtitle = "we're analysing your inputs"
+    let step_3_subtitle = "Simply complete the profile and we'll recommend the programs best suited for your needs"
     
     let prev_drug_use_subtitle = "Have you ever taken any illicit drugs in your life?"
     

@@ -126,8 +126,25 @@ class DassAssessmentResultVC: BaseViewController {
             navVC.modalPresentationStyle = .overFullScreen
             self.navigationController?.present(navVC, animated: false, completion: nil)
         } else {
-            let aVC = AppStoryBoard.main.viewController(viewControllerClass: SleepTimeVC.self)
-            self.navigationController?.pushViewController(aVC, animated: false)
+            if let coUser = CoUserDataModel.currentUser {
+                if coUser.isProfileCompleted == "0" {
+                    let aVC = AppStoryBoard.main.viewController(viewControllerClass:StepVC.self)
+                    aVC.strTitle = Theme.strings.step_3_title
+                    aVC.strSubTitle = Theme.strings.step_3_subtitle
+                    aVC.imageMain = UIImage(named: "profileForm")
+                    aVC.viewTapped = {
+                        let aVC = AppStoryBoard.main.viewController(viewControllerClass: ProfileForm1VC.self)
+                        self.navigationController?.pushViewController(aVC, animated: false)
+                    }
+                    aVC.modalPresentationStyle = .overFullScreen
+                    self.present(aVC, animated: false, completion: nil)
+                } else if coUser.AvgSleepTime.trim.count == 0 || coUser.AreaOfFocus.count == 0 {
+                    let aVC = AppStoryBoard.main.viewController(viewControllerClass: SleepTimeVC.self)
+                    self.navigationController?.pushViewController(aVC, animated: true)
+                } else {
+                    APPDELEGATE.window?.rootViewController = AppStoryBoard.main.viewController(viewControllerClass: NavigationClass.self)
+                }
+            }
         }
     }
     
@@ -153,8 +170,8 @@ class DassAssessmentResultVC: BaseViewController {
         }
         
         let aVC = AppStoryBoard.main.viewController(viewControllerClass: StepVC.self)
-        aVC.strTitle = Theme.strings.step_3_title
-        aVC.strSubTitle = Theme.strings.step_3_subtitle
+        aVC.strTitle = Theme.strings.step_2_title
+        aVC.strSubTitle = Theme.strings.step_2_subtitle
         aVC.imageMain = UIImage(named: "analyze")
         aVC.hideTapAnywhere = true
         aVC.viewTapped = {

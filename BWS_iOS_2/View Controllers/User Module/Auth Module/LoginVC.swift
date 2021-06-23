@@ -53,8 +53,7 @@ class LoginVC: BaseViewController {
     override func setupUI() {
         txtFMobileNo.delegate = self
         //lblTitle.text = Theme.strings.login_title
-       // lblSubTitle.attributedText = Theme.strings.login_subtitle.attributedString(alignment: .left, lineSpacing: 5)
-       
+        lblSubTitle.attributedText = Theme.strings.login_subtitle.attributedString(alignment: .center, lineSpacing: 5)
     }
     
     override func setupData() {
@@ -152,7 +151,6 @@ class LoginVC: BaseViewController {
     
     
     // MARK:- ACTIONS
-    
     @IBAction func onTappedSignUp(_ sender: UIButton) {
         let aVC = AppStoryBoard.main.viewController(viewControllerClass:SignUpVC.self)
         self.navigationController?.pushViewController(aVC, animated: true)
@@ -171,7 +169,12 @@ class LoginVC: BaseViewController {
     
     @IBAction func onTappedLogIn(_ sender: UIButton) {
         if checkValidation() {
-            callSignUpAPI(strSignUpFlag: "0", strCountryCode: selectedCountry.Code, strMobileNo: txtFMobileNo.text ?? "", strName: "", strEmail: "", complitionBlock: nil)
+            callLoginAPI(signUpFlag: "0", country: selectedCountry, mobileNo: txtFMobileNo.text ?? "", username: "", email: "", resendOTP: "") { (response : SendOTPModel) in
+                if response.ResponseCode != "200" {
+                    self.lblErrMobileNo.text = response.ResponseMessage
+                    self.lblErrMobileNo.isHidden = false
+                }
+            }
         }
     }
     
@@ -186,8 +189,7 @@ class LoginVC: BaseViewController {
 extension LoginVC : UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        self.lblErrMobileNo.text = ""
-       
+        self.lblErrMobileNo.isHidden = true
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -201,7 +203,7 @@ extension LoginVC : UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         if let text = textField.text,
-            let textRange = Range(range, in: text) {
+           let textRange = Range(range, in: text) {
             let updatedText = text.replacingCharacters(in: textRange, with: string).trim
             if !updatedText.isNumber || updatedText.count > 10 {
                 return false

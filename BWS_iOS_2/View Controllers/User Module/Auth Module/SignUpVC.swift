@@ -54,8 +54,8 @@ class SignUpVC: BaseViewController {
     
     // MARK:- FUNCTIONS
     override func setupUI() {
-       // lblTitle.text = Theme.strings.register_title
-       // lblSubTitle.attributedText = Theme.strings.register_subtitle.attributedString(alignment: .left, lineSpacing: 5)
+        // lblTitle.text = Theme.strings.register_title
+        lblSubTitle.attributedText = Theme.strings.register_subtitle.attributedString(alignment: .center, lineSpacing: 5)
         
         lblErrName.isHidden = true
         
@@ -191,15 +191,19 @@ class SignUpVC: BaseViewController {
             lblErrName.isHidden = true
             lblErrMobileNo.isHidden = true
             lblErrEmail.isHidden = true
-            callSignUpAPI(strSignUpFlag: "1", strCountryCode: selectedCountry.Code, strMobileNo: txtFMobileNo.text ?? "", strName: txtFName.text ?? "", strEmail: txtFEmailAdd.text ?? "", complitionBlock: nil)
+            
+            callLoginAPI(signUpFlag: "1", country: selectedCountry, mobileNo: txtFMobileNo.text ?? "", username: txtFName.text ?? "", email: txtFEmailAdd.text ?? "", resendOTP: "") { (response : SendOTPModel) in
+                if response.ResponseCode != "200" {
+                    self.lblErrEmail.text = response.ResponseMessage
+                    self.lblErrEmail.isHidden = false
+                }
+            }
         }
     }
     
     @IBAction func onTappedLogin(_ sender: UIButton) {
-        let aVC = AppStoryBoard.main.viewController(viewControllerClass:LoginVC.self)
-        self.navigationController?.pushViewController(aVC, animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
-    
     
     @IBAction func onTappedCountryCode(_ sender: UIButton) {
         let aVC = AppStoryBoard.main.viewController(viewControllerClass:CountryListVC.self)
@@ -235,7 +239,7 @@ extension SignUpVC : UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         guard let text = textField.text,
-            let textRange = Range(range, in: text) else {
+              let textRange = Range(range, in: text) else {
             return false
         }
         

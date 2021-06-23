@@ -97,8 +97,22 @@ class CountrylistDataModel : EVObject {
     
 }
 
+class SendOTPModel : EVObject {
+    var ResponseData : SendOTPDataModel?
+    var ResponseCode = ""
+    var ResponseMessage = ""
+    var ResponseStatus = ""
+}
 
-// MARK:- SignUp API Models
+class SendOTPDataModel : EVObject {
+    var MobileNo = ""
+    var OTP = ""
+    var errormsg = ""
+    var SignupFlag = ""
+}
+
+
+// MARK:- Login API Models
 class LoginModel : EVObject {
     var ResponseData : LoginDataModel?
     var ResponseCode = ""
@@ -107,43 +121,76 @@ class LoginModel : EVObject {
 }
 
 class LoginDataModel : EVObject {
-    var EmailSend = ""
-    var ID = ""
+    var MainAccountID = ""
+    var UserId = ""
+    var CountryCode = ""
     var Name = ""
     var Email = ""
     var MobileNo = ""
+    var Image = ""
+    var DOB = ""
+    var isProfileCompleted = ""
+    var isAssessmentCompleted = ""
+    var indexScore = ""
+    var planDetails : [Any]?
+    var AreaOfFocus = [AreaOfFocusModel]()
+    var AvgSleepTime = ""
+    var ScoreLevel = ""
     var errormsg = ""
-    var OTP = ""
-    var SignupFlag = ""
+    var isSelected = false
     
-    class var currentUserId : String {
-        return LoginDataModel.currentUser?.ID ?? ""
+    static var profileImage : UIImage?
+    
+    class var currentMainAccountId : String {
+        return CoUserDataModel.currentUser?.MainAccountID ?? ""
     }
     
-    class var currentUser : LoginDataModel? {
+    class var currentUserId : String {
+        return CoUserDataModel.currentUser?.UserId ?? ""
+    }
+    
+    class var mainAccountUser : LoginDataModel? {
         get {
-            if let userData = UserDefaults.standard.data(forKey: "UserData") {
+            if let userData = UserDefaults.standard.data(forKey: "mainAccountUser") {
                 return LoginDataModel(data: userData)
             }
             return nil
         }
         set {
+            CoUserDataModel.profileImage = nil
             if let newData = newValue {
-                UserDefaults.standard.setValue(newData.toJsonData(), forKey: "UserData")
-            }
-            else {
-                UserDefaults.standard.setValue(nil, forKey: "UserData")
+                UserDefaults.standard.setValue(newData.toJsonData(), forKey: "mainAccountUser")
+            } else {
+                UserDefaults.standard.setValue(nil, forKey: "mainAccountUser")
             }
             UserDefaults.standard.synchronize()
         }
     }
     
-    class var lastLoginUserID : String? {
+    class var currentUser : LoginDataModel? {
         get {
-            return UserDefaults.standard.string(forKey: "LastLoginUserID")
+            if let userData = UserDefaults.standard.data(forKey: "currentUser") {
+                return LoginDataModel(data: userData)
+            }
+            return nil
         }
         set {
-            UserDefaults.standard.set(newValue, forKey: "LastLoginUserID")
+            CoUserDataModel.profileImage = nil
+            if let newData = newValue {
+                UserDefaults.standard.setValue(newData.toJsonData(), forKey: "currentUser")
+            } else {
+                UserDefaults.standard.setValue(nil, forKey: "currentUser")
+            }
+            UserDefaults.standard.synchronize()
+        }
+    }
+    
+    class var lastUserID : String? {
+        get {
+            return UserDefaults.standard.string(forKey: "LastUserID")
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "LastUserID")
             UserDefaults.standard.synchronize()
         }
     }

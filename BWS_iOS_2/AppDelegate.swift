@@ -73,7 +73,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func logout() {
-        let aVC = AppStoryBoard.main.viewController(viewControllerClass: StartingVC.self)
+        let aVC = AppStoryBoard.main.viewController(viewControllerClass: LoginVC.self)
         let navVC = UINavigationController(rootViewController: aVC)
         navVC.isNavigationBarHidden = true
         window?.rootViewController = navVC
@@ -196,7 +196,7 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         print("Notification Payload :- ",userInfo)
         let playlistID = (userInfo["id"] as? String) ?? ""
         let info = self.extractUserInfo(userInfo: userInfo)
-        let dictPlayListDetails = ["userId":LoginDataModel.currentUser?.ID ?? "",
+        let dictPlayListDetails = ["userId":LoginDataModel.currentUserId,
                                    "playlistID": playlistID,
                                    "title": info.title,
                                    "message":info.body]
@@ -219,7 +219,7 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         print("playlistID :- ",playlistID)
         print(userInfo)
         
-        let dictPlayListDetails = ["userId":LoginDataModel.currentUser?.ID ?? "",
+        let dictPlayListDetails = ["userId":LoginDataModel.currentUserId,
                                    "playlistId": playlistID,
                                    "title": info.title,
                                    "message":info.body]

@@ -50,87 +50,60 @@ extension CountryListVC {
 extension OTPVC {
     
     // App OTP API Call
-    func callAuthOTPAPI() {
-        
+    func callAuthOTPAPI(otp : String) {
         var parameters = [String:String]()
         
-        let index = objLogindata?.MobileNo.index((objLogindata?.MobileNo.startIndex)!, offsetBy: 2)
-        let countryCode = objLogindata?.MobileNo.prefix(upTo: index!)
-        
-        let mobile = objLogindata?.MobileNo.chopPrefix(2)
-        
-        
-        if objLogindata?.SignupFlag == "1" {
-            parameters = ["OTP":objLogindata?.OTP ?? "",
-                          "DeviceID":DEVICE_UUID,
-                          "DeviceType":APP_TYPE,
-                          "CountryCode":String(countryCode ?? ""),
-                          "MobileNo":mobile ?? "",
-                          "SignupFlag":objLogindata?.SignupFlag ?? "",
-                          "Token":FCM_TOKEN,
-                          "Name":objLogindata?.Name ?? "",
-                          "Email":objLogindata?.Email ?? ""
+        if signUpFlag == "1" {
+            parameters = [
+                "OTP":otp,
+                "DeviceID":DEVICE_UUID,
+                "DeviceType":APP_TYPE,
+                "CountryCode":selectedCountry.Code,
+                "MobileNo":strMobile,
+                "SignupFlag":signUpFlag,
+                "Token":FCM_TOKEN,
+                "Name":strName,
+                "Email":strEmail
             ]
-            
-        }else {
-            parameters = ["OTP":objLogindata?.OTP ?? "",
-                          "DeviceID":DEVICE_UUID,
-                          "DeviceType":APP_TYPE,
-                          "CountryCode":String(countryCode ?? "") ,
-                          "MobileNo":mobile ?? "",
-                          "SignupFlag":objLogindata?.SignupFlag ?? "",
-                          "Token":FCM_TOKEN
+        } else {
+            parameters = [
+                "OTP":otp,
+                "DeviceID":DEVICE_UUID,
+                "DeviceType":APP_TYPE,
+                "CountryCode":selectedCountry.Code,
+                "MobileNo":strMobile,
+                "SignupFlag":signUpFlag,
+                "Token":FCM_TOKEN
             ]
         }
         
-        APICallManager.sharedInstance.callAPI(router: APIRouter.authotp(parameters), displayHud: true, showToast: false) { (response : GeneralModel) in
+        APICallManager.sharedInstance.callAPI(router: APIRouter.authotp(parameters), displayHud: true, showToast: false) { (response : LoginModel) in
             if response.ResponseCode == "200" {
                 showAlertToast(message: response.ResponseMessage)
                 
-//                // Segment Tracking
-//                if let userDetails = response.ResponseData {
-//                    let traits = ["UserID":userDetails.ID,
-//                                  "name":userDetails.Name,
-//                                  "countryCode":self.selectedCountry.Code,
-//                                  "countryName":self.selectedCountry.Name,
-//                                  "countryShortName":self.selectedCountry.ShortName,
-//                                  "mobileNo":userDetails.MobileNo,
-//                                  "email":userDetails.Email]
-//                    SegmentTracking.shared.trackEvent(name: SegmentTracking.eventNames.User_Sign_up, traits: traits, trackingType: .track)
-//                }
+                LoginDataModel.currentUser = response.ResponseData
+                if let coUserData = response.ResponseData?.toJsonData() {
+                    CoUserDataModel.currentUser = CoUserDataModel(data: coUserData)
+                }
+                
+                // Segment Tracking
+                if let userDetails = response.ResponseData {
+                    let traits = ["UserID":userDetails.UserId,
+                                  "name":userDetails.Name,
+                                  "countryCode":self.selectedCountry.Code,
+                                  "countryName":self.selectedCountry.Name,
+                                  "countryShortName":self.selectedCountry.ShortName,
+                                  "mobileNo":userDetails.MobileNo,
+                                  "email":userDetails.Email]
+                    let eventname = self.signUpFlag == "1" ? SegmentTracking.eventNames.User_Sign_up : SegmentTracking.eventNames.User_Login
+                    SegmentTracking.shared.trackEvent(name: eventname, traits: traits, trackingType: .track)
+                }
                 
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass:EmailVerifyVC.self)
                 self.navigationController?.pushViewController(aVC, animated: true)
             } else {
-                
-            }
-        }
-    }
-    
-}
-
-extension ForgotPassVC {
-    
-    // Forgot Password API Call
-    func callForgotPasswordAPI() {
-        let parameters = ["Email":txtFEmailAdd.text ?? ""]
-        
-        APICallManager.sharedInstance.callAPI(router: APIRouter.forgotpass(parameters), displayHud: true, showToast: false) { (response : GeneralModel) in
-            if response.ResponseCode == "200" {
-                self.lblErrorEmail.isHidden = false
-                self.txtFEmailAdd.text = ""
-                
-                let aVC = AppStoryBoard.main.viewController(viewControllerClass: DescriptionPopupVC.self)
-                aVC.strDesc = response.ResponseMessage
-                aVC.isOkButtonHidden = false
-                aVC.descFont = Theme.fonts.montserratFont(ofSize: 10, weight: .regular)
-                aVC.modalPresentationStyle = .overFullScreen
-                self.present(aVC, animated: false, completion: nil)
-            } else {
-                if response.ResponseMessage.trim.count > 0 {
-                    self.lblErrorEmail.isHidden = false
-                    self.lblErrorEmail.text = response.ResponseMessage
-                }
+                self.lblError.text = response.ResponseMessage
+                self.lblError.isHidden = false
             }
         }
     }
@@ -273,7 +246,7 @@ extension ProfileForm6VC {
                 ProfileFormModel.shared = ProfileFormModel()
                 CoUserDataModel.currentUser?.isProfileCompleted = "1"
                 CoUserDataModel.currentUser = CoUserDataModel.currentUser
-                let aVC = AppStoryBoard.main.viewController(viewControllerClass: DoDassAssessmentVC.self)
+                let aVC = AppStoryBoard.main.viewController(viewControllerClass: SleepTimeVC.self)
                 self.navigationController?.pushViewController(aVC, animated: true)
             }
         }
@@ -444,40 +417,36 @@ extension UIViewController {
     }
     
     // App SIGNUP API Call
-    func callSignUpAPI(strSignUpFlag:String,strCountryCode:String,strMobileNo:String,strName:String,strEmail:String,
-                       complitionBlock : (() -> ())?) {
+    func callLoginAPI(signUpFlag:String, country:CountrylistDataModel, mobileNo:String, username:String, email:String, resendOTP : String, complitionBlock : ((SendOTPModel) -> ())?) {
         let parameters = ["DeviceType":APP_TYPE,
-                          "CountryCode":strCountryCode,
-                          "MobileNo":strMobileNo,
-                          "SignupFlag":strSignUpFlag,
+                          "CountryCode":country.Code,
+                          "MobileNo":mobileNo,
+                          "SignupFlag":signUpFlag,
                           "key":"1"]
         
-        APICallManager.sharedInstance.callAPI(router: APIRouter.loginsignup(parameters), displayHud: true, showToast: false) { (response : LoginModel) in
+        APICallManager.sharedInstance.callAPI(router: APIRouter.loginsignup(parameters), displayHud: true, showToast: false) { (response : SendOTPModel) in
             if response.ResponseCode == "200" {
-                showAlertToast(message: response.ResponseMessage)
+                // Segment Tracking
+                let traits = ["countryCode":country.Code,
+                              "countryName":country.Name,
+                              "countryShortName":country.ShortName,
+                              "mobileNo":mobileNo,
+                              "email":email]
+                SegmentTracking.shared.trackEvent(name: SegmentTracking.eventNames.OTP_Sent, traits: traits, trackingType: .track)
                 
-                //                // Segment Tracking
-                //                if let userDetails = response.ResponseData {
-                //                    let traits = ["UserID":userDetails.ID,
-                //                                  "name":userDetails.Name,
-                //                                  "countryCode":strCountryCode,
-                //                                  "countryName":self.selectedCountry.Name,
-                //                                  "countryShortName":self.selectedCountry.ShortName,
-                //                                  "mobileNo":userDetails.MobileNo,
-                //                                  "email":userDetails.Email]
-                //                    SegmentTracking.shared.trackEvent(name: SegmentTracking.eventNames.User_Sign_up, traits: traits, trackingType: .track)
-                //                }
+                if resendOTP != "1" {
+                    let aVC = AppStoryBoard.main.viewController(viewControllerClass:OTPVC.self)
+                    aVC.signUpFlag = signUpFlag
+                    aVC.strName = username
+                    aVC.selectedCountry = country
+                    aVC.strMobile = mobileNo
+                    aVC.strEmail = email
+                    self.navigationController?.pushViewController(aVC, animated: true)
+                }
                 
-                let aVC = AppStoryBoard.main.viewController(viewControllerClass:OTPVC.self)
-                aVC.objLogindata = response.ResponseData
-                aVC.objLogindata?.Name = strName
-                aVC.objLogindata?.Email = strEmail
-                self.navigationController?.pushViewController(aVC, animated: true)
-                
-                    complitionBlock?()
-                
+                complitionBlock?(response)
             } else {
-                complitionBlock?()
+                complitionBlock?(response)
             }
         }
     }
