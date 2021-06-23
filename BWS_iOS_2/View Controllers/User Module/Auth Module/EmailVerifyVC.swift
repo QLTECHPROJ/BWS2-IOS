@@ -11,6 +11,8 @@ import UIKit
 class EmailVerifyVC: BaseViewController {
     
     //MARK:- UIOutlet
+    @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var lblSubTitle: UILabel!
     
     //MARK:- Variables
     
@@ -33,6 +35,8 @@ class EmailVerifyVC: BaseViewController {
     @IBAction func onTappedBack(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
-  
+    @IBAction func onTappedContinue(_ sender: UIButton) {
+    }
+    
 }
 

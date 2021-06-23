@@ -47,67 +47,59 @@ extension CountryListVC {
 }
 
 
-extension SignUpVC {
+extension OTPVC {
     
-    // App Version API Call
-    func callSignUpAPI() {
-        let parameters = ["DeviceType":APP_TYPE,
-                          "Name":txtFName.text ?? "",
-                          "Email":txtFEmailAdd.text ?? "",
-                          "CountryCode":selectedCountry.Code,
-                          "MobileNo":txtFMobileNo.text ?? "",
-                          "DeviceId":DEVICE_UUID,
-                          "Token":FCM_TOKEN]
+    // App OTP API Call
+    func callAuthOTPAPI() {
         
-        APICallManager.sharedInstance.callAPI(router: APIRouter.signup(parameters), displayHud: true, showToast: false) { (response : LoginModel) in
+        var parameters = [String:String]()
+        
+        let index = objLogindata?.MobileNo.index((objLogindata?.MobileNo.startIndex)!, offsetBy: 2)
+        let countryCode = objLogindata?.MobileNo.prefix(upTo: index!)
+        
+        let mobile = objLogindata?.MobileNo.chopPrefix(2)
+        
+        
+        if objLogindata?.SignupFlag == "1" {
+            parameters = ["OTP":objLogindata?.OTP ?? "",
+                          "DeviceID":DEVICE_UUID,
+                          "DeviceType":APP_TYPE,
+                          "CountryCode":String(countryCode ?? ""),
+                          "MobileNo":mobile ?? "",
+                          "SignupFlag":objLogindata?.SignupFlag ?? "",
+                          "Token":FCM_TOKEN,
+                          "Name":objLogindata?.Name ?? "",
+                          "Email":objLogindata?.Email ?? ""
+            ]
+            
+        }else {
+            parameters = ["OTP":objLogindata?.OTP ?? "",
+                          "DeviceID":DEVICE_UUID,
+                          "DeviceType":APP_TYPE,
+                          "CountryCode":String(countryCode ?? "") ,
+                          "MobileNo":mobile ?? "",
+                          "SignupFlag":objLogindata?.SignupFlag ?? "",
+                          "Token":FCM_TOKEN
+            ]
+        }
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.authotp(parameters), displayHud: true, showToast: false) { (response : GeneralModel) in
             if response.ResponseCode == "200" {
                 showAlertToast(message: response.ResponseMessage)
                 
-                // Segment Tracking
-                if let userDetails = response.ResponseData {
-                    let traits = ["UserID":userDetails.ID,
-                                  "name":userDetails.Name,
-                                  "countryCode":self.selectedCountry.Code,
-                                  "countryName":self.selectedCountry.Name,
-                                  "countryShortName":self.selectedCountry.ShortName,
-                                  "mobileNo":userDetails.MobileNo,
-                                  "email":userDetails.Email]
-                    SegmentTracking.shared.trackEvent(name: SegmentTracking.eventNames.User_Sign_up, traits: traits, trackingType: .track)
-                }
+//                // Segment Tracking
+//                if let userDetails = response.ResponseData {
+//                    let traits = ["UserID":userDetails.ID,
+//                                  "name":userDetails.Name,
+//                                  "countryCode":self.selectedCountry.Code,
+//                                  "countryName":self.selectedCountry.Name,
+//                                  "countryShortName":self.selectedCountry.ShortName,
+//                                  "mobileNo":userDetails.MobileNo,
+//                                  "email":userDetails.Email]
+//                    SegmentTracking.shared.trackEvent(name: SegmentTracking.eventNames.User_Sign_up, traits: traits, trackingType: .track)
+//                }
                 
-                let aVC = AppStoryBoard.main.viewController(viewControllerClass:LoginVC.self)
-                self.navigationController?.pushViewController(aVC, animated: true)
-            } else {
-                
-            }
-        }
-    }
-    
-}
-
-extension LoginVC {
-    
-    // App Version API Call
-    func callLoginAPI() {
-        let parameters = ["mobileNo":txtFMobileNo.text ?? "",
-                          "DeviceType":APP_TYPE,
-                          "DeviceId":DEVICE_UUID,
-                          "Token":FCM_TOKEN]
-        
-        APICallManager.sharedInstance.callAPI(router: APIRouter.login(parameters), displayHud: true, showToast: false) { (response : LoginModel) in
-            if response.ResponseCode == "200" {
-                LoginDataModel.currentUser = response.ResponseData
-                
-                // Segment Tracking
-                if let userDetails = response.ResponseData {
-                    let traits = ["UserID":userDetails.ID,
-                                  "name":userDetails.Name,
-                                  "mobileNo":userDetails.MobileNo,
-                                  "email":userDetails.Email]
-                    SegmentTracking.shared.trackEvent(name: SegmentTracking.eventNames.User_Login, traits: traits, trackingType: .track)
-                }
-                
-                let aVC = AppStoryBoard.main.viewController(viewControllerClass:UserListVC.self)
+                let aVC = AppStoryBoard.main.viewController(viewControllerClass:EmailVerifyVC.self)
                 self.navigationController?.pushViewController(aVC, animated: true)
             } else {
                 
@@ -446,6 +438,45 @@ extension UIViewController {
                 default:
                     ResourceVC.audioData = [ResourceListDataModel]()
                 }
+                complitionBlock?()
+            }
+        }
+    }
+    
+    // App SIGNUP API Call
+    func callSignUpAPI(strSignUpFlag:String,strCountryCode:String,strMobileNo:String,strName:String,strEmail:String,
+                       complitionBlock : (() -> ())?) {
+        let parameters = ["DeviceType":APP_TYPE,
+                          "CountryCode":strCountryCode,
+                          "MobileNo":strMobileNo,
+                          "SignupFlag":strSignUpFlag,
+                          "key":"1"]
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.loginsignup(parameters), displayHud: true, showToast: false) { (response : LoginModel) in
+            if response.ResponseCode == "200" {
+                showAlertToast(message: response.ResponseMessage)
+                
+                //                // Segment Tracking
+                //                if let userDetails = response.ResponseData {
+                //                    let traits = ["UserID":userDetails.ID,
+                //                                  "name":userDetails.Name,
+                //                                  "countryCode":strCountryCode,
+                //                                  "countryName":self.selectedCountry.Name,
+                //                                  "countryShortName":self.selectedCountry.ShortName,
+                //                                  "mobileNo":userDetails.MobileNo,
+                //                                  "email":userDetails.Email]
+                //                    SegmentTracking.shared.trackEvent(name: SegmentTracking.eventNames.User_Sign_up, traits: traits, trackingType: .track)
+                //                }
+                
+                let aVC = AppStoryBoard.main.viewController(viewControllerClass:OTPVC.self)
+                aVC.objLogindata = response.ResponseData
+                aVC.objLogindata?.Name = strName
+                aVC.objLogindata?.Email = strEmail
+                self.navigationController?.pushViewController(aVC, animated: true)
+                
+                    complitionBlock?()
+                
+            } else {
                 complitionBlock?()
             }
         }

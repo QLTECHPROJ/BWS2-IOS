@@ -16,7 +16,8 @@ enum APIRouter: URLRequestConvertible {
     // User Module - APIs
     case appversion([String:String])
     case countrylist
-    case signup([String:String])
+    case loginsignup([String:String])
+    case authotp([String:String])
     case login([String:String])
     case forgotpass([String:String])
     case addcouser([String:String])
@@ -86,8 +87,10 @@ enum APIRouter: URLRequestConvertible {
             return APIRoute(path: "appversion", method: .post, data: data)
         case .countrylist:
             return APIRoute(path: "countrylist", method: .get)
-        case .signup(let data):
-            return APIRoute(path: "signup", method: .post, data: data)
+        case .loginsignup(let data):
+            return APIRoute(path: "loginsignup", method: .post, data: data)
+        case .authotp(let data):
+            return APIRoute(path: "authotp", method: .post, data: data)
         case .login(let data):
             return APIRoute(path: "login", method: .post, data: data)
         case .forgotpass(let data):

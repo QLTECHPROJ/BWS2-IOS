@@ -191,10 +191,15 @@ class SignUpVC: BaseViewController {
             lblErrName.isHidden = true
             lblErrMobileNo.isHidden = true
             lblErrEmail.isHidden = true
-            
-            callSignUpAPI()
+            callSignUpAPI(strSignUpFlag: "1", strCountryCode: selectedCountry.Code, strMobileNo: txtFMobileNo.text ?? "", strName: txtFName.text ?? "", strEmail: txtFEmailAdd.text ?? "", complitionBlock: nil)
         }
     }
+    
+    @IBAction func onTappedLogin(_ sender: UIButton) {
+        let aVC = AppStoryBoard.main.viewController(viewControllerClass:LoginVC.self)
+        self.navigationController?.pushViewController(aVC, animated: true)
+    }
+    
     
     @IBAction func onTappedCountryCode(_ sender: UIButton) {
         let aVC = AppStoryBoard.main.viewController(viewControllerClass:CountryListVC.self)

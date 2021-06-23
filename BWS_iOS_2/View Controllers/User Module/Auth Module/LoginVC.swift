@@ -44,15 +44,28 @@ class LoginVC: BaseViewController {
         }
         setupUI()
         setupPrivacyLabel()
+        setupData()
         buttonEnableDisable()
     }
     
     
     // MARK:- FUNCTIONS
     override func setupUI() {
+        txtFMobileNo.delegate = self
         //lblTitle.text = Theme.strings.login_title
        // lblSubTitle.attributedText = Theme.strings.login_subtitle.attributedString(alignment: .left, lineSpacing: 5)
        
+    }
+    
+    override func setupData() {
+        let countryText = selectedCountry.ShortName.uppercased() + " +" + selectedCountry.Code
+        btnCountryCode.setTitle(countryText, for: .normal)
+        
+        if isCountrySelected {
+            btnCountryCode.setTitleColor(Theme.colors.textColor, for: .normal)
+        } else {
+            btnCountryCode.setTitleColor(Theme.colors.black_40_opacity, for: .normal)
+        }
     }
     
     override func buttonEnableDisable() {
@@ -139,6 +152,12 @@ class LoginVC: BaseViewController {
     
     
     // MARK:- ACTIONS
+    
+    @IBAction func onTappedSignUp(_ sender: UIButton) {
+        let aVC = AppStoryBoard.main.viewController(viewControllerClass:SignUpVC.self)
+        self.navigationController?.pushViewController(aVC, animated: true)
+    }
+    
     @IBAction func onTappedCountryCode(_ sender: UIButton) {
         let aVC = AppStoryBoard.main.viewController(viewControllerClass:CountryListVC.self)
         aVC.didSelectCountry = { countryData in
@@ -151,11 +170,9 @@ class LoginVC: BaseViewController {
     }
     
     @IBAction func onTappedLogIn(_ sender: UIButton) {
-//        if checkValidation() {
-//            callLoginAPI()
-//        }
-        let aVC = AppStoryBoard.main.viewController(viewControllerClass:OTPVC.self)
-        self.navigationController?.pushViewController(aVC, animated: true)
+        if checkValidation() {
+            callSignUpAPI(strSignUpFlag: "0", strCountryCode: selectedCountry.Code, strMobileNo: txtFMobileNo.text ?? "", strName: "", strEmail: "", complitionBlock: nil)
+        }
     }
     
     @IBAction func onTappedBack(_ sender: UIButton) {

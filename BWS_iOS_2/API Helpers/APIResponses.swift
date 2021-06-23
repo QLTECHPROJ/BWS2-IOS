@@ -113,6 +113,8 @@ class LoginDataModel : EVObject {
     var Email = ""
     var MobileNo = ""
     var errormsg = ""
+    var OTP = ""
+    var SignupFlag = ""
     
     class var currentUserId : String {
         return LoginDataModel.currentUser?.ID ?? ""

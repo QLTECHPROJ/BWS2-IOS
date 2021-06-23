@@ -11,7 +11,6 @@ import UIKit
 class OTPVC: BaseViewController {
     
     // MARK:- OUTLETS
-    @IBOutlet weak var viewBack: UIView!
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var btnDone: UIButton!
     @IBOutlet weak var constHorizontal: NSLayoutConstraint!
@@ -44,10 +43,15 @@ class OTPVC: BaseViewController {
         return [lblLine1, lblLine2, lblLine3, lblLine4]
     }
     
+    var objLogindata : LoginDataModel?
+    
     //MARK:- View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setupUI()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.txtFPin1.becomeFirstResponder()
+        }
     }
     
     //MARK:- Functions
@@ -106,28 +110,37 @@ class OTPVC: BaseViewController {
     }
     
     
-    // MARK:- ACTIONS
-    @IBAction func onTappedDone(_ sender: UIButton) {
-        if checkValidation() {
-            lblLine1.isHidden = true
-            lblLine2.isHidden = true
-            lblLine3.isHidden = true
-            lblLine4.isHidden = true
-            
-        }
-    }
+    // MARK:- function
+   
     
     override func setupData() {
         
     }
     
     //MARK:- IBAction Methods
+    @IBAction func onTappedResendSMS(_ sender: UIButton) {
+        let index = objLogindata?.MobileNo.index((objLogindata?.MobileNo.startIndex)!, offsetBy: 2)
+        let countryCode = objLogindata?.MobileNo.prefix(upTo: index!)
+        
+        let mobile = objLogindata?.MobileNo.chopPrefix(2)
+        callSignUpAPI(strSignUpFlag: "0", strCountryCode: String(countryCode ?? ""), strMobileNo: mobile ?? "", strName: objLogindata?.Name ?? "", strEmail: objLogindata?.Email ?? "", complitionBlock: nil)
+    }
+    @IBAction func onTappedEditNum(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     @IBAction func onTappedBack(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
     @IBAction func onTappedCreateAccount(_ sender: UIButton) {
-        let aVC = AppStoryBoard.main.viewController(viewControllerClass:EmailVerifyVC.self)
-        self.navigationController?.pushViewController(aVC, animated: true)
+        
+        if checkValidation() {
+            lblLine1.isHidden = true
+            lblLine2.isHidden = true
+            lblLine3.isHidden = true
+            lblLine4.isHidden = true
+            callAuthOTPAPI()
+        }
     }
     
 }

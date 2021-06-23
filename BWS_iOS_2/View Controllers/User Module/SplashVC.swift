@@ -81,7 +81,7 @@ class SplashVC: BaseViewController {
                 self.navigationController?.pushViewController(aVC, animated: true)
             }
         } else {
-            let aVC = AppStoryBoard.main.viewController(viewControllerClass: StartingVC.self)
+            let aVC = AppStoryBoard.main.viewController(viewControllerClass: SignUpVC.self)
             self.navigationController?.pushViewController(aVC, animated: true)
         }
     }
