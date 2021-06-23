@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import TTTAttributedLabel
 
 import UIKit
 import JVFloatLabeledTextField
@@ -16,26 +17,17 @@ class LoginVC: BaseViewController {
     // MARK:- OUTLETS
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblSubTitle: UILabel!
-    
-    // Textfield
-    @IBOutlet weak var txtFEmailAdd: JVFloatLabeledTextField!
-    @IBOutlet weak var txtFPassWord: JVFloatLabeledTextField!
-    
-    // Button
-    @IBOutlet weak var btnVisible: UIButton!
-    @IBOutlet weak var btnLogin: UIButton!
-    @IBOutlet weak var btnForgotPass: UIButton!
-    
-    // Label
-    @IBOutlet weak var lblErrEmail: UILabel!
-    @IBOutlet weak var lblErrPass: UILabel!
-    
+    @IBOutlet weak var txtFMobileNo: JVFloatLabeledTextField!
+    @IBOutlet weak var lblErrMobileNo: UILabel!
     @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet weak var btnCountryCode: UIButton!
+    @IBOutlet weak var lblPrivacy: TTTAttributedLabel!
+    @IBOutlet weak var btnLogin: UIButton!
     
     
     // MARK:- VARIABLES
-    var iconClick = true
-    
+    var isCountrySelected = false
+    var selectedCountry = CountrylistDataModel(id: "0", name: "Australia", shortName: "AU", code: "61")
     
     // MARK:- VIEW LIFE CYCLE
     override func viewDidLoad() {
@@ -50,26 +42,24 @@ class LoginVC: BaseViewController {
                 break
             }
         }
-        iconClick = false
         setupUI()
+        setupPrivacyLabel()
+        buttonEnableDisable()
     }
     
     
     // MARK:- FUNCTIONS
     override func setupUI() {
-        lblTitle.text = Theme.strings.login_title
-        lblSubTitle.attributedText = Theme.strings.login_subtitle.attributedString(alignment: .left, lineSpacing: 5)
+        //lblTitle.text = Theme.strings.login_title
+       // lblSubTitle.attributedText = Theme.strings.login_subtitle.attributedString(alignment: .left, lineSpacing: 5)
+       
+    }
+    
+    override func buttonEnableDisable() {
         
-        lblErrPass.isHidden = true
-        lblErrEmail.isHidden = true
+        let mobile = txtFMobileNo.text?.trim
         
-        txtFEmailAdd.delegate = self
-        txtFPassWord.delegate = self
-        
-        let email = txtFEmailAdd.text?.trim
-        let password = txtFPassWord.text?.trim
-        
-        if email?.count == 0 || password?.count == 0 {
+        if  mobile?.count == 0 {
             btnLogin.isUserInteractionEnabled = false
             btnLogin.backgroundColor = Theme.colors.gray_7E7E7E
         } else {
@@ -78,23 +68,70 @@ class LoginVC: BaseViewController {
         }
     }
     
+    func setupPrivacyLabel() {
+        lblPrivacy.numberOfLines = 0
+        
+        // By signing in you agree to our T&Cs, Privacy Policy and Disclaimer
+        
+        let strTC = "T&Cs"
+        let strPrivacy = "Privacy Policy"
+        let strDisclaimer = "Disclaimer"
+        
+        // By clicking on Register or Sign up you agree to our T&Cs, Privacy Policy & Disclaimer
+        let string = "By clicking on Register or Sign up you \nagree to our \(strTC), \(strPrivacy) and \(strDisclaimer)"
+        
+        let nsString = string as NSString
+        
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineHeightMultiple = 1.3
+        
+        let fullAttributedString = NSAttributedString(string:string, attributes: [
+            NSAttributedString.Key.paragraphStyle: paragraphStyle,
+            NSAttributedString.Key.foregroundColor: Theme.colors.gray_999999.cgColor,
+            NSAttributedString.Key.font: Theme.fonts.montserratFont(ofSize: 12, weight: .regular),
+        ])
+        
+        lblPrivacy.textAlignment = .center
+        lblPrivacy.attributedText = fullAttributedString
+        
+        let rangeTC = nsString.range(of: strTC)
+        let rangePrivacy = nsString.range(of: strPrivacy)
+        let rangeDisclaimer = nsString.range(of: strDisclaimer)
+        
+        let ppLinkAttributes: [String: Any] = [
+            NSAttributedString.Key.foregroundColor.rawValue: Theme.colors.gray_999999,
+            NSAttributedString.Key.underlineStyle.rawValue: NSUnderlineStyle.single.rawValue,
+        ]
+        
+        lblPrivacy.activeLinkAttributes = [:]
+        lblPrivacy.linkAttributes = ppLinkAttributes
+        
+        let urlTC = URL(string: "action://TC")!
+        let urlPrivacy = URL(string: "action://Policy")!
+        let urlDisclaimer = URL(string: "action://Disclaimer")!
+        lblPrivacy.addLink(to: urlTC, with: rangeTC)
+        lblPrivacy.addLink(to: urlPrivacy, with: rangePrivacy)
+        lblPrivacy.addLink(to: urlDisclaimer, with: rangeDisclaimer)
+        
+        lblPrivacy.textColor = UIColor.black
+        lblPrivacy.delegate = self
+    }
+    
     func checkValidation() -> Bool {
         var isValid = true
-        
-        if txtFEmailAdd.text?.trim.count == 0 {
+        let strMobile = txtFMobileNo.text?.trim ?? ""
+        if strMobile.count == 0 {
             isValid = false
-            lblErrEmail.isHidden = false
-            lblErrEmail.text = Theme.strings.alert_invalid_email_error
-        } else if !txtFEmailAdd.text!.isValidEmail {
+            self.lblErrMobileNo.isHidden = false
+            self.lblErrMobileNo.text = Theme.strings.alert_invalid_mobile_error
+        } else if strMobile.count < 8 || strMobile.count > 10 {
             isValid = false
-            lblErrEmail.isHidden = false
-            lblErrEmail.text = Theme.strings.alert_invalid_email_error
-        }
-        
-        if txtFPassWord.text?.trim.count == 0 {
+            self.lblErrMobileNo.isHidden = false
+            self.lblErrMobileNo.text = Theme.strings.alert_invalid_mobile_error
+        } else if strMobile.isPhoneNumber == false {
             isValid = false
-            lblErrPass.isHidden = false
-            lblErrPass.text = Theme.strings.alert_blank_password_error
+            lblErrMobileNo.isHidden = false
+            lblErrMobileNo.text = Theme.strings.alert_invalid_mobile_error
         }
         
         return isValid
@@ -102,48 +139,27 @@ class LoginVC: BaseViewController {
     
     
     // MARK:- ACTIONS
-    @IBAction func onTappedForgotPass(_ sender: UIButton) {
-        let aVC = AppStoryBoard.main.viewController(viewControllerClass:ForgotPassVC.self)
-        self.navigationController?.pushViewController(aVC, animated: true)
+    @IBAction func onTappedCountryCode(_ sender: UIButton) {
+        let aVC = AppStoryBoard.main.viewController(viewControllerClass:CountryListVC.self)
+        aVC.didSelectCountry = { countryData in
+            self.selectedCountry = countryData
+            self.isCountrySelected = true
+            self.setupData()
+        }
+        aVC.modalPresentationStyle = .overFullScreen
+        self.navigationController?.present(aVC, animated: true, completion: nil)
     }
     
     @IBAction func onTappedLogIn(_ sender: UIButton) {
-        if checkValidation() {
-            lblErrEmail.isHidden = true
-            lblErrPass.isHidden = true
-            
-            callLoginAPI()
-        }
-    }
-    
-    @IBAction func onTappedShowPass(_ sender: UIButton) {
-        iconClick.toggle()
-        showHidePass()
+//        if checkValidation() {
+//            callLoginAPI()
+//        }
+        let aVC = AppStoryBoard.main.viewController(viewControllerClass:OTPVC.self)
+        self.navigationController?.pushViewController(aVC, animated: true)
     }
     
     @IBAction func onTappedBack(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
-    }
-    
-    func showHidePass()  {
-        
-        if iconClick {
-            txtFPassWord.isSecureTextEntry = false
-            btnVisible.setImage(UIImage(named: "PassShow"), for: .normal)
-        } else {
-            txtFPassWord.isSecureTextEntry = true
-            btnVisible.setImage(UIImage(named: "PassHide"), for: .normal)
-        }
-    }
-    
-    func visiblityValidate(textField:UITextField)  {
-        if textField == txtFPassWord {
-            if textField.text == "" {
-                btnVisible.setImage(UIImage(named: "PassDefault"), for: .normal)
-            }else {
-                showHidePass()
-            }
-        }
     }
     
 }
@@ -153,8 +169,8 @@ class LoginVC: BaseViewController {
 extension LoginVC : UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        lblErrPass.isHidden = true
-        lblErrEmail.isHidden = true
+        self.lblErrMobileNo.text = ""
+       
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -162,41 +178,50 @@ extension LoginVC : UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        
-        if textField == txtFPassWord {
-            visiblityValidate(textField:textField)
-        }
-        
-        let email = txtFEmailAdd.text?.trim
-        let password = txtFPassWord.text?.trim
-        
-        if email?.count == 0 || password?.count == 0 {
-            btnLogin.isUserInteractionEnabled = false
-            btnLogin.backgroundColor = Theme.colors.gray_7E7E7E
-        } else {
-            btnLogin.isUserInteractionEnabled = true
-            btnLogin.backgroundColor = Theme.colors.green_008892
-        }
+        buttonEnableDisable()
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
         if let text = textField.text,
             let textRange = Range(range, in: text) {
             let updatedText = text.replacingCharacters(in: textRange, with: string).trim
-            
-            let email = (textField == txtFEmailAdd) ? updatedText : txtFEmailAdd.text?.trim
-            let password = (textField == txtFPassWord) ? updatedText : txtFPassWord.text?.trim
-            
-            if email?.count == 0 || password?.count == 0 {
-                btnLogin.isUserInteractionEnabled = false
-                btnLogin.backgroundColor = Theme.colors.gray_7E7E7E
-            } else {
-                btnLogin.isUserInteractionEnabled = true
-                btnLogin.backgroundColor = Theme.colors.green_008892
+            if !updatedText.isNumber || updatedText.count > 10 {
+                return false
             }
         }
         
-        return true
+        let inValidCharacterSet = NSCharacterSet.whitespaces
+        guard let firstChar = string.unicodeScalars.first else {
+            return true
+        }
+        
+        return !inValidCharacterSet.contains(firstChar)
     }
+    
+}
+
+// MARK:- TTTAttributedLabelDelegate
+extension LoginVC : TTTAttributedLabelDelegate {
+    
+    func attributedLabel(_ label: TTTAttributedLabel!, didSelectLinkWith url: URL!) {
+        print("link clicked")
+        if url.absoluteString == "action://TC" {
+            self.openUrl(urlString: TERMS_AND_CONDITION_URL)
+        } else if url.absoluteString == "action://Policy" {
+            self.openUrl(urlString: PRIVACY_POLICY_URL)
+        } else if url.absoluteString == "action://Disclaimer" {
+            let aVC = AppStoryBoard.main.viewController(viewControllerClass: DescriptionPopupVC.self)
+            aVC.strTitle = Theme.strings.disclaimer_title
+            aVC.strDesc = Theme.strings.disclaimer_description
+            aVC.isOkButtonHidden = true
+            aVC.modalPresentationStyle = .overFullScreen
+            self.present(aVC, animated: false, completion: nil)
+        }
+    }
+    
+    //    func attributedLabel(_ label: TTTAttributedLabel!, didLongPressLinkWith url: URL!, at point: CGPoint) {
+    //        print("link long clicked")
+    //    }
     
 }

@@ -56,7 +56,6 @@ extension SignUpVC {
                           "Email":txtFEmailAdd.text ?? "",
                           "CountryCode":selectedCountry.Code,
                           "MobileNo":txtFMobileNo.text ?? "",
-                          "Password":txtFPassWord.text ?? "",
                           "DeviceId":DEVICE_UUID,
                           "Token":FCM_TOKEN]
         
@@ -79,10 +78,7 @@ extension SignUpVC {
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass:LoginVC.self)
                 self.navigationController?.pushViewController(aVC, animated: true)
             } else {
-                if response.ResponseMessage.trim.count > 0 {
-                    self.lblErrPass.isHidden = false
-                    self.lblErrPass.text = response.ResponseMessage
-                }
+                
             }
         }
     }
@@ -93,8 +89,7 @@ extension LoginVC {
     
     // App Version API Call
     func callLoginAPI() {
-        let parameters = ["Email":txtFEmailAdd.text ?? "",
-                          "Password":txtFPassWord.text ?? "",
+        let parameters = ["mobileNo":txtFMobileNo.text ?? "",
                           "DeviceType":APP_TYPE,
                           "DeviceId":DEVICE_UUID,
                           "Token":FCM_TOKEN]
@@ -115,10 +110,7 @@ extension LoginVC {
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass:UserListVC.self)
                 self.navigationController?.pushViewController(aVC, animated: true)
             } else {
-                if response.ResponseMessage.trim.count > 0 {
-                    self.lblErrPass.isHidden = false
-                    self.lblErrPass.text = response.ResponseMessage
-                }
+                
             }
         }
     }

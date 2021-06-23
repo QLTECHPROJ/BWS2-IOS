@@ -16,18 +16,15 @@ class SignUpVC: BaseViewController {
     // MARK:- OUTLETS
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblSubTitle: UILabel!
-    
     @IBOutlet weak var stackView: UIStackView!
     
     // Textfield
     @IBOutlet weak var txtFName: JVFloatLabeledTextField!
     @IBOutlet weak var txtFMobileNo: JVFloatLabeledTextField!
     @IBOutlet weak var txtFEmailAdd: JVFloatLabeledTextField!
-    @IBOutlet weak var txtFPassWord: JVFloatLabeledTextField!
     
     // Button
     @IBOutlet weak var btnCountryCode: UIButton!
-    @IBOutlet weak var btnVisisble: UIButton!
     @IBOutlet weak var btnCreateAccount: UIButton!
     
     // Label
@@ -35,8 +32,6 @@ class SignUpVC: BaseViewController {
     @IBOutlet weak var lblErrName: UILabel!
     @IBOutlet weak var lblErrMobileNo: UILabel!
     @IBOutlet weak var lblErrEmail: UILabel!
-    @IBOutlet weak var lblErrPass: UILabel!
-    
     
     // MARK:- VARIABLES
     var iconClick = true
@@ -59,33 +54,21 @@ class SignUpVC: BaseViewController {
     
     // MARK:- FUNCTIONS
     override func setupUI() {
-        lblTitle.text = Theme.strings.register_title
-        lblSubTitle.attributedText = Theme.strings.register_subtitle.attributedString(alignment: .left, lineSpacing: 5)
+       // lblTitle.text = Theme.strings.register_title
+       // lblSubTitle.attributedText = Theme.strings.register_subtitle.attributedString(alignment: .left, lineSpacing: 5)
         
         lblErrName.isHidden = true
-        lblErrPass.isHidden = true
+        
         lblErrMobileNo.isHidden = true
         lblErrEmail.isHidden = true
         
         txtFName.delegate = self
         txtFMobileNo.delegate = self
         txtFEmailAdd.delegate = self
-        txtFPassWord.delegate = self
         
         setupPrivacyLabel()
+        buttonEnableDisable()
         
-        let name = txtFName.text?.trim
-        let mobile = txtFMobileNo.text?.trim
-        let email = txtFEmailAdd.text?.trim
-        let password = txtFPassWord.text?.trim
-        
-        if name?.count == 0 || mobile?.count == 0 || email?.count == 0 || password?.count == 0 {
-            btnCreateAccount.isUserInteractionEnabled = false
-            btnCreateAccount.backgroundColor = Theme.colors.gray_7E7E7E
-        } else {
-            btnCreateAccount.isUserInteractionEnabled = true
-            btnCreateAccount.backgroundColor = Theme.colors.green_008892
-        }
     }
     
     override func setupData() {
@@ -98,6 +81,22 @@ class SignUpVC: BaseViewController {
             btnCountryCode.setTitleColor(Theme.colors.black_40_opacity, for: .normal)
         }
     }
+    
+    override func buttonEnableDisable() {
+        let name = txtFName.text?.trim
+        let mobile = txtFMobileNo.text?.trim
+        let email = txtFEmailAdd.text?.trim
+        
+        
+        if name?.count == 0 || mobile?.count == 0 || email?.count == 0 {
+            btnCreateAccount.isUserInteractionEnabled = false
+            btnCreateAccount.backgroundColor = Theme.colors.gray_7E7E7E
+        } else {
+            btnCreateAccount.isUserInteractionEnabled = true
+            btnCreateAccount.backgroundColor = Theme.colors.green_008892
+        }
+    }
+    
     
     func checkValidation() -> Bool {
         var isValid = true
@@ -131,17 +130,6 @@ class SignUpVC: BaseViewController {
             isValid = false
             lblErrEmail.isHidden = false
             lblErrEmail.text = Theme.strings.alert_invalid_email_error
-        }
-        
-        if txtFPassWord.text?.trim.count == 0 {
-            isValid = false
-            lblErrPass.isHidden = false
-            lblErrPass.text = Theme.strings.alert_invalid_password_error
-        }
-        else if !txtFPassWord.text!.isValidPassword(){
-            isValid = false
-            lblErrPass.isHidden = false
-            lblErrPass.text = Theme.strings.alert_invalid_password_error
         }
         
         return isValid
@@ -201,7 +189,6 @@ class SignUpVC: BaseViewController {
     @IBAction func onTappedCreateAccount(_ sender: UIButton) {
         if checkValidation() {
             lblErrName.isHidden = true
-            lblErrPass.isHidden = true
             lblErrMobileNo.isHidden = true
             lblErrEmail.isHidden = true
             
@@ -220,32 +207,6 @@ class SignUpVC: BaseViewController {
         self.navigationController?.present(aVC, animated: true, completion: nil)
     }
     
-    @IBAction func onTappedShowPass(_ sender: UIButton) {
-        iconClick.toggle()
-        showHidePass()
-    }
-    
-    func showHidePass() {
-        
-        if iconClick {
-            txtFPassWord.isSecureTextEntry = false
-            btnVisisble.setImage(UIImage(named: "PassShow"), for: .normal)
-        } else {
-            txtFPassWord.isSecureTextEntry = true
-            btnVisisble.setImage(UIImage(named: "PassHide"), for: .normal)
-        }
-    }
-    
-    func visiblityValidate(textField:UITextField)  {
-        if textField == txtFPassWord {
-            if textField.text == "" {
-                btnVisisble.setImage(UIImage(named: "PassDefault"), for: .normal)
-            }else {
-                showHidePass()
-            }
-        }
-    }
-    
     @IBAction func onTappedBack(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
@@ -258,13 +219,8 @@ extension SignUpVC : UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         lblErrName.isHidden = true
-        lblErrPass.isHidden = true
         lblErrMobileNo.isHidden = true
         lblErrEmail.isHidden = true
-        
-//        if textField == txtFPassWord {
-//            visiblityValidate(textField:textField)
-//        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -286,39 +242,14 @@ extension SignUpVC : UITextFieldDelegate {
             return false
         }
         
-        let name = (textField == txtFName) ? updatedText : txtFName.text?.trim
-        let mobile = (textField == txtFMobileNo) ? updatedText : txtFMobileNo.text?.trim
-        let email = (textField == txtFEmailAdd) ? updatedText : txtFEmailAdd.text?.trim
-        let password = (textField == txtFPassWord) ? updatedText : txtFPassWord.text?.trim
-        
-        if name?.count == 0 || mobile?.count == 0 || email?.count == 0 || password?.count == 0 {
-            btnCreateAccount.isUserInteractionEnabled = false
-            btnCreateAccount.backgroundColor = Theme.colors.gray_7E7E7E
-        } else {
-            btnCreateAccount.isUserInteractionEnabled = true
-            btnCreateAccount.backgroundColor = Theme.colors.green_008892
-        }
+        buttonEnableDisable()
         
         return true
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         
-        if textField == txtFPassWord {
-            visiblityValidate(textField:textField)
-        }
-        let name = txtFName.text?.trim
-        let mobile = txtFMobileNo.text?.trim
-        let email = txtFEmailAdd.text?.trim
-        let password = txtFPassWord.text?.trim
-        
-        if name?.count == 0 || mobile?.count == 0 || email?.count == 0 || password?.count == 0 {
-            btnCreateAccount.isUserInteractionEnabled = false
-            btnCreateAccount.backgroundColor = Theme.colors.gray_7E7E7E
-        } else {
-            btnCreateAccount.isUserInteractionEnabled = true
-            btnCreateAccount.backgroundColor = Theme.colors.green_008892
-        }
+        buttonEnableDisable()
         
     }
     

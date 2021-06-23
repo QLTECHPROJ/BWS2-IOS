@@ -501,9 +501,13 @@
 		9A55EB462668EA58006E398A /* InvoiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A55EB3B2668EA58006E398A /* InvoiceCell.xib */; };
 		9A55EB472668EA58006E398A /* InvoiceDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A55EB3C2668EA58006E398A /* InvoiceDetailVC.swift */; };
 		9A55EB482668EA58006E398A /* InvoiceDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A55EB3C2668EA58006E398A /* InvoiceDetailVC.swift */; };
+		9A62E91D26820D3400883BBD /* EmailVerifyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A62E91C26820D3400883BBD /* EmailVerifyVC.swift */; };
+		9A62E91E26820D3400883BBD /* EmailVerifyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A62E91C26820D3400883BBD /* EmailVerifyVC.swift */; };
 		9A63D461265778D800B596D7 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A63D460265778D800B596D7 /* IAPHelper.swift */; };
 		9A63D462265778D800B596D7 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A63D460265778D800B596D7 /* IAPHelper.swift */; };
 		9A7505C726578C4900177738 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A7505C626578C4900177738 /* StoreKit.framework */; };
+		9A9A1C6C2682060E009CF46E /* OTPVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9A1C6B2682060E009CF46E /* OTPVC.swift */; };
+		9A9A1C6D2682060E009CF46E /* OTPVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9A1C6B2682060E009CF46E /* OTPVC.swift */; };
 		9ABB10892660C5A000A4C221 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A7505C626578C4900177738 /* StoreKit.framework */; };
 		9AC066FC2639178E00287A44 /* RecAudioBookVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC066EC2639178E00287A44 /* RecAudioBookVC.swift */; };
 		9AC066FD2639178E00287A44 /* RecAudioBookVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC066EC2639178E00287A44 /* RecAudioBookVC.swift */; };
@@ -815,9 +819,11 @@
 		9A55EB3A2668EA58006E398A /* InvoiceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvoiceCell.swift; sourceTree = "<group>"; };
 		9A55EB3B2668EA58006E398A /* InvoiceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InvoiceCell.xib; sourceTree = "<group>"; };
 		9A55EB3C2668EA58006E398A /* InvoiceDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvoiceDetailVC.swift; sourceTree = "<group>"; };
+		9A62E91C26820D3400883BBD /* EmailVerifyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailVerifyVC.swift; sourceTree = "<group>"; };
 		9A63D460265778D800B596D7 /* IAPHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
 		9A63D4672657864E00B596D7 /* SwiftyStoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftyStoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A7505C626578C4900177738 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		9A9A1C6B2682060E009CF46E /* OTPVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPVC.swift; sourceTree = "<group>"; };
 		9AC066EC2639178E00287A44 /* RecAudioBookVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecAudioBookVC.swift; sourceTree = "<group>"; };
 		9AC066ED2639178E00287A44 /* RecDocuVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecDocuVC.swift; sourceTree = "<group>"; };
 		9AC066EE2639178E00287A44 /* RecApps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecApps.swift; sourceTree = "<group>"; };
@@ -936,6 +942,8 @@
 				282441562609AD440060292E /* ContinueVC.swift */,
 				282441592609AD4E0060292E /* StepVC.swift */,
 				2824415F2609AD620060292E /* DescriptionPopupVC.swift */,
+				9A9A1C6B2682060E009CF46E /* OTPVC.swift */,
+				9A62E91C26820D3400883BBD /* EmailVerifyVC.swift */,
 			);
 			path = "Auth Module";
 			sourceTree = "<group>";
@@ -1991,6 +1999,7 @@
 				9AC0672626394B5800287A44 /* FAQListVC.swift in Sources */,
 				2870B3D625FB41A10014A4F6 /* UIImageView+Extension.swift in Sources */,
 				28E0122E261847EA00B55967 /* tagCVCell.swift in Sources */,
+				9A62E91E26820D3400883BBD /* EmailVerifyVC.swift in Sources */,
 				28E012012618470100B55967 /* UserListPopUpVC.swift in Sources */,
 				28C1E0212615F18900600041 /* ViewAllAudioVC.swift in Sources */,
 				28B53545260CC29700BD8147 /* CategoryTableCell.swift in Sources */,
@@ -2106,6 +2115,7 @@
 				289F1F272654F15A00E94290 /* Segment+EventsNames.swift in Sources */,
 				28B5354B260CC2B800BD8147 /* CategoryCollectionCell.swift in Sources */,
 				28E0123A261847EA00B55967 /* CreatePlayListCell.swift in Sources */,
+				9A9A1C6D2682060E009CF46E /* OTPVC.swift in Sources */,
 				281DE3262626FD79002CCD9D /* DJDownloadManager+Helper.swift in Sources */,
 				28252FA525FF357C00C2EB50 /* DoDassAssessmentVC.swift in Sources */,
 				28B27827262EEF5F005794E3 /* DownloadAudioVC.swift in Sources */,
@@ -2209,6 +2219,7 @@
 				9AC0672526394B5800287A44 /* FAQListVC.swift in Sources */,
 				2870B42F25FB41A10014A4F6 /* GradientView.swift in Sources */,
 				28E0122D261847EA00B55967 /* tagCVCell.swift in Sources */,
+				9A62E91D26820D3400883BBD /* EmailVerifyVC.swift in Sources */,
 				28E012002618470100B55967 /* UserListPopUpVC.swift in Sources */,
 				28C1E0202615F18900600041 /* ViewAllAudioVC.swift in Sources */,
 				28B53544260CC29700BD8147 /* CategoryTableCell.swift in Sources */,
@@ -2324,6 +2335,7 @@
 				289F1F262654F15A00E94290 /* Segment+EventsNames.swift in Sources */,
 				2870B42925FB41A10014A4F6 /* BackspaceTextField.swift in Sources */,
 				28B5354A260CC2B800BD8147 /* CategoryCollectionCell.swift in Sources */,
+				9A9A1C6C2682060E009CF46E /* OTPVC.swift in Sources */,
 				28E01239261847EA00B55967 /* CreatePlayListCell.swift in Sources */,
 				281DE3252626FD79002CCD9D /* DJDownloadManager+Helper.swift in Sources */,
 				28252FA225FF355900C2EB50 /* DoDassAssessmentVC.swift in Sources */,
