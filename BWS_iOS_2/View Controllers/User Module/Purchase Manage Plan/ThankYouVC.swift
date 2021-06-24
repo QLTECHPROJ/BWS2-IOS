@@ -55,6 +55,11 @@ class ThankYouVC: BaseViewController {
     
     
     // MARK:- ACTIONS
+    @IBAction func onTappedAddUser(_ sender: UIButton) {
+        let aVC = AppStoryBoard.main.viewController(viewControllerClass: AddUserVC.self)
+        self.navigationController?.pushViewController(aVC, animated: true)
+    }
+    
     @IBAction func exploreAppClicked(sender: UIButton) {
         if IAPHelper.shared.isIAPEnabled {
             // IAP Verify Purchase

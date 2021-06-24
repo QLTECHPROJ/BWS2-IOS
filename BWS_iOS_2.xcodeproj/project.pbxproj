@@ -500,6 +500,10 @@
 		9A63D461265778D800B596D7 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A63D460265778D800B596D7 /* IAPHelper.swift */; };
 		9A63D462265778D800B596D7 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A63D460265778D800B596D7 /* IAPHelper.swift */; };
 		9A7505C726578C4900177738 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A7505C626578C4900177738 /* StoreKit.framework */; };
+		9A98E42526848401004C889C /* AddUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A98E42426848401004C889C /* AddUserVC.swift */; };
+		9A98E42626848401004C889C /* AddUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A98E42426848401004C889C /* AddUserVC.swift */; };
+		9A98E42826848732004C889C /* SetUpPInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A98E42726848732004C889C /* SetUpPInVC.swift */; };
+		9A98E42926848732004C889C /* SetUpPInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A98E42726848732004C889C /* SetUpPInVC.swift */; };
 		9A9A1C6C2682060E009CF46E /* OTPVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9A1C6B2682060E009CF46E /* OTPVC.swift */; };
 		9A9A1C6D2682060E009CF46E /* OTPVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9A1C6B2682060E009CF46E /* OTPVC.swift */; };
 		9ABB10892660C5A000A4C221 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A7505C626578C4900177738 /* StoreKit.framework */; };
@@ -814,6 +818,8 @@
 		9A63D460265778D800B596D7 /* IAPHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
 		9A63D4672657864E00B596D7 /* SwiftyStoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftyStoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A7505C626578C4900177738 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		9A98E42426848401004C889C /* AddUserVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserVC.swift; sourceTree = "<group>"; };
+		9A98E42726848732004C889C /* SetUpPInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetUpPInVC.swift; sourceTree = "<group>"; };
 		9A9A1C6B2682060E009CF46E /* OTPVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPVC.swift; sourceTree = "<group>"; };
 		9AC066EC2639178E00287A44 /* RecAudioBookVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecAudioBookVC.swift; sourceTree = "<group>"; };
 		9AC066ED2639178E00287A44 /* RecDocuVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecDocuVC.swift; sourceTree = "<group>"; };
@@ -1175,6 +1181,8 @@
 				28B5352F260C635000BD8147 /* SleepTimeVC.swift */,
 				28B53539260C706200BD8147 /* AreaOfFocusVC.swift */,
 				28ED8EEC260E016300EC4687 /* PreparingPlaylistVC.swift */,
+				9A98E42426848401004C889C /* AddUserVC.swift */,
+				9A98E42726848732004C889C /* SetUpPInVC.swift */,
 			);
 			path = "Purchase Manage Plan";
 			sourceTree = "<group>";
@@ -2082,6 +2090,7 @@
 				9A55EB342668EA34006E398A /* CancelSubVC.swift in Sources */,
 				2830F1C92617479000E46F89 /* PlaylistDetailVC.swift in Sources */,
 				283153BF2614489E004001CE /* PlaylistCategoryVC.swift in Sources */,
+				9A98E42626848401004C889C /* AddUserVC.swift in Sources */,
 				2870B3E625FB41A10014A4F6 /* ImagePicker.swift in Sources */,
 				9AC0671D2639304E00287A44 /* FeatureCell.swift in Sources */,
 				28B5353B260C706200BD8147 /* AreaOfFocusVC.swift in Sources */,
@@ -2107,6 +2116,7 @@
 				2870B3D025FB41A10014A4F6 /* DJTextView.swift in Sources */,
 				281DE3442626FD79002CCD9D /* DJMusicPlayer+Functionalities.swift in Sources */,
 				28B5353F260C781400BD8147 /* AreaOfFocusCell.swift in Sources */,
+				9A98E42926848732004C889C /* SetUpPInVC.swift in Sources */,
 				2870B3E425FB41A10014A4F6 /* DJContants.swift in Sources */,
 				280C48F32600652C00063C03 /* DassAssessmentResultVC.swift in Sources */,
 				28D755692618999F00EA63FE /* iCarousel.m in Sources */,
@@ -2299,6 +2309,7 @@
 				9A55EB332668EA34006E398A /* CancelSubVC.swift in Sources */,
 				28E8093826130A8800CD80F7 /* ManageVC.swift in Sources */,
 				2830F1C82617479000E46F89 /* PlaylistDetailVC.swift in Sources */,
+				9A98E42526848401004C889C /* AddUserVC.swift in Sources */,
 				283153BE2614489E004001CE /* PlaylistCategoryVC.swift in Sources */,
 				9AC0671C2639304E00287A44 /* FeatureCell.swift in Sources */,
 				2870B3D125FB41A10014A4F6 /* DJTextField.swift in Sources */,
@@ -2324,6 +2335,7 @@
 				2870B44925FB41A10014A4F6 /* TabBarController.swift in Sources */,
 				281DE3432626FD79002CCD9D /* DJMusicPlayer+Functionalities.swift in Sources */,
 				28B5353E260C781400BD8147 /* AreaOfFocusCell.swift in Sources */,
+				9A98E42826848732004C889C /* SetUpPInVC.swift in Sources */,
 				2870B3CF25FB41A10014A4F6 /* DJTextView.swift in Sources */,
 				280C48F22600652C00063C03 /* DassAssessmentResultVC.swift in Sources */,
 				28D755682618999F00EA63FE /* iCarousel.m in Sources */,
