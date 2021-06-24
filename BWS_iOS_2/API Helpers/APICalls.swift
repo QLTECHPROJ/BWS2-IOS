@@ -93,14 +93,18 @@ extension OTPVC {
                                   "countryCode":self.selectedCountry.Code,
                                   "countryName":self.selectedCountry.Name,
                                   "countryShortName":self.selectedCountry.ShortName,
-                                  "mobileNo":userDetails.MobileNo,
+                                  "mobileNo":userDetails.Mobile,
                                   "email":userDetails.Email]
                     let eventname = self.signUpFlag == "1" ? SegmentTracking.eventNames.User_Sign_up : SegmentTracking.eventNames.User_Login
                     SegmentTracking.shared.trackEvent(name: eventname, traits: traits, trackingType: .track)
                 }
                 
-                let aVC = AppStoryBoard.main.viewController(viewControllerClass:EmailVerifyVC.self)
-                self.navigationController?.pushViewController(aVC, animated: true)
+                if self.signUpFlag == "1" {
+                    let aVC = AppStoryBoard.main.viewController(viewControllerClass:EmailVerifyVC.self)
+                    self.navigationController?.pushViewController(aVC, animated: true)
+                } else {
+                    self.handleCoUserRedirection()
+                }
             } else {
                 self.lblError.text = response.ResponseMessage
                 self.lblError.isHidden = false

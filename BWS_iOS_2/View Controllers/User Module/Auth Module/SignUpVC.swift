@@ -33,8 +33,9 @@ class SignUpVC: BaseViewController {
     @IBOutlet weak var lblErrMobileNo: UILabel!
     @IBOutlet weak var lblErrEmail: UILabel!
     
+    
     // MARK:- VARIABLES
-    var iconClick = true
+    var isFromOTP = false
     var isCountrySelected = false
     var selectedCountry = CountrylistDataModel(id: "0", name: "Australia", shortName: "AU", code: "61")
     
@@ -48,7 +49,19 @@ class SignUpVC: BaseViewController {
         
         setupUI()
         setupData()
-        iconClick = false
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if isFromOTP {
+            txtFMobileNo.becomeFirstResponder()
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.view.endEditing(true)
     }
     
     
@@ -187,10 +200,14 @@ class SignUpVC: BaseViewController {
     
     // MARK:- ACTIONS
     @IBAction func onTappedCreateAccount(_ sender: UIButton) {
+        self.view.endEditing(true)
+        
         if checkValidation() {
             lblErrName.isHidden = true
             lblErrMobileNo.isHidden = true
             lblErrEmail.isHidden = true
+            
+            isFromOTP = true
             
             callLoginAPI(signUpFlag: "1", country: selectedCountry, mobileNo: txtFMobileNo.text ?? "", username: txtFName.text ?? "", email: txtFEmailAdd.text ?? "", resendOTP: "") { (response : SendOTPModel) in
                 if response.ResponseCode != "200" {
@@ -202,10 +219,15 @@ class SignUpVC: BaseViewController {
     }
     
     @IBAction func onTappedLogin(_ sender: UIButton) {
+        self.view.endEditing(true)
+        isFromOTP = false
         self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func onTappedCountryCode(_ sender: UIButton) {
+        self.view.endEditing(true)
+        isFromOTP = false
+        
         let aVC = AppStoryBoard.main.viewController(viewControllerClass:CountryListVC.self)
         aVC.didSelectCountry = { countryData in
             self.selectedCountry = countryData

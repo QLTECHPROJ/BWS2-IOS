@@ -126,7 +126,7 @@ class LoginDataModel : EVObject {
     var CountryCode = ""
     var Name = ""
     var Email = ""
-    var MobileNo = ""
+    var Mobile = ""
     var Image = ""
     var DOB = ""
     var isProfileCompleted = ""
@@ -332,21 +332,22 @@ class CoUserModel : EVObject {
 }
 
 class CoUserDataModel : EVObject {
-    var UserId = ""
     var MainAccountID = ""
+    var UserId = ""
+    var CountryCode = ""
     var Name = ""
     var Email = ""
     var Mobile = ""
-    var DOB = ""
     var Image = ""
+    var DOB = ""
     var isProfileCompleted = ""
     var isAssessmentCompleted = ""
     var indexScore = ""
-    var ScoreLevel = ""
     var planDetails : [Any]?
-    var errormsg = ""
     var AreaOfFocus = [AreaOfFocusModel]()
     var AvgSleepTime = ""
+    var ScoreLevel = ""
+    var errormsg = ""
     var isSelected = false
     
     static var profileImage : UIImage?

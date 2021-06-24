@@ -26,8 +26,10 @@ class LoginVC: BaseViewController {
     
     
     // MARK:- VARIABLES
+    var isFromOTP = false
     var isCountrySelected = false
     var selectedCountry = CountrylistDataModel(id: "0", name: "Australia", shortName: "AU", code: "61")
+    
     
     // MARK:- VIEW LIFE CYCLE
     override func viewDidLoad() {
@@ -46,6 +48,19 @@ class LoginVC: BaseViewController {
         setupPrivacyLabel()
         setupData()
         buttonEnableDisable()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if isFromOTP {
+            txtFMobileNo.becomeFirstResponder()
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.view.endEditing(true)
     }
     
     
@@ -68,7 +83,6 @@ class LoginVC: BaseViewController {
     }
     
     override func buttonEnableDisable() {
-        
         let mobile = txtFMobileNo.text?.trim
         
         if  mobile?.count == 0 {
@@ -152,11 +166,17 @@ class LoginVC: BaseViewController {
     
     // MARK:- ACTIONS
     @IBAction func onTappedSignUp(_ sender: UIButton) {
+        self.view.endEditing(true)
+        isFromOTP = false
+        
         let aVC = AppStoryBoard.main.viewController(viewControllerClass:SignUpVC.self)
         self.navigationController?.pushViewController(aVC, animated: true)
     }
     
     @IBAction func onTappedCountryCode(_ sender: UIButton) {
+        self.view.endEditing(true)
+        isFromOTP = false
+        
         let aVC = AppStoryBoard.main.viewController(viewControllerClass:CountryListVC.self)
         aVC.didSelectCountry = { countryData in
             self.selectedCountry = countryData
@@ -168,7 +188,12 @@ class LoginVC: BaseViewController {
     }
     
     @IBAction func onTappedLogIn(_ sender: UIButton) {
+        self.view.endEditing(true)
         if checkValidation() {
+            lblErrMobileNo.isHidden = true
+            
+            isFromOTP = true
+            
             callLoginAPI(signUpFlag: "0", country: selectedCountry, mobileNo: txtFMobileNo.text ?? "", username: "", email: "", resendOTP: "") { (response : SendOTPModel) in
                 if response.ResponseCode != "200" {
                     self.lblErrMobileNo.text = response.ResponseMessage
@@ -219,6 +244,7 @@ extension LoginVC : UITextFieldDelegate {
     }
     
 }
+
 
 // MARK:- TTTAttributedLabelDelegate
 extension LoginVC : TTTAttributedLabelDelegate {
