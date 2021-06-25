@@ -221,7 +221,22 @@ class SignUpVC: BaseViewController {
     @IBAction func onTappedLogin(_ sender: UIButton) {
         self.view.endEditing(true)
         isFromOTP = false
-        self.navigationController?.popViewController(animated: true)
+        
+        var shouldPush = true
+        if let controllers = self.navigationController?.viewControllers {
+            for controller in controllers {
+                if controller.isKind(of: LoginVC.self) {
+                    shouldPush = false
+                    self.navigationController?.popToViewController(controller, animated: true)
+                    break
+                }
+            }
+        }
+        
+        if shouldPush {
+            let aVC = AppStoryBoard.main.viewController(viewControllerClass:LoginVC.self)
+            self.navigationController?.pushViewController(aVC, animated: true)
+        }
     }
     
     @IBAction func onTappedCountryCode(_ sender: UIButton) {

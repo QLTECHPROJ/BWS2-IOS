@@ -38,12 +38,6 @@ class LoginVC: BaseViewController {
         // Segment Tracking
         SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.login)
         
-        for (index,controller) in self.navigationController!.viewControllers.enumerated() {
-            if controller.isKind(of: SignUpVC.self) {
-                self.navigationController?.viewControllers.remove(at: index)
-                break
-            }
-        }
         setupUI()
         setupPrivacyLabel()
         setupData()
@@ -169,8 +163,21 @@ class LoginVC: BaseViewController {
         self.view.endEditing(true)
         isFromOTP = false
         
-        let aVC = AppStoryBoard.main.viewController(viewControllerClass:SignUpVC.self)
-        self.navigationController?.pushViewController(aVC, animated: true)
+        var shouldPush = true
+        if let controllers = self.navigationController?.viewControllers {
+            for controller in controllers {
+                if controller.isKind(of: SignUpVC.self) {
+                    shouldPush = false
+                    self.navigationController?.popToViewController(controller, animated: true)
+                    break
+                }
+            }
+        }
+        
+        if shouldPush {
+            let aVC = AppStoryBoard.main.viewController(viewControllerClass:SignUpVC.self)
+            self.navigationController?.pushViewController(aVC, animated: true)
+        }
     }
     
     @IBAction func onTappedCountryCode(_ sender: UIButton) {
@@ -268,5 +275,14 @@ extension LoginVC : TTTAttributedLabelDelegate {
     //    func attributedLabel(_ label: TTTAttributedLabel!, didLongPressLinkWith url: URL!, at point: CGPoint) {
     //        print("link long clicked")
     //    }
+    
+}
+
+extension NSMutableAttributedString {
+    
+    class func getAttributedString(fromString string: String) -> NSMutableAttributedString {
+        return NSMutableAttributedString(string: string)
+    }
+    
     
 }

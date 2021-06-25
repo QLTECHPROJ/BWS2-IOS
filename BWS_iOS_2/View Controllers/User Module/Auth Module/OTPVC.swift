@@ -76,7 +76,7 @@ class OTPVC: BaseViewController {
         if signUpFlag == "0" {
             btnDone.setTitle("LOGIN", for: .normal)
         } else {
-            btnDone.setTitle("Create Account", for: .normal)
+            btnDone.setTitle("CREATE ACCOUNT", for: .normal)
         }
         
         for textfield in textFields {
@@ -159,6 +159,13 @@ class OTPVC: BaseViewController {
     
     // MARK:- ACTIONS
     @IBAction func onTappedResendSMS(_ sender: UIButton) {
+        self.view.endEditing(true)
+        
+        txtFPin1.text = ""
+        txtFPin2.text = ""
+        txtFPin3.text = ""
+        txtFPin4.text = ""
+        
         callLoginAPI(signUpFlag: signUpFlag, country: selectedCountry, mobileNo: strMobile, username: strName, email: strEmail, resendOTP: "1") { (response : SendOTPModel) in
             if response.ResponseCode != "200" {
                 showAlertToast(message: response.ResponseMessage)
@@ -167,14 +174,18 @@ class OTPVC: BaseViewController {
     }
     
     @IBAction func onTappedEditNum(_ sender: UIButton) {
+        self.view.endEditing(true)
         self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func onTappedBack(_ sender: UIButton) {
+        self.view.endEditing(true)
         self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func onTappedCreateAccount(_ sender: UIButton) {
+        self.view.endEditing(true)
+        
         if checkValidation() {
             lblLine1.isHidden = true
             lblLine2.isHidden = true

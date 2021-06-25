@@ -62,6 +62,7 @@ class AppVersionModel : EVObject {
 class AppVersionDataModel : EVObject {
     var IsForce = ""
     var displayRegister = ""
+    var IsLoginFirstTime = ""
     var segmentKey = ""
     var supportText = ""
     var supportEmail = ""

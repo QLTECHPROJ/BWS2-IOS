@@ -13,11 +13,13 @@ extension SplashVC {
     // App Version API Call
     func callAppVersionAPI() {
         let parameters = ["Version":APP_VERSION,
-                          "AppType":APP_TYPE]
+                          "AppType":APP_TYPE,
+                          "DeviceID":DEVICE_UUID]
         
         APICallManager.sharedInstance.callAPI(router: APIRouter.appversion(parameters), displayHud: false) { (response : AppVersionModel) in
             if response.ResponseCode == "200" {
                 SplashVC.isForceUpdate = response.ResponseData.IsForce
+                SplashVC.isLoginFirstTime = response.ResponseData.IsLoginFirstTime
                 
                 // Segment Configuration
                 SegmentTracking.shared.segmentWriteKey = response.ResponseData.segmentKey
