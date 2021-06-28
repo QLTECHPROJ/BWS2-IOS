@@ -110,6 +110,7 @@ class SendOTPDataModel : EVObject {
     var OTP = ""
     var errormsg = ""
     var SignupFlag = ""
+    var IsRegistered = ""
 }
 
 
@@ -764,4 +765,12 @@ class AddProfileImageModel: EVObject {
 class AddProfileImageDataModel: EVObject {
     var ProfileImage = ""
     var UserId = ""
+}
+
+/**** Contact Model ****/
+
+class ContactModel : EVObject {
+    var contactName = ""
+    var contactNumber = ""
+    var contactImage : UIImage?
 }

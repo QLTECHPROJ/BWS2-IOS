@@ -15,6 +15,7 @@ import JVFloatLabeledTextField
 class LoginVC: BaseViewController {
     
     // MARK:- OUTLETS
+    @IBOutlet weak var lblSignUp: UILabel!
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblSubTitle: UILabel!
     @IBOutlet weak var txtFMobileNo: JVFloatLabeledTextField!
@@ -26,6 +27,7 @@ class LoginVC: BaseViewController {
     
     
     // MARK:- VARIABLES
+    var mobileNo = ""
     var isFromOTP = false
     var isCountrySelected = false
     var selectedCountry = CountrylistDataModel(id: "0", name: "Australia", shortName: "AU", code: "61")
@@ -41,7 +43,6 @@ class LoginVC: BaseViewController {
         setupUI()
         setupPrivacyLabel()
         setupData()
-        buttonEnableDisable()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,9 +64,16 @@ class LoginVC: BaseViewController {
         txtFMobileNo.delegate = self
         //lblTitle.text = Theme.strings.login_title
         lblSubTitle.attributedText = Theme.strings.login_subtitle.attributedString(alignment: .center, lineSpacing: 5)
+       
+       addAttribut(strText: "Don't have account? SIGN UP", strSubString: "SIGN UP", label: lblSignUp)
     }
     
     override func setupData() {
+        if mobileNo.trim.count > 0 {
+            txtFMobileNo.text = mobileNo
+            mobileNo = ""
+        }
+        
         let countryText = selectedCountry.ShortName.uppercased() + " +" + selectedCountry.Code
         btnCountryCode.setTitle(countryText, for: .normal)
         
@@ -74,6 +82,8 @@ class LoginVC: BaseViewController {
         } else {
             btnCountryCode.setTitleColor(Theme.colors.black_40_opacity, for: .normal)
         }
+        
+        buttonEnableDisable()
     }
     
     override func buttonEnableDisable() {
@@ -275,14 +285,5 @@ extension LoginVC : TTTAttributedLabelDelegate {
     //    func attributedLabel(_ label: TTTAttributedLabel!, didLongPressLinkWith url: URL!, at point: CGPoint) {
     //        print("link long clicked")
     //    }
-    
-}
-
-extension NSMutableAttributedString {
-    
-    class func getAttributedString(fromString string: String) -> NSMutableAttributedString {
-        return NSMutableAttributedString(string: string)
-    }
-    
     
 }

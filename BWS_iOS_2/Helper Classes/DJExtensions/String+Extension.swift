@@ -374,5 +374,51 @@ extension String {
     func chopSuffix(_ count: Int = 1) -> String {
         return substring(to: index(endIndex, offsetBy: -count))
     }
+    
+    
 }
 
+extension NSMutableAttributedString {
+    
+    class func getAttributedString(fromString string: String) -> NSMutableAttributedString {
+        return NSMutableAttributedString(string: string)
+    }
+    
+    func apply(attribute: [NSAttributedString.Key: Any], subString: String)  {
+        if let range = self.string.range(of: subString) {
+            self.apply(attribute: attribute, onRange: NSRange(range, in: self.string))
+        }
+    }
+    
+    func apply(attribute: [NSAttributedString.Key: Any], onRange range: NSRange) {
+        if range.location != NSNotFound {
+            self.setAttributes(attribute, range: range)
+        }
+    }
+    
+    // Apply color on substring
+      func apply(color: UIColor, subString: String) {
+        
+        if let range = self.string.range(of: subString) {
+          self.apply(color: color, onRange: NSRange(range, in:self.string))
+        }
+      }
+    // Apply color on given range
+      func apply(color: UIColor, onRange: NSRange) {
+        self.addAttributes([NSAttributedString.Key.foregroundColor: color],
+                           range: onRange)
+      }
+    
+    func apply(font: UIFont, subString: String)  {
+        
+        if let range = self.string.range(of: subString) {
+          self.apply(font: font, onRange: NSRange(range, in: self.string))
+        }
+      }
+      
+      // Apply font on given range
+      //2
+      func apply(font: UIFont, onRange: NSRange) {
+        self.addAttributes([NSAttributedString.Key.font: font], range: onRange)
+      }   
+}

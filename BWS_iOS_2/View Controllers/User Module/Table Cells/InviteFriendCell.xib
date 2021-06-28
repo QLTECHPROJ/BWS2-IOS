@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Bold.ttf">
+            <string>Montserrat-Bold</string>
+        </array>
+        <array key="Montserrat-Regular.ttf">
+            <string>Montserrat-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="68" id="KGk-i7-Jjw" customClass="InviteFriendCell" customModule="BWS_2_Staging" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="68"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="68"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4GK-fB-jqc">
+                        <rect key="frame" x="16" y="16" width="36" height="36"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="4GK-fB-jqc" secondAttribute="height" multiplier="1:1" id="cl4-R5-Q6y"/>
+                            <constraint firstAttribute="height" constant="36" id="y1H-yJ-qpp"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="18"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Fml-xW-0gx">
+                        <rect key="frame" x="68" y="16" width="275" height="36"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PAe-nU-jor">
+                                <rect key="frame" x="0.0" y="0.0" width="275" height="18"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="15"/>
+                                <color key="textColor" name="title"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JST-Jt-Cxa">
+                                <rect key="frame" x="0.0" y="18" width="275" height="18"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                                <color key="textColor" name="subTitleGray"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ANS-OF-lO3">
+                        <rect key="frame" x="359" y="19" width="0.0" height="30"/>
+                        <color key="backgroundColor" name="button_Background"/>
+                        <constraints>
+                            <constraint firstAttribute="width" id="DMr-fq-8Kj"/>
+                            <constraint firstAttribute="height" constant="30" id="b55-dc-lMN"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="11"/>
+                        <state key="normal" title="Invite">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </state>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="inviteClickedWithSender:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="ast-WH-cbd"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="4GK-fB-jqc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="4HA-UM-UC1"/>
+                    <constraint firstItem="Fml-xW-0gx" firstAttribute="top" secondItem="4GK-fB-jqc" secondAttribute="top" id="9XO-sS-f5n"/>
+                    <constraint firstItem="Fml-xW-0gx" firstAttribute="leading" secondItem="4GK-fB-jqc" secondAttribute="trailing" constant="16" id="GmN-ia-WP5"/>
+                    <constraint firstAttribute="trailing" secondItem="ANS-OF-lO3" secondAttribute="trailing" constant="16" id="IkX-FH-fWs"/>
+                    <constraint firstItem="Fml-xW-0gx" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Nok-gp-H4S"/>
+                    <constraint firstItem="4GK-fB-jqc" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="QoQ-Md-E5p"/>
+                    <constraint firstItem="ANS-OF-lO3" firstAttribute="leading" secondItem="Fml-xW-0gx" secondAttribute="trailing" constant="16" id="kXB-oy-bZM"/>
+                    <constraint firstItem="Fml-xW-0gx" firstAttribute="bottom" secondItem="4GK-fB-jqc" secondAttribute="bottom" id="kvg-QW-Frj"/>
+                    <constraint firstItem="ANS-OF-lO3" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="lBL-sU-fxL"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="btnInvite" destination="ANS-OF-lO3" id="dpl-AI-mtf"/>
+                <outlet property="imgView" destination="4GK-fB-jqc" id="XGI-PP-RVX"/>
+                <outlet property="lblName" destination="PAe-nU-jor" id="4Xz-nf-jzO"/>
+                <outlet property="lblNumber" destination="JST-Jt-Cxa" id="X7P-UW-fPu"/>
+            </connections>
+            <point key="canvasLocation" x="139" y="153"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="button_Background">
+            <color red="0.0" green="0.35686274509803922" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="subTitleGray">
+            <color red="0.51372549019607838" green="0.51372549019607838" blue="0.51372549019607838" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="title">
+            <color red="0.16470588235294117" green="0.18823529411764706" blue="0.25882352941176473" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

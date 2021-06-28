@@ -363,3 +363,11 @@ extension UITextField {
     }
     
 }
+
+func addAttribut(strText:String,strSubString:String,label:UILabel) {
+    let text = strText
+    let attributedText = NSMutableAttributedString.getAttributedString(fromString: text)
+    attributedText.apply(color: Theme.colors.green_008892, subString: strSubString)
+    attributedText.apply(font:UIFont(name: Theme.fonts.MontserratSemiBold, size: 12)!, subString: strSubString)
+    label.attributedText = attributedText
+}

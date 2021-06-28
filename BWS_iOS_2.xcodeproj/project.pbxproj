@@ -549,6 +549,12 @@
 		9AD558292636DFFA007ED68F /* AccountCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AD558272636DFFA007ED68F /* AccountCell.xib */; };
 		9AD5582A2636E6C3007ED68F /* AccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD558262636DFFA007ED68F /* AccountCell.swift */; };
 		9AD5582B2636E6C7007ED68F /* AccountCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AD558272636DFFA007ED68F /* AccountCell.xib */; };
+		9AEBD2D7268995240096C291 /* ContactVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEBD2D6268995240096C291 /* ContactVC.swift */; };
+		9AEBD2D8268995240096C291 /* ContactVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEBD2D6268995240096C291 /* ContactVC.swift */; };
+		9AEBD2DB2689962C0096C291 /* InviteFriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEBD2D92689962C0096C291 /* InviteFriendCell.swift */; };
+		9AEBD2DC2689962C0096C291 /* InviteFriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEBD2D92689962C0096C291 /* InviteFriendCell.swift */; };
+		9AEBD2DD2689962C0096C291 /* InviteFriendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AEBD2DA2689962C0096C291 /* InviteFriendCell.xib */; };
+		9AEBD2DE2689962C0096C291 /* InviteFriendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AEBD2DA2689962C0096C291 /* InviteFriendCell.xib */; };
 		D8C9DBD48B974EAF0900A669 /* Pods_BWS_iOS_2_Staging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A9C109FCD0C02CB81D9724A /* Pods_BWS_iOS_2_Staging.framework */; };
 		E0C944874ACC5E9D7BB97CCB /* Pods_BWS_iOS_2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2297DCB35FF63C0665FDF246 /* Pods_BWS_iOS_2.framework */; };
 /* End PBXBuildFile section */
@@ -842,6 +848,9 @@
 		9AC0672426394B5800287A44 /* FAQListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQListVC.swift; sourceTree = "<group>"; };
 		9AD558262636DFFA007ED68F /* AccountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCell.swift; sourceTree = "<group>"; };
 		9AD558272636DFFA007ED68F /* AccountCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountCell.xib; sourceTree = "<group>"; };
+		9AEBD2D6268995240096C291 /* ContactVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactVC.swift; sourceTree = "<group>"; };
+		9AEBD2D92689962C0096C291 /* InviteFriendCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteFriendCell.swift; sourceTree = "<group>"; };
+		9AEBD2DA2689962C0096C291 /* InviteFriendCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InviteFriendCell.xib; sourceTree = "<group>"; };
 		B7D692722F8063D61FB31679 /* Pods-BWS_iOS_2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BWS_iOS_2.release.xcconfig"; path = "Target Support Files/Pods-BWS_iOS_2/Pods-BWS_iOS_2.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1183,6 +1192,7 @@
 				28ED8EEC260E016300EC4687 /* PreparingPlaylistVC.swift */,
 				9A98E42426848401004C889C /* AddUserVC.swift */,
 				9A98E42726848732004C889C /* SetUpPInVC.swift */,
+				9AEBD2D6268995240096C291 /* ContactVC.swift */,
 			);
 			path = "Purchase Manage Plan";
 			sourceTree = "<group>";
@@ -1369,6 +1379,8 @@
 		28ED2FC325FB931E00E59C56 /* Table Cells */ = {
 			isa = PBXGroup;
 			children = (
+				9AEBD2D92689962C0096C291 /* InviteFriendCell.swift */,
+				9AEBD2DA2689962C0096C291 /* InviteFriendCell.xib */,
 				9A267F402670F684009E3CBA /* MyHeaderFooterClass.swift */,
 				282441442609ACE30060292E /* CountryCell.swift */,
 				282441432609ACE20060292E /* CountryCell.xib */,
@@ -1736,6 +1748,7 @@
 				28B2F4AE2642C143009A4E5B /* PlanFeaturesCell.xib in Resources */,
 				28E80927261308E300CD80F7 /* Home.storyboard in Resources */,
 				282441482609ACE30060292E /* UserListCell.xib in Resources */,
+				9AEBD2DE2689962C0096C291 /* InviteFriendCell.xib in Resources */,
 				2870B35E25FB3A570014A4F6 /* LaunchScreen.storyboard in Resources */,
 				28D755702618A33F00EA63FE /* PlayVideoCell.xib in Resources */,
 				28ED2F9225FB58E000E59C56 /* Montserrat-SemiBold.ttf in Resources */,
@@ -1801,6 +1814,7 @@
 				28B2F4AD2642C143009A4E5B /* PlanFeaturesCell.xib in Resources */,
 				28E80926261308E300CD80F7 /* Home.storyboard in Resources */,
 				28F812BC25FB364900DC6AF6 /* LaunchScreen.storyboard in Resources */,
+				9AEBD2DD2689962C0096C291 /* InviteFriendCell.xib in Resources */,
 				28ED2F9125FB58E000E59C56 /* Montserrat-SemiBold.ttf in Resources */,
 				28D7556F2618A33F00EA63FE /* PlayVideoCell.xib in Resources */,
 				282441472609ACE30060292E /* UserListCell.xib in Resources */,
@@ -2024,6 +2038,7 @@
 				2870B42225FB41A10014A4F6 /* NotificationName+Extention.swift in Sources */,
 				2870B37725FB40660014A4F6 /* APIResponses.swift in Sources */,
 				28ED2F8225FB511800E59C56 /* SplashVC.swift in Sources */,
+				9AEBD2D8268995240096C291 /* ContactVC.swift in Sources */,
 				2870B3EA25FB41A10014A4F6 /* String+Extension.swift in Sources */,
 				28D33F39265E375100733F61 /* OfflineVC.swift in Sources */,
 				281DE3342626FD79002CCD9D /* DJMusicPlayer.swift in Sources */,
@@ -2091,6 +2106,7 @@
 				2830F1C92617479000E46F89 /* PlaylistDetailVC.swift in Sources */,
 				283153BF2614489E004001CE /* PlaylistCategoryVC.swift in Sources */,
 				9A98E42626848401004C889C /* AddUserVC.swift in Sources */,
+				9AEBD2DC2689962C0096C291 /* InviteFriendCell.swift in Sources */,
 				2870B3E625FB41A10014A4F6 /* ImagePicker.swift in Sources */,
 				9AC0671D2639304E00287A44 /* FeatureCell.swift in Sources */,
 				28B5353B260C706200BD8147 /* AreaOfFocusVC.swift in Sources */,
@@ -2243,6 +2259,7 @@
 				281DE3312626FD79002CCD9D /* PlaylistDownloads+CoreDataProperties.swift in Sources */,
 				28ED2F7D25FB494600E59C56 /* SplashVC.swift in Sources */,
 				2870B37625FB40660014A4F6 /* APIResponses.swift in Sources */,
+				9AEBD2D7268995240096C291 /* ContactVC.swift in Sources */,
 				2870B3E925FB41A10014A4F6 /* String+Extension.swift in Sources */,
 				28D33F38265E375100733F61 /* OfflineVC.swift in Sources */,
 				2870B41325FB41A10014A4F6 /* UIViewExtension.swift in Sources */,
@@ -2310,6 +2327,7 @@
 				28E8093826130A8800CD80F7 /* ManageVC.swift in Sources */,
 				2830F1C82617479000E46F89 /* PlaylistDetailVC.swift in Sources */,
 				9A98E42526848401004C889C /* AddUserVC.swift in Sources */,
+				9AEBD2DB2689962C0096C291 /* InviteFriendCell.swift in Sources */,
 				283153BE2614489E004001CE /* PlaylistCategoryVC.swift in Sources */,
 				9AC0671C2639304E00287A44 /* FeatureCell.swift in Sources */,
 				2870B3D125FB41A10014A4F6 /* DJTextField.swift in Sources */,

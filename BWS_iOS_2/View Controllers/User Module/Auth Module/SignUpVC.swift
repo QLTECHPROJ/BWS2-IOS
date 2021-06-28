@@ -17,6 +17,7 @@ class SignUpVC: BaseViewController {
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblSubTitle: UILabel!
     @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet weak var lblLogin: UILabel!
     
     // Textfield
     @IBOutlet weak var txtFName: JVFloatLabeledTextField!
@@ -48,6 +49,7 @@ class SignUpVC: BaseViewController {
         SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.signUp)
         
         setupUI()
+        setupPrivacyLabel()
         setupData()
     }
     
@@ -79,9 +81,7 @@ class SignUpVC: BaseViewController {
         txtFMobileNo.delegate = self
         txtFEmailAdd.delegate = self
         
-        setupPrivacyLabel()
-        buttonEnableDisable()
-        
+        addAttribut(strText: "Already have account ? SIGN IN", strSubString: "SIGN IN", label: lblLogin)
     }
     
     override func setupData() {
@@ -93,6 +93,8 @@ class SignUpVC: BaseViewController {
         } else {
             btnCountryCode.setTitleColor(Theme.colors.black_40_opacity, for: .normal)
         }
+        
+        buttonEnableDisable()
     }
     
     override func buttonEnableDisable() {
@@ -197,6 +199,33 @@ class SignUpVC: BaseViewController {
         lblPrivacy.delegate = self
     }
     
+    func redirectToLogin() {
+        var shouldPush = true
+        if let controllers = self.navigationController?.viewControllers {
+            for controller in controllers {
+                if controller.isKind(of: LoginVC.self) {
+                    if let aVC = controller as? LoginVC {
+                        aVC.selectedCountry = self.selectedCountry
+                        aVC.isCountrySelected = self.isCountrySelected
+                        aVC.mobileNo = self.txtFMobileNo.text ?? ""
+                        aVC.setupData()
+                    }
+                    shouldPush = false
+                    self.navigationController?.popToViewController(controller, animated: true)
+                    break
+                }
+            }
+        }
+        
+        if shouldPush {
+            let aVC = AppStoryBoard.main.viewController(viewControllerClass:LoginVC.self)
+            aVC.selectedCountry = self.selectedCountry
+            aVC.isCountrySelected = self.isCountrySelected
+            aVC.mobileNo = self.txtFMobileNo.text ?? ""
+            self.navigationController?.pushViewController(aVC, animated: true)
+        }
+    }
+    
     
     // MARK:- ACTIONS
     @IBAction func onTappedCreateAccount(_ sender: UIButton) {
@@ -211,8 +240,15 @@ class SignUpVC: BaseViewController {
             
             callLoginAPI(signUpFlag: "1", country: selectedCountry, mobileNo: txtFMobileNo.text ?? "", username: txtFName.text ?? "", email: txtFEmailAdd.text ?? "", resendOTP: "") { (response : SendOTPModel) in
                 if response.ResponseCode != "200" {
-                    self.lblErrEmail.text = response.ResponseMessage
-                    self.lblErrEmail.isHidden = false
+                    if response.ResponseData?.IsRegistered == "1" {
+                        self.redirectToLogin()
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                            showAlertToast(message: response.ResponseMessage)
+                        }
+                    } else {
+                        self.lblErrEmail.text = response.ResponseMessage
+                        self.lblErrEmail.isHidden = false
+                    }
                 }
             }
         }
@@ -221,22 +257,7 @@ class SignUpVC: BaseViewController {
     @IBAction func onTappedLogin(_ sender: UIButton) {
         self.view.endEditing(true)
         isFromOTP = false
-        
-        var shouldPush = true
-        if let controllers = self.navigationController?.viewControllers {
-            for controller in controllers {
-                if controller.isKind(of: LoginVC.self) {
-                    shouldPush = false
-                    self.navigationController?.popToViewController(controller, animated: true)
-                    break
-                }
-            }
-        }
-        
-        if shouldPush {
-            let aVC = AppStoryBoard.main.viewController(viewControllerClass:LoginVC.self)
-            self.navigationController?.pushViewController(aVC, animated: true)
-        }
+        self.redirectToLogin()
     }
     
     @IBAction func onTappedCountryCode(_ sender: UIButton) {

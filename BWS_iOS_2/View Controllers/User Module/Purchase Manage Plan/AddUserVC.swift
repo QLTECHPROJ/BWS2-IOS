@@ -41,7 +41,7 @@ class AddUserVC: BaseViewController {
         self.present(aVC, animated: false, completion: nil)
     }
     @IBAction func onTappedDiffNumber(_ sender: UIButton) {
-        let aVC = AppStoryBoard.main.viewController(viewControllerClass: SetUpPInVC.self)
+        let aVC = AppStoryBoard.main.viewController(viewControllerClass: ContactVC.self)
         self.navigationController?.pushViewController(aVC, animated: true)
     }
     
