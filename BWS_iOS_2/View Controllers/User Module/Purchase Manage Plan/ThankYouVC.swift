@@ -11,8 +11,19 @@ import UIKit
 class ThankYouVC: BaseViewController {
     
     // MARK:- OUTLETS
+    
+    @IBOutlet weak var lblTop: NSLayoutConstraint!
+    @IBOutlet weak var imgHeight: NSLayoutConstraint!
+    @IBOutlet weak var imgWidth: NSLayoutConstraint!
     @IBOutlet weak var lblSubTitle: UILabel!
     @IBOutlet weak var btnViewInvoice: UIButton!
+    @IBOutlet weak var imgThankYou: UIImageView!
+    @IBOutlet weak var scrollview: UIScrollView!
+    @IBOutlet weak var btnAddUser: UIButton!
+    @IBOutlet weak var lblTitle: UILabel!
+    
+    // MARK:- VARIABLE
+    var isCome:String?
     
     
     // MARK:- VIEW LIFE CYCLE
@@ -29,6 +40,8 @@ class ThankYouVC: BaseViewController {
                                                            NSAttributedString.Key.font : Theme.fonts.montserratFont(ofSize: 13, weight: .regular)]
         let attributedTitle = NSMutableAttributedString(string: "View Invoice", attributes: attributes)
         btnViewInvoice.setAttributedTitle(attributedTitle, for: .normal)
+        
+        setupData()
     }
     
     func handleCoUserRedirection() {
@@ -53,6 +66,22 @@ class ThankYouVC: BaseViewController {
         }
     }
     
+    override func setupData() {
+        if isCome == "UserDetail"{
+            scrollview.isScrollEnabled = false
+            imgThankYou.image = UIImage(named: "Congrats")
+            lblTitle.font = UIFont(name: Theme.fonts.MontserratBold, size: 45.0)
+            let strText = "Congrats!\nMichael Dale"
+            addAttribut(strText: strText, strSubString: "Michael Dale", label: lblTitle, size: 24)
+            lblSubTitle.text = "You already have access to 6 month of Enhance program."
+            btnAddUser.isHidden = true
+            btnViewInvoice.isHidden = true
+            imgWidth.constant = 309
+            imgHeight.constant = 281
+            lblTop.constant = 40
+        }
+    }
+    
     
     // MARK:- ACTIONS
     @IBAction func onTappedAddUser(_ sender: UIButton) {
@@ -65,7 +94,12 @@ class ThankYouVC: BaseViewController {
             // IAP Verify Purchase
             IAPHelper.shared.verifySubscriptions()
         }
-        self.handleCoUserRedirection()
+        if isCome == "UserDetail"{
+            showAlertToast(message: "Congratualations")
+        }else {
+            self.handleCoUserRedirection()
+        }
+        
     }
     
     @IBAction func viewInvoiceClicked(sender: UIButton) {

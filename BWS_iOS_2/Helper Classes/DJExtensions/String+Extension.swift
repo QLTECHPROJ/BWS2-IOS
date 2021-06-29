@@ -367,16 +367,24 @@ extension NSString {
 }
 
 extension String {
-    func chopPrefix(_ count: Int = 1) -> String {
-        return substring(from: index(startIndex, offsetBy: count))
+   func first(char:Int) -> String {
+        return String(self.prefix(char))
     }
 
-    func chopSuffix(_ count: Int = 1) -> String {
-        return substring(to: index(endIndex, offsetBy: -count))
+    func last(char:Int) -> String
+    {
+        return String(self.suffix(char))
     }
-    
-    
-}
+
+    func excludingFirst(char:Int) -> String {
+        return String(self.suffix(self.count - char))
+    }
+
+    func excludingLast(char:Int) -> String
+    {
+         return String(self.prefix(self.count - char))
+    }
+ }
 
 extension NSMutableAttributedString {
     

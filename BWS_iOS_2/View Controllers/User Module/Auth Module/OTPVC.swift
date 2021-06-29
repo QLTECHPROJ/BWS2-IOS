@@ -165,6 +165,7 @@ class OTPVC: BaseViewController {
         txtFPin2.text = ""
         txtFPin3.text = ""
         txtFPin4.text = ""
+        lblError.isHidden = true
         
         callLoginAPI(signUpFlag: signUpFlag, country: selectedCountry, mobileNo: strMobile, username: strName, email: strEmail, resendOTP: "1") { (response : SendOTPModel) in
             if response.ResponseCode != "200" {

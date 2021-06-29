@@ -33,6 +33,15 @@ class AddUserVC: BaseViewController {
     
     //MARK:- IBAction Methods
     @IBAction func onTappedSameNumber(_ sender: UIButton) {
+        let aVC = AppStoryBoard.main.viewController(viewControllerClass: SetUpPInVC.self)
+        self.navigationController?.pushViewController(aVC, animated: true)
+    }
+    @IBAction func onTappedDiffNumber(_ sender: UIButton) {
+        let aVC = AppStoryBoard.main.viewController(viewControllerClass: ContactVC.self)
+        self.navigationController?.pushViewController(aVC, animated: true)
+    }
+    
+    @IBAction func onTappedInfo(_ sender: UIButton) {
         let aVC = AppStoryBoard.main.viewController(viewControllerClass: DescriptionPopupVC.self)
         aVC.strTitle = "With Same Mobile Number"
         aVC.strDesc = Theme.strings.disclaimer_description
@@ -40,9 +49,4 @@ class AddUserVC: BaseViewController {
         aVC.modalPresentationStyle = .overFullScreen
         self.present(aVC, animated: false, completion: nil)
     }
-    @IBAction func onTappedDiffNumber(_ sender: UIButton) {
-        let aVC = AppStoryBoard.main.viewController(viewControllerClass: ContactVC.self)
-        self.navigationController?.pushViewController(aVC, animated: true)
-    }
-    
 }

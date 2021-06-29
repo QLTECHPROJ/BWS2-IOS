@@ -130,7 +130,8 @@ class ContactVC: BaseViewController {
         tableView.reloadData()
     }
     @IBAction func onTappedContinue(_ sender: UIButton) {
-        
+        let aVC = AppStoryBoard.main.viewController(viewControllerClass: UserDetailVC.self)
+        self.navigationController?.pushViewController(aVC, animated: false)
         
     }
     

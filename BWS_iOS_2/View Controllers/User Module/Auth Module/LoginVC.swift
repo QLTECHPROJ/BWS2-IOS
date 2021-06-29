@@ -65,7 +65,7 @@ class LoginVC: BaseViewController {
         //lblTitle.text = Theme.strings.login_title
         lblSubTitle.attributedText = Theme.strings.login_subtitle.attributedString(alignment: .center, lineSpacing: 5)
        
-       addAttribut(strText: "Don't have account? SIGN UP", strSubString: "SIGN UP", label: lblSignUp)
+        addAttribut(strText: "Don't have account? SIGN UP", strSubString: "SIGN UP", label: lblSignUp, size: 12)
     }
     
     override func setupData() {
@@ -166,7 +166,6 @@ class LoginVC: BaseViewController {
         
         return isValid
     }
-    
     
     // MARK:- ACTIONS
     @IBAction func onTappedSignUp(_ sender: UIButton) {

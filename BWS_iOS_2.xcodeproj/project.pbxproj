@@ -549,6 +549,8 @@
 		9AD558292636DFFA007ED68F /* AccountCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AD558272636DFFA007ED68F /* AccountCell.xib */; };
 		9AD5582A2636E6C3007ED68F /* AccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD558262636DFFA007ED68F /* AccountCell.swift */; };
 		9AD5582B2636E6C7007ED68F /* AccountCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AD558272636DFFA007ED68F /* AccountCell.xib */; };
+		9ADEACC62689DC8300830A31 /* UserDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADEACC52689DC8300830A31 /* UserDetailVC.swift */; };
+		9ADEACC72689DC8300830A31 /* UserDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADEACC52689DC8300830A31 /* UserDetailVC.swift */; };
 		9AEBD2D7268995240096C291 /* ContactVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEBD2D6268995240096C291 /* ContactVC.swift */; };
 		9AEBD2D8268995240096C291 /* ContactVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEBD2D6268995240096C291 /* ContactVC.swift */; };
 		9AEBD2DB2689962C0096C291 /* InviteFriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEBD2D92689962C0096C291 /* InviteFriendCell.swift */; };
@@ -848,6 +850,7 @@
 		9AC0672426394B5800287A44 /* FAQListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQListVC.swift; sourceTree = "<group>"; };
 		9AD558262636DFFA007ED68F /* AccountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCell.swift; sourceTree = "<group>"; };
 		9AD558272636DFFA007ED68F /* AccountCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountCell.xib; sourceTree = "<group>"; };
+		9ADEACC52689DC8300830A31 /* UserDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailVC.swift; sourceTree = "<group>"; };
 		9AEBD2D6268995240096C291 /* ContactVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactVC.swift; sourceTree = "<group>"; };
 		9AEBD2D92689962C0096C291 /* InviteFriendCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteFriendCell.swift; sourceTree = "<group>"; };
 		9AEBD2DA2689962C0096C291 /* InviteFriendCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InviteFriendCell.xib; sourceTree = "<group>"; };
@@ -1193,6 +1196,7 @@
 				9A98E42426848401004C889C /* AddUserVC.swift */,
 				9A98E42726848732004C889C /* SetUpPInVC.swift */,
 				9AEBD2D6268995240096C291 /* ContactVC.swift */,
+				9ADEACC52689DC8300830A31 /* UserDetailVC.swift */,
 			);
 			path = "Purchase Manage Plan";
 			sourceTree = "<group>";
@@ -1985,6 +1989,7 @@
 				2824415E2609AD590060292E /* PinVC.swift in Sources */,
 				28B53536260C690600BD8147 /* SleepTimeCell.swift in Sources */,
 				9AC067012639178F00287A44 /* RecApps.swift in Sources */,
+				9ADEACC72689DC8300830A31 /* UserDetailVC.swift in Sources */,
 				9AC067112639178F00287A44 /* AppsCollectionCell.swift in Sources */,
 				2870B41E25FB41A10014A4F6 /* UIImageView+Letters.m in Sources */,
 				2824413B2609AB9C0060292E /* CountryListVC.swift in Sources */,
@@ -2206,6 +2211,7 @@
 				2824415D2609AD590060292E /* PinVC.swift in Sources */,
 				28B53535260C690600BD8147 /* SleepTimeCell.swift in Sources */,
 				9AC067002639178F00287A44 /* RecApps.swift in Sources */,
+				9ADEACC62689DC8300830A31 /* UserDetailVC.swift in Sources */,
 				9AC067102639178F00287A44 /* AppsCollectionCell.swift in Sources */,
 				2870B41D25FB41A10014A4F6 /* UIImageView+Letters.m in Sources */,
 				2870B42B25FB41A10014A4F6 /* AnimationFrames.swift in Sources */,
