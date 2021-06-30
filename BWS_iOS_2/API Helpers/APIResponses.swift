@@ -27,6 +27,11 @@ class GeneralDataModel : EVObject {
     var errormsg = ""
     var indexScore = ""
     var ScoreLevel = ""
+    var status = ""
+    var data : RecieptDataModel?
+}
+
+class RecieptDataModel : EVObject {
 }
 
 // MARK:- Upload Data Model

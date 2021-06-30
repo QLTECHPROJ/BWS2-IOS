@@ -32,6 +32,8 @@ enum APIRouter: URLRequestConvertible {
     case avgsleeptime
     case getrecommendedcategory([String:String])
     case saverecommendedcategory([String:Any])
+    case verifyreceipt([String:Any])
+    case userplanpurchaselist([String:Any])
     
     // Home Tab - APIs
     case homescreen([String:String])
@@ -119,6 +121,10 @@ enum APIRouter: URLRequestConvertible {
             return APIRoute(path: "getrecommendedcategory", method: .post, data: data)
         case .saverecommendedcategory(let data):
             return APIRoute(path: "saverecommendedcategory", method: .post, data: data)
+        case .verifyreceipt(let data):
+            return APIRoute(path: "verifyreceipt", method: .post, data: data)
+        case .userplanpurchaselist(let data):
+            return APIRoute(path: "userplanpurchaselist", method: .post, data: data)
             
         case .homescreen(let data):
             return APIRoute(path: "homescreen", method: .post, data: data)

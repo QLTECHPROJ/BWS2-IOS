@@ -457,6 +457,22 @@ extension UIViewController {
         }
     }
     
+    //App Verify Reciept
+    func callVerifyRecieptAPI(strreceiptData : String, complitionBlock : (() -> ())?) {
+        let parameters = ["receiptData":strreceiptData]
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.verifyreceipt(parameters)) { (response : GeneralModel) in
+            
+            if response.ResponseCode == "200" {
+                showAlertToast(message: response.ResponseMessage)
+                print("data",response.ResponseData?.data ?? "")
+                DispatchQueue.main.async {
+                    complitionBlock?()
+                }
+            }
+        }
+    }
+    
 }
 
 extension ManageVC {
@@ -1367,6 +1383,25 @@ extension EditProfileVC {
                         SegmentTracking.shared.coUserEvent(name: SegmentTracking.eventNames.Profile_Changes_Saved, trackingType: .track)
                     }
                 }
+            }
+        }
+    }
+}
+
+extension OrderSummaryVC {
+    //user plan Purchase
+    func callIAPPlanPurchaseAPI() {
+
+        let parameters =                [APIParameters.UserId:CoUserDataModel.currentUserId,
+                          APIParameters.MainAccountID:CoUserDataModel.currentMainAccountId,
+                          "OriginalTransactionID":IAPHelper.shared.originalTransactionID ?? ""]
+
+        APICallManager.sharedInstance.callAPI(router: APIRouter.userplanpurchaselist(parameters)) { (response :GeneralModel) in
+
+            if response.ResponseCode == "200" {
+                showAlertToast(message: response.ResponseMessage)
+                let aVC = AppStoryBoard.main.viewController(viewControllerClass: ThankYouVC.self)
+                self.navigationController?.pushViewController(aVC, animated: true)
             }
         }
     }

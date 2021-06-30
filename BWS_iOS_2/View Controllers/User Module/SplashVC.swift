@@ -21,20 +21,12 @@ class SplashVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
-        if IAPHelper.shared.isIAPEnabled {
-            showHud()
-            IAPHelper.shared.verifyReceipt { result in
-                hideHud()
-                IAPHelper.shared.showAlert(IAPHelper.shared.alertForVerifyReceipt(result))
-            }
-        }
-        
         if checkInternet(showToast: true) == false {
             handleRedirection()
         } else {
             callAppVersionAPI()
         }
+        verifyRecieptIAP()
     }
     
     
@@ -120,6 +112,21 @@ class SplashVC: BaseViewController {
         }
     }
     
+    func verifyRecieptIAP() {
+        if (LoginDataModel.currentUser != nil) {
+            if IAPHelper.shared.isIAPEnabled {
+                showHud()
+                IAPHelper.shared.verifyReceipt { result in
+                    hideHud()
+                    IAPHelper.shared.showAlert(IAPHelper.shared.alertForVerifyReceipt(result))
+                    guard let receiptURL = Bundle.main.appStoreReceiptURL, let receiptString = try? Data(contentsOf: receiptURL, options: .alwaysMapped).base64EncodedString(options: []) else {
+                        return
+                    }
+                    self.callVerifyRecieptAPI(strreceiptData: receiptString, complitionBlock: nil)
+                }
+            }
+        }
+    }
 }
 
 

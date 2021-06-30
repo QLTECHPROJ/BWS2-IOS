@@ -83,10 +83,8 @@ class OrderSummaryVC: BaseViewController {
         if IAPHelper.shared.isIAPEnabled {
             // IAP Purchase Subscription
             IAPHelper.shared.purchaseSubscriptions(atomically: true)
-            
             IAPHelper.shared.successPurchase = {
-                let aVC = AppStoryBoard.main.viewController(viewControllerClass: ThankYouVC.self)
-                self.navigationController?.pushViewController(aVC, animated: true)
+                self.callIAPPlanPurchaseAPI()
             }
         } else {
             let aVC = AppStoryBoard.main.viewController(viewControllerClass: ThankYouVC.self)
