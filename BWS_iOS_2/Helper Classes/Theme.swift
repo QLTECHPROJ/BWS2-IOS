@@ -330,6 +330,7 @@ struct AppStrings {
     let date_of_birth = "Date of Birth"
     let rename_your_playlist = "Rename your playlist."
     
+    let no_contacts_to_display = "No contacts to display."
     let no_downloaded_audios = "Your downloaded audios will appear here"
     let no_downloaded_playlists = "Your downloaded playlists will appear here"
     
@@ -431,6 +432,8 @@ struct AppStrings {
     let alert_pin_not_match = "Please provide the latest PIN to login"
     
     let alert_select_login_user = "Please select atleast one to proceed"
+    
+    let alert_cannot_send_message = "Cannot send the message"
     
     /* Audio */
     let alert_blank_search = "Please enter search text"

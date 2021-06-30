@@ -72,6 +72,8 @@ struct ScreenNames {
     let resourceDetails = "Resource Details Viewed"
     
     let faq_screen = "FAQ Viewed"
+    
+    let invite_friend = "Invite Friends Screen Viewed"
 }
 
 struct EventNames {
@@ -119,6 +121,9 @@ struct EventNames {
     let Resource_External_Link_Clicked = "Resource External Link Clicked"
     
     let FAQ_Clicked = "FAQ Clicked"
+    
+    let invite_friend_clicked = "Invite Friend Clicked"
+    let contact_searched = "Contact Searched"
     
     // Audio Playback Events
     let Disclaimer_Started = "Disclaimer Started"
