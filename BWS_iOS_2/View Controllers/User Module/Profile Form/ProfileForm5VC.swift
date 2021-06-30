@@ -42,13 +42,13 @@ class ProfileForm5VC: BaseViewController {
         
         lblSubTitle.attributedText = Theme.strings.prev_drug_use_subtitle.attributedString(alignment: .left, lineSpacing: 5)
         
-        progressView.progress = 0.6
+        progressView.progress = 0.5
         btnPrev.isEnabled = true
         
         btnNext.isEnabled = false
         if ProfileFormModel.shared.prevDrugUse.trim.count > 0 {
             if arrayOptions.contains(ProfileFormModel.shared.prevDrugUse) {
-                progressView.progress = 0.8
+                progressView.progress = 0.75
                 btnNext.isEnabled = true
             }
         }

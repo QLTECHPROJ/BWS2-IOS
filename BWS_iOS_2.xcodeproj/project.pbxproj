@@ -418,8 +418,6 @@
 		28E809542613591400CD80F7 /* AudioCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28E809512613591400CD80F7 /* AudioCollectionCell.xib */; };
 		28E809552613591400CD80F7 /* AudioCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28E809512613591400CD80F7 /* AudioCollectionCell.xib */; };
 		28ED2F7D25FB494600E59C56 /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28ED2F7C25FB494600E59C56 /* SplashVC.swift */; };
-		28ED2F8025FB511300E59C56 /* ProfileFormStartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28ED2F7F25FB511300E59C56 /* ProfileFormStartVC.swift */; };
-		28ED2F8125FB511300E59C56 /* ProfileFormStartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28ED2F7F25FB511300E59C56 /* ProfileFormStartVC.swift */; };
 		28ED2F8225FB511800E59C56 /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28ED2F7C25FB494600E59C56 /* SplashVC.swift */; };
 		28ED2F8B25FB58DF00E59C56 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 28ED2F8425FB58DF00E59C56 /* Montserrat-Medium.ttf */; };
 		28ED2F8C25FB58DF00E59C56 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 28ED2F8425FB58DF00E59C56 /* Montserrat-Medium.ttf */; };
@@ -435,8 +433,6 @@
 		28ED2F9625FB58E000E59C56 /* Montserrat-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 28ED2F8925FB58DF00E59C56 /* Montserrat-Italic.ttf */; };
 		28ED2F9725FB58E000E59C56 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28ED2F8A25FB58DF00E59C56 /* Font.swift */; };
 		28ED2F9825FB58E000E59C56 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28ED2F8A25FB58DF00E59C56 /* Font.swift */; };
-		28ED2F9A25FB5E9500E59C56 /* ProfileForm1VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28ED2F9925FB5E9500E59C56 /* ProfileForm1VC.swift */; };
-		28ED2F9B25FB5E9500E59C56 /* ProfileForm1VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28ED2F9925FB5E9500E59C56 /* ProfileForm1VC.swift */; };
 		28ED2FAF25FB8C5700E59C56 /* ProfileForm2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28ED2FAE25FB8C5700E59C56 /* ProfileForm2VC.swift */; };
 		28ED2FB025FB8C5700E59C56 /* ProfileForm2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28ED2FAE25FB8C5700E59C56 /* ProfileForm2VC.swift */; };
 		28ED2FB225FB8C6600E59C56 /* ProfileForm3VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28ED2FB125FB8C6600E59C56 /* ProfileForm3VC.swift */; };
@@ -776,7 +772,6 @@
 		28E809502613591400CD80F7 /* AudioCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioCollectionCell.swift; sourceTree = "<group>"; };
 		28E809512613591400CD80F7 /* AudioCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AudioCollectionCell.xib; sourceTree = "<group>"; };
 		28ED2F7C25FB494600E59C56 /* SplashVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashVC.swift; sourceTree = "<group>"; };
-		28ED2F7F25FB511300E59C56 /* ProfileFormStartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFormStartVC.swift; sourceTree = "<group>"; };
 		28ED2F8425FB58DF00E59C56 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
 		28ED2F8525FB58DF00E59C56 /* Montserrat-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Light.ttf"; sourceTree = "<group>"; };
 		28ED2F8625FB58DF00E59C56 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
@@ -784,7 +779,6 @@
 		28ED2F8825FB58DF00E59C56 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
 		28ED2F8925FB58DF00E59C56 /* Montserrat-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Italic.ttf"; sourceTree = "<group>"; };
 		28ED2F8A25FB58DF00E59C56 /* Font.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
-		28ED2F9925FB5E9500E59C56 /* ProfileForm1VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileForm1VC.swift; sourceTree = "<group>"; };
 		28ED2FAE25FB8C5700E59C56 /* ProfileForm2VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileForm2VC.swift; sourceTree = "<group>"; };
 		28ED2FB125FB8C6600E59C56 /* ProfileForm3VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileForm3VC.swift; sourceTree = "<group>"; };
 		28ED2FB425FB8C6E00E59C56 /* ProfileForm4VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileForm4VC.swift; sourceTree = "<group>"; };
@@ -958,8 +952,6 @@
 		28252FA025FF344F00C2EB50 /* Profile Form */ = {
 			isa = PBXGroup;
 			children = (
-				28ED2F7F25FB511300E59C56 /* ProfileFormStartVC.swift */,
-				28ED2F9925FB5E9500E59C56 /* ProfileForm1VC.swift */,
 				28ED2FAE25FB8C5700E59C56 /* ProfileForm2VC.swift */,
 				28ED2FB125FB8C6600E59C56 /* ProfileForm3VC.swift */,
 				28ED2FB425FB8C6E00E59C56 /* ProfileForm4VC.swift */,
@@ -1972,7 +1964,6 @@
 			files = (
 				28786CB1262967F7000E8598 /* ViewAllCell.swift in Sources */,
 				283529A42609DA6F009AB2AA /* OrderSummaryVC.swift in Sources */,
-				28ED2F9B25FB5E9500E59C56 /* ProfileForm1VC.swift in Sources */,
 				28B2F4AC2642C143009A4E5B /* PlanFeaturesCell.swift in Sources */,
 				28E809532613591400CD80F7 /* AudioCollectionCell.swift in Sources */,
 				2891E2A12643CCF800658B49 /* SelectPlayListCell.swift in Sources */,
@@ -2184,7 +2175,6 @@
 				9A267F3F2670DDE3009E3CBA /* TagFlowLayout.swift in Sources */,
 				28E8093C26130A9800CD80F7 /* WellnessVC.swift in Sources */,
 				28B53553260CC4B000BD8147 /* CollectionViewFlowLayout.swift in Sources */,
-				28ED2F8125FB511300E59C56 /* ProfileFormStartVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2194,7 +2184,6 @@
 			files = (
 				28786CB0262967F7000E8598 /* ViewAllCell.swift in Sources */,
 				283529A12609DA1A009AB2AA /* OrderSummaryVC.swift in Sources */,
-				28ED2F9A25FB5E9500E59C56 /* ProfileForm1VC.swift in Sources */,
 				28B2F4AB2642C143009A4E5B /* PlanFeaturesCell.swift in Sources */,
 				28E809522613591400CD80F7 /* AudioCollectionCell.swift in Sources */,
 				2891E2A02643CCF800658B49 /* SelectPlayListCell.swift in Sources */,
@@ -2258,7 +2247,6 @@
 				28B27823262EEECC005794E3 /* DownloadAudioVC.swift in Sources */,
 				9A51DF2926382DFC001364EA /* EditProfileVC.swift in Sources */,
 				2824413F2609AC820060292E /* LoginVC.swift in Sources */,
-				28ED2F8025FB511300E59C56 /* ProfileFormStartVC.swift in Sources */,
 				28813B78263989A40015DA7A /* JSONSerializable+Helper.swift in Sources */,
 				2870B3D925FB41A10014A4F6 /* UIColor+Extension.swift in Sources */,
 				2870B42125FB41A10014A4F6 /* NotificationName+Extention.swift in Sources */,

@@ -26,7 +26,6 @@ class SplashVC: BaseViewController {
         } else {
             callAppVersionAPI()
         }
-        verifyRecieptIAP()
     }
     
     
@@ -86,19 +85,21 @@ class SplashVC: BaseViewController {
     
     func handleCoUserRedirection() {
         if let coUser = CoUserDataModel.currentUser {
+            self.verifyRecieptIAP()
+            
             if coUser.isAssessmentCompleted == "0" {
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass: DoDassAssessmentVC.self)
                 self.navigationController?.pushViewController(aVC, animated: true)
-                //            } else if coUser.planDetails?.count == 0 {
-                //                let aVC = AppStoryBoard.main.viewController(viewControllerClass: DassAssessmentResultVC.self)
-                //                self.navigationController?.pushViewController(aVC, animated: true)
+            } else if coUser.planDetails?.count == 0 {
+                let aVC = AppStoryBoard.main.viewController(viewControllerClass: DassAssessmentResultVC.self)
+                self.navigationController?.pushViewController(aVC, animated: true)
             } else if coUser.isProfileCompleted == "0" {
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass:StepVC.self)
                 aVC.strTitle = Theme.strings.step_3_title
                 aVC.strSubTitle = Theme.strings.step_3_subtitle
                 aVC.imageMain = UIImage(named: "profileForm")
                 aVC.viewTapped = {
-                    let aVC = AppStoryBoard.main.viewController(viewControllerClass: ProfileForm1VC.self)
+                    let aVC = AppStoryBoard.main.viewController(viewControllerClass: ProfileForm2VC.self)
                     self.navigationController?.pushViewController(aVC, animated: false)
                 }
                 aVC.modalPresentationStyle = .overFullScreen

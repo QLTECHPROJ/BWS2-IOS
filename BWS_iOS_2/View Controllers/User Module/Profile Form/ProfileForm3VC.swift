@@ -39,13 +39,13 @@ class ProfileForm3VC: BaseViewController {
         tableViewHeightConst.constant = CGFloat(96 * arrayOptions.count)
         self.view.layoutIfNeeded()
         
-        progressView.progress = 0.2
+        progressView.progress = 0.0
         btnPrev.isEnabled = true
         
         btnNext.isEnabled = false
         if ProfileFormModel.shared.genderX.trim.count > 0 {
             if arrayOptions.contains(ProfileFormModel.shared.genderX) {
-                progressView.progress = 0.4
+                progressView.progress = 0.25
                 btnNext.isEnabled = true
             }
         }

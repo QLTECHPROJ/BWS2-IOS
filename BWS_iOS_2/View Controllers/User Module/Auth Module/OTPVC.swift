@@ -142,7 +142,7 @@ class OTPVC: BaseViewController {
                 aVC.strSubTitle = Theme.strings.step_3_subtitle
                 aVC.imageMain = UIImage(named: "profileForm")
                 aVC.viewTapped = {
-                    let aVC = AppStoryBoard.main.viewController(viewControllerClass: ProfileForm1VC.self)
+                    let aVC = AppStoryBoard.main.viewController(viewControllerClass: ProfileForm2VC.self)
                     self.navigationController?.pushViewController(aVC, animated: false)
                 }
                 aVC.modalPresentationStyle = .overFullScreen

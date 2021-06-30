@@ -130,6 +130,8 @@ class LoginModel : EVObject {
 class LoginDataModel : EVObject {
     var MainAccountID = ""
     var UserId = ""
+    var directLogin = ""
+    var isPinSet = ""
     var CountryCode = ""
     var Name = ""
     var Email = ""
@@ -341,6 +343,8 @@ class CoUserModel : EVObject {
 class CoUserDataModel : EVObject {
     var MainAccountID = ""
     var UserId = ""
+    var directLogin = ""
+    var isPinSet = ""
     var CountryCode = ""
     var Name = ""
     var Email = ""

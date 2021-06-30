@@ -39,7 +39,7 @@ class ProfileForm6VC: BaseViewController {
         tableViewHeightConst.constant = CGFloat(96 * arrayOptions.count)
         self.view.layoutIfNeeded()
         
-        progressView.progress = 0.8
+        progressView.progress = 0.75
         btnPrev.isEnabled = true
         
         btnNext.isEnabled = false

@@ -14,7 +14,7 @@ class IAPHelper : UIViewController {
     
     // MARK:- VARIABLES
     static var shared = IAPHelper()
-    var isIAPEnabled = true
+    var isIAPEnabled = false
     var arrPlanData = [SKProduct]()
     var successPurchase : ( () -> Void )?
     var originalTransactionID:String?

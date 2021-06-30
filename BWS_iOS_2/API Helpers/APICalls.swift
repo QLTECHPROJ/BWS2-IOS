@@ -234,7 +234,6 @@ extension ProfileForm6VC {
     // Profile Answer Save API Call
     func callProfileAnsSaveAPI() {
         let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
-                          "profileType":ProfileFormModel.shared.profileType,
                           "gender":ProfileFormModel.shared.gender,
                           "genderX":ProfileFormModel.shared.genderX,
                           "age":ProfileFormModel.shared.age,

@@ -7,6 +7,18 @@
 //
 
 import UIKit
+import EVReflection
+
+class ProfileFormModel : EVObject {
+    var gender = ""
+    var genderX = ""
+    var age = ""
+    var prevDrugUse = ""
+    var Medication = ""
+    
+    static var shared = ProfileFormModel()
+}
+
 
 class ProfileForm2VC: BaseViewController {
     
@@ -39,16 +51,17 @@ class ProfileForm2VC: BaseViewController {
         tableViewHeightConst.constant = CGFloat(96 * arrayOptions.count)
         self.view.layoutIfNeeded()
         
-        progressView.progress = 0.2
+        progressView.progress = 0.0
         btnPrev.isEnabled = true
+        btnPrev.isHidden = true
         
         btnNext.isEnabled = false
         if ProfileFormModel.shared.gender.trim.count > 0 {
             if arrayOptions.contains(ProfileFormModel.shared.gender) {
                 if ProfileFormModel.shared.gender == "Gender X" {
-                    progressView.progress = 0.2
+                    progressView.progress = 0.0
                 } else {
-                    progressView.progress = 0.4
+                    progressView.progress = 0.25
                 }
                 btnNext.isEnabled = true
             }
