@@ -8,28 +8,32 @@
 
 import UIKit
 import ContactsUI
+import MessageUI
 
 class ContactVC: BaseViewController {
     
-    //MARK:- UIOutlet
+    // MARK:- OUTLETS
     @IBOutlet weak var txtSearch: UITextField!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var viewSearch: UIView!
     @IBOutlet weak var lblNoData: UILabel!
     @IBOutlet weak var btnClear: UIButton!
-    @IBOutlet weak var btnContinue: UIButton!
     
-    //MARK:- Variables
+    
     // MARK:- VARIABLES
     var arrayContactList = [CNContact]()
     var arrayContacts = [ContactModel]()
     var arrayContactsSearch = [ContactModel]()
-    var arrayFavouriteContacts = [ContactModel]()
-    var arrIndexSection  = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
     
-    //MARK:- View Life Cycle
+    
+    // MARK:- VIEW LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let traits = ["userId":CoUserDataModel.currentUserId,
+                      "MainAccountId":CoUserDataModel.currentMainAccountId,
+                      "referLink":CoUserDataModel.currentMainAccountId]
+        SegmentTracking.shared.trackEvent(name: SegmentTracking.screenNames.invite_friend, traits: traits, trackingType: .screen)
         
         tableView.register(nibWithCellClass: InviteFriendCell.self)
         btnClear.isHidden = true
@@ -37,22 +41,21 @@ class ContactVC: BaseViewController {
         
         txtSearch.isUserInteractionEnabled = true
         lblNoData.isHidden = true
-        lblNoData.text = "No contacts to display."
+        lblNoData.text = Theme.strings.no_contacts_to_display
         lblNoData.textColor = Theme.colors.textColor
         
         setupUI()
         fetchContacts()
         setupData()
-
     }
     
-    //MARK:- Functions
+    
+    // MARK:- FUNCTIONS
     override func setupUI() {
         txtSearch.delegate = self
-        viewSearch.layer.cornerRadius = 25.0
+        viewSearch.layer.cornerRadius = 10
         viewSearch.clipsToBounds = true
         
-        //        txtSearch.clearButtonMode = .whileEditing
         txtSearch.addTarget(self, action: #selector(textFieldValueChanged(textField:)), for: UIControl.Event.editingChanged)
         
         tableView.register(nibWithCellClass: CountryCell.self)
@@ -71,18 +74,16 @@ class ContactVC: BaseViewController {
             
             if let imageData = contact.thumbnailImageData, let contactImage = UIImage(data: imageData) {
                 contactData.contactImage = contactImage
-            }
-            else {
+            } else {
                 contactData.contactImage = UIImage(named: "userIcon")
             }
-                
+            
             arrayContacts.append(contactData)
         }
         
         arrayContacts = arrayContacts.filter { $0.contactNumber.trim.count > 0 }
         
         arrayContactsSearch = arrayContacts
-        // arrayFavouriteContacts = arrayContacts
         tableView.reloadData()
         lblNoData.isHidden = arrayContactsSearch.count != 0
         tableView.isHidden = arrayContactsSearch.count == 0
@@ -97,8 +98,8 @@ class ContactVC: BaseViewController {
             CNContactFormatter.descriptorForRequiredKeys(for: .fullName),
             CNContactPhoneNumbersKey,
             CNContactThumbnailImageDataKey
-            ] as [Any]
-
+        ] as [Any]
+        
         let fetchRequest = CNContactFetchRequest(keysToFetch: keys as! [CNKeyDescriptor])
         fetchRequest.sortOrder = CNContactSortOrder.givenName
         let store = CNContactStore()
@@ -115,8 +116,32 @@ class ContactVC: BaseViewController {
         self.setupData()
     }
     
+    func sendMessage(contact : ContactModel) {
+        if (MFMessageComposeViewController.canSendText()) {
+            let inviteFriendURL = CoUserDataModel.currentMainAccountId
+            let shareText = String(format:"Hey, I am loving using the Brain Wellness App. You can develop yourself in the comfort of your home while you sleep and gain access to over 75 audio programs helping you to live inspired and improve your mental wellbeing. I would like to invite you to try it.  Sign up using the link %@",inviteFriendURL)
+            
+            let controller = MFMessageComposeViewController()
+            controller.body = shareText
+            controller.recipients = [contact.contactNumber]
+            controller.messageComposeDelegate = self
+            self.present(controller, animated: true, completion: nil)
+            
+            // Segment Tracking
+            let traits = ["userId":CoUserDataModel.currentUserId,
+                          "MainAccountId":CoUserDataModel.currentMainAccountId,
+                          "referLink":inviteFriendURL,
+                          "shareText":shareText,
+                          "contactName":contact.contactName,
+                          "contactNumber":contact.contactNumber]
+            SegmentTracking.shared.trackEvent(name: SegmentTracking.eventNames.invite_friend_clicked, traits: traits, trackingType: .track)
+        } else {
+            showAlertToast(message: Theme.strings.alert_cannot_send_message)
+        }
+    }
     
-    //MARK:- IBAction Methods
+    
+    // MARK:- ACTIONS
     @IBAction func backClicked(sender : UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
@@ -129,13 +154,14 @@ class ContactVC: BaseViewController {
         tableView.isHidden = false
         tableView.reloadData()
     }
+    
     @IBAction func onTappedContinue(_ sender: UIButton) {
         let aVC = AppStoryBoard.main.viewController(viewControllerClass: UserDetailVC.self)
         self.navigationController?.pushViewController(aVC, animated: false)
-        
     }
     
 }
+
 
 // MARK:- UITextFieldDelegate
 extension ContactVC: UITextFieldDelegate {
@@ -147,14 +173,15 @@ extension ContactVC: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         if let text = textField.text,
-            let textRange = Range(range, in: text) {
+           let textRange = Range(range, in: text) {
             let updatedText = text.replacingCharacters(in: textRange, with: string).trim
             print("Search text :- ",updatedText)
             
-//            // Segment Tracking
-//            let traits = ["userId":LoginDataModel.currentUser?.UserID ?? "",
-//                          "searchKeyword":updatedText]
-//            SegmentTracking.shared.trackEvent(name: "Contact Searched", traits: traits, trackingType: .track)
+            // Segment Tracking
+            let traits = ["userId":CoUserDataModel.currentUserId,
+                          "MainAccountId":CoUserDataModel.currentMainAccountId,
+                          "searchKeyword":updatedText]
+            SegmentTracking.shared.trackEvent(name: SegmentTracking.eventNames.contact_searched, traits: traits, trackingType: .track)
             
             arrayContactsSearch = arrayContacts.filter({ (model:ContactModel) -> Bool in
                 return model.contactName.lowercased().contains(updatedText.lowercased())
@@ -163,12 +190,12 @@ extension ContactVC: UITextFieldDelegate {
             if updatedText.trim.count == 0 {
                 arrayContactsSearch = arrayContacts
             }
+            
             if arrayContactsSearch.count > 0 {
                 lblNoData.isHidden = true
-            }
-            else {
+            } else {
                 lblNoData.isHidden = false
-                lblNoData.text = "Couldn't find " + updatedText + " Try searching again"
+                lblNoData.text = Theme.strings.alert_search_term_not_found
             }
             
             lblNoData.isHidden = arrayContactsSearch.count != 0
@@ -181,55 +208,35 @@ extension ContactVC: UITextFieldDelegate {
     
 }
 
+
 // MARK:- UITableViewDelegate, UITableViewDataSource
 extension ContactVC: UITableViewDelegate, UITableViewDataSource {
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 26
-    }
-     func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        return self.arrIndexSection
-    }
-     func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int
-    {
-        return index
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return arrayContactsSearch.count
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return arrIndexSection[section]
-    }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-            let cell = tableView.dequeueReusableCell(withClass: InviteFriendCell.self)
+        let cell = tableView.dequeueReusableCell(withClass: InviteFriendCell.self)
         cell.configureCell(data: arrayContactsSearch[indexPath.row])
-
-            return cell
-        
+        cell.inviteClicked = {
+            self.sendMessage(contact: self.arrayContactsSearch[indexPath.row])
+        }
+        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
-            return 68
-        
+        return 68
     }
     
-    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+}
 
-         //For Header Background Color
-         view.tintColor = .white
 
-        // For Header Text Color
-        let header = view as! UITableViewHeaderFooterView
-        header.textLabel?.textColor = .black
-        header.backgroundColor = .white
+// MARK:- MFMessageComposeViewControllerDelegate
+extension ContactVC : MFMessageComposeViewControllerDelegate {
+    
+    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
+        controller.dismiss(animated: true, completion: nil)
     }
-    
-    
     
 }
