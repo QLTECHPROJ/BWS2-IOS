@@ -124,7 +124,7 @@ extension UserListVC {
         tableView.reloadData()
         buttonEnableDisable()
         
-        let parameters = [APIParameters.MainAccountID:LoginDataModel.currentUserId]
+        let parameters = [APIParameters.MainAccountID:LoginDataModel.currentMainAccountId]
         
         APICallManager.sharedInstance.callAPI(router: APIRouter.userlist(parameters)) { (response : UserListModel) in
             if response.ResponseCode == "200" {
@@ -185,7 +185,7 @@ extension AddProfileVC {
     
     // Add User Profile API Call
     func callAddUserProfileAPI() {
-        let parameters = [APIParameters.MainAccountID:LoginDataModel.currentUserId,
+        let parameters = [APIParameters.MainAccountID:LoginDataModel.currentMainAccountId,
                           "UserName":txtFName.text ?? "",
                           "Email":txtFEmailAdd.text ?? "",
                           "MobileNo":txtFMobileNo.text ?? ""]
@@ -1006,7 +1006,7 @@ extension UserListPopUpVC {
         arrayUsers.removeAll()
         tableView.reloadData()
         
-        let parameters = [APIParameters.MainAccountID:LoginDataModel.currentUserId]
+        let parameters = [APIParameters.MainAccountID:LoginDataModel.currentMainAccountId]
         
         APICallManager.sharedInstance.callAPI(router: APIRouter.userlist(parameters)) { (response : UserListModel) in
             if response.ResponseCode == "200" {
@@ -1175,7 +1175,7 @@ extension ChangePassWordVC {
     
     //call change pin
     func callChangePasswordAPI() {
-        let parameters = [APIParameters.MainAccountID:LoginDataModel.currentUserId,
+        let parameters = [APIParameters.MainAccountID:LoginDataModel.currentMainAccountId,
                           APIParameters.UserId:CoUserDataModel.currentUserId,
                           "OldPassword":txtfOldPassword.text ?? "",
                           "NewPassword":txtFConfirmPassword.text ?? ""]
@@ -1361,7 +1361,7 @@ extension EditProfileVC {
         }
         
         let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
-                          APIParameters.MainAccountID:LoginDataModel.currentUserId,
+                          APIParameters.MainAccountID:LoginDataModel.currentMainAccountId,
                           "Name":txtFName.text!,
                           "Dob":DOB ,
                           "MobileNo":txtFMobileNo.text!,
@@ -1391,8 +1391,8 @@ extension OrderSummaryVC {
     //user plan Purchase
     func callIAPPlanPurchaseAPI() {
 
-        let parameters =                [APIParameters.UserId:CoUserDataModel.currentUserId,
-                          APIParameters.MainAccountID:CoUserDataModel.currentMainAccountId,
+        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
+                          APIParameters.MainAccountID:LoginDataModel.currentMainAccountId,
                           "OriginalTransactionID":IAPHelper.shared.originalTransactionID ?? ""]
 
         APICallManager.sharedInstance.callAPI(router: APIRouter.userplanpurchaselist(parameters)) { (response :GeneralModel) in

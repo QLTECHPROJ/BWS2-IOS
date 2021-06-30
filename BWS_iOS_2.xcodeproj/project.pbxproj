@@ -972,6 +972,16 @@
 			path = "Dass Assessment";
 			sourceTree = "<group>";
 		};
+		28282C6B268C5BE300D56021 /* Segment */ = {
+			isa = PBXGroup;
+			children = (
+				2865DB2B26495567009CDE7F /* Segment+Functions.swift */,
+				289F1F252654F15A00E94290 /* Segment+EventsNames.swift */,
+				2865DB2E26495575009CDE7F /* Segment+ScreenTracking.swift */,
+			);
+			path = Segment;
+			sourceTree = "<group>";
+		};
 		284C9B67262E93D1008C4435 /* CryptLib */ = {
 			isa = PBXGroup;
 			children = (
@@ -1423,9 +1433,7 @@
 				28F812B925FB356000DC6AF6 /* Brain Wellness App.entitlements */,
 				28F812A225FB336F00DC6AF6 /* AppDelegate.swift */,
 				9A63D463265785D100B596D7 /* IAP */,
-				2865DB2B26495567009CDE7F /* Segment+Functions.swift */,
-				289F1F252654F15A00E94290 /* Segment+EventsNames.swift */,
-				2865DB2E26495575009CDE7F /* Segment+ScreenTracking.swift */,
+				28282C6B268C5BE300D56021 /* Segment */,
 				281DE3152626FD79002CCD9D /* DJMusicPlayer */,
 				2870B36A25FB3FEE0014A4F6 /* View Controllers */,
 				2870B36B25FB400D0014A4F6 /* API Helpers */,

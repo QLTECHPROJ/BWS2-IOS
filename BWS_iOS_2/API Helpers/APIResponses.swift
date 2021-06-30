@@ -151,11 +151,11 @@ class LoginDataModel : EVObject {
     static var profileImage : UIImage?
     
     class var currentMainAccountId : String {
-        return CoUserDataModel.currentUser?.MainAccountID ?? ""
+        return LoginDataModel.currentUser?.MainAccountID ?? ""
     }
     
     class var currentUserId : String {
-        return CoUserDataModel.currentUser?.UserId ?? ""
+        return LoginDataModel.currentUser?.UserId ?? ""
     }
     
     class var mainAccountUser : LoginDataModel? {
@@ -166,7 +166,7 @@ class LoginDataModel : EVObject {
             return nil
         }
         set {
-            CoUserDataModel.profileImage = nil
+            LoginDataModel.profileImage = nil
             if let newData = newValue {
                 UserDefaults.standard.setValue(newData.toJsonData(), forKey: "mainAccountUser")
             } else {
@@ -184,7 +184,7 @@ class LoginDataModel : EVObject {
             return nil
         }
         set {
-            CoUserDataModel.profileImage = nil
+            LoginDataModel.profileImage = nil
             if let newData = newValue {
                 UserDefaults.standard.setValue(newData.toJsonData(), forKey: "currentUser")
             } else {
