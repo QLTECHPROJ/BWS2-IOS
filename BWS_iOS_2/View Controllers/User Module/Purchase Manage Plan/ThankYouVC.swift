@@ -46,7 +46,10 @@ class ThankYouVC: BaseViewController {
     
     func handleCoUserRedirection() {
         if let coUser = CoUserDataModel.currentUser {
-            if coUser.isProfileCompleted == "0" {
+            if coUser.isAssessmentCompleted == "0" {
+                let aVC = AppStoryBoard.main.viewController(viewControllerClass: DoDassAssessmentVC.self)
+                self.navigationController?.pushViewController(aVC, animated: true)
+            }else if coUser.isProfileCompleted == "0" {
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass:StepVC.self)
                 aVC.strTitle = Theme.strings.step_3_title
                 aVC.strSubTitle = Theme.strings.step_3_subtitle
@@ -96,7 +99,12 @@ class ThankYouVC: BaseViewController {
             // IAP Verify Purchase
             IAPHelper.shared.verifySubscriptions()
         }
-       self.handleCoUserRedirection()
+        self.callGetCoUserDetailsAPI { (success) in
+            if success {
+                self.handleCoUserRedirection()
+            } 
+        }
+      
     }
     
     @IBAction func viewInvoiceClicked(sender: UIButton) {

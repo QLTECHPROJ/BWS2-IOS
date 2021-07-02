@@ -120,11 +120,17 @@ class DassAssessmentResultVC: BaseViewController {
     
     override func goNext() {
         if CoUserDataModel.currentUser?.planDetails?.count == 0 {
-            let aVC = AppStoryBoard.main.viewController(viewControllerClass:ManagePlanListVC.self)
-            let navVC = UINavigationController(rootViewController: aVC)
-            navVC.isNavigationBarHidden = true
-            navVC.modalPresentationStyle = .overFullScreen
-            self.navigationController?.present(navVC, animated: false, completion: nil)
+            if CoUserDataModel.currentUser?.isMainAccount == "0" {
+                let aVC = AppStoryBoard.main.viewController(viewControllerClass: ThankYouVC.self)
+                aVC.isCome = "UserDetail"
+                self.navigationController?.pushViewController(aVC, animated: false)
+            }else {
+                let aVC = AppStoryBoard.main.viewController(viewControllerClass:ManagePlanListVC.self)
+                let navVC = UINavigationController(rootViewController: aVC)
+                navVC.isNavigationBarHidden = true
+                navVC.modalPresentationStyle = .overFullScreen
+                self.navigationController?.present(navVC, animated: false, completion: nil)
+            }
         } else {
             if let coUser = CoUserDataModel.currentUser {
                 if coUser.isProfileCompleted == "0" {

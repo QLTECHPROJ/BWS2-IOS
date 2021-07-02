@@ -128,6 +128,27 @@ class PinVC: BaseViewController {
     
     
     // MARK:- ACTIONS
+    
+    @IBAction func onTappedForgotPin(_ sender: UIButton) {
+       
+        if let selectedUser = selectedUser {
+            let aVC = AppStoryBoard.main.viewController(viewControllerClass:StepVC.self)
+            aVC.strTitle = ""
+            let firstxt = "A new pin has been sent to your mail id "
+            let arr = selectedUser.Email.split {$0 == "@"}
+            let sectxt = (String((arr[0])).first(char: 3)) + "*****@"
+            let last = firstxt + sectxt + String((arr[1]))
+            aVC.strSubTitle = last
+            aVC.imageMain = UIImage(named: "Email")
+            aVC.viewTapped = {
+                self.callForgotPinAPI(selectedUser: selectedUser, complitionBlock: nil)
+            }
+            aVC.modalPresentationStyle = .overFullScreen
+            self.present(aVC, animated: false, completion: nil)
+        } else {
+            showAlertToast(message: Theme.strings.alert_select_login_user)
+        }
+    }
     @IBAction func onTappedDone(_ sender: UIButton) {
         if checkValidation() {
             lblLine1.isHidden = true
