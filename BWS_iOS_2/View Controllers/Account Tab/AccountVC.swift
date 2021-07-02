@@ -11,12 +11,12 @@ import MediaPlayer
 
 enum AccountMenu : String {
     case accountInfo = "Account Info"
-    case upgradePlan = "Upgrade Plan"
     case downloads = "Downloads"
     case resources = "Resources"
     case reminder = "Reminder"
     case billingAndOrder = "Billing and Order"
     case invoices = "Invoices"
+    case manageUser = "Manage User"
     case faq = "FAQ"
     case logout = "Log Out"
 }
@@ -37,14 +37,12 @@ class AccountVC: BaseViewController {
     var imageData = UploadDataModel()
     
     var arrayImage : [[String]] = [
-        ["UserName", "UpgradePlan"],
-        ["download_account", "Resources", "Reminder", "Billing", "Invoices"],
+        ["UserName", "download_account", "Resources", "Reminder", "Billing", "Invoices", "manage_user"],
         ["FAQ", "Logout"]
     ]
     
     var arrayTitle : [[AccountMenu]] = [
-        [AccountMenu.accountInfo, AccountMenu.upgradePlan],
-        [AccountMenu.downloads, AccountMenu.resources, AccountMenu.reminder, AccountMenu.billingAndOrder, AccountMenu.invoices],
+        [AccountMenu.accountInfo, AccountMenu.downloads, AccountMenu.resources, AccountMenu.reminder, AccountMenu.billingAndOrder, AccountMenu.invoices, AccountMenu.manageUser],
         [AccountMenu.faq, AccountMenu.logout]
     ]
     
@@ -228,15 +226,6 @@ class AccountVC: BaseViewController {
             self.navigationController?.pushViewController(aVC, animated: true)
             break
             
-        case .upgradePlan:
-            if checkInternet(showToast: true) == false {
-                return
-            }
-            
-            let aVC = AppStoryBoard.account.viewController(viewControllerClass: UpgradePlanVC.self)
-            self.navigationController?.pushViewController(aVC, animated: true)
-            break
-            
         case .downloads:
             let aVC = AppStoryBoard.account.viewController(viewControllerClass: DownloadVC.self)
             self.navigationController?.pushViewController(aVC, animated: true)
@@ -276,6 +265,13 @@ class AccountVC: BaseViewController {
             
             let aVC = AppStoryBoard.account.viewController(viewControllerClass: InvoiceVC.self)
             self.navigationController?.pushViewController(aVC, animated: true)
+            break
+        
+        case .manageUser:
+            if checkInternet(showToast: true) == false {
+                return
+            }
+            showAlertToast(message: "Manage User")
             break
             
         case .faq:

@@ -8,16 +8,24 @@
 
 import UIKit
 
+enum AccountInfoMenu : String {
+    case editProfile = "Edit Profile"
+    case changePIN = "Change PIN"
+    case deleteAccount = "Delete Account"
+}
+
 class AccountInfoVC: BaseViewController {
     
-    //MARK:- UIOutlet
+    // MARK:- OUTLETS
     @IBOutlet weak var tableView: UITableView!
     
-    //MARK:- Variables
-    var arrImage = ["UserName","ChangePassword","ChangePIN"]
-    var arrTitle = ["Edit Profile","Change Password","Change PIN"]
     
-    //MARK:- View Life Cycle
+    // MARK:- VARIABLES
+    var arrayImage = ["UserName", "ChangePIN", "delete_account"]
+    var arrayTitle : [AccountInfoMenu] = [AccountInfoMenu.editProfile, AccountInfoMenu.changePIN, AccountInfoMenu.deleteAccount]
+    
+    
+    // MARK:- VIEW LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -30,26 +38,64 @@ class AccountInfoVC: BaseViewController {
         SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.account_info)
     }
     
-    //MARK:- Functions
+    
+    // MARK:- FUNCTIONS
     override func setupUI() {
         tableView.register(nibWithCellClass:AccountCell.self)
-    }
-    
-    override func setupData() {
         
+        if CoUserDataModel.currentUser?.isPinSet != "1" {
+            if let index = arrayTitle.firstIndex(of: .changePIN), arrayTitle.count > index, arrayImage.count > index {
+                arrayImage.remove(at: index)
+                arrayTitle.remove(at: index)
+            }
+        }
     }
     
-    //MARK:- IBAction Methods
+    func handleCellSelctionAction(indexPath : IndexPath) {
+        
+        switch arrayTitle[indexPath.section] {
+        case .editProfile:
+            if checkInternet(showToast: true) == false {
+                return
+            }
+            
+            let aVC = AppStoryBoard.account.viewController(viewControllerClass: EditProfileVC.self)
+            self.navigationController?.pushViewController(aVC, animated: true)
+            break
+            
+        case .changePIN:
+            if checkInternet(showToast: true) == false {
+                return
+            }
+            
+            let aVC = AppStoryBoard.account.viewController(viewControllerClass: ChangePINVC.self)
+            self.navigationController?.pushViewController(aVC, animated: true)
+            break
+            
+        case .deleteAccount:
+            if checkInternet(showToast: true) == false {
+                return
+            }
+            
+            showAlertToast(message: "Delete Account")
+            break
+        }
+    }
+    
+    
+    // MARK:- ACTIONS
     @IBAction func backClicked(sender : UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
   
 }
 
-extension AccountInfoVC:UITableViewDelegate,UITableViewDataSource {
+
+// MARK:- UITableViewDelegate, UITableViewDataSource
+extension AccountInfoVC: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-       return 3
+        return arrayTitle.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -59,34 +105,15 @@ extension AccountInfoVC:UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withClass: AccountCell.self)
         cell.viewBack.backgroundColor = Theme.colors.off_white_F9F9F9
-        cell.img.image = UIImage(named: arrImage[indexPath.section])
-        cell.lblTitle.text = arrTitle[indexPath.section]
+        cell.img.image = UIImage(named: arrayImage[indexPath.section])
+        cell.lblTitle.text = arrayTitle[indexPath.section].rawValue
         cell.lblLine.isHidden = true
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 0 {
-            if checkInternet(showToast: true) == false {
-                return
-            }
-            
-            let aVC = AppStoryBoard.account.viewController(viewControllerClass: EditProfileVC.self)
-            self.navigationController?.pushViewController(aVC, animated: true)
-        } else if indexPath.section == 1 {
-            if checkInternet(showToast: true) == false {
-                return
-            }
-            
-            let aVC = AppStoryBoard.account.viewController(viewControllerClass: ChangePassWordVC.self)
-            self.navigationController?.pushViewController(aVC, animated: true)
-        } else {
-            if checkInternet(showToast: true) == false {
-                return
-            }
-            
-            let aVC = AppStoryBoard.account.viewController(viewControllerClass: ChangePINVC.self)
-            self.navigationController?.pushViewController(aVC, animated: true)
+        DispatchQueue.main.async {
+            self.handleCellSelctionAction(indexPath: indexPath)
         }
     }
     
@@ -103,4 +130,5 @@ extension AccountInfoVC:UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
     }
+    
 }
