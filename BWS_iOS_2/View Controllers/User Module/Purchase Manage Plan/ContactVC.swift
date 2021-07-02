@@ -156,7 +156,7 @@ class ContactVC: BaseViewController {
     }
     
     @IBAction func onTappedContinue(_ sender: UIButton) {
-        let aVC = AppStoryBoard.main.viewController(viewControllerClass: UserDetailVC.self)
+        let aVC = AppStoryBoard.main.viewController(viewControllerClass: UserListVC.self)
         self.navigationController?.pushViewController(aVC, animated: false)
     }
     

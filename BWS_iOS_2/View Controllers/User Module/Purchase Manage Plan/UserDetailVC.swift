@@ -84,21 +84,7 @@ class UserDetailVC: BaseViewController {
   
     @IBAction func onTappedProcced(_ sender: UIButton) {
         if checkValidation() {
-        let aVC = AppStoryBoard.main.viewController(viewControllerClass:StepVC.self)
-        aVC.strTitle = ""
-        let firstxt = "A new pin has been sent to your mail id "
-        let arr = txtFEmail.text?.split {$0 == "@"}
-        let sectxt = (String((arr?[0])!).first(char: 3)) + "*****@"
-        let last = firstxt + sectxt + String((arr?[1])!)
-        aVC.strSubTitle = last
-        aVC.imageMain = UIImage(named: "Email")
-        aVC.viewTapped = {
-            let aVC = AppStoryBoard.main.viewController(viewControllerClass: ThankYouVC.self)
-            aVC.isCome = "UserDetail"
-            self.navigationController?.pushViewController(aVC, animated: false)
-        }
-        aVC.modalPresentationStyle = .overFullScreen
-        self.present(aVC, animated: false, completion: nil)
+            callAddUserDetailAPI()
         }
     }
     @IBAction func backButton(_ sender: Any) {

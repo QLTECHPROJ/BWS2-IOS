@@ -21,6 +21,8 @@ class SetUpPInVC: BaseViewController {
     @IBOutlet weak var btnDone: UIButton!
     
     //MARK:- Variables
+    var isComeFrom:String?
+    var selectedUser : CoUserDataModel?
     
     //MARK:- View Life Cycle
     override func viewDidLoad() {
@@ -90,16 +92,7 @@ class SetUpPInVC: BaseViewController {
     @IBAction func onTappedDone(_ sender: UIButton) {
         
         if checkValidation() {
-            let aVC = AppStoryBoard.main.viewController(viewControllerClass:StepVC.self)
-            aVC.strTitle = ""
-            aVC.strSubTitle = "Proceed with adding New User"
-            aVC.imageMain = UIImage(named: "NewUser")
-            aVC.viewTapped = {
-                let aVC = AppStoryBoard.main.viewController(viewControllerClass: SleepTimeVC.self)
-                self.navigationController?.pushViewController(aVC, animated: false)
-            }
-            aVC.modalPresentationStyle = .overFullScreen
-            self.present(aVC, animated: false, completion: nil)
+            callSetUpPinAPI()
         }
     }
     

@@ -131,14 +131,21 @@ class UserListPopUpVC: BaseViewController {
     
     func newUserLogin() {
         if let newLoginUser = selectedUser {
-            let aVC = AppStoryBoard.main.viewController(viewControllerClass:PinVC.self)
-            aVC.strTitle = "Unlock"
-            aVC.selectedUser = newLoginUser
-            aVC.pinVerified = {
-                self.handleCoUserRedirection()
+            if newLoginUser.isPinSet == "0" {
+                let aVC = AppStoryBoard.main.viewController(viewControllerClass: SetUpPInVC.self)
+                aVC.isComeFrom = "UserList"
+                aVC.selectedUser = selectedUser
+                self.navigationController?.pushViewController(aVC, animated: true)
+            }else {
+                let aVC = AppStoryBoard.main.viewController(viewControllerClass:PinVC.self)
+                aVC.strTitle = "Unlock"
+                aVC.selectedUser = newLoginUser
+                aVC.pinVerified = {
+                    self.handleCoUserRedirection()
+                }
+                aVC.modalPresentationStyle = .overFullScreen
+                self.navigationController?.present(aVC, animated: true, completion: nil)
             }
-            aVC.modalPresentationStyle = .overFullScreen
-            self.navigationController?.present(aVC, animated: true, completion: nil)
         }
     }
     

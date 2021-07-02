@@ -65,7 +65,7 @@ class LoginVC: BaseViewController {
         //lblTitle.text = Theme.strings.login_title
         lblSubTitle.attributedText = Theme.strings.login_subtitle.attributedString(alignment: .center, lineSpacing: 5)
        
-        addAttribut(strText: "Don't have account? SIGN UP", strSubString: "SIGN UP", label: lblSignUp, size: 12)
+        addAttribut(strText: "Don't have account? Sign Up", strSubString: "Sign Up", label: lblSignUp, size: 12)
     }
     
     override func setupData() {

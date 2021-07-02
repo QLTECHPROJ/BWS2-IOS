@@ -81,7 +81,7 @@ class SignUpVC: BaseViewController {
         txtFMobileNo.delegate = self
         txtFEmailAdd.delegate = self
         
-        addAttribut(strText: "Already have account ? SIGN IN", strSubString: "SIGN IN", label: lblLogin, size: 12)
+        addAttribut(strText: "Already have account ? Sign In", strSubString: "Sign In", label: lblLogin, size: 12)
     }
     
     override func setupData() {

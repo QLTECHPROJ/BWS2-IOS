@@ -68,17 +68,19 @@ class ThankYouVC: BaseViewController {
     
     override func setupData() {
         if isCome == "UserDetail"{
+            if let coUser = CoUserDataModel.currentUser {
             scrollview.isScrollEnabled = false
             imgThankYou.image = UIImage(named: "Congrats")
             lblTitle.font = UIFont(name: Theme.fonts.MontserratBold, size: 45.0)
-            let strText = "Congrats!\nMichael Dale"
-            addAttribut(strText: strText, strSubString: "Michael Dale", label: lblTitle, size: 24)
-            lblSubTitle.text = "You already have access to 6 month of Enhance program."
+                let strText = "Congrats!\n" + coUser.Name
+            addAttribut(strText: strText, strSubString: coUser.Name, label: lblTitle, size: 24)
+            lblSubTitle.text = "You already have access to 6 month of Enhance program." 
             btnAddUser.isHidden = true
             btnViewInvoice.isHidden = true
             imgWidth.constant = 309
             imgHeight.constant = 281
             lblTop.constant = 40
+            }
         }
     }
     
@@ -94,12 +96,7 @@ class ThankYouVC: BaseViewController {
             // IAP Verify Purchase
             IAPHelper.shared.verifySubscriptions()
         }
-        if isCome == "UserDetail"{
-            showAlertToast(message: "Congratualations")
-        }else {
-            self.handleCoUserRedirection()
-        }
-        
+       self.handleCoUserRedirection()
     }
     
     @IBAction func viewInvoiceClicked(sender: UIButton) {

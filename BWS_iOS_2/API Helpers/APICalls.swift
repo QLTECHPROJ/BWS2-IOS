@@ -472,6 +472,20 @@ extension UIViewController {
         }
     }
     
+    // Forgot Pin API Call
+    func callForgotPinAPI(selectedUser : CoUserDataModel?, complitionBlock : (() -> ())?) {
+        let parameters = [APIParameters.UserId:selectedUser?.UserId ?? "",
+                          "Email":selectedUser?.Email ?? ""]
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.forgotpin(parameters)) { (response : GeneralModel) in
+            if response.ResponseCode == "200" {
+                let aVC = AppStoryBoard.main.viewController(viewControllerClass: UserListVC.self)
+                self.navigationController?.pushViewController(aVC, animated: false)
+                
+            }
+        }
+    }
+    
 }
 
 extension ManageVC {
@@ -1401,6 +1415,63 @@ extension OrderSummaryVC {
                 showAlertToast(message: response.ResponseMessage)
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass: ThankYouVC.self)
                 self.navigationController?.pushViewController(aVC, animated: true)
+            }
+        }
+    }
+}
+
+extension SetUpPInVC {
+    func callSetUpPinAPI() {
+        let parameters = [APIParameters.UserId:selectedUser?.UserId ?? "",
+                          "Pin":txtFConfirmLoginPin.text ?? ""]
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.setloginpin(parameters)) { (response :GeneralModel) in
+            
+            if response.ResponseCode == "200" {
+                showAlertToast(message: response.ResponseMessage)
+                if self.isComeFrom == "UserList" {
+                    let aVC = AppStoryBoard.main.viewController(viewControllerClass: UserListVC.self)
+                    self.navigationController?.pushViewController(aVC, animated: false)
+                }else {
+                    let aVC = AppStoryBoard.main.viewController(viewControllerClass:StepVC.self)
+                    aVC.strTitle = ""
+                    aVC.strSubTitle = "Proceed with adding New User"
+                    aVC.imageMain = UIImage(named: "NewUser")
+                    aVC.viewTapped = {
+                        let aVC = AppStoryBoard.main.viewController(viewControllerClass: UserDetailVC.self)
+                        self.navigationController?.pushViewController(aVC, animated: false)
+                    }
+                    aVC.modalPresentationStyle = .overFullScreen
+                    self.present(aVC, animated: false, completion: nil)
+                }
+            }
+        }
+    }
+}
+
+extension UserDetailVC {
+    
+    func callAddUserDetailAPI() {
+        let parameters = [APIParameters.MainAccountID:LoginDataModel.currentMainAccountId,
+                          "Name":txtFName.text ?? "",
+                          "Email":txtFEmail.text ?? ""]
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.addcouser(parameters), displayHud: true, showToast: false) { (response : CoUserModel) in
+            if response.ResponseCode == "200" {
+                showAlertToast(message: response.ResponseMessage)
+                
+//                // Segment Tracking
+//                if self.selectedUser == nil {
+//                    if let userDetails = response.ResponseData {
+//                        let traits = ["name":userDetails.Name,
+//                                      "mobileNo":userDetails.Mobile,
+//                                      "email":userDetails.Email]
+//                        SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.Couser_Added, traits: traits)
+//                    }
+//                }
+                
+                let aVC = AppStoryBoard.main.viewController(viewControllerClass: UserListVC.self)
+                self.navigationController?.pushViewController(aVC, animated: false)
             }
         }
     }

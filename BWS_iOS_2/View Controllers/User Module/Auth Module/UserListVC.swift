@@ -104,20 +104,15 @@ class UserListVC: BaseViewController {
             if coUser.isAssessmentCompleted == "0" {
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass: DoDassAssessmentVC.self)
                 self.navigationController?.pushViewController(aVC, animated: true)
-            } else if coUser.planDetails?.count == 0 {
-                let aVC = AppStoryBoard.main.viewController(viewControllerClass: DassAssessmentResultVC.self)
-                self.navigationController?.pushViewController(aVC, animated: true)
-            } else if coUser.isProfileCompleted == "0" {
-                let aVC = AppStoryBoard.main.viewController(viewControllerClass:StepVC.self)
-                aVC.strTitle = Theme.strings.step_3_title
-                aVC.strSubTitle = Theme.strings.step_3_subtitle
-                aVC.imageMain = UIImage(named: "profileForm")
-                aVC.viewTapped = {
-                    let aVC = AppStoryBoard.main.viewController(viewControllerClass: ProfileForm2VC.self)
-                    self.navigationController?.pushViewController(aVC, animated: false)
-                }
-                aVC.modalPresentationStyle = .overFullScreen
-                self.present(aVC, animated: false, completion: nil)
+ //           }
+   //             else if coUser.planDetails?.count == 0 {
+//                let aVC = AppStoryBoard.main.viewController(viewControllerClass: DassAssessmentResultVC.self)
+//                self.navigationController?.pushViewController(aVC, animated: true)
+           } else if coUser.isProfileCompleted == "0" {
+            let aVC = AppStoryBoard.main.viewController(viewControllerClass: ThankYouVC.self)
+            aVC.isCome = "UserDetail"
+            self.navigationController?.pushViewController(aVC, animated: false)
+                
             } else if coUser.AvgSleepTime.trim.count == 0 || coUser.AreaOfFocus.count == 0 {
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass: SleepTimeVC.self)
                 self.navigationController?.pushViewController(aVC, animated: true)
@@ -133,9 +128,22 @@ class UserListVC: BaseViewController {
         let selectedUser = arrayUsers.filter { $0.isSelected == true }.first
         
         if let selectedUser = selectedUser {
-            let aVC = AppStoryBoard.main.viewController(viewControllerClass:AddProfileVC.self)
-            aVC.selectedUser = selectedUser
-            self.navigationController?.pushViewController(aVC, animated: true)
+//            let aVC = AppStoryBoard.main.viewController(viewControllerClass:AddProfileVC.self)
+//            aVC.selectedUser = selectedUser
+//            self.navigationController?.pushViewController(aVC, animated: true)
+            let aVC = AppStoryBoard.main.viewController(viewControllerClass:StepVC.self)
+            aVC.strTitle = ""
+            let firstxt = "A new pin has been sent to your mail id "
+            let arr = selectedUser.Email.split {$0 == "@"}
+            let sectxt = (String((arr[0])).first(char: 3)) + "*****@"
+            let last = firstxt + sectxt + String((arr[1]))
+            aVC.strSubTitle = last
+            aVC.imageMain = UIImage(named: "Email")
+            aVC.viewTapped = {
+                self.callForgotPinAPI(selectedUser: selectedUser, complitionBlock: nil)
+            }
+            aVC.modalPresentationStyle = .overFullScreen
+            self.present(aVC, animated: false, completion: nil)
         } else {
             showAlertToast(message: Theme.strings.alert_select_login_user)
         }
@@ -145,16 +153,23 @@ class UserListVC: BaseViewController {
     @IBAction func onTappedLogin(_ sender: UIButton) {
         let selectedUser = arrayUsers.filter { $0.isSelected == true }.first
         
-        if let selectedUser = selectedUser {
-            let aVC = AppStoryBoard.main.viewController(viewControllerClass:PinVC.self)
+        if selectedUser!.isPinSet == "0" {
+            let aVC = AppStoryBoard.main.viewController(viewControllerClass: SetUpPInVC.self)
             aVC.selectedUser = selectedUser
-            aVC.pinVerified = {
-                self.handleCoUserRedirection()
+            aVC.isComeFrom = "UserList"
+            self.navigationController?.pushViewController(aVC, animated: true)
+        }else {
+            if let selectedUser = selectedUser {
+                let aVC = AppStoryBoard.main.viewController(viewControllerClass:PinVC.self)
+                aVC.selectedUser = selectedUser
+                aVC.pinVerified = {
+                    self.handleCoUserRedirection()
+                }
+                aVC.modalPresentationStyle = .overFullScreen
+                self.navigationController?.present(aVC, animated: true, completion: nil)
+            } else {
+                showAlertToast(message: Theme.strings.alert_select_login_user)
             }
-            aVC.modalPresentationStyle = .overFullScreen
-            self.navigationController?.present(aVC, animated: true, completion: nil)
-        } else {
-            showAlertToast(message: Theme.strings.alert_select_login_user)
         }
     }
     
