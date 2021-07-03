@@ -287,6 +287,8 @@ struct AppStrings {
     let logout = "Log out"
     let delete = "DELETE"
     let close = "CLOSE"
+    let confirm = "CONFIRM"
+    let goBack = "GO BACK"
     
     /* App Update Popup */
     let update = "UPDATE"
@@ -297,6 +299,12 @@ struct AppStrings {
     
     let force_update_title = "Update Required"
     let force_update_subtitle = "To keep using Brain Wellness App, download the latest version"
+    
+    let cancel_manage_alert_title = "Cancel Manage Program"
+    let cancel_manage_alert_subtitle = "Are you sure you want to cancel your subscription?"
+    
+    let delete_account_alert_title = "Are you sure you want to permanently delete this account?"
+    let delete_account_alert_subtitle = "You can't undo this action"
     
     /* Common Strings */
     let please_wait = "Please wait"
