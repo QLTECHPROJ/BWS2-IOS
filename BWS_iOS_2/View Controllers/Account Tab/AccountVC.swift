@@ -271,7 +271,9 @@ class AccountVC: BaseViewController {
             if checkInternet(showToast: true) == false {
                 return
             }
-            showAlertToast(message: "Manage User")
+            
+            let aVC = AppStoryBoard.account.viewController(viewControllerClass: ManageUserVC.self)
+            self.navigationController?.pushViewController(aVC, animated: true)
             break
             
         case .faq:

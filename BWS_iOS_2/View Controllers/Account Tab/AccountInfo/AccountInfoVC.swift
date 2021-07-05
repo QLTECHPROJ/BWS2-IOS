@@ -77,7 +77,9 @@ class AccountInfoVC: BaseViewController {
                 return
             }
             
-            showAlertToast(message: "Delete Account")
+            let aVC = AppStoryBoard.account.viewController(viewControllerClass: CancelSubVC.self)
+            aVC.isFromDelete = true
+            self.navigationController?.pushViewController(aVC, animated: true)
             break
         }
     }

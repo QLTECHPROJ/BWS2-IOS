@@ -50,6 +50,8 @@ class AlertPopUpVC: BaseViewController {
         lblTitle.text = titleText
         lblDetail.text = detailText
         
+        lblTitle.numberOfLines = 0
+        
         btnDelete.isHidden = firstButtonTitle.count == 0
         btnClose.isHidden = secondButtonTitle.count == 0
         
