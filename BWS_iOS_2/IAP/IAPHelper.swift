@@ -14,10 +14,11 @@ class IAPHelper : UIViewController {
     
     // MARK:- VARIABLES
     static var shared = IAPHelper()
-    var isIAPEnabled = false
+    var isIAPEnabled = true
     var arrPlanData = [SKProduct]()
     var successPurchase : ( () -> Void )?
     var originalTransactionID:String?
+    var planID:String?
     
     
     //MARK:- product fetch
@@ -51,6 +52,7 @@ class IAPHelper : UIViewController {
         SwiftyStoreKit.purchaseProduct(self.arrPlanData[0].productIdentifier, atomically: atomically) { result in
             hideHud()
             print("PurchaseProductID:-",self.arrPlanData[0].productIdentifier)
+            self.planID = self.arrPlanData[0].productIdentifier
             
             if case .success(let purchase) = result {
                 self.originalTransactionID = purchase.transaction.transactionIdentifier

@@ -134,8 +134,14 @@ class OTPVC: BaseViewController {
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass: DoDassAssessmentVC.self)
                 self.navigationController?.pushViewController(aVC, animated: true)
             } else if coUser.planDetails?.count == 0 {
-                let aVC = AppStoryBoard.main.viewController(viewControllerClass: DassAssessmentResultVC.self)
-                self.navigationController?.pushViewController(aVC, animated: true)
+                if coUser.CoUserCount != "0" {
+                    let aVC = AppStoryBoard.main.viewController(viewControllerClass: UserListVC.self)
+                    self.navigationController?.pushViewController(aVC, animated: true)
+                }else {
+                    let aVC = AppStoryBoard.main.viewController(viewControllerClass: DassAssessmentResultVC.self)
+                    self.navigationController?.pushViewController(aVC, animated: true)
+                }
+                
             } else if coUser.isProfileCompleted == "0" {
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass:StepVC.self)
                 aVC.strTitle = Theme.strings.step_3_title

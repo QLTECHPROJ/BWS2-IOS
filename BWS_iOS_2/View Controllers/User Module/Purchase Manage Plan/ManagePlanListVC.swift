@@ -156,7 +156,7 @@ class ManagePlanListVC: BaseViewController {
         
         sliderProfiles.isContinuous = true
         sliderProfiles.minimumValue = CGFloat(1)
-        sliderProfiles.maximumValue = CGFloat(5)
+        sliderProfiles.maximumValue = CGFloat(4)
         sliderProfiles.snapStepSize = CGFloat(1)
         sliderProfiles.distanceBetweenThumbs = CGFloat(1)
         sliderProfiles.keepsDistanceBetweenThumbs = true

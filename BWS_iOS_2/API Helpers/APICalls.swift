@@ -1404,12 +1404,19 @@ extension EditProfileVC {
 extension OrderSummaryVC {
     //user plan Purchase
     func callIAPPlanPurchaseAPI() {
+        
+        guard let receiptURL = Bundle.main.appStoreReceiptURL, let receiptString = try? Data(contentsOf: receiptURL, options: .alwaysMapped).base64EncodedString(options: []) else {
+            return
+        }
 
         let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
                           APIParameters.MainAccountID:LoginDataModel.currentMainAccountId,
-                          "OriginalTransactionID":IAPHelper.shared.originalTransactionID ?? ""]
+                          "TransactionID":IAPHelper.shared.originalTransactionID ?? "",
+                          "PlanId":IAPHelper.shared.planID ?? "",
+                          "AppType":APP_TYPE,
+                          "ReceiptData":receiptString]
 
-        APICallManager.sharedInstance.callAPI(router: APIRouter.userplanpurchaselist(parameters)) { (response :GeneralModel) in
+        APICallManager.sharedInstance.callAPI(router: APIRouter.planpurchase(parameters)) { (response :GeneralModel) in
 
             if response.ResponseCode == "200" {
                 showAlertToast(message: response.ResponseMessage)
@@ -1472,6 +1479,24 @@ extension UserDetailVC {
                 
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass: UserListVC.self)
                 self.navigationController?.pushViewController(aVC, animated: false)
+            }
+        }
+    }
+}
+
+extension ContactVC {
+    
+    func callInviteUserAPI(contact : ContactModel) {
+
+        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
+                          "Name":contact.contactNumber,
+                          "MobileNo":contact.contactName]
+
+        APICallManager.sharedInstance.callAPI(router: APIRouter.inviteuser(parameters)) { (response :GeneralModel) in
+
+            if response.ResponseCode == "200" {
+                showAlertToast(message: response.ResponseMessage)
+                self.sendMessage(contact: contact)
             }
         }
     }

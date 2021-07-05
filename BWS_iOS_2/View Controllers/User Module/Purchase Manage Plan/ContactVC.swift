@@ -116,6 +116,10 @@ class ContactVC: BaseViewController {
         self.setupData()
     }
     
+    func sendSMS(contact : ContactModel) {
+        callInviteUserAPI(contact: contact)
+    }
+    
     func sendMessage(contact : ContactModel) {
         if (MFMessageComposeViewController.canSendText()) {
             let inviteFriendURL = CoUserDataModel.currentMainAccountId
@@ -220,7 +224,7 @@ extension ContactVC: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withClass: InviteFriendCell.self)
         cell.configureCell(data: arrayContactsSearch[indexPath.row])
         cell.inviteClicked = {
-            self.sendMessage(contact: self.arrayContactsSearch[indexPath.row])
+            self.sendSMS(contact: self.arrayContactsSearch[indexPath.row])
         }
         return cell
     }

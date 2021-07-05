@@ -148,6 +148,7 @@ class LoginDataModel : EVObject {
     var errormsg = ""
     var isSelected = false
     var isMainAccount = ""
+    var CoUserCount = ""
     
     static var profileImage : UIImage?
     
@@ -362,6 +363,7 @@ class CoUserDataModel : EVObject {
     var errormsg = ""
     var isSelected = false
     var isMainAccount = ""
+    var CoUserCount = ""
     
     static var profileImage : UIImage?
     

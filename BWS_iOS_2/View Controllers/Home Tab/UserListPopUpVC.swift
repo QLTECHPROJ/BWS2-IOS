@@ -93,7 +93,7 @@ class UserListPopUpVC: BaseViewController {
     }
     
     @objc func viewTapped(_ sender: UITapGestureRecognizer) {
-        let aVC = AppStoryBoard.main.viewController(viewControllerClass:AddProfileVC.self)
+        let aVC = AppStoryBoard.main.viewController(viewControllerClass:AddUserVC.self)
         self.navigationController?.pushViewController(aVC, animated: true)
     }
     
