@@ -69,6 +69,8 @@ enum APIRouter: URLRequestConvertible {
     case searchonsuggestedlist([String:String])
     
     //Account
+    case manageuserlist([String:String])
+    case cancelinviteuser([String:String])
     case resourcelist([String:String])
     case resourcecatlist([String:String])
     case logout([String:String])
@@ -179,6 +181,10 @@ enum APIRouter: URLRequestConvertible {
             return APIRoute(path: "searchonsuggestedlist", method: .post, data: data)
             
         //Account
+        case .manageuserlist(let data):
+            return APIRoute(path: "manageuserlist", method: .post, data: data)
+        case .cancelinviteuser(let data):
+            return APIRoute(path: "cancelinviteuser", method: .post, data: data)
         case .resourcelist(let data):
             return APIRoute(path: "resourcelist", method: .post, data: data)
         case .resourcecatlist(let data):

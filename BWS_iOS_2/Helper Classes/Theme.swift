@@ -282,6 +282,7 @@ struct AppStrings {
     let ok = "OK"
     let cancel = "CANCEL"
     let cancel_small = "Cancel"
+    let resend_small = "Resend"
     let yes = "YES"
     let no = "NO"
     let logout = "Log out"
@@ -306,8 +307,14 @@ struct AppStrings {
     let delete_account_alert_title = "Are you sure you want to permanently delete this account?"
     let delete_account_alert_subtitle = "You can't undo this action"
     
+    let delete_user_alert_title = "Are you sure you want to remove user?"
+    let delete_user_alert_subtitle = "You can't undo this action"
+    
     /* Common Strings */
     let please_wait = "Please wait"
+    
+    let request_sent = "Request sent"
+    let request_expired = "Request expired"
     
     let playlist = "Playlist"
     let successfully_added_to_playlist = "Successfully added to playlist"
