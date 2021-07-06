@@ -94,6 +94,7 @@ class UserListPopUpVC: BaseViewController {
     
     @objc func viewTapped(_ sender: UITapGestureRecognizer) {
         let aVC = AppStoryBoard.main.viewController(viewControllerClass:AddUserVC.self)
+        aVC.isCome = "AddUser"
         self.navigationController?.pushViewController(aVC, animated: true)
     }
     

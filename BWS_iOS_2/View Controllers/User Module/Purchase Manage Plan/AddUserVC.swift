@@ -13,18 +13,26 @@ class AddUserVC: BaseViewController {
     //MARK:- UIOutlet
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblSubTitle: UILabel!
+    @IBOutlet weak var btnBack: UIButton!
     
     //MARK:- Variables
+    var isCome:String?
     
     //MARK:- View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setupUI()
     }
     
     //MARK:- Functions
     override func setupUI() {
-        
+        if isCome == "AddUser" {
+            btnBack.isHidden = false
+            btnBack.isUserInteractionEnabled = true
+        }else{
+            btnBack.isHidden = true
+            btnBack.isUserInteractionEnabled = false
+        }
     }
     
     override func setupData() {
@@ -87,4 +95,10 @@ class AddUserVC: BaseViewController {
         aVC.modalPresentationStyle = .overFullScreen
         self.present(aVC, animated: false, completion: nil)
     }
+    @IBAction func ontappedBack(_ sender: UIButton) {
+        if isCome == "AddUser" {
+            navigationController?.popViewController(animated: true)
+        }
+    }
+    
 }

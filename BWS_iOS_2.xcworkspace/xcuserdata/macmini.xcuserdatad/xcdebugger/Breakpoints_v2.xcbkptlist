@@ -62,8 +62,8 @@
             filePath = "BWS_iOS_2/View Controllers/Home Tab/UserListPopUpVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
             landmarkName = "handleCoUserRedirection()"
             landmarkType = "7">
          </BreakpointContent>
@@ -78,8 +78,8 @@
             filePath = "BWS_iOS_2/View Controllers/Home Tab/UserListPopUpVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
             landmarkName = "handleCoUserRedirection()"
             landmarkType = "7">
          </BreakpointContent>

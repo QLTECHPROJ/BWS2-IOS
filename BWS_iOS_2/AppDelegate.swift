@@ -23,8 +23,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        completeTransactions()
-        
+        if IAPHelper.shared.isIAPEnabled {
+            completeTransactions()
+        }
         // Set App Notification Count to "0" on App Launch
         UIApplication.shared.applicationIconBadgeNumber = 0
         
