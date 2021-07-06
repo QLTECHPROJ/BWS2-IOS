@@ -10,6 +10,7 @@ import UIKit
 
 class ManageUserCell: UITableViewCell {
     
+    // MARK:- OUTLETS
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var viewRequestStatus: UIView!
     @IBOutlet weak var lblRequestStatus: UILabel!
@@ -17,14 +18,56 @@ class ManageUserCell: UITableViewCell {
     @IBOutlet weak var btnCancel : UIButton!
     @IBOutlet weak var btnSelect : UIButton!
     
+    
+    // MARK:- VARIABLES
+    var didClickedCancel : (() -> Void)?
+    
+    
+    // MARK:- FUNCTIONS
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
     // Configure Cell
-    func configureCell(data : GeneralModel) {
+    func configureCell(data : CoUserDataModel) {
+        lblTitle.text = data.Name
         
+        if data.InviteStatus == "1" {
+            viewRequestStatus.isHidden = false
+            btnCancel.isHidden = false
+            btnSelect.isHidden = true
+            
+            lblRequestStatus.text = Theme.strings.request_sent
+            imgViewRequestType.image = UIImage(named: "tag_green")
+            btnCancel.setTitle(Theme.strings.cancel_small, for: .normal)
+            btnCancel.setTitleColor(Theme.colors.orange_F1646A, for: .normal)
+        } else if data.InviteStatus == "2" {
+            viewRequestStatus.isHidden = false
+            btnCancel.isHidden = false
+            btnSelect.isHidden = true
+            
+            lblRequestStatus.text = Theme.strings.request_expired
+            imgViewRequestType.image = UIImage(named: "tag_yellow")
+            btnCancel.setTitle(Theme.strings.resend_small, for: .normal)
+            btnCancel.setTitleColor(Theme.colors.textColor, for: .normal)
+        } else {
+            viewRequestStatus.isHidden = true
+            btnCancel.isHidden = true
+            btnSelect.isHidden = false
+        }
+        
+        if data.isSelected {
+            btnSelect.setImage(UIImage(named: "selected_user"), for: .normal)
+        } else {
+            btnSelect.setImage(UIImage(named: "select_user"), for: .normal)
+        }
+    }
+    
+    
+    // MARK:- ACTIONS
+    @IBAction func btnCancelClicked(sender : UIButton) {
+        self.didClickedCancel?()
     }
     
 }

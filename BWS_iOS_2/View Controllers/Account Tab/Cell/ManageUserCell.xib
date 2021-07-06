@@ -38,6 +38,9 @@
                                 <state key="normal" title="Cancel">
                                     <color key="titleColor" name="orange_F1646A"/>
                                 </state>
+                                <connections>
+                                    <action selector="btnCancelClickedWithSender:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="ZLI-VL-mhM"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bpQ-VS-xar">
                                 <rect key="frame" x="303" y="10" width="30" height="30"/>

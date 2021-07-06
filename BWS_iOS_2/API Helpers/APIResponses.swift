@@ -364,6 +364,7 @@ class CoUserDataModel : EVObject {
     var isSelected = false
     var isMainAccount = ""
     var CoUserCount = ""
+    var InviteStatus = ""
     
     static var profileImage : UIImage?
     

@@ -1501,3 +1501,54 @@ extension ContactVC {
         }
     }
 }
+
+extension ManageUserVC {
+    
+    // User List API Call
+    func callManageUserListAPI() {
+        arrayUsers.removeAll()
+        tableView.reloadData()
+        buttonEnableDisable()
+        
+        let parameters = [APIParameters.MainAccountID:LoginDataModel.currentMainAccountId]
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.manageuserlist(parameters)) { (response : UserListModel) in
+            if response.ResponseCode == "200" {
+                self.arrayUsers = response.ResponseData.UserList
+                self.tableView.reloadData()
+                self.setupData()
+            } else {
+                self.setupData()
+            }
+        }
+    }
+    
+    func callInviteUserAPI(user : CoUserDataModel) {
+        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
+                          "Name":user.Name,
+                          "MobileNo":user.Mobile,
+                          "Resend":"1"]
+
+        APICallManager.sharedInstance.callAPI(router: APIRouter.inviteuser(parameters)) { (response :GeneralModel) in
+
+            if response.ResponseCode == "200" {
+                showAlertToast(message: response.ResponseMessage)
+                self.callManageUserListAPI()
+            }
+        }
+    }
+    
+    func callCancelInviteAPI(user : CoUserDataModel) {
+        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
+                          "MobileNo":user.Mobile]
+
+        APICallManager.sharedInstance.callAPI(router: APIRouter.cancelinviteuser(parameters)) { (response :GeneralModel) in
+
+            if response.ResponseCode == "200" {
+                showAlertToast(message: response.ResponseMessage)
+                self.callManageUserListAPI()
+            }
+        }
+    }
+    
+}
