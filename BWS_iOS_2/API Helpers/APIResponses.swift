@@ -28,6 +28,7 @@ class GeneralDataModel : EVObject {
     var indexScore = ""
     var ScoreLevel = ""
     var status = ""
+    var InviteLink = ""
     var data : RecieptDataModel?
 }
 

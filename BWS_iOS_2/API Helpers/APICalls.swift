@@ -1489,13 +1489,14 @@ extension ContactVC {
     func callInviteUserAPI(contact : ContactModel) {
 
         let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
-                          "Name":contact.contactNumber,
-                          "MobileNo":contact.contactName]
+                          "Name":contact.contactName,
+                          "MobileNo":contact.contactNumber]
 
         APICallManager.sharedInstance.callAPI(router: APIRouter.inviteuser(parameters)) { (response :GeneralModel) in
 
             if response.ResponseCode == "200" {
                 showAlertToast(message: response.ResponseMessage)
+                self.strURL = response.ResponseData?.InviteLink
                 self.sendMessage(contact: contact)
             }
         }

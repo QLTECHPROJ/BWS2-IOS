@@ -81,6 +81,10 @@ class ManageUserVC: BaseViewController {
         if checkInternet(showToast: true) == false {
             return
         }
+        let aVC = AppStoryBoard.main.viewController(viewControllerClass:AddUserVC.self)
+        aVC.isCome = "AddUser"
+        self.navigationController?.pushViewController(aVC, animated: true)
+
     }
     
     @IBAction func removeUserClicked(sender : UIButton) {

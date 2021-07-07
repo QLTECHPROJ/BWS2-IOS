@@ -24,7 +24,7 @@ class ContactVC: BaseViewController {
     var arrayContactList = [CNContact]()
     var arrayContacts = [ContactModel]()
     var arrayContactsSearch = [ContactModel]()
-    
+    var strURL:String?
     
     // MARK:- VIEW LIFE CYCLE
     override func viewDidLoad() {
@@ -122,8 +122,8 @@ class ContactVC: BaseViewController {
     
     func sendMessage(contact : ContactModel) {
         if (MFMessageComposeViewController.canSendText()) {
-            let inviteFriendURL = CoUserDataModel.currentMainAccountId
-            let shareText = String(format:"Hey, I am loving using the Brain Wellness App. You can develop yourself in the comfort of your home while you sleep and gain access to over 75 audio programs helping you to live inspired and improve your mental wellbeing. I would like to invite you to try it.  Sign up using the link %@",inviteFriendURL)
+           
+            let shareText = String(format:"Hey, I am loving using the Brain Wellness App. You can develop yourself in the comfort of your home while you sleep and gain access to over 75 audio programs helping you to live inspired and improve your mental wellbeing. I would like to invite you to try it.  Sign up using the link %@",strURL ?? "")
             
             let controller = MFMessageComposeViewController()
             controller.body = shareText
@@ -134,7 +134,7 @@ class ContactVC: BaseViewController {
             // Segment Tracking
             let traits = ["userId":CoUserDataModel.currentUserId,
                           "MainAccountId":CoUserDataModel.currentMainAccountId,
-                          "referLink":inviteFriendURL,
+                          "referLink":strURL ?? "",
                           "shareText":shareText,
                           "contactName":contact.contactName,
                           "contactNumber":contact.contactNumber]
