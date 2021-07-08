@@ -138,7 +138,7 @@ extension ManageUserVC : AlertPopUpVCDelegate {
     
     func handleAction(sender: UIButton, popUpTag: Int) {
         if sender.tag == 0 {
-            print("Remove User")
+            callDeleteUserAPI()
         }
     }
     
