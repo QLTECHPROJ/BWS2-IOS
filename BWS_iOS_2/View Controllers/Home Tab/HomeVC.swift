@@ -18,7 +18,7 @@ class HomeVC: BaseViewController {
     
     @IBOutlet weak var backView: UIView!
     @IBOutlet weak var tableView: UITableView!
-    
+    @IBOutlet weak var viewReminder: UIView!
     
     // MARK:- VARIABLES
     var suggstedPlaylist : PlaylistDetailsModel?
@@ -56,6 +56,8 @@ class HomeVC: BaseViewController {
         imgUser.clipsToBounds = true
         
         NotificationCenter.default.addObserver(self, selector: #selector(refreshData), name: .refreshData, object: nil)
+        
+        viewReminder.isHidden = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -216,6 +218,11 @@ class HomeVC: BaseViewController {
     }
     
     // MARK:- ACTIONS
+    @IBAction func onTappedProcced(_ sender: Any) {
+        viewReminder.isHidden = true
+        
+    }
+    
     @IBAction func onTappedChangeUser(_ sender: UIButton) {
         if checkInternet(showToast: true) == false {
             return

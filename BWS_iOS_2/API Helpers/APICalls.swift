@@ -1537,4 +1537,26 @@ extension ManageUserVC {
         }
     }
     
+    func callDeleteUserAPI() {
+        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId]
+
+        APICallManager.sharedInstance.callAPI(router: APIRouter.deleteuser(parameters)) { (response :GeneralModel) in
+
+            if response.ResponseCode == "200" {
+                showAlertToast(message: response.ResponseMessage)
+               // self.callManageUserListAPI()
+                
+                let selectedUser = self.arrayUsers.filter { $0.isSelected == true }.first
+                if let coUser = CoUserDataModel.currentUser {
+                    if coUser.UserId == selectedUser?.UserId {
+                        let aVC = AppStoryBoard.main.viewController(viewControllerClass: LoginVC.self)
+                        self.navigationController?.pushViewController(aVC, animated: true)
+                    }else {
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                }
+            }
+        }
+    }
+    
 }

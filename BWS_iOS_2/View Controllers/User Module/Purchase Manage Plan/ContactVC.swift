@@ -241,6 +241,17 @@ extension ContactVC : MFMessageComposeViewControllerDelegate {
     
     func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
         controller.dismiss(animated: true, completion: nil)
+        switch result {
+        case .cancelled:
+            showAlertToast(message: "Message Sending Cancelled")
+        case .sent:
+            let aVC = AppStoryBoard.main.viewController(viewControllerClass:ManageUserVC.self)
+            self.navigationController?.pushViewController(aVC, animated: true)
+        case .failed:
+            showAlertToast(message: "Message Sening Failed")
+        default:
+            showAlertToast(message: "Message Sening Failed")
+        }
     }
     
 }
