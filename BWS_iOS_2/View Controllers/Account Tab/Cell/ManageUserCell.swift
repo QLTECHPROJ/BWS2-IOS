@@ -42,15 +42,6 @@ class ManageUserCell: UITableViewCell {
             imgViewRequestType.image = UIImage(named: "tag_green")
             btnCancel.setTitle(Theme.strings.cancel_small, for: .normal)
             btnCancel.setTitleColor(Theme.colors.orange_F1646A, for: .normal)
-        } else if data.InviteStatus == "2" {
-            viewRequestStatus.isHidden = false
-            btnCancel.isHidden = false
-            btnSelect.isHidden = true
-            
-            lblRequestStatus.text = Theme.strings.request_expired
-            imgViewRequestType.image = UIImage(named: "tag_yellow")
-            btnCancel.setTitle(Theme.strings.resend_small, for: .normal)
-            btnCancel.setTitleColor(Theme.colors.textColor, for: .normal)
         } else {
             viewRequestStatus.isHidden = true
             btnCancel.isHidden = true

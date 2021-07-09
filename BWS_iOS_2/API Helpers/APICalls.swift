@@ -1524,21 +1524,6 @@ extension ManageUserVC {
         }
     }
     
-    func callInviteUserAPI(user : CoUserDataModel) {
-        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
-                          "Name":user.Name,
-                          "MobileNo":user.Mobile,
-                          "Resend":"1"]
-
-        APICallManager.sharedInstance.callAPI(router: APIRouter.inviteuser(parameters)) { (response :GeneralModel) in
-
-            if response.ResponseCode == "200" {
-                showAlertToast(message: response.ResponseMessage)
-                self.callManageUserListAPI()
-            }
-        }
-    }
-    
     func callCancelInviteAPI(user : CoUserDataModel) {
         let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
                           "MobileNo":user.Mobile]
