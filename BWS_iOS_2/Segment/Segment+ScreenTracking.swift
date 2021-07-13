@@ -10,7 +10,7 @@ import Foundation
 
 extension SegmentTracking {
     
-    func trackGeneralScreen(name : String, traits : [String:Any]? = nil, passUserID : Bool = false) {
+    func trackGeneralScreen(name : String, traits : [String:Any]? = nil) {
         var newTraits = [String : Any]()
         if let allTraits = traits {
             for (key,value) in allTraits {
@@ -18,16 +18,18 @@ extension SegmentTracking {
             }
         }
         
-        newTraits["CoUserId"] = CoUserDataModel.currentUserId
+        if CoUserDataModel.currentUserId.count > 0 {
+            newTraits["userId"] = CoUserDataModel.currentUserId
+        }
         
-        if passUserID {
-            newTraits["UserId"] = LoginDataModel.currentUserId
+        if LoginDataModel.currentMainAccountId.count > 0 {
+            newTraits["userGroupId"] = LoginDataModel.currentMainAccountId
         }
         
         SegmentTracking.shared.trackEvent(name: name, traits: newTraits, trackingType: .screen)
     }
     
-    func trackGeneralEvents(name : String, traits : [String:Any]? = nil, passUserID : Bool = false) {
+    func trackGeneralEvents(name : String, traits : [String:Any]? = nil) {
         var newTraits = [String : Any]()
         if let allTraits = traits {
             for (key,value) in allTraits {
@@ -35,10 +37,12 @@ extension SegmentTracking {
             }
         }
         
-        newTraits["CoUserId"] = CoUserDataModel.currentUserId
+        if CoUserDataModel.currentUserId.count > 0 {
+            newTraits["userId"] = CoUserDataModel.currentUserId
+        }
         
-        if passUserID {
-            newTraits["UserId"] = LoginDataModel.currentUserId
+        if LoginDataModel.currentMainAccountId.count > 0 {
+            newTraits["userGroupId"] = LoginDataModel.currentMainAccountId
         }
         
         SegmentTracking.shared.trackEvent(name: name, traits: newTraits, trackingType: .track)

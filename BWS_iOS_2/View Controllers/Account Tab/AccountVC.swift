@@ -37,12 +37,12 @@ class AccountVC: BaseViewController {
     var imageData = UploadDataModel()
     
     var arrayImage : [[String]] = [
-        ["UserName", "download_account", "Resources", "Reminder", "Billing", "Invoices", "manage_user"],
+        ["UserName", "download_account", "Resources", "Reminder", "Billing", "Invoices"],
         ["FAQ", "Logout"]
     ]
     
     var arrayTitle : [[AccountMenu]] = [
-        [AccountMenu.accountInfo, AccountMenu.downloads, AccountMenu.resources, AccountMenu.reminder, AccountMenu.billingAndOrder, AccountMenu.invoices, AccountMenu.manageUser],
+        [AccountMenu.accountInfo, AccountMenu.downloads, AccountMenu.resources, AccountMenu.reminder, AccountMenu.billingAndOrder, AccountMenu.invoices],
         [AccountMenu.faq, AccountMenu.logout]
     ]
     
@@ -70,6 +70,11 @@ class AccountVC: BaseViewController {
         tableView.register(nibWithCellClass:AccountCell.self)
         tableView.tableHeaderView = tableHeaderView
         tableView.tableFooterView = tableFooterView
+        
+        if CoUserDataModel.currentUser?.isMainAccount == "1" {
+            arrayImage[0].append("manage_user")
+            arrayTitle[0].append(AccountMenu.manageUser)
+        }
     }
     
     override func setupData() {
@@ -167,7 +172,7 @@ class AccountVC: BaseViewController {
         
     }
     
-    func handleLogout() {
+    class func handleLogout() {
         // Player Related Data
         DJMusicPlayer.shared.stop(shouldTrack: false)
         DJMusicPlayer.shared.playIndex = 0
@@ -388,7 +393,7 @@ extension AccountVC : AlertPopUpVCDelegate {
             
             self.callLogoutAPI {
                 UIApplication.shared.endReceivingRemoteControlEvents()
-                self.handleLogout()
+                AccountVC.handleLogout()
             }
         }
     }

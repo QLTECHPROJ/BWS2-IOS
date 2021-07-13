@@ -30,10 +30,8 @@ class ContactVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let traits = ["userId":CoUserDataModel.currentUserId,
-                      "MainAccountId":CoUserDataModel.currentMainAccountId,
-                      "referLink":CoUserDataModel.currentMainAccountId]
-        SegmentTracking.shared.trackEvent(name: SegmentTracking.screenNames.invite_friend, traits: traits, trackingType: .screen)
+        let traits = ["referLink":LoginDataModel.currentMainAccountId]
+        SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.invite_friend, traits: traits)
         
         tableView.register(nibWithCellClass: InviteFriendCell.self)
         btnClear.isHidden = true
@@ -132,13 +130,11 @@ class ContactVC: BaseViewController {
             self.present(controller, animated: true, completion: nil)
             
             // Segment Tracking
-            let traits = ["userId":CoUserDataModel.currentUserId,
-                          "MainAccountId":CoUserDataModel.currentMainAccountId,
-                          "referLink":strURL ?? "",
+            let traits = ["referLink":strURL ?? "",
                           "shareText":shareText,
                           "contactName":contact.contactName,
                           "contactNumber":contact.contactNumber]
-            SegmentTracking.shared.trackEvent(name: SegmentTracking.eventNames.invite_friend_clicked, traits: traits, trackingType: .track)
+            SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.invite_friend_clicked, traits: traits)
         } else {
             showAlertToast(message: Theme.strings.alert_cannot_send_message)
         }
@@ -182,10 +178,8 @@ extension ContactVC: UITextFieldDelegate {
             print("Search text :- ",updatedText)
             
             // Segment Tracking
-            let traits = ["userId":CoUserDataModel.currentUserId,
-                          "MainAccountId":CoUserDataModel.currentMainAccountId,
-                          "searchKeyword":updatedText]
-            SegmentTracking.shared.trackEvent(name: SegmentTracking.eventNames.contact_searched, traits: traits, trackingType: .track)
+            let traits = ["searchKeyword":updatedText]
+            SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.contact_searched, traits: traits)
             
             arrayContactsSearch = arrayContacts.filter({ (model:ContactModel) -> Bool in
                 return model.contactName.lowercased().contains(updatedText.lowercased())

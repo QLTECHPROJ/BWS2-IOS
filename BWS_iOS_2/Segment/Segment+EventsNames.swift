@@ -78,6 +78,7 @@ struct ScreenNames {
 
 struct EventNames {
     
+    let Push_Notification_Received = "Push Notification Received"
     let Push_Notification_Tapped = "Push Notification Tapped"
     
     let Forgot_Password_Clicked = "Forgot Password Clicked"

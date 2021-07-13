@@ -46,7 +46,7 @@ class AddProfileVC: BaseViewController {
             let traits = ["name":userDetails.Name,
                           "mobileNo":userDetails.Mobile,
                           "email":userDetails.Email]
-            SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.forgotPin, traits: traits, passUserID: true)
+            SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.forgotPin, traits: traits)
         } else {
             SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.addCoUser)
         }
@@ -190,7 +190,7 @@ class AddProfileVC: BaseViewController {
             let traits = ["name":userDetails.Name,
                           "mobileNo":userDetails.Mobile,
                           "email":userDetails.Email]
-            SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.Send_New_Pin_Clicked, traits: traits, passUserID: true)
+            SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.Send_New_Pin_Clicked, traits: traits)
         } else {
             if checkValidation() {
                 lblErrName.isHidden = true
