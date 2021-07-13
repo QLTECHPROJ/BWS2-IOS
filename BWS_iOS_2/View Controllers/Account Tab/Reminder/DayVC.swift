@@ -20,9 +20,7 @@ class DayVC: BaseViewController {
     @IBOutlet var footerView: UIView!
     @IBOutlet weak var btnTime: UIButton!
     @IBOutlet weak var lblTime: UILabel!
-    
     @IBOutlet weak var viewDate: UIView!
-    
     @IBOutlet weak var datePicker: UIDatePicker!
     
     // MARK:- VARIABLES
@@ -34,6 +32,7 @@ class DayVC: BaseViewController {
     var objPlaylist : PlaylistDetailsModel?
     var arrayRemList : ReminderListDataModel?
     var isCome:String?
+    var isfromPopUp:Bool?
     
     // MARK:- VIEW LIFE CYCLE
     override func viewDidLoad() {
@@ -47,8 +46,6 @@ class DayVC: BaseViewController {
         buttonEnableDisable()
        
         viewDate.isHidden = true
-        
-        
     }
     
     //MARK:- Functions
@@ -173,7 +170,12 @@ class DayVC: BaseViewController {
     }
     
     @IBAction func onTappedClose(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
+        if isfromPopUp == true {
+            self.dismiss(animated: true, completion: nil)
+        }else {
+            self.navigationController?.popViewController(animated: true)
+        }
+        
     }
     
     @IBAction func onTappedTime(_ sender: UIButton) {

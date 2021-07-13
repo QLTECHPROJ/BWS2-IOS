@@ -14,10 +14,9 @@ class ManageUserVC: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var btnRemove: UIButton!
     
-    
     // MARK:- VARIABLES
     var arrayUsers = [CoUserDataModel]()
-    
+    var isCome:String?
     
     // MARK:- VIEW LIFE CYCLE
     override func viewDidLoad() {
@@ -74,7 +73,12 @@ class ManageUserVC: BaseViewController {
     
     // MARK:- ACTIONS
     @IBAction func backClicked(sender : UIButton) {
-        self.navigationController?.popViewController(animated: true)
+        if isCome == "SMS" {
+            
+        }else {
+            self.navigationController?.popViewController(animated: true)
+        }
+        
     }
     
     @IBAction func addUserClicked(sender : UIButton) {

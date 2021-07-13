@@ -62,17 +62,27 @@ class UserListVC: BaseViewController {
     override func setupData() {
         self.buttonEnableDisable()
         
+        if let coUser = CoUserDataModel.currentUser {
+            
+            if coUser.isMainAccount == "1" {
+                tableView.tableFooterView = viewFooter
+            } else {
+                tableView.tableFooterView = UIView()
+            }
+            
+        }
+        
         if arrayUsers.count < maxUsers {
             tableView.tableFooterView = viewFooter
         } else {
             tableView.tableFooterView = UIView()
         }
-        
+       
         self.tableView.reloadData()
     }
     
     @objc func viewTapped(_ sender: UITapGestureRecognizer) {
-        let aVC = AppStoryBoard.main.viewController(viewControllerClass:AddProfileVC.self)
+        let aVC = AppStoryBoard.main.viewController(viewControllerClass: AddUserVC.self)
         self.navigationController?.pushViewController(aVC, animated: true)
     }
     

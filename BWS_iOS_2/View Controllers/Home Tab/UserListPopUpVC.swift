@@ -48,7 +48,15 @@ class UserListPopUpVC: BaseViewController {
         viewUserList.roundCorners([.topLeft, .topRight], radius: 10)
         
         tableView.register(nibWithCellClass: UserListCell.self)
-        tableView.tableFooterView = viewFooter
+        if let coUser = CoUserDataModel.currentUser {
+            
+            if coUser.isMainAccount == "1" {
+                tableView.tableFooterView = viewFooter
+            } else {
+                tableView.tableFooterView = UIView()
+            }
+            
+        }
         
         tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.viewTapped(_:)))
         tapGesture.numberOfTapsRequired = 1

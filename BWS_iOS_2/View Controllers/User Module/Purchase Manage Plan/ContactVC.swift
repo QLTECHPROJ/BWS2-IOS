@@ -245,7 +245,8 @@ extension ContactVC : MFMessageComposeViewControllerDelegate {
         case .cancelled:
             showAlertToast(message: "Message Sending Cancelled")
         case .sent:
-            let aVC = AppStoryBoard.main.viewController(viewControllerClass:ManageUserVC.self)
+            let aVC = AppStoryBoard.account.viewController(viewControllerClass:ManageUserVC.self)
+            aVC.isCome = "SMS"
             self.navigationController?.pushViewController(aVC, animated: true)
         case .failed:
             showAlertToast(message: "Message Sening Failed")

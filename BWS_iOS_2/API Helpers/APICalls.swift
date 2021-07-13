@@ -236,7 +236,7 @@ extension ProfileForm6VC {
         let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
                           "gender":ProfileFormModel.shared.gender,
                           "genderX":ProfileFormModel.shared.genderX,
-                          "age":ProfileFormModel.shared.age,
+                          "dob":ProfileFormModel.shared.age,
                           "prevDrugUse":ProfileFormModel.shared.prevDrugUse,
                           "Medication":ProfileFormModel.shared.Medication]
         
@@ -1113,6 +1113,17 @@ extension HomeVC {
                 }
                 
                 self.setupData()
+                
+                if response.ResponseData.IsFirst == "1" {
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
+                        let aVC = AppStoryBoard.home.viewController(viewControllerClass: ReminderPopUpVC.self)
+                        aVC.suggstedPlaylist = self.suggstedPlaylist
+                        let navVC = UINavigationController(rootViewController: aVC)
+                        navVC.navigationBar.isHidden = true
+                        navVC.modalPresentationStyle = .overFullScreen
+                        self.present(navVC, animated: true, completion: nil)
+                    }
+                }
             } else {
                 self.setupData()
             }
@@ -1307,7 +1318,11 @@ extension DayVC {
 
             if response.ResponseCode == "200" {
                 showAlertToast(message: response.ResponseMessage)
-            self.navigationController?.popViewController(animated: true)
+                if self.isfromPopUp == true {
+                    self.dismiss(animated: true, completion: nil)
+                }else {
+                    self.navigationController?.popViewController(animated: true)
+                }
                 self.setupData()
                 self.tableView.reloadData()
 
@@ -1574,4 +1589,25 @@ extension ManageUserVC {
         }
     }
     
+}
+
+
+//Reminder pop Up
+extension ReminderPopUpVC {
+    
+    //set reminder for suggested playlist
+    func callProceedAPI() {
+        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId]
+
+        APICallManager.sharedInstance.callAPI(router: APIRouter.proceed(parameters)) { (response :GeneralModel) in
+
+            if response.ResponseCode == "200" {
+                showAlertToast(message: response.ResponseMessage)
+                let aVC = AppStoryBoard.account.viewController(viewControllerClass: DayVC.self)
+                aVC.isfromPopUp = true
+                aVC.objPlaylist = self.suggstedPlaylist
+                self.navigationController?.pushViewController(aVC, animated: true)
+            }
+        }
+    }
 }

@@ -12,31 +12,28 @@ class ProfileForm4VC: BaseViewController {
     
     // MARK:- OUTLETS
     @IBOutlet weak var progressView : UIProgressView!
-    @IBOutlet weak var tableView : UITableView!
-    @IBOutlet weak var tableViewHeightConst : NSLayoutConstraint!
     @IBOutlet weak var btnPrev : UIButton!
     @IBOutlet weak var btnNext : UIButton!
     
+    @IBOutlet weak var txtFDate: DJPickerView!
+    @IBOutlet weak var viewDate: UIView!
     
     // MARK:- VARIABLES
-    var arrayOptions = ["0 - 4", "5 -12", "13 - 17", "> 18"]
-    
+    var selectedDOB = Date()
     
     // MARK:- VIEW LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         
         setupUI()
+        initDOBPickerView()
     }
     
     
     // MARK:- FUNCTIONS
     override func setupUI() {
-        tableView.register(nibWithCellClass: OptionsCell.self)
-        tableView.reloadData()
-        
-        tableViewHeightConst.constant = CGFloat(96 * arrayOptions.count)
+        txtFDate.delegate = self
+        txtFDate.addTarget(self, action: #selector(textFieldValueChanged(textField:)), for: .editingChanged)
         self.view.layoutIfNeeded()
         
         progressView.progress = 0.25
@@ -44,16 +41,59 @@ class ProfileForm4VC: BaseViewController {
         
         btnNext.isEnabled = false
         if ProfileFormModel.shared.age.trim.count > 0 {
-            if arrayOptions.contains(ProfileFormModel.shared.age) {
-                progressView.progress = 0.5
-                btnNext.isEnabled = true
-            }
+            progressView.progress = 0.5
+            btnNext.isEnabled = true
         }
     }
     
     override func goNext() {
         let aVC = AppStoryBoard.main.viewController(viewControllerClass: ProfileForm5VC.self)
         self.navigationController?.pushViewController(aVC, animated: true)
+    }
+    
+    private func initDOBPickerView() {
+        let nextDay = Calendar.current.date(byAdding: .day, value: -1, to: Date())
+        let date = nextDay
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.year, .month, .day], from: date!)
+        let currentDate = calendar.date(from: components)!
+        
+        let dateComponents = DateComponents()
+        //        dateComponents.year = -4
+        
+        var tenYearsAgo = Calendar.current.date(byAdding: dateComponents, to: currentDate)
+        
+        txtFDate.type = .date
+        txtFDate.pickerDelegate = self
+        txtFDate.datePicker?.datePickerMode = .date
+        txtFDate.datePicker?.maximumDate = tenYearsAgo
+        txtFDate.dateFormatter.dateFormat = Theme.dateFormats.DOB_App
+        
+        if ProfileFormModel.shared.age.trim.count > 0 {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = Theme.dateFormats.DOB_App
+            tenYearsAgo = dateFormatter.date(from: ProfileFormModel.shared.age )
+            
+        }
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = Theme.dateFormats.DOB_App
+        dateFormatter.timeZone = TimeZone.current
+       
+        if tenYearsAgo != nil {
+            txtFDate.text = dateFormatter.string(from: tenYearsAgo!)
+            txtFDate.datePicker?.date = tenYearsAgo!
+            selectedDOB = tenYearsAgo!
+            txtFDate.isHidden = txtFDate.text?.count == 0
+            ProfileFormModel.shared.age = txtFDate.text ?? ""
+        }
+        
+        //txtDOBTopConst.constant = (txtFDOB.text?.count == 0) ? 0 : 10
+    }
+    
+    @objc func textFieldValueChanged(textField : UITextField ) {
+        //lblDOB.text = (txtFDOB.text?.count == 0) ? "" : Theme.strings.date_of_birth
+        self.view.layoutIfNeeded()
     }
     
     
@@ -68,44 +108,32 @@ class ProfileForm4VC: BaseViewController {
     
 }
 
-
-// MARK:- UITableViewDelegate, UITableViewDataSource
-extension ProfileForm4VC : UITableViewDelegate, UITableViewDataSource {
+// MARK:- DJPickerViewDelegate
+extension ProfileForm4VC : DJPickerViewDelegate {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arrayOptions.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withClass: OptionsCell.self)
-        let optionValue = arrayOptions[indexPath.row]
-        cell.buttonOption.setTitle(optionValue, for: .normal)
-        
-        if optionValue == ProfileFormModel.shared.age {
-            cell.buttonOption.borderColor = Theme.colors.purple
-            cell.buttonOption.setTitleColor(Theme.colors.purple, for: .normal)
-        } else {
-            cell.buttonOption.borderColor = Theme.colors.gray_DDDDDD
-            cell.buttonOption.setTitleColor(Theme.colors.textColor, for: .normal)
-        }
-        
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        ProfileFormModel.shared.age = arrayOptions[indexPath.row]
-        self.setupUI()
-        
+    func textPickerView(_ textPickerView: DJPickerView, didSelectDate date: Date) {
+        print("Date :- ",date)
+        selectedDOB = date
+        ProfileFormModel.shared.age = txtFDate.text ?? ""
+      
         self.view.isUserInteractionEnabled = false
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.goNext()
             self.view.isUserInteractionEnabled = true
         }
+        self.view.layoutIfNeeded()
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 96
+}
+
+extension ProfileForm4VC : UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        return textField.resignFirstResponder()
     }
     
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.resignFirstResponder()
+    }
 }

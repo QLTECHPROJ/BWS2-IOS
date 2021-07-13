@@ -678,6 +678,7 @@ class HomeModel: EVObject {
 }
 
 class HomeDataModel: EVObject {
+    var IsFirst = ""
     var IndexScore = ""
     var shouldCheckIndexScore = ""
     var IndexScoreDiff = ""

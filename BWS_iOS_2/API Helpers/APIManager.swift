@@ -39,6 +39,7 @@ enum APIRouter: URLRequestConvertible {
 
     
     // Home Tab - APIs
+    case proceed([String:String])
     case homescreen([String:String])
     case getnotificationlist([String:String])
     
@@ -135,7 +136,9 @@ enum APIRouter: URLRequestConvertible {
             return APIRoute(path: "setloginpin", method: .post, data: data)
         case .inviteuser(let data):
             return APIRoute(path: "inviteuser", method: .post, data: data)
-            
+        
+        case .proceed(let data):
+            return APIRoute(path: "proceed", method: .post, data: data)
         case .homescreen(let data):
             return APIRoute(path: "homescreen", method: .post, data: data)
         case .getnotificationlist(let data):

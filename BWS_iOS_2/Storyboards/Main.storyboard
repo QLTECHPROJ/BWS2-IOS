@@ -493,31 +493,47 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WOZ-Xf-rfE">
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="507"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="How old are you?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dzf-jc-N2v">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="What is your date of birth ?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dzf-jc-N2v">
                                                                 <rect key="frame" x="16" y="22" width="343" height="22"/>
                                                                 <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="18"/>
                                                                 <color key="textColor" name="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3vw-xc-Gm4">
-                                                                <rect key="frame" x="16" y="59" width="343" height="300"/>
-                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qog-vh-Vy2">
+                                                                <rect key="frame" x="16" y="64" width="343" height="66"/>
+                                                                <subviews>
+                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="fdgf" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mVf-Q7-t6j" customClass="DJPickerView" customModule="BWS_2_Staging" customModuleProvider="target">
+                                                                        <rect key="frame" x="156" y="23" width="31" height="20"/>
+                                                                        <color key="textColor" name="textColor"/>
+                                                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
+                                                                        <textInputTraits key="textInputTraits"/>
+                                                                    </textField>
+                                                                </subviews>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="height" constant="300" id="TQo-wb-M14"/>
+                                                                    <constraint firstItem="mVf-Q7-t6j" firstAttribute="centerX" secondItem="qog-vh-Vy2" secondAttribute="centerX" id="4mz-C1-NGF"/>
+                                                                    <constraint firstAttribute="height" constant="66" id="GaF-qN-7yA"/>
+                                                                    <constraint firstItem="mVf-Q7-t6j" firstAttribute="centerY" secondItem="qog-vh-Vy2" secondAttribute="centerY" id="eEu-ya-k5L"/>
                                                                 </constraints>
-                                                                <connections>
-                                                                    <outlet property="dataSource" destination="VMn-qT-Yg2" id="jl7-BC-ebI"/>
-                                                                    <outlet property="delegate" destination="VMn-qT-Yg2" id="r5z-FC-ltT"/>
-                                                                </connections>
-                                                            </tableView>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                        <color key="value" name="DDDDDD"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                        <real key="value" value="8"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                        <real key="value" value="1"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </view>
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="trailing" secondItem="dzf-jc-N2v" secondAttribute="trailing" constant="16" id="25e-Qv-6h7"/>
-                                                            <constraint firstAttribute="trailing" secondItem="3vw-xc-Gm4" secondAttribute="trailing" constant="16" id="AzN-R1-Zl4"/>
-                                                            <constraint firstItem="3vw-xc-Gm4" firstAttribute="top" secondItem="dzf-jc-N2v" secondAttribute="bottom" constant="15" id="KDD-PO-ghJ"/>
-                                                            <constraint firstItem="3vw-xc-Gm4" firstAttribute="leading" secondItem="WOZ-Xf-rfE" secondAttribute="leading" constant="16" id="RWX-PA-5L3"/>
-                                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="3vw-xc-Gm4" secondAttribute="bottom" constant="30" id="iFU-IQ-3j0"/>
+                                                            <constraint firstItem="qog-vh-Vy2" firstAttribute="leading" secondItem="WOZ-Xf-rfE" secondAttribute="leading" constant="16" id="QXx-df-Qkk"/>
+                                                            <constraint firstAttribute="trailing" secondItem="qog-vh-Vy2" secondAttribute="trailing" constant="16" id="YEY-Fp-ShU"/>
+                                                            <constraint firstItem="qog-vh-Vy2" firstAttribute="top" secondItem="dzf-jc-N2v" secondAttribute="bottom" constant="20" id="qQa-Ah-hbl"/>
                                                             <constraint firstItem="dzf-jc-N2v" firstAttribute="leading" secondItem="WOZ-Xf-rfE" secondAttribute="leading" constant="16" id="uFQ-Ol-Zgm"/>
                                                             <constraint firstItem="dzf-jc-N2v" firstAttribute="top" secondItem="WOZ-Xf-rfE" secondAttribute="top" constant="22" id="xs6-Bs-eTT"/>
                                                         </constraints>
@@ -610,8 +626,8 @@
                         <outlet property="btnNext" destination="5Js-qR-kam" id="RF2-Nh-QUg"/>
                         <outlet property="btnPrev" destination="SXH-Kh-TXd" id="CTm-o0-Ig7"/>
                         <outlet property="progressView" destination="FzP-8a-r6b" id="0Yl-Jb-XD5"/>
-                        <outlet property="tableView" destination="3vw-xc-Gm4" id="uT4-Ec-0eX"/>
-                        <outlet property="tableViewHeightConst" destination="TQo-wb-M14" id="33K-xe-utB"/>
+                        <outlet property="txtFDate" destination="mVf-Q7-t6j" id="kuc-xh-5ns"/>
+                        <outlet property="viewDate" destination="qog-vh-Vy2" id="Fpz-hR-2GL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="idJ-NE-77Z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
