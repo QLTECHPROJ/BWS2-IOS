@@ -197,12 +197,10 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         print("Notification Payload :- ",userInfo)
         let playlistID = (userInfo["id"] as? String) ?? ""
         let info = self.extractUserInfo(userInfo: userInfo)
-        let dictPlayListDetails = ["userId":LoginDataModel.currentUserId,
-                                   "playlistID": playlistID,
+        let dictPlayListDetails = ["playlistID": playlistID,
                                    "title": info.title,
                                    "message":info.body]
-        SegmentTracking.shared.trackEvent(name:"Push Notification Received", traits: dictPlayListDetails, trackingType: .track)
-        
+        SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.Push_Notification_Received, traits: dictPlayListDetails)
         
         completionHandler(UIBackgroundFetchResult.newData)
     }
@@ -220,11 +218,10 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         print("playlistID :- ",playlistID)
         print(userInfo)
         
-        let dictPlayListDetails = ["userId":LoginDataModel.currentUserId,
-                                   "playlistId": playlistID,
+        let dictPlayListDetails = ["playlistId": playlistID,
                                    "title": info.title,
                                    "message":info.body]
-        SegmentTracking.shared.trackEvent(name: SegmentTracking.eventNames.Push_Notification_Tapped, traits: dictPlayListDetails, trackingType: .track)
+        SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.Push_Notification_Tapped, traits: dictPlayListDetails)
         
         if flag == Theme.strings.playlist {
             if playlistID.trim.count != 0 {

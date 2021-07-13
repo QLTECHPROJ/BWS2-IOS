@@ -21,6 +21,10 @@ class SplashVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        // Segment Tracking
+        SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.launch)
+        
         if checkInternet(showToast: true) == false {
             handleRedirection()
         } else {

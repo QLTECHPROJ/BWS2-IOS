@@ -90,15 +90,14 @@ extension OTPVC {
                 
                 // Segment Tracking
                 if let userDetails = response.ResponseData {
-                    let traits = ["UserID":userDetails.UserId,
-                                  "name":userDetails.Name,
+                    let traits = ["name":userDetails.Name,
                                   "countryCode":self.selectedCountry.Code,
                                   "countryName":self.selectedCountry.Name,
                                   "countryShortName":self.selectedCountry.ShortName,
                                   "mobileNo":userDetails.Mobile,
                                   "email":userDetails.Email]
                     let eventname = self.signUpFlag == "1" ? SegmentTracking.eventNames.User_Sign_up : SegmentTracking.eventNames.User_Login
-                    SegmentTracking.shared.trackEvent(name: eventname, traits: traits, trackingType: .track)
+                    SegmentTracking.shared.trackGeneralEvents(name: eventname, traits: traits)
                 }
                 
                 if self.signUpFlag == "1" {
@@ -246,7 +245,7 @@ extension ProfileForm6VC {
                 showAlertToast(message: response.ResponseMessage)
                 
                 // Segment Tracking
-                SegmentTracking.shared.trackEvent(name: SegmentTracking.eventNames.Profile_Form_Submitted, traits: parameters, trackingType: .track)
+                SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.Profile_Form_Submitted, traits: parameters)
                 
                 ProfileFormModel.shared = ProfileFormModel()
                 CoUserDataModel.currentUser?.isProfileCompleted = "1"
@@ -286,7 +285,7 @@ extension AssessmentVC {
                 // Segment Tracking
                 let traits = ["indexScore":CoUserDataModel.currentUser?.indexScore ?? "",
                               "ScoreLevel":CoUserDataModel.currentUser?.ScoreLevel ?? ""]
-                SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.Assessment_Form_Submitted, traits: traits, passUserID: true)
+                SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.Assessment_Form_Submitted, traits: traits)
                 
                 showAlertToast(message: response.ResponseMessage)
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass: DassAssessmentResultVC.self)
@@ -437,7 +436,7 @@ extension UIViewController {
                               "countryShortName":country.ShortName,
                               "mobileNo":mobileNo,
                               "email":email]
-                SegmentTracking.shared.trackEvent(name: SegmentTracking.eventNames.OTP_Sent, traits: traits, trackingType: .track)
+                SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.OTP_Sent, traits: traits)
                 
                 if resendOTP != "1" {
                     let aVC = AppStoryBoard.main.viewController(viewControllerClass:OTPVC.self)
@@ -1539,27 +1538,12 @@ extension ManageUserVC {
         }
     }
     
-    func callInviteUserAPI(user : CoUserDataModel) {
-        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
-                          "Name":user.Name,
-                          "MobileNo":user.Mobile,
-                          "Resend":"1"]
-
-        APICallManager.sharedInstance.callAPI(router: APIRouter.inviteuser(parameters)) { (response :GeneralModel) in
-
-            if response.ResponseCode == "200" {
-                showAlertToast(message: response.ResponseMessage)
-                self.callManageUserListAPI()
-            }
-        }
-    }
-    
     func callCancelInviteAPI(user : CoUserDataModel) {
         let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
                           "MobileNo":user.Mobile]
-
+        
         APICallManager.sharedInstance.callAPI(router: APIRouter.cancelinviteuser(parameters)) { (response :GeneralModel) in
-
+            
             if response.ResponseCode == "200" {
                 showAlertToast(message: response.ResponseMessage)
                 self.callManageUserListAPI()
@@ -1569,22 +1553,12 @@ extension ManageUserVC {
     
     func callDeleteUserAPI() {
         let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId]
-
+        
         APICallManager.sharedInstance.callAPI(router: APIRouter.deleteuser(parameters)) { (response :GeneralModel) in
-
+            
             if response.ResponseCode == "200" {
                 showAlertToast(message: response.ResponseMessage)
-               // self.callManageUserListAPI()
-                
-                let selectedUser = self.arrayUsers.filter { $0.isSelected == true }.first
-                if let coUser = CoUserDataModel.currentUser {
-                    if coUser.UserId == selectedUser?.UserId {
-                        let aVC = AppStoryBoard.main.viewController(viewControllerClass: LoginVC.self)
-                        self.navigationController?.pushViewController(aVC, animated: true)
-                    }else {
-                        self.navigationController?.popViewController(animated: true)
-                    }
-                }
+                AccountVC.handleLogout()
             }
         }
     }

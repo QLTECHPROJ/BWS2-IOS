@@ -65,8 +65,6 @@ class ManageUserVC: BaseViewController {
         
         if arrayUsers[indexPath.row].InviteStatus == "1" {
             callCancelInviteAPI(user: arrayUsers[indexPath.row])
-        } else if arrayUsers[indexPath.row].InviteStatus == "2" {
-            callInviteUserAPI(user: arrayUsers[indexPath.row])
         }
     }
     
@@ -127,9 +125,17 @@ extension ManageUserVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if arrayUsers[indexPath.row].InviteStatus != "1" && arrayUsers[indexPath.row].InviteStatus != "2" {
-            arrayUsers[indexPath.row].isSelected.toggle()
-            tableView.reloadRows(at: [indexPath], with: .none)
+        if arrayUsers[indexPath.row].InviteStatus != "1" {
+            
+            for user in arrayUsers {
+                if user.UserId == arrayUsers[indexPath.row].UserId {
+                    user.isSelected.toggle()
+                } else {
+                    user.isSelected = false
+                }
+            }
+            
+            tableView.reloadData()
             buttonEnableDisable()
         }
     }
