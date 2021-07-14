@@ -83,7 +83,13 @@ extension OTPVC {
             if response.ResponseCode == "200" {
                 showAlertToast(message: response.ResponseMessage)
                 
-                LoginDataModel.currentUser = response.ResponseData
+                let userData = response.ResponseData
+                if self.signUpFlag == "1" {
+                    userData?.directLogin = "1"
+                    userData?.isMainAccount = "1"
+                }
+                
+                LoginDataModel.currentUser = userData
                 if let coUserData = response.ResponseData?.toJsonData() {
                     CoUserDataModel.currentUser = CoUserDataModel(data: coUserData)
                 }
@@ -91,13 +97,19 @@ extension OTPVC {
                 // Segment Tracking
                 if let userDetails = response.ResponseData {
                     let traits = ["name":userDetails.Name,
+                                  "mobileNo":userDetails.Mobile,
+                                  "email":userDetails.Email,
                                   "countryCode":self.selectedCountry.Code,
                                   "countryName":self.selectedCountry.Name,
-                                  "countryShortName":self.selectedCountry.ShortName,
-                                  "mobileNo":userDetails.Mobile,
-                                  "email":userDetails.Email]
+                                  "countryShortName":self.selectedCountry.ShortName]
                     let eventname = self.signUpFlag == "1" ? SegmentTracking.eventNames.User_Sign_up : SegmentTracking.eventNames.User_Login
                     SegmentTracking.shared.trackGeneralEvents(name: eventname, traits: traits)
+                    
+                    if userDetails.directLogin == "1" {
+                        SegmentTracking.shared.identifyUser()
+                    } else if self.signUpFlag == "1" {
+                        SegmentTracking.shared.identifyUser()
+                    }
                 }
                 
                 if self.signUpFlag == "1" {
@@ -284,7 +296,7 @@ extension AssessmentVC {
                 
                 // Segment Tracking
                 let traits = ["indexScore":CoUserDataModel.currentUser?.indexScore ?? "",
-                              "ScoreLevel":CoUserDataModel.currentUser?.ScoreLevel ?? ""]
+                              "scoreLevel":CoUserDataModel.currentUser?.ScoreLevel ?? ""]
                 SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.Assessment_Form_Submitted, traits: traits)
                 
                 showAlertToast(message: response.ResponseMessage)
@@ -428,16 +440,20 @@ extension UIViewController {
                           "SignupFlag":signUpFlag,
                           "key":"1"]
         
+        // Segment Tracking
+        let traits = ["name":username,
+                      "mobileNo":mobileNo,
+                      "email":email,
+                      "countryCode":country.Code,
+                      "countryName":country.Name,
+                      "countryShortName":country.ShortName,
+                      "source":signUpFlag == "1" ? "SignUp" : "Login"]
+        
+        let eventname = resendOTP == "1" ? SegmentTracking.eventNames.Resend_OTP_Clicked : SegmentTracking.eventNames.Send_OTP_Clicked
+        SegmentTracking.shared.trackGeneralEvents(name: eventname, traits: traits)
+        
         APICallManager.sharedInstance.callAPI(router: APIRouter.loginsignup(parameters), displayHud: true, showToast: false) { (response : SendOTPModel) in
             if response.ResponseCode == "200" {
-                // Segment Tracking
-                let traits = ["countryCode":country.Code,
-                              "countryName":country.Name,
-                              "countryShortName":country.ShortName,
-                              "mobileNo":mobileNo,
-                              "email":email]
-                SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.OTP_Sent, traits: traits)
-                
                 if resendOTP != "1" {
                     let aVC = AppStoryBoard.main.viewController(viewControllerClass:OTPVC.self)
                     aVC.signUpFlag = signUpFlag
@@ -1551,14 +1567,14 @@ extension ManageUserVC {
         }
     }
     
-    func callDeleteUserAPI() {
-        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId]
+    func callDeleteUserAPI(userId : String) {
+        let parameters = [APIParameters.UserId:userId]
         
         APICallManager.sharedInstance.callAPI(router: APIRouter.deleteuser(parameters)) { (response :GeneralModel) in
             
             if response.ResponseCode == "200" {
                 showAlertToast(message: response.ResponseMessage)
-                AccountVC.handleLogout()
+                self.callManageUserListAPI()
             }
         }
     }

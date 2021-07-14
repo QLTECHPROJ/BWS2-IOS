@@ -77,9 +77,9 @@ class SegmentTracking {
             }
         }
         
-        newTraits["AppType"] = APP_TYPE
-        newTraits["AppVersion"] = APP_VERSION
-        newTraits["DeviceID"] = DEVICE_UUID
+        newTraits["deviceType"] = "iOS"
+        newTraits["appVersion"] = APP_VERSION
+        newTraits["deviceID"] = DEVICE_UUID
         newTraits["batteryLevel"] = NSString(format: "%0.0f",APPDELEGATE.batteryLevel)
         newTraits["batteryState"] = APPDELEGATE.batteryState
         
@@ -107,14 +107,15 @@ class SegmentTracking {
             let userName = userDetails.Name.trim.count > 0 ? userDetails.Name : "Guest"
             
             var dictUserDetails : [String:Any] = [
-                "CoUserId":CoUserDataModel.currentUserId,
+                "userId":CoUserDataModel.currentUserId,
+                "userGroupId":LoginDataModel.currentMainAccountId,
                 "id":CoUserDataModel.currentUserId,
                 "deviceId":DEVICE_UUID,
                 "deviceType":"iOS",
                 "name":userName,
                 "email":userDetails.Email,
                 "phone":userDetails.Mobile,
-                "DOB":userDetails.DOB,
+                "dob":userDetails.DOB,
                 "profileImage":userDetails.Image,
                 "isProfileCompleted":userDetails.isProfileCompleted,
                 "isAssessmentCompleted":userDetails.isAssessmentCompleted,
@@ -149,14 +150,15 @@ class SegmentTracking {
             let userName = userDetails.Name.trim.count > 0 ? userDetails.Name : "Guest"
             
             var dictUserDetails : [String:Any] = [
-                "CoUserId":CoUserDataModel.currentUserId,
+                "userId":CoUserDataModel.currentUserId,
+                "userGroupId":LoginDataModel.currentMainAccountId,
                 "id":CoUserDataModel.currentUserId,
                 "deviceId":DEVICE_UUID,
                 "deviceType":"iOS",
                 "name":userName,
                 "email":userDetails.Email,
                 "phone":userDetails.Mobile,
-                "DOB":userDetails.DOB,
+                "dob":userDetails.DOB,
                 "profileImage":userDetails.Image,
                 "isProfileCompleted":userDetails.isProfileCompleted,
                 "isAssessmentCompleted":userDetails.isAssessmentCompleted,

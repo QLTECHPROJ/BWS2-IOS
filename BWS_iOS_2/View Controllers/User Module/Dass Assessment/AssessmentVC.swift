@@ -39,9 +39,6 @@ class AssessmentVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Segment Tracking
-        SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.assessmentForm)
-        
         lbl1.text = ""
         lbl2.text = ""
         lbl3.text = ""
@@ -51,6 +48,9 @@ class AssessmentVC: BaseViewController {
         
         collectionView.register(UINib(nibName:"SubColCell", bundle: nil), forCellWithReuseIdentifier:"SubColCell")
         self.collectionView.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "header")
+        
+        // Segment Tracking
+        SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.assessmentForm, traits: ["screen" : pageIndex])
         
         callAssessmentAPI()
         setupData()
@@ -144,6 +144,9 @@ class AssessmentVC: BaseViewController {
             pageIndex = pageIndex + 1
             print(pageIndex)
             collectionView.reloadData()
+            
+            // Segment Tracking
+            SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.assessmentForm, traits: ["screen" : pageIndex])
         } else {
             let arrayOldQuetion = AssessmentDetailModel.current?.Questions ?? []
             var arrAns = [String]()
@@ -164,6 +167,9 @@ class AssessmentVC: BaseViewController {
             pageIndex = pageIndex - 1
             print(pageIndex)
             collectionView.reloadData()
+            
+            // Segment Tracking
+            SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.assessmentForm, traits: ["screen" : pageIndex])
         }
         
         setupUI()

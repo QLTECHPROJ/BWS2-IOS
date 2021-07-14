@@ -125,19 +125,20 @@ extension ManageUserVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if arrayUsers[indexPath.row].InviteStatus != "1" {
-            
-            for user in arrayUsers {
-                if user.UserId == arrayUsers[indexPath.row].UserId {
-                    user.isSelected.toggle()
-                } else {
-                    user.isSelected = false
+        if arrayUsers[indexPath.row].InviteStatus.trim.count == 0 {
+            if arrayUsers[indexPath.row].UserId != CoUserDataModel.currentUserId {
+                for user in arrayUsers {
+                    if user.UserId == arrayUsers[indexPath.row].UserId {
+                        user.isSelected.toggle()
+                    } else {
+                        user.isSelected = false
+                    }
                 }
             }
-            
-            tableView.reloadData()
-            buttonEnableDisable()
         }
+        
+        tableView.reloadData()
+        buttonEnableDisable()
     }
     
 }
@@ -148,7 +149,9 @@ extension ManageUserVC : AlertPopUpVCDelegate {
     
     func handleAction(sender: UIButton, popUpTag: Int) {
         if sender.tag == 0 {
-            callDeleteUserAPI()
+            if let userID = arrayUsers.filter({ $0.isSelected }).first?.UserId {
+                callDeleteUserAPI(userId: userID)
+            }
         }
     }
     

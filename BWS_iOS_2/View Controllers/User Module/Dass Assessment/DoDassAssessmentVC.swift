@@ -52,6 +52,9 @@ class DoDassAssessmentVC: BaseViewController {
         
         let normalString = Theme.strings.do_the_assessment_subtitle_one + " \n\n" + Theme.strings.do_the_assessment_subtitle_two
         lblSubTitle.attributedText = normalString.attributedString(alignment: .left, lineSpacing: 5)
+        
+        // Segment Tracking
+        SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.assessmentStart)
     }
     
     override func goNext() {

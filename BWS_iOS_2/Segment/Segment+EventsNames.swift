@@ -14,12 +14,14 @@ struct ScreenNames {
     let signUp = "SignUp Screen Viewed"
     let countryList = "Country List Viewed"
     let login = "Login Screen Viewed"
+    let emailSent = "Email Sent Screen Viewed"
     let forgotPassword = "Forgot Password Screen Viewed"
     let forgotPin = "Forgot Pin Screen Viewed"
     let coUserList = "Couser List Viewed"
     let addCoUser = "Add Couser Screen Viewed"
     
     let profileForm = "Profile Form Screen Viewed"
+    let assessmentStart = "Assessment Start Screen Viewed"
     let assessmentForm = "Assessment Screen Viewed"
     let indexScore = "Index Score Screen Viewed"
     
@@ -83,7 +85,8 @@ struct EventNames {
     
     let Forgot_Password_Clicked = "Forgot Password Clicked"
     
-    let OTP_Sent = "OTP Sent"
+    let Send_OTP_Clicked = "Send OTP Clicked"
+    let Resend_OTP_Clicked = "Resend OTP Clicked"
     let User_Sign_up = "User Sign up"
     let User_Login = "User Login"
     let Couser_Added = "Couser Added"
