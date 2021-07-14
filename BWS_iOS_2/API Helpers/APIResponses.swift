@@ -147,6 +147,8 @@ class LoginDataModel : EVObject {
     var AvgSleepTime = ""
     var ScoreLevel = ""
     var errormsg = ""
+    var error = ""
+    var EmailSend = ""
     var isSelected = false
     var isMainAccount = ""
     var CoUserCount = ""
@@ -362,6 +364,8 @@ class CoUserDataModel : EVObject {
     var AvgSleepTime = ""
     var ScoreLevel = ""
     var errormsg = ""
+    var error = ""
+    var EmailSend = ""
     var isSelected = false
     var isMainAccount = ""
     var CoUserCount = ""

@@ -18,7 +18,9 @@ class EmailVerifyVC: BaseViewController {
     // MARK:- VIEW LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        // Segment Tracking
+        SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.emailSent)
     }
     
     // MARK:- FUNCTIONS
