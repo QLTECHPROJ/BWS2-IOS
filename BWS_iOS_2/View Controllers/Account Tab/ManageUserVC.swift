@@ -72,7 +72,9 @@ class ManageUserVC: BaseViewController {
     // MARK:- ACTIONS
     @IBAction func backClicked(sender : UIButton) {
         if isCome == "SMS" {
-            
+            let aVC = AppStoryBoard.main.viewController(viewControllerClass: TabBarController.self)
+            aVC.selectedIndex = 6
+            self.navigationController?.pushViewController(aVC, animated: true)
         }else {
             self.navigationController?.popViewController(animated: true)
         }

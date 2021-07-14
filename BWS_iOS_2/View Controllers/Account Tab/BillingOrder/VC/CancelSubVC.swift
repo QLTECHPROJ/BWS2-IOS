@@ -169,6 +169,7 @@ extension CancelSubVC : AlertPopUpVCDelegate {
         if sender.tag == 0 {
             if isFromDelete {
                 showAlertToast(message: "Delete Account")
+                callDeleteAccountAPI()
             } else {
                 showAlertToast(message: "Cancel Plan")
             }

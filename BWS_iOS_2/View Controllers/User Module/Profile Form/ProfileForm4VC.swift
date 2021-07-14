@@ -43,6 +43,8 @@ class ProfileForm4VC: BaseViewController {
         if ProfileFormModel.shared.age.trim.count > 0 {
             progressView.progress = 0.5
             btnNext.isEnabled = true
+            viewDate.borderColor = Theme.colors.gray_DDDDDD
+            txtFDate.textColor = Theme.colors.textColor
         }
     }
     
@@ -117,7 +119,8 @@ extension ProfileForm4VC : DJPickerViewDelegate {
         ProfileFormModel.shared.age = txtFDate.text ?? ""
       
         self.view.isUserInteractionEnabled = false
-        
+        viewDate.borderColor = Theme.colors.purple
+        txtFDate.textColor = Theme.colors.purple
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.goNext()
             self.view.isUserInteractionEnabled = true
@@ -134,6 +137,8 @@ extension ProfileForm4VC : UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
+        viewDate.borderColor = Theme.colors.purple
+        txtFDate.textColor = Theme.colors.purple
         textField.resignFirstResponder()
     }
 }

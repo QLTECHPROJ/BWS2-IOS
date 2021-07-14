@@ -1585,3 +1585,23 @@ extension ReminderPopUpVC {
         }
     }
 }
+
+extension CancelSubVC {
+    
+    //delete Account API
+    func callDeleteAccountAPI() {
+        var parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
+                          "CancelId":"\(selectedOption)"]
+        if selectedOption == 4 {
+            parameters["CancelReason"] = txtView.text!
+        }
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.deleteuser(parameters)) { (response :GeneralModel) in
+            
+            if response.ResponseCode == "200" {
+                showAlertToast(message: response.ResponseMessage)
+                AccountVC.handleLogout()
+            }
+        }
+    }
+}

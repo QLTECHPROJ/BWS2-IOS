@@ -25,6 +25,7 @@ class ContactVC: BaseViewController {
     var arrayContacts = [ContactModel]()
     var arrayContactsSearch = [ContactModel]()
     var strURL:String?
+    var isCome:String?
     
     // MARK:- VIEW LIFE CYCLE
     override func viewDidLoad() {
@@ -140,6 +141,39 @@ class ContactVC: BaseViewController {
         }
     }
     
+    func handleCoUserRedirection() {
+        if let coUser = CoUserDataModel.currentUser {
+            if coUser.isAssessmentCompleted == "0" {
+                let aVC = AppStoryBoard.main.viewController(viewControllerClass: DoDassAssessmentVC.self)
+                self.navigationController?.pushViewController(aVC, animated: true)
+//            }
+//            else if coUser.planDetails?.count == 0 && coUser.isMainAccount == "1"{
+//                let aVC = AppStoryBoard.main.viewController(viewControllerClass: DassAssessmentResultVC.self)
+//                self.navigationController?.pushViewController(aVC, animated: true)
+                
+            } else if coUser.isProfileCompleted == "0" {
+                let aVC = AppStoryBoard.main.viewController(viewControllerClass:StepVC.self)
+                aVC.strTitle = Theme.strings.step_3_title
+                aVC.strSubTitle = Theme.strings.step_3_subtitle
+                aVC.imageMain = UIImage(named: "profileForm")
+                aVC.viewTapped = {
+                    let aVC = AppStoryBoard.main.viewController(viewControllerClass: ProfileForm2VC.self)
+                    self.navigationController?.pushViewController(aVC, animated: false)
+                }
+                aVC.modalPresentationStyle = .overFullScreen
+                self.present(aVC, animated: false, completion: nil)
+                
+            } else if coUser.AvgSleepTime.trim.count == 0 || coUser.AreaOfFocus.count == 0 {
+                let aVC = AppStoryBoard.main.viewController(viewControllerClass: SleepTimeVC.self)
+                self.navigationController?.pushViewController(aVC, animated: true)
+            } else {
+                let aVC = AppStoryBoard.account.viewController(viewControllerClass:ManageUserVC.self)
+                aVC.isCome = "SMS"
+                self.navigationController?.pushViewController(aVC, animated: true)
+            }
+        }
+    }
+    
     
     // MARK:- ACTIONS
     @IBAction func backClicked(sender : UIButton) {
@@ -239,9 +273,15 @@ extension ContactVC : MFMessageComposeViewControllerDelegate {
         case .cancelled:
             showAlertToast(message: "Message Sending Cancelled")
         case .sent:
-            let aVC = AppStoryBoard.account.viewController(viewControllerClass:ManageUserVC.self)
-            aVC.isCome = "SMS"
-            self.navigationController?.pushViewController(aVC, animated: true)
+           // if isCome == "AddUser" || isCome == nil{
+                self.callGetCoUserDetailsAPI { (success) in
+                    if success {
+                        self.handleCoUserRedirection()
+                    }
+                }
+//            }else {
+//               
+//            }
         case .failed:
             showAlertToast(message: "Message Sening Failed")
         default:
