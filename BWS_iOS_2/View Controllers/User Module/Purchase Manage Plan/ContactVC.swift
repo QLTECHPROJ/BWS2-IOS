@@ -142,23 +142,30 @@ class ContactVC: BaseViewController {
     
     func handleCoUserRedirection() {
         if let coUser = CoUserDataModel.currentUser {
-            if coUser.isAssessmentCompleted == "0" {
-                let aVC = AppStoryBoard.main.viewController(viewControllerClass: DoDassAssessmentVC.self)
-                self.navigationController?.pushViewController(aVC, animated: true)
-//            }
-//            else if coUser.planDetails?.count == 0 && coUser.isMainAccount == "1"{
-//                let aVC = AppStoryBoard.main.viewController(viewControllerClass: DassAssessmentResultVC.self)
-//                self.navigationController?.pushViewController(aVC, animated: true)
-                
-            } else if coUser.isProfileCompleted == "0" {
+            if coUser.isProfileCompleted == "0" {
                 redirectToProfileStep()
             } else if coUser.AvgSleepTime.trim.count == 0 || coUser.AreaOfFocus.count == 0 {
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass: SleepTimeVC.self)
                 self.navigationController?.pushViewController(aVC, animated: true)
             } else {
-                let aVC = AppStoryBoard.account.viewController(viewControllerClass:ManageUserVC.self)
-                aVC.isCome = "SMS"
-                self.navigationController?.pushViewController(aVC, animated: true)
+                guard let controllers = self.navigationController?.viewControllers else {
+                    return
+                }
+                
+                var isPopSuccess = false
+                for controller in controllers {
+                    if controller.isKind(of: ManageUserVC.self) {
+                        isPopSuccess = true
+                        self.navigationController?.popToViewController(controller, animated: true)
+                        return
+                    }
+                }
+                
+                if isPopSuccess == false {
+                    let aVC = AppStoryBoard.account.viewController(viewControllerClass:ManageUserVC.self)
+                    aVC.isCome = "SMS"
+                    self.navigationController?.pushViewController(aVC, animated: true)
+                }
             }
         }
     }
@@ -262,15 +269,11 @@ extension ContactVC : MFMessageComposeViewControllerDelegate {
         case .cancelled:
             showAlertToast(message: "Message Sending Cancelled")
         case .sent:
-           // if isCome == "AddUser" || isCome == nil{
-                self.callGetCoUserDetailsAPI { (success) in
-                    if success {
-                        self.handleCoUserRedirection()
-                    }
+            self.callGetCoUserDetailsAPI { (success) in
+                if success {
+                    self.handleCoUserRedirection()
                 }
-//            }else {
-//               
-//            }
+            }
         case .failed:
             showAlertToast(message: "Message Sening Failed")
         default:

@@ -72,13 +72,25 @@ class ManageUserVC: BaseViewController {
     // MARK:- ACTIONS
     @IBAction func backClicked(sender : UIButton) {
         if isCome == "SMS" {
-            let aVC = AppStoryBoard.main.viewController(viewControllerClass: TabBarController.self)
-            aVC.selectedIndex = 6
-            self.navigationController?.pushViewController(aVC, animated: true)
-        }else {
+            guard let controllers = self.navigationController?.viewControllers else {
+                return
+            }
+            
+            var isPopSuccess = false
+            for controller in controllers {
+                if controller.isKind(of: UserListPopUpVC.self) {
+                    isPopSuccess = true
+                    self.navigationController?.popToViewController(controller, animated: true)
+                    return
+                }
+            }
+            
+            if isPopSuccess == false {
+                APPDELEGATE.window?.rootViewController = AppStoryBoard.main.viewController(viewControllerClass: NavigationClass.self)
+            }
+        } else {
             self.navigationController?.popViewController(animated: true)
         }
-        
     }
     
     @IBAction func addUserClicked(sender : UIButton) {
