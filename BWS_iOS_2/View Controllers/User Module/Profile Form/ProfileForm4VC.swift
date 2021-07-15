@@ -18,15 +18,15 @@ class ProfileForm4VC: BaseViewController {
     @IBOutlet weak var txtFDate: DJPickerView!
     @IBOutlet weak var viewDate: UIView!
     
-    // MARK:- VARIABLES
-    var selectedDOB = Date()
     
     // MARK:- VIEW LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        txtFDate.textColor = Theme.colors.textColor
+        viewDate.borderColor = Theme.colors.gray_DDDDDD
+        
         setupUI()
-        initDOBPickerView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,9 +51,11 @@ class ProfileForm4VC: BaseViewController {
         if ProfileFormModel.shared.dob.trim.count > 0 {
             progressView.progress = 0.5
             btnNext.isEnabled = true
-            viewDate.borderColor = Theme.colors.gray_DDDDDD
-            txtFDate.textColor = Theme.colors.textColor
+            txtFDate.textColor = Theme.colors.purple
+            viewDate.borderColor = Theme.colors.purple
         }
+        
+        initDOBPickerView()
     }
     
     override func goNext() {
@@ -62,42 +64,32 @@ class ProfileForm4VC: BaseViewController {
     }
     
     private func initDOBPickerView() {
-        let nextDay = Calendar.current.date(byAdding: .day, value: -1, to: Date())
-        let date = nextDay
-        let calendar = Calendar.current
-        let components = calendar.dateComponents([.year, .month, .day], from: date!)
-        let currentDate = calendar.date(from: components)!
-        
-        let dateComponents = DateComponents()
-        //        dateComponents.year = -4
-        
-        var tenYearsAgo = Calendar.current.date(byAdding: dateComponents, to: currentDate)
+        let prevDate = Calendar.current.date(byAdding: .day, value: -1, to: Date()) ?? Date()
+        var dob : Date?
         
         txtFDate.type = .date
         txtFDate.pickerDelegate = self
         txtFDate.datePicker?.datePickerMode = .date
-        txtFDate.datePicker?.maximumDate = tenYearsAgo
+        txtFDate.datePicker?.maximumDate = prevDate
         txtFDate.dateFormatter.dateFormat = Theme.dateFormats.DOB_App
         
         if ProfileFormModel.shared.dob.trim.count > 0 {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = Theme.dateFormats.DOB_App
-            tenYearsAgo = dateFormatter.date(from: ProfileFormModel.shared.dob )
+            dob = dateFormatter.date(from: ProfileFormModel.shared.dob )
         }
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = Theme.dateFormats.DOB_App
         dateFormatter.timeZone = TimeZone.current
-       
-        if tenYearsAgo != nil {
-            txtFDate.text = dateFormatter.string(from: tenYearsAgo!)
-            txtFDate.datePicker?.date = tenYearsAgo!
-            selectedDOB = tenYearsAgo!
-            txtFDate.isHidden = txtFDate.text?.count == 0
-            ProfileFormModel.shared.dob = txtFDate.text ?? ""
-        }
         
-        //txtDOBTopConst.constant = (txtFDOB.text?.count == 0) ? 0 : 10
+        if let DOB = dob {
+            txtFDate.text = dateFormatter.string(from: DOB)
+            txtFDate.datePicker?.date = DOB
+        } else {
+            txtFDate.text = dateFormatter.string(from: prevDate)
+            txtFDate.datePicker?.date = prevDate
+        }
     }
     
     @objc func textFieldValueChanged(textField : UITextField ) {
@@ -121,18 +113,17 @@ class ProfileForm4VC: BaseViewController {
 extension ProfileForm4VC : DJPickerViewDelegate {
     
     func textPickerView(_ textPickerView: DJPickerView, didSelectDate date: Date) {
-        print("Date :- ",date)
-        selectedDOB = date
+        self.view.endEditing(true)
+        
+        print("DOB :- ",date)
         ProfileFormModel.shared.dob = txtFDate.text ?? ""
-      
+        setupUI()
+        
         self.view.isUserInteractionEnabled = false
-        viewDate.borderColor = Theme.colors.purple
-        txtFDate.textColor = Theme.colors.purple
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.goNext()
             self.view.isUserInteractionEnabled = true
         }
-        self.view.layoutIfNeeded()
     }
     
 }
@@ -143,9 +134,4 @@ extension ProfileForm4VC : UITextFieldDelegate {
         return textField.resignFirstResponder()
     }
     
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        viewDate.borderColor = Theme.colors.purple
-        txtFDate.textColor = Theme.colors.purple
-        textField.resignFirstResponder()
-    }
 }

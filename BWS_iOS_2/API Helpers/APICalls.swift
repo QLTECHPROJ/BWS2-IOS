@@ -211,7 +211,6 @@ extension ProfileForm6VC {
             if response.ResponseCode == "200" {
                 showAlertToast(message: response.ResponseMessage)
                 
-                ProfileFormModel.shared = ProfileFormModel()
                 CoUserDataModel.currentUser?.isProfileCompleted = "1"
                 CoUserDataModel.currentUser = CoUserDataModel.currentUser
                 
@@ -225,6 +224,9 @@ extension ProfileForm6VC {
                 
                 // Segment - Identify User
                 SegmentTracking.shared.identifyUser()
+                
+                // Reset Profile Data
+                ProfileFormModel.shared = ProfileFormModel()
                 
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass: SleepTimeVC.self)
                 self.navigationController?.pushViewController(aVC, animated: true)
@@ -460,11 +462,12 @@ extension UIViewController {
                           "Email":selectedUser.Email]
         
         // Segment Tracking
-        let traits = ["userId":selectedUser.UserId,
-                      "userGroupId":LoginDataModel.currentMainAccountId,
-                      "name":selectedUser.Name,
-                      "mobileNo":selectedUser.Mobile,
-                      "email":selectedUser.Email]
+        let traits : [String:Any] = ["userId":selectedUser.UserId,
+                                     "userGroupId":LoginDataModel.currentMainAccountId,
+                                     "isAdmin":selectedUser.isAdminUser,
+                                     "name":selectedUser.Name,
+                                     "mobileNo":selectedUser.Mobile,
+                                     "email":selectedUser.Email]
         SegmentTracking.shared.trackEvent(name: SegmentTracking.eventNames.Forgot_Pin_Clicked, traits: traits, trackingType: .track)
         
         APICallManager.sharedInstance.callAPI(router: APIRouter.forgotpin(parameters)) { (response : GeneralModel) in
@@ -1571,7 +1574,6 @@ extension ReminderPopUpVC {
 
         APICallManager.sharedInstance.callAPI(router: APIRouter.proceed(parameters), displayHud: true, showToast: false) { (response :GeneralModel) in
             if response.ResponseCode == "200" {
-                showAlertToast(message: response.ResponseMessage)
                 let aVC = AppStoryBoard.account.viewController(viewControllerClass: DayVC.self)
                 aVC.isfromPopUp = true
                 aVC.objPlaylist = self.suggstedPlaylist

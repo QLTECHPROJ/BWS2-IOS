@@ -132,11 +132,12 @@ class BaseViewController: UIViewController {
         self.present(aVC, animated: false, completion: nil)
         
         // Segment Tracking
-        let traits = ["userId":selectedUser.UserId,
-                      "userGroupId":LoginDataModel.currentMainAccountId,
-                      "name":selectedUser.Name,
-                      "mobileNo":selectedUser.Mobile,
-                      "email":selectedUser.Email]
+        let traits : [String:Any] = ["userId":selectedUser.UserId,
+                                     "userGroupId":LoginDataModel.currentMainAccountId,
+                                     "isAdmin":selectedUser.isAdminUser,
+                                     "name":selectedUser.Name,
+                                     "mobileNo":selectedUser.Mobile,
+                                     "email":selectedUser.Email]
         SegmentTracking.shared.trackEvent(name: SegmentTracking.screenNames.forgotPin, traits: traits, trackingType: .screen)
     }
 }

@@ -10,32 +10,20 @@ import UIKit
 
 class ReminderPopUpVC: BaseViewController {
     
-    //MARK:- UIOutlet
-    
-    //MARK:- Variables
+    // MARK:- VARIABLES
     var suggstedPlaylist : PlaylistDetailsModel?
     
-    //MARK:- View Life Cycle
+    
+    // MARK:- VIEW LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
-
-    }
-    
-    //MARK:- Functions
-    override func setupUI() {
         
     }
     
-    override func setupData() {
-        
-    }
     
     //MARK:- IBAction Methods
     @IBAction func onTappedProceed(_ sender: UIButton) {
-      //  self.dismiss(animated: false) {
-            self.callProceedAPI()
-      //  }
-        
+        self.callProceedAPI()
     }
     
 }

@@ -18,8 +18,9 @@ extension SegmentTracking {
             }
         }
         
-        if CoUserDataModel.currentUserId.count > 0 {
-            newTraits["userId"] = CoUserDataModel.currentUserId
+        if let userDetails = CoUserDataModel.currentUser {
+            newTraits["userId"] = userDetails.UserId
+            newTraits["isAdmin"] = userDetails.isAdminUser
         }
         
         if LoginDataModel.currentMainAccountId.count > 0 {
@@ -37,8 +38,9 @@ extension SegmentTracking {
             }
         }
         
-        if CoUserDataModel.currentUserId.count > 0 {
-            newTraits["userId"] = CoUserDataModel.currentUserId
+        if let userDetails = CoUserDataModel.currentUser {
+            newTraits["userId"] = userDetails.UserId
+            newTraits["isAdmin"] = userDetails.isAdminUser
         }
         
         if LoginDataModel.currentMainAccountId.count > 0 {
@@ -135,6 +137,7 @@ extension UserListVC {
     
     func trackScreenData() {
         var traits : [String:Any] = ["userGroupId":LoginDataModel.currentMainAccountId,
+                                     "isAdmin":CoUserDataModel.currentUser?.isAdminUser ?? false,
                                      "maxuseradd":maxUsers]
         
         var users = [[String:String]]()
@@ -160,6 +163,7 @@ extension UserListPopUpVC {
     
     func trackScreenData() {
         var traits : [String:Any] = ["userGroupId":LoginDataModel.currentMainAccountId,
+                                     "isAdmin":CoUserDataModel.currentUser?.isAdminUser ?? false,
                                      "maxuseradd":maxUsers]
         
         var users = [[String:String]]()

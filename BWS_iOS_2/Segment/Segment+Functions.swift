@@ -109,6 +109,7 @@ class SegmentTracking {
             var dictUserDetails : [String:Any] = [
                 "userId":CoUserDataModel.currentUserId,
                 "userGroupId":LoginDataModel.currentMainAccountId,
+                "isAdmin":userDetails.isAdminUser,
                 "id":CoUserDataModel.currentUserId,
                 "deviceId":DEVICE_UUID,
                 "deviceType":"iOS",
@@ -152,6 +153,7 @@ class SegmentTracking {
             var dictUserDetails : [String:Any] = [
                 "userId":CoUserDataModel.currentUserId,
                 "userGroupId":LoginDataModel.currentMainAccountId,
+                "isAdmin":userDetails.isAdminUser,
                 "id":CoUserDataModel.currentUserId,
                 "deviceId":DEVICE_UUID,
                 "deviceType":"iOS",

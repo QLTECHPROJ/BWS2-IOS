@@ -410,6 +410,16 @@ class CoUserDataModel : EVObject {
         }
     }
     
+    var isAdminUser : Bool {
+        if  self.isMainAccount == "1" {
+            return true
+        } else if self.UserId == self.MainAccountID {
+            return true
+        }
+        
+        return false
+    }
+    
 }
 
 
