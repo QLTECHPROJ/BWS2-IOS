@@ -51,8 +51,7 @@ class AddUserVC: BaseViewController {
                         }
                         aVC.modalPresentationStyle = .overFullScreen
                         self.present(aVC, animated: false, completion: nil)
-                       
-                    }else {
+                    } else {
                         let aVC = AppStoryBoard.main.viewController(viewControllerClass:StepVC.self)
                         aVC.strTitle = ""
                         aVC.strSubTitle = "Proceed with adding New User"

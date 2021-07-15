@@ -103,4 +103,40 @@ class BaseViewController: UIViewController {
         }
     }
     
+    func redirectToProfileStep() {
+        let aVC = AppStoryBoard.main.viewController(viewControllerClass:StepVC.self)
+        aVC.strTitle = Theme.strings.step_3_title
+        aVC.strSubTitle = Theme.strings.step_3_subtitle
+        aVC.imageMain = UIImage(named: "profileForm")
+        aVC.viewTapped = {
+            let aVC = AppStoryBoard.main.viewController(viewControllerClass: ProfileForm2VC.self)
+            self.navigationController?.pushViewController(aVC, animated: false)
+        }
+        aVC.modalPresentationStyle = .overFullScreen
+        self.present(aVC, animated: false, completion: nil)
+        
+        // Segment Tracking
+        SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.profile_form_start)
+    }
+    
+    func redirectToPinSentVC(selectedUser : CoUserDataModel) {
+        let aVC = AppStoryBoard.main.viewController(viewControllerClass:StepVC.self)
+        aVC.strTitle = ""
+        let firstxt = "A new pin has been sent to your mail id "
+        let arr = selectedUser.Email.split {$0 == "@"}
+        let sectxt = (String((arr[0])).first(char: 3)) + "*****@"
+        let last = firstxt + sectxt + String((arr[1]))
+        aVC.strSubTitle = last
+        aVC.imageMain = UIImage(named: "Email")
+        aVC.modalPresentationStyle = .overFullScreen
+        self.present(aVC, animated: false, completion: nil)
+        
+        // Segment Tracking
+        let traits = ["userId":selectedUser.UserId,
+                      "userGroupId":LoginDataModel.currentMainAccountId,
+                      "name":selectedUser.Name,
+                      "mobileNo":selectedUser.Mobile,
+                      "email":selectedUser.Email]
+        SegmentTracking.shared.trackEvent(name: SegmentTracking.screenNames.forgotPin, traits: traits, trackingType: .screen)
+    }
 }

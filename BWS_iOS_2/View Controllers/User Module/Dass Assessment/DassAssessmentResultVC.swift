@@ -134,16 +134,7 @@ class DassAssessmentResultVC: BaseViewController {
         } else {
             if let coUser = CoUserDataModel.currentUser {
                 if coUser.isProfileCompleted == "0" {
-                    let aVC = AppStoryBoard.main.viewController(viewControllerClass:StepVC.self)
-                    aVC.strTitle = Theme.strings.step_3_title
-                    aVC.strSubTitle = Theme.strings.step_3_subtitle
-                    aVC.imageMain = UIImage(named: "profileForm")
-                    aVC.viewTapped = {
-                        let aVC = AppStoryBoard.main.viewController(viewControllerClass: ProfileForm2VC.self)
-                        self.navigationController?.pushViewController(aVC, animated: false)
-                    }
-                    aVC.modalPresentationStyle = .overFullScreen
-                    self.present(aVC, animated: false, completion: nil)
+                    redirectToProfileStep()
                 } else if coUser.AvgSleepTime.trim.count == 0 || coUser.AreaOfFocus.count == 0 {
                     let aVC = AppStoryBoard.main.viewController(viewControllerClass: SleepTimeVC.self)
                     self.navigationController?.pushViewController(aVC, animated: true)

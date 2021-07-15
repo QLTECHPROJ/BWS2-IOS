@@ -74,8 +74,6 @@
 		2824414C2609ACE30060292E /* CountryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282441442609ACE30060292E /* CountryCell.swift */; };
 		282441512609AD2E0060292E /* UserListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282441502609AD2E0060292E /* UserListVC.swift */; };
 		282441522609AD2E0060292E /* UserListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282441502609AD2E0060292E /* UserListVC.swift */; };
-		282441542609AD3A0060292E /* AddProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282441532609AD3A0060292E /* AddProfileVC.swift */; };
-		282441552609AD3A0060292E /* AddProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282441532609AD3A0060292E /* AddProfileVC.swift */; };
 		2824415A2609AD4E0060292E /* StepVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282441592609AD4E0060292E /* StepVC.swift */; };
 		2824415B2609AD4E0060292E /* StepVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282441592609AD4E0060292E /* StepVC.swift */; };
 		2824415D2609AD590060292E /* PinVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2824415C2609AD590060292E /* PinVC.swift */; };
@@ -602,7 +600,6 @@
 		282441432609ACE20060292E /* CountryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CountryCell.xib; sourceTree = "<group>"; };
 		282441442609ACE30060292E /* CountryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryCell.swift; sourceTree = "<group>"; };
 		282441502609AD2E0060292E /* UserListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListVC.swift; sourceTree = "<group>"; };
-		282441532609AD3A0060292E /* AddProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProfileVC.swift; sourceTree = "<group>"; };
 		282441592609AD4E0060292E /* StepVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepVC.swift; sourceTree = "<group>"; };
 		2824415C2609AD590060292E /* PinVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinVC.swift; sourceTree = "<group>"; };
 		2824415F2609AD620060292E /* DescriptionPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionPopupVC.swift; sourceTree = "<group>"; };
@@ -953,7 +950,6 @@
 				9A9A1C6B2682060E009CF46E /* OTPVC.swift */,
 				9A62E91C26820D3400883BBD /* EmailVerifyVC.swift */,
 				282441502609AD2E0060292E /* UserListVC.swift */,
-				282441532609AD3A0060292E /* AddProfileVC.swift */,
 				2824415C2609AD590060292E /* PinVC.swift */,
 				282441592609AD4E0060292E /* StepVC.swift */,
 				2824415F2609AD620060292E /* DescriptionPopupVC.swift */,
@@ -2068,7 +2064,6 @@
 				281DE3342626FD79002CCD9D /* DJMusicPlayer.swift in Sources */,
 				281DE3222626FD79002CCD9D /* SDDownloadManager.swift in Sources */,
 				2870B41425FB41A10014A4F6 /* UIViewExtension.swift in Sources */,
-				282441552609AD3A0060292E /* AddProfileVC.swift in Sources */,
 				9AC066FD2639178E00287A44 /* RecAudioBookVC.swift in Sources */,
 				2870B3F025FB41A10014A4F6 /* UITextField+Extension.swift in Sources */,
 				281DE3422626FD79002CCD9D /* DJMusicPlayer+ControlCenter.swift in Sources */,
@@ -2292,7 +2287,6 @@
 				281DE3212626FD79002CCD9D /* SDDownloadManager.swift in Sources */,
 				2870B3EF25FB41A10014A4F6 /* UITextField+Extension.swift in Sources */,
 				9AC066FC2639178E00287A44 /* RecAudioBookVC.swift in Sources */,
-				282441542609AD3A0060292E /* AddProfileVC.swift in Sources */,
 				28ED2FB225FB8C6600E59C56 /* ProfileForm3VC.swift in Sources */,
 				281DE3412626FD79002CCD9D /* DJMusicPlayer+ControlCenter.swift in Sources */,
 				281DE3372626FD79002CCD9D /* DJMusicPlayerReachability.swift in Sources */,

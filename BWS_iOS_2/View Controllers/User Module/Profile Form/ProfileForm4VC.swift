@@ -29,6 +29,14 @@ class ProfileForm4VC: BaseViewController {
         initDOBPickerView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Segment Tracking
+        let traits = ["screen":"DOB"]
+        SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.profile_query_screen, traits: traits)
+    }
+    
     
     // MARK:- FUNCTIONS
     override func setupUI() {
@@ -40,7 +48,7 @@ class ProfileForm4VC: BaseViewController {
         btnPrev.isEnabled = true
         
         btnNext.isEnabled = false
-        if ProfileFormModel.shared.age.trim.count > 0 {
+        if ProfileFormModel.shared.dob.trim.count > 0 {
             progressView.progress = 0.5
             btnNext.isEnabled = true
             viewDate.borderColor = Theme.colors.gray_DDDDDD
@@ -71,11 +79,10 @@ class ProfileForm4VC: BaseViewController {
         txtFDate.datePicker?.maximumDate = tenYearsAgo
         txtFDate.dateFormatter.dateFormat = Theme.dateFormats.DOB_App
         
-        if ProfileFormModel.shared.age.trim.count > 0 {
+        if ProfileFormModel.shared.dob.trim.count > 0 {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = Theme.dateFormats.DOB_App
-            tenYearsAgo = dateFormatter.date(from: ProfileFormModel.shared.age )
-            
+            tenYearsAgo = dateFormatter.date(from: ProfileFormModel.shared.dob )
         }
         
         let dateFormatter = DateFormatter()
@@ -87,7 +94,7 @@ class ProfileForm4VC: BaseViewController {
             txtFDate.datePicker?.date = tenYearsAgo!
             selectedDOB = tenYearsAgo!
             txtFDate.isHidden = txtFDate.text?.count == 0
-            ProfileFormModel.shared.age = txtFDate.text ?? ""
+            ProfileFormModel.shared.dob = txtFDate.text ?? ""
         }
         
         //txtDOBTopConst.constant = (txtFDOB.text?.count == 0) ? 0 : 10
@@ -116,7 +123,7 @@ extension ProfileForm4VC : DJPickerViewDelegate {
     func textPickerView(_ textPickerView: DJPickerView, didSelectDate date: Date) {
         print("Date :- ",date)
         selectedDOB = date
-        ProfileFormModel.shared.age = txtFDate.text ?? ""
+        ProfileFormModel.shared.dob = txtFDate.text ?? ""
       
         self.view.isUserInteractionEnabled = false
         viewDate.borderColor = Theme.colors.purple

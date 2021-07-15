@@ -45,9 +45,6 @@ class SignUpVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Segment Tracking
-        SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.signUp)
-        
         setupUI()
         setupPrivacyLabel()
         setupData()
@@ -55,6 +52,9 @@ class SignUpVC: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        // Segment Tracking
+        SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.signUp)
         
         if isFromOTP {
             txtFMobileNo.becomeFirstResponder()

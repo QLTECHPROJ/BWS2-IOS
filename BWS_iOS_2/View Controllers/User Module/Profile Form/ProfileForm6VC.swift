@@ -30,6 +30,14 @@ class ProfileForm6VC: BaseViewController {
         setupUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Segment Tracking
+        let traits = ["screen":"Medication"]
+        SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.profile_query_screen, traits: traits)
+    }
+    
     
     // MARK:- FUNCTIONS
     override func setupUI() {

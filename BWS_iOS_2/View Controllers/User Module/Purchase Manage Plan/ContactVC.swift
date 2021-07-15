@@ -24,15 +24,14 @@ class ContactVC: BaseViewController {
     var arrayContactList = [CNContact]()
     var arrayContacts = [ContactModel]()
     var arrayContactsSearch = [ContactModel]()
-    var strURL:String?
     var isCome:String?
     
     // MARK:- VIEW LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let traits = ["referLink":LoginDataModel.currentMainAccountId]
-        SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.invite_friend, traits: traits)
+        // Segment Tracking
+        SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.invite_friend)
         
         tableView.register(nibWithCellClass: InviteFriendCell.self)
         btnClear.isHidden = true
@@ -119,10 +118,10 @@ class ContactVC: BaseViewController {
         callInviteUserAPI(contact: contact)
     }
     
-    func sendMessage(contact : ContactModel) {
+    func sendMessage(contact : ContactModel, inviteUrl : String) {
         if (MFMessageComposeViewController.canSendText()) {
            
-            let shareText = String(format:"Hey, I am loving using the Brain Wellness App. You can develop yourself in the comfort of your home while you sleep and gain access to over 75 audio programs helping you to live inspired and improve your mental wellbeing. I would like to invite you to try it.  Sign up using the link %@",strURL ?? "")
+            let shareText = String(format:"Hey, I am loving using the Brain Wellness App. You can develop yourself in the comfort of your home while you sleep and gain access to over 75 audio programs helping you to live inspired and improve your mental wellbeing. I would like to invite you to try it.  Sign up using the link %@",inviteUrl)
             
             let controller = MFMessageComposeViewController()
             controller.body = shareText
@@ -131,7 +130,7 @@ class ContactVC: BaseViewController {
             self.present(controller, animated: true, completion: nil)
             
             // Segment Tracking
-            let traits = ["referLink":strURL ?? "",
+            let traits = ["referLink":inviteUrl,
                           "shareText":shareText,
                           "contactName":contact.contactName,
                           "contactNumber":contact.contactNumber]
@@ -152,17 +151,7 @@ class ContactVC: BaseViewController {
 //                self.navigationController?.pushViewController(aVC, animated: true)
                 
             } else if coUser.isProfileCompleted == "0" {
-                let aVC = AppStoryBoard.main.viewController(viewControllerClass:StepVC.self)
-                aVC.strTitle = Theme.strings.step_3_title
-                aVC.strSubTitle = Theme.strings.step_3_subtitle
-                aVC.imageMain = UIImage(named: "profileForm")
-                aVC.viewTapped = {
-                    let aVC = AppStoryBoard.main.viewController(viewControllerClass: ProfileForm2VC.self)
-                    self.navigationController?.pushViewController(aVC, animated: false)
-                }
-                aVC.modalPresentationStyle = .overFullScreen
-                self.present(aVC, animated: false, completion: nil)
-                
+                redirectToProfileStep()
             } else if coUser.AvgSleepTime.trim.count == 0 || coUser.AreaOfFocus.count == 0 {
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass: SleepTimeVC.self)
                 self.navigationController?.pushViewController(aVC, animated: true)

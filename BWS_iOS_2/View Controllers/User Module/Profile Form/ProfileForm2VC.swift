@@ -12,7 +12,7 @@ import EVReflection
 class ProfileFormModel : EVObject {
     var gender = ""
     var genderX = ""
-    var age = ""
+    var dob = ""
     var prevDrugUse = ""
     var Medication = ""
     
@@ -40,6 +40,14 @@ class ProfileForm2VC: BaseViewController {
         // Do any additional setup after loading the view.
         
         setupUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Segment Tracking
+        let traits = ["screen":"Gender"]
+        SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.profile_query_screen, traits: traits)
     }
     
     

@@ -30,6 +30,14 @@ class ProfileForm3VC: BaseViewController {
         setupUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Segment Tracking
+        let traits = ["screen":"Gender X"]
+        SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.profile_query_screen, traits: traits)
+    }
+    
     
     // MARK:- FUNCTIONS
     override func setupUI() {

@@ -105,6 +105,7 @@ extension OTPVC {
                     let eventname = self.signUpFlag == "1" ? SegmentTracking.eventNames.User_Sign_up : SegmentTracking.eventNames.User_Login
                     SegmentTracking.shared.trackGeneralEvents(name: eventname, traits: traits)
                     
+                    // Segment - Identify User
                     if userDetails.directLogin == "1" {
                         SegmentTracking.shared.identifyUser()
                     } else if self.signUpFlag == "1" {
@@ -175,8 +176,10 @@ extension PinVC {
                 }
                 
                 // Segment Tracking
-                SegmentTracking.shared.identifyUser()
                 SegmentTracking.shared.coUserEvent(name: SegmentTracking.eventNames.CoUser_Login, trackingType: .track)
+                
+                // Segment - Identify User
+                SegmentTracking.shared.identifyUser()
                 
                 // Clear Last User Data
                 AccountVC.clearUserData()
@@ -192,54 +195,6 @@ extension PinVC {
     
 }
 
-extension AddProfileVC {
-    
-    // Add User Profile API Call
-    func callAddUserProfileAPI() {
-        let parameters = [APIParameters.MainAccountID:LoginDataModel.currentMainAccountId,
-                          "UserName":txtFName.text ?? "",
-                          "Email":txtFEmailAdd.text ?? "",
-                          "MobileNo":txtFMobileNo.text ?? ""]
-        
-        APICallManager.sharedInstance.callAPI(router: APIRouter.addcouser(parameters), displayHud: true, showToast: false) { (response : CoUserModel) in
-            if response.ResponseCode == "200" {
-                showAlertToast(message: response.ResponseMessage)
-                
-                // Segment Tracking
-                if self.selectedUser == nil {
-                    if let userDetails = response.ResponseData {
-                        let traits = ["name":userDetails.Name,
-                                      "mobileNo":userDetails.Mobile,
-                                      "email":userDetails.Email]
-                        SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.Couser_Added, traits: traits)
-                    }
-                }
-                
-                self.navigationController?.popViewController(animated: true)
-            } else {
-                if response.ResponseMessage.trim.count > 0 {
-                    self.lblErrEmailAdd.isHidden = false
-                    self.lblErrEmailAdd.text = response.ResponseMessage
-                }
-            }
-        }
-    }
-    
-    // Forgot Pin API Call
-    func callForgotPinAPI() {
-        let parameters = [APIParameters.UserId:selectedUser?.UserId ?? "",
-                          "Email":selectedUser?.Email ?? ""]
-        
-        APICallManager.sharedInstance.callAPI(router: APIRouter.forgotpin(parameters)) { (response : GeneralModel) in
-            if response.ResponseCode == "200" {
-                showAlertToast(message: response.ResponseMessage)
-                self.navigationController?.popViewController(animated: true)
-            }
-        }
-    }
-    
-}
-
 extension ProfileForm6VC {
     
     // Profile Answer Save API Call
@@ -247,7 +202,7 @@ extension ProfileForm6VC {
         let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
                           "gender":ProfileFormModel.shared.gender,
                           "genderX":ProfileFormModel.shared.genderX,
-                          "dob":ProfileFormModel.shared.age,
+                          "dob":ProfileFormModel.shared.dob,
                           "prevDrugUse":ProfileFormModel.shared.prevDrugUse,
                           "Medication":ProfileFormModel.shared.Medication]
         
@@ -256,12 +211,21 @@ extension ProfileForm6VC {
             if response.ResponseCode == "200" {
                 showAlertToast(message: response.ResponseMessage)
                 
-                // Segment Tracking
-                SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.Profile_Form_Submitted, traits: parameters)
-                
                 ProfileFormModel.shared = ProfileFormModel()
                 CoUserDataModel.currentUser?.isProfileCompleted = "1"
                 CoUserDataModel.currentUser = CoUserDataModel.currentUser
+                
+                // Segment Tracking
+                let traits = ["gender":ProfileFormModel.shared.gender,
+                              "genderX":ProfileFormModel.shared.genderX,
+                              "dob":ProfileFormModel.shared.dob,
+                              "prevDrugUse":ProfileFormModel.shared.prevDrugUse,
+                              "Medication":ProfileFormModel.shared.Medication]
+                SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.Profile_Form_Submitted, traits: traits)
+                
+                // Segment - Identify User
+                SegmentTracking.shared.identifyUser()
+                
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass: SleepTimeVC.self)
                 self.navigationController?.pushViewController(aVC, animated: true)
             }
@@ -299,6 +263,9 @@ extension AssessmentVC {
                               "scoreLevel":CoUserDataModel.currentUser?.ScoreLevel ?? ""]
                 SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.Assessment_Form_Submitted, traits: traits)
                 
+                // Segment - Identify User
+                SegmentTracking.shared.identifyUser()
+                
                 showAlertToast(message: response.ResponseMessage)
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass: DassAssessmentResultVC.self)
                 aVC.isFromEdit = self.isFromEdit
@@ -319,7 +286,7 @@ extension UIViewController {
             if response.ResponseCode == "200" {
                 CoUserDataModel.currentUser = response.ResponseData
                 
-                // Segment Tracking
+                // Segment - Identify User
                 if SegmentTracking.shared.userIdentityTracked == false {
                     SegmentTracking.shared.identifyUser()
                 }
@@ -488,15 +455,23 @@ extension UIViewController {
     }
     
     // Forgot Pin API Call
-    func callForgotPinAPI(selectedUser : CoUserDataModel?, complitionBlock : (() -> ())?) {
-        let parameters = [APIParameters.UserId:selectedUser?.UserId ?? "",
-                          "Email":selectedUser?.Email ?? ""]
+    func callForgotPinAPI(selectedUser : CoUserDataModel, complitionBlock : (() -> ())?) {
+        let parameters = [APIParameters.UserId:selectedUser.UserId,
+                          "Email":selectedUser.Email]
+        
+        // Segment Tracking
+        let traits = ["userId":selectedUser.UserId,
+                      "userGroupId":LoginDataModel.currentMainAccountId,
+                      "name":selectedUser.Name,
+                      "mobileNo":selectedUser.Mobile,
+                      "email":selectedUser.Email]
+        SegmentTracking.shared.trackEvent(name: SegmentTracking.eventNames.Forgot_Pin_Clicked, traits: traits, trackingType: .track)
         
         APICallManager.sharedInstance.callAPI(router: APIRouter.forgotpin(parameters)) { (response : GeneralModel) in
             if response.ResponseCode == "200" {
-                let aVC = AppStoryBoard.main.viewController(viewControllerClass: UserListVC.self)
-                self.navigationController?.pushViewController(aVC, animated: false)
-                
+                complitionBlock?()
+            } else {
+                showAlertToast(message: response.ResponseMessage)
             }
         }
     }
@@ -953,6 +928,9 @@ extension AreaOfFocusVC {
                 
                 // Segment Tracking
                 self.trackScreenData()
+                
+                // Segment - Identify User
+                SegmentTracking.shared.identifyUser()
                 
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass: PreparingPlaylistVC.self)
                 aVC.isFromEdit = self.isFromEdit
@@ -1422,8 +1400,10 @@ extension EditProfileVC {
                         self.navigationController?.popViewController(animated: true)
                         
                         // Segment Tracking
-                        SegmentTracking.shared.identifyUser()
                         SegmentTracking.shared.coUserEvent(name: SegmentTracking.eventNames.Profile_Changes_Saved, trackingType: .track)
+                        
+                        // Segment - Identify User
+                        SegmentTracking.shared.identifyUser()
                     }
                 }
             }
@@ -1497,15 +1477,15 @@ extension UserDetailVC {
             if response.ResponseCode == "200" {
                 showAlertToast(message: response.ResponseMessage)
                 
-//                // Segment Tracking
-//                if self.selectedUser == nil {
-//                    if let userDetails = response.ResponseData {
-//                        let traits = ["name":userDetails.Name,
-//                                      "mobileNo":userDetails.Mobile,
-//                                      "email":userDetails.Email]
-//                        SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.Couser_Added, traits: traits)
-//                    }
-//                }
+                // Segment Tracking
+                if let userDetails = response.ResponseData {
+                    let traits = ["userId":userDetails.UserId,
+                                  "userGroupId":userDetails.MainAccountID,
+                                  "name":userDetails.Name,
+                                  "mobileNo":userDetails.Mobile,
+                                  "email":userDetails.Email]
+                    SegmentTracking.shared.trackEvent(name: SegmentTracking.eventNames.Couser_Added, traits: traits, trackingType: .track)
+                }
                 
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass: UserListVC.self)
                 self.navigationController?.pushViewController(aVC, animated: false)
@@ -1526,8 +1506,7 @@ extension ContactVC {
 
             if response.ResponseCode == "200" {
                 showAlertToast(message: response.ResponseMessage)
-                self.strURL = response.ResponseData?.InviteLink
-                self.sendMessage(contact: contact)
+                self.sendMessage(contact: contact, inviteUrl: response.ResponseData?.InviteLink ?? "")
             }
         }
     }
@@ -1568,9 +1547,10 @@ extension ManageUserVC {
     }
     
     func callDeleteUserAPI(userId : String) {
-        let parameters = [APIParameters.UserId:userId]
+        let parameters = [APIParameters.MainAccountID:LoginDataModel.currentMainAccountId,
+                          APIParameters.UserId:userId]
         
-        APICallManager.sharedInstance.callAPI(router: APIRouter.deleteuser(parameters)) { (response :GeneralModel) in
+        APICallManager.sharedInstance.callAPI(router: APIRouter.removeuser(parameters)) { (response :GeneralModel) in
             
             if response.ResponseCode == "200" {
                 showAlertToast(message: response.ResponseMessage)
@@ -1589,8 +1569,7 @@ extension ReminderPopUpVC {
     func callProceedAPI() {
         let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId]
 
-        APICallManager.sharedInstance.callAPI(router: APIRouter.proceed(parameters)) { (response :GeneralModel) in
-
+        APICallManager.sharedInstance.callAPI(router: APIRouter.proceed(parameters), displayHud: true, showToast: false) { (response :GeneralModel) in
             if response.ResponseCode == "200" {
                 showAlertToast(message: response.ResponseMessage)
                 let aVC = AppStoryBoard.account.viewController(viewControllerClass: DayVC.self)

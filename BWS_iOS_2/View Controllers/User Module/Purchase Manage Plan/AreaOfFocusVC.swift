@@ -35,7 +35,7 @@ class AreaOfFocusVC: BaseViewController {
         super.viewDidLoad()
         
         // Segment Tracking
-        SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.recommededCategory)
+        SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.areaOfFocus)
         
         tableView.register(nibWithCellClass: RecommendedCategoryHeaderCell.self)
         tableView.register(nibWithCellClass: CategoryTableCell.self)

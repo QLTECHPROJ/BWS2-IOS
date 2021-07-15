@@ -31,6 +31,14 @@ class SetUpPInVC: BaseViewController {
         setupData()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Segment Tracking
+        SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.setupPin)
+    }
+    
+    
     //MARK:- Functions
     override func setupUI() {
         txtFNewloginPin.delegate = self

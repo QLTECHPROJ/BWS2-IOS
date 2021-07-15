@@ -134,22 +134,22 @@ extension SegmentTracking {
 extension UserListVC {
     
     func trackScreenData() {
-        var traits : [String:Any] = ["UserID":LoginDataModel.currentUserId,
+        var traits : [String:Any] = ["userGroupId":LoginDataModel.currentMainAccountId,
                                      "maxuseradd":maxUsers]
         
         var users = [[String:String]]()
         
         for userData in arrayUsers {
-            let userDetails = ["CoUserId":userData.UserId,
-                               "Name":userData.Name,
-                               "Mobile":userData.Mobile,
-                               "Email":userData.Email,
-                               "Image":userData.Image,
-                               "DOB":userData.DOB]
+            let userDetails = ["userID":userData.UserId,
+                               "name":userData.Name,
+                               "mobile":userData.Mobile,
+                               "email":userData.Email,
+                               "image":userData.Image,
+                               "dob":userData.DOB]
             users.append(userDetails)
         }
         
-        traits["coUserList"] = users
+        traits["userList"] = users
         
         SegmentTracking.shared.trackEvent(name: SegmentTracking.screenNames.coUserList, traits: traits, trackingType: .screen)
     }
@@ -159,23 +159,22 @@ extension UserListVC {
 extension UserListPopUpVC {
     
     func trackScreenData() {
-        var traits : [String:Any] = ["CoUserId":CoUserDataModel.currentUserId,
-                                     "UserID":LoginDataModel.currentUserId,
+        var traits : [String:Any] = ["userGroupId":LoginDataModel.currentMainAccountId,
                                      "maxuseradd":maxUsers]
         
         var users = [[String:String]]()
         
         for userData in arrayUsers {
-            let userDetails = ["CoUserId":userData.UserId,
-                               "Name":userData.Name,
-                               "Mobile":userData.Mobile,
-                               "Email":userData.Email,
-                               "Image":userData.Image,
-                               "DOB":userData.DOB]
+            let userDetails = ["userID":userData.UserId,
+                               "name":userData.Name,
+                               "mobile":userData.Mobile,
+                               "email":userData.Email,
+                               "image":userData.Image,
+                               "dob":userData.DOB]
             users.append(userDetails)
         }
         
-        traits["coUserList"] = users
+        traits["userList"] = users
         
         SegmentTracking.shared.trackEvent(name: SegmentTracking.screenNames.userListPopup, traits: traits, trackingType: .screen)
     }

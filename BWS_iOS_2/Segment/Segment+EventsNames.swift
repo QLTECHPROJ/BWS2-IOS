@@ -16,10 +16,14 @@ struct ScreenNames {
     let login = "Login Screen Viewed"
     let emailSent = "Email Sent Screen Viewed"
     let forgotPassword = "Forgot Password Screen Viewed"
+    
     let forgotPin = "Forgot Pin Screen Viewed"
     let coUserList = "Couser List Viewed"
-    let addCoUser = "Add Couser Screen Viewed"
+    let addUser = "Add User Screen Viewed"
+    let setupPin = "Set Up Pin Screen Viewed"
     
+    let profile_form_start = "Profile Step Start Screen Viewed"
+    let profile_query_screen = "Profile Query Screen viewed"
     let profileForm = "Profile Form Screen Viewed"
     let assessmentStart = "Assessment Start Screen Viewed"
     let assessmentForm = "Assessment Screen Viewed"
@@ -30,7 +34,7 @@ struct ScreenNames {
     let thankYou = "Thank You Screen Viewed"
     
     let sleepTime = "Sleep Time Screen Viewed"
-    let recommededCategory = "Recommeded Category Screen Viewed"
+    let areaOfFocus = "Area of  Focus Screen Viewed"
     let preparingPlaylist = "Preparing Playlist Screen Viewed"
     
     let home = "Home Screen Viewed"
@@ -90,7 +94,9 @@ struct EventNames {
     let User_Sign_up = "User Sign up"
     let User_Login = "User Login"
     let Couser_Added = "Couser Added"
-    let Send_New_Pin_Clicked = "Send New Pin Clicked"
+    let Forgot_Pin_Clicked = "Forgot Pin Clicked"
+    
+    let Explore_App_Clicked = "Explore App Clicked"
     
     let CoUser_Login = "CoUser Login"
     let CoUser_Logout = "CoUser Logout"
@@ -99,7 +105,7 @@ struct EventNames {
     let Assessment_Form_Submitted = "Assessment Form Submitted"
     
     let Checkout_Proceeded = "Checkout Proceeded"
-    let Suggested_Playlist_Created = "Suggested Playlist Created"
+    let playlist_ready = " Playlist  Ready Screen Viewed"
     
     let Area_of_Focus_Saved = "Area of Focus Saved"
     
