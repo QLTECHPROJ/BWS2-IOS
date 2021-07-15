@@ -74,13 +74,13 @@ class UserListPopUpVC: BaseViewController {
     override func setupData() {
         var heightConst = CGFloat(arrayUsers.count * 86) + CGFloat(70)
         
-        if arrayUsers.count < maxUsers {
-            tableView.tableFooterView = viewFooter
-            heightConst = heightConst + 90 // add footer height
-        } else {
-            tableView.tableFooterView = UIView()
-        }
-        
+//        if arrayUsers.count < maxUsers {
+//            tableView.tableFooterView = viewFooter
+//            heightConst = heightConst + 90 // add footer height
+//        } else {
+//            tableView.tableFooterView = UIView()
+//        }
+        heightConst = heightConst + 90
         if heightConst > SCREEN_HEIGHT - 200 {
             heightConst = SCREEN_HEIGHT - 200
         }
@@ -101,9 +101,15 @@ class UserListPopUpVC: BaseViewController {
     }
     
     @objc func viewTapped(_ sender: UITapGestureRecognizer) {
-        let aVC = AppStoryBoard.main.viewController(viewControllerClass:AddUserVC.self)
-        aVC.isCome = "AddUser"
-        self.navigationController?.pushViewController(aVC, animated: true)
+        
+        if arrayUsers.count < maxUsers {
+            let aVC = AppStoryBoard.main.viewController(viewControllerClass:AddUserVC.self)
+            aVC.isCome = "AddUser"
+            self.navigationController?.pushViewController(aVC, animated: true)
+        } else {
+            showAlertToast(message: "Please upgrade your current plan")
+        }
+       
     }
     
     @objc func viewTappedback(_ sender: UITapGestureRecognizer) {

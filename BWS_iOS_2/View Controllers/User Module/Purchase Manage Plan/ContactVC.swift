@@ -162,9 +162,7 @@ class ContactVC: BaseViewController {
                 }
                 
                 if isPopSuccess == false {
-                    let aVC = AppStoryBoard.account.viewController(viewControllerClass:ManageUserVC.self)
-                    aVC.isCome = "SMS"
-                    self.navigationController?.pushViewController(aVC, animated: true)
+                    APPDELEGATE.window?.rootViewController = AppStoryBoard.main.viewController(viewControllerClass: NavigationClass.self)
                 }
             }
         }
