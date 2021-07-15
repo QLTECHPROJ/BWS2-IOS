@@ -46,7 +46,6 @@
         <!--WellnessVC-->
         <scene sceneID="cw3-uN-99Z">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sdJ-a0-OE9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="WellnessVC" id="yYi-Ce-f6X" customClass="WellnessVC" customModule="BWS_2_Staging" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2d4-dG-jz4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
@@ -59,13 +58,13 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The page is under construction" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="6hs-sd-Jt2">
-                                <rect key="frame" x="26" y="552" width="323" height="21"/>
+                                <rect key="frame" x="26" y="552" width="323" height="22"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="18"/>
                                 <color key="textColor" name="666666"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We're working on it" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rH5-hz-TNf">
-                                <rect key="frame" x="26" y="583" width="323" height="16.333333333333371"/>
+                                <rect key="frame" x="26" y="584" width="323" height="16.333333333333371"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                 <color key="textColor" name="666666"/>
                                 <nil key="highlightedColor"/>
@@ -87,6 +86,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Vp9-Bo-69n"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sdJ-a0-OE9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="316" y="-666"/>
         </scene>
@@ -108,7 +108,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="659"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ecr-6t-ZJw">
-                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="721"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="725"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Wellness" translatesAutoresizingMaskIntoConstraints="NO" id="rjI-t2-JuH">
                                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="455"/>
@@ -117,16 +117,16 @@
                                                                 </constraints>
                                                             </imageView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="0mA-2q-0at">
-                                                                <rect key="frame" x="16" y="507" width="343" height="114"/>
+                                                                <rect key="frame" x="16" y="507" width="343" height="118"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Experience a free Brain Wellness Spa Session" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pla-7G-CVb">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="42"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
                                                                         <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="18"/>
                                                                         <color key="textColor" name="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="This free Brain Wellness Spa session is a one off and its effects..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o3w-mc-BnL">
-                                                                        <rect key="frame" x="0.0" y="72" width="343" height="42"/>
+                                                                        <rect key="frame" x="0.0" y="74" width="343" height="44"/>
                                                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="18"/>
                                                                         <color key="textColor" name="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -134,7 +134,7 @@
                                                                 </subviews>
                                                             </stackView>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UTq-bp-SjG">
-                                                                <rect key="frame" x="40" y="651" width="295" height="50"/>
+                                                                <rect key="frame" x="40" y="655" width="295" height="50"/>
                                                                 <color key="backgroundColor" name="greenColor"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="50" id="QUH-3X-kYC"/>
@@ -263,7 +263,7 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="768"/>
                                 <subviews>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qvI-mX-gCz">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="898.33333333333337"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="905"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CMJ-g0-SBs">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -277,7 +277,7 @@
                                                         <state key="normal" image="BackButton"/>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Experience Session" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UAT-3S-1KO">
-                                                        <rect key="frame" x="121.66666666666669" y="13.333333333333337" width="132" height="17.666666666666671"/>
+                                                        <rect key="frame" x="111.66666666666669" y="12.999999999999998" width="152" height="18.333333333333329"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="15"/>
                                                         <color key="textColor" name="DarkBlack"/>
                                                         <nil key="highlightedColor"/>
@@ -301,19 +301,19 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Directions:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qtk-Df-Gju">
-                                                <rect key="frame" x="16" y="490" width="343" height="18.333333333333314"/>
+                                                <rect key="frame" x="16" y="493.33333333333337" width="343" height="18.333333333333314"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="15"/>
                                                 <color key="textColor" name="gray_707070"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8m4-ax-llj">
-                                                <rect key="frame" x="16" y="524.33333333333337" width="343" height="35"/>
+                                                <rect key="frame" x="16" y="527.66666666666663" width="343" height="55"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="15"/>
                                                 <color key="textColor" name="gray_707070"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dMf-AF-IIG">
-                                                <rect key="frame" x="37.666666666666657" y="608.66666666666663" width="300" height="50"/>
+                                                <rect key="frame" x="37.666666666666657" y="632" width="300" height="50"/>
                                                 <color key="backgroundColor" red="0.0" green="0.53333333333333333" blue="0.5725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="MUm-3c-ZjB"/>
@@ -332,7 +332,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9go-aF-mnd">
-                                                <rect key="frame" x="16" y="412" width="343" height="70"/>
+                                                <rect key="frame" x="16" y="412" width="343" height="73.333333333333314"/>
                                                 <string key="text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</string>
                                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="15"/>
                                                 <color key="textColor" name="gray_707070"/>
@@ -410,7 +410,7 @@
                                         <state key="normal" image="BackButton"/>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Emotional Empowerment" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ADE-9f-gUZ">
-                                        <rect key="frame" x="103" y="13.333333333333337" width="169" height="17.666666666666671"/>
+                                        <rect key="frame" x="86.333333333333329" y="12.999999999999998" width="202.66666666666669" height="18.333333333333329"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="15"/>
                                         <color key="textColor" name="DarkBlack"/>
                                         <nil key="highlightedColor"/>
@@ -465,7 +465,7 @@
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sessions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DKD-q1-2m2">
-                            <rect key="frame" x="16" y="291" width="72.666666666666671" height="6"/>
+                            <rect key="frame" x="16" y="291" width="79.666666666666671" height="6"/>
                             <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="18"/>
                             <color key="textColor" name="black"/>
                             <nil key="highlightedColor"/>

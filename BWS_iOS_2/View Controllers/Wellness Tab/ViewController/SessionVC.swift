@@ -47,6 +47,10 @@ extension SessionVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withClass: SessionCell.self)
         
+        if indexPath.row == 0 {
+            
+        }
+        
         return cell
     }
 }
