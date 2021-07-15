@@ -1,16 +1,17 @@
 //
-//  SessionVC.swift
+//  SessionDetailVC.swift
 //  BWS_iOS_2
 //
-//  Created by Mac Mini on 14/07/21.
+//  Created by Mac Mini on 15/07/21.
 //  Copyright © 2021 Dhruvit. All rights reserved.
 //
 
 import UIKit
 
-class SessionVC: BaseViewController {
+class SessionDetailVC: BaseViewController {
     
     //MARK:- UIOutlet
+    @IBOutlet var footerView: UIView!
     @IBOutlet var headerView: UIView!
     @IBOutlet weak var tableview: UITableView!
     
@@ -25,7 +26,9 @@ class SessionVC: BaseViewController {
     //MARK:- Functions
     override func setupUI() {
         tableview.tableHeaderView = headerView
-        tableview.register(nibWithCellClass: SessionCell.self)
+        tableview.tableFooterView = footerView
+        tableview.register(nibWithCellClass: SessionBannerCell.self)
+        tableview.register(nibWithCellClass: SessionDetailCell.self)
         
     }
     
@@ -34,35 +37,28 @@ class SessionVC: BaseViewController {
     }
     
     //MARK:- IBAction Methods
-  
+    @IBAction func onTappedContinue(_ sender: UIButton) {
+    }
+    
 }
 
 // MARK:- UITableViewDelegate, UITableViewDataSource
-extension SessionVC : UITableViewDelegate, UITableViewDataSource {
+extension SessionDetailVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withClass: SessionCell.self)
-        
+       
         if indexPath.row == 0 {
-            cell.topView.isHidden = true
-            cell.bottomView.isHidden = false
-        }else if indexPath.row == 9 {
-            cell.topView.isHidden = false
-            cell.bottomView.isHidden = true
+            let cell = tableView.dequeueReusableCell(withClass: SessionBannerCell.self)
+            return cell
         }else {
-            cell.topView.isHidden = false
-            cell.bottomView.isHidden = false
+            let cell = tableView.dequeueReusableCell(withClass: SessionDetailCell.self)
+            return cell
         }
         
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: SessionDetailVC.self)
-        self.navigationController?.pushViewController(aVC, animated: false)
+       
     }
 }

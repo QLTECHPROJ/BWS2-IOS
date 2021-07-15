@@ -461,6 +461,16 @@
 		28F812C325FB36CF00DC6AF6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F812C225FB36CF00DC6AF6 /* Constants.swift */; };
 		9A09A00D2698171A0025444B /* ReminderPopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A09A00C2698171A0025444B /* ReminderPopUpVC.swift */; };
 		9A09A00E2698171A0025444B /* ReminderPopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A09A00C2698171A0025444B /* ReminderPopUpVC.swift */; };
+		9A1A9FD826A0428500E4541F /* SessionBannerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1A9FD626A0428500E4541F /* SessionBannerCell.swift */; };
+		9A1A9FD926A0428500E4541F /* SessionBannerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1A9FD626A0428500E4541F /* SessionBannerCell.swift */; };
+		9A1A9FDA26A0428500E4541F /* SessionBannerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A1A9FD726A0428500E4541F /* SessionBannerCell.xib */; };
+		9A1A9FDB26A0428500E4541F /* SessionBannerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A1A9FD726A0428500E4541F /* SessionBannerCell.xib */; };
+		9A1A9FDE26A0446B00E4541F /* SessionDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1A9FDC26A0446B00E4541F /* SessionDetailCell.swift */; };
+		9A1A9FDF26A0446B00E4541F /* SessionDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1A9FDC26A0446B00E4541F /* SessionDetailCell.swift */; };
+		9A1A9FE026A0446B00E4541F /* SessionDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A1A9FDD26A0446B00E4541F /* SessionDetailCell.xib */; };
+		9A1A9FE126A0446B00E4541F /* SessionDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A1A9FDD26A0446B00E4541F /* SessionDetailCell.xib */; };
+		9A1A9FE326A0491800E4541F /* SessionDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1A9FE226A0491800E4541F /* SessionDetailVC.swift */; };
+		9A1A9FE426A0491800E4541F /* SessionDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1A9FE226A0491800E4541F /* SessionDetailVC.swift */; };
 		9A267F3E2670DDE3009E3CBA /* TagFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A267F3D2670DDE3009E3CBA /* TagFlowLayout.swift */; };
 		9A267F3F2670DDE3009E3CBA /* TagFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A267F3D2670DDE3009E3CBA /* TagFlowLayout.swift */; };
 		9A267F412670F684009E3CBA /* MyHeaderFooterClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A267F402670F684009E3CBA /* MyHeaderFooterClass.swift */; };
@@ -819,6 +829,11 @@
 		8B21B18CDBF9C2C0E59EF0A9 /* Pods-BWS_iOS_2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BWS_iOS_2.debug.xcconfig"; path = "Target Support Files/Pods-BWS_iOS_2/Pods-BWS_iOS_2.debug.xcconfig"; sourceTree = "<group>"; };
 		8B77A1CEEE992185949BB28D /* Pods-BWS_iOS_2_Staging.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BWS_iOS_2_Staging.release.xcconfig"; path = "Target Support Files/Pods-BWS_iOS_2_Staging/Pods-BWS_iOS_2_Staging.release.xcconfig"; sourceTree = "<group>"; };
 		9A09A00C2698171A0025444B /* ReminderPopUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderPopUpVC.swift; sourceTree = "<group>"; };
+		9A1A9FD626A0428500E4541F /* SessionBannerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionBannerCell.swift; sourceTree = "<group>"; };
+		9A1A9FD726A0428500E4541F /* SessionBannerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SessionBannerCell.xib; sourceTree = "<group>"; };
+		9A1A9FDC26A0446B00E4541F /* SessionDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailCell.swift; sourceTree = "<group>"; };
+		9A1A9FDD26A0446B00E4541F /* SessionDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SessionDetailCell.xib; sourceTree = "<group>"; };
+		9A1A9FE226A0491800E4541F /* SessionDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailVC.swift; sourceTree = "<group>"; };
 		9A267F3D2670DDE3009E3CBA /* TagFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagFlowLayout.swift; sourceTree = "<group>"; };
 		9A267F402670F684009E3CBA /* MyHeaderFooterClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyHeaderFooterClass.swift; sourceTree = "<group>"; };
 		9A51DF25263820FD001364EA /* AccountInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountInfoVC.swift; sourceTree = "<group>"; };
@@ -1589,6 +1604,7 @@
 				9A6D04F4269ECC6A00AD4FBA /* WellnessStartVC.swift */,
 				9A6D04FD269F094600AD4FBA /* ExpSessionVC.swift */,
 				9A6D0500269F097E00AD4FBA /* SessionVC.swift */,
+				9A1A9FE226A0491800E4541F /* SessionDetailVC.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1598,6 +1614,10 @@
 			children = (
 				9A6D04F7269EF7EB00AD4FBA /* SessionCell.swift */,
 				9A6D04F8269EF7EB00AD4FBA /* SessionCell.xib */,
+				9A1A9FD626A0428500E4541F /* SessionBannerCell.swift */,
+				9A1A9FD726A0428500E4541F /* SessionBannerCell.xib */,
+				9A1A9FDC26A0446B00E4541F /* SessionDetailCell.swift */,
+				9A1A9FDD26A0446B00E4541F /* SessionDetailCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1774,6 +1794,7 @@
 				28E8092A261308ED00CD80F7 /* Manage.storyboard in Resources */,
 				280DFCE1260DA03E00479EE6 /* RecommendedCategoryHeaderCell.xib in Resources */,
 				28B53541260C781400BD8147 /* AreaOfFocusCell.xib in Resources */,
+				9A1A9FE126A0446B00E4541F /* SessionDetailCell.xib in Resources */,
 				28ED2F8E25FB58E000E59C56 /* Montserrat-Light.ttf in Resources */,
 				283153BC2614401E004001CE /* ManagePlaylistCell.xib in Resources */,
 				2891E2A92643CCF800658B49 /* TimeView.xib in Resources */,
@@ -1784,6 +1805,7 @@
 				28E01224261847EA00B55967 /* IndexScoreCell.xib in Resources */,
 				9AC067072639178F00287A44 /* PodcastCell.xib in Resources */,
 				9A6D04FC269EF7EB00AD4FBA /* SessionCell.xib in Resources */,
+				9A1A9FDB26A0428500E4541F /* SessionBannerCell.xib in Resources */,
 				2891E2A72643CCF800658B49 /* SelectPlayListCell.xib in Resources */,
 				9AD5582B2636E6C7007ED68F /* AccountCell.xib in Resources */,
 				28E8092D261308F900CD80F7 /* Wellness.storyboard in Resources */,
@@ -1842,6 +1864,7 @@
 				28E80929261308ED00CD80F7 /* Manage.storyboard in Resources */,
 				280DFCE0260DA03E00479EE6 /* RecommendedCategoryHeaderCell.xib in Resources */,
 				28B53540260C781400BD8147 /* AreaOfFocusCell.xib in Resources */,
+				9A1A9FE026A0446B00E4541F /* SessionDetailCell.xib in Resources */,
 				282441632609CB4E0060292E /* GoogleService-Info.plist in Resources */,
 				283153BB2614401E004001CE /* ManagePlaylistCell.xib in Resources */,
 				2891E2A82643CCF800658B49 /* TimeView.xib in Resources */,
@@ -1852,6 +1875,7 @@
 				28E01223261847EA00B55967 /* IndexScoreCell.xib in Resources */,
 				9AC067062639178F00287A44 /* PodcastCell.xib in Resources */,
 				9A6D04FB269EF7EB00AD4FBA /* SessionCell.xib in Resources */,
+				9A1A9FDA26A0428500E4541F /* SessionBannerCell.xib in Resources */,
 				2891E2A62643CCF800658B49 /* SelectPlayListCell.xib in Resources */,
 				9AD558292636DFFA007ED68F /* AccountCell.xib in Resources */,
 				28E8092C261308F900CD80F7 /* Wellness.storyboard in Resources */,
@@ -2033,6 +2057,7 @@
 				2891E2A12643CCF800658B49 /* SelectPlayListCell.swift in Sources */,
 				9A55EB2B2668CA54006E398A /* CurrPlanVC.swift in Sources */,
 				2870B44825FB41A10014A4F6 /* ReorderController+AutoScroll.swift in Sources */,
+				9A1A9FDF26A0446B00E4541F /* SessionDetailCell.swift in Sources */,
 				28ED2FB625FB8C6E00E59C56 /* ProfileForm4VC.swift in Sources */,
 				2891E2AB2643CCF800658B49 /* TimeView.swift in Sources */,
 				284C9B6B262E93D1008C4435 /* CryptLib.m in Sources */,
@@ -2204,6 +2229,7 @@
 				9AC067032639178F00287A44 /* RecPodCastsVC.swift in Sources */,
 				28E01234261847EA00B55967 /* GraphCell.swift in Sources */,
 				2870B3F625FB41A10014A4F6 /* UITableView+Extension.swift in Sources */,
+				9A1A9FD926A0428500E4541F /* SessionBannerCell.swift in Sources */,
 				9A55EB442668EA58006E398A /* InvoiceCell.swift in Sources */,
 				281DE32A2626FD79002CCD9D /* AudioDownloads+CoreDataClass.swift in Sources */,
 				2870B3F425FB41A10014A4F6 /* NSDate+Extension.swift in Sources */,
@@ -2230,6 +2256,7 @@
 				2870B3DC25FB41A10014A4F6 /* DJExtensions.swift in Sources */,
 				9AC0670F2639178F00287A44 /* DocumentryCell.swift in Sources */,
 				28E0120D2618476E00B55967 /* PlayerVC.swift in Sources */,
+				9A1A9FE426A0491800E4541F /* SessionDetailVC.swift in Sources */,
 				28E01240261847EA00B55967 /* IndexScoreCell.swift in Sources */,
 				2870B46225FB44700014A4F6 /* Duration.swift in Sources */,
 				2870B42025FB41A10014A4F6 /* NavigationClass.swift in Sources */,
@@ -2260,6 +2287,7 @@
 				2891E2A02643CCF800658B49 /* SelectPlayListCell.swift in Sources */,
 				9A55EB2A2668CA54006E398A /* CurrPlanVC.swift in Sources */,
 				2870B44725FB41A10014A4F6 /* ReorderController+AutoScroll.swift in Sources */,
+				9A1A9FDE26A0446B00E4541F /* SessionDetailCell.swift in Sources */,
 				28ED2FB525FB8C6E00E59C56 /* ProfileForm4VC.swift in Sources */,
 				2891E2AA2643CCF800658B49 /* TimeView.swift in Sources */,
 				284C9B6A262E93D1008C4435 /* CryptLib.m in Sources */,
@@ -2431,6 +2459,7 @@
 				28E01233261847EA00B55967 /* GraphCell.swift in Sources */,
 				2870B3E325FB41A10014A4F6 /* DJContants.swift in Sources */,
 				9A55EB432668EA58006E398A /* InvoiceCell.swift in Sources */,
+				9A1A9FD826A0428500E4541F /* SessionBannerCell.swift in Sources */,
 				281DE3292626FD79002CCD9D /* AudioDownloads+CoreDataClass.swift in Sources */,
 				2870B3F525FB41A10014A4F6 /* UITableView+Extension.swift in Sources */,
 				28D7556D2618A33F00EA63FE /* PlayVideoCell.swift in Sources */,
@@ -2457,6 +2486,7 @@
 				9AC0670E2639178F00287A44 /* DocumentryCell.swift in Sources */,
 				28E0120C2618476E00B55967 /* PlayerVC.swift in Sources */,
 				28E0123F261847EA00B55967 /* IndexScoreCell.swift in Sources */,
+				9A1A9FE326A0491800E4541F /* SessionDetailVC.swift in Sources */,
 				2870B3DB25FB41A10014A4F6 /* DJExtensions.swift in Sources */,
 				2870B46125FB44700014A4F6 /* Duration.swift in Sources */,
 				28E012092618475E00B55967 /* AddAudioVC.swift in Sources */,
