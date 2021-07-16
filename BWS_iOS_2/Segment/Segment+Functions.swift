@@ -231,8 +231,7 @@ class SegmentTracking {
             return
         }
         
-        var traits = ["CoUserId":CoUserDataModel.currentUserId,
-                      "audioId":audioDetails.ID,
+        var traits = ["audioId":audioDetails.ID,
                       "audioName":audioDetails.Name,
                       "audioDescription":audioDetails.AudioDescription,
                       "directions":audioDetails.AudioDirection,
@@ -242,8 +241,7 @@ class SegmentTracking {
                       "bitRate":audioDetails.Bitrate]
         
         if audioDetails.isDisclaimer == true {
-            traits = ["CoUserId":CoUserDataModel.currentUserId,
-                      "bitRate":audioDetails.Bitrate]
+            traits = ["bitRate":audioDetails.Bitrate]
         }
         
         // Extra Parameters
@@ -309,7 +307,11 @@ class SegmentTracking {
             traits["interruptionMethod"] = interruptionMethod
         }
         
-        SegmentTracking.shared.trackEvent(name: name, traits: traits, trackingType: trackingType)
+        if trackingType == .screen {
+            SegmentTracking.shared.trackGeneralScreen(name: name, traits: traits)
+        } else {
+            SegmentTracking.shared.trackGeneralEvents(name: name, traits: traits)
+        }
     }
     
     func audioPlayerActions(name : String, audioData : AudioDetailsDataModel?, source : String = "", trackingType : TrackingType) {
@@ -323,8 +325,7 @@ class SegmentTracking {
             return
         }
         
-        var traits = ["CoUserId":CoUserDataModel.currentUserId,
-                      "audioId":audioDetails.ID,
+        var traits = ["audioId":audioDetails.ID,
                       "audioName":audioDetails.Name,
                       "audioDescription":audioDetails.AudioDescription,
                       "directions":audioDetails.AudioDirection,
@@ -334,8 +335,7 @@ class SegmentTracking {
                       "bitRate":audioDetails.Bitrate]
         
         if audioDetails.isDisclaimer == true {
-            traits = ["CoUserId":CoUserDataModel.currentUserId,
-                      "bitRate":audioDetails.Bitrate]
+            traits = ["bitRate":audioDetails.Bitrate]
         }
         
         // Extra Parameters
@@ -360,7 +360,11 @@ class SegmentTracking {
             traits["source"] = source
         }
         
-        SegmentTracking.shared.trackEvent(name: name, traits: traits, trackingType: trackingType)
+        if trackingType == .screen {
+            SegmentTracking.shared.trackGeneralScreen(name: name, traits: traits)
+        } else {
+            SegmentTracking.shared.trackGeneralEvents(name: name, traits: traits)
+        }
     }
     
     // Track Audio Detail Events
@@ -369,8 +373,7 @@ class SegmentTracking {
             return
         }
         
-        var traits = ["CoUserId":CoUserDataModel.currentUserId,
-                      "audioId":audioDetails.ID,
+        var traits = ["audioId":audioDetails.ID,
                       "audioName":audioDetails.Name,
                       "audioDescription":audioDetails.AudioDescription,
                       "directions":audioDetails.AudioDirection,
@@ -380,8 +383,7 @@ class SegmentTracking {
                       "bitRate":audioDetails.Bitrate]
         
         if audioDetails.isDisclaimer == true {
-            traits = ["CoUserId":CoUserDataModel.currentUserId,
-                      "bitRate":audioDetails.Bitrate]
+            traits = ["bitRate":audioDetails.Bitrate]
         }
         
         // Extra Parameters
@@ -410,14 +412,17 @@ class SegmentTracking {
             traits["audioSortPositionNew"] = "\(sortPosition.1)"
         }
         
-        SegmentTracking.shared.trackEvent(name: name, traits: traits, trackingType: trackingType)
+        if trackingType == .screen {
+            SegmentTracking.shared.trackGeneralScreen(name: name, traits: traits)
+        } else {
+            SegmentTracking.shared.trackGeneralEvents(name: name, traits: traits)
+        }
     }
     
     // Track Playlist Events
     func playlistEvents(name : String, objPlaylist : PlaylistDetailsModel?, passPlaybackDetails : Bool = false, passPlayerType : Bool = false, audioData : AudioDetailsDataModel? = nil, audioSortPositons : (Int,Int)? = nil, trackingType : TrackingType) {
         if let playlistDetails = objPlaylist {
-            var traits = ["CoUserId":CoUserDataModel.currentUserId,
-                          "playlistId":playlistDetails.PlaylistID,
+            var traits = ["playlistId":playlistDetails.PlaylistID,
                           "playlistName":playlistDetails.PlaylistName,
                           "playlistDescription":playlistDetails.PlaylistDesc,
                           "audioCount":playlistDetails.TotalAudio]
@@ -468,7 +473,11 @@ class SegmentTracking {
                 }
             }
             
-            SegmentTracking.shared.trackEvent(name: name, traits: traits, trackingType: trackingType)
+            if trackingType == .screen {
+                SegmentTracking.shared.trackGeneralScreen(name: name, traits: traits)
+            } else {
+                SegmentTracking.shared.trackGeneralEvents(name: name, traits: traits)
+            }
         }
     }
     

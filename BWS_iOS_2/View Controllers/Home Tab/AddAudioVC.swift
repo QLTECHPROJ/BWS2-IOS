@@ -64,8 +64,7 @@ class AddAudioVC: BaseViewController {
         super.viewWillAppear(animated)
         
         // Segment Tracking
-        let traits : [String:Any] = ["source": isComeFromAddAudio ? "Add Audio Screen" : "Search Screen",
-                                     "sections":["Suggested Audios","Suggested Playlists"]]
+        let traits : [String:Any] = ["source": isComeFromAddAudio ? "Add Audio Screen" : "Search Screen"]
         SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.search_screen, traits: traits)
         
         if checkInternet(showToast: true) {

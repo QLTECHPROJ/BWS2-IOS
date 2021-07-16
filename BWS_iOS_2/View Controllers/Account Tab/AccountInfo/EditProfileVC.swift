@@ -49,7 +49,8 @@ class EditProfileVC: BaseViewController {
             let userName = userData.Name.trim.count > 0 ? userData.Name : "Guest"
             let dictUserDetails = ["name":userName,
                                    "phone":userData.Mobile,
-                                   "email":userData.Email]
+                                   "email":userData.Email,
+                                   "dob":userData.DOB]
             SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.edit_profile, traits: dictUserDetails)
         } else {
             SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.edit_profile)
@@ -161,7 +162,7 @@ class EditProfileVC: BaseViewController {
             lblErrEmailAdd.text = Theme.strings.alert_invalid_email_error
         }
         
-        if txtFDOB.text?.trim.count != 0 && selectedDOB.differenceWith(Date(), inUnit: NSCalendar.Unit.year) < 18 {
+        if txtFDOB.text?.trim.count != 0 && selectedDOB.differenceWith(Date(), inUnit: NSCalendar.Unit.day) < 1 {
             lblErrDOB.isHidden = false
             lblErrDOB.text = Theme.strings.alert_dob_error
             return false
