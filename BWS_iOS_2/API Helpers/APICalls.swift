@@ -1490,8 +1490,8 @@ extension UserDetailVC {
                     SegmentTracking.shared.trackEvent(name: SegmentTracking.eventNames.Couser_Added, traits: traits, trackingType: .track)
                 }
                 
-                let aVC = AppStoryBoard.main.viewController(viewControllerClass: UserListVC.self)
-                self.navigationController?.pushViewController(aVC, animated: false)
+                self.handleRedirection()
+              
             }
         }
     }

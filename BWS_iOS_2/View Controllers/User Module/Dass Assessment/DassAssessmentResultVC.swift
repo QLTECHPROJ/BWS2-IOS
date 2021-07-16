@@ -120,17 +120,11 @@ class DassAssessmentResultVC: BaseViewController {
     
     override func goNext() {
         if CoUserDataModel.currentUser?.planDetails?.count == 0 {
-            if CoUserDataModel.currentUser?.isMainAccount == "0" {
-                let aVC = AppStoryBoard.main.viewController(viewControllerClass: ThankYouVC.self)
-                aVC.isCome = "UserDetail"
-                self.navigationController?.pushViewController(aVC, animated: false)
-            }else {
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass:ManagePlanListVC.self)
                 let navVC = UINavigationController(rootViewController: aVC)
                 navVC.isNavigationBarHidden = true
                 navVC.modalPresentationStyle = .overFullScreen
                 self.navigationController?.present(navVC, animated: false, completion: nil)
-            }
         } else {
             if let coUser = CoUserDataModel.currentUser {
                 if coUser.isProfileCompleted == "0" {
@@ -166,16 +160,23 @@ class DassAssessmentResultVC: BaseViewController {
             return
         }
         
-        let aVC = AppStoryBoard.main.viewController(viewControllerClass: StepVC.self)
-        aVC.strTitle = Theme.strings.step_2_title
-        aVC.strSubTitle = Theme.strings.step_2_subtitle
-        aVC.imageMain = UIImage(named: "analyze")
-        aVC.hideTapAnywhere = true
-        aVC.viewTapped = {
-            self.handleNavigation()
+        if CoUserDataModel.currentUser?.isMainAccount == "0" {
+            let aVC = AppStoryBoard.main.viewController(viewControllerClass: ThankYouVC.self)
+            aVC.isCome = "UserDetail"
+            self.navigationController?.pushViewController(aVC, animated: false)
+        }else {
+            
+            let aVC = AppStoryBoard.main.viewController(viewControllerClass: StepVC.self)
+            aVC.strTitle = Theme.strings.step_2_title
+            aVC.strSubTitle = Theme.strings.step_2_subtitle
+            aVC.imageMain = UIImage(named: "analyze")
+            aVC.hideTapAnywhere = true
+            aVC.viewTapped = {
+                self.handleNavigation()
+            }
+            aVC.modalPresentationStyle = .overFullScreen
+            self.present(aVC, animated: false, completion: nil)
         }
-        aVC.modalPresentationStyle = .overFullScreen
-        self.present(aVC, animated: false, completion: nil)
     }
     
 }

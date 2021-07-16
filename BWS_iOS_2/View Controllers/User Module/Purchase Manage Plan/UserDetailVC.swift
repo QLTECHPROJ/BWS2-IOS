@@ -84,6 +84,30 @@ class UserDetailVC: BaseViewController {
         return isValid
     }
     
+    func handleRedirection() {
+        guard let controllers = self.navigationController?.viewControllers else {
+            return
+        }
+        
+        var isPopSuccess = false
+        for controller in controllers {
+            if controller.isKind(of: UserListPopUpVC.self) {
+                isPopSuccess = true
+                self.navigationController?.popToViewController(controller, animated: true)
+                return
+            }else if controller.isKind(of: ManageUserVC.self) {
+                isPopSuccess = true
+                self.navigationController?.popToViewController(controller, animated: true)
+                return
+            }
+        }
+        
+        if isPopSuccess == false {
+            let aVC = AppStoryBoard.main.viewController(viewControllerClass: UserListVC.self)
+            self.navigationController?.pushViewController(aVC, animated: false)
+        }
+    }
+    
     //MARK:- IBAction Methods
   
     @IBAction func onTappedProcced(_ sender: UIButton) {

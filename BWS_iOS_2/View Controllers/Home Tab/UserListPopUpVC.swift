@@ -45,7 +45,7 @@ class UserListPopUpVC: BaseViewController {
     
     // MARK:- FUNCTIONS
     override func setupUI() {
-        viewUserList.roundCorners([.topLeft, .topRight], radius: 10)
+        //viewUserList.roundCorners([.topLeft, .topRight], radius: 10)
         
         tableView.register(nibWithCellClass: UserListCell.self)
         if let coUser = CoUserDataModel.currentUser {
@@ -74,12 +74,6 @@ class UserListPopUpVC: BaseViewController {
     override func setupData() {
         var heightConst = CGFloat(arrayUsers.count * 86) + CGFloat(70)
         
-//        if arrayUsers.count < maxUsers {
-//            tableView.tableFooterView = viewFooter
-//            heightConst = heightConst + 90 // add footer height
-//        } else {
-//            tableView.tableFooterView = UIView()
-//        }
         heightConst = heightConst + 90
         if heightConst > SCREEN_HEIGHT - 200 {
             heightConst = SCREEN_HEIGHT - 200

@@ -40,17 +40,9 @@ class AddUserVC: BaseViewController {
             if success {
                 if let userData = CoUserDataModel.currentUser {
                     if userData.isPinSet == "0" {
-                        let aVC = AppStoryBoard.main.viewController(viewControllerClass:StepVC.self)
-                        aVC.strTitle = ""
-                        aVC.strSubTitle = "Proceed with adding New User"
-                        aVC.imageMain = UIImage(named: "NewUser")
-                        aVC.viewTapped = {
-                            let aVC = AppStoryBoard.main.viewController(viewControllerClass: SetUpPInVC.self)
-                            aVC.selectedUser = userData
-                            self.navigationController?.pushViewController(aVC, animated: true)
-                        }
-                        aVC.modalPresentationStyle = .overFullScreen
-                        self.present(aVC, animated: false, completion: nil)
+                        let aVC = AppStoryBoard.main.viewController(viewControllerClass: SetUpPInVC.self)
+                        aVC.selectedUser = userData
+                        self.navigationController?.pushViewController(aVC, animated: true)
                     } else {
                         let aVC = AppStoryBoard.main.viewController(viewControllerClass:StepVC.self)
                         aVC.strTitle = ""
