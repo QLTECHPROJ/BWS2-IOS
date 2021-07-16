@@ -29,7 +29,7 @@ class IndexScoreCell: UITableViewCell {
     
     // Configure Cell
     func configureIndexScoreCell(IndexScoreDiff : String, ScoreIncDec : String) {
-        lblTitle.text = "Index Score"
+        lblTitle.text = "Wellness Score"
         
         let indexScore = CoUserDataModel.currentUser?.indexScore ?? "0"
         lblIndexScore.text = indexScore

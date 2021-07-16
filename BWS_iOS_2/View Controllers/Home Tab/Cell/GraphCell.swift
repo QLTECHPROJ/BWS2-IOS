@@ -109,7 +109,7 @@ extension GraphCell : ChartViewDelegate {
             dataEntries.append(dataEntry)
         }
         
-        let set1 = BarChartDataSet(entries: dataEntries, label: "Past Index Score")
+        let set1 = BarChartDataSet(entries: dataEntries, label: "Past Wellness Score")
         set1.colors = [Theme.colors.red_CE5060]
         set1.drawValuesEnabled = false
         

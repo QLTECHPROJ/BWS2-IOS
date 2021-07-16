@@ -27,7 +27,7 @@ struct ScreenNames {
     let profileForm = "Profile Form Screen Viewed"
     let assessmentStart = "Assessment Start Screen Viewed"
     let assessmentForm = "Assessment Screen Viewed"
-    let indexScore = "Index Score Screen Viewed"
+    let wellnessScore = "Wellness Score Screen Viewed"
     
     let enhancePlanList = "Enhance Plan Screen Viewed"
     let orderSummary = "Order Summary Viewed"

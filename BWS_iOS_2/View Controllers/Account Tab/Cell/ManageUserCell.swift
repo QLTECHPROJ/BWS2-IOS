@@ -53,6 +53,10 @@ class ManageUserCell: UITableViewCell {
         } else {
             btnSelect.setImage(UIImage(named: "select_user"), for: .normal)
         }
+        
+        if data.UserId == CoUserDataModel.currentUserId {
+            btnSelect.isHidden = true
+        }
     }
     
     

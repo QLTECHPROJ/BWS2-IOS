@@ -220,7 +220,7 @@ extension ManageVC {
         shouldTrackScreen = false
         
         let sections = self.arrayAudioHomeData.map { $0.View }
-        var traits : [String:Any] = ["sections":sections]
+        let traits : [String:Any] = ["sections":sections]
         SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.enhance, traits: traits)
     }
     

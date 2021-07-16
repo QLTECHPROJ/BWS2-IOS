@@ -389,8 +389,8 @@ struct AppStrings {
    // let do_the_assessment_subtitle_two = "In the next step, you will have to fill an assessment form which will help us assess your mental health."
     let do_the_assessment_subtitle_two = "Now all you have to do is fill out an assessment for that will help us ascertain your current mental & emotional state. Based on your answers we will recommend the audios, best suited to manage your mental & emotional growth."
     
-    let index_score_subtitle = "The index score determines the intensity of your mental health challenge and based on your score we will recommend the programs to help you."
-    let index_score_title = "What is Index Score ?"
+    let wellness_score_subtitle = "The wellness score determines the intensity of your mental health challenge and based on your score we will recommend the programs to help you."
+    let wellness_score_title = "What is Wellness Score ?"
     
     let you_are_doing_good_title = "You are Doing Good"
     let you_are_doing_good_subtitle = "We are analysing the information you have provided and devising a personalised treatment plan for just for you."

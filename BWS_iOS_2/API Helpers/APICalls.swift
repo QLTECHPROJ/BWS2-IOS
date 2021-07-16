@@ -263,7 +263,7 @@ extension AssessmentVC {
                 CoUserDataModel.currentUser = userData
                 
                 // Segment Tracking
-                let traits = ["indexScore":CoUserDataModel.currentUser?.indexScore ?? "",
+                let traits = ["wellnessScore":CoUserDataModel.currentUser?.indexScore ?? "",
                               "scoreLevel":CoUserDataModel.currentUser?.ScoreLevel ?? ""]
                 SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.Assessment_Form_Submitted, traits: traits)
                 
@@ -1540,6 +1540,7 @@ extension ManageUserVC {
             if response.ResponseCode == "200" {
                 self.arrayUsers = response.ResponseData.UserList
                 self.tableView.reloadData()
+                self.maxUsers = Int(response.ResponseData.Maxuseradd) ?? 0
                 self.setupData()
             } else {
                 self.setupData()

@@ -17,6 +17,8 @@ class ManageUserVC: BaseViewController {
     // MARK:- VARIABLES
     var arrayUsers = [CoUserDataModel]()
     var isCome:String?
+    var maxUsers = 2
+    
     
     // MARK:- VIEW LIFE CYCLE
     override func viewDidLoad() {
@@ -97,10 +99,14 @@ class ManageUserVC: BaseViewController {
         if checkInternet(showToast: true) == false {
             return
         }
-        let aVC = AppStoryBoard.main.viewController(viewControllerClass:AddUserVC.self)
-        aVC.isCome = "AddUser"
-        self.navigationController?.pushViewController(aVC, animated: true)
-
+        
+        if arrayUsers.count < maxUsers {
+            let aVC = AppStoryBoard.main.viewController(viewControllerClass:AddUserVC.self)
+            aVC.isCome = "AddUser"
+            self.navigationController?.pushViewController(aVC, animated: true)
+        } else {
+            showAlertToast(message: "Please upgrade your current plan")
+        }
     }
     
     @IBAction func removeUserClicked(sender : UIButton) {

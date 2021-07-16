@@ -95,6 +95,9 @@ class UserListPopUpVC: BaseViewController {
     }
     
     @objc func viewTapped(_ sender: UITapGestureRecognizer) {
+        if checkInternet(showToast: true) == false {
+            return
+        }
         
         if arrayUsers.count < maxUsers {
             let aVC = AppStoryBoard.main.viewController(viewControllerClass:AddUserVC.self)
@@ -103,7 +106,6 @@ class UserListPopUpVC: BaseViewController {
         } else {
             showAlertToast(message: "Please upgrade your current plan")
         }
-       
     }
     
     @objc func viewTappedback(_ sender: UITapGestureRecognizer) {

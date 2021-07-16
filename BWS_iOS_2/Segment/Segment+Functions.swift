@@ -120,7 +120,7 @@ class SegmentTracking {
                 "profileImage":userDetails.Image,
                 "isProfileCompleted":userDetails.isProfileCompleted,
                 "isAssessmentCompleted":userDetails.isAssessmentCompleted,
-                "indexScore":userDetails.indexScore,
+                "wellnessScore":userDetails.indexScore,
                 "scoreLevel":userDetails.ScoreLevel,
                 "avgSleepTime":userDetails.AvgSleepTime
             ]
@@ -164,7 +164,7 @@ class SegmentTracking {
                 "profileImage":userDetails.Image,
                 "isProfileCompleted":userDetails.isProfileCompleted,
                 "isAssessmentCompleted":userDetails.isAssessmentCompleted,
-                "indexScore":userDetails.indexScore,
+                "wellnessScore":userDetails.indexScore,
                 "scoreLevel":userDetails.ScoreLevel,
                 "avgSleepTime":userDetails.AvgSleepTime
             ]
