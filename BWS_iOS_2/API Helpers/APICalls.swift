@@ -211,7 +211,8 @@ extension ProfileForm6VC {
             if response.ResponseCode == "200" {
                 showAlertToast(message: response.ResponseMessage)
                 
-                CoUserDataModel.currentUser?.isProfileCompleted = "1"
+                let userData = CoUserDataModel.currentUser
+                userData?.isProfileCompleted = "1"
                 CoUserDataModel.currentUser = CoUserDataModel.currentUser
                 
                 // Segment Tracking
@@ -256,6 +257,7 @@ extension AssessmentVC {
         APICallManager.sharedInstance.callAPI(router: APIRouter.assesmentsaveans(parameters)) { (response : GeneralModel) in
             if response.ResponseCode == "200" {
                 let userData = CoUserDataModel.currentUser
+                userData?.isAssessmentCompleted = "1"
                 userData?.indexScore = response.ResponseData?.indexScore ?? "0"
                 userData?.ScoreLevel = response.ResponseData?.ScoreLevel ?? ""
                 CoUserDataModel.currentUser = userData
@@ -1183,7 +1185,7 @@ extension ChangePINVC {
             
             if response.ResponseCode == "200" {
                 // Segment Tracking
-                SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.eventNames.Login_Pin_Changed)
+                SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.Login_Pin_Changed)
                 
                 showAlertToast(message: response.ResponseMessage)
                 self.navigationController?.popViewController(animated: true)
@@ -1204,7 +1206,7 @@ extension ChangePassWordVC {
             
             if response.ResponseCode == "200" {
                 // Segment Tracking
-                SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.eventNames.Password_Changed)
+                SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.Password_Changed)
                 
                 showAlertToast(message: response.ResponseMessage)
                 self.navigationController?.popViewController(animated: true)
@@ -1403,7 +1405,16 @@ extension EditProfileVC {
                         self.navigationController?.popViewController(animated: true)
                         
                         // Segment Tracking
-                        SegmentTracking.shared.coUserEvent(name: SegmentTracking.eventNames.Profile_Changes_Saved, trackingType: .track)
+                        if let userData = CoUserDataModel.currentUser {
+                            let userName = userData.Name.trim.count > 0 ? userData.Name : "Guest"
+                            let dictUserDetails = ["name":userName,
+                                                   "phone":userData.Mobile,
+                                                   "email":userData.Email,
+                                                   "dob":userData.DOB]
+                            SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.Profile_Changes_Saved, traits: dictUserDetails)
+                        } else {
+                            SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.Profile_Changes_Saved)
+                        }
                         
                         // Segment - Identify User
                         SegmentTracking.shared.identifyUser()

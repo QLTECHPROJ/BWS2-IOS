@@ -431,7 +431,7 @@ struct AppStrings {
     
     let alert_blank_fullname_error = "Please provide a Name"
     let alert_blank_dob_error = "Date of Birth should not be blank"
-    let alert_dob_error = "Please confirm whether you are above 18 years of age"
+    let alert_dob_error = "Please confirm whether you are above 1 day"
     let alert_invalid_fullname_error = "Please enter valid Name"
     
     let alert_blank_email_error = "Email address is required"
