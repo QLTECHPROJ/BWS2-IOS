@@ -89,7 +89,7 @@ class AddAudioViewAllVC: BaseViewController {
                 callAddAudioToPlaylistAPI(audioToAdd: audioData.ID, playlistToAdd: "")
             } else {
                 // Segment Tracking
-                SegmentTracking.shared.audioDetailsEvents(name: SegmentTracking.eventNames.Audio_Add_Clicked, audioData: audioData, source: "Suggested Audio", trackingType: .track)
+                SegmentTracking.shared.addAudioToPlaylistEvent(name: SegmentTracking.eventNames.Add_to_Playlist_Clicked, audioData: audioData, source: "Suggested Audio")
                 
                 // Add Audio To Playlist
                 let aVC = AppStoryBoard.home.viewController(viewControllerClass: AddToPlaylistVC.self)

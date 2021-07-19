@@ -109,14 +109,11 @@ struct EventNames {
     
     let Area_of_Focus_Saved = "Area of Focus Saved"
     
-    let Audio_Playlist_Searched = "Audio/Playlist Searched"
+    let Audio_Searched = "Audio Searched"
     let Suggested_Audio_Clicked = "Suggested Audio Clicked"
     let Search_Audio_Clicked = "Search Audio Clicked"
     
-    let Audio_Add_Clicked = "Audio Add Clicked"
     let Add_to_Playlist_Clicked = "Add to Playlist Clicked"
-    let Playlist_Added_To_Another_Playlist = "Playlist Added To Another Playlist"
-    let Audio_Added_To_Playlist = "Audio Added To Playlist"
     let Audio_Removed_From_Playlist = "Audio Removed From Playlist"
     
     let Profile_Changes_Saved = "Profile Changes Saved"

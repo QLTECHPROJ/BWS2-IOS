@@ -85,7 +85,7 @@ extension OTPVC {
                 
                 let userData = response.ResponseData
                 if self.signUpFlag == "1" {
-                    userData?.directLogin = "1"
+                    userData?.CoUserCount = "0"
                     userData?.isMainAccount = "1"
                 }
                 
@@ -106,7 +106,7 @@ extension OTPVC {
                     SegmentTracking.shared.trackGeneralEvents(name: eventname, traits: traits)
                     
                     // Segment - Identify User
-                    if userDetails.directLogin == "1" {
+                    if userDetails.CoUserCount == "0" {
                         SegmentTracking.shared.identifyUser()
                     } else if self.signUpFlag == "1" {
                         SegmentTracking.shared.identifyUser()
@@ -254,7 +254,7 @@ extension AssessmentVC {
         let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
                           "ans":arrAns]
         
-        APICallManager.sharedInstance.callAPI(router: APIRouter.assesmentsaveans(parameters)) { (response : GeneralModel) in
+        APICallManager.sharedInstance.callAPI(router: APIRouter.assesmentsaveans(parameters)) { (response : AssessmentModel) in
             if response.ResponseCode == "200" {
                 let userData = CoUserDataModel.currentUser
                 userData?.isAssessmentCompleted = "1"
@@ -273,6 +273,8 @@ extension AssessmentVC {
                 showAlertToast(message: response.ResponseMessage)
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass: DassAssessmentResultVC.self)
                 aVC.isFromEdit = self.isFromEdit
+                aVC.strTitle = response.ResponseData?.AssesmentTitle ?? ""
+                aVC.strContent = response.ResponseData?.AssesmentContent ?? ""
                 self.navigationController?.pushViewController(aVC, animated: true)
             }
         }
@@ -860,7 +862,7 @@ extension AddAudioVC {
         // Segment Tracking
         let traits = ["source":isComeFromAddAudio ? "Add Audio Screen" : "Search Screen",
                       "searchKeyword":searchText]
-        SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.Audio_Playlist_Searched, traits: traits)
+        SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.Audio_Searched, traits: traits)
         
         APICallManager.sharedInstance.apiRequest?.cancel()
         

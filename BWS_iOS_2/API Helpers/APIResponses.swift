@@ -804,3 +804,20 @@ class ContactModel : EVObject {
     var contactNumber = ""
     var contactImage : UIImage?
 }
+
+
+// MARK:- Assessment API Models
+class AssessmentModel : EVObject {
+    var ResponseCode = ""
+    var ResponseMessage = ""
+    var ResponseStatus = ""
+    var ResponseData : AssessmentDataModel?
+}
+
+class AssessmentDataModel : EVObject {
+    var indexScore = ""
+    var ScoreLevel = ""
+    var AssesmentTitle = ""
+    var AssesmentContent = ""
+    var errormsg = ""
+}

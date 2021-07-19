@@ -119,7 +119,7 @@ class ViewAllAudioVC: BaseViewController {
         let audioData = homeData.Details[sender.tag]
         
         // Segment Tracking
-        SegmentTracking.shared.audioDetailsEvents(name: SegmentTracking.eventNames.Add_to_Playlist_Clicked, audioData: audioData, source: self.homeData.View, trackingType: .track)
+        SegmentTracking.shared.addAudioToPlaylistEvent(name: SegmentTracking.eventNames.Add_to_Playlist_Clicked, audioData: audioData, source: self.homeData.View)
         
         let aVC = AppStoryBoard.home.viewController(viewControllerClass: AddToPlaylistVC.self)
         aVC.audioID = audioData.ID

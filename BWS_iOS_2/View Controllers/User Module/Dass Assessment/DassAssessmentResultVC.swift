@@ -21,8 +21,9 @@ class DassAssessmentResultVC: BaseViewController {
     
     
     // MARK:- VARIABLES
+    var strTitle = ""
+    var strContent = ""
     var isFromEdit = false
-    var strScore:String?
     var totalAngle: CGFloat = 180
     var rotation: CGFloat = -90
     
@@ -61,8 +62,8 @@ class DassAssessmentResultVC: BaseViewController {
         UserDefaults.standard.removeObject(forKey: "ArrayPage")
         UserDefaults.standard.synchronize()
         
-        lblTitle.attributedText = Theme.strings.wellness_score_title.attributedString(alignment: .center, lineSpacing: 5)
-        lblSubTitle.attributedText =  Theme.strings.wellness_score_subtitle.attributedString(alignment: .center, lineSpacing: 5)
+        lblTitle.attributedText = strTitle.attributedString(alignment: .center, lineSpacing: 5)
+        lblSubTitle.attributedText =  strContent.attributedString(alignment: .center, lineSpacing: 5)
         
         indexScoreLabelView.isHidden = true
         indexScoreLabelView.cornerRadius = indexScoreLabelView.frame.size.height / 2
