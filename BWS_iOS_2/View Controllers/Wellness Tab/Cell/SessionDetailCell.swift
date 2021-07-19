@@ -9,7 +9,15 @@
 import UIKit
 
 class SessionDetailCell: UITableViewCell {
-
+    
+    @IBOutlet weak var lblNumber: UILabel!
+    @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var btnSelect: UIButton!
+    @IBOutlet weak var btnDownload: UIButton!
+    @IBOutlet weak var viewMain: UIView!
+    @IBOutlet weak var viewTop: UIView!
+    @IBOutlet weak var viewBottom: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
