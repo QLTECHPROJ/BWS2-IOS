@@ -480,7 +480,7 @@ class PlaylistAudiosVC: BaseViewController {
         }
         
         // Segment Tracking
-        SegmentTracking.shared.playlistEvents(name: SegmentTracking.eventNames.Playlist_Reminder_Clicked, objPlaylist: objPlaylist, trackingType: .track)
+        SegmentTracking.shared.playlistDetailEvents(name: SegmentTracking.eventNames.Playlist_Reminder_Clicked, objPlaylist: objPlaylist, source: "Playlist Audios Screen", trackingType: .track)
         
         let aVC = AppStoryBoard.account.viewController(viewControllerClass: DayVC.self)
         aVC.objPlaylist = objPlaylist
@@ -795,6 +795,7 @@ extension PlaylistAudiosVC : PlaylistOptionsVCDelegate {
         if let playlistDetails = objPlaylist {
             let aVC = AppStoryBoard.manage.viewController(viewControllerClass: CreatePlaylistVC.self)
             aVC.objPlaylist = playlistDetails
+            aVC.source = "Playlist Details Screen"
             self.navigationController?.pushViewController(aVC, animated: true)
         }
     }
@@ -825,10 +826,11 @@ extension PlaylistAudiosVC : PlaylistOptionsVCDelegate {
     
     func didClickedAddToPlaylist() {
         if let playlistDetails = objPlaylist {
-            let playlistID = playlistDetails.PlaylistID
+            // Segment Tracking
+            SegmentTracking.shared.addPlaylistToPlaylistEvent(objPlaylist: playlistDetails, source: "Playlist Details Screen")
             
             let aVC = AppStoryBoard.home.viewController(viewControllerClass: AddToPlaylistVC.self)
-            aVC.playlistID = playlistID
+            aVC.playlistID = playlistDetails.PlaylistID
             aVC.source = "Playlist Details Screen"
             let navVC = UINavigationController(rootViewController: aVC)
             navVC.navigationBar.isHidden = true

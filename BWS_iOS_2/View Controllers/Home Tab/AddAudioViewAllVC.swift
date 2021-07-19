@@ -89,7 +89,7 @@ class AddAudioViewAllVC: BaseViewController {
                 callAddAudioToPlaylistAPI(audioToAdd: audioData.ID, playlistToAdd: "")
             } else {
                 // Segment Tracking
-                SegmentTracking.shared.addAudioToPlaylistEvent(name: SegmentTracking.eventNames.Add_to_Playlist_Clicked, audioData: audioData, source: "Suggested Audio")
+                SegmentTracking.shared.addAudioToPlaylistEvent(audioData: audioData, source: "Suggested Audio")
                 
                 // Add Audio To Playlist
                 let aVC = AppStoryBoard.home.viewController(viewControllerClass: AddToPlaylistVC.self)
@@ -103,19 +103,22 @@ class AddAudioViewAllVC: BaseViewController {
         }
     }
     
-    func addPlaylistToPlaylist(playlistID : String, lock:String) {
+    func addPlaylistToPlaylist(playlistDetails : PlaylistDetailsModel) {
         if checkInternet(showToast: true) == false {
             return
         }
         
-        if lock == "1" {
+        if playlistDetails.IsLock == "1" {
             openInactivePopup(controller: self)
-        } else if lock == "2" {
+        } else if playlistDetails.IsLock == "2" {
             showAlertToast(message: Theme.strings.alert_reactivate_plan)
         } else {
             if isComeFromAddAudio {
                 callAddAudioToPlaylistAPI(audioToAdd: "", playlistToAdd: playlistID)
             } else {
+                // Segment Tracking
+                SegmentTracking.shared.addPlaylistToPlaylistEvent(objPlaylist: playlistDetails, source: "Suggested Playlist")
+                
                 let aVC = AppStoryBoard.home.viewController(viewControllerClass: AddToPlaylistVC.self)
                 aVC.playlistID = playlistID
                 aVC.source = "Suggested Playlist"
@@ -154,7 +157,7 @@ extension AddAudioViewAllVC : UITableViewDelegate, UITableViewDataSource {
             cell.configureAddPlaylistCell(data: arrayPlayList[indexPath.row])
             cell.buttonClicked = { index in
                 if index == 1 {
-                    self.addPlaylistToPlaylist(playlistID: self.arrayPlayList[indexPath.row].PlaylistID, lock: self.arrayPlayList[indexPath.row].IsLock)
+                    self.addPlaylistToPlaylist(playlistDetails: self.arrayPlayList[indexPath.row])
                 }
             }
         } else {

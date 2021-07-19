@@ -342,7 +342,7 @@ class ManageVC: BaseViewController {
         let audioData = arrayAudioHomeData[sectionIndex].Details[audioIndex]
         
         // Segment Tracking
-        SegmentTracking.shared.addAudioToPlaylistEvent(name: SegmentTracking.eventNames.Add_to_Playlist_Clicked, audioData: audioData, source: arrayAudioHomeData[sectionIndex].View)
+        SegmentTracking.shared.addAudioToPlaylistEvent(audioData: audioData, source: arrayAudioHomeData[sectionIndex].View)
         
         let aVC = AppStoryBoard.home.viewController(viewControllerClass: AddToPlaylistVC.self)
         aVC.audioID = audioData.ID
@@ -399,6 +399,9 @@ class ManageVC: BaseViewController {
         let sectionData = arrayPlaylistHomeData[sectionIndex]
         let playlistData = sectionData.Details[playlistIndex]
         
+        // Segment Tracking
+        SegmentTracking.shared.addPlaylistToPlaylistEvent(objPlaylist: playlistData, source: "Playlist Main Screen")
+        
         let aVC = AppStoryBoard.home.viewController(viewControllerClass: AddToPlaylistVC.self)
         aVC.playlistID = playlistData.PlaylistID
         aVC.source = "Playlist Main Screen"
@@ -431,6 +434,7 @@ class ManageVC: BaseViewController {
             SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.Create_Playlist_Clicked, traits: ["source":"Enhance Screen"])
             
             let aVC = AppStoryBoard.manage.viewController(viewControllerClass: CreatePlaylistVC.self)
+            aVC.source = "Enhance Screen"
             self.navigationController?.pushViewController(aVC, animated: true)
         }
     }
@@ -451,7 +455,7 @@ class ManageVC: BaseViewController {
         }
         
         // Segment Tracking
-        SegmentTracking.shared.playlistEvents(name: SegmentTracking.eventNames.Playlist_Reminder_Clicked, objPlaylist: suggstedPlaylist, trackingType: .track)
+        SegmentTracking.shared.playlistDetailEvents(name: SegmentTracking.eventNames.Playlist_Reminder_Clicked, objPlaylist: suggstedPlaylist, source: "Enhance Screen", trackingType: .track)
         
         let aVC = AppStoryBoard.account.viewController(viewControllerClass: DayVC.self)
         aVC.objPlaylist = suggstedPlaylist

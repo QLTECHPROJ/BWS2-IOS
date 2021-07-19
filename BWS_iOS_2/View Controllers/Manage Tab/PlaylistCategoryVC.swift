@@ -147,6 +147,9 @@ class PlaylistCategoryVC: BaseViewController {
         let sectionData = arrayPlaylistHomeData[sectionIndex]
         let playlistData = sectionData.Details[playlistIndex]
         
+        // Segment Tracking
+        SegmentTracking.shared.addPlaylistToPlaylistEvent(objPlaylist: playlistData, source: "Playlist Main Screen")
+        
         let aVC = AppStoryBoard.home.viewController(viewControllerClass: AddToPlaylistVC.self)
         aVC.playlistID = playlistData.PlaylistID
         aVC.source = "Playlist Main Screen"
@@ -186,6 +189,7 @@ class PlaylistCategoryVC: BaseViewController {
             SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.Create_Playlist_Clicked, traits: ["source":"Playlist Screen"])
             
             let aVC = AppStoryBoard.manage.viewController(viewControllerClass: CreatePlaylistVC.self)
+            aVC.source = "Playlist Main Screen"
             self.navigationController?.pushViewController(aVC, animated: true)
         }
     }

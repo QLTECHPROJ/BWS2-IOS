@@ -150,7 +150,7 @@ class HomeVC: BaseViewController {
         }
         
         // Segment Tracking
-        SegmentTracking.shared.playlistEvents(name: SegmentTracking.eventNames.Playlist_Reminder_Clicked, objPlaylist: suggstedPlaylist, trackingType: .track)
+        SegmentTracking.shared.playlistDetailEvents(name: SegmentTracking.eventNames.Playlist_Reminder_Clicked, objPlaylist: suggstedPlaylist, source: "Home Screen", trackingType: .track)
         
         let aVC = AppStoryBoard.account.viewController(viewControllerClass: DayVC.self)
         aVC.objPlaylist = suggstedPlaylist

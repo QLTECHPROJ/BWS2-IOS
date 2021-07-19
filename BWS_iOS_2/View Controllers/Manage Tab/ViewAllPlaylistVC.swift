@@ -107,6 +107,9 @@ class ViewAllPlaylistVC: BaseViewController {
         
         let playlistData = homeData.Details[sender.tag]
         
+        // Segment Tracking
+        SegmentTracking.shared.addPlaylistToPlaylistEvent(objPlaylist: playlistData, source: "Playlist View All Screen")
+        
         let aVC = AppStoryBoard.home.viewController(viewControllerClass: AddToPlaylistVC.self)
         aVC.playlistID = playlistData.PlaylistID
         aVC.source = "Playlist View All Screen"

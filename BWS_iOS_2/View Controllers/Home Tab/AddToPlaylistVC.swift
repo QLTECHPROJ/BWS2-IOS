@@ -65,6 +65,7 @@ class AddToPlaylistVC: BaseViewController {
         aVC.audioToAdd = self.audioID
         aVC.playlistToAdd = self.playlistID
         aVC.delegate = self
+        aVC.source = "Add To Playlist Screen"
         self.navigationController?.pushViewController(aVC, animated: true)
     }
     

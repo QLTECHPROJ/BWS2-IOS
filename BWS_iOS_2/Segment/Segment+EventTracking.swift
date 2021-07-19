@@ -245,7 +245,7 @@ extension SegmentTracking {
     }
     
     // Track - Add Audio To Playlist
-    func addAudioToPlaylistEvent(name : String, audioData : AudioDetailsDataModel?, source : String = "") {
+    func addAudioToPlaylistEvent(audioData : AudioDetailsDataModel?, source : String = "") {
         guard let audioDetails = audioData else {
             return
         }
@@ -270,7 +270,7 @@ extension SegmentTracking {
             traits["source"] = source
         }
         
-        SegmentTracking.shared.trackGeneralEvents(name: name, traits: traits)
+        SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.Add_to_Playlist_Clicked, traits: traits)
     }
     
     // MARK:- Playlist Screen & Event Traking
@@ -337,8 +337,8 @@ extension SegmentTracking {
         }
     }
     
-    // Track - Add Playlist To Playlist
-    func addPlaylistToPlaylistEvent(name : String, objPlaylist : PlaylistDetailsModel?, source : String = "") {
+    // Playlist Detail Events
+    func playlistDetailEvents(name : String, objPlaylist : PlaylistDetailsModel?, source : String = "", trackingType : TrackingType) {
         if let playlistDetails = objPlaylist {
             var traits = ["playlistId":playlistDetails.PlaylistID,
                           "playlistName":playlistDetails.PlaylistName,
@@ -357,11 +357,43 @@ extension SegmentTracking {
             let totalminute = playlistDetails.Totalminute.trim.count > 0 ? playlistDetails.Totalminute : "0"
             traits["playlistDuration"] = "\(totalhour)h \(totalminute)m"
             
-            if playlistDetails.sectionName.trim.count > 0 {
-                traits["source"] = playlistDetails.sectionName
+            if source.trim.count > 0 {
+                traits["source"] = source
             }
             
-            SegmentTracking.shared.trackGeneralEvents(name: name, traits: traits)
+            if trackingType == .screen {
+                SegmentTracking.shared.trackGeneralScreen(name: name, traits: traits)
+            } else {
+                SegmentTracking.shared.trackGeneralEvents(name: name, traits: traits)
+            }
+        }
+    }
+    
+    // Track - Add Playlist To Playlist
+    func addPlaylistToPlaylistEvent(objPlaylist : PlaylistDetailsModel?, source : String = "") {
+        if let playlistDetails = objPlaylist {
+            var traits = ["playlistId":playlistDetails.PlaylistID,
+                          "playlistName":playlistDetails.PlaylistName,
+                          "playlistDescription":playlistDetails.PlaylistDesc,
+                          "audioCount":playlistDetails.TotalAudio]
+            
+            if playlistDetails.Created == "1" {
+                traits["playlistType"] = "Created"
+            } else if playlistDetails.Created == "2" {
+                traits["playlistType"] = "Suggested"
+            } else {
+                traits["playlistType"] = "Default"
+            }
+            
+            let totalhour = playlistDetails.Totalhour.trim.count > 0 ? playlistDetails.Totalhour : "0"
+            let totalminute = playlistDetails.Totalminute.trim.count > 0 ? playlistDetails.Totalminute : "0"
+            traits["playlistDuration"] = "\(totalhour)h \(totalminute)m"
+            
+            if source.trim.count > 0 {
+                traits["source"] = source
+            }
+            
+            SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.Add_to_Playlist_Clicked, traits: traits)
         }
     }
     

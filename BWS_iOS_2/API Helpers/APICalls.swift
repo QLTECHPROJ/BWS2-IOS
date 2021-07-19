@@ -344,6 +344,9 @@ extension UIViewController {
     
     // Delete Playlist API Call
     func callDeletePlaylistAPI(objPlaylist : PlaylistDetailsModel, complitionBlock : (() -> ())?) {
+        // Segment Tracking
+        SegmentTracking.shared.playlistDetailEvents(name: SegmentTracking.eventNames.Delete_Playlist_Clicked, objPlaylist: objPlaylist, trackingType: .track)
+        
         let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
                           "PlaylistId":objPlaylist.PlaylistID]
         
@@ -355,6 +358,9 @@ extension UIViewController {
                 DispatchQueue.main.async {
                     complitionBlock?()
                 }
+                
+                // Segment Tracking
+                SegmentTracking.shared.playlistDetailEvents(name: SegmentTracking.eventNames.Playlist_Deleted, objPlaylist: objPlaylist, trackingType: .track)
             }
         }
     }
@@ -599,20 +605,24 @@ extension CreatePlaylistVC {
                 showAlertToast(message: response.ResponseMessage)
                 
                 if let id = response.ResponseData?.PlaylistID, let name = response.ResponseData?.PlaylistName {
+                    let playlistDetails = PlaylistDetailsModel()
+                    playlistDetails.PlaylistID = id
+                    playlistDetails.PlaylistName = name
+                    playlistDetails.Created = "1"
+                    playlistDetails.TotalAudio = "1"
+                    
                     if self.playlistToAdd.trim.count > 0 || self.audioToAdd.trim.count > 0 {
                         self.delegate?.didCreateNewPlaylist(createdPlaylistID: id)
                         self.navigationController?.popViewController(animated: true)
                     } else {
                         refreshPlaylistData = true
                         let aVC = AppStoryBoard.home.viewController(viewControllerClass: PlaylistAudiosVC.self)
-                        let playlistDetails = PlaylistDetailsModel()
-                        playlistDetails.PlaylistID = id
-                        playlistDetails.PlaylistName = name
-                        playlistDetails.Created = "1"
-                        playlistDetails.TotalAudio = "1"
                         aVC.objPlaylist = playlistDetails
                         self.navigationController?.pushViewController(aVC, animated: true)
                     }
+                    
+                    // Segment Tracking
+                    SegmentTracking.shared.playlistDetailEvents(name: SegmentTracking.eventNames.Playlist_Created, objPlaylist: playlistDetails, source: self.source, trackingType: .track)
                 }
             }
         }
@@ -620,8 +630,12 @@ extension CreatePlaylistVC {
     
     // Rename Playlist API Call
     func callRenamePlaylistAPI(PlaylistName : String) {
+        guard let playlistDetails = objPlaylist else {
+            return
+        }
+        
         let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
-                          "PlaylistId":objPlaylist!.PlaylistID,
+                          "PlaylistId":playlistDetails.PlaylistID,
                           "PlaylistNewName":PlaylistName]
         
         APICallManager.sharedInstance.callAPI(router: APIRouter.renameplaylist(parameters)) { (response : GeneralModel) in
@@ -630,6 +644,10 @@ extension CreatePlaylistVC {
                 refreshPlaylistData = true
                 self.navigationController?.popViewController(animated: true)
                 showAlertToast(message: response.ResponseMessage)
+                
+                // Segment Tracking
+                playlistDetails.PlaylistName = PlaylistName
+                SegmentTracking.shared.playlistDetailEvents(name: SegmentTracking.eventNames.Playlist_Renamed, objPlaylist: playlistDetails, source: self.source, trackingType: .track)
             }
         }
     }
@@ -729,10 +747,10 @@ extension AddToPlaylistVC {
                     self.arrayPlaylist = self.arrayPlaylist.filter { $0.PlaylistID != self.playlistID }
                 }
                 self.tableView.reloadData()
-                
-                // Segment Tracking
-                self.trackScreenData()
             }
+            
+            // Segment Tracking
+            self.trackScreenData()
         }
     }
     

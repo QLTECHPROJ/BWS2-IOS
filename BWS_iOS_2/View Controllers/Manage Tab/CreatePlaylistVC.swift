@@ -25,6 +25,8 @@ class CreatePlaylistVC: BaseViewController {
     var audioToAdd = ""
     var playlistToAdd = ""
     var delegate : CreatePlayListVCDelegate?
+    var source = ""
+    
     
     //MARK:- VIEW LIFE CYCLE
     override func viewDidLoad() {

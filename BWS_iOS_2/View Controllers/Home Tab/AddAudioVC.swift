@@ -176,7 +176,7 @@ class AddAudioVC: BaseViewController {
             } else {
                 // Segment Tracking
                 let source = audioData.Iscategory == "1" ? "Search Audio" : "Suggested Audio"
-                SegmentTracking.shared.addAudioToPlaylistEvent(name: SegmentTracking.eventNames.Add_to_Playlist_Clicked, audioData: audioData, source: source)
+                SegmentTracking.shared.addAudioToPlaylistEvent(audioData: audioData, source: source)
                 
                 // Add Audio To Playlist
                 let aVC = AppStoryBoard.home.viewController(viewControllerClass: AddToPlaylistVC.self)
@@ -190,19 +190,22 @@ class AddAudioVC: BaseViewController {
         }
     }
     
-    func addPlaylistToPlaylist(playlistID : String, lock : String, source : String) {
+    func addPlaylistToPlaylist(playlistDetails : PlaylistDetailsModel, source : String) {
         if checkInternet(showToast: true) == false {
             return
         }
         
-        if lock == "1" {
+        if playlistDetails.IsLock == "1" {
             openInactivePopup(controller: self)
-        } else if lock == "2" {
+        } else if playlistDetails.IsLock == "2" {
             showAlertToast(message: Theme.strings.alert_reactivate_plan)
         } else {
             if isComeFromAddAudio {
                 callAddAudioToPlaylistAPI(audioToAdd: "", playlistToAdd: playlistID)
             } else {
+                // Segment Tracking
+                SegmentTracking.shared.addPlaylistToPlaylistEvent(objPlaylist: playlistDetails, source: source)
+                
                 let aVC = AppStoryBoard.home.viewController(viewControllerClass: AddToPlaylistVC.self)
                 aVC.playlistID = playlistID
                 aVC.source = source
@@ -271,6 +274,9 @@ class AddAudioVC: BaseViewController {
         if checkInternet(showToast: true) == false {
             return
         }
+        
+        // Segment Tracking
+        SegmentTracking.shared.addPlaylistToPlaylistEvent(objPlaylist: arrayPlayList[sender.tag], source: "Suggested Playlist")
         
         setAllDeselected()
         
@@ -457,7 +463,7 @@ extension AddAudioVC : UITableViewDelegate, UITableViewDataSource {
             cell.configureAddPlaylistCell(data: arrayPlayList[indexPath.row])
             cell.buttonClicked = { index in
                 if index == 1 {
-                    self.addPlaylistToPlaylist(playlistID: self.arrayPlayList[indexPath.row].PlaylistID, lock: self.arrayPlayList[indexPath.row].IsLock, source: "Suggested Playlist")
+                    self.addPlaylistToPlaylist(playlistDetails: self.arrayPlayList[indexPath.row], source: "Suggested Playlist")
                 }
             }
         } else {
@@ -497,7 +503,15 @@ extension AddAudioVC : UITableViewDelegate, UITableViewDataSource {
                     if self.arraySearch[indexPath.row].Iscategory == "1" {
                         self.addAudioToPlaylist(audioData: self.arraySearch[indexPath.row])
                     } else {
-                        self.addPlaylistToPlaylist(playlistID: self.arraySearch[indexPath.row].ID, lock: self.arraySearch[indexPath.row].IsLock, source: "Search Playlist")
+                        let playlistDetails = PlaylistDetailsModel()
+                        playlistDetails.PlaylistID = self.arraySearch[indexPath.row].ID
+                        playlistDetails.PlaylistImage = self.arraySearch[indexPath.row].ImageFile
+                        playlistDetails.TotalAudio = self.arraySearch[indexPath.row].TotalAudio
+                        playlistDetails.TotalDuration = self.arraySearch[indexPath.row].TotalDuration
+                        playlistDetails.Totalhour = self.arraySearch[indexPath.row].Totalhour
+                        playlistDetails.Totalminute = self.arraySearch[indexPath.row].Totalminute
+                        
+                        self.addPlaylistToPlaylist(playlistDetails: playlistDetails, source: "Search Playlist")
                     }
                 }
             }

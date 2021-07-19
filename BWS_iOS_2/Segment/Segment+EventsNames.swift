@@ -160,9 +160,14 @@ struct EventNames {
     let Playlist_Started = "Playlist Started"
     let Playlist_Completed = "Playlist Completed"
     
+    let Playlist_Created = "Playlist Created"
+    let Playlist_Renamed = "Playlist Renamed"
+    let Playlist_Deleted = "Playlist Deleted"
+    
     let Create_Playlist_Clicked = "Create Playlist Clicked"
     let Playlist_Rename_Clicked = "Playlist Rename Clicked"
     let Playlist_Reminder_Clicked = "Playlist Reminder Clicked"
+    let Delete_Playlist_Clicked = "Delete Playlist Clicked"
     let Playlist_Search_Clicked = "Playlist Search Clicked"
     let Playlist_Audio_Sorted = "Playlist Audio Sorted"
     let Suggested_Playlist_Clicked = "Suggested Playlist Clicked"
