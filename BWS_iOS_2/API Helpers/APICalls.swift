@@ -1461,8 +1461,12 @@ extension SetUpPInVC {
             if response.ResponseCode == "200" {
                 showAlertToast(message: response.ResponseMessage)
                 if self.isComeFrom == "UserList" {
-                    let aVC = AppStoryBoard.main.viewController(viewControllerClass: UserListVC.self)
-                    self.navigationController?.pushViewController(aVC, animated: false)
+                    self.callGetCoUserDetailsAPI { (success) in
+                        if success {
+                            self.handleCoUserRedirection()
+                        } 
+                    }
+                   
                 }else {
                     let aVC = AppStoryBoard.main.viewController(viewControllerClass:StepVC.self)
                     aVC.strTitle = ""

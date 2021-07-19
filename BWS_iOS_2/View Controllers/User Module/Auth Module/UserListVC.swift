@@ -150,12 +150,14 @@ class UserListVC: BaseViewController {
         
         if selectedUser!.isPinSet == "0" {
             let aVC = AppStoryBoard.main.viewController(viewControllerClass: SetUpPInVC.self)
+            CoUserDataModel.currentUser = selectedUser
             aVC.selectedUser = selectedUser
             aVC.isComeFrom = "UserList"
             self.navigationController?.pushViewController(aVC, animated: true)
         } else {
             if let selectedUser = selectedUser {
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass:PinVC.self)
+                CoUserDataModel.currentUser = selectedUser
                 aVC.selectedUser = selectedUser
                 aVC.pinVerified = {
                     self.handleCoUserRedirection()
