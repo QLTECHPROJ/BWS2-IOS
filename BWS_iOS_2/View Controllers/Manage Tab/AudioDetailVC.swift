@@ -166,12 +166,12 @@ class AudioDetailVC: BaseViewController {
             return
         }
         
-        if let audioID = self.audioDetails?.ID {
+        if let audioData = self.audioDetails {
             // Segment Tracking
-            SegmentTracking.shared.audioDetailsEvents(name: SegmentTracking.eventNames.Add_to_Playlist_Clicked, audioData: self.audioDetails, source: "Audio Details", trackingType: .track)
+            SegmentTracking.shared.addAudioToPlaylistEvent(name: SegmentTracking.eventNames.Add_to_Playlist_Clicked, audioData: audioData, source: "Audio Details")
             
             let aVC = AppStoryBoard.home.viewController(viewControllerClass: AddToPlaylistVC.self)
-            aVC.audioID = audioID
+            aVC.audioID = audioData.ID
             aVC.source = "Audio Details Screen"
             let navVC = UINavigationController(rootViewController: aVC)
             navVC.navigationBar.isHidden = true

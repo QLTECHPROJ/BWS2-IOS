@@ -176,7 +176,7 @@ class AddAudioVC: BaseViewController {
             } else {
                 // Segment Tracking
                 let source = audioData.Iscategory == "1" ? "Search Audio" : "Suggested Audio"
-                SegmentTracking.shared.audioDetailsEvents(name: SegmentTracking.eventNames.Audio_Add_Clicked, audioData: audioData, source: source, trackingType: .track)
+                SegmentTracking.shared.addAudioToPlaylistEvent(name: SegmentTracking.eventNames.Add_to_Playlist_Clicked, audioData: audioData, source: source)
                 
                 // Add Audio To Playlist
                 let aVC = AppStoryBoard.home.viewController(viewControllerClass: AddToPlaylistVC.self)
