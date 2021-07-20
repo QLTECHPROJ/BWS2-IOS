@@ -509,6 +509,8 @@
 		9A55EB462668EA58006E398A /* InvoiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A55EB3B2668EA58006E398A /* InvoiceCell.xib */; };
 		9A55EB472668EA58006E398A /* InvoiceDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A55EB3C2668EA58006E398A /* InvoiceDetailVC.swift */; };
 		9A55EB482668EA58006E398A /* InvoiceDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A55EB3C2668EA58006E398A /* InvoiceDetailVC.swift */; };
+		9A6059D526A67EF2005D43A5 /* SessionDescVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6059D426A67EF2005D43A5 /* SessionDescVC.swift */; };
+		9A6059D626A67EF2005D43A5 /* SessionDescVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6059D426A67EF2005D43A5 /* SessionDescVC.swift */; };
 		9A62E91D26820D3400883BBD /* EmailVerifyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A62E91C26820D3400883BBD /* EmailVerifyVC.swift */; };
 		9A62E91E26820D3400883BBD /* EmailVerifyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A62E91C26820D3400883BBD /* EmailVerifyVC.swift */; };
 		9A63D461265778D800B596D7 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A63D460265778D800B596D7 /* IAPHelper.swift */; };
@@ -853,6 +855,7 @@
 		9A55EB3A2668EA58006E398A /* InvoiceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvoiceCell.swift; sourceTree = "<group>"; };
 		9A55EB3B2668EA58006E398A /* InvoiceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InvoiceCell.xib; sourceTree = "<group>"; };
 		9A55EB3C2668EA58006E398A /* InvoiceDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvoiceDetailVC.swift; sourceTree = "<group>"; };
+		9A6059D426A67EF2005D43A5 /* SessionDescVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDescVC.swift; sourceTree = "<group>"; };
 		9A62E91C26820D3400883BBD /* EmailVerifyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailVerifyVC.swift; sourceTree = "<group>"; };
 		9A63D460265778D800B596D7 /* IAPHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
 		9A63D4672657864E00B596D7 /* SwiftyStoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftyStoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1605,6 +1608,7 @@
 				9A6D04FD269F094600AD4FBA /* ExpSessionVC.swift */,
 				9A6D0500269F097E00AD4FBA /* SessionVC.swift */,
 				9A1A9FE226A0491800E4541F /* SessionDetailVC.swift */,
+				9A6059D426A67EF2005D43A5 /* SessionDescVC.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -2060,6 +2064,7 @@
 				9A1A9FDF26A0446B00E4541F /* SessionDetailCell.swift in Sources */,
 				28ED2FB625FB8C6E00E59C56 /* ProfileForm4VC.swift in Sources */,
 				2891E2AB2643CCF800658B49 /* TimeView.swift in Sources */,
+				9A6059D626A67EF2005D43A5 /* SessionDescVC.swift in Sources */,
 				284C9B6B262E93D1008C4435 /* CryptLib.m in Sources */,
 				2870B45E25FB44700014A4F6 /* NSDate+Timepiece.swift in Sources */,
 				281DE3302626FD79002CCD9D /* AudioDownloads+CoreDataProperties.swift in Sources */,
@@ -2290,6 +2295,7 @@
 				9A1A9FDE26A0446B00E4541F /* SessionDetailCell.swift in Sources */,
 				28ED2FB525FB8C6E00E59C56 /* ProfileForm4VC.swift in Sources */,
 				2891E2AA2643CCF800658B49 /* TimeView.swift in Sources */,
+				9A6059D526A67EF2005D43A5 /* SessionDescVC.swift in Sources */,
 				284C9B6A262E93D1008C4435 /* CryptLib.m in Sources */,
 				2870B45D25FB44700014A4F6 /* NSDate+Timepiece.swift in Sources */,
 				281DE32F2626FD79002CCD9D /* AudioDownloads+CoreDataProperties.swift in Sources */,

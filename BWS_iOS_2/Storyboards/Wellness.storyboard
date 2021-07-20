@@ -593,10 +593,10 @@
             </objects>
             <point key="canvasLocation" x="3513" y="117"/>
         </scene>
-        <!--View Controller-->
+        <!--Session DescVC-->
         <scene sceneID="kQZ-wq-p2r">
             <objects>
-                <viewController id="FIE-65-58D" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SessionDescVC" id="FIE-65-58D" customClass="SessionDescVC" customModule="BWS_2_Staging" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oIy-dj-9uL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -658,6 +658,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="onTappedContinue:" destination="7UF-aq-BnP" eventType="touchUpInside" id="AQA-D7-Yeh"/>
+                                    <action selector="onTappedContinue:" destination="FIE-65-58D" eventType="touchUpInside" id="Qhq-bZ-v8Z"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xnF-TB-z4g">
@@ -688,6 +689,11 @@
                             <constraint firstItem="Yyu-UH-gsh" firstAttribute="top" secondItem="VpK-w5-5VK" secondAttribute="top" id="zSg-8G-NQP"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="lblDesc" destination="bTw-j9-Wbf" id="F3b-AH-iIQ"/>
+                        <outlet property="lblTitle" destination="S7n-J9-2IS" id="H52-VN-LkZ"/>
+                        <outlet property="tableView" destination="xnF-TB-z4g" id="gf3-NT-I78"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jUI-Su-Zrf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
