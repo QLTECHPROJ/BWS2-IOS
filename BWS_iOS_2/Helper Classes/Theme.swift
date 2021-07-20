@@ -361,7 +361,7 @@ struct AppStrings {
     let register_title = "Welcome to \nBrain wellness spa"
     let register_subtitle = "We just need few details to get you started!!"
     
-    let otp_subtitle = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor."
+    let otp_subtitle = "Please enter the OTP to begin your journey to better mental health."
     
     let login_title = "Welcome back..."
     let login_subtitle = "Hope you're feeling much better than you felt before!!"
@@ -498,6 +498,14 @@ struct AppStrings {
     let alert_playlists_delete_error = "An error occured while deleting playlists."
     
     let alert_select_day_and_time = "Please select days and Time"
+    
+    //Add User
+    let add_user_subTitle = "New users can either use this device, or another one to access the app."
+    let same_num_title = "For multiple users on the same device"
+    let same_num_desc = "With multiple users, we create separate access pins to ensure privacy. Each person’s details will remain inaccessible to others."
+    //Set up pin
+    let setup_pin_Desc = "Enter a 4-digit number. This is your secret access code."
+
 }
 
 // MARK: - UIStatusBarStyle - autoDarkContent

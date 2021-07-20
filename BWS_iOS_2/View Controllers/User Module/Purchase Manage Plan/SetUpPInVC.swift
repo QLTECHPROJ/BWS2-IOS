@@ -41,6 +41,8 @@ class SetUpPInVC: BaseViewController {
     
     //MARK:- Functions
     override func setupUI() {
+        lblSubtitle.attributedText = Theme.strings.setup_pin_Desc.attributedString(alignment: .center, lineSpacing: 5)
+        
         txtFNewloginPin.delegate = self
         txtFConfirmLoginPin.delegate = self
         buttonEnableDisable()

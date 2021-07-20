@@ -26,6 +26,7 @@ class AddUserVC: BaseViewController {
     
     //MARK:- Functions
     override func setupUI() {
+        lblSubTitle.attributedText = Theme.strings.add_user_subTitle.attributedString(alignment: .center, lineSpacing: 5)
         if isCome == "AddUser" {
             btnBack.isHidden = false
             btnBack.isUserInteractionEnabled = true
@@ -80,8 +81,8 @@ class AddUserVC: BaseViewController {
     
     @IBAction func onTappedInfo(_ sender: UIButton) {
         let aVC = AppStoryBoard.main.viewController(viewControllerClass: DescriptionPopupVC.self)
-        aVC.strTitle = "With Same Mobile Number"
-        aVC.strDesc = Theme.strings.disclaimer_description
+        aVC.strTitle = Theme.strings.same_num_title
+        aVC.strDesc = Theme.strings.same_num_desc
         aVC.isOkButtonHidden = true
         aVC.modalPresentationStyle = .overFullScreen
         self.present(aVC, animated: false, completion: nil)
