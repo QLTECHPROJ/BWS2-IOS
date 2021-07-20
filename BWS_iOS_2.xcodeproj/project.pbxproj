@@ -471,6 +471,10 @@
 		9A1A9FE126A0446B00E4541F /* SessionDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A1A9FDD26A0446B00E4541F /* SessionDetailCell.xib */; };
 		9A1A9FE326A0491800E4541F /* SessionDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1A9FE226A0491800E4541F /* SessionDetailVC.swift */; };
 		9A1A9FE426A0491800E4541F /* SessionDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1A9FE226A0491800E4541F /* SessionDetailVC.swift */; };
+		9A25321C26A6F7C600E93ACD /* SessionStartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A25321B26A6F7C600E93ACD /* SessionStartVC.swift */; };
+		9A25321D26A6F7C600E93ACD /* SessionStartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A25321B26A6F7C600E93ACD /* SessionStartVC.swift */; };
+		9A25321F26A7040300E93ACD /* AddressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A25321E26A7040300E93ACD /* AddressVC.swift */; };
+		9A25322026A7040300E93ACD /* AddressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A25321E26A7040300E93ACD /* AddressVC.swift */; };
 		9A267F3E2670DDE3009E3CBA /* TagFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A267F3D2670DDE3009E3CBA /* TagFlowLayout.swift */; };
 		9A267F3F2670DDE3009E3CBA /* TagFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A267F3D2670DDE3009E3CBA /* TagFlowLayout.swift */; };
 		9A267F412670F684009E3CBA /* MyHeaderFooterClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A267F402670F684009E3CBA /* MyHeaderFooterClass.swift */; };
@@ -836,6 +840,8 @@
 		9A1A9FDC26A0446B00E4541F /* SessionDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailCell.swift; sourceTree = "<group>"; };
 		9A1A9FDD26A0446B00E4541F /* SessionDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SessionDetailCell.xib; sourceTree = "<group>"; };
 		9A1A9FE226A0491800E4541F /* SessionDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailVC.swift; sourceTree = "<group>"; };
+		9A25321B26A6F7C600E93ACD /* SessionStartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStartVC.swift; sourceTree = "<group>"; };
+		9A25321E26A7040300E93ACD /* AddressVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressVC.swift; sourceTree = "<group>"; };
 		9A267F3D2670DDE3009E3CBA /* TagFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagFlowLayout.swift; sourceTree = "<group>"; };
 		9A267F402670F684009E3CBA /* MyHeaderFooterClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyHeaderFooterClass.swift; sourceTree = "<group>"; };
 		9A51DF25263820FD001364EA /* AccountInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountInfoVC.swift; sourceTree = "<group>"; };
@@ -1609,6 +1615,8 @@
 				9A6D0500269F097E00AD4FBA /* SessionVC.swift */,
 				9A1A9FE226A0491800E4541F /* SessionDetailVC.swift */,
 				9A6059D426A67EF2005D43A5 /* SessionDescVC.swift */,
+				9A25321B26A6F7C600E93ACD /* SessionStartVC.swift */,
+				9A25321E26A7040300E93ACD /* AddressVC.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -2117,6 +2125,7 @@
 				2870B41825FB41A10014A4F6 /* MediaType.swift in Sources */,
 				2870B3CE25FB41A10014A4F6 /* DJCheckBox.swift in Sources */,
 				2870B44025FB41A10014A4F6 /* ReorderController+SnapshotView.swift in Sources */,
+				9A25322026A7040300E93ACD /* AddressVC.swift in Sources */,
 				2870B46425FB44700014A4F6 /* WWCalendarTimeSelector.swift in Sources */,
 				9AD5582A2636E6C3007ED68F /* AccountCell.swift in Sources */,
 				2870B43625FB41A10014A4F6 /* DJPageMenuController.swift in Sources */,
@@ -2204,6 +2213,7 @@
 				2870B3E625FB41A10014A4F6 /* ImagePicker.swift in Sources */,
 				9AC0671D2639304E00287A44 /* FeatureCell.swift in Sources */,
 				28B5353B260C706200BD8147 /* AreaOfFocusVC.swift in Sources */,
+				9A25321D26A6F7C600E93ACD /* SessionStartVC.swift in Sources */,
 				2870B3FA25FB41A10014A4F6 /* ExpandableLabel.swift in Sources */,
 				2891E2A32643CCF800658B49 /* ReminderListCell.swift in Sources */,
 				281DE32C2626FD79002CCD9D /* CoreDataHelper.swift in Sources */,
@@ -2348,6 +2358,7 @@
 				2870B43F25FB41A10014A4F6 /* ReorderController+SnapshotView.swift in Sources */,
 				2870B46325FB44700014A4F6 /* WWCalendarTimeSelector.swift in Sources */,
 				2870B43525FB41A10014A4F6 /* DJPageMenuController.swift in Sources */,
+				9A25321F26A7040300E93ACD /* AddressVC.swift in Sources */,
 				9AD558282636DFFA007ED68F /* AccountCell.swift in Sources */,
 				2870B3FD25FB41A10014A4F6 /* KDCircularProgress.swift in Sources */,
 				9A55EB472668EA58006E398A /* InvoiceDetailVC.swift in Sources */,
@@ -2435,6 +2446,7 @@
 				9AC0671C2639304E00287A44 /* FeatureCell.swift in Sources */,
 				2870B3D125FB41A10014A4F6 /* DJTextField.swift in Sources */,
 				28B5353A260C706200BD8147 /* AreaOfFocusVC.swift in Sources */,
+				9A25321C26A6F7C600E93ACD /* SessionStartVC.swift in Sources */,
 				2891E2A22643CCF800658B49 /* ReminderListCell.swift in Sources */,
 				2870B3E525FB41A10014A4F6 /* ImagePicker.swift in Sources */,
 				281DE32B2626FD79002CCD9D /* CoreDataHelper.swift in Sources */,

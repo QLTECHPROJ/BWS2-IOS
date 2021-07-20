@@ -61,4 +61,9 @@ extension SessionDetailVC : UITableViewDelegate, UITableViewDataSource {
         
        
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: SessionDescVC.self)
+        self.navigationController?.pushViewController(aVC, animated: false)
+    }
 }
