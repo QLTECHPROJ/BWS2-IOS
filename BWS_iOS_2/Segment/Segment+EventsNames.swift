@@ -10,6 +10,7 @@ import Foundation
 
 struct ScreenNames {
     
+    // Authentication Related Screens
     let launch = "Launch Screen Viewed"
     let signUp = "SignUp Screen Viewed"
     let countryList = "Country List Viewed"
@@ -17,14 +18,6 @@ struct ScreenNames {
     let emailSent = "Email Sent Screen Viewed"
     let forgotPassword = "Forgot Password Screen Viewed"
     
-    let forgotPin = "Forgot Pin Screen Viewed"
-    let coUserList = "Couser List Viewed"
-    let addUser = "Add User Screen Viewed"
-    let setupPin = "Set Up Pin Screen Viewed"
-    
-    let profile_form_start = "Profile Step Start Screen Viewed"
-    let profile_query_screen = "Profile Query Screen viewed"
-    let profileForm = "Profile Form Screen Viewed"
     let assessmentStart = "Assessment Start Screen Viewed"
     let assessmentForm = "Assessment Screen Viewed"
     let wellnessScore = "Wellness Score Screen Viewed"
@@ -32,6 +25,16 @@ struct ScreenNames {
     let enhancePlanList = "Enhance Plan Screen Viewed"
     let orderSummary = "Order Summary Viewed"
     let thankYou = "Thank You Screen Viewed"
+    
+    let setupPin = "Set Up Pin Screen Viewed"
+    let addUser = "Add User Screen Viewed"
+    let invite_friend = "Invite Friends Screen Viewed"
+    let coUserList = "Couser List Viewed"
+    let forgotPin = "Forgot Pin Screen Viewed"
+    
+    let profile_form_start = "Profile Step Start Screen Viewed"
+    let profile_query_screen = "Profile Query Screen viewed"
+    let profileForm = "Profile Form Screen Viewed"
     
     let sleepTime = "Sleep Time Screen Viewed"
     let areaOfFocus = "Area of  Focus Screen Viewed"
@@ -47,6 +50,7 @@ struct ScreenNames {
     let suggested_audio_list = "Suggested Audios List Viewed"
     let suggested_playlist_list = "Suggested Playlist List Viewed"
     
+    // Audio Related Screens
     let audio_view_all = "Audio ViewAll Screen Viewed"
     let recentlyPlayed = "Recently Played Viewed"
     let myDownloads = "My Downloads Viewed"
@@ -58,62 +62,61 @@ struct ScreenNames {
     let audio_details = "Audio Details Viewed"
     let add_to_playlist = "Add to Playlist Screen Viewed"
     
+    // Playlist Related Screens
     let playlist = "Playlist Screen Viewed"
     let playlist_view_all = "View All Playlist Screen Viewed"
     let playlist_viewed = "Playlist Viewed"
     let playlist_details_viewed = "Playlist Details Viewed"
     
-    let account = "Account Screen Viewed"
-    let account_info = "Account Info Screen Viewed"
-    let edit_profile = "Edit Profile Screen View"
-    let change_password = "Change Password Screen Viewed"
-    let change_pin = "Change Pin Screen Viewed"
-    let delete_account = "Delete Account Screen Viewed"
-    
-    let cancel_subscription =  "Cancel Subscription Screen Viewed"
-    
-    let my_downloads_screen = "My Download Screen Viewed"
-    
+    // Reminder Related Screens
     let reminder = "Reminder Screen Viewed"
     let editReminder = "Add/Edit Reminder Screen Viewed"
     
+    // Resources Related Screens
     let resourceScreen = "Resources Screen Viewed"
     let resourceDetails = "Resource Details Viewed"
     
+    // Account Section Related Screens
+    let account = "Account Screen Viewed"
+    let account_info = "Account Info Screen Viewed"
+    let edit_profile = "Edit Profile Screen View"
+    let change_pin = "Change Pin Screen Viewed"
+    let delete_account = "Delete Account Screen Viewed"
+    let change_password = "Change Password Screen Viewed"
+    let cancel_subscription =  "Cancel Subscription Screen Viewed"
+    let my_downloads_screen = "My Download Screen Viewed"
     let manage_user = "Manage User Screen Viewed"
-    
     let faq_screen = "FAQ Viewed"
-    
-    let invite_friend = "Invite Friends Screen Viewed"
 }
+
 
 struct EventNames {
     
+    // Push Notification Related Events
     let Push_Notification_Received = "Push Notification Received"
     let Push_Notification_Tapped = "Push Notification Tapped"
     
-    let Forgot_Password_Clicked = "Forgot Password Clicked"
-    
+    // Authentication Related Events
     let Send_OTP_Clicked = "Send OTP Clicked"
     let Resend_OTP_Clicked = "Resend OTP Clicked"
     let User_Sign_up = "User Sign up"
     let User_Login = "User Login"
+    
+    let Assessment_Form_Submitted = "Assessment Form Submitted"
+    let Checkout_Proceeded = "Checkout Proceeded"
+    
     let Couser_Added = "Couser Added"
+    let contact_searched = "Contact Searched"
+    let invite_friend_clicked = "Invite Friend Clicked"
     let Forgot_Pin_Clicked = "Forgot Pin Clicked"
     
     let Explore_App_Clicked = "Explore App Clicked"
     
-    let CoUser_Login = "CoUser Login"
-    let CoUser_Logout = "CoUser Logout"
-    
     let Profile_Form_Submitted = "Profile Form Submitted"
-    let Assessment_Form_Submitted = "Assessment Form Submitted"
-    
-    let Checkout_Proceeded = "Checkout Proceeded"
-    let playlist_ready = " Playlist  Ready Screen Viewed"
-    
     let Area_of_Focus_Saved = "Area of Focus Saved"
+    let playlist_ready = " Playlist Ready Screen Viewed"
     
+    // Audio Related Events
     let Audio_Searched = "Audio Searched"
     let Suggested_Audio_Clicked = "Suggested Audio Clicked"
     let Search_Audio_Clicked = "Search Audio Clicked"
@@ -121,23 +124,7 @@ struct EventNames {
     let Add_to_Playlist_Clicked = "Add to Playlist Clicked"
     let Audio_Removed_From_Playlist = "Audio Removed From Playlist"
     
-    let Profile_Changes_Saved = "Profile Changes Saved"
-    let Camera_Photo_Added = "Camera Photo Added"
-    let Gallery_Photo_Added = "Gallery Photo Added"
-    let Profile_Photo_Cancelled = "Profile Photo Cancelled"
-    
-    let Login_Pin_Changed = "Login Pin Changed"
-    let Password_Changed = "Password Changed"
-    
-    let Resources_Filter_Clicked = "Resources Filter Clicked"
-    let Resource_External_Link_Clicked = "Resource External Link Clicked"
-    
-    let FAQ_Clicked = "FAQ Clicked"
-    
-    let invite_friend_clicked = "Invite Friend Clicked"
-    let contact_searched = "Contact Searched"
-    
-    // Audio Playback Events
+    // Audio Playback Related Events
     let Disclaimer_Started = "Disclaimer Started"
     let Disclaimer_Playing = "Disclaimer Playing"
     let Disclaimer_Paused = "Disclaimer Paused"
@@ -158,10 +145,10 @@ struct EventNames {
     let Audio_Completed = "Audio Completed"
     let Audio_Playback_Completed = "Audio Playback Completed"
     
-    let Audio_Forwarded = "Audio Forwarded"
-    let Audio_Backwarded = "Audio Backwarded"
+    let Audio_Forward = "Audio Forward"
+    let Audio_Backward = "Audio Backward"
     
-    // Playlist Events
+    // Playlist Related Events
     let Playlist_Started = "Playlist Started"
     let Playlist_Completed = "Playlist Completed"
     
@@ -171,14 +158,27 @@ struct EventNames {
     
     let Create_Playlist_Clicked = "Create Playlist Clicked"
     let Playlist_Rename_Clicked = "Playlist Rename Clicked"
-    let Playlist_Reminder_Clicked = "Playlist Reminder Clicked"
     let Delete_Playlist_Clicked = "Delete Playlist Clicked"
     let Playlist_Search_Clicked = "Playlist Search Clicked"
     let Playlist_Audio_Sorted = "Playlist Audio Sorted"
     let Suggested_Playlist_Clicked = "Suggested Playlist Clicked"
     let Search_Playlist_Clicked = "Search Playlist Clicked"
     
-    // Download Events
+    // Account Section Related Events
+    let Profile_Changes_Saved = "Profile Changes Saved"
+    let Camera_Photo_Added = "Camera Photo Added"
+    let Gallery_Photo_Added = "Gallery Photo Added"
+    let Profile_Photo_Cancelled = "Profile Photo Cancelled"
+    
+    let Login_Pin_Changed = "Login Pin Changed"
+    let Password_Changed = "Password Changed"
+    
+    let Account_Deleted = "Account Deleted"
+    let Co_User_Removed = "Co User Removed"
+    
+    let User_Logged_Out = "User Logged Out"
+    
+    // Download Related Events
     let Audio_Download_Started = "Audio Download Started"
     let Audio_Download_Completed = "Audio Download Completed"
     let Downloaded_Audio_Removed = "Downloaded Audio Removed"
@@ -186,6 +186,15 @@ struct EventNames {
     let Playlist_Download_Started = "Playlist Download Started"
     let Downloaded_Playlist_Removed = "Downloaded Playlist Removed"
     
-    let Account_Deleted = "Account Deleted"
-    let Co_User_Removed = "Co User Removed"
+    // Reminder Related Events
+    let Playlist_Reminder_Clicked = "Playlist Reminder Clicked"
+    let Set_Reminder_Pop_Up_Clicked = "Set Reminder Pop Up Clicked"
+    
+    // Resources Related Events
+    let Resources_Filter_Clicked = "Resources Filter Clicked"
+    let Resource_External_Link_Clicked = "Resource External Link Clicked"
+    
+    // FAQ Related Events
+    let FAQ_Clicked = "FAQ Clicked"
+    
 }

@@ -211,7 +211,7 @@ extension ReminderListVC : UITableViewDelegate, UITableViewDataSource {
         }
         
         let aVC = AppStoryBoard.account.viewController(viewControllerClass: DayVC.self)
-        aVC.arrayRemList = arrayRemList[indexPath.row]
+        aVC.objReminder = arrayRemList[indexPath.row]
         aVC.isCome = "ReminderList"
         self.navigationController?.pushViewController(aVC, animated: true)
     }

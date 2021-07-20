@@ -92,35 +92,27 @@ extension SegmentTracking {
         SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.my_downloads_screen, traits: traits)
     }
     
-    func trackReminderDetails(objReminderDetail : ReminderListDataModel?) {
-        var traits = [String:String]()
-        
-        if let objReminder = objReminderDetail {
-            traits["reminderId"] = objReminder.ReminderId
-            traits["playlistId"] = objReminder.PlaylistId
-            traits["playlistName"] = objReminder.PlaylistName
-            traits["playlistType"] = objReminder.Created == "1" ? "Created" : "Default"
-            traits["reminderStatus"] = objReminder.IsCheck
-            traits["reminderTime"] = objReminder.ReminderTime
-            traits["reminderDay"] = objReminder.ReminderDay
-        }
-        
-        SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.editReminder, traits: traits)
-    }
-    
     func trackReminderScreenViewed(arrayReminders : [ReminderListDataModel]) {
         var traits = [String:Any]()
         
         var reminders = [[String:String]]()
         
         for reminder in arrayReminders {
-            let reminderDetails = ["reminderId":reminder.ReminderId,
+            var reminderDetails = ["reminderId":reminder.ReminderId,
                                    "playlistId":reminder.PlaylistId,
                                    "playlistName":reminder.PlaylistName,
-                                   "playlistType":reminder.Created == "1" ? "Created" : "Default",
                                    "reminderStatus":reminder.IsCheck,
                                    "reminderTime":reminder.ReminderTime,
                                    "reminderDay":reminder.ReminderDay]
+            
+            if reminder.Created == "1" {
+                reminderDetails["playlistType"] = "Created"
+            } else if reminder.Created == "2" {
+                reminderDetails["playlistType"] = "Suggested"
+            } else {
+                reminderDetails["playlistType"] = "Default"
+            }
+            
             reminders.append(reminderDetails)
         }
         

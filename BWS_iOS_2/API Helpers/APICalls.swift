@@ -176,7 +176,7 @@ extension PinVC {
                 }
                 
                 // Segment Tracking
-                SegmentTracking.shared.coUserEvent(name: SegmentTracking.eventNames.CoUser_Login, trackingType: .track)
+                SegmentTracking.shared.coUserEvent(name: SegmentTracking.eventNames.User_Login, trackingType: .track)
                 
                 // Segment - Identify User
                 SegmentTracking.shared.identifyUser()
@@ -336,7 +336,7 @@ extension UIViewController {
         APICallManager.sharedInstance.callAPI(router: APIRouter.logout(parameters)) { (response : GeneralModel) in
             
             if response.ResponseCode == "200" {
-                SegmentTracking.shared.coUserEvent(name: SegmentTracking.eventNames.CoUser_Logout, trackingType: .track)
+                SegmentTracking.shared.coUserEvent(name: SegmentTracking.eventNames.User_Logged_Out, trackingType: .track)
                 complitionBlock?()
             } else {
                 complitionBlock?()
@@ -1339,29 +1339,27 @@ extension ReminderListVC {
 extension DayVC {
     
     func callSetRemAPI() {
-        
         let strDay =  (arrSelectDays.map{String($0)}).joined(separator: ",")
-        print(strDay)
         let time = lblTime.text?.localToUTC(incomingFormat: "h:mm a", outGoingFormat: "h:mm a") ?? ""
-
+        
         let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
                           "PlaylistId":strPlaylistID ?? "",
                           "IsSingle":"1",
                           "ReminderTime":time,
                           "ReminderDay":strDay]
-
+        
         APICallManager.sharedInstance.callAPI(router: APIRouter.setreminder(parameters)) { (response : GeneralModel) in
 
             if response.ResponseCode == "200" {
                 showAlertToast(message: response.ResponseMessage)
-                if self.isfromPopUp == true {
-                    self.dismiss(animated: true, completion: nil)
-                }else {
-                    self.navigationController?.popViewController(animated: true)
-                }
                 self.setupData()
                 self.tableView.reloadData()
-
+                
+                if self.isfromPopUp == true {
+                    self.dismiss(animated: true, completion: nil)
+                } else {
+                    self.navigationController?.popViewController(animated: true)
+                }
             }
         }
     }

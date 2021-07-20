@@ -368,7 +368,7 @@ class PlayerVC: BaseViewController {
         
         // Segment Tracking
         let seconds : Double = DJMusicPlayer.shared.currentTime - 30
-        SegmentTracking.shared.audioPlaybackEvents(name: SegmentTracking.eventNames.Audio_Backwarded, audioData: self.audioDetails, seekDirection: "Backwarded", seekPosition: seconds, trackingType: .track)
+        SegmentTracking.shared.audioPlaybackEvents(name: SegmentTracking.eventNames.Audio_Backward, audioData: self.audioDetails, seekDirection: "Backwarded", seekPosition: seconds, trackingType: .track)
         
         DJMusicPlayer.shared.rewind()
     }
@@ -383,7 +383,7 @@ class PlayerVC: BaseViewController {
         
         // Segment Tracking
         let seconds : Double = DJMusicPlayer.shared.currentTime + 30
-        SegmentTracking.shared.audioPlaybackEvents(name: SegmentTracking.eventNames.Audio_Forwarded, audioData: self.audioDetails, seekDirection: "Forwarded", seekPosition: seconds, trackingType: .track)
+        SegmentTracking.shared.audioPlaybackEvents(name: SegmentTracking.eventNames.Audio_Forward, audioData: self.audioDetails, seekDirection: "Forwarded", seekPosition: seconds, trackingType: .track)
         
         DJMusicPlayer.shared.forward()
     }

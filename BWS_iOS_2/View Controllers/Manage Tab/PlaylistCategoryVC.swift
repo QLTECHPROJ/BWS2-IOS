@@ -186,7 +186,7 @@ class PlaylistCategoryVC: BaseViewController {
             showAlertToast(message: Theme.strings.alert_reactivate_plan)
         } else {
             // Segment Tracking
-            SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.Create_Playlist_Clicked, traits: ["source":"Playlist Screen"])
+            SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.Create_Playlist_Clicked, traits: ["source":"Playlist Main Screen"])
             
             let aVC = AppStoryBoard.manage.viewController(viewControllerClass: CreatePlaylistVC.self)
             aVC.source = "Playlist Main Screen"

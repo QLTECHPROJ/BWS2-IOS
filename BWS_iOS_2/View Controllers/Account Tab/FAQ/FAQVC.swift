@@ -22,6 +22,11 @@ class FAQVC: BaseViewController {
     //MARK:- View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Segment Tracking
+        let traits : [String:Any] = ["faqCategories":["Audio","Playlist","General"]]
+        SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.faq_screen, traits: traits)
+        
         setupUI()
     }
     

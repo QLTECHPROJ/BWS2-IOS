@@ -30,7 +30,7 @@ class DayVC: BaseViewController {
    // var datePicker  = UIDatePicker()
     var strPlaylistID:String?
     var objPlaylist : PlaylistDetailsModel?
-    var arrayRemList : ReminderListDataModel?
+    var objReminder : ReminderListDataModel?
     var isCome:String?
     var isfromPopUp:Bool?
     
@@ -39,7 +39,7 @@ class DayVC: BaseViewController {
         super.viewDidLoad()
         
         // Segment Tracking
-        SegmentTracking.shared.trackReminderDetails(objReminderDetail: self.arrayRemList)
+        SegmentTracking.shared.trackReminderDetails(name: SegmentTracking.screenNames.editReminder, reminder: self.objReminder, trackingType: .screen)
         
         setupUI()
         setupData()
@@ -56,7 +56,7 @@ class DayVC: BaseViewController {
     
     override func setupData() {
         if isCome == "ReminderList" {
-            if let playlistData = arrayRemList {
+            if let playlistData = objReminder {
                 strPlaylistID = playlistData.PlaylistId
                 let time =  playlistData.ReminderTime.UTCToLocal(incomingFormat: "h:mm a", outGoingFormat: "h:mm a")
                 lblTime.text = time
