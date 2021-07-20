@@ -28,6 +28,7 @@ enum APIRouter: URLRequestConvertible {
     case profilesaveans([String:String])
     case assesmentquestionlist
     case assesmentsaveans([String:String])
+    case assesmentgetdetails([String:String])
     case planlist([String:String])
     case avgsleeptime
     case getrecommendedcategory([String:String])
@@ -121,6 +122,8 @@ enum APIRouter: URLRequestConvertible {
             return APIRoute(path: "assesmentquestionlist", method: .get)
         case .assesmentsaveans(let data):
             return APIRoute(path: "assesmentsaveans", method: .post, data: data)
+        case .assesmentgetdetails(let data):
+            return APIRoute(path: "assesmentgetdetails", method: .post, data: data)
         case .planlist(let data):
             return APIRoute(path: "planlist", method: .post, data: data)
         case .avgsleeptime:

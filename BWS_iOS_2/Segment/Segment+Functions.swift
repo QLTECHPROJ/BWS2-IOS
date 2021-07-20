@@ -52,8 +52,6 @@ class SegmentTracking {
         if segmentWriteKey.trim.count > 0 {
             isConfigured = true
             
-            segmentWriteKey = "MpDOpy9WI8Kt86nteyY5aNAML5F9PMTd"
-            
             let configuration = AnalyticsConfiguration(writeKey: segmentWriteKey)
             configuration.trackApplicationLifecycleEvents = true
             configuration.trackDeepLinks = true

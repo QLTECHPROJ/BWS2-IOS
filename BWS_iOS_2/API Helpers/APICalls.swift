@@ -282,6 +282,24 @@ extension AssessmentVC {
     
 }
 
+extension DassAssessmentResultVC {
+    
+    //delete Account API
+    func callAssesmentGetDetailsAPI() {
+        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId]
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.assesmentgetdetails(parameters)) { (response :AssessmentModel) in
+            
+            if response.ResponseCode == "200" {
+                self.strTitle = response.ResponseData?.AssesmentTitle ?? ""
+                self.strContent = response.ResponseData?.AssesmentContent ?? ""
+                self.setupData()
+            }
+        }
+    }
+}
+
+
 extension UIViewController {
     
     // Call Get Co User Details API
@@ -1585,7 +1603,7 @@ extension ManageUserVC {
         }
     }
     
-    func callDeleteUserAPI(userId : String) {
+    func callRemoveUserAPI(userId : String) {
         let parameters = [APIParameters.MainAccountID:LoginDataModel.currentMainAccountId,
                           APIParameters.UserId:userId]
         
@@ -1594,6 +1612,9 @@ extension ManageUserVC {
             if response.ResponseCode == "200" {
                 showAlertToast(message: response.ResponseMessage)
                 self.callManageUserListAPI()
+                
+                // Segment Tracking
+                SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.Co_User_Removed)
             }
         }
     }
@@ -1634,6 +1655,9 @@ extension CancelSubVC {
             if response.ResponseCode == "200" {
                 showAlertToast(message: response.ResponseMessage)
                 AccountVC.handleLogout()
+                
+                // Segment Tracking
+                SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.Account_Deleted)
             }
         }
     }

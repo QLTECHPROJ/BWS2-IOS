@@ -62,12 +62,7 @@ class DassAssessmentResultVC: BaseViewController {
         UserDefaults.standard.removeObject(forKey: "ArrayPage")
         UserDefaults.standard.synchronize()
         
-        lblTitle.attributedText = strTitle.attributedString(alignment: .center, lineSpacing: 5)
-        lblSubTitle.attributedText =  strContent.attributedString(alignment: .center, lineSpacing: 5)
-        
-        indexScoreLabelView.isHidden = true
-        indexScoreLabelView.cornerRadius = indexScoreLabelView.frame.size.height / 2
-        indexScoreLabelView.clipsToBounds = true
+        callAssesmentGetDetailsAPI()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -102,6 +97,9 @@ class DassAssessmentResultVC: BaseViewController {
     }
     
     override func setupData() {
+        lblTitle.attributedText = strTitle.attributedString(alignment: .center, lineSpacing: 5)
+        lblSubTitle.attributedText =  strContent.attributedString(alignment: .center, lineSpacing: 5)
+        
         scoreValue = 0
         lblScore.text = "\(scoreValue)"
         lblScoreLevel.text = "Normal"

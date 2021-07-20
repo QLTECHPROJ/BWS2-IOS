@@ -40,6 +40,11 @@ class CancelSubVC: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        // Segment Tracking
+        let name = isFromDelete ? SegmentTracking.screenNames.delete_account : SegmentTracking.screenNames.cancel_subscription
+        SegmentTracking.shared.trackGeneralScreen(name: name)
+        
         viewVideo.playVideo()
         DJMusicPlayer.shared.pause(pauseReason: .userAction)
     }

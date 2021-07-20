@@ -31,6 +31,9 @@ class ManageUserVC: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        // Segment Tracking
+        SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.manage_user)
+        
         callManageUserListAPI()
     }
     
@@ -170,7 +173,7 @@ extension ManageUserVC : AlertPopUpVCDelegate {
     func handleAction(sender: UIButton, popUpTag: Int) {
         if sender.tag == 0 {
             if let userID = arrayUsers.filter({ $0.isSelected }).first?.UserId {
-                callDeleteUserAPI(userId: userID)
+                callRemoveUserAPI(userId: userID)
             }
         }
     }

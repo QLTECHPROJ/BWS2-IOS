@@ -68,6 +68,9 @@ struct ScreenNames {
     let edit_profile = "Edit Profile Screen View"
     let change_password = "Change Password Screen Viewed"
     let change_pin = "Change Pin Screen Viewed"
+    let delete_account = "Delete Account Screen Viewed"
+    
+    let cancel_subscription =  "Cancel Subscription Screen Viewed"
     
     let my_downloads_screen = "My Download Screen Viewed"
     
@@ -76,6 +79,8 @@ struct ScreenNames {
     
     let resourceScreen = "Resources Screen Viewed"
     let resourceDetails = "Resource Details Viewed"
+    
+    let manage_user = "Manage User Screen Viewed"
     
     let faq_screen = "FAQ Viewed"
     
@@ -180,4 +185,7 @@ struct EventNames {
     
     let Playlist_Download_Started = "Playlist Download Started"
     let Downloaded_Playlist_Removed = "Downloaded Playlist Removed"
+    
+    let Account_Deleted = "Account Deleted"
+    let Co_User_Removed = "Co User Removed"
 }
