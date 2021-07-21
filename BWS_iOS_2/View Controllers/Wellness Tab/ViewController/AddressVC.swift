@@ -30,5 +30,9 @@ class AddressVC: BaseViewController {
     }
     
     //MARK:- IBAction Methods
-  
+    @IBAction func onTappedSave(_ sender: UIButton) {
+        let aVC = AppStoryBoard.main.viewController(viewControllerClass: DescriptionPopupVC.self)
+        self.navigationController?.pushViewController(aVC, animated: false)
+    }
+    
 }
