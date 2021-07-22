@@ -1,14 +1,14 @@
 //
-//  AddressVC.swift
+//  SessionDownloadVC.swift
 //  BWS_iOS_2
 //
-//  Created by Mac Mini on 20/07/21.
+//  Created by Mac Mini on 22/07/21.
 //  Copyright © 2021 Dhruvit. All rights reserved.
 //
 
 import UIKit
 
-class AddressVC: BaseViewController {
+class SessionDownloadVC: BaseViewController {
     
     //MARK:- UIOutlet
     
@@ -30,9 +30,12 @@ class AddressVC: BaseViewController {
     }
     
     //MARK:- IBAction Methods
-    @IBAction func onTappedSave(_ sender: UIButton) {
-        let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: SessionDownloadVC.self)
+    @IBAction func onTappedDone(_ sender: UIButton) {
+        let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: SessionActivityVC.self)
         self.navigationController?.pushViewController(aVC, animated: false)
+    }
+    
+    @IBAction func onTappedDownloadResponse(_ sender: UIButton) {
     }
     
 }

@@ -479,6 +479,14 @@
 		9A267F3F2670DDE3009E3CBA /* TagFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A267F3D2670DDE3009E3CBA /* TagFlowLayout.swift */; };
 		9A267F412670F684009E3CBA /* MyHeaderFooterClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A267F402670F684009E3CBA /* MyHeaderFooterClass.swift */; };
 		9A267F422670F684009E3CBA /* MyHeaderFooterClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A267F402670F684009E3CBA /* MyHeaderFooterClass.swift */; };
+		9A29854426A92A7D0006227F /* SessionDownloadVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A29854326A92A7D0006227F /* SessionDownloadVC.swift */; };
+		9A29854526A92A7D0006227F /* SessionDownloadVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A29854326A92A7D0006227F /* SessionDownloadVC.swift */; };
+		9A29854726A92AAB0006227F /* SessionActivityVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A29854626A92AAB0006227F /* SessionActivityVC.swift */; };
+		9A29854826A92AAB0006227F /* SessionActivityVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A29854626A92AAB0006227F /* SessionActivityVC.swift */; };
+		9A29854A26A97AB60006227F /* SessionJournerlVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A29854926A97AB60006227F /* SessionJournerlVC.swift */; };
+		9A29854B26A97AB70006227F /* SessionJournerlVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A29854926A97AB60006227F /* SessionJournerlVC.swift */; };
+		9A29854D26A97AF80006227F /* SessionQuetionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A29854C26A97AF80006227F /* SessionQuetionVC.swift */; };
+		9A29854E26A97AF80006227F /* SessionQuetionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A29854C26A97AF80006227F /* SessionQuetionVC.swift */; };
 		9A51DF26263820FD001364EA /* AccountInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A51DF25263820FD001364EA /* AccountInfoVC.swift */; };
 		9A51DF27263821EF001364EA /* AccountInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A51DF25263820FD001364EA /* AccountInfoVC.swift */; };
 		9A51DF2926382DFC001364EA /* EditProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A51DF2826382DFC001364EA /* EditProfileVC.swift */; };
@@ -844,6 +852,10 @@
 		9A25321E26A7040300E93ACD /* AddressVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressVC.swift; sourceTree = "<group>"; };
 		9A267F3D2670DDE3009E3CBA /* TagFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagFlowLayout.swift; sourceTree = "<group>"; };
 		9A267F402670F684009E3CBA /* MyHeaderFooterClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyHeaderFooterClass.swift; sourceTree = "<group>"; };
+		9A29854326A92A7D0006227F /* SessionDownloadVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDownloadVC.swift; sourceTree = "<group>"; };
+		9A29854626A92AAB0006227F /* SessionActivityVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionActivityVC.swift; sourceTree = "<group>"; };
+		9A29854926A97AB60006227F /* SessionJournerlVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionJournerlVC.swift; sourceTree = "<group>"; };
+		9A29854C26A97AF80006227F /* SessionQuetionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionQuetionVC.swift; sourceTree = "<group>"; };
 		9A51DF25263820FD001364EA /* AccountInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountInfoVC.swift; sourceTree = "<group>"; };
 		9A51DF2826382DFC001364EA /* EditProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileVC.swift; sourceTree = "<group>"; };
 		9A51DF2B26383A4E001364EA /* ChangePINVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePINVC.swift; sourceTree = "<group>"; };
@@ -1617,6 +1629,10 @@
 				9A6059D426A67EF2005D43A5 /* SessionDescVC.swift */,
 				9A25321B26A6F7C600E93ACD /* SessionStartVC.swift */,
 				9A25321E26A7040300E93ACD /* AddressVC.swift */,
+				9A29854326A92A7D0006227F /* SessionDownloadVC.swift */,
+				9A29854626A92AAB0006227F /* SessionActivityVC.swift */,
+				9A29854926A97AB60006227F /* SessionJournerlVC.swift */,
+				9A29854C26A97AF80006227F /* SessionQuetionVC.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -2118,6 +2134,7 @@
 				28B53531260C635000BD8147 /* SleepTimeVC.swift in Sources */,
 				2824414C2609ACE30060292E /* CountryCell.swift in Sources */,
 				9A55EB402668EA58006E398A /* InvoiceAppointmentVC.swift in Sources */,
+				9A29854B26A97AB70006227F /* SessionJournerlVC.swift in Sources */,
 				2870B37A25FB40710014A4F6 /* CommonFunctions.swift in Sources */,
 				9A51DF27263821EF001364EA /* AccountInfoVC.swift in Sources */,
 				9A55EB312668EA29006E398A /* BillingAddressVC.swift in Sources */,
@@ -2134,6 +2151,7 @@
 				282441402609AC840060292E /* LoginVC.swift in Sources */,
 				9A51DF2A2638319E001364EA /* EditProfileVC.swift in Sources */,
 				2870B3FE25FB41A10014A4F6 /* KDCircularProgress.swift in Sources */,
+				9A29854826A92AAB0006227F /* SessionActivityVC.swift in Sources */,
 				2870B41025FB41A10014A4F6 /* Config.swift in Sources */,
 				28813B79263989A40015DA7A /* JSONSerializable+Helper.swift in Sources */,
 				2870B3DA25FB41A10014A4F6 /* UIColor+Extension.swift in Sources */,
@@ -2171,6 +2189,7 @@
 				283153B426143F74004001CE /* PlaylistCollectionCell.swift in Sources */,
 				2824415B2609AD4E0060292E /* StepVC.swift in Sources */,
 				282441612609AD620060292E /* DescriptionPopupVC.swift in Sources */,
+				9A29854E26A97AF80006227F /* SessionQuetionVC.swift in Sources */,
 				281DE32E2626FD79002CCD9D /* PlaylistDownloads+CoreDataClass.swift in Sources */,
 				2870B3D425FB41A10014A4F6 /* DJPickerView.swift in Sources */,
 				2870B3F825FB41A10014A4F6 /* BaseViewController.swift in Sources */,
@@ -2268,6 +2287,7 @@
 				9AC0670B2639178F00287A44 /* WebsiteCell.swift in Sources */,
 				281DE3282626FD79002CCD9D /* DJDownloadManager.swift in Sources */,
 				283F72F4261D999200554774 /* SubColCell.swift in Sources */,
+				9A29854526A92A7D0006227F /* SessionDownloadVC.swift in Sources */,
 				2870B3DC25FB41A10014A4F6 /* DJExtensions.swift in Sources */,
 				9AC0670F2639178F00287A44 /* DocumentryCell.swift in Sources */,
 				28E0120D2618476E00B55967 /* PlayerVC.swift in Sources */,
@@ -2351,6 +2371,7 @@
 				28B53530260C635000BD8147 /* SleepTimeVC.swift in Sources */,
 				2824414B2609ACE30060292E /* CountryCell.swift in Sources */,
 				9A55EB3F2668EA58006E398A /* InvoiceAppointmentVC.swift in Sources */,
+				9A29854A26A97AB60006227F /* SessionJournerlVC.swift in Sources */,
 				2870B41725FB41A10014A4F6 /* MediaType.swift in Sources */,
 				9A51DF26263820FD001364EA /* AccountInfoVC.swift in Sources */,
 				9A55EB302668EA29006E398A /* BillingAddressVC.swift in Sources */,
@@ -2367,6 +2388,7 @@
 				28B27823262EEECC005794E3 /* DownloadAudioVC.swift in Sources */,
 				9A51DF2926382DFC001364EA /* EditProfileVC.swift in Sources */,
 				2824413F2609AC820060292E /* LoginVC.swift in Sources */,
+				9A29854726A92AAB0006227F /* SessionActivityVC.swift in Sources */,
 				28813B78263989A40015DA7A /* JSONSerializable+Helper.swift in Sources */,
 				2870B3D925FB41A10014A4F6 /* UIColor+Extension.swift in Sources */,
 				2870B42125FB41A10014A4F6 /* NotificationName+Extention.swift in Sources */,
@@ -2404,6 +2426,7 @@
 				283153B326143F74004001CE /* PlaylistCollectionCell.swift in Sources */,
 				282441602609AD620060292E /* DescriptionPopupVC.swift in Sources */,
 				2870B3D325FB41A10014A4F6 /* DJPickerView.swift in Sources */,
+				9A29854D26A97AF80006227F /* SessionQuetionVC.swift in Sources */,
 				281DE32D2626FD79002CCD9D /* PlaylistDownloads+CoreDataClass.swift in Sources */,
 				2824413A2609AB9A0060292E /* CountryListVC.swift in Sources */,
 				2870B3F725FB41A10014A4F6 /* BaseViewController.swift in Sources */,
@@ -2501,6 +2524,7 @@
 				281DE3272626FD79002CCD9D /* DJDownloadManager.swift in Sources */,
 				283F72F3261D999200554774 /* SubColCell.swift in Sources */,
 				2870B3FB25FB41A10014A4F6 /* CardView.swift in Sources */,
+				9A29854426A92A7D0006227F /* SessionDownloadVC.swift in Sources */,
 				9AC0670E2639178F00287A44 /* DocumentryCell.swift in Sources */,
 				28E0120C2618476E00B55967 /* PlayerVC.swift in Sources */,
 				28E0123F261847EA00B55967 /* IndexScoreCell.swift in Sources */,
