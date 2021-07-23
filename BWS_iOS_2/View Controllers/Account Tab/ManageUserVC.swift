@@ -31,9 +31,6 @@ class ManageUserVC: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        // Segment Tracking
-        SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.manage_user)
-        
         callManageUserListAPI()
     }
     
