@@ -966,7 +966,7 @@ extension AreaOfFocusVC {
             if response.ResponseCode == "200" {
                 let userData = CoUserDataModel.currentUser
                 userData?.AvgSleepTime = response.ResponseData?.AvgSleepTime ?? "0"
-                userData?.AreaOfFocus = response.ResponseData?.CategoryData ?? [AreaOfFocusModel]()
+                userData?.AreaOfFocus = response.ResponseData?.AreaOfFocus ?? [AreaOfFocusModel]()
                 CoUserDataModel.currentUser = userData
                 
                 // Segment Tracking

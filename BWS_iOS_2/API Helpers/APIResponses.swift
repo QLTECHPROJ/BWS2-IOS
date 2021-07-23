@@ -328,7 +328,7 @@ class SaveCategoryModel : EVObject {
 class SaveCategoryDataModel : EVObject {
     var UserId = ""
     var AvgSleepTime = ""
-    var CategoryData = [AreaOfFocusModel]()
+    var AreaOfFocus = [AreaOfFocusModel]()
 }
 
 class AreaOfFocusModel : EVObject {
