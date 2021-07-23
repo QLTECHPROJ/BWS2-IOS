@@ -419,4 +419,25 @@ extension SegmentTracking {
         }
     }
     
+    func trackReminderDetails(name : String, playlist : PlaylistDetailsModel?, trackingType : TrackingType) {
+        if let playlistDetails = playlist {
+            var traits = ["reminderId":playlistDetails.ReminderId,
+                          "playlistId":playlistDetails.PlaylistID,
+                          "playlistName":playlistDetails.PlaylistName,
+                          "reminderStatus":playlistDetails.IsReminder,
+                          "reminderTime":playlistDetails.ReminderTime,
+                          "reminderDay":playlistDetails.ReminderDay]
+            
+            if playlistDetails.Created == "1" {
+                traits["playlistType"] = "Created"
+            } else if playlistDetails.Created == "2" {
+                traits["playlistType"] = "Suggested"
+            } else {
+                traits["playlistType"] = "Default"
+            }
+            
+            SegmentTracking.shared.trackGeneralEvents(name: name, traits: traits)
+        }
+    }
+    
 }

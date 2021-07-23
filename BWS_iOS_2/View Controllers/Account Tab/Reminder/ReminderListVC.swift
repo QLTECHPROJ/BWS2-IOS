@@ -107,6 +107,29 @@ class ReminderListVC: BaseViewController{
             return
         }
         
+        checkNotificationStatus { (notificationAllowed) in
+            DispatchQueue.main.async {
+                self.setReminderOnOff(sender: sender, notificationAllowed: notificationAllowed)
+            }
+        }
+    }
+    
+    func setReminderOnOff(sender: UISwitch, notificationAllowed : Bool) {
+        if notificationAllowed == false && sender.isOn {
+            sender.isOn.toggle()
+            
+            let aVC = AppStoryBoard.manage.viewController(viewControllerClass: AlertPopUpVC.self)
+            aVC.modalPresentationStyle = .overFullScreen
+            aVC.popUpTag = 1
+            aVC.delegate = self
+            aVC.titleText = Theme.strings.alert_title_allow_notifications
+            aVC.detailText = Theme.strings.alert_subtitle_allow_notifications
+            aVC.firstButtonTitle = Theme.strings.settings
+            aVC.secondButtonTitle = Theme.strings.cancel_small
+            self.present(aVC, animated: false, completion: nil)
+            return
+        }
+        
         if arrayRemList[sender.tag].IsLock == "1" {
             openInactivePopup(controller: self)
             sender.isOn.toggle()
@@ -235,10 +258,19 @@ extension UISwitch {
 extension ReminderListVC : AlertPopUpVCDelegate {
     
     func handleAction(sender: UIButton, popUpTag: Int) {
-        if sender.tag == 0 {
-            let strID =  (arrayRemDelete.map{String($0)}).joined(separator: ",")
-            print(strID)
-            callRemDeleteAPI(remID: strID)
+        if popUpTag == 1 {
+            if sender.tag == 0 {
+                guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else { return }
+                if UIApplication.shared.canOpenURL(settingsUrl) {
+                    UIApplication.shared.open(settingsUrl, options: [:], completionHandler: nil)
+                }
+            }
+        } else {
+            if sender.tag == 0 {
+                let strID =  (arrayRemDelete.map{String($0)}).joined(separator: ",")
+                print(strID)
+                callRemDeleteAPI(remID: strID)
+            }
         }
     }
     

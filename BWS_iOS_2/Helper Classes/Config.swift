@@ -48,7 +48,7 @@ var FCM_TOKEN = "1234567890"
 typealias AlertComplitionBlock = (Int) -> ()
 typealias ActionSheetComplitionBlock = (String) -> ()
 typealias APIComplitionBlock = (Bool,Any) -> ()
-typealias StatusComplitionBlock = (String) -> ()
+typealias StatusComplitionBlock = (Bool) -> ()
 
 // ThirdParty API IDs
 enum ClientIds : String {
