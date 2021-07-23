@@ -118,8 +118,8 @@ class SegmentTracking {
                 "phone":userDetails.Mobile,
                 "dob":userDetails.DOB,
                 "profileImage":userDetails.Image,
-                "isProfileCompleted":userDetails.isProfileCompleted,
-                "isAssessmentCompleted":userDetails.isAssessmentCompleted,
+                "isProfileCompleted":userDetails.isProfileCompleted == "1" ? true : false,
+                "isAssessmentCompleted":userDetails.isAssessmentCompleted == "1" ? true : false,
                 "wellnessScore":userDetails.indexScore,
                 "scoreLevel":userDetails.ScoreLevel,
                 "avgSleepTime":userDetails.AvgSleepTime

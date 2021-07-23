@@ -1582,6 +1582,10 @@ extension ManageUserVC {
                 self.tableView.reloadData()
                 self.maxUsers = Int(response.ResponseData.Maxuseradd) ?? 0
                 self.setupData()
+                
+                // Segment Tracking
+                let traits = ["totalUsers":"\(self.arrayUsers.count)"]
+                SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.manage_user, traits: traits)
             } else {
                 self.setupData()
             }
@@ -1612,7 +1616,8 @@ extension ManageUserVC {
                 self.callManageUserListAPI()
                 
                 // Segment Tracking
-                SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.Co_User_Removed)
+                let traits = ["removedUserId":userId]
+                SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.Co_User_Removed, traits: traits)
             }
         }
     }
@@ -1655,7 +1660,9 @@ extension CancelSubVC {
                 AccountVC.handleLogout()
                 
                 // Segment Tracking
-                SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.Account_Deleted)
+                let traits = ["reason":"\(self.selectedOption)",
+                              "comments":self.txtView.text!]
+                SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.Account_Deleted, traits: traits)
             }
         }
     }

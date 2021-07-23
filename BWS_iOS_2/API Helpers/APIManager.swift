@@ -61,7 +61,6 @@ enum APIRouter: URLRequestConvertible {
     case addaptoplaylist([String:String])
     case removeaudiofromplaylist([String:String])
     case sortingplaylistaudio([String:String])
-    case getallplaylist([String:String])
     case playlistlibrary([String:String])
     case playlistonviewall([String:String])
     
@@ -174,8 +173,6 @@ enum APIRouter: URLRequestConvertible {
             return APIRoute(path: "removeaudiofromplaylist", method: .post, data: data)
         case .sortingplaylistaudio(let data):
             return APIRoute(path: "sortingplaylistaudio", method: .post, data: data)
-        case .getallplaylist(let data):
-            return APIRoute(path: "getallplaylist", method: .post, data: data)
         case .playlistlibrary(let data):
             return APIRoute(path: "playlistlibrary", method: .post, data: data)
         case .playlistonviewall(let data):
