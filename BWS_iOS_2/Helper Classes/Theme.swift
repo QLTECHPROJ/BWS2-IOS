@@ -290,6 +290,7 @@ struct AppStrings {
     let close = "CLOSE"
     let confirm = "CONFIRM"
     let goBack = "GO BACK"
+    let settings = "Settings"
     
     /* App Update Popup */
     let update = "UPDATE"
@@ -326,6 +327,9 @@ struct AppStrings {
     let set_reminder = "     Set reminder     "
     let add_and_search_audio = "Add and search for audio"
     let search_for_audio = "Search for audio"
+    
+    let alert_title_allow_notifications = "Unable to use notifications"
+    let alert_subtitle_allow_notifications = "To enable notifications, go to Settings and enable notifications for this app."
     
     let delete_reminder = "Delete Reminder"
     let alert_delete_remidner = "Are you sure you want to remove the reminder?"

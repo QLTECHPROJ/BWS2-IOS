@@ -104,6 +104,38 @@ func hideHud() {
         SVProgressHUD.dismiss()
     }
 }
+
+
+// MARK:- Check Notification Status
+func checkNotificationStatus(completionBlock : @escaping StatusComplitionBlock) {
+    let current = UNUserNotificationCenter.current()
+    current.getNotificationSettings(completionHandler: { permission in
+        switch permission.authorizationStatus  {
+        case .authorized:
+            print("User granted permission for notification")
+            completionBlock(true)
+        case .denied:
+            print("User denied notification permission")
+            completionBlock(false)
+        case .notDetermined:
+            print("Notification permission haven't been asked yet")
+            completionBlock(false)
+        case .provisional:
+            // @available(iOS 12.0, *)
+            print("The application is authorized to post non-interruptive user notifications.")
+            completionBlock(false)
+        case .ephemeral:
+            // @available(iOS 14.0, *)
+            print("The application is temporarily authorized to post notifications. Only available to app clips.")
+            completionBlock(false)
+        @unknown default:
+            print("Unknow Status")
+            completionBlock(false)
+        }
+    })
+}
+
+
 /************************ Color ************************/
 func hexStringToUIColor (hex:String) -> UIColor {
     var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
