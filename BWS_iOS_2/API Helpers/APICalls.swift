@@ -1554,7 +1554,7 @@ extension ContactVC {
 
         let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
                           "Name":contact.contactName,
-                          "MobileNo":contact.contactNumber]
+                          "MobileNo":contact.contactNumber.removeWhitespace()]
 
         APICallManager.sharedInstance.callAPI(router: APIRouter.inviteuser(parameters)) { (response :GeneralModel) in
 
