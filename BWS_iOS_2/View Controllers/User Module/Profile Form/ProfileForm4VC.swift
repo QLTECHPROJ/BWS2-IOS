@@ -23,9 +23,6 @@ class ProfileForm4VC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        txtFDate.textColor = Theme.colors.textColor
-        viewDate.borderColor = Theme.colors.gray_DDDDDD
-        
         setupUI()
     }
     

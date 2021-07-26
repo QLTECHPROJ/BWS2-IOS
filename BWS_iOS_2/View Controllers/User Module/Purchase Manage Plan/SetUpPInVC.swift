@@ -120,11 +120,21 @@ class SetUpPInVC: BaseViewController {
     @IBAction func backButton(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
+    
     @IBAction func onTappedDone(_ sender: UIButton) {
         
         if checkValidation() {
             callSetUpPinAPI()
         }
+    }
+    
+    @IBAction func onTappedInfo(_ sender: UIButton) {
+        let aVC = AppStoryBoard.main.viewController(viewControllerClass: DescriptionPopupVC.self)
+        aVC.strTitle = Theme.strings.same_num_title
+        aVC.strDesc = Theme.strings.same_num_desc
+        aVC.isOkButtonHidden = true
+        aVC.modalPresentationStyle = .overFullScreen
+        self.present(aVC, animated: false, completion: nil)
     }
     
 }
