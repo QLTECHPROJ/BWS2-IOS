@@ -165,16 +165,8 @@ class DassAssessmentResultVC: BaseViewController {
             self.navigationController?.pushViewController(aVC, animated: false)
         }else {
             
-            let aVC = AppStoryBoard.main.viewController(viewControllerClass: StepVC.self)
-            aVC.strTitle = Theme.strings.step_2_title
-            aVC.strSubTitle = Theme.strings.step_2_subtitle
-            aVC.imageMain = UIImage(named: "analyze")
-            aVC.hideTapAnywhere = true
-            aVC.viewTapped = {
-                self.handleNavigation()
-            }
-            aVC.modalPresentationStyle = .overFullScreen
-            self.present(aVC, animated: false, completion: nil)
+            self.goNext()
+        
         }
     }
     
