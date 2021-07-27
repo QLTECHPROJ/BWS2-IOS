@@ -508,7 +508,11 @@ struct AppStrings {
     let same_num_title = "For multiple users on the same device"
     let same_num_desc = "With multiple users, we create separate access pins to ensure privacy. Each person’s details will remain inaccessible to others."
     //Set up pin
-    let setup_pin_Desc = "Enter a 4-digit number. This is your secret access code."
+    let setup_pin_Desc = "Enter a 4-digit PIN. This is your secret access code."
+    
+    //Reminder Pop Up
+    let reminderpopup_title = "Set Reminder for Suggested Playlist"
+    let reminderpopup_desc = "Ensure you never miss a chance to improve your Wellness Score. You will get a reminder notification for that."
 
 }
 

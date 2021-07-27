@@ -63,15 +63,8 @@ class DoDassAssessmentVC: BaseViewController {
     
     // MARK:- ACTIONS
     @IBAction func doTheAssessmentClicked(sender : UIButton) {
-        let aVC = AppStoryBoard.main.viewController(viewControllerClass: StepVC.self)
-        aVC.strTitle = Theme.strings.step_1_title
-        aVC.strSubTitle = Theme.strings.step_1_subtitle
-        aVC.imageMain = UIImage(named: "dass_form_image")
-        aVC.viewTapped = {
-            self.goNext()
-        }
-        aVC.modalPresentationStyle = .overFullScreen
-        self.present(aVC, animated: false, completion: nil)
+        
+        self.goNext()
         
         // Segment Tracking
         SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.assessmentStart)
