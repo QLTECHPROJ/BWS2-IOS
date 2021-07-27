@@ -119,17 +119,19 @@ class AreaOfFocusVC: BaseViewController {
                 
             } else {
                 if self.arrayAreaOfFocus.count < 3 {
-                    for subCategory in self.arrayCategories[indexPath.section].Details {
-                        subCategory.isSelected = false
-                        
-                        let cat = AreaOfFocusModel()
-                        cat.MainCat = self.arrayCategories[indexPath.section].View
-                        cat.RecommendedCat = subCategory.ProblemName
-                        
-                        if let removeIndex = self.arrayAreaOfFocus.firstIndex(of: cat) {
-                            self.arrayAreaOfFocus.remove(at: removeIndex)
-                        }
-                    }
+                    /*
+                     for subCategory in self.arrayCategories[indexPath.section].Details {
+                         subCategory.isSelected = false
+                         
+                         let cat = AreaOfFocusModel()
+                         cat.MainCat = self.arrayCategories[indexPath.section].View
+                         cat.RecommendedCat = subCategory.ProblemName
+                         
+                         if let removeIndex = self.arrayAreaOfFocus.firstIndex(of: cat) {
+                             self.arrayAreaOfFocus.remove(at: removeIndex)
+                         }
+                     }
+                     */
                     
                     self.arrayCategories[indexPath.section].Details[indexPath.item].isSelected = true
                     

@@ -359,10 +359,10 @@ struct AppStrings {
     let profile_image_options = "Profile Image Options"
     
     /* Screen Contents */
-    let welcome_title = "The Brain Wellness Spa App"
+    let welcome_title = "The Brain Wellness App"
     let welcome_subtitle = "Your one-stop solution for mental & emotional health challenges"
     
-    let register_title = "Welcome to \nBrain wellness spa"
+    let register_title = "Welcome to \nBrain wellness app"
     let register_subtitle = "We just need few details to get you started!!"
     
     let otp_subtitle = "Please enter the OTP to begin your journey to better mental health."
@@ -373,7 +373,7 @@ struct AppStrings {
     let forgot_password_title = "Forgot your password"
     let forgot_password_subtitle = "Give us your registered email ID and we'll send you everything that you'll need to change your password"
     
-    let couser_listing_title = "Welcome to \nBrain wellness spa"
+    let couser_listing_title = "Welcome to \nBrain wellness app"
     let couser_listing_subtitle = "Simply sign-in to your account and continue your journey towards mental & emotional transformation"
     
     let couser_welcome_subtitle = "It's good to have you here..."
@@ -399,13 +399,13 @@ struct AppStrings {
     let you_are_doing_good_title = "You are Doing Good"
     let you_are_doing_good_subtitle = "We are analysing the information you have provided and devising a personalised treatment plan for just for you."
     
-    let manage_plan_list_access_audios = "Access More Than 75 Audio Programs."
+    let manage_plan_list_access_audios = "Access More Than 75+ Audio Programs."
     let manage_plan_list_introductory_session = "Self reported date of 2173 clients before and after the introductory session"
     let manage_plan_list_testimonials = "SEE REAL TESTIMONIALS \nFROM REAL CUSTOMERS"
     
     let enhance_program = "Enhance Program"
     
-    let thank_you_subtitle = "Congratulations on joining the Brain Wellness Spa Membership"
+    let thank_you_subtitle = "Congratulations on joining the Brain Wellness App Membership"
     
     let recommended_category_subtitle = "You can select upto three areas of focus to further customise your journey towards mental transformation."
     
