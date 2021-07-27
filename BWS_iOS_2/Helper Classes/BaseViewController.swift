@@ -104,16 +104,9 @@ class BaseViewController: UIViewController {
     }
     
     func redirectToProfileStep() {
-        let aVC = AppStoryBoard.main.viewController(viewControllerClass:StepVC.self)
-        aVC.strTitle = Theme.strings.step_3_title
-        aVC.strSubTitle = Theme.strings.step_3_subtitle
-        aVC.imageMain = UIImage(named: "profileForm")
-        aVC.viewTapped = {
-            let aVC = AppStoryBoard.main.viewController(viewControllerClass: ProfileForm2VC.self)
-            self.navigationController?.pushViewController(aVC, animated: false)
-        }
-        aVC.modalPresentationStyle = .overFullScreen
-        self.present(aVC, animated: false, completion: nil)
+        
+        let aVC = AppStoryBoard.main.viewController(viewControllerClass: ProfileForm2VC.self)
+        self.navigationController?.pushViewController(aVC, animated: false)
         
         // Segment Tracking
         SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.profile_form_start)

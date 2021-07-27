@@ -166,13 +166,13 @@ class DayVC: BaseViewController {
             }
             arrSelectDays = intArray
             tableView.reloadData()
-            btnAll.setTitle("UnSelect All", for: .selected)
+            btnAll.setTitle("        " + "UnSelect All", for: .selected)
             btnAll.setTitleColor(.white, for: .selected)
             buttonEnableDisable()
         } else {
             arrSelectDays = []
             tableView.reloadData()
-            btnAll.setTitle("Select All", for: .normal)
+            btnAll.setTitle("       " + "Select All", for: .normal)
             btnAll.setTitleColor(.white, for: .normal)
         }
     }
