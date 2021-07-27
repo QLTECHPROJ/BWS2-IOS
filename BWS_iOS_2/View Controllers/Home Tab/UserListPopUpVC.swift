@@ -79,7 +79,16 @@ class UserListPopUpVC: BaseViewController {
             heightConst = SCREEN_HEIGHT - 200
         }
         
-        viewUserListTopConst.constant = (SCREEN_HEIGHT - 44) - heightConst // Minus 44 for Safe Area
+        if let coUser = CoUserDataModel.currentUser {
+        
+            if coUser.isMainAccount == "1" {
+                viewUserListTopConst.constant = (SCREEN_HEIGHT - 44) - heightConst
+            } else {
+                viewUserListTopConst.constant =  (SCREEN_HEIGHT + 44) - heightConst
+            }
+            
+        }
+        // Minus 44 for Safe Area
         viewUserList.backgroundColor = .white
         self.view.layoutIfNeeded()
         
