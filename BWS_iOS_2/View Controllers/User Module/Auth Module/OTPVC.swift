@@ -135,6 +135,7 @@ class OTPVC: BaseViewController {
                 self.navigationController?.pushViewController(aVC, animated: true)
             } else if coUser.planDetails?.count == 0 {
                 if coUser.CoUserCount != "0" {
+                    CoUserDataModel.currentUser = nil
                     let aVC = AppStoryBoard.main.viewController(viewControllerClass: UserListVC.self)
                     self.navigationController?.pushViewController(aVC, animated: true)
                 } else {

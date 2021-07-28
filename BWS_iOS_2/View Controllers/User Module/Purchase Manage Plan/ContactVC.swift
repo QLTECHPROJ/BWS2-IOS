@@ -121,7 +121,7 @@ class ContactVC: BaseViewController {
     func sendMessage(contact : ContactModel, inviteUrl : String) {
         if (MFMessageComposeViewController.canSendText()) {
            
-            let shareText = String(format:"Hey, I am loving using the Brain Wellness App. You can develop yourself in the comfort of your home while you sleep and gain access to over 75 audio programs helping you to live inspired and improve your mental wellbeing. I would like to invite you to try it.  Sign up using the link %@",inviteUrl)
+            let shareText = String(format:"Hey, I am loving using the Brain Wellness App. You can develop yourself in the comfort of your home while you sleep and gain access to over 75+ audio programs helping you to live inspired and improve your mental wellbeing. I would like to invite you to try it.  Sign up using the link %@",inviteUrl)
             
             let controller = MFMessageComposeViewController()
             controller.body = shareText
