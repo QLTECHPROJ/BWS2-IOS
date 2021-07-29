@@ -148,8 +148,11 @@ class AreaOfFocusVC: BaseViewController {
             self.footerCollectionview.reloadData()
             self.tableView.reloadData()
             self.buttonEnableDisable()
+            let height = self.arrayCategories.count * 180
+            self.footerCollectionview.frame = CGRect(x: 0, y: 0, width: Int(self.footerCollectionview.frame.width), height:height)
             
         }
+       
     }
     
     func searchCategory(searchText : String) {

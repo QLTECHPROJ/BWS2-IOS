@@ -95,4 +95,7 @@ class SuggestedPlaylistCell: UITableViewCell {
         playClicked?()
     }
     
+    @IBAction func onTappedSleepTime(_ sender: UIButton) {
+    }
+    
 }

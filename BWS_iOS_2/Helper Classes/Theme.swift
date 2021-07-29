@@ -513,6 +513,9 @@ struct AppStrings {
     //Reminder Pop Up
     let reminderpopup_title = "Set Reminder for Suggested Playlist"
     let reminderpopup_desc = "Ensure you never miss a chance to improve your Wellness Score. You will get a reminder notification for that."
+    
+    //Reminder day
+    let reminder_suggestedplaylist = "Ensure you never miss a chance to improve your Wellness Score."
 
 }
 

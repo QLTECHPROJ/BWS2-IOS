@@ -11,6 +11,7 @@ import UIKit
 class DayVC: BaseViewController {
     
     // MARK:- OUTLETS
+    @IBOutlet weak var lblDesc: UILabel!
     @IBOutlet weak var lblPlaylist: UILabel!
     @IBOutlet weak var btnAll: UIButton!
     @IBOutlet weak var lblSelected: UILabel!
@@ -89,7 +90,14 @@ class DayVC: BaseViewController {
                     lblPlaylist.text = playlistData.PlaylistName
                     strPlaylistID = playlistData.PlaylistID
                 }
+                
             }
+        }
+        if objPlaylist?.Created == "2" || objReminder?.Created == "2"{
+            lblDesc.text = Theme.strings.reminder_suggestedplaylist
+        }else {
+            lblDesc.text = ""
+            lblDesc.numberOfLines = 0
         }
     }
     

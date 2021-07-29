@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -56,7 +57,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="6H5-JK-uIC"/>
                                     <constraint firstAttribute="bottom" secondItem="SEF-bz-V7F" secondAttribute="bottom" id="9C1-4w-5ag"/>
@@ -86,7 +87,7 @@
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloud" translatesAutoresizingMaskIntoConstraints="NO" id="U0T-vh-0cu">
                                         <rect key="frame" x="0.0" y="14" width="343" height="254"/>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="URN-bo-e7K">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="URN-bo-e7K">
                                         <rect key="frame" x="16" y="14" width="77" height="24"/>
                                         <color key="backgroundColor" white="1" alpha="0.2471372003" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -106,7 +107,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gwH-Ov-Aed">
-                                        <rect key="frame" x="111.5" y="92.5" width="120" height="120"/>
+                                        <rect key="frame" x="141.5" y="122.5" width="60" height="60"/>
                                         <state key="normal" image="play_white"/>
                                         <connections>
                                             <action selector="playClickedWithSender:" destination="Y33-l9-hBD" eventType="touchUpInside" id="ybJ-fL-UfD"/>
@@ -151,16 +152,28 @@
                                     <constraint firstItem="JlA-lV-o2I" firstAttribute="top" secondItem="e3X-Kl-3t6" secondAttribute="bottom" constant="2" id="yw8-tl-tlY"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mXJ-UM-80h">
+                                <rect key="frame" x="0.0" y="311" width="343" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Sfe-NE-lF9"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="onTappedSleepTime:" destination="Y33-l9-hBD" eventType="touchUpInside" id="H4H-pj-2ZJ"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="KwG-dp-uVi" firstAttribute="leading" secondItem="BI9-bt-JXS" secondAttribute="leading" id="8Gi-hi-73m"/>
+                            <constraint firstItem="mXJ-UM-80h" firstAttribute="leading" secondItem="f14-D8-YUN" secondAttribute="leading" id="Dsp-ZZ-VoL"/>
+                            <constraint firstAttribute="bottom" secondItem="mXJ-UM-80h" secondAttribute="bottom" id="ExE-EZ-Ma1"/>
                             <constraint firstItem="BI9-bt-JXS" firstAttribute="leading" secondItem="f14-D8-YUN" secondAttribute="leading" id="T7Y-dQ-pWp"/>
                             <constraint firstItem="BI9-bt-JXS" firstAttribute="top" secondItem="f14-D8-YUN" secondAttribute="top" id="uPP-q9-M8K"/>
                             <constraint firstItem="KwG-dp-uVi" firstAttribute="top" secondItem="BI9-bt-JXS" secondAttribute="bottom" constant="-15" id="uha-nc-Ac3"/>
                             <constraint firstItem="KwG-dp-uVi" firstAttribute="trailing" secondItem="BI9-bt-JXS" secondAttribute="trailing" id="vTX-Xk-IaD"/>
                             <constraint firstAttribute="bottom" secondItem="KwG-dp-uVi" secondAttribute="bottom" id="wOQ-vj-sp2"/>
                             <constraint firstAttribute="trailing" secondItem="BI9-bt-JXS" secondAttribute="trailing" id="wWT-2X-Woa"/>
+                            <constraint firstAttribute="trailing" secondItem="mXJ-UM-80h" secondAttribute="trailing" id="weD-dG-GjN"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -177,8 +190,8 @@
                     <constraint firstAttribute="bottom" secondItem="f14-D8-YUN" secondAttribute="bottom" constant="10" id="wct-AL-It1"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="D0c-Nl-JgQ"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="btnPlay" destination="gwH-Ov-Aed" id="oD3-Nn-dow"/>
                 <outlet property="btnReminder" destination="URN-bo-e7K" id="max-uc-Afy"/>
@@ -188,7 +201,7 @@
                 <outlet property="lblSleepTime" destination="i17-vE-Q0b" id="Af5-a7-XpB"/>
                 <outlet property="viewBack" destination="f14-D8-YUN" id="gpq-aj-u9V"/>
             </connections>
-            <point key="canvasLocation" x="145.6521739130435" y="199.88839285714286"/>
+            <point key="canvasLocation" x="145.6521739130435" y="199.55357142857142"/>
         </tableViewCell>
     </objects>
     <resources>
@@ -201,5 +214,8 @@
         <namedColor name="green_36C2D6">
             <color red="0.21176470588235294" green="0.76078431372549016" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>
