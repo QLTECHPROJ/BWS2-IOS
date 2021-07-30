@@ -396,10 +396,24 @@ extension UITextField {
     
 }
 
-func addAttribut(strText:String,strSubString:String,label:UILabel,size:Int) {
-    let text = strText
-    let attributedText = NSMutableAttributedString.getAttributedString(fromString: text)
-    attributedText.apply(color: Theme.colors.green_008892, subString: strSubString)
-    attributedText.apply(font:UIFont(name: Theme.fonts.MontserratSemiBold, size: CGFloat(size))!, subString: strSubString)
-    label.attributedText = attributedText
+extension UILabel {
+    
+    func addAttribut(strText:String,strSubString:String,size:Int) {
+        let attributedString = NSMutableAttributedString.getAttributedString(fromString: strText)
+        attributedString.apply(color: Theme.colors.green_008892, subString: strSubString)
+        attributedString.apply(font:UIFont(name: Theme.fonts.MontserratSemiBold, size: CGFloat(size))!, subString: strSubString)
+        self.attributedText = attributedString
+    }
+    
+}
+
+extension UIButton {
+    
+    func addAttribut(strText:String,strSubString:String,size:Int) {
+        let attributedString = NSMutableAttributedString.getAttributedString(fromString: strText)
+        attributedString.apply(color: Theme.colors.green_008892, subString: strSubString)
+        attributedString.apply(font:UIFont(name: Theme.fonts.MontserratSemiBold, size: CGFloat(size))!, subString: strSubString)
+        self.setAttributedTitle(attributedString, for: .normal)
+    }
+    
 }

@@ -17,7 +17,6 @@ class SignUpVC: BaseViewController {
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblSubTitle: UILabel!
     @IBOutlet weak var stackView: UIStackView!
-    @IBOutlet weak var lblLogin: UILabel!
     
     // Textfield
     @IBOutlet weak var txtFName: JVFloatLabeledTextField!
@@ -26,7 +25,8 @@ class SignUpVC: BaseViewController {
     
     // Button
     @IBOutlet weak var btnCountryCode: UIButton!
-    @IBOutlet weak var btnCreateAccount: UIButton!
+    @IBOutlet weak var btnGetSMSCode: UIButton!
+    @IBOutlet weak var btnLogin: UIButton!
     
     // Label
     @IBOutlet weak var lblPrivacy: TTTAttributedLabel!
@@ -81,7 +81,7 @@ class SignUpVC: BaseViewController {
         txtFMobileNo.delegate = self
         txtFEmailAdd.delegate = self
         
-        addAttribut(strText: "Already have account ? Sign In", strSubString: "Sign In", label: lblLogin, size: 12)
+        btnLogin.addAttribut(strText: "Already have account ? Sign In", strSubString: "Sign In", size: 12)
     }
     
     override func setupData() {
@@ -104,11 +104,11 @@ class SignUpVC: BaseViewController {
         
         
         if name?.count == 0 || mobile?.count == 0 || email?.count == 0 {
-            btnCreateAccount.isUserInteractionEnabled = false
-            btnCreateAccount.backgroundColor = Theme.colors.gray_7E7E7E
+            btnGetSMSCode.isUserInteractionEnabled = false
+            btnGetSMSCode.backgroundColor = Theme.colors.gray_7E7E7E
         } else {
-            btnCreateAccount.isUserInteractionEnabled = true
-            btnCreateAccount.backgroundColor = Theme.colors.green_008892
+            btnGetSMSCode.isUserInteractionEnabled = true
+            btnGetSMSCode.backgroundColor = Theme.colors.green_008892
         }
     }
     

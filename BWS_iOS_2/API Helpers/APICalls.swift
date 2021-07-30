@@ -202,7 +202,7 @@ extension ProfileForm6VC {
         let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
                           "gender":ProfileFormModel.shared.gender,
                           "genderX":ProfileFormModel.shared.genderX,
-                          "dob":ProfileFormModel.shared.dob,
+                          "dob":ProfileFormModel.shared.dob.dateString(format: Theme.dateFormats.DOB_Backend),
                           "prevDrugUse":ProfileFormModel.shared.prevDrugUse,
                           "Medication":ProfileFormModel.shared.Medication]
         
@@ -213,7 +213,8 @@ extension ProfileForm6VC {
                 
                 let userData = CoUserDataModel.currentUser
                 userData?.isProfileCompleted = "1"
-                CoUserDataModel.currentUser = CoUserDataModel.currentUser
+                userData?.DOB = ProfileFormModel.shared.dob
+                CoUserDataModel.currentUser = userData
                 
                 // Segment Tracking
                 let traits = ["gender":ProfileFormModel.shared.gender,

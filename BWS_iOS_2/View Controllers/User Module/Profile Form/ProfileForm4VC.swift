@@ -86,6 +86,7 @@ class ProfileForm4VC: BaseViewController {
         } else {
             txtFDate.text = dateFormatter.string(from: prevDate)
             txtFDate.datePicker?.date = prevDate
+            ProfileFormModel.shared.dob = prevDate.stringFromFormat(Theme.dateFormats.DOB_App)
         }
     }
     

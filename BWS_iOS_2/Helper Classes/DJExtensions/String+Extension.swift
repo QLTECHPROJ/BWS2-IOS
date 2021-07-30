@@ -86,7 +86,7 @@ extension String {
     
     func dateString(format : String) -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        dateFormatter.dateFormat = Theme.dateFormats.DOB_App
         dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
         
         let dt = dateFormatter.date(from: self)
