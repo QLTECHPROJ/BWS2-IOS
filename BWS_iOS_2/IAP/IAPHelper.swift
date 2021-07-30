@@ -51,11 +51,13 @@ class IAPHelper : UIViewController {
         showHud()
         SwiftyStoreKit.purchaseProduct(self.arrPlanData[0].productIdentifier, atomically: atomically) { result in
             hideHud()
-            print("PurchaseProductID:-",self.arrPlanData[0].productIdentifier)
-            self.planID = self.arrPlanData[0].productIdentifier
             
             if case .success(let purchase) = result {
                 self.originalTransactionID = purchase.transaction.transactionIdentifier
+                self.planID = purchase.productId
+                print("transactionIdentifier:-",purchase.transaction.transactionIdentifier ?? "")
+                print("PurchaseProductID:-",purchase.productId)
+                
                 let downloads = purchase.transaction.downloads
                 if !downloads.isEmpty {
                     SwiftyStoreKit.start(downloads)
@@ -64,11 +66,12 @@ class IAPHelper : UIViewController {
                 if purchase.needsFinishTransaction {
                     SwiftyStoreKit.finishTransaction(purchase.transaction)
                 }
+                self.successPurchase?()
             }
             if let alert = self.alertForPurchaseResult(result) {
                 self.showAlert(alert)
             }
-            self.successPurchase?()
+            
         }
         
     }

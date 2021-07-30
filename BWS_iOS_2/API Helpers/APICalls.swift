@@ -273,8 +273,6 @@ extension AssessmentVC {
                 showAlertToast(message: response.ResponseMessage)
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass: DassAssessmentResultVC.self)
                 aVC.isFromEdit = self.isFromEdit
-                aVC.strTitle = response.ResponseData?.AssesmentTitle ?? ""
-                aVC.strContent = response.ResponseData?.AssesmentContent ?? ""
                 self.navigationController?.pushViewController(aVC, animated: true)
             }
         }
@@ -291,8 +289,7 @@ extension DassAssessmentResultVC {
         APICallManager.sharedInstance.callAPI(router: APIRouter.assesmentgetdetails(parameters)) { (response :AssessmentModel) in
             
             if response.ResponseCode == "200" {
-                self.strTitle = response.ResponseData?.AssesmentTitle ?? ""
-                self.strContent = response.ResponseData?.AssesmentContent ?? ""
+                self.assessmentData = response.ResponseData
                 self.setupData()
             }
         }
@@ -470,19 +467,16 @@ extension UIViewController {
     
     //App Verify Reciept
     func callVerifyRecieptAPI(strreceiptData : String, complitionBlock : (() -> ())?) {
-        let parameters = ["receiptData":strreceiptData]
-        
-        APICallManager.sharedInstance.callAPI(router: APIRouter.verifyreceipt(parameters)) { (response : GeneralModel) in
+            let parameters = ["receiptData":strreceiptData]
             
-            if response.ResponseCode == "200" {
-                showAlertToast(message: response.ResponseMessage)
-                print("data",response.ResponseData?.data ?? "")
-                DispatchQueue.main.async {
-                    complitionBlock?()
+            APICallManager.sharedInstance.callAPI(router: APIRouter.verifyreceipt(parameters), displayHud: false, showToast: false) { (response : GeneralModel) in
+                if response.ResponseCode == "200" {
+                    DispatchQueue.main.async {
+                        complitionBlock?()
+                    }
                 }
             }
         }
-    }
     
     // Forgot Pin API Call
     func callForgotPinAPI(selectedUser : CoUserDataModel, complitionBlock : (() -> ())?) {

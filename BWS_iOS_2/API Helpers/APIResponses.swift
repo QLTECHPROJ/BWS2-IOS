@@ -817,6 +817,9 @@ class AssessmentModel : EVObject {
 class AssessmentDataModel : EVObject {
     var indexScore = ""
     var ScoreLevel = ""
+    var MainTitle = ""
+    var SubTitle = ""
+    var colorcode = ""
     var AssesmentTitle = ""
     var AssesmentContent = ""
     var errormsg = ""

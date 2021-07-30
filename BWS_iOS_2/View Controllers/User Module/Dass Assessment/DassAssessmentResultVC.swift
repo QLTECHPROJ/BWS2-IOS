@@ -11,6 +11,9 @@ import UIKit
 class DassAssessmentResultVC: BaseViewController {
     
     // MARK:- OUTLETS
+    @IBOutlet weak var lblScreenTitle: UILabel!
+    @IBOutlet weak var lblScoreTitle : UILabel!
+    
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblSubTitle : UILabel!
     @IBOutlet weak var indexScoreView : UIView!
@@ -21,8 +24,7 @@ class DassAssessmentResultVC: BaseViewController {
     
     
     // MARK:- VARIABLES
-    var strTitle = ""
-    var strContent = ""
+    var assessmentData : AssessmentDataModel?
     var isFromEdit = false
     var totalAngle: CGFloat = 180
     var rotation: CGFloat = -90
@@ -97,8 +99,16 @@ class DassAssessmentResultVC: BaseViewController {
     }
     
     override func setupData() {
-        lblTitle.attributedText = strTitle.attributedString(alignment: .center, lineSpacing: 5)
-        lblSubTitle.attributedText =  strContent.attributedString(alignment: .center, lineSpacing: 5)
+        if let data = assessmentData {
+            lblScreenTitle.text = data.MainTitle
+            lblScoreTitle.text = data.SubTitle
+            
+            let colorCode = data.colorcode.replace(string: "#", replacement: "")
+            lblScoreTitle.textColor = UIColor(hex: colorCode)
+            
+            lblTitle.attributedText = data.AssesmentTitle.attributedString(alignment: .center, lineSpacing: 5)
+            lblSubTitle.attributedText =  data.AssesmentContent.attributedString(alignment: .center, lineSpacing: 5)
+        }
         
         scoreValue = 0
         lblScore.text = "\(scoreValue)"

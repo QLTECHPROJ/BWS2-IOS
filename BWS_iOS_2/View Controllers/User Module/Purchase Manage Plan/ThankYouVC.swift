@@ -21,6 +21,7 @@ class ThankYouVC: BaseViewController {
     @IBOutlet weak var scrollview: UIScrollView!
     @IBOutlet weak var btnAddUser: UIButton!
     @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var addUserTop: NSLayoutConstraint!
     
     // MARK:- VARIABLE
     var isCome:String?
@@ -74,6 +75,7 @@ class ThankYouVC: BaseViewController {
             imgWidth.constant = 309
             imgHeight.constant = 281
             lblTop.constant = 40
+            addUserTop.constant = 120
             }
         }
     }

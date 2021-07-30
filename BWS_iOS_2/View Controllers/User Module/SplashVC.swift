@@ -119,12 +119,9 @@ class SplashVC: BaseViewController {
     }
     
     func verifyRecieptIAP() {
-        if (LoginDataModel.currentUser != nil) {
-            if IAPHelper.shared.isIAPEnabled {
-                showHud()
-                IAPHelper.shared.verifyReceipt { result in
-                    hideHud()
-                    IAPHelper.shared.showAlert(IAPHelper.shared.alertForVerifyReceipt(result))
+            if (LoginDataModel.currentUser != nil) {
+                if IAPHelper.shared.isIAPEnabled {
+                    showHud()
                     guard let receiptURL = Bundle.main.appStoreReceiptURL, let receiptString = try? Data(contentsOf: receiptURL, options: .alwaysMapped).base64EncodedString(options: []) else {
                         return
                     }
@@ -132,7 +129,6 @@ class SplashVC: BaseViewController {
                 }
             }
         }
-    }
 }
 
 

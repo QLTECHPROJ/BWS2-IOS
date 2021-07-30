@@ -61,7 +61,7 @@ class SegmentTracking {
                 configuration.launchOptions = launchOptions
             }
             Analytics.setup(with: configuration)
-            Analytics.debug(true)
+            // Analytics.debug(true)
         }
     }
     
@@ -82,6 +82,7 @@ class SegmentTracking {
         newTraits["deviceID"] = DEVICE_UUID
         newTraits["batteryLevel"] = NSString(format: "%0.0f",APPDELEGATE.batteryLevel)
         newTraits["batteryState"] = APPDELEGATE.batteryState
+        newTraits["fcmToken"] = FCM_TOKEN
         
         if name == "Audio Interrupted" || name == "Disclaimer Interrupted" {
             self.callAudioInterruptionAPI(parameters: newTraits)
