@@ -68,7 +68,7 @@ class ThankYouVC: BaseViewController {
             imgThankYou.image = UIImage(named: "Congrats")
             lblTitle.font = UIFont(name: Theme.fonts.MontserratBold, size: 45.0)
                 let strText = "Congrats!\n" + coUser.Name
-            addAttribut(strText: strText, strSubString: coUser.Name, label: lblTitle, size: 24)
+                lblTitle.addAttribut(strText: strText, strSubString: coUser.Name, size: 24)
             lblSubTitle.text = "You already have access to 6 month of Enhance program." 
             btnAddUser.isHidden = true
             btnViewInvoice.isHidden = true

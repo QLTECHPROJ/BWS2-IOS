@@ -59,8 +59,12 @@ class AccountInfoVC: BaseViewController {
                 return
             }
             
-            let aVC = AppStoryBoard.account.viewController(viewControllerClass: EditProfileVC.self)
-            self.navigationController?.pushViewController(aVC, animated: true)
+            showHud()
+            self.callGetCoUserDetailsAPI { (success) in
+                hideHud()
+                let aVC = AppStoryBoard.account.viewController(viewControllerClass: EditProfileVC.self)
+                self.navigationController?.pushViewController(aVC, animated: true)
+            }
             break
             
         case .changePIN:

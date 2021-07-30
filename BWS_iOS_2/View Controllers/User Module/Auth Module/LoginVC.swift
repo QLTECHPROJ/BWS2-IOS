@@ -15,15 +15,17 @@ import JVFloatLabeledTextField
 class LoginVC: BaseViewController {
     
     // MARK:- OUTLETS
-    @IBOutlet weak var lblSignUp: UILabel!
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblSubTitle: UILabel!
-    @IBOutlet weak var txtFMobileNo: JVFloatLabeledTextField!
     @IBOutlet weak var lblErrMobileNo: UILabel!
-    @IBOutlet weak var stackView: UIStackView!
+    
     @IBOutlet weak var btnCountryCode: UIButton!
+    @IBOutlet weak var btnGetSMSCode: UIButton!
+    @IBOutlet weak var btnSignUp: UIButton!
+    
+    @IBOutlet weak var txtFMobileNo: JVFloatLabeledTextField!
+    @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var lblPrivacy: TTTAttributedLabel!
-    @IBOutlet weak var btnLogin: UIButton!
     
     
     // MARK:- VARIABLES
@@ -64,8 +66,8 @@ class LoginVC: BaseViewController {
         txtFMobileNo.delegate = self
         //lblTitle.text = Theme.strings.login_title
         lblSubTitle.attributedText = Theme.strings.login_subtitle.attributedString(alignment: .center, lineSpacing: 5)
-       
-        addAttribut(strText: "Don't have account? Sign Up", strSubString: "Sign Up", label: lblSignUp, size: 12)
+        
+        btnSignUp.addAttribut(strText: "Don't have account? Sign Up", strSubString: "Sign Up", size: 12)
     }
     
     override func setupData() {
@@ -90,11 +92,11 @@ class LoginVC: BaseViewController {
         let mobile = txtFMobileNo.text?.trim
         
         if  mobile?.count == 0 {
-            btnLogin.isUserInteractionEnabled = false
-            btnLogin.backgroundColor = Theme.colors.gray_7E7E7E
+            btnGetSMSCode.isUserInteractionEnabled = false
+            btnGetSMSCode.backgroundColor = Theme.colors.gray_7E7E7E
         } else {
-            btnLogin.isUserInteractionEnabled = true
-            btnLogin.backgroundColor = Theme.colors.green_008892
+            btnGetSMSCode.isUserInteractionEnabled = true
+            btnGetSMSCode.backgroundColor = Theme.colors.green_008892
         }
     }
     
