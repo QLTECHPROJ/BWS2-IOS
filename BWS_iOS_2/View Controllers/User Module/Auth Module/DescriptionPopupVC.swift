@@ -35,7 +35,7 @@ class DescriptionPopupVC: UIViewController {
     // MARK:- VIEW LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        lblTitle.numberOfLines = 2
         lblTitle.text = strTitle
         lblTitle.isHidden = ( strTitle.trim.count == 0 )
         

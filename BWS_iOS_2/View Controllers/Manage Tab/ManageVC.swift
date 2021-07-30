@@ -83,6 +83,7 @@ class ManageVC: BaseViewController {
             playlistMainView.isHidden = false
             
             lblPlaylistName.text = playlistData.PlaylistName
+            lblPlaylistDirection.text = playlistData.playlistDirection
             
             let totalhour = playlistData.Totalhour.trim.count > 0 ? playlistData.Totalhour : "0"
             let totalminute = playlistData.Totalminute.trim.count > 0 ? playlistData.Totalminute : "0"

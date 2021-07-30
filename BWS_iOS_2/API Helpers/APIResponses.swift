@@ -590,6 +590,7 @@ class PlaylistDetailsModel: EVObject {
     var sectionName = ""
     var selfCreated = ""
     var isSelected = false
+    var playlistDirection = ""
 }
 
 class PlaylistListingModel: EVObject {
