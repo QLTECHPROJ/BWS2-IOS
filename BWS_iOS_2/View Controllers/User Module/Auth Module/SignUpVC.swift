@@ -199,16 +199,18 @@ class SignUpVC: BaseViewController {
         lblPrivacy.delegate = self
     }
     
-    func redirectToLogin() {
+    func redirectToLogin(isClick:String?) {
         var shouldPush = true
         if let controllers = self.navigationController?.viewControllers {
             for controller in controllers {
                 if controller.isKind(of: LoginVC.self) {
                     if let aVC = controller as? LoginVC {
-                        aVC.selectedCountry = self.selectedCountry
-                        aVC.isCountrySelected = self.isCountrySelected
-                        aVC.mobileNo = self.txtFMobileNo.text ?? ""
-                        aVC.setupData()
+                        if isClick != "Login" {
+                            aVC.selectedCountry = self.selectedCountry
+                            aVC.isCountrySelected = self.isCountrySelected
+                            aVC.mobileNo = self.txtFMobileNo.text ?? ""
+                            aVC.setupData()
+                        }
                     }
                     shouldPush = false
                     self.navigationController?.popToViewController(controller, animated: true)
@@ -219,9 +221,11 @@ class SignUpVC: BaseViewController {
         
         if shouldPush {
             let aVC = AppStoryBoard.main.viewController(viewControllerClass:LoginVC.self)
-            aVC.selectedCountry = self.selectedCountry
-            aVC.isCountrySelected = self.isCountrySelected
-            aVC.mobileNo = self.txtFMobileNo.text ?? ""
+            if isClick != "Login" {
+                aVC.selectedCountry = self.selectedCountry
+                aVC.isCountrySelected = self.isCountrySelected
+                aVC.mobileNo = self.txtFMobileNo.text ?? ""
+            }
             self.navigationController?.pushViewController(aVC, animated: true)
         }
     }
@@ -241,7 +245,7 @@ class SignUpVC: BaseViewController {
             callLoginAPI(signUpFlag: "1", country: selectedCountry, mobileNo: txtFMobileNo.text ?? "", username: txtFName.text ?? "", email: txtFEmailAdd.text ?? "", resendOTP: "") { (response : SendOTPModel) in
                 if response.ResponseCode != "200" {
                     if response.ResponseData?.IsRegistered == "1" {
-                        self.redirectToLogin()
+                        self.redirectToLogin(isClick: "Sign Up")
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                             showAlertToast(message: response.ResponseMessage)
                         }
@@ -257,7 +261,7 @@ class SignUpVC: BaseViewController {
     @IBAction func onTappedLogin(_ sender: UIButton) {
         self.view.endEditing(true)
         isFromOTP = false
-        self.redirectToLogin()
+        self.redirectToLogin(isClick: "Login")
     }
     
     @IBAction func onTappedCountryCode(_ sender: UIButton) {
