@@ -34,7 +34,12 @@ class PlanListCell: UITableViewCell {
         
         lblPlan.text = data.PlanInterval
         lblPlanDesc.text = data.SubName
-        lblPlanPrice.text = "$" + data.PlanAmount
+        
+        if data.iapPrice.trim.count > 0 {
+            lblPlanPrice.text = data.iapPrice
+        } else {
+            lblPlanPrice.text = "$" + data.PlanAmount
+        }
         
         DispatchQueue.main.async {
             if isSelected {

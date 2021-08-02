@@ -1002,6 +1002,39 @@ extension ManagePlanListVC {
             if response.ResponseCode == "200" {
                 self.dataModel = response.ResponseData
                 self.setupData()
+                self.fetchIAPProducts()
+            }
+        }
+    }
+    
+    func fetchIAPProducts() {
+        if IAPHelper.shared.isIAPEnabled {
+            let arrayProductIDs : [String] = dataModel.Plan.compactMap({ $0.IOSplanId })
+            
+            // IAP Purchase Retrive Products
+            IAPHelper.shared.productRetrive(arrayProductIDs: arrayProductIDs) { (success, iapProducts) in
+                if success {
+                    guard let products = iapProducts else {
+                        self.setupData()
+                        return
+                    }
+                    
+                    print("IAP Products Fetched")
+                    for product in products {
+                        for plan in self.dataModel.Plan {
+                            if plan.IOSplanId == product.iapProductIdentifier {
+                                plan.iapProductIdentifier = product.iapProductIdentifier
+                                plan.iapPrice = product.iapPrice
+                                plan.iapTitle = product.iapTitle
+                                plan.iapDescription = product.iapDescription
+                                plan.iapTrialPeriod = product.iapTrialPeriod
+                                plan.iapSubscriptionPeriod = product.iapSubscriptionPeriod
+                            }
+                        }
+                    }
+                    
+                    self.setupData()
+                }
             }
         }
     }

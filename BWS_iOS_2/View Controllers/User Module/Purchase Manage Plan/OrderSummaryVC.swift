@@ -40,11 +40,6 @@ class OrderSummaryVC: BaseViewController {
         // Segment Tracking
         SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.orderSummary, traits: ["plan":planData.toDictionary()])
         
-        if IAPHelper.shared.isIAPEnabled {
-            // IAP Purchase Retrive Products
-            IAPHelper.shared.productRetrive(arrProdID:[planData.IOSplanId])
-        }
-        
         setupData()
     }
     
@@ -53,26 +48,29 @@ class OrderSummaryVC: BaseViewController {
     override func setupData() {
         lblPlanTitle.text = planData.PlanInterval
         lblPlanDesc.text = planData.FreeTrial
-        lblPlanPrice.text = "$" + planData.PlanAmount
         lblPlanPriceDesc.text = planData.SubName
         
         lblEnhanceProgram.text = Theme.strings.enhance_program
         
-        lblPlanPrice1.text = "$" + planData.PlanAmount
         lblPlanPriceDesc1.text = planData.SubName
         
         lblPlanRenewal.text = planData.PlanTenure
         lblPlanExpired.text = planData.PlanNextRenewal
         
-        lblTotalAmount.text = "$" + planData.PlanAmount
+        if planData.iapPrice.trim.count > 0 {
+            lblPlanPrice.text = planData.iapPrice
+            lblPlanPrice1.text = planData.iapPrice
+            lblTotalAmount.text = planData.iapPrice
+        } else {
+            lblPlanPrice.text = "$" + planData.PlanAmount
+            lblPlanPrice1.text = "$" + planData.PlanAmount
+            lblTotalAmount.text = "$" + planData.PlanAmount
+        }
     }
     
     
     // MARK:- ACTIONS
     @IBAction func backClicked(sender : UIButton) {
-        if IAPHelper.shared.isIAPEnabled {
-            IAPHelper.shared.arrPlanData.removeAll()
-        }
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -82,12 +80,13 @@ class OrderSummaryVC: BaseViewController {
         
         if IAPHelper.shared.isIAPEnabled {
             // IAP Purchase Subscription
-            IAPHelper.shared.purchaseSubscriptions(atomically: true)
+            IAPHelper.shared.purchaseSubscriptions(productIdentifier: planData.IOSplanId, atomically: true)
             IAPHelper.shared.successPurchase = {
                 self.callIAPPlanPurchaseAPI()
             }
         } else {
             let aVC = AppStoryBoard.main.viewController(viewControllerClass: ThankYouVC.self)
+            aVC.planData = self.planData
             self.navigationController?.pushViewController(aVC, animated: true)
         }
     }
