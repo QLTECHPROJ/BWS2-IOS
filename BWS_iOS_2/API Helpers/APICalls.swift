@@ -1351,6 +1351,7 @@ extension DayVC {
                 self.tableView.reloadData()
                 
                 if self.isfromPopUp == true {
+                    NotificationCenter.default.post(name: NSNotification.Name.refreshData, object: nil)
                     self.dismiss(animated: true, completion: nil)
                 } else {
                     self.navigationController?.popViewController(animated: true)

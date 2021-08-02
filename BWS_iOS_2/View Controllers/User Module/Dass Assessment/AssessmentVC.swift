@@ -21,6 +21,9 @@ class AssessmentVC: BaseViewController {
     @IBOutlet weak var lbl2: UILabel!
     @IBOutlet weak var lbl4: UILabel!
     @IBOutlet weak var lbl3: UILabel!
+    
+    @IBOutlet weak var cvHeight: NSLayoutConstraint!
+    @IBOutlet weak var mainViewheight: NSLayoutConstraint!
    
     // MARK:- VARIABLES
     var isFromEdit = false
@@ -128,6 +131,9 @@ class AssessmentVC: BaseViewController {
                 }
             }
             
+            //scrollview height manage with collectionview and mainView
+            cvHeight.constant = CGFloat(arrNewSection[pageIndex].count * 270)
+            mainViewheight.constant = CGFloat(arrNewSection[pageIndex].count * 270 + 400)
         }
     }
     
