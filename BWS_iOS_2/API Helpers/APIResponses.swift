@@ -232,6 +232,21 @@ class PlanListDataModel : EVObject {
     var FAQs = [FAQDataModel]()
 }
 
+class PlanFeatureModel:EVObject {
+    var Feature = ""
+}
+
+class SesssionDataModel:EVObject {
+    
+}
+
+class TestminialVideoDataModel : EVObject {
+    var UserName = ""
+    var VideoLink = ""
+    var VideoDesc = ""
+}
+
+// MARK:- Plan Model
 class PlanDetailsModel:EVObject {
     var PlanPosition = ""
     var ProfileCount = ""
@@ -248,20 +263,24 @@ class PlanDetailsModel:EVObject {
     var PlanFlag = ""
     var isSelected = false
     var IOSplanId = ""
-}
-
-class PlanFeatureModel:EVObject {
-    var Feature = ""
-}
-
-class SesssionDataModel:EVObject {
+    var AndroidplanId = ""
     
+    // IAP Parameters
+    var iapProductIdentifier = ""
+    var iapPrice = ""
+    var iapTitle = ""
+    var iapDescription = ""
+    var iapTrialPeriod = ""
+    var iapSubscriptionPeriod = ""
 }
 
-class TestminialVideoDataModel : EVObject {
-    var UserName = ""
-    var VideoLink = ""
-    var VideoDesc = ""
+class IAPPlanDetailsModel:EVObject {
+    var iapProductIdentifier = ""
+    var iapPrice = ""
+    var iapTitle = ""
+    var iapDescription = ""
+    var iapTrialPeriod = ""
+    var iapSubscriptionPeriod = ""
 }
 
 // MARK:- FAQ API Models

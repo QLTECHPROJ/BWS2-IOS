@@ -25,6 +25,7 @@ class ThankYouVC: BaseViewController {
     
     // MARK:- VARIABLE
     var isCome:String?
+    var planData = PlanDetailsModel()
     
     
     // MARK:- VIEW LIFE CYCLE
@@ -93,7 +94,7 @@ class ThankYouVC: BaseViewController {
         
         if IAPHelper.shared.isIAPEnabled {
             // IAP Verify Purchase
-            IAPHelper.shared.verifySubscriptions()
+            IAPHelper.shared.verifySubscriptions(productIdentifier: planData.iapProductIdentifier)
         }
         
         self.callGetCoUserDetailsAPI { (success) in

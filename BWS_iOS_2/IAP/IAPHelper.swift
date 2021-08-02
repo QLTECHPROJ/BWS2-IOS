@@ -15,41 +15,67 @@ class IAPHelper : UIViewController {
     // MARK:- VARIABLES
     static var shared = IAPHelper()
     var isIAPEnabled = false
-    var arrPlanData = [SKProduct]()
     var successPurchase : ( () -> Void )?
     var originalTransactionID:String?
     var planID:String?
     
     
     //MARK:- product fetch
-    func productRetrive(arrProdID:[String]) {
-        //Retrieve Data from ProductID
-        
+    
+    //Retrieve Data from ProductID
+    func productRetrive(arrayProductIDs: [String], complition : @escaping (Bool,Set<IAPPlanDetailsModel>?) -> Void) {
         showHud()
-        let productIDS = Set(arrProdID)
+        let productIDS = Set(arrayProductIDs)
         SwiftyStoreKit.retrieveProductsInfo(productIDS) { result in
             hideHud()
+            
+            var arrayPlanData = Set<IAPPlanDetailsModel>()
+            
+            if result.retrievedProducts.count > 0 {
+                for i in result.retrievedProducts {
+                    let planProduct = IAPPlanDetailsModel()
+                    planProduct.iapProductIdentifier = i.productIdentifier
+                    planProduct.iapTitle = i.localizedTitle
+                    planProduct.iapDescription = i.localizedDescription
+                    planProduct.iapPrice = i.localizedPrice ?? ""
+                    
+                    if #available(iOS 12.0, *) {
+                        planProduct.iapTrialPeriod = i.introductoryPrice?.localizedSubscriptionPeriod ?? ""
+                        planProduct.iapSubscriptionPeriod = i.localizedSubscriptionPeriod
+                    } else {
+                        // Fallback on earlier versions
+                    }
+                    
+                    arrayPlanData.insert(planProduct)
+                }
+                
+                print("Plan Data :- ",arrayPlanData)
+                complition(true,arrayPlanData)
+            } else {
+                complition(false,nil)
+            }
+            
             self.alertForProductRetrievalInfo(result)
         }
     }
     
     func alertForProductRetrievalInfo(_ result: RetrieveResults) {
-        
-        let prod = result.retrievedProducts
-        print(prod)
-        
-        for i in prod {
-            arrPlanData = [i]
-            print("1.PLAN_NAME:-",i.localizedTitle,"2. USER:-",i.localizedDescription, "3.PRICE:-",i.localizedPrice! , "4.LOCAL_PRICE:-",i.priceLocale,"5.PRICENEW:-",i.price)
-            
+        if let product = result.retrievedProducts.first {
+            let priceString = product.localizedPrice!
+            alertWithTitle(product.localizedTitle, message: "\(product.localizedDescription) - \(priceString)")
+        } else if let invalidProductId = result.invalidProductIDs.first {
+            alertWithTitle("Could not retrieve product info", message: "Invalid product identifier: \(invalidProductId)")
+        } else {
+            let errorString = result.error?.localizedDescription ?? "Unknown error. Please contact support"
+            alertWithTitle("Could not retrieve product info", message: errorString)
         }
     }
     
-    //MARK:-  purchase
-    func purchaseSubscriptions(atomically: Bool) {
-        
+    
+    // MARK:- Purchase Subscriptions
+    func purchaseSubscriptions(productIdentifier : String, atomically: Bool) {
         showHud()
-        SwiftyStoreKit.purchaseProduct(self.arrPlanData[0].productIdentifier, atomically: atomically) { result in
+        SwiftyStoreKit.purchaseProduct(productIdentifier, atomically: atomically) { result in
             hideHud()
             
             if case .success(let purchase) = result {
@@ -68,73 +94,66 @@ class IAPHelper : UIViewController {
                 }
                 self.successPurchase?()
             }
-            if let alert = self.alertForPurchaseResult(result) {
-                self.showAlert(alert)
-            }
             
+            self.alertForPurchaseResult(result)
         }
-        
     }
     
     // swiftlint:disable cyclomatic_complexity
-    func alertForPurchaseResult(_ result: PurchaseResult) -> UIAlertController? {
+    func alertForPurchaseResult(_ result: PurchaseResult) {
         switch result {
         case .success(let purchase):
             print("Purchase Success: \(purchase.productId)")
-            return nil
         case .error(let error):
             print("Purchase Failed: \(error)")
             switch error.code {
-            case .unknown: return alertWithTitle("Purchase failed", message: error.localizedDescription)
+            case .unknown:
+                alertWithTitle("Purchase failed", message: error.localizedDescription)
             case .clientInvalid: // client is not allowed to issue the request, etc.
-                return alertWithTitle("Purchase failed", message: "Not allowed to make the payment")
+                alertWithTitle("Purchase failed", message: "Not allowed to make the payment")
             case .paymentCancelled: // user cancelled the request, etc.
-                return nil
+                print("User cancelled the request")
             case .paymentInvalid: // purchase identifier was invalid, etc.
-                return alertWithTitle("Purchase failed", message: "The purchase identifier was invalid")
+                alertWithTitle("Purchase failed", message: "The purchase identifier was invalid")
             case .paymentNotAllowed: // this device is not allowed to make the payment
-                return alertWithTitle("Purchase failed", message: "The device is not allowed to make the payment")
+                alertWithTitle("Purchase failed", message: "The device is not allowed to make the payment")
             case .storeProductNotAvailable: // Product is not available in the current storefront
-                return alertWithTitle("Purchase failed", message: "The product is not available in the current storefront")
+                alertWithTitle("Purchase failed", message: "The product is not available in the current storefront")
             case .cloudServicePermissionDenied: // user has not allowed access to cloud service information
-                return alertWithTitle("Purchase failed", message: "Access to cloud service information is not allowed")
+                alertWithTitle("Purchase failed", message: "Access to cloud service information is not allowed")
             case .cloudServiceNetworkConnectionFailed: // the device could not connect to the nework
-                return alertWithTitle("Purchase failed", message: "Could not connect to the network")
+                alertWithTitle("Purchase failed", message: "Could not connect to the network")
             case .cloudServiceRevoked: // user has revoked permission to use this cloud service
-                return alertWithTitle("Purchase failed", message: "Cloud service was revoked")
+                alertWithTitle("Purchase failed", message: "Cloud service was revoked")
             default:
-                return alertWithTitle("Purchase failed", message: (error as NSError).localizedDescription)
+                alertWithTitle("Purchase failed", message: (error as NSError).localizedDescription)
             }
         }
     }
     
-    //MARK:- verify
-    func verifySubscriptions() {
-        
+    
+    // MARK:- Verify Subscriptions
+    func verifySubscriptions(productIdentifier : String) {
         showHud()
         verifyReceipt { result in
             hideHud()
             switch result {
             case .success(let receipt):
-                let data = [self.arrPlanData[0].productIdentifier]
-                let productIDS = Set(data)
-              
+                let productIDS = Set([productIdentifier])
                 let purchaseResult = SwiftyStoreKit.verifySubscriptions(productIds: productIDS, inReceipt: receipt)
-                self.showAlert(self.alertForVerifySubscriptions(purchaseResult, productIds: productIDS))
+                self.alertForVerifySubscriptions(purchaseResult, productIds: productIDS)
             case .error:
-                self.showAlert(self.alertForVerifyReceipt(result))
+                self.alertForVerifyReceipt(result)
             }
         }
     }
     
     func verifyReceipt(completion: @escaping (VerifyReceiptResult) -> Void) {
-        
         let appleValidator = AppleReceiptValidator(service: .production, sharedSecret: "d8685d38871b4df48bd3221b50629a64")
         SwiftyStoreKit.verifyReceipt(using: appleValidator, completion: completion)
     }
     
-    func alertForVerifyReceipt(_ result: VerifyReceiptResult) -> UIAlertController {
-
+    func alertForVerifyReceipt(_ result: VerifyReceiptResult) {
         switch result {
         case .success(let receipt):
             print("Verify receipt:-",convertIntoJSON(arrayObject: receipt)!)
@@ -153,38 +172,36 @@ class IAPHelper : UIViewController {
                 }
                 catch { print("Couldn't read receipt data with error: " + error.localizedDescription) }
             }
-            return alertWithTitle("Receipt verified", message: "Receipt verified remotely")
+            alertWithTitle("Receipt verified", message: "Receipt verified remotely")
         case .error(let error):
             print("Verify receipt Failed: \(error)")
             switch error {
             case .noReceiptData:
-                return alertWithTitle("Receipt verification", message: "No receipt data. Try again.")
+                alertWithTitle("Receipt verification", message: "No receipt data. Try again.")
             case .networkError(let error):
-                return alertWithTitle("Receipt verification", message: "Network error while verifying receipt: \(error)")
+                alertWithTitle("Receipt verification", message: "Network error while verifying receipt: \(error)")
             default:
-                return alertWithTitle("Receipt verification", message: "Receipt verification failed: \(error)")
+                alertWithTitle("Receipt verification", message: "Receipt verification failed: \(error)")
             }
         }
     }
     
-    func alertForVerifySubscriptions(_ result: VerifySubscriptionResult, productIds: Set<String>) -> UIAlertController {
-
+    func alertForVerifySubscriptions(_ result: VerifySubscriptionResult, productIds: Set<String>) {
         switch result {
         case .purchased(let expiryDate, let items):
             print("\(productIds) is valid until \(expiryDate)\n\(items)\n")
-            
-            return alertWithTitle("Product is purchased", message: "Product is valid until \(expiryDate)")
-            
+            alertWithTitle("Product is purchased", message: "Product is valid until \(expiryDate)")
         case .expired(let expiryDate, let items):
             print("\(productIds) is expired since \(expiryDate)\n\(items)\n")
-            return alertWithTitle("Product expired", message: "Product is expired since \(expiryDate)")
+            alertWithTitle("Product expired", message: "Product is expired since \(expiryDate)")
         case .notPurchased:
             print("\(productIds) has never been purchased")
-            return alertWithTitle("Not purchased", message: "This product has never been purchased")
+            alertWithTitle("Not purchased", message: "This product has never been purchased")
         }
     }
     
-    //MARK:- Restore Purchase
+    
+    // MARK:- Restore Purchase
     func restorePurchase()  {
         showHud()
         SwiftyStoreKit.restorePurchases(atomically: true) { results in
@@ -199,35 +216,30 @@ class IAPHelper : UIViewController {
                     SwiftyStoreKit.finishTransaction(purchase.transaction)
                 }
             }
-            self.showAlert(self.alertForRestorePurchases(results))
+            
+            self.alertForRestorePurchases(results)
         }
     }
     
-    func alertForRestorePurchases(_ results: RestoreResults) -> UIAlertController {
-        
+    func alertForRestorePurchases(_ results: RestoreResults) {
         if results.restoreFailedPurchases.count > 0 {
             print("Restore Failed: \(results.restoreFailedPurchases)")
-            return alertWithTitle("Restore failed", message: "Unknown error. Please contact support")
+            alertWithTitle("Restore failed", message: "Unknown error. Please contact support")
         } else if results.restoredPurchases.count > 0 {
             print("Restore Success: \(results.restoredPurchases)")
-            return alertWithTitle("Purchases Restored", message: "All purchases have been restored")
-            
+            alertWithTitle("Purchases Restored", message: "All purchases have been restored")
         } else {
             print("Nothing to Restore")
-            return alertWithTitle("Nothing to restore", message: "No previous purchases were found")
+            alertWithTitle("Nothing to restore", message: "No previous purchases were found")
         }
     }
     
-    //MARK:-  Alert
-    func alertWithTitle(_ title: String, message: String) -> UIAlertController {
-
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-
-        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-        return alert
-    }
     
-    func showAlert(_ alert: UIAlertController) {
+    // MARK:- Alert
+    func alertWithTitle(_ title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        
         guard self.presentedViewController != nil else {
             self.present(alert, animated: true, completion: nil)
             return

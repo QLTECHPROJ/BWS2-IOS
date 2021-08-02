@@ -75,8 +75,6 @@ class ManagePlanListVC: BaseViewController {
         
         setupUI()
         
-        // fetchPlans()
-        
         callManagePlanListAPI()
     }
     
@@ -183,7 +181,13 @@ class ManagePlanListVC: BaseViewController {
     
     func setStartButtonTitle() {
         if selectedPlanIndex < arrayPlans.count {
-            let planText = "START AT " + "$" + arrayPlans[selectedPlanIndex].PlanAmount + " / " + arrayPlans[selectedPlanIndex].PlanTenure
+            var planAmount = "$" + arrayPlans[selectedPlanIndex].PlanAmount
+            
+            if arrayPlans[selectedPlanIndex].iapPrice.trim.count > 0 {
+                planAmount = arrayPlans[selectedPlanIndex].iapPrice
+            }
+            
+            let planText = "START AT " + planAmount + " / " + arrayPlans[selectedPlanIndex].PlanTenure
             btnStart.setTitle(planText.uppercased(), for: .normal)
             btnStart.isEnabled = true
             lblTrialText.text = arrayPlans[selectedPlanIndex].FreeTrial
@@ -239,43 +243,6 @@ class ManagePlanListVC: BaseViewController {
         
         lblPrivacy.textColor = UIColor.black
         lblPrivacy.delegate = self
-    }
-    
-    func fetchPlans() {
-        let weeklyPlan = PlanDetailsModel()
-        weeklyPlan.isSelected = true
-        weeklyPlan.PlanInterval = "Weekly"
-        weeklyPlan.SubName = "Lorem ipsum dolor sit"
-        weeklyPlan.PlanAmount = "$9.99"
-        weeklyPlan.PlanTenure = "Week"
-        arrayPlans.append(weeklyPlan)
-        
-        let monthlyPlan = PlanDetailsModel()
-        monthlyPlan.isSelected = false
-        monthlyPlan.PlanInterval = "Monthly"
-        monthlyPlan.SubName = "Lorem ipsum dolor sit"
-        monthlyPlan.PlanAmount = "$29.99"
-        monthlyPlan.PlanTenure = "Month"
-        arrayPlans.append(monthlyPlan)
-        
-        let sixMonthlyPlan = PlanDetailsModel()
-        sixMonthlyPlan.isSelected = false
-        sixMonthlyPlan.PlanInterval = "Six-Monthly"
-        sixMonthlyPlan.SubName = "Lorem ipsum dolor sit"
-        sixMonthlyPlan.PlanAmount = "$149.99"
-        sixMonthlyPlan.PlanTenure = "Six Month"
-        sixMonthlyPlan.RecommendedFlag = "1"
-        arrayPlans.append(sixMonthlyPlan)
-        
-        let yearlyPlan = PlanDetailsModel()
-        yearlyPlan.isSelected = false
-        yearlyPlan.PlanInterval = "Annual"
-        yearlyPlan.SubName = "Lorem ipsum dolor sit"
-        yearlyPlan.PlanAmount = "$249.99"
-        yearlyPlan.PlanTenure = "Year"
-        arrayPlans.append(yearlyPlan)
-        
-        setupData()
     }
     
     
