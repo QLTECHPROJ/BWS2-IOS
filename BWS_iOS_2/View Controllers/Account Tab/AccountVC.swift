@@ -37,12 +37,12 @@ class AccountVC: BaseViewController {
     var imageData = UploadDataModel()
     
     var arrayImage : [[String]] = [
-        ["UserName", "download_account", "Resources", "Reminder", "Billing", "Invoices"],
+        ["UserName", "download_account", "Resources", "Reminder", "Billing"],
         ["FAQ", "Logout"]
     ]
     
     var arrayTitle : [[AccountMenu]] = [
-        [AccountMenu.accountInfo, AccountMenu.downloads, AccountMenu.resources, AccountMenu.reminder, AccountMenu.billingAndOrder, AccountMenu.invoices],
+        [AccountMenu.accountInfo, AccountMenu.downloads, AccountMenu.resources, AccountMenu.reminder, AccountMenu.billingAndOrder],
         [AccountMenu.faq, AccountMenu.logout]
     ]
     

@@ -18,7 +18,7 @@ class HomeVC: BaseViewController {
     
     @IBOutlet weak var backView: UIView!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var viewReminder: UIView!
+    
     
     // MARK:- VARIABLES
     var suggstedPlaylist : PlaylistDetailsModel?

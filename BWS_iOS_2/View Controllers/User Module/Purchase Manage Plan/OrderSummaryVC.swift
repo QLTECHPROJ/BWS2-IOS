@@ -24,6 +24,8 @@ class OrderSummaryVC: BaseViewController {
     @IBOutlet weak var lblPlanPriceDesc1: UILabel!
     
     @IBOutlet weak var lblPlanRenewal: UILabel!
+    
+    @IBOutlet weak var lblPlanExpiredTitle: UILabel!
     @IBOutlet weak var lblPlanExpired: UILabel!
     
     @IBOutlet weak var lblTotalAmount: UILabel!
@@ -56,6 +58,9 @@ class OrderSummaryVC: BaseViewController {
         
         lblPlanRenewal.text = planData.PlanTenure
         lblPlanExpired.text = planData.PlanNextRenewal
+        
+        lblPlanExpiredTitle.isHidden = true
+        lblPlanExpired.isHidden = true
         
         if planData.iapPrice.trim.count > 0 {
             lblPlanPrice.text = planData.iapPrice
