@@ -91,6 +91,9 @@ enum APIRouter: URLRequestConvertible {
     // Audio Interruption
     case audiointerruption([String:Any])
     
+    //ActivityTracking
+    case useraudiotracking([String:Any])
+    
     var route: APIRoute {
         switch self {
         case .appversion(let data):
@@ -224,6 +227,11 @@ enum APIRouter: URLRequestConvertible {
         // Audio Interruption
         case .audiointerruption(let data):
             return APIRoute(path: "audiointerruption", method: .post, data: data)
+            
+        // ActivityTracking
+        case .useraudiotracking(let data):
+            return APIRoute(path: "useraudiotracking", method: .post, data: data)
+            
         }
     }
     

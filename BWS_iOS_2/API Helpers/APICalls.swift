@@ -502,6 +502,23 @@ extension UIViewController {
         }
     }
     
+    // API for userActivityTrack - suggested Playlist
+    func callAudioActivityTracking(audioId:String, playlistId:String, startTime:String, completedTime:String, volume:String,  complitionBlock : ((SendOTPModel) -> ())?) {
+        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
+                          "AudioId":audioId,
+                          "PlaylistId":playlistId,
+                          "StartTime":startTime,
+                          "CompletedTime":completedTime,
+                          "Volume":volume]
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.useraudiotracking(parameters), displayHud: true, showToast: false) { (response : SendOTPModel) in
+            if response.ResponseCode == "200" {
+               
+                complitionBlock?(response)
+            }
+        }
+    }
+    
 }
 
 extension ManageVC {
