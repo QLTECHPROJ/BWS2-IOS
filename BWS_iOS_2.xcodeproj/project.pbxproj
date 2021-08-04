@@ -499,8 +499,8 @@
 		9A55EB462668EA58006E398A /* InvoiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A55EB3B2668EA58006E398A /* InvoiceCell.xib */; };
 		9A55EB472668EA58006E398A /* InvoiceDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A55EB3C2668EA58006E398A /* InvoiceDetailVC.swift */; };
 		9A55EB482668EA58006E398A /* InvoiceDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A55EB3C2668EA58006E398A /* InvoiceDetailVC.swift */; };
-		9A60383F26B81BA0008D2806 /* SuggestedPlaylist_ActivityTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A60383E26B81BA0008D2806 /* SuggestedPlaylist_ActivityTracking.swift */; };
-		9A60384026B81BA0008D2806 /* SuggestedPlaylist_ActivityTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A60383E26B81BA0008D2806 /* SuggestedPlaylist_ActivityTracking.swift */; };
+		9A60383F26B81BA0008D2806 /* SuggestedPlaylistTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A60383E26B81BA0008D2806 /* SuggestedPlaylistTracking.swift */; };
+		9A60384026B81BA0008D2806 /* SuggestedPlaylistTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A60383E26B81BA0008D2806 /* SuggestedPlaylistTracking.swift */; };
 		9A62E91D26820D3400883BBD /* EmailVerifyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A62E91C26820D3400883BBD /* EmailVerifyVC.swift */; };
 		9A62E91E26820D3400883BBD /* EmailVerifyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A62E91C26820D3400883BBD /* EmailVerifyVC.swift */; };
 		9A63D461265778D800B596D7 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A63D460265778D800B596D7 /* IAPHelper.swift */; };
@@ -830,7 +830,7 @@
 		9A55EB3A2668EA58006E398A /* InvoiceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvoiceCell.swift; sourceTree = "<group>"; };
 		9A55EB3B2668EA58006E398A /* InvoiceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InvoiceCell.xib; sourceTree = "<group>"; };
 		9A55EB3C2668EA58006E398A /* InvoiceDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvoiceDetailVC.swift; sourceTree = "<group>"; };
-		9A60383E26B81BA0008D2806 /* SuggestedPlaylist_ActivityTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestedPlaylist_ActivityTracking.swift; sourceTree = "<group>"; };
+		9A60383E26B81BA0008D2806 /* SuggestedPlaylistTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestedPlaylistTracking.swift; sourceTree = "<group>"; };
 		9A62E91C26820D3400883BBD /* EmailVerifyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailVerifyVC.swift; sourceTree = "<group>"; };
 		9A63D460265778D800B596D7 /* IAPHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
 		9A63D4672657864E00B596D7 /* SwiftyStoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftyStoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1449,7 +1449,7 @@
 			children = (
 				28F812B925FB356000DC6AF6 /* Brain Wellness App.entitlements */,
 				28F812A225FB336F00DC6AF6 /* AppDelegate.swift */,
-				9A60383D26B81B66008D2806 /* SuggestedPlaylist_ActivityTracking */,
+				9A60383D26B81B66008D2806 /* SuggestedPlaylistTracking */,
 				9A63D463265785D100B596D7 /* IAP */,
 				28282C6B268C5BE300D56021 /* Segment */,
 				281DE3152626FD79002CCD9D /* DJMusicPlayer */,
@@ -1562,12 +1562,12 @@
 			path = VC;
 			sourceTree = "<group>";
 		};
-		9A60383D26B81B66008D2806 /* SuggestedPlaylist_ActivityTracking */ = {
+		9A60383D26B81B66008D2806 /* SuggestedPlaylistTracking */ = {
 			isa = PBXGroup;
 			children = (
-				9A60383E26B81BA0008D2806 /* SuggestedPlaylist_ActivityTracking.swift */,
+				9A60383E26B81BA0008D2806 /* SuggestedPlaylistTracking.swift */,
 			);
-			path = SuggestedPlaylist_ActivityTracking;
+			path = SuggestedPlaylistTracking;
 			sourceTree = "<group>";
 		};
 		9A63D463265785D100B596D7 /* IAP */ = {
@@ -2085,7 +2085,7 @@
 				2870B3F025FB41A10014A4F6 /* UITextField+Extension.swift in Sources */,
 				281DE3422626FD79002CCD9D /* DJMusicPlayer+ControlCenter.swift in Sources */,
 				281DE3382626FD79002CCD9D /* DJMusicPlayerReachability.swift in Sources */,
-				9A60384026B81BA0008D2806 /* SuggestedPlaylist_ActivityTracking.swift in Sources */,
+				9A60384026B81BA0008D2806 /* SuggestedPlaylistTracking.swift in Sources */,
 				2870B37425FB405D0014A4F6 /* APICalls.swift in Sources */,
 				282441462609ACE30060292E /* UserListCell.swift in Sources */,
 				282441522609AD2E0060292E /* UserListVC.swift in Sources */,
@@ -2309,7 +2309,7 @@
 				28ED2FB225FB8C6600E59C56 /* ProfileForm3VC.swift in Sources */,
 				281DE3412626FD79002CCD9D /* DJMusicPlayer+ControlCenter.swift in Sources */,
 				281DE3372626FD79002CCD9D /* DJMusicPlayerReachability.swift in Sources */,
-				9A60383F26B81BA0008D2806 /* SuggestedPlaylist_ActivityTracking.swift in Sources */,
+				9A60383F26B81BA0008D2806 /* SuggestedPlaylistTracking.swift in Sources */,
 				2870B37325FB405D0014A4F6 /* APICalls.swift in Sources */,
 				282441452609ACE30060292E /* UserListCell.swift in Sources */,
 				282441512609AD2E0060292E /* UserListVC.swift in Sources */,

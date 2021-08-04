@@ -468,16 +468,16 @@ extension UIViewController {
     
     //App Verify Reciept
     func callVerifyRecieptAPI(strreceiptData : String, complitionBlock : (() -> ())?) {
-            let parameters = ["receiptData":strreceiptData]
-            
-            APICallManager.sharedInstance.callAPI(router: APIRouter.verifyreceipt(parameters), displayHud: false, showToast: false) { (response : GeneralModel) in
-                if response.ResponseCode == "200" {
-                    DispatchQueue.main.async {
-                        complitionBlock?()
-                    }
+        let parameters = ["receiptData":strreceiptData]
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.verifyreceipt(parameters), displayHud: false, showToast: false) { (response : GeneralModel) in
+            if response.ResponseCode == "200" {
+                DispatchQueue.main.async {
+                    complitionBlock?()
                 }
             }
         }
+    }
     
     // Forgot Pin API Call
     func callForgotPinAPI(selectedUser : CoUserDataModel, complitionBlock : (() -> ())?) {
@@ -498,23 +498,6 @@ extension UIViewController {
                 complitionBlock?()
             } else {
                 showAlertToast(message: response.ResponseMessage)
-            }
-        }
-    }
-    
-    // API for userActivityTrack - suggested Playlist
-    func callAudioActivityTracking(audioId:String, playlistId:String, startTime:String, completedTime:String, volume:String,  complitionBlock : ((SendOTPModel) -> ())?) {
-        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
-                          "AudioId":audioId,
-                          "PlaylistId":playlistId,
-                          "StartTime":startTime,
-                          "CompletedTime":completedTime,
-                          "Volume":volume]
-        
-        APICallManager.sharedInstance.callAPI(router: APIRouter.useraudiotracking(parameters), displayHud: true, showToast: false) { (response : SendOTPModel) in
-            if response.ResponseCode == "200" {
-               
-                complitionBlock?(response)
             }
         }
     }

@@ -449,6 +449,17 @@ class PlaylistAudiosVC: BaseViewController {
         self.setupData()
     }
     
+    func activityTrack() {
+        guard let playlistData = DJMusicPlayer.shared.currentPlaylist else {
+            return
+        }
+        if  playlistData.selfCreated == "2"  &&  DJMusicPlayer.shared.playerType == .downloadedPlaylist {
+            if let audioData = DJMusicPlayer.shared.currentlyPlaying {
+                SuggestedPlaylistTracking.shared.storeActivityTrack(audioData:audioData,startTime:"\(Date.currentTimeStamp)",completedTime:"\(Date.currentTimeStamp)")
+            }
+        }
+    }
+    
     // MARK:- ACTIONS
     @IBAction func onTappedBack(_ sender: UIButton) {
         if isCome == "Delegate" {
@@ -577,11 +588,13 @@ class PlaylistAudiosVC: BaseViewController {
             DJMusicPlayer.shared.currentPlaylist = objPlaylist
             self.presentAudioPlayer(arrayPlayerData: arraySearchSongs)
             DJMusicPlayer.shared.playingFrom = objPlaylist!.PlaylistName
+            activityTrack()
         } else {
             DJMusicPlayer.shared.playerType = .playlist
             DJMusicPlayer.shared.currentPlaylist = objPlaylist
             self.presentAudioPlayer(arrayPlayerData: arraySearchSongs, index: 0)
             DJMusicPlayer.shared.playingFrom = objPlaylist!.PlaylistName
+            activityTrack()
         }
     }
     
@@ -727,11 +740,13 @@ extension PlaylistAudiosVC : UITableViewDelegate, UITableViewDataSource {
             DJMusicPlayer.shared.currentPlaylist = objPlaylist
             self.presentAudioPlayer(arrayPlayerData: arraySearchSongs, index: indexPath.row)
             DJMusicPlayer.shared.playingFrom = objPlaylist!.PlaylistName
+            activityTrack()
         } else {
             DJMusicPlayer.shared.playerType = .playlist
             DJMusicPlayer.shared.currentPlaylist = objPlaylist
             self.presentAudioPlayer(arrayPlayerData: arraySearchSongs, index: indexPath.row)
             DJMusicPlayer.shared.playingFrom = objPlaylist!.PlaylistName
+            activityTrack()
         }
     }
     
