@@ -7,65 +7,65 @@
 //
 
 import UIKit
-import SJSegmentedScrollView
 
 class BillingOrderVC: BaseViewController {
     
     // MARK:- OUTLETS
-    @IBOutlet weak var viewSegment : UIView!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var btnUpdatePlan: UIButton!
+    @IBOutlet weak var btnCancel: UIButton!
     
-    // MARK:- VARIABLES
-    var selectedSegment: SJSegmentTab?
-    var segmentController = SJSegmentedViewController()
-    var selectedController: UIViewController?
     
+    // MARK:- VIEW LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        openPageMenuOrder()
-    }
-    func openPageMenuOrder()  {
-        let firstVC:CurrPlanVC = storyboard!
-            .instantiateViewController(withIdentifier:"CurrPlanVC") as! CurrPlanVC
-        firstVC.title = "Current Plan"
-        
-        let secondVC:BillingAddressVC = storyboard!
-            .instantiateViewController(withIdentifier:"BillingAddressVC") as! BillingAddressVC
-        secondVC.title = "Billing Address"
-        
-        segmentController.segmentControllers = [firstVC,secondVC]
-        
-        segmentController.segmentTitleColor = Theme.colors.black
-        segmentController.selectedSegmentViewHeight = 3.0
-        segmentController.segmentTitleFont = UIFont(name:"Montserrat-Medium", size: 16)!
-        segmentController.delegate = self
-        segmentController.segmentSelectedTitleColor = Theme.colors.green_008892
-        segmentController.selectedSegmentViewColor = Theme.colors.green_008892
-        segmentController.segmentViewHeight = 50
-        addChild(segmentController)
-        self.viewSegment.addSubview(segmentController.view)
-        segmentController.view.frame = self.viewSegment.bounds
-        segmentController.didMove(toParent: self)
+        setupUI()
     }
     
+    // MARK:- FUNCTIONS
+    override func setupUI() {
+        tableView.register(nibWithCellClass: CurrentPlanCell.self)
+        tableView.rowHeight = UITableView.automaticDimension
+        
+        btnUpdatePlan.isHidden = true
+    }
+    
+    override func setupData() {
+        
+    }
     
     // MARK:- ACTIONS
     @IBAction func backClicked(sender : UIButton) {
-        
         self.navigationController?.popViewController(animated: true)
-        
     }
+    
+    @IBAction func updatePlanClicked(_ sender: UIButton) {
+        let aVC = AppStoryBoard.account.viewController(viewControllerClass: UpgradePlanVC.self)
+        self.navigationController?.pushViewController(aVC, animated: true)
+    }
+    
+    @IBAction func cancelClicked(_ sender: UIButton) {
+        let aVC = AppStoryBoard.account.viewController(viewControllerClass: CancelSubVC.self)
+        self.navigationController?.pushViewController(aVC, animated: true)
+    }
+    
 }
 
 
-    // MARK:- SJSegmentedViewControllerDelegate
-extension BillingOrderVC: SJSegmentedViewControllerDelegate {
+// MARK:- UITableViewDelegate, UITableViewDataSource
+extension BillingOrderVC: UITableViewDelegate, UITableViewDataSource {
     
-    func didMoveToPage(_ controller: UIViewController, segment: SJSegmentTab?, index: Int) {
-        selectedSegment?.titleColor(Theme.colors.black)
-        selectedSegment = segment
-        segment?.titleColor(Theme.colors.black)
-        selectedController = controller
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withClass: CurrentPlanCell.self)
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
     }
     
 }

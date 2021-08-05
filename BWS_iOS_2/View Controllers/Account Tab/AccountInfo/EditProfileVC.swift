@@ -68,6 +68,9 @@ class EditProfileVC: BaseViewController {
         txtFDOB.delegate = self
         txtFName.delegate = self
         
+        txtFMobileNo.isEnabled = false
+        txtFMobileNo.textColor = Theme.colors.gray_7E7E7E
+        
         txtFDOB.addTarget(self, action: #selector(textFieldValueChanged(textField:)), for: .editingChanged)
         
         lblDOB.text = Theme.strings.date_of_birth
@@ -89,7 +92,7 @@ class EditProfileVC: BaseViewController {
         txtFDOB.text = userData.DOB
         
         imgCheckMobile.isHidden = false
-        imgCheckEmail.isHidden = false
+        imgCheckEmail.isHidden = (userData.isEmailVerified != "1")
         
         self.initDOBPickerView()
         
@@ -293,7 +296,7 @@ extension EditProfileVC : UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         imgCheckMobile.isHidden = !isMobileNumberValid(strMobile: txtFMobileNo.text?.trim ?? "")
-        imgCheckEmail.isHidden = !isEmailAddressValid(strEmail: txtFEmailAdd.text?.trim ?? "")
+        // imgCheckEmail.isHidden = !isEmailAddressValid(strEmail: txtFEmailAdd.text?.trim ?? "")
         buttonEnableDisable()
     }
     

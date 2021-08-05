@@ -12,7 +12,6 @@ import JVFloatLabeledTextField
 class BillingAddressVC: BaseViewController {
     
     // MARK:- OUTLETS
-    
     @IBOutlet weak var btnSave: UIButton!
     @IBOutlet weak var txtName : JVFloatLabeledTextField!
     @IBOutlet weak var txtEmail : JVFloatLabeledTextField!
@@ -34,16 +33,11 @@ class BillingAddressVC: BaseViewController {
     @IBOutlet weak var lblErrorAdd1: UILabel!
     @IBOutlet weak var lblErrorCountry: UILabel!
     
-    // MARK:- VARIABLES
-   
     
     // MARK:- VIEW LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
-
-      //btnSave.backgroundColor = Theme.colors.button_Background
-      
-        //setupData()
+        
         setupUI()
     }
     
@@ -81,10 +75,6 @@ class BillingAddressVC: BaseViewController {
         txtCity.attributedPlaceholder = NSAttributedString(string:"Suburb / Town / City", attributes: [NSAttributedString.Key.foregroundColor:hexStringToUIColor(hex: "#2A3042"), NSAttributedString.Key.font: UIFont(name: "Montserrat-Regular", size: 13)!])
         txtState.attributedPlaceholder = NSAttributedString(string:"State", attributes: [NSAttributedString.Key.foregroundColor:hexStringToUIColor(hex: "#2A3042"), NSAttributedString.Key.font: UIFont(name: "Montserrat-Regular", size: 13)!])
         txtPostalCode.attributedPlaceholder = NSAttributedString(string:"Postcode", attributes: [NSAttributedString.Key.foregroundColor:hexStringToUIColor(hex: "#2A3042"), NSAttributedString.Key.font: UIFont(name: "Montserrat-Regular", size: 13)!])
-        
-        
-        
-        
     }
     
     
@@ -96,52 +86,45 @@ class BillingAddressVC: BaseViewController {
             self.lblErrorName.isHidden = false
             return false
         }
-            //        else if txtEmail.text?.trim.count == 0 && txtEmail.isEnabled == true {
-            //            showAlertToast(message: Theme.strings.alert_blank_email_error)
-            //            return false
-            //        }
-            //        else if !txtEmail.text!.isValidEmail && txtEmail.isEnabled == true {
-            //            showAlertToast(message: Theme.strings.alert_invalid_email_error)
-            //            return false
-            //        }
+        //        else if txtEmail.text?.trim.count == 0 && txtEmail.isEnabled == true {
+        //            showAlertToast(message: Theme.strings.alert_blank_email_error)
+        //            return false
+        //        }
+        //        else if !txtEmail.text!.isValidEmail && txtEmail.isEnabled == true {
+        //            showAlertToast(message: Theme.strings.alert_invalid_email_error)
+        //            return false
+        //        }
         else if txtEmail.text?.trim.count == 0 {
-            //            showAlertToast(message: Theme.strings.alert_blank_email_error)
             self.lblErrorEmail.text = Theme.strings.alert_blank_email_error
             self.lblErrorEmail.isHidden = false
             return false
         }
         else if !txtEmail.text!.isValidEmail {
-            //            showAlertToast(message: Theme.strings.alert_invalid_email_error)
             self.lblErrorEmail.text = Theme.strings.alert_invalid_email_error
             self.lblErrorEmail.isHidden = false
             return false
         }
         else if txtCountry.text?.trim.count == 0 {
-            //            showAlertToast(message: Theme.strings.alert_blank_country)
             self.lblErrorCountry.text = Theme.strings.alert_blank_country
             self.lblErrorCountry.isHidden = false
             return false
         }
         else if txtAddressLine1.text?.trim.count == 0 {
-            //            showAlertToast(message: Theme.strings.alert_blank_addressLine)
             self.lblErrorAdd1.text =  Theme.strings.alert_blank_addressLine
             self.lblErrorAdd1.isHidden = false
             return false
         }
         else if txtCity.text?.trim.count == 0 {
-            //            showAlertToast(message: Theme.strings.alert_blank_City)
             self.lblErrorSuburb.text =  Theme.strings.alert_blank_City
             self.lblErrorSuburb.isHidden = false
             return false
         }
         else if txtState.text?.trim.count == 0 {
-            //            showAlertToast(message: Theme.strings.alert_blank_State)
             self.lblErrorState.text =  Theme.strings.alert_blank_State
             self.lblErrorState.isHidden = false
             return false
         }
         else if txtPostalCode.text?.trim.count == 0 {
-            //            showAlertToast(message: Theme.strings.alert_blank_postalCode)
             self.lblErrorPincode.text =  Theme.strings.alert_blank_postalCode
             self.lblErrorPincode.isHidden = false
             return false
@@ -155,23 +138,25 @@ class BillingAddressVC: BaseViewController {
             showAlertToast(message: Theme.strings.alert_check_internet)
             return
         }
+        
         if self.checkValidation() {
-           
+            
         }
     }
     
 }
 
 
-
+// MARK:- UITextFieldDelegate
 extension BillingAddressVC : UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         return textField.resignFirstResponder()
     }
+    
     func textFieldDidBeginEditing(_ textField: UITextField) {
         btnSave.isUserInteractionEnabled = true
-       // btnSave.backgroundColor = Theme.colors.button_Background
+        // btnSave.backgroundColor = Theme.colors.button_Background
         
         lblErrorName.isHidden = true
         lblErrorEmail.isHidden = true
@@ -185,14 +170,14 @@ extension BillingAddressVC : UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-//        if let data = billingAddress {
-//        if  txtName.text == data.Name  && txtEmail.text == data.Email  && txtMobile.text == data.PhoneNumber && txtCountry.text == data.Country && txtAddressLine1.text == data.Address1 && txtAddressLine2.text == data.Address2 && txtCity.text == data.Suburb && txtState.text == data.State && txtPostalCode.text == data.Postcode  {
-//            btnSave.isUserInteractionEnabled = false
-//            btnSave.backgroundColor = hexStringToUIColor(hex: "7E7E7E")
-//        }else {
-//            btnSave.isUserInteractionEnabled = true
-//            btnSave.backgroundColor = Theme.colors.button_Background
-//        }
-//        }
+        //        if let data = billingAddress {
+        //            if  txtName.text == data.Name  && txtEmail.text == data.Email  && txtMobile.text == data.PhoneNumber && txtCountry.text == data.Country && txtAddressLine1.text == data.Address1 && txtAddressLine2.text == data.Address2 && txtCity.text == data.Suburb && txtState.text == data.State && txtPostalCode.text == data.Postcode  {
+        //                btnSave.isUserInteractionEnabled = false
+        //                btnSave.backgroundColor = hexStringToUIColor(hex: "7E7E7E")
+        //            } else {
+        //                btnSave.isUserInteractionEnabled = true
+        //                btnSave.backgroundColor = Theme.colors.button_Background
+        //            }
+        //        }
     }
 }

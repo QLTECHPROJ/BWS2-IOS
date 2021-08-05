@@ -41,7 +41,13 @@ class UserDetailVC: BaseViewController {
     }
     
     override func setupData() {
-        
+        if let controllers = self.navigationController?.viewControllers {
+            for (index, controller) in controllers.enumerated() {
+                if controller.isKind(of: SetUpPInVC.self) {
+                    self.navigationController?.viewControllers.remove(at: index)
+                }
+            }
+        }
     }
     
     override func buttonEnableDisable() {

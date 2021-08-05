@@ -37,12 +37,12 @@ class AccountVC: BaseViewController {
     var imageData = UploadDataModel()
     
     var arrayImage : [[String]] = [
-        ["UserName", "download_account", "Resources", "Reminder", "Billing"],
+        ["UserName", "download_account", "Resources", "Reminder"],
         ["FAQ", "Logout"]
     ]
     
     var arrayTitle : [[AccountMenu]] = [
-        [AccountMenu.accountInfo, AccountMenu.downloads, AccountMenu.resources, AccountMenu.reminder, AccountMenu.billingAndOrder],
+        [AccountMenu.accountInfo, AccountMenu.downloads, AccountMenu.resources, AccountMenu.reminder],
         [AccountMenu.faq, AccountMenu.logout]
     ]
     
@@ -72,6 +72,9 @@ class AccountVC: BaseViewController {
         tableView.tableFooterView = tableFooterView
         
         if CoUserDataModel.currentUser?.isMainAccount == "1" {
+            arrayImage[0].append("Billing")
+            arrayTitle[0].append(AccountMenu.billingAndOrder)
+            
             arrayImage[0].append("manage_user")
             arrayTitle[0].append(AccountMenu.manageUser)
         }

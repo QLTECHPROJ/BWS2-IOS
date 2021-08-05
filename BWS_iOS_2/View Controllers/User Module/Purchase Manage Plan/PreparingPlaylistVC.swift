@@ -35,7 +35,7 @@ class PreparingPlaylistVC: BaseViewController {
         animationView.animationType = .ballSpinFadeLoader
         animationView.startAnimating()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 6) {
             
             // Segment Tracking
             SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.playlist_ready)

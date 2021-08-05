@@ -130,18 +130,16 @@ class OTPVC: BaseViewController {
     
     func handleCoUserRedirection() {
         if let coUser = CoUserDataModel.currentUser {
-            if coUser.isAssessmentCompleted == "0" {
+            if coUser.CoUserCount != "0" {
+                CoUserDataModel.currentUser = nil
+                let aVC = AppStoryBoard.main.viewController(viewControllerClass: UserListVC.self)
+                self.navigationController?.pushViewController(aVC, animated: true)
+            } else if coUser.isAssessmentCompleted == "0" {
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass: DoDassAssessmentVC.self)
                 self.navigationController?.pushViewController(aVC, animated: true)
             } else if coUser.planDetails.count == 0 {
-                if coUser.CoUserCount != "0" {
-                    CoUserDataModel.currentUser = nil
-                    let aVC = AppStoryBoard.main.viewController(viewControllerClass: UserListVC.self)
-                    self.navigationController?.pushViewController(aVC, animated: true)
-                } else {
-                    let aVC = AppStoryBoard.main.viewController(viewControllerClass: DassAssessmentResultVC.self)
-                    self.navigationController?.pushViewController(aVC, animated: true)
-                }
+                let aVC = AppStoryBoard.main.viewController(viewControllerClass: DassAssessmentResultVC.self)
+                self.navigationController?.pushViewController(aVC, animated: true)
             } else if coUser.isProfileCompleted == "0" {
                 redirectToProfileStep()
             } else if coUser.AvgSleepTime.trim.count == 0 || coUser.AreaOfFocus.count == 0 {
@@ -165,9 +163,7 @@ class OTPVC: BaseViewController {
         lblError.isHidden = true
         
         callLoginAPI(signUpFlag: signUpFlag, country: selectedCountry, mobileNo: strMobile, username: strName, email: strEmail, resendOTP: "1") { (response : SendOTPModel) in
-            if response.ResponseCode != "200" {
-                showAlertToast(message: response.ResponseMessage)
-            }
+            showAlertToast(message: response.ResponseMessage)
         }
     }
     

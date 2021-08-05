@@ -479,8 +479,6 @@
 		9A55EB262668BE97006E398A /* CurrentPlanCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A55EB232668BE97006E398A /* CurrentPlanCell.swift */; };
 		9A55EB272668BE97006E398A /* CurrentPlanCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A55EB242668BE97006E398A /* CurrentPlanCell.xib */; };
 		9A55EB282668BE97006E398A /* CurrentPlanCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A55EB242668BE97006E398A /* CurrentPlanCell.xib */; };
-		9A55EB2A2668CA54006E398A /* CurrPlanVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A55EB292668CA54006E398A /* CurrPlanVC.swift */; };
-		9A55EB2B2668CA54006E398A /* CurrPlanVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A55EB292668CA54006E398A /* CurrPlanVC.swift */; };
 		9A55EB2D2668E90B006E398A /* UpgradePlanVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A55EB2C2668E90B006E398A /* UpgradePlanVC.swift */; };
 		9A55EB2E2668E90B006E398A /* UpgradePlanVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A55EB2C2668E90B006E398A /* UpgradePlanVC.swift */; };
 		9A55EB302668EA29006E398A /* BillingAddressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A55EB2F2668EA29006E398A /* BillingAddressVC.swift */; };
@@ -818,7 +816,6 @@
 		9A55EB202668B309006E398A /* BillingOrderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillingOrderVC.swift; sourceTree = "<group>"; };
 		9A55EB232668BE97006E398A /* CurrentPlanCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentPlanCell.swift; sourceTree = "<group>"; };
 		9A55EB242668BE97006E398A /* CurrentPlanCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrentPlanCell.xib; sourceTree = "<group>"; };
-		9A55EB292668CA54006E398A /* CurrPlanVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrPlanVC.swift; sourceTree = "<group>"; };
 		9A55EB2C2668E90B006E398A /* UpgradePlanVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpgradePlanVC.swift; sourceTree = "<group>"; };
 		9A55EB2F2668EA29006E398A /* BillingAddressVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillingAddressVC.swift; sourceTree = "<group>"; };
 		9A55EB322668EA33006E398A /* CancelSubVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CancelSubVC.swift; sourceTree = "<group>"; };
@@ -1521,7 +1518,6 @@
 			isa = PBXGroup;
 			children = (
 				9A55EB202668B309006E398A /* BillingOrderVC.swift */,
-				9A55EB292668CA54006E398A /* CurrPlanVC.swift */,
 				9A55EB2C2668E90B006E398A /* UpgradePlanVC.swift */,
 				9A55EB2F2668EA29006E398A /* BillingAddressVC.swift */,
 				9A55EB322668EA33006E398A /* CancelSubVC.swift */,
@@ -1993,7 +1989,6 @@
 				28B2F4AC2642C143009A4E5B /* PlanFeaturesCell.swift in Sources */,
 				28E809532613591400CD80F7 /* AudioCollectionCell.swift in Sources */,
 				2891E2A12643CCF800658B49 /* SelectPlayListCell.swift in Sources */,
-				9A55EB2B2668CA54006E398A /* CurrPlanVC.swift in Sources */,
 				2870B44825FB41A10014A4F6 /* ReorderController+AutoScroll.swift in Sources */,
 				28ED2FB625FB8C6E00E59C56 /* ProfileForm4VC.swift in Sources */,
 				2891E2AB2643CCF800658B49 /* TimeView.swift in Sources */,
@@ -2216,7 +2211,6 @@
 				28B2F4AB2642C143009A4E5B /* PlanFeaturesCell.swift in Sources */,
 				28E809522613591400CD80F7 /* AudioCollectionCell.swift in Sources */,
 				2891E2A02643CCF800658B49 /* SelectPlayListCell.swift in Sources */,
-				9A55EB2A2668CA54006E398A /* CurrPlanVC.swift in Sources */,
 				2870B44725FB41A10014A4F6 /* ReorderController+AutoScroll.swift in Sources */,
 				28ED2FB525FB8C6E00E59C56 /* ProfileForm4VC.swift in Sources */,
 				2891E2AA2643CCF800658B49 /* TimeView.swift in Sources */,

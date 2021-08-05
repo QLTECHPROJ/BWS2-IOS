@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9Tl-Ar-V2m">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9Tl-Ar-V2m">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -2050,10 +2050,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nYc-oe-HUY">
-                                <rect key="frame" x="0.0" y="88" width="375" height="690"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NLb-nh-Fty">
                                 <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                                 <subviews>
@@ -2065,13 +2061,13 @@
                                         </constraints>
                                         <state key="normal" image="BackButton"/>
                                         <connections>
-                                            <action selector="backClickedWithSender:" destination="g49-BE-R3O" eventType="touchUpInside" id="528-Le-H0y"/>
+                                            <action selector="backClickedWithSender:" destination="g49-BE-R3O" eventType="touchUpInside" id="QXT-7M-fNT"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Billing and Order" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VMD-xM-v8n">
-                                        <rect key="frame" x="120.33333333333333" y="13" width="134.66666666666669" height="18"/>
+                                        <rect key="frame" x="131.33333333333334" y="13.333333333333337" width="112.33333333333334" height="17.666666666666671"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="15"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" name="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -2084,26 +2080,91 @@
                                     <constraint firstAttribute="height" constant="44" id="stb-Is-maC"/>
                                 </constraints>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YAF-dP-45L">
+                                <rect key="frame" x="0.0" y="88" width="375" height="586"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="g49-BE-R3O" id="kUb-v4-sVS"/>
+                                    <outlet property="delegate" destination="g49-BE-R3O" id="RVK-L9-zJk"/>
+                                </connections>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q8v-Oa-uod">
+                                <rect key="frame" x="0.0" y="674" width="375" height="104"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="p0Q-kK-gHt">
+                                        <rect key="frame" x="37.666666666666657" y="10" width="300" height="84"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N8z-zW-zLv">
+                                                <rect key="frame" x="0.0" y="0.0" width="300" height="50"/>
+                                                <color key="backgroundColor" name="Green"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="2TF-Vt-Sp9"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="15"/>
+                                                <state key="normal" title="UPDATE PLAN">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="25"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="updatePlanClicked:" destination="g49-BE-R3O" eventType="touchUpInside" id="JrT-5B-hg5"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6pe-Rd-J0t">
+                                                <rect key="frame" x="0.0" y="54" width="300" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="N0Y-3n-EVA"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
+                                                <state key="normal" title="CANCEL">
+                                                    <color key="titleColor" name="666666"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="cancelClicked:" destination="g49-BE-R3O" eventType="touchUpInside" id="G4k-Ff-jTi"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="p0Q-kK-gHt" firstAttribute="centerX" secondItem="q8v-Oa-uod" secondAttribute="centerX" id="V4i-SC-epo"/>
+                                    <constraint firstItem="p0Q-kK-gHt" firstAttribute="top" secondItem="q8v-Oa-uod" secondAttribute="top" constant="10" id="aub-Yd-Thi"/>
+                                    <constraint firstItem="p0Q-kK-gHt" firstAttribute="width" secondItem="q8v-Oa-uod" secondAttribute="width" multiplier="300:375" id="ke1-9h-uj0"/>
+                                    <constraint firstItem="p0Q-kK-gHt" firstAttribute="centerY" secondItem="q8v-Oa-uod" secondAttribute="centerY" id="mIU-ag-s7W"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="0ie-s0-JqC"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="nYc-oe-HUY" firstAttribute="leading" secondItem="0ie-s0-JqC" secondAttribute="leading" id="AkK-BY-Vsa"/>
-                            <constraint firstItem="nYc-oe-HUY" firstAttribute="trailing" secondItem="0ie-s0-JqC" secondAttribute="trailing" id="EmA-67-Zcz"/>
-                            <constraint firstItem="0ie-s0-JqC" firstAttribute="bottom" secondItem="nYc-oe-HUY" secondAttribute="bottom" id="Ihd-ak-fjj"/>
-                            <constraint firstItem="nYc-oe-HUY" firstAttribute="top" secondItem="NLb-nh-Fty" secondAttribute="bottom" id="UY0-Aa-WMp"/>
+                            <constraint firstItem="0ie-s0-JqC" firstAttribute="trailing" secondItem="YAF-dP-45L" secondAttribute="trailing" id="6E3-tU-pUE"/>
+                            <constraint firstItem="YAF-dP-45L" firstAttribute="top" secondItem="NLb-nh-Fty" secondAttribute="bottom" id="G3p-De-JGD"/>
+                            <constraint firstItem="0ie-s0-JqC" firstAttribute="bottom" secondItem="q8v-Oa-uod" secondAttribute="bottom" id="Gpr-DM-di6"/>
+                            <constraint firstItem="q8v-Oa-uod" firstAttribute="trailing" secondItem="0ie-s0-JqC" secondAttribute="trailing" id="KGS-JP-bW5"/>
                             <constraint firstItem="NLb-nh-Fty" firstAttribute="top" secondItem="0ie-s0-JqC" secondAttribute="top" id="Xmn-XV-VK7"/>
+                            <constraint firstItem="YAF-dP-45L" firstAttribute="leading" secondItem="0ie-s0-JqC" secondAttribute="leading" id="cc3-kM-RBt"/>
+                            <constraint firstItem="q8v-Oa-uod" firstAttribute="top" secondItem="YAF-dP-45L" secondAttribute="bottom" id="hP3-Ys-gaj"/>
                             <constraint firstAttribute="trailing" secondItem="NLb-nh-Fty" secondAttribute="trailing" id="haT-zb-Apf"/>
+                            <constraint firstItem="q8v-Oa-uod" firstAttribute="leading" secondItem="0ie-s0-JqC" secondAttribute="leading" id="iuY-gS-zaF"/>
                             <constraint firstItem="NLb-nh-Fty" firstAttribute="leading" secondItem="eJb-HV-pBU" secondAttribute="leading" id="ob3-A4-IAk"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="viewSegment" destination="nYc-oe-HUY" id="vCE-ge-cNH"/>
+                        <outlet property="btnCancel" destination="6pe-Rd-J0t" id="O4t-Tb-3dE"/>
+                        <outlet property="btnUpdatePlan" destination="N8z-zW-zLv" id="8QB-4j-L3y"/>
+                        <outlet property="tableView" destination="YAF-dP-45L" id="26i-E6-ljg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cVW-4W-om4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="316" y="3273"/>
+            <point key="canvasLocation" x="316" y="3272.6600985221676"/>
         </scene>
         <!--DayVC-->
         <scene sceneID="ueJ-ak-OQI">
@@ -3408,81 +3469,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t85-7I-GH1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3521" y="3273"/>
-        </scene>
-        <!--Curr PlanVC-->
-        <scene sceneID="iwb-Jc-T1m">
-            <objects>
-                <viewController storyboardIdentifier="CurrPlanVC" id="jDx-fK-Qez" customClass="CurrPlanVC" customModule="BWS_2_Staging" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="lfj-81-XTu">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="t2e-5Y-yOj">
-                                <rect key="frame" x="0.0" y="44" width="375" height="614"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="jDx-fK-Qez" id="rke-l2-BQ3"/>
-                                    <outlet property="delegate" destination="jDx-fK-Qez" id="08b-wJ-TKt"/>
-                                </connections>
-                            </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lG5-Tq-1bV">
-                                <rect key="frame" x="40" y="674" width="295" height="50"/>
-                                <color key="backgroundColor" name="Green"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="RCK-bi-OxM"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="15"/>
-                                <state key="normal" title="UPDATE PLAN">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="25"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="onTappedUpdatePlan:" destination="jDx-fK-Qez" eventType="touchUpInside" id="Hff-pB-6Mc"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rR4-Bc-7HO">
-                                <rect key="frame" x="16" y="728" width="343" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="uoL-27-myj"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
-                                <state key="normal" title="CANCEL">
-                                    <color key="titleColor" name="666666"/>
-                                </state>
-                                <connections>
-                                    <action selector="onTappedCancel:" destination="jDx-fK-Qez" eventType="touchUpInside" id="8mz-cA-uHH"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="Jke-eZ-Eid"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="rR4-Bc-7HO" firstAttribute="top" secondItem="lG5-Tq-1bV" secondAttribute="bottom" constant="4" id="AOZ-kF-lgR"/>
-                            <constraint firstItem="Jke-eZ-Eid" firstAttribute="bottom" secondItem="rR4-Bc-7HO" secondAttribute="bottom" constant="20" id="DBp-3f-3UZ"/>
-                            <constraint firstItem="Jke-eZ-Eid" firstAttribute="trailing" secondItem="rR4-Bc-7HO" secondAttribute="trailing" constant="16" id="Etp-Ye-vIX"/>
-                            <constraint firstItem="lG5-Tq-1bV" firstAttribute="top" secondItem="t2e-5Y-yOj" secondAttribute="bottom" constant="16" id="FXR-2E-0Zw"/>
-                            <constraint firstItem="lG5-Tq-1bV" firstAttribute="leading" secondItem="Jke-eZ-Eid" secondAttribute="leading" constant="40" id="RSf-bO-7PJ"/>
-                            <constraint firstItem="Jke-eZ-Eid" firstAttribute="trailing" secondItem="t2e-5Y-yOj" secondAttribute="trailing" id="S8e-Id-yci"/>
-                            <constraint firstItem="Jke-eZ-Eid" firstAttribute="trailing" secondItem="lG5-Tq-1bV" secondAttribute="trailing" constant="40" id="W0t-cM-0lq"/>
-                            <constraint firstItem="t2e-5Y-yOj" firstAttribute="leading" secondItem="Jke-eZ-Eid" secondAttribute="leading" id="j5q-wQ-C9G"/>
-                            <constraint firstItem="t2e-5Y-yOj" firstAttribute="top" secondItem="Jke-eZ-Eid" secondAttribute="top" id="jGs-ZT-unz"/>
-                            <constraint firstItem="rR4-Bc-7HO" firstAttribute="leading" secondItem="Jke-eZ-Eid" secondAttribute="leading" constant="16" id="kLa-hT-KcE"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="tableview" destination="t2e-5Y-yOj" id="seE-iM-D0y"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="oYm-fk-TcI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1132" y="3273"/>
         </scene>
         <!--InvoiceVC-->
         <scene sceneID="cHc-S6-5Wn">
