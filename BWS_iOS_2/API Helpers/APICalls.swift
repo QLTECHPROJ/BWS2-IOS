@@ -1548,7 +1548,7 @@ extension UserDetailVC {
                           "Name":txtFName.text ?? "",
                           "Email":txtFEmail.text ?? ""]
         
-        APICallManager.sharedInstance.callAPI(router: APIRouter.addcouser(parameters), displayHud: true, showToast: false) { (response : CoUserModel) in
+        APICallManager.sharedInstance.callAPI(router: APIRouter.addcouser(parameters)) { (response : CoUserModel) in
             if response.ResponseCode == "200" {
                 showAlertToast(message: response.ResponseMessage)
                 
@@ -1563,7 +1563,6 @@ extension UserDetailVC {
                 }
                 
                 self.handleRedirection()
-              
             }
         }
     }

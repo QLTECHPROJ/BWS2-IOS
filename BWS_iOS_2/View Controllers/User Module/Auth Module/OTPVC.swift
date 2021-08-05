@@ -133,7 +133,7 @@ class OTPVC: BaseViewController {
             if coUser.isAssessmentCompleted == "0" {
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass: DoDassAssessmentVC.self)
                 self.navigationController?.pushViewController(aVC, animated: true)
-            } else if coUser.planDetails?.count == 0 {
+            } else if coUser.planDetails.count == 0 {
                 if coUser.CoUserCount != "0" {
                     CoUserDataModel.currentUser = nil
                     let aVC = AppStoryBoard.main.viewController(viewControllerClass: UserListVC.self)

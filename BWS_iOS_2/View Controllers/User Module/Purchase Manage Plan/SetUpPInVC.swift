@@ -100,11 +100,9 @@ class SetUpPInVC: BaseViewController {
             if coUser.isAssessmentCompleted == "0" {
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass: DoDassAssessmentVC.self)
                 self.navigationController?.pushViewController(aVC, animated: true)
-//            }
-//            else if coUser.planDetails?.count == 0 && coUser.isMainAccount == "1"{
-//                let aVC = AppStoryBoard.main.viewController(viewControllerClass: DassAssessmentResultVC.self)
-//                self.navigationController?.pushViewController(aVC, animated: true)
-                
+            } else if coUser.planDetails.count == 0 && coUser.isMainAccount == "1" {
+                let aVC = AppStoryBoard.main.viewController(viewControllerClass: DassAssessmentResultVC.self)
+                self.navigationController?.pushViewController(aVC, animated: true)
             } else if coUser.isProfileCompleted == "0" {
                 redirectToProfileStep()
             } else if coUser.AvgSleepTime.trim.count == 0 || coUser.AreaOfFocus.count == 0 {

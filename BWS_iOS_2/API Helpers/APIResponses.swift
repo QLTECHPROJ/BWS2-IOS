@@ -142,7 +142,7 @@ class LoginDataModel : EVObject {
     var isProfileCompleted = ""
     var isAssessmentCompleted = ""
     var indexScore = ""
-    var planDetails : [Any]?
+    var planDetails = [PlanDetailDataModel]()
     var AreaOfFocus = [AreaOfFocusModel]()
     var AvgSleepTime = ""
     var ScoreLevel = ""
@@ -209,6 +209,25 @@ class LoginDataModel : EVObject {
         }
     }
     
+}
+
+enum PlanStatus : String {
+    case inactive = "Inactive"
+    case active = "Active"
+    case cancel = "Cancel"
+}
+
+class PlanDetailDataModel:EVObject {
+    var UserId = ""
+    var UserGroupId = ""
+    var PlanId = ""
+    var PlanPurchaseDate = ""
+    var PlanExpireDate = ""
+    var OriginalTransactionId = ""
+    var TransactionId = ""
+    var TrialPeriodStart = ""
+    var TrialPeriodEnd = ""
+    var PlanStatus = ""
 }
 
 // MARK:- Plan List API Models
@@ -378,7 +397,7 @@ class CoUserDataModel : EVObject {
     var isProfileCompleted = ""
     var isAssessmentCompleted = ""
     var indexScore = ""
-    var planDetails : [Any]?
+    var planDetails = [PlanDetailDataModel]()
     var AreaOfFocus = [AreaOfFocusModel]()
     var AvgSleepTime = ""
     var ScoreLevel = ""

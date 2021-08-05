@@ -11,7 +11,6 @@ import UIKit
 class ThankYouVC: BaseViewController {
     
     // MARK:- OUTLETS
-    
     @IBOutlet weak var lblTop: NSLayoutConstraint!
     @IBOutlet weak var imgHeight: NSLayoutConstraint!
     @IBOutlet weak var imgWidth: NSLayoutConstraint!
@@ -23,6 +22,7 @@ class ThankYouVC: BaseViewController {
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var addUserTop: NSLayoutConstraint!
     
+    
     // MARK:- VARIABLE
     var isCome:String?
     var planData = PlanDetailsModel()
@@ -31,6 +31,8 @@ class ThankYouVC: BaseViewController {
     // MARK:- VIEW LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.callGetCoUserDetailsAPI(complitionBlock: nil)
         
         // Segment Tracking
         SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.thankYou)
@@ -63,20 +65,20 @@ class ThankYouVC: BaseViewController {
     }
     
     override func setupData() {
-        if isCome == "UserDetail"{
+        if isCome == "UserDetail" {
             if let coUser = CoUserDataModel.currentUser {
-            scrollview.isScrollEnabled = false
-            imgThankYou.image = UIImage(named: "Congrats")
-            lblTitle.font = UIFont(name: Theme.fonts.MontserratBold, size: 45.0)
+                scrollview.isScrollEnabled = false
+                imgThankYou.image = UIImage(named: "Congrats")
+                lblTitle.font = UIFont(name: Theme.fonts.MontserratBold, size: 45.0)
                 let strText = "Congrats!\n" + coUser.Name
                 lblTitle.addAttribut(strText: strText, strSubString: coUser.Name, size: 24)
-            lblSubTitle.text = "You already have access to 6 month of Enhance program." 
-            btnAddUser.isHidden = true
-            btnViewInvoice.isHidden = true
-            imgWidth.constant = 309
-            imgHeight.constant = 281
-            lblTop.constant = 40
-            addUserTop.constant = 120
+                lblSubTitle.text = "You already have access to 6 month of Enhance program."
+                btnAddUser.isHidden = true
+                btnViewInvoice.isHidden = true
+                imgWidth.constant = 309
+                imgHeight.constant = 281
+                lblTop.constant = 40
+                addUserTop.constant = 120
             }
         }
     }
@@ -102,7 +104,6 @@ class ThankYouVC: BaseViewController {
                 self.handleCoUserRedirection()
             } 
         }
-      
     }
     
     @IBAction func viewInvoiceClicked(sender: UIButton) {

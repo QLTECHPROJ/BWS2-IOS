@@ -124,16 +124,16 @@ class DassAssessmentResultVC: BaseViewController {
     }
     
     func deg2rad(_ number: CGFloat) -> CGFloat {
-        return number * .pi / 215 // return number * .pi / 180
+        return number * .pi / 205 // return number * .pi / 180
     }
     
     override func goNext() {
-        if CoUserDataModel.currentUser?.planDetails?.count == 0 {
-                let aVC = AppStoryBoard.main.viewController(viewControllerClass:ManagePlanListVC.self)
-                let navVC = UINavigationController(rootViewController: aVC)
-                navVC.isNavigationBarHidden = true
-                navVC.modalPresentationStyle = .overFullScreen
-                self.navigationController?.present(navVC, animated: false, completion: nil)
+        if CoUserDataModel.currentUser?.planDetails.count == 0 {
+            let aVC = AppStoryBoard.main.viewController(viewControllerClass:ManagePlanListVC.self)
+            let navVC = UINavigationController(rootViewController: aVC)
+            navVC.isNavigationBarHidden = true
+            navVC.modalPresentationStyle = .overFullScreen
+            self.navigationController?.present(navVC, animated: false, completion: nil)
         } else {
             if let coUser = CoUserDataModel.currentUser {
                 if coUser.isProfileCompleted == "0" {
