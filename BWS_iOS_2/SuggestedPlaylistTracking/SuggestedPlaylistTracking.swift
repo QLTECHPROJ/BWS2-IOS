@@ -37,30 +37,18 @@ class SuggestedPlaylistTracking {
         if  playlistData.Created != "2"  && (DJMusicPlayer.shared.playerType != .playlist || DJMusicPlayer.shared.playerType != .downloadedPlaylist) {
             return
         }
-        
-        if DJMusicPlayer.shared.playbackState == .playing {
-            let timeStamp = Date.currentTimeStamp
-            startTime = "\(timeStamp)"
-        }else {
-            let timeStamp = Date.currentTimeStamp
-            completedTime = "\(timeStamp)"
-        }
+        checkTime(time: "\(Date.currentTimeStamp)")
         
         if checkInternet(showToast: false) == false {
             storeActivityTrack(audioData:audioData,startTime:startTime,completedTime:completedTime)
-            
         } else {
-            if downloadPlaylist != nil {
-                guard downloadPlaylist != nil else {
-                    return
-                }
-                let dataValue = UserDefaults.standard.array(forKey: "DownloadPlaylist")
+            let dataValue = UserDefaults.standard.array(forKey: "DownloadPlaylist")
+            if dataValue != nil {
                 callAudioActivityTracking(trackingData:arrayActivity,audioData:audioData, arrayDownload: dataValue ?? [])
-                
                 UserDefaults.standard.removeObject(forKey: "downloadPlaylist")
                 UserDefaults.standard.removeObject(forKey: "DownloadPlaylist")
                 arrayActivity.removeAll()
-            }else {
+            } else {
                 arrayActivity.removeAll()
                 storeActivityTrack(audioData:audioData,startTime:startTime,completedTime:completedTime)
                 callAudioActivityTracking(trackingData:arrayActivity,audioData:audioData, arrayDownload: [])
@@ -102,13 +90,20 @@ class SuggestedPlaylistTracking {
                 print(jsonString)
                 let dataActivity = ActivityTrackDataModel(data: jsonData)
                 if checkInternet(showToast: false) == false {
-                    downloadPlaylist = dataActivity
                     arrayDownload.append(trackData)
                     UserDefaults.standard.setValue(arrayDownload, forKey: "DownloadPlaylist")
                 } else {
                     arrayActivity.append(dataActivity)
                 }
             }
+        }
+    }
+    
+    func checkTime(time:String) {
+        if DJMusicPlayer.shared.state == .loading ||  DJMusicPlayer.shared.state == .loadingFinished || DJMusicPlayer.shared.playbackState == .playing {
+            self.startTime = time
+        }else {
+            self.completedTime = time
         }
     }
     
@@ -134,6 +129,6 @@ class SuggestedPlaylistTracking {
 
 extension Date {
     static var currentTimeStamp: Int64{
-        return Int64(Date().timeIntervalSince1970 * 1000)
+        return Int64(Date().timeIntervalSince1970)
     }
 }
