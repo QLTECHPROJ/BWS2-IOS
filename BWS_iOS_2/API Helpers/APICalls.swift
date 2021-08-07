@@ -1517,19 +1517,20 @@ extension OrderSummaryVC {
 }
 
 extension SetUpPInVC {
+    
     func callSetUpPinAPI() {
-            let parameters = [APIParameters.UserId:selectedUser?.UserId ?? "",
-                              "Pin":txtFConfirmLoginPin.text ?? ""]
+        let parameters = [APIParameters.UserId:selectedUser?.UserId ?? "",
+                          "Pin":txtFConfirmLoginPin.text ?? ""]
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.setloginpin(parameters)) { (response :GeneralModel) in
             
-            APICallManager.sharedInstance.callAPI(router: APIRouter.setloginpin(parameters)) { (response :GeneralModel) in
-                
-                if response.ResponseCode == "200" {
-                    showAlertToast(message: response.ResponseMessage)
-                    self.handleUserRedirection()
-                    self.callGetCoUserDetailsAPI(complitionBlock: nil)
-                }
+            if response.ResponseCode == "200" {
+                showAlertToast(message: response.ResponseMessage)
+                self.handleUserRedirection()
+                self.callGetCoUserDetailsAPI(complitionBlock: nil)
             }
         }
+    }
 }
 
 extension UserDetailVC {

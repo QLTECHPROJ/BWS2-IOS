@@ -34,22 +34,22 @@ class CurrentPlanCell: UITableViewCell {
     
     // Configure Cell
     func configureCell(data : PlanDetailDataModel?) {
-            guard let planDetails = data else {
-                return
-            }
-            
-            lblTitle.text = planDetails.PlanDescription
-            lblPlanName.text = planDetails.PlanName
-            lblPrice.text = "$" + planDetails.Price + " every " + planDetails.IntervalTime
-            lblStatus.text = planDetails.PlanStatus
-            
-            if let purchaseTime = TimeInterval(planDetails.PlanPurchaseDate) {
-                lblActive.text = Date(timeIntervalSince1970: purchaseTime).stringFromFormat(Theme.dateFormats.DOB_App)
-            }
-            
-            if let expiryTime = TimeInterval(planDetails.PlanExpireDate) {
-                lblRenew.text = "(Renew on " + Date(timeIntervalSince1970: expiryTime).stringFromFormat(Theme.dateFormats.DOB_App) + ")"
-            }
+        guard let planDetails = data else {
+            return
         }
+        
+        lblTitle.text = planDetails.PlanDescription
+        lblPlanName.text = planDetails.PlanName
+        lblPrice.text = "$" + planDetails.Price + " every " + planDetails.IntervalTime
+        lblStatus.text = planDetails.PlanStatus
+        
+        if let purchaseTime = TimeInterval(planDetails.PlanPurchaseDate) {
+            lblActive.text = Date(timeIntervalSince1970: purchaseTime).stringFromFormat(Theme.dateFormats.DOB_App)
+        }
+        
+        if let expiryTime = TimeInterval(planDetails.PlanExpireDate) {
+            lblRenew.text = "(Renew on " + Date(timeIntervalSince1970: expiryTime).stringFromFormat(Theme.dateFormats.DOB_App) + ")"
+        }
+    }
     
 }
