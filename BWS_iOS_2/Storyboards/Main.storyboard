@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bRP-8z-Gal">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bRP-8z-Gal">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -2026,7 +2026,7 @@
                                             <constraint firstItem="Qmq-Xm-Spn" firstAttribute="leading" secondItem="ufS-SU-j8S" secondAttribute="leading" constant="16" id="Xil-vS-hex"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to                                   Brain wellness app" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SyV-GX-xQ5">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to                                   Brain Wellness App" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SyV-GX-xQ5">
                                         <rect key="frame" x="26" y="50" width="323" height="56"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="24"/>
                                         <color key="textColor" name="textColor"/>
@@ -2905,16 +2905,16 @@
                                         <rect key="frame" x="26" y="286" width="323" height="162"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="fYU-In-Sf2">
-                                                <rect key="frame" x="20" y="20" width="283" height="50"/>
+                                                <rect key="frame" x="16" y="20" width="291" height="50"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hdi-cT-N6J">
-                                                        <rect key="frame" x="0.0" y="0.0" width="283" height="0.0"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hdi-cT-N6J">
+                                                        <rect key="frame" x="0.0" y="0.0" width="291" height="0.0"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="18"/>
                                                         <color key="textColor" name="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XMf-Ea-eoS">
-                                                        <rect key="frame" x="0.0" y="15" width="283" height="35"/>
+                                                        <rect key="frame" x="0.0" y="15" width="291" height="35"/>
                                                         <string key="text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore.fvhdgjdfjhfgjkhfgjhkfghkgjf</string>
                                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="10"/>
                                                         <color key="textColor" name="textColor"/>
@@ -2966,9 +2966,9 @@
                                             <constraint firstItem="fYU-In-Sf2" firstAttribute="top" secondItem="PYt-tG-CbH" secondAttribute="top" constant="20" id="aCl-d7-EcL"/>
                                             <constraint firstItem="nbO-lK-PRX" firstAttribute="top" secondItem="bnG-wI-sh2" secondAttribute="top" id="hTA-du-IlR"/>
                                             <constraint firstItem="nbO-lK-PRX" firstAttribute="bottom" secondItem="bnG-wI-sh2" secondAttribute="bottom" id="no9-wP-LU6"/>
-                                            <constraint firstItem="fYU-In-Sf2" firstAttribute="leading" secondItem="PYt-tG-CbH" secondAttribute="leading" constant="20" id="wFO-wb-UFh"/>
+                                            <constraint firstItem="fYU-In-Sf2" firstAttribute="leading" secondItem="PYt-tG-CbH" secondAttribute="leading" constant="16" id="wFO-wb-UFh"/>
                                             <constraint firstAttribute="trailing" secondItem="nbO-lK-PRX" secondAttribute="trailing" constant="20" id="xza-K1-Ak6"/>
-                                            <constraint firstAttribute="trailing" secondItem="fYU-In-Sf2" secondAttribute="trailing" constant="20" id="zqa-YO-Kz6"/>
+                                            <constraint firstAttribute="trailing" secondItem="fYU-In-Sf2" secondAttribute="trailing" constant="16" id="zqa-YO-Kz6"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -5473,7 +5473,7 @@ personalised playlist</string>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AddUser" translatesAutoresizingMaskIntoConstraints="NO" id="2tD-h9-b4t">
                                                 <rect key="frame" x="46.666666666666657" y="100" width="282" height="258.66666666666669"/>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add user" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IyQ-tb-Q1x">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invite People" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IyQ-tb-Q1x">
                                                 <rect key="frame" x="16" y="426.66666666666669" width="343" height="28"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="24"/>
                                                 <color key="textColor" name="textColor"/>
@@ -5529,7 +5529,7 @@ personalised playlist</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V3L-Pc-rdj">
-                                                <rect key="frame" x="252.66666666666663" y="426.66666666666669" width="30" height="28"/>
+                                                <rect key="frame" x="272.66666666666669" y="426.66666666666669" width="30" height="28"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="30" id="Omf-Ko-Kmp"/>
                                                 </constraints>
@@ -5559,7 +5559,7 @@ personalised playlist</string>
                                             <constraint firstItem="IyQ-tb-Q1x" firstAttribute="centerX" secondItem="Wez-aM-ciq" secondAttribute="centerX" id="cPp-qb-r4K"/>
                                             <constraint firstItem="OxM-VU-iIS" firstAttribute="leading" secondItem="Wez-aM-ciq" secondAttribute="leading" constant="40" id="iZ8-jJ-l1c"/>
                                             <constraint firstItem="V3L-Pc-rdj" firstAttribute="top" secondItem="2tD-h9-b4t" secondAttribute="bottom" constant="68" id="o0H-Zb-5lw"/>
-                                            <constraint firstItem="V3L-Pc-rdj" firstAttribute="centerX" secondItem="IyQ-tb-Q1x" secondAttribute="centerX" constant="80" id="vc1-Id-0aG"/>
+                                            <constraint firstItem="V3L-Pc-rdj" firstAttribute="centerX" secondItem="IyQ-tb-Q1x" secondAttribute="centerX" constant="100" id="vc1-Id-0aG"/>
                                             <constraint firstItem="Ma5-0m-fP0" firstAttribute="width" secondItem="Wez-aM-ciq" secondAttribute="width" multiplier="300:375" id="xW0-l1-Aw7"/>
                                             <constraint firstItem="2tD-h9-b4t" firstAttribute="centerX" secondItem="Wez-aM-ciq" secondAttribute="centerX" id="xsY-Dw-75M"/>
                                             <constraint firstAttribute="height" constant="760" id="zPa-pk-PiH"/>
@@ -6504,9 +6504,6 @@ personalised playlist</string>
         <namedColor name="transparent_313131_80">
             <color red="0.19215686274509805" green="0.19215686274509805" blue="0.19215686274509805" alpha="0.80000001192092896" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="darkTextColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="darkTextColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

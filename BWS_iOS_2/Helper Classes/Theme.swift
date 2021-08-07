@@ -365,7 +365,7 @@ struct AppStrings {
     let register_title = "Welcome to \nBrain wellness app"
     let register_subtitle = "We just need few details to get you started!!"
     
-    let otp_subtitle = "Please enter the OTP to begin your journey to better mental health."
+    let otp_subtitle = "Please enter the OTP to begin your journey towards better mental health."
     
     let login_title = "Welcome back..."
     let login_subtitle = "Hope you're feeling much better than you felt before!!"
@@ -391,7 +391,7 @@ struct AppStrings {
     
     let do_the_assessment_subtitle_one = "We're done with the first part."
    // let do_the_assessment_subtitle_two = "In the next step, you will have to fill an assessment form which will help us assess your mental health."
-    let do_the_assessment_subtitle_two = "Now all you have to do is fill out an assessment for that will help us ascertain your current mental & emotional state. Based on your answers we will recommend the audios, best suited to manage your mental & emotional growth."
+    let do_the_assessment_subtitle_two = "To get your Wellness Score, please answer a few questions about how you're feeling right now. It will only take a few minutes. It will also help us curate the perfect wellness playlist for you."
     
     let wellness_score_subtitle = "The wellness score determines the intensity of your mental health challenge and based on your score we will recommend the programs to help you."
     let wellness_score_title = "What is Wellness Score ?"
@@ -505,10 +505,12 @@ struct AppStrings {
     
     //Add User
     let add_user_subTitle = "New users can either use this device, or another one to access the app."
-    let same_num_title = "For multiple users on the same device"
-    let same_num_desc = "With multiple users, we create separate access pins to ensure privacy. Each person’s details will remain inaccessible to others."
+    let same_num_title = "Invite a Friend or Family Member"
+    let same_num_desc = "Happiness is sweeter when shared. That's why we're eager for you to share your subscription with someone you care for." + "\n" + "The first person invited gets the same benefits as you at no additional cost."
     //Set up pin
     let setup_pin_Desc = "Enter a 4-digit PIN. This is your secret access code."
+    let setup_pin_infoTitle = "Why Set Up PIN ?"
+    let setup_pin_infoDecs = "This PIN will help you log in to your personal profile ."
     
     //Reminder Pop Up
     let reminderpopup_title = "Set Reminder for Suggested Playlist"
@@ -516,6 +518,9 @@ struct AppStrings {
     
     //Reminder day
     let reminder_suggestedplaylist = "Ensure you never miss a chance to improve your Wellness Score."
+    
+    //UserDetail
+    let user_detail_subTitle = "Enter name and Email of a person being added . A separate profile of person will be created. Person will receive a verification mail."
 
 }
 

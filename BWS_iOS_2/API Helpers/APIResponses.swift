@@ -232,6 +232,7 @@ class PlanDetailDataModel:EVObject {
     var PlanName = ""
     var Price = ""
     var IntervalTime = ""
+    var PlanDescription = ""
     var errormsg = ""
 }
 

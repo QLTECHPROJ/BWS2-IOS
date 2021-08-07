@@ -144,7 +144,7 @@ class UserListPopUpVC: BaseViewController {
         if let newLoginUser = selectedUser {
             if newLoginUser.isPinSet == "0" {
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass: SetUpPInVC.self)
-                aVC.isComeFrom = "UserList"
+                aVC.isComeFrom = "UserListPopup"
                 aVC.selectedUser = selectedUser
                 self.navigationController?.pushViewController(aVC, animated: true)
             }else {
@@ -167,7 +167,8 @@ class UserListPopUpVC: BaseViewController {
 extension UserListPopUpVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arrayUsers.count
+        let sortUsers = arrayUsers.sorted(by: { $0.MainAccountID == $1.UserId })
+        return sortUsers.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

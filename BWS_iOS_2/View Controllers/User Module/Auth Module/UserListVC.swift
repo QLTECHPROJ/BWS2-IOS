@@ -44,6 +44,7 @@ class UserListVC: BaseViewController {
     // MARK:- FUNCTIONS
     override func setupUI() {
         btnBack.isHidden = hideBackButton
+        btnForgetPin.isHidden = true
         
         lblTitle.text = Theme.strings.couser_listing_title
         lblSubTitle.attributedText = Theme.strings.couser_listing_subtitle.attributedString(alignment: .left, lineSpacing: 5)

@@ -70,7 +70,7 @@ class OTPVC: BaseViewController {
     override func setupUI() {
         lblSubTitle.attributedText = Theme.strings.otp_subtitle.attributedString(alignment: .center, lineSpacing: 5)
         
-        let strSMSSent = "we sent an SMS with a 4-digit code to +\(selectedCountry.Code)\(strMobile)."
+        let strSMSSent = "We've sent SMS with a 4-digit code to +\(selectedCountry.Code)\(strMobile)."
         lblSMSSent.attributedText = strSMSSent.attributedString(alignment: .center, lineSpacing: 5)
         
         if signUpFlag == "0" {
@@ -137,7 +137,7 @@ class OTPVC: BaseViewController {
             } else if coUser.isAssessmentCompleted == "0" {
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass: DoDassAssessmentVC.self)
                 self.navigationController?.pushViewController(aVC, animated: true)
-            } else if coUser.planDetails.count == 0 {
+            } else if coUser.planDetails.count == 0 && coUser.isMainAccount == "1"{
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass: DassAssessmentResultVC.self)
                 self.navigationController?.pushViewController(aVC, animated: true)
             } else if coUser.isProfileCompleted == "0" {

@@ -47,7 +47,7 @@ class AddUserVC: BaseViewController {
                     } else {
                         let aVC = AppStoryBoard.main.viewController(viewControllerClass:StepVC.self)
                         aVC.strTitle = ""
-                        aVC.strSubTitle = "Proceed with adding New User"
+                        aVC.strSubTitle = "Proceed With Adding New Person"
                         aVC.imageMain = UIImage(named: "NewUser")
                         aVC.viewTapped = {
                             let aVC = AppStoryBoard.main.viewController(viewControllerClass: UserDetailVC.self)
@@ -69,7 +69,7 @@ class AddUserVC: BaseViewController {
     @IBAction func onTappedDiffNumber(_ sender: UIButton) {
         let aVC = AppStoryBoard.main.viewController(viewControllerClass:StepVC.self)
         aVC.strTitle = ""
-        aVC.strSubTitle = "Proceed with adding New User"
+        aVC.strSubTitle = "Proceed With Adding New Person"
         aVC.imageMain = UIImage(named: "NewUser")
         aVC.viewTapped = {
             let aVC = AppStoryBoard.main.viewController(viewControllerClass: ContactVC.self)

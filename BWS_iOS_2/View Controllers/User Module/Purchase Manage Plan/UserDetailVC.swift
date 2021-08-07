@@ -26,6 +26,8 @@ class UserDetailVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        lblSubtitle.attributedText = Theme.strings.user_detail_subTitle.attributedString(alignment: .center, lineSpacing: 5)
+        
         // Segment Tracking
         SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.addUser)
         

@@ -95,24 +95,24 @@ class SetUpPInVC: BaseViewController {
         return isValid
     }
     
-    func handleCoUserRedirection() {
-        if let coUser = CoUserDataModel.currentUser {
-            if coUser.isAssessmentCompleted == "0" {
-                let aVC = AppStoryBoard.main.viewController(viewControllerClass: DoDassAssessmentVC.self)
-                self.navigationController?.pushViewController(aVC, animated: true)
-            } else if coUser.planDetails.count == 0 && coUser.isMainAccount == "1" {
-                let aVC = AppStoryBoard.main.viewController(viewControllerClass: DassAssessmentResultVC.self)
-                self.navigationController?.pushViewController(aVC, animated: true)
-            } else if coUser.isProfileCompleted == "0" {
-                redirectToProfileStep()
-            } else if coUser.AvgSleepTime.trim.count == 0 || coUser.AreaOfFocus.count == 0 {
-                let aVC = AppStoryBoard.main.viewController(viewControllerClass: SleepTimeVC.self)
-                self.navigationController?.pushViewController(aVC, animated: true)
+    func handleUserRedirection() {
+            if isComeFrom == "UserList" {
+                self.navigationController?.popViewController(animated: true)
+            } else if isComeFrom == "UserListPopup" {
+                self.navigationController?.dismiss(animated: true, completion: nil)
             } else {
-                APPDELEGATE.window?.rootViewController = AppStoryBoard.main.viewController(viewControllerClass: NavigationClass.self)
+                let aVC = AppStoryBoard.main.viewController(viewControllerClass:StepVC.self)
+                aVC.strTitle = ""
+                aVC.strSubTitle = "Proceed With Adding New Person"
+                aVC.imageMain = UIImage(named: "NewUser")
+                aVC.viewTapped = {
+                    let aVC = AppStoryBoard.main.viewController(viewControllerClass: UserDetailVC.self)
+                    self.navigationController?.pushViewController(aVC, animated: false)
+                }
+                aVC.modalPresentationStyle = .overFullScreen
+                self.present(aVC, animated: false, completion: nil)
             }
         }
-    }
     
     //MARK:- IBAction Methods
     @IBAction func backButton(_ sender: Any) {
@@ -128,8 +128,8 @@ class SetUpPInVC: BaseViewController {
     
     @IBAction func onTappedInfo(_ sender: UIButton) {
         let aVC = AppStoryBoard.main.viewController(viewControllerClass: DescriptionPopupVC.self)
-        aVC.strTitle = Theme.strings.same_num_title
-        aVC.strDesc = Theme.strings.same_num_desc
+        aVC.strTitle = Theme.strings.setup_pin_infoTitle
+        aVC.strDesc = Theme.strings.setup_pin_infoDecs
         aVC.isOkButtonHidden = true
         aVC.modalPresentationStyle = .overFullScreen
         self.present(aVC, animated: false, completion: nil)

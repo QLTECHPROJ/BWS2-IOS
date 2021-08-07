@@ -1518,35 +1518,18 @@ extension OrderSummaryVC {
 
 extension SetUpPInVC {
     func callSetUpPinAPI() {
-        let parameters = [APIParameters.UserId:selectedUser?.UserId ?? "",
-                          "Pin":txtFConfirmLoginPin.text ?? ""]
-        
-        APICallManager.sharedInstance.callAPI(router: APIRouter.setloginpin(parameters)) { (response :GeneralModel) in
+            let parameters = [APIParameters.UserId:selectedUser?.UserId ?? "",
+                              "Pin":txtFConfirmLoginPin.text ?? ""]
             
-            if response.ResponseCode == "200" {
-                showAlertToast(message: response.ResponseMessage)
-                if self.isComeFrom == "UserList" {
-                    self.callGetCoUserDetailsAPI { (success) in
-                        if success {
-                            self.handleCoUserRedirection()
-                        } 
-                    }
-                   
-                }else {
-                    let aVC = AppStoryBoard.main.viewController(viewControllerClass:StepVC.self)
-                    aVC.strTitle = ""
-                    aVC.strSubTitle = "Proceed with adding New User"
-                    aVC.imageMain = UIImage(named: "NewUser")
-                    aVC.viewTapped = {
-                        let aVC = AppStoryBoard.main.viewController(viewControllerClass: UserDetailVC.self)
-                        self.navigationController?.pushViewController(aVC, animated: false)
-                    }
-                    aVC.modalPresentationStyle = .overFullScreen
-                    self.present(aVC, animated: false, completion: nil)
+            APICallManager.sharedInstance.callAPI(router: APIRouter.setloginpin(parameters)) { (response :GeneralModel) in
+                
+                if response.ResponseCode == "200" {
+                    showAlertToast(message: response.ResponseMessage)
+                    self.handleUserRedirection()
+                    self.callGetCoUserDetailsAPI(complitionBlock: nil)
                 }
             }
         }
-    }
 }
 
 extension UserDetailVC {
