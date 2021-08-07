@@ -13,6 +13,7 @@ class HomeVC: BaseViewController {
     // MARK:- OUTLETS
     @IBOutlet weak var imgUser: UIImageView!
     @IBOutlet weak var lblUser: UILabel!
+    @IBOutlet weak var btnDown: UIButton!
     @IBOutlet weak var btnChangeUser: UIButton!
     @IBOutlet weak var btnNotification: UIButton!
     
@@ -56,7 +57,6 @@ class HomeVC: BaseViewController {
         imgUser.clipsToBounds = true
         
         NotificationCenter.default.addObserver(self, selector: #selector(refreshData), name: .refreshData, object: nil)
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -85,6 +85,11 @@ class HomeVC: BaseViewController {
         
         if let strUrl = CoUserDataModel.currentUser?.Image.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let imgUrl = URL(string: strUrl) {
             imgUser.sd_setImage(with: imgUrl, completed: nil)
+        }
+        
+        if CoUserDataModel.currentUser?.isMainAccount != "1" {
+            btnDown.isHidden = true
+            btnChangeUser.isHidden = true
         }
     }
     

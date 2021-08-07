@@ -33,8 +33,6 @@ enum APIRouter: URLRequestConvertible {
     case avgsleeptime
     case getrecommendedcategory([String:String])
     case saverecommendedcategory([String:Any])
-    case verifyreceipt([String:Any])
-    case planpurchase([String:Any])
     case setloginpin([String:Any])
     case inviteuser([String:Any])
 
@@ -88,6 +86,11 @@ enum APIRouter: URLRequestConvertible {
     case removeprofileimg([String:String])
     case editprofile([String:String])
     
+    // In App Purchase
+    case verifyreceipt([String:Any])
+    case planpurchase([String:Any])
+    case plandetails([String:Any])
+    
     // Audio Interruption
     case audiointerruption([String:Any])
     
@@ -131,10 +134,6 @@ enum APIRouter: URLRequestConvertible {
             return APIRoute(path: "getrecommendedcategory", method: .post, data: data)
         case .saverecommendedcategory(let data):
             return APIRoute(path: "saverecommendedcategory", method: .post, data: data)
-        case .verifyreceipt(let data):
-            return APIRoute(path: "verifyreceipt", method: .post, data: data)
-        case .planpurchase(let data):
-            return APIRoute(path: "planpurchase", method: .post, data: data)
         case .setloginpin(let data):
             return APIRoute(path: "setloginpin", method: .post, data: data)
         case .inviteuser(let data):
@@ -220,6 +219,14 @@ enum APIRouter: URLRequestConvertible {
             return APIRoute(path: "removeprofileimg", method: .post, data: data)
         case .editprofile(let data):
             return APIRoute(path: "editprofile", method: .post, data: data)
+            
+        // In App Purchase
+        case .verifyreceipt(let data):
+            return APIRoute(path: "verifyreceipt", method: .post, data: data)
+        case .planpurchase(let data):
+            return APIRoute(path: "planpurchase", method: .post, data: data)
+        case .plandetails(let data):
+            return APIRoute(path: "plandetails", method: .post, data: data)
             
         // Audio Interruption
         case .audiointerruption(let data):

@@ -86,6 +86,12 @@ extension BaseViewController {
             
             if DisclaimerAudio.shared.shouldPlayDisclaimer {
                 if let disclaimer = DisclaimerAudio.shared.disclaimerAudio, checkInternet() {
+                    disclaimer.ID = audioList[playIndex].ID
+                    disclaimer.PlaylistID = audioList[playIndex].PlaylistID
+                    disclaimer.Download = audioList[playIndex].Download
+                    disclaimer.isSingleAudio = audioList[playIndex].isSingleAudio
+                    disclaimer.CategoryName = audioList[playIndex].CategoryName
+                    DisclaimerAudio.shared.disclaimerAudio = disclaimer
                     audioList.insert(disclaimer, at: playIndex)
                 }
             }

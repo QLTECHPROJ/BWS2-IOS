@@ -16,11 +16,19 @@ class BillingOrderVC: BaseViewController {
     @IBOutlet weak var btnCancel: UIButton!
     
     
+    // MARK:- VARIABLES
+    var planDetails : PlanDetailDataModel?
+    
+    
     // MARK:- VIEW LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Do any additional setup after loading the view.
+        
         setupUI()
+        callPlanDetailsAPI()
     }
+    
     
     // MARK:- FUNCTIONS
     override func setupUI() {
@@ -31,8 +39,9 @@ class BillingOrderVC: BaseViewController {
     }
     
     override func setupData() {
-        
+        tableView.reloadData()
     }
+    
     
     // MARK:- ACTIONS
     @IBAction func backClicked(sender : UIButton) {
@@ -56,11 +65,12 @@ class BillingOrderVC: BaseViewController {
 extension BillingOrderVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withClass: CurrentPlanCell.self)
+        cell.configureCell(data: self.planDetails)
         return cell
     }
     

@@ -9,16 +9,46 @@
 import UIKit
 
 class CurrentPlanCell: UITableViewCell {
-
+    
+    @IBOutlet weak var lblTitle : UILabel!
+    @IBOutlet weak var btnSelect : UIButton!
+    
+    @IBOutlet weak var lblPlanTitle : UILabel!
+    @IBOutlet weak var lblPlanName : UILabel!
+    
+    @IBOutlet weak var lblPriceTitle : UILabel!
+    @IBOutlet weak var lblPrice : UILabel!
+    
+    @IBOutlet weak var lblActiveTitle : UILabel!
+    @IBOutlet weak var lblActive : UILabel!
+    
+    @IBOutlet weak var lblStatusTitle : UILabel!
+    @IBOutlet weak var lblStatus : UILabel!
+    @IBOutlet weak var lblRenew : UILabel!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    // Configure Cell
+    func configureCell(data : PlanDetailDataModel?) {
+        guard let planDetails = data else {
+            return
+        }
+        
+        lblPlanName.text = planDetails.PlanName
+        lblPrice.text = "$" + planDetails.Price + " every " + planDetails.IntervalTime
+        lblStatus.text = planDetails.PlanStatus
+        
+        if let purchaseTime = TimeInterval(planDetails.PlanPurchaseDate) {
+            lblActive.text = Date(timeIntervalSince1970: purchaseTime).stringFromFormat(Theme.dateFormats.DOB_App)
+        }
+        
+        if let expiryTime = TimeInterval(planDetails.PlanExpireDate) {
+            lblRenew.text = Date(timeIntervalSince1970: expiryTime).stringFromFormat(Theme.dateFormats.DOB_App)
+        }
     }
     
 }
