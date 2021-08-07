@@ -1533,8 +1533,16 @@ extension SetUpPInVC {
                     }
                    
                 }else {
-                    let aVC = AppStoryBoard.main.viewController(viewControllerClass: UserDetailVC.self)
-                    self.navigationController?.pushViewController(aVC, animated: false)
+                    let aVC = AppStoryBoard.main.viewController(viewControllerClass:StepVC.self)
+                    aVC.strTitle = ""
+                    aVC.strSubTitle = "Proceed with adding New User"
+                    aVC.imageMain = UIImage(named: "NewUser")
+                    aVC.viewTapped = {
+                        let aVC = AppStoryBoard.main.viewController(viewControllerClass: UserDetailVC.self)
+                        self.navigationController?.pushViewController(aVC, animated: false)
+                    }
+                    aVC.modalPresentationStyle = .overFullScreen
+                    self.present(aVC, animated: false, completion: nil)
                 }
             }
         }

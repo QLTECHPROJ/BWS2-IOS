@@ -45,8 +45,16 @@ class AddUserVC: BaseViewController {
                         aVC.selectedUser = userData
                         self.navigationController?.pushViewController(aVC, animated: true)
                     } else {
-                        let aVC = AppStoryBoard.main.viewController(viewControllerClass: UserDetailVC.self)
-                        self.navigationController?.pushViewController(aVC, animated: true)
+                        let aVC = AppStoryBoard.main.viewController(viewControllerClass:StepVC.self)
+                        aVC.strTitle = ""
+                        aVC.strSubTitle = "Proceed with adding New User"
+                        aVC.imageMain = UIImage(named: "NewUser")
+                        aVC.viewTapped = {
+                            let aVC = AppStoryBoard.main.viewController(viewControllerClass: UserDetailVC.self)
+                            self.navigationController?.pushViewController(aVC, animated: true)
+                        }
+                        aVC.modalPresentationStyle = .overFullScreen
+                        self.present(aVC, animated: false, completion: nil)
                     }
                 }
             }
@@ -59,8 +67,16 @@ class AddUserVC: BaseViewController {
         setupData()
     }
     @IBAction func onTappedDiffNumber(_ sender: UIButton) {
-        let aVC = AppStoryBoard.main.viewController(viewControllerClass: ContactVC.self)
-        self.navigationController?.pushViewController(aVC, animated: false)
+        let aVC = AppStoryBoard.main.viewController(viewControllerClass:StepVC.self)
+        aVC.strTitle = ""
+        aVC.strSubTitle = "Proceed with adding New User"
+        aVC.imageMain = UIImage(named: "NewUser")
+        aVC.viewTapped = {
+            let aVC = AppStoryBoard.main.viewController(viewControllerClass: ContactVC.self)
+            self.navigationController?.pushViewController(aVC, animated: false)
+        }
+        aVC.modalPresentationStyle = .overFullScreen
+        self.present(aVC, animated: false, completion: nil)
     }
     
     @IBAction func onTappedInfo(_ sender: UIButton) {
