@@ -1687,3 +1687,20 @@ extension CancelSubVC {
         }
     }
 }
+
+
+extension BillingOrderVC {
+    
+    //delete Account API
+    func callPlanDetailsAPI() {
+        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId]
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.plandetails(parameters)) { (response :PlanDataModel) in
+            
+            if response.ResponseCode == "200" {
+                self.planDetails = response.ResponseData
+                self.setupData()
+            }
+        }
+    }
+}

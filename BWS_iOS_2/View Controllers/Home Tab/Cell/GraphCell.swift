@@ -49,6 +49,21 @@ class GraphCell: UITableViewCell {
 
 extension GraphCell : ChartViewDelegate {
     
+    func fetchXMinValue() -> Double {
+        let maxValue = fetchXMaxValue()
+        if maxValue > 7 {
+            return maxValue - 7
+        }
+        
+        return maxValue
+    }
+    
+    func fetchXMaxValue() -> Double {
+        let months = indexScores.compactMap({ $0.Month.doubleValue })
+        let maxValue = months.max() ?? 12
+        return maxValue + 1
+    }
+    
     func barChartUpdate() {
         chartView.delegate = self
         
@@ -77,14 +92,17 @@ extension GraphCell : ChartViewDelegate {
         xAxis.axisMaximum = 13
         xAxis.valueFormatter = self
         
-        let dataCount = Double(indexScores.count + 1)
-        if dataCount < 7 {
-            xAxis.axisMaximum = 7
-        } else if dataCount > 13 {
-            xAxis.axisMaximum = 13
-        } else {
-            xAxis.axisMaximum = dataCount
-        }
+        xAxis.axisMinimum = fetchXMinValue()
+        xAxis.axisMaximum = fetchXMaxValue()
+        
+        //        let dataCount = Double(indexScores.count + 1)
+        //        if dataCount < 7 {
+        //            xAxis.axisMaximum = 7
+        //        } else if dataCount > 13 {
+        //            xAxis.axisMaximum = 13
+        //        } else {
+        //            xAxis.axisMaximum = dataCount
+        //        }
         
         let leftAxis = chartView.leftAxis
         leftAxis.axisMinimum = 0
@@ -103,7 +121,7 @@ extension GraphCell : ChartViewDelegate {
         
         for data in indexScores {
             let xValue = (data.Month as NSString).doubleValue
-            let yValue = (data.IndexScore as NSString).doubleValue
+            let yValue = 50.0 // (data.IndexScore as NSString).doubleValue
             
             let dataEntry = BarChartDataEntry(x: xValue, y: yValue)
             dataEntries.append(dataEntry)

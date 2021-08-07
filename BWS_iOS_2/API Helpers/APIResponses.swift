@@ -229,6 +229,10 @@ class PlanDetailDataModel:EVObject {
     var TrialPeriodStart = ""
     var TrialPeriodEnd = ""
     var PlanStatus = ""
+    var PlanName = ""
+    var Price = ""
+    var IntervalTime = ""
+    var errormsg = ""
 }
 
 // MARK:- Plan List API Models
@@ -864,4 +868,13 @@ class AssessmentDataModel : EVObject {
     var AssesmentTitle = ""
     var AssesmentContent = ""
     var errormsg = ""
+}
+
+
+// MARK:- Plan Details API Models
+class PlanDataModel : EVObject {
+    var ResponseCode = ""
+    var ResponseMessage = ""
+    var ResponseStatus = ""
+    var ResponseData : PlanDetailDataModel?
 }

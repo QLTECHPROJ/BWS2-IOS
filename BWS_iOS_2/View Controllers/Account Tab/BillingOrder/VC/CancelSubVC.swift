@@ -45,7 +45,7 @@ class CancelSubVC: BaseViewController {
         let name = isFromDelete ? SegmentTracking.screenNames.delete_account : SegmentTracking.screenNames.cancel_subscription
         SegmentTracking.shared.trackGeneralScreen(name: name)
         
-        viewVideo.playVideo()
+        // viewVideo.playVideo()
         DJMusicPlayer.shared.pause(pauseReason: .userAction)
     }
     
@@ -60,7 +60,8 @@ class CancelSubVC: BaseViewController {
         } else {
             imageView.isHidden = true
             viewVideo.delegate = self
-            viewVideo.load(withVideoId: "y1rfRW6WX08")
+            // viewVideo.load(withVideoId: "y1rfRW6WX08")
+            viewVideo.load(withVideoId: "y1rfRW6WX08", playerVars: ["playsinline": "1"])
         }
     }
     
@@ -179,7 +180,7 @@ extension CancelSubVC : AlertPopUpVCDelegate {
                 showAlertToast(message: "Cancel Plan")
             }
         } else {
-            self.navigationController?.popViewController(animated: true)
+            self.dismiss(animated: true, completion: nil)
         }
     }
     

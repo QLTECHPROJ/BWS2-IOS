@@ -135,12 +135,19 @@ class SegmentTracking {
             
             dictUserDetails["areaOfFocus"] = areaOfFocusArray
             
-            // "Plan":userDetails.planDetails,
-            // "PlanStatus":userDetails.PlanStatus,
-            // "planStartDt":userDetails.PlanStartDt,
-            // "planExpiryDt":userDetails.PlanExpiryDate,
-            // "countryCode":userDetails.CountryCode,
-            // "countryName":userDetails.CountryName]
+            if let planDetails = userDetails.planDetails.first {
+                var dictPlanDetails = [String:Any]()
+                dictPlanDetails["PlanId"] = planDetails.PlanId
+                dictPlanDetails["PlanStatus"] = planDetails.PlanStatus
+                dictPlanDetails["OriginalTransactionId"] = planDetails.OriginalTransactionId
+                dictPlanDetails["TransactionId"] = planDetails.TransactionId
+                dictPlanDetails["PlanPurchaseDate"] = planDetails.PlanPurchaseDate
+                dictPlanDetails["PlanExpireDate"] = planDetails.PlanExpireDate
+                dictPlanDetails["TrialPeriodStart"] = planDetails.TrialPeriodStart
+                dictPlanDetails["TrialPeriodEnd"] = planDetails.TrialPeriodEnd
+                
+                dictUserDetails["planDetails"] = dictPlanDetails
+            }
             
             SegmentTracking.shared.trackEvent(name: CoUserDataModel.currentUserId, traits: dictUserDetails, trackingType: .identify)
         }
@@ -179,12 +186,19 @@ class SegmentTracking {
             
             dictUserDetails["areaOfFocus"] = areaOfFocusArray
             
-            // "Plan":userDetails.planDetails,
-            // "PlanStatus":userDetails.PlanStatus,
-            // "planStartDt":userDetails.PlanStartDt,
-            // "planExpiryDt":userDetails.PlanExpiryDate,
-            // "countryCode":userDetails.CountryCode,
-            // "countryName":userDetails.CountryName]
+            if let planDetails = userDetails.planDetails.first {
+                var dictPlanDetails = [String:Any]()
+                dictPlanDetails["PlanId"] = planDetails.PlanId
+                dictPlanDetails["PlanStatus"] = planDetails.PlanStatus
+                dictPlanDetails["OriginalTransactionId"] = planDetails.OriginalTransactionId
+                dictPlanDetails["TransactionId"] = planDetails.TransactionId
+                dictPlanDetails["PlanPurchaseDate"] = planDetails.PlanPurchaseDate
+                dictPlanDetails["PlanExpireDate"] = planDetails.PlanExpireDate
+                dictPlanDetails["TrialPeriodStart"] = planDetails.TrialPeriodStart
+                dictPlanDetails["TrialPeriodEnd"] = planDetails.TrialPeriodEnd
+                
+                dictUserDetails["planDetails"] = dictPlanDetails
+            }
             
             SegmentTracking.shared.trackEvent(name: name, traits: dictUserDetails, trackingType: trackingType)
         }
