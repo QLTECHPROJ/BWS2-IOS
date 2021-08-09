@@ -45,6 +45,9 @@ class SetUpPInVC: BaseViewController {
         
         txtFNewloginPin.delegate = self
         txtFConfirmLoginPin.delegate = self
+        txtFNewloginPin.addTarget(self, action: #selector(self.textFieldDidChange(textField:)), for: UIControl.Event.editingChanged)
+        txtFConfirmLoginPin.addTarget(self, action: #selector(self.textFieldDidChange(textField:)), for: UIControl.Event.editingChanged)
+          
         buttonEnableDisable()
     }
     
@@ -144,6 +147,20 @@ extension SetUpPInVC : UITextFieldDelegate {
         lblErrNewPIn.isHidden = true
         lblErrConfirmPIn.isHidden = true
     }
+    
+    @objc func textFieldDidChange(textField: UITextField){
+            let text = textField.text
+            if  text?.count == 4 {
+                switch textField{
+                case txtFNewloginPin:
+                    txtFConfirmLoginPin.becomeFirstResponder()
+                case txtFConfirmLoginPin:
+                    txtFConfirmLoginPin.resignFirstResponder()
+                default:
+                    break
+                }
+            }
+        }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         return textField.resignFirstResponder()
