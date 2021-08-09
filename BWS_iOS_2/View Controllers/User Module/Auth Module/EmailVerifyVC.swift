@@ -50,7 +50,11 @@ class EmailVerifyVC: BaseViewController {
     }
     
     @IBAction func onTappedContinue(_ sender: UIButton) {
-        handleCoUserRedirection()
+        self.callGetCoUserDetailsAPI { (success) in
+            if success {
+                self.handleCoUserRedirection()
+            }
+        }
     }
     
 }

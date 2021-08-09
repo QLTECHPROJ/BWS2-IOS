@@ -425,7 +425,7 @@ struct AppStrings {
     let alert_logout_message = "Are you sure you want to log out \nBrain Wellness App?"
     let alert_blank_inputField_error = "Please fill required details"
     
-    let alert_search_term_not_found = "Please use another term and try searching again"
+    let alert_search_term_not_found = "Please try again with another search term."
     let alert_country_search = "Sorry we are not available in this country yet"
     
     // Auth & Profile
@@ -461,7 +461,7 @@ struct AppStrings {
     let alert_blank_playlist_name = "Playlist name is required"
     
     let alert_select_category = "Please select a category"
-    let alert_max_category = "You can choose maximum of three areas of focus. In case you wish to change your choices then simply unselect the ones you had selected earlier."
+    let alert_max_category = "You can pick up to 3 areas of focus. They can be changed anytime."
     
     /* Membership Plan */
     let alert_reactivate_plan = "Please re-activate your membership plan"
@@ -479,14 +479,14 @@ struct AppStrings {
     let alert_disclaimer_playlist_add = "The audio shall add after playing the disclaimer"
     let alert_disclaimer_playlist_sorting = "The audio shall sort after the disclaimer"
     let alert_disclaimer_playlist_remove = "Currently, you play this playlist,you can't remove the last audio."
-    let alert_playing_playlist_remove = "Currently, this playlist is in the player,so you can't remove this playlist as of now."
-    let alert_playing_audio_remove = "The audio is currently in play mode"
+    let alert_playing_playlist_remove = "You can't delete a playlist while it's playing. 🚫"
+    let alert_playing_audio_remove = "You can't delete an audio while it's playing 🚫"
     
     /* Download */
     let alert_removed_from_downloads = "Audio has been removed"
     let alert_audio_already_downloaded = "Audio has been already added to download list."
-    let alert_audio_download_started = "Downloading the audio right now"
-    let alert_audio_downloaded = "Your audio has been downloaded"
+    let alert_audio_download_started = "Your audio is being downloaded! 🙂"
+    let alert_audio_downloaded = "Your audio is downloaded! Your wellness journey is ready! 👌"
     let alert_redownload_audio = "Audio download was incomplete, will be downloaded automatically when online."
     let alert_audio_download_error = "An errored while downloading audio."
     let alert_audio_delete_error = "An error occured while deleting audio."
@@ -494,8 +494,8 @@ struct AppStrings {
     
     let alert_playlist_removed = "Playlist has been removed"
     let alert_playlist_already_downloaded = "Playlist has been already added to download list."
-    let alert_playlist_download_started = "Downloading the playlist right now"
-    let alert_playlist_downloaded = "Your playlist has been downloaded"
+    let alert_playlist_download_started = "Your wellness playlist is being downloaded! 👊"
+    let alert_playlist_downloaded = "Yess! Download complete. Your wellness journey is ready 👌"
     let alert_redownload_playlist = "Playlist download was incomplete, will be downloaded automatically when online."
     let alert_playlist_download_error = "An errored while downloading playlist."
     let alert_playlist_delete_error = "An error occured while deleting playlist."

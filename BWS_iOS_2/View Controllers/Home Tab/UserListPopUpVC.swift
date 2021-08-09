@@ -123,10 +123,13 @@ class UserListPopUpVC: BaseViewController {
     
     func handleCoUserRedirection() {
         if let coUser = CoUserDataModel.currentUser {
-            if coUser.isAssessmentCompleted == "0" {
+            if coUser.IsFirst == "1" && coUser.isMainAccount == "0"{
+                let aVC = AppStoryBoard.main.viewController(viewControllerClass:EmailVerifyVC.self)
+                self.navigationController?.pushViewController(aVC, animated: true)
+            } else if coUser.isAssessmentCompleted == "0" {
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass: DoDassAssessmentVC.self)
                 self.navigationController?.pushViewController(aVC, animated: true)
-            } else if coUser.planDetails.count == 0 {
+            } else if coUser.planDetails.count == 0  && coUser.isMainAccount == "1"{
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass: DassAssessmentResultVC.self)
                 self.navigationController?.pushViewController(aVC, animated: true)
             } else if coUser.isProfileCompleted == "0" {

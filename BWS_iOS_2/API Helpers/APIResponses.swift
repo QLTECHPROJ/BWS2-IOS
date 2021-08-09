@@ -153,6 +153,7 @@ class LoginDataModel : EVObject {
     var isSelected = false
     var isMainAccount = ""
     var CoUserCount = ""
+    var IsFirst = ""
     
     static var profileImage : UIImage?
     
@@ -415,6 +416,7 @@ class CoUserDataModel : EVObject {
     var isMainAccount = ""
     var CoUserCount = ""
     var InviteStatus = ""
+    var IsFirst = ""
     
     static var profileImage : UIImage?
     

@@ -183,8 +183,7 @@ extension PinVC {
                 
                 // Clear Last User Data
                 AccountVC.clearUserData()
-                
-                showAlertToast(message: "Welcome \(CoUserDataModel.currentUser?.Name ?? "Guest")!!")
+                showAlertToast(message: "You're in, \(CoUserDataModel.currentUser?.Name ?? "Guest") Let's explore your path to inner peace!")
                 
                 self.pinVerified?()
             } else {
