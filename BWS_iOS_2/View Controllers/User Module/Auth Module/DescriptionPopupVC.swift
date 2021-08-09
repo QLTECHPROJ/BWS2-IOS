@@ -15,6 +15,7 @@ class DescriptionPopupVC: UIViewController {
     @IBOutlet weak var lblDesc: UILabel!
     @IBOutlet weak var btnClose: UIButton!
     @IBOutlet weak var btnOK: UIButton!
+    @IBOutlet weak var btnDisclaimer: UIButton!
     
     
     // MARK:- VARIABLES
@@ -30,6 +31,7 @@ class DescriptionPopupVC: UIViewController {
     var strDesc = ""
     
     var isOkButtonHidden = true
+    var isDisclaimerBtnHide = true
     
     
     // MARK:- VIEW LIFE CYCLE
@@ -43,6 +45,7 @@ class DescriptionPopupVC: UIViewController {
         
         btnOK.isHidden = isOkButtonHidden
         btnClose.isHidden = !isOkButtonHidden
+        btnDisclaimer.isHidden = isDisclaimerBtnHide
         
         lblTitle.font = titleFont
         lblDesc.font = descFont
@@ -60,4 +63,7 @@ class DescriptionPopupVC: UIViewController {
         self.dismiss(animated: false, completion: nil)
     }
     
+    @IBAction func onTappedDisclaimer(_ sender: UIButton) {
+        
+    }
 }

@@ -342,6 +342,7 @@ extension SignUpVC : TTTAttributedLabelDelegate {
             aVC.strDesc = Theme.strings.disclaimer_description
             aVC.isOkButtonHidden = true
             aVC.modalPresentationStyle = .overFullScreen
+            aVC.isDisclaimerBtnHide = false
             self.present(aVC, animated: false, completion: nil)
         }
     }

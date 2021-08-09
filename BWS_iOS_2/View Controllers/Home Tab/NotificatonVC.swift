@@ -28,7 +28,7 @@ class NotificatonVC: BaseViewController {
         
         lblNoData.isHidden = true
         lblNoData.font = Theme.fonts.montserratFont(ofSize: 17, weight: .regular)
-        lblNoData.text = "Welcome \(CoUserDataModel.currentUser?.Name ?? "") hope you're doing great!!"
+        lblNoData.text = "Welcome back \(CoUserDataModel.currentUser?.Name ?? "") Let's get your wellness journey going! 🤗"
         
         setupUI()
         
