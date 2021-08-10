@@ -1000,13 +1000,6 @@ extension ManagePlanListVC {
             
             if response.ResponseCode == "200" {
                 self.dataModel = response.ResponseData
-                
-                for plan in self.dataModel.Plan {
-                    if plan.IOSplanId == "manage_2_profiles_weekly" {
-                        plan.IOSplanId = "manage_2_profiles_weekly_testing"
-                    }
-                }
-                
                 self.setupData()
                 self.fetchIAPProducts()
             }
