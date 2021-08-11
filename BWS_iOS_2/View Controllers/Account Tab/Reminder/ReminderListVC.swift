@@ -130,10 +130,10 @@ class ReminderListVC: BaseViewController{
             return
         }
         
-        if arrayRemList[sender.tag].IsLock == "1" {
+        if lockDownloads == "1" {
             openInactivePopup(controller: self)
             sender.isOn.toggle()
-        } else if arrayRemList[sender.tag].IsLock == "2" {
+        } else if lockDownloads == "2" {
             showAlertToast(message: Theme.strings.alert_reactivate_plan)
             sender.isOn.toggle()
         } else {
@@ -230,6 +230,14 @@ extension ReminderListVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if checkInternet(showToast: true) == false {
+            return
+        }
+        
+        if lockDownloads == "1" {
+            openInactivePopup(controller: self)
+            return
+        } else if lockDownloads == "2" {
+            showAlertToast(message: Theme.strings.alert_reactivate_plan)
             return
         }
         

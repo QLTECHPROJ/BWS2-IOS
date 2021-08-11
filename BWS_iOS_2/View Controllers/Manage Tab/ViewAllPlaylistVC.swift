@@ -59,7 +59,6 @@ class ViewAllPlaylistVC: BaseViewController {
             downloadDataModel.View = Theme.strings.my_downloads
             downloadDataModel.UserId = CoUserDataModel.currentUserId
             downloadDataModel.Details = CoreDataHelper.shared.fetchAllPlaylists()
-            downloadDataModel.IsLock = shouldLockDownloads() ? "1" : "0"
             self.homeData = downloadDataModel
             
             self.objCollectionView.reloadData()
@@ -77,7 +76,7 @@ class ViewAllPlaylistVC: BaseViewController {
         let indexPath = self.objCollectionView.indexPathForItem(at: point)
         
         if let indexPath = indexPath {
-            if homeData.IsLock == "1" || homeData.IsLock == "2" {
+            if lockDownloads == "1" || lockDownloads == "2" {
                 
             } else {
                 self.didLongPressAt(playlistIndex: indexPath.row)
@@ -154,9 +153,9 @@ extension ViewAllPlaylistVC : UICollectionViewDataSource, UICollectionViewDelega
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if homeData.IsLock == "1" {
+        if lockDownloads == "1" {
             openInactivePopup(controller: self)
-        } else if homeData.IsLock == "2" {
+        } else if lockDownloads == "2" {
             showAlertToast(message: Theme.strings.alert_reactivate_plan)
         } else {
             if homeData.View == Theme.strings.my_downloads {

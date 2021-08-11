@@ -466,6 +466,7 @@ struct AppStrings {
     /* Membership Plan */
     let alert_reactivate_plan = "Please re-activate your membership plan"
     let alert_plan_already_canceled = "Your membership plan has been already canceled."
+    let alert_upgrade_plan = "Please upgrade your current plan"
     
     /* Billing Address */
     let alert_blank_country = "Please enter a valid country"

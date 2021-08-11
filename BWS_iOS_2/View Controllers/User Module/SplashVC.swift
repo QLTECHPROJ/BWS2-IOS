@@ -94,19 +94,19 @@ class SplashVC: BaseViewController {
             if coUser.isAssessmentCompleted == "0" {
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass: DoDassAssessmentVC.self)
                 self.navigationController?.pushViewController(aVC, animated: true)
-                //            } else if coUser.planDetails.count == 0 {
-                //                if coUser.isMainAccount == "0" {
-                //                    if coUser.isAssessmentCompleted == "1" && coUser.isProfileCompleted == "1" && coUser.AvgSleepTime.trim.count != 0 || coUser.AreaOfFocus.count != 0 {
-                //                        APPDELEGATE.window?.rootViewController = AppStoryBoard.main.viewController(viewControllerClass: NavigationClass.self)
-                //                    } else {
-                //                        let aVC = AppStoryBoard.main.viewController(viewControllerClass: ThankYouVC.self)
-                //                        aVC.isCome = "UserDetail"
-                //                        self.navigationController?.pushViewController(aVC, animated: false)
-                //                    }
-                //                } else {
-                //                    let aVC = AppStoryBoard.main.viewController(viewControllerClass: DassAssessmentResultVC.self)
-                //                    self.navigationController?.pushViewController(aVC, animated: true)
-                //                }
+            } else if coUser.planDetails.count == 0 {
+                if coUser.isMainAccount == "0" {
+                    if coUser.isAssessmentCompleted == "1" && coUser.isProfileCompleted == "1" && coUser.AvgSleepTime.trim.count != 0 || coUser.AreaOfFocus.count != 0 {
+                        APPDELEGATE.window?.rootViewController = AppStoryBoard.main.viewController(viewControllerClass: NavigationClass.self)
+                    } else {
+                        let aVC = AppStoryBoard.main.viewController(viewControllerClass: ThankYouVC.self)
+                        aVC.isCome = "UserDetail"
+                        self.navigationController?.pushViewController(aVC, animated: false)
+                    }
+                } else {
+                    let aVC = AppStoryBoard.main.viewController(viewControllerClass: DassAssessmentResultVC.self)
+                    self.navigationController?.pushViewController(aVC, animated: true)
+                }
             } else if coUser.isProfileCompleted == "0" {
                 redirectToProfileStep()
             } else if coUser.AvgSleepTime.trim.count == 0 || coUser.AreaOfFocus.count == 0 {

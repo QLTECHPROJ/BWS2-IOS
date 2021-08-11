@@ -166,7 +166,9 @@ class AddAudioVC: BaseViewController {
             return
         }
             
-        if lockDownloads != "1" {
+        if lockDownloads == "1" {
+            openInactivePopup(controller: self)
+        } else if lockDownloads == "2" {
             showAlertToast(message: Theme.strings.alert_reactivate_plan)
         } else {
             if isComeFromAddAudio {
@@ -448,7 +450,7 @@ extension AddAudioVC : UITableViewDelegate, UITableViewDataSource {
             
             // Now Playing Animation
             if isPlayingAudio(audioID: arrayAudio[indexPath.row].ID) && isPlayingSingleAudio() {
-                cell.imgPlay.isHidden = true
+                cell.imgLock.isHidden = true
                 cell.nowPlayingAnimationImageView.isHidden = false
                 cell.backgroundColor = Theme.colors.gray_EEEEEE
                 cell.nowPlayingAnimationImageView.startNowPlayingAnimation(DJMusicPlayer.shared.isPlaying)
@@ -468,9 +470,9 @@ extension AddAudioVC : UITableViewDelegate, UITableViewDataSource {
             cell.lblTitle.text = arraySearch[indexPath.row].Name
             
             if arraySearch[indexPath.row].IsPlay == "1" {
-                cell.imgPlay.isHidden = true
+                cell.imgLock.isHidden = true
             } else {
-                cell.imgPlay.isHidden = false
+                cell.imgLock.isHidden = false
             }
             
             if let imgUrl = URL(string: arraySearch[indexPath.row].ImageFile.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
@@ -482,7 +484,7 @@ extension AddAudioVC : UITableViewDelegate, UITableViewDataSource {
                 
                 // Now Playing Animation
                 if isPlayingAudio(audioID: arraySearch[indexPath.row].ID) && isPlayingSingleAudio() {
-                    cell.imgPlay.isHidden = true
+                    cell.imgLock.isHidden = true
                     cell.nowPlayingAnimationImageView.isHidden = false
                     cell.backgroundColor = Theme.colors.gray_EEEEEE
                     cell.nowPlayingAnimationImageView.startNowPlayingAnimation(DJMusicPlayer.shared.isPlaying)

@@ -95,7 +95,7 @@ class ManagePlaylistCell: UITableViewCell {
         let indexPath = self.collectionView.indexPathForItem(at: point)
         
         if let indexPath = indexPath {
-            if homeData.IsLock == "1" || homeData.IsLock == "2" || homeData.View == Theme.strings.top_categories {
+            if lockDownloads == "1" || lockDownloads == "2" || homeData.View == Theme.strings.top_categories {
                 print("Do nothing")
             } else {
                 self.didLongPressAtIndex?(indexPath.row)
@@ -180,9 +180,9 @@ extension ManagePlaylistCell : UICollectionViewDelegate, UICollectionViewDataSou
         if indexPath.section == 0 && showCreatePlaylist {
             didClickCreatePlaylist?()
         } else {
-            if homeData.IsLock == "1" {
+            if lockDownloads == "1" {
                 openInactivePopup(controller: self.parentViewController)
-            } else if homeData.IsLock == "2" {
+            } else if lockDownloads == "2" {
                 showAlertToast(message: Theme.strings.alert_reactivate_plan)
             } else {
                 didSelectPlaylistAtIndex?(indexPath.row)

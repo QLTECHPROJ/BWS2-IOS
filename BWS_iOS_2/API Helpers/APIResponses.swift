@@ -372,8 +372,10 @@ class SaveCategoryModel : EVObject {
 }
 
 class SaveCategoryDataModel : EVObject {
+    var errormsg = ""
     var UserId = ""
     var AvgSleepTime = ""
+    var NoUpdation = ""
     var AreaOfFocus = [AreaOfFocusModel]()
 }
 
@@ -496,6 +498,7 @@ class ManageHomeModel : EVObject {
 }
 
 class ManageHomedataModel : EVObject {
+    var Islock = ""
     var SuggestedPlaylist : PlaylistDetailsModel?
     var Playlist = [PlaylistHomeDataModel]()
     var Audio = [AudioHomeDataModel]()
@@ -557,7 +560,7 @@ public class AudioDetailsDataModel: EVObject {
     var sortId = ""
     
     // Lock functionality
-    var IsPlay = ""
+    var IsPlay = "1"
     
     var isDisclaimer = false
     
@@ -609,7 +612,6 @@ class PlaylistHomeDataModel: EVObject {
     var View = ""
     var UserId = ""
     var Details = [PlaylistDetailsModel]()
-    var IsLock = ""
 }
 
 class PlaylistDetailsModel: EVObject {
@@ -832,7 +834,6 @@ class ReminderListDataModel:EVObject {
     var ReminderDay = ""
     var ReminderTime = ""
     var IsCheck = ""
-    var IsLock = ""
     var RDay = ""
     var Created = ""
 }
@@ -881,6 +882,10 @@ class AssessmentModel : EVObject {
 class AssessmentDataModel : EVObject {
     var indexScore = ""
     var ScoreLevel = ""
+    var TotalAssesment = ""
+    var DaysfromLastAssesment = ""
+    var IndexScoreDiff = ""
+    var ScoreIncDec = ""
     var MainTitle = ""
     var SubTitle = ""
     var colorcode = ""

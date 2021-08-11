@@ -83,6 +83,7 @@ class SegmentTracking {
         newTraits["batteryLevel"] = NSString(format: "%0.0f",APPDELEGATE.batteryLevel)
         newTraits["batteryState"] = APPDELEGATE.batteryState
         newTraits["fcmToken"] = FCM_TOKEN
+        newTraits["deviceToken"] = DEVICE_TOKEN
         
         if name == "Audio Interrupted" || name == "Disclaimer Interrupted" {
             self.callAudioInterruptionAPI(parameters: newTraits)

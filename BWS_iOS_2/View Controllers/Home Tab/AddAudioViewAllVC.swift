@@ -168,7 +168,7 @@ extension AddAudioViewAllVC : UITableViewDelegate, UITableViewDataSource {
             
             // Now Playing Animation
             if isPlayingAudio(audioID: arrayAudio[indexPath.row].ID) && isPlayingSingleAudio() {
-                cell.imgPlay.isHidden = true
+                cell.imgLock.isHidden = true
                 cell.nowPlayingAnimationImageView.isHidden = false
                 cell.backgroundColor = Theme.colors.gray_EEEEEE
                 cell.nowPlayingAnimationImageView.startNowPlayingAnimation(DJMusicPlayer.shared.isPlaying)

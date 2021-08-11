@@ -75,7 +75,7 @@ class PlaylistCollectionCell: UICollectionViewCell {
     }
     
     func configureCell(playlistData : PlaylistDetailsModel, homeData : PlaylistHomeDataModel) {
-        if homeData.IsLock == "1" || homeData.IsLock == "2" {
+        if lockDownloads == "1" || lockDownloads == "2" {
             imgLock.isHidden = false
         } else {
             imgLock.isHidden = true
@@ -92,7 +92,7 @@ class PlaylistCollectionCell: UICollectionViewCell {
         
         btnOptions.isHidden = hideOptionButton
         
-        if homeData.IsLock == "1" || homeData.IsLock == "2" || playlistData.isSelected == false {
+        if lockDownloads == "1" || lockDownloads == "2" || playlistData.isSelected == false {
             btnAddtoPlaylist.isHidden = true
             btnAddtoPlaylist.isUserInteractionEnabled = false
         } else {

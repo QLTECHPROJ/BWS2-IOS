@@ -20,6 +20,8 @@ class ManageVC: BaseViewController {
     @IBOutlet weak var btnReminder : UIButton!
     @IBOutlet weak var btnPlay : UIButton!
     
+    @IBOutlet weak var imgLock : UIImageView!
+    
     @IBOutlet weak var lblPlaylistName : UILabel!
     @IBOutlet weak var lblPlaylistDirection : UILabel!
     @IBOutlet weak var lblPlaylistDuration : UILabel!
@@ -81,6 +83,8 @@ class ManageVC: BaseViewController {
     override func setupData() {
         if let playlistData = suggstedPlaylist {
             playlistMainView.isHidden = false
+            
+            imgLock.isHidden = !(lockDownloads == "1" || lockDownloads == "2")
             
             lblPlaylistName.text = playlistData.PlaylistName
             lblPlaylistDirection.text = playlistData.playlistDirection
@@ -193,6 +197,14 @@ class ManageVC: BaseViewController {
     
     @objc func playlistTapped(_ sender: UITapGestureRecognizer) {
         if checkInternet(showToast: true) == false {
+            return
+        }
+        
+        if lockDownloads == "1" {
+            openInactivePopup(controller: self)
+            return
+        } else if lockDownloads == "2" {
+            showAlertToast(message: Theme.strings.alert_reactivate_plan)
             return
         }
         
@@ -424,9 +436,9 @@ class ManageVC: BaseViewController {
             return
         }
         
-        if arrayPlaylistHomeData[sectionIndex].IsLock == "1" {
+        if lockDownloads == "1" {
             openInactivePopup(controller: self)
-        } else if arrayPlaylistHomeData[sectionIndex].IsLock == "2" {
+        } else if lockDownloads == "2" {
             showAlertToast(message: Theme.strings.alert_reactivate_plan)
         } else {
             // Segment Tracking
@@ -453,6 +465,14 @@ class ManageVC: BaseViewController {
             return
         }
         
+        if lockDownloads == "1" {
+            openInactivePopup(controller: self)
+            return
+        } else if lockDownloads == "2" {
+            showAlertToast(message: Theme.strings.alert_reactivate_plan)
+            return
+        }
+        
         // Segment Tracking
         SegmentTracking.shared.playlistDetailEvents(name: SegmentTracking.eventNames.Playlist_Reminder_Clicked, objPlaylist: suggstedPlaylist, source: "Enhance Screen", trackingType: .track)
         
@@ -463,6 +483,14 @@ class ManageVC: BaseViewController {
     
     @IBAction func playClicked(sender : UIButton) {
         guard let playlistData = suggstedPlaylist else {
+            return
+        }
+        
+        if lockDownloads == "1" {
+            openInactivePopup(controller: self)
+            return
+        } else if lockDownloads == "2" {
+            showAlertToast(message: Theme.strings.alert_reactivate_plan)
             return
         }
         
