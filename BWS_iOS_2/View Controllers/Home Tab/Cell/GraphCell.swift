@@ -121,7 +121,7 @@ extension GraphCell : ChartViewDelegate {
         
         for data in indexScores {
             let xValue = (data.Month as NSString).doubleValue
-            let yValue = 50.0 // (data.IndexScore as NSString).doubleValue
+            let yValue = (data.IndexScore as NSString).doubleValue
             
             let dataEntry = BarChartDataEntry(x: xValue, y: yValue)
             dataEntries.append(dataEntry)

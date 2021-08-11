@@ -100,12 +100,20 @@ class ManageUserVC: BaseViewController {
             return
         }
         
+        if lockDownloads == "1" {
+            openInactivePopup(controller: self)
+            return
+        } else if lockDownloads == "2" {
+            showAlertToast(message: Theme.strings.alert_reactivate_plan)
+            return
+        }
+        
         if arrayUsers.count < maxUsers {
             let aVC = AppStoryBoard.main.viewController(viewControllerClass:AddUserVC.self)
             aVC.isCome = "AddUser"
             self.navigationController?.pushViewController(aVC, animated: true)
         } else {
-            showAlertToast(message: "Please upgrade your current plan")
+            showAlertToast(message: Theme.strings.alert_upgrade_plan)
         }
     }
     

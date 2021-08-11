@@ -59,7 +59,7 @@ class PlaylistCategoryVC: BaseViewController {
     
     override func setupData() {
         if arrayPlaylistHomeData.count > 0 {
-            if arrayPlaylistHomeData[0].IsLock == "1" || arrayPlaylistHomeData[0].IsLock == "2" {
+            if lockDownloads == "1" || lockDownloads == "2" {
                 imgLock.isHidden = false
             } else {
                 imgLock.isHidden = true
@@ -98,7 +98,6 @@ class PlaylistCategoryVC: BaseViewController {
         downloadDataModel.View = Theme.strings.my_downloads
         downloadDataModel.UserId = CoUserDataModel.currentUserId
         downloadDataModel.Details = CoreDataHelper.shared.fetchAllPlaylists()
-        downloadDataModel.IsLock = shouldLockDownloads() ? "1" : "0"
         self.arrayPlaylistHomeData = [downloadDataModel]
         self.tableView.reloadData()
     }
@@ -180,9 +179,9 @@ class PlaylistCategoryVC: BaseViewController {
             return
         }
         
-        if arrayPlaylistHomeData[0].IsLock == "1" {
+        if lockDownloads == "1" {
             openInactivePopup(controller: self)
-        } else if arrayPlaylistHomeData[0].IsLock == "2" {
+        } else if lockDownloads == "2" {
             showAlertToast(message: Theme.strings.alert_reactivate_plan)
         } else {
             // Segment Tracking

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -131,16 +131,25 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lock" translatesAutoresizingMaskIntoConstraints="NO" id="O8X-sO-f5V">
+                                        <rect key="frame" x="297" y="14" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="Ibb-yS-1uw"/>
+                                            <constraint firstAttribute="width" secondItem="O8X-sO-f5V" secondAttribute="height" multiplier="1:1" id="f7F-eq-Jap"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" name="green_36C2D6"/>
                                 <constraints>
                                     <constraint firstItem="URN-bo-e7K" firstAttribute="leading" secondItem="BI9-bt-JXS" secondAttribute="leading" constant="16" id="5e9-TF-H4b"/>
                                     <constraint firstItem="JlA-lV-o2I" firstAttribute="leading" secondItem="e3X-Kl-3t6" secondAttribute="leading" id="7rK-k6-1vv"/>
+                                    <constraint firstItem="O8X-sO-f5V" firstAttribute="top" secondItem="URN-bo-e7K" secondAttribute="top" id="9cF-WE-eZj"/>
                                     <constraint firstItem="7Np-Lw-xfM" firstAttribute="centerY" secondItem="JlA-lV-o2I" secondAttribute="centerY" id="MOh-rQ-38E"/>
                                     <constraint firstAttribute="trailing" secondItem="e3X-Kl-3t6" secondAttribute="trailing" constant="27" id="Pev-b8-fCL"/>
                                     <constraint firstAttribute="bottom" secondItem="JlA-lV-o2I" secondAttribute="bottom" constant="16" id="PuB-pc-6Zz"/>
                                     <constraint firstAttribute="bottom" secondItem="U0T-vh-0cu" secondAttribute="bottom" constant="37" id="RGi-ws-nxB"/>
                                     <constraint firstAttribute="trailing" secondItem="U0T-vh-0cu" secondAttribute="trailing" id="dZo-iu-Iac"/>
+                                    <constraint firstAttribute="trailing" secondItem="O8X-sO-f5V" secondAttribute="trailing" constant="16" id="gZ7-Ok-rbk"/>
                                     <constraint firstItem="gwH-Ov-Aed" firstAttribute="centerX" secondItem="BI9-bt-JXS" secondAttribute="centerX" id="l59-y0-oi1"/>
                                     <constraint firstItem="U0T-vh-0cu" firstAttribute="leading" secondItem="BI9-bt-JXS" secondAttribute="leading" id="mw7-oZ-v4e"/>
                                     <constraint firstItem="gwH-Ov-Aed" firstAttribute="centerY" secondItem="BI9-bt-JXS" secondAttribute="centerY" id="ovo-rP-KDx"/>
@@ -195,6 +204,7 @@
             <connections>
                 <outlet property="btnPlay" destination="gwH-Ov-Aed" id="oD3-Nn-dow"/>
                 <outlet property="btnReminder" destination="URN-bo-e7K" id="max-uc-Afy"/>
+                <outlet property="imgLock" destination="O8X-sO-f5V" id="ol3-tU-HMP"/>
                 <outlet property="lblPlaylistDirection" destination="JlA-lV-o2I" id="wkX-Hi-0vf"/>
                 <outlet property="lblPlaylistDuration" destination="7Np-Lw-xfM" id="ojf-8X-W16"/>
                 <outlet property="lblPlaylistName" destination="e3X-Kl-3t6" id="jZa-x5-eD3"/>
@@ -206,6 +216,7 @@
     </objects>
     <resources>
         <image name="cloud" width="343" height="253"/>
+        <image name="lock" width="30" height="30"/>
         <image name="moon_zzzz" width="48" height="45"/>
         <image name="play_white" width="60" height="60"/>
         <namedColor name="green_1597AA">

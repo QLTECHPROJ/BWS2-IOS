@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -40,9 +40,9 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pUb-Oe-ZQQ">
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="newLock" translatesAutoresizingMaskIntoConstraints="NO" id="pUb-Oe-ZQQ">
                                 <rect key="frame" x="0.0" y="13" width="50" height="50"/>
-                                <color key="backgroundColor" red="0.21176470589999999" green="0.76078431369999999" blue="0.83921568629999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="hrP-5A-fhS"/>
                                     <constraint firstAttribute="width" secondItem="pUb-Oe-ZQQ" secondAttribute="height" multiplier="1:1" id="pcd-IT-YGo"/>
@@ -171,8 +171,8 @@
                     <constraint firstAttribute="trailing" secondItem="goN-vE-Q0z" secondAttribute="trailing" constant="16" id="ygZ-ax-q9p"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="btnChangePosition" destination="f2B-ui-j1s" id="ajP-2W-pro"/>
                 <outlet property="btnDelete" destination="gNz-F5-jt4" id="n12-lh-KIW"/>
@@ -180,7 +180,7 @@
                 <outlet property="downloadProgressView" destination="rm5-Ra-gQm" id="ciY-Mi-aou"/>
                 <outlet property="imgHeight" destination="30h-Ps-LMf" id="Zmn-YH-cNq"/>
                 <outlet property="imgLeading" destination="jGP-Cp-E6N" id="yad-fN-4cL"/>
-                <outlet property="imgPlay" destination="pUb-Oe-ZQQ" id="bet-R5-PsF"/>
+                <outlet property="imgLock" destination="pUb-Oe-ZQQ" id="WJg-oR-1kp"/>
                 <outlet property="imgView" destination="oTZ-aF-eAA" id="7De-Kx-Vk4"/>
                 <outlet property="lblDuration" destination="zW2-li-Nlj" id="Tsa-N6-ned"/>
                 <outlet property="lblTitle" destination="o1i-L0-M9i" id="8WS-vO-DZ9"/>
@@ -194,6 +194,7 @@
         <image name="Remove" width="20" height="21"/>
         <image name="Sorting" width="20" height="14"/>
         <image name="download_white" width="22" height="22"/>
+        <image name="newLock" width="256" height="256"/>
         <namedColor name="Green">
             <color red="0.0" green="0.53333333333333333" blue="0.5725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

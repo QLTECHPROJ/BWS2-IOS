@@ -11,7 +11,7 @@ import UIKit
 class SelfDevCell: UITableViewCell {
     
     // MARK:- OUTLETS
-    @IBOutlet weak var imgPlay: UIImageView!
+    @IBOutlet weak var imgLock: UIImageView!
     @IBOutlet weak var viewCard: CardView!
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var lblTitle: UILabel!
@@ -57,15 +57,7 @@ class SelfDevCell: UITableViewCell {
     // Configure Cell
     func generalConfigure(data : AudioDetailsDataModel) {
         
-        if data.IsPlay == "1" {
-            imgPlay.isHidden = true
-        } else {
-            imgPlay.isHidden = false
-            imgPlay.image = UIImage(named:"newLock")
-            imgPlay.backgroundColor = .clear
-            imgPlay.contentMode = .scaleToFill
-            imgView.backgroundColor = .lightGray
-        }
+        imgLock.isHidden = (data.IsPlay == "1")
         
         self.audioDetails = data
         if let imgUrl = URL(string: data.ImageFile.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
@@ -78,15 +70,7 @@ class SelfDevCell: UITableViewCell {
     
     func generalPlaylistConfigure(data : PlaylistDetailsModel) {
         
-        if data.IsLock == "1" || data.IsLock == "2" {
-            imgPlay.isHidden = false
-            imgPlay.image = UIImage(named:"newLock")
-            imgPlay.backgroundColor = .clear
-            imgPlay.contentMode = .scaleToFill
-            imgView.backgroundColor = .lightGray
-        } else {
-            imgPlay.isHidden = true
-        }
+        imgLock.isHidden = !(data.IsLock == "1" || data.IsLock == "2")
         
         if let imgUrl = URL(string: data.PlaylistImage.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
             imgView.sd_setImage(with: imgUrl, completed: nil)
@@ -171,16 +155,7 @@ class SelfDevCell: UITableViewCell {
         
         btnDownload.setImage(nil, for: UIControl.State.normal)
         
-        if data.IsLock == "1" || data.IsLock == "2" {
-            imgPlay.isHidden = false
-            imgPlay.image = UIImage(named:"newLock")
-            imgPlay.backgroundColor = .clear
-            imgPlay.contentMode = .scaleToFill
-            imgView.backgroundColor = .lightGray
-        }
-        else {
-            imgPlay.isHidden = true
-        }
+        imgLock.isHidden = !(data.IsLock == "1" || data.IsLock == "2")
         
         if let imgUrl = URL(string: data.PlaylistImage.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
             imgView.sd_setImage(with: imgUrl, completed: nil)

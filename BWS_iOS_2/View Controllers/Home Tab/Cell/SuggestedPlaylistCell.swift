@@ -16,6 +16,8 @@ class SuggestedPlaylistCell: UITableViewCell {
     @IBOutlet weak var btnReminder : UIButton!
     @IBOutlet weak var btnPlay : UIButton!
     
+    @IBOutlet weak var imgLock : UIImageView!
+    
     @IBOutlet weak var lblPlaylistName : UILabel!
     @IBOutlet weak var lblPlaylistDirection : UILabel!
     @IBOutlet weak var lblPlaylistDuration : UILabel!
@@ -42,6 +44,8 @@ class SuggestedPlaylistCell: UITableViewCell {
         guard let playlistData = suggstedPlaylist else {
             return
         }
+        
+        imgLock.isHidden = !(lockDownloads == "1" || lockDownloads == "2")
         
         lblPlaylistName.text = playlistData.PlaylistName
         lblPlaylistDirection.text = playlistData.playlistDirection

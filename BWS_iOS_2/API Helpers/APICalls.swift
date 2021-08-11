@@ -94,6 +94,8 @@ extension OTPVC {
                     CoUserDataModel.currentUser = CoUserDataModel(data: coUserData)
                 }
                 
+                lockDownloads = response.ResponseData?.Islock ?? ""
+                
                 // Segment Tracking
                 if let userDetails = response.ResponseData {
                     let traits = ["name":userDetails.Name,
@@ -174,6 +176,8 @@ extension PinVC {
                 if lastUserID.trim.count > 0 {
                     CoUserDataModel.lastUserID = lastUserID
                 }
+                
+                lockDownloads = response.ResponseData?.Islock ?? ""
                 
                 // Segment Tracking
                 SegmentTracking.shared.coUserEvent(name: SegmentTracking.eventNames.User_Login, trackingType: .track)
@@ -311,6 +315,8 @@ extension UIViewController {
                 if SegmentTracking.shared.userIdentityTracked == false {
                     SegmentTracking.shared.identifyUser()
                 }
+                
+                lockDownloads = response.ResponseData?.Islock ?? ""
                 
                 DispatchQueue.main.async {
                     complitionBlock?(true)
@@ -512,6 +518,7 @@ extension ManageVC {
         APICallManager.sharedInstance.callAPI(router: APIRouter.managehomescreen(parameters)) { (response : ManageHomeModel) in
             if response.ResponseCode == "200" {
                 if let responseData = response.ResponseData {
+                    lockDownloads = response.ResponseData?.Islock ?? ""
                     self.suggstedPlaylist = responseData.SuggestedPlaylist
                     self.arrayAudioHomeData = responseData.Audio
                     self.arrayPlaylistHomeData = responseData.Playlist

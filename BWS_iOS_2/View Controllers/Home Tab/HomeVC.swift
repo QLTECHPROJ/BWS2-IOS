@@ -154,6 +154,14 @@ class HomeVC: BaseViewController {
             return
         }
         
+        if lockDownloads == "1" {
+            openInactivePopup(controller: self)
+            return
+        } else if lockDownloads == "2" {
+            showAlertToast(message: Theme.strings.alert_reactivate_plan)
+            return
+        }
+        
         // Segment Tracking
         SegmentTracking.shared.playlistDetailEvents(name: SegmentTracking.eventNames.Playlist_Reminder_Clicked, objPlaylist: suggstedPlaylist, source: "Home Screen", trackingType: .track)
         
@@ -163,6 +171,14 @@ class HomeVC: BaseViewController {
     }
     
     func playSuggestedPlaylist() {
+        if lockDownloads == "1" {
+            openInactivePopup(controller: self)
+            return
+        } else if lockDownloads == "2" {
+            showAlertToast(message: Theme.strings.alert_reactivate_plan)
+            return
+        }
+        
         guard let playlistData = suggstedPlaylist else {
             return
         }
@@ -209,6 +225,14 @@ class HomeVC: BaseViewController {
     
     func editAreaOfFocus() {
         if checkInternet(showToast: true) == false {
+            return
+        }
+        
+        if lockDownloads == "1" {
+            openInactivePopup(controller: self)
+            return
+        } else if lockDownloads == "2" {
+            showAlertToast(message: Theme.strings.alert_reactivate_plan)
             return
         }
         
@@ -376,6 +400,14 @@ extension HomeVC : UITableViewDelegate, UITableViewDataSource {
                     return
                 }
                 
+                if lockDownloads == "1" {
+                    openInactivePopup(controller: self)
+                    return
+                } else if lockDownloads == "2" {
+                    showAlertToast(message: Theme.strings.alert_reactivate_plan)
+                    return
+                }
+                
                 if let objPlaylist = self.suggstedPlaylist {
                     let aVC = AppStoryBoard.home.viewController(viewControllerClass: PlaylistAudiosVC.self)
                     aVC.objPlaylist = objPlaylist
@@ -391,6 +423,14 @@ extension HomeVC : UITableViewDelegate, UITableViewDataSource {
                 }
                 
                 if self.shouldCheckIndexScore == "1" {
+                    if lockDownloads == "1" {
+                        openInactivePopup(controller: self)
+                        return
+                    } else if lockDownloads == "2" {
+                        showAlertToast(message: Theme.strings.alert_reactivate_plan)
+                        return
+                    }
+                    
                     let aVC = AppStoryBoard.main.viewController(viewControllerClass: DoDassAssessmentVC.self)
                     aVC.isFromEdit = true
                     let navVC = UINavigationController(rootViewController: aVC)
