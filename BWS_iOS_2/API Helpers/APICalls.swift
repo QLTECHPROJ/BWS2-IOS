@@ -519,8 +519,6 @@ extension ManageVC {
                     for data in self.arrayAudioHomeData {
                         if data.View == Theme.strings.my_downloads {
                             data.Details = CoreDataHelper.shared.fetchSingleAudios()
-                            lockDownloads = data.IsLock
-                            // setDownloadsExpiryDate(expireDateString: data.expireDate)
                             let _ = shouldLockDownloads()
                         }
                     }
@@ -1159,6 +1157,7 @@ extension HomeVC {
                 userData?.indexScore = response.ResponseData.IndexScore
                 CoUserDataModel.currentUser = userData
                 
+                lockDownloads = response.ResponseData.Islock
                 self.shouldCheckIndexScore = response.ResponseData.shouldCheckIndexScore
                 self.IndexScoreDiff = response.ResponseData.IndexScoreDiff
                 self.ScoreIncDec = response.ResponseData.ScoreIncDec

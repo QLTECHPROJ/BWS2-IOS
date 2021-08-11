@@ -48,14 +48,10 @@ class AudioCollectionCell: UICollectionViewCell {
             
             lblName.text = audioData.CategoryName
         } else {
-            if homeData.IsLock == "1" || homeData.IsLock == "2" {
-                if audioData.IsPlay == "1" {
-                    imgLock.isHidden = true
-                } else {
-                    imgLock.isHidden = false
-                }
-            } else {
+            if audioData.IsPlay == "1" {
                 imgLock.isHidden = true
+            } else {
+                imgLock.isHidden = false
             }
             
             if let imgUrl = URL(string: audioData.ImageFile.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
@@ -68,7 +64,7 @@ class AudioCollectionCell: UICollectionViewCell {
             lblName.text = audioData.Name
         }
         
-        if homeData.IsLock == "1" || homeData.IsLock == "2" || homeData.View == Theme.strings.top_categories || audioData.isSelected == false {
+        if lockDownloads == "1" || lockDownloads == "2" || homeData.View == Theme.strings.top_categories || audioData.isSelected == false {
             btnAddtoPlaylist.isHidden = true
             btnAddtoPlaylist.isUserInteractionEnabled = false
         } else {

@@ -63,7 +63,6 @@ class ViewAllAudioVC: BaseViewController {
             downloadDataModel.View = Theme.strings.my_downloads
             downloadDataModel.UserId = CoUserDataModel.currentUserId
             downloadDataModel.Details = CoreDataHelper.shared.fetchSingleAudios()
-            downloadDataModel.IsLock = shouldLockDownloads() ? "1" : "0"
             self.homeData = downloadDataModel
             
             self.objCollectionView.reloadData()
@@ -82,10 +81,9 @@ class ViewAllAudioVC: BaseViewController {
         let indexPath = self.objCollectionView.indexPathForItem(at: point)
         
         if let indexPath = indexPath {
-            if homeData.IsLock == "1" || homeData.IsLock == "2" {
+            if lockDownloads == "1" || lockDownloads == "2" {
                 
-            }
-            else {
+            } else {
                 self.didLongPressAt(playlistIndex: indexPath.row)
             }
         }
@@ -177,10 +175,7 @@ extension ViewAllAudioVC : UICollectionViewDataSource, UICollectionViewDelegate,
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if homeData.IsLock == "1" && homeData.Details[indexPath.row].IsPlay != "1" {
-            openInactivePopup(controller: self)
-            return
-        } else if homeData.IsLock == "2" && homeData.Details[indexPath.row].IsPlay != "1" {
+        if homeData.Details[indexPath.row].IsPlay != "1" {
             showAlertToast(message: Theme.strings.alert_reactivate_plan)
             return
         } else {

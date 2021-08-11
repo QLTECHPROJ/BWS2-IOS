@@ -154,6 +154,7 @@ class LoginDataModel : EVObject {
     var isMainAccount = ""
     var CoUserCount = ""
     var IsFirst = ""
+    var Islock = ""
     
     static var profileImage : UIImage?
     
@@ -417,6 +418,7 @@ class CoUserDataModel : EVObject {
     var CoUserCount = ""
     var InviteStatus = ""
     var IsFirst = ""
+    var Islock = ""
     
     static var profileImage : UIImage?
     
@@ -518,7 +520,6 @@ class AudioHomeDataModel: EVObject {
     var View = ""
     var UserId = ""
     var Details = [AudioDetailsDataModel]()
-    var IsLock = ""
 }
 
 public class AudioDetailsDataModel: EVObject {
@@ -555,8 +556,7 @@ public class AudioDetailsDataModel: EVObject {
     var isSingleAudio = ""
     var sortId = ""
     
-    //lock functionality
-    var IsLock = ""
+    // Lock functionality
     var IsPlay = ""
     
     var isDisclaimer = false
@@ -623,6 +623,7 @@ class PlaylistDetailsModel: EVObject {
     var TotalDuration = ""
     var Totalhour = ""
     var Totalminute = ""
+    var Totalsecond = ""
     var Created = ""
     var Download = ""
     var IsLock = ""
@@ -740,8 +741,18 @@ class HomeModel: EVObject {
 }
 
 class HomeDataModel: EVObject {
-    var IsFirst = ""
+    var DayRegularity = ""
+    var DayTotalTime = ""
+    var DayFrequency = ""
+    var MonthRegularity = ""
+    var MonthTotalTime = ""
+    var MonthFrequency = ""
+    var YearRegularity = ""
+    var YearTotalTime = ""
+    var YearFrequency = ""
     var IndexScore = ""
+    var IsFirst = ""
+    var Islock = ""
     var shouldCheckIndexScore = ""
     var IndexScoreDiff = ""
     var ScoreIncDec = ""
@@ -751,6 +762,7 @@ class HomeDataModel: EVObject {
     var PastIndexScore = [PastIndexScoreModel]()
     var SessionScore = [SessionScoreModel]()
     var SessionProgress = [SessionProgressModel]()
+    var GraphAnalytics = [GraphAnalyticsModel]()
 }
 
 class PastIndexScoreModel : EVObject {
@@ -764,6 +776,10 @@ class SessionScoreModel : EVObject {
 }
 
 class SessionProgressModel : EVObject {
+    
+}
+
+class GraphAnalyticsModel : EVObject {
     
 }
 

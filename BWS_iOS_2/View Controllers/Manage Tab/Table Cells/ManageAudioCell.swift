@@ -83,7 +83,7 @@ class ManageAudioCell: UITableViewCell {
         let indexPath = self.collectionView.indexPathForItem(at: point)
         
         if let indexPath = indexPath {
-            if homeData.IsLock == "1" || homeData.IsLock == "2" || homeData.View == Theme.strings.top_categories {
+            if lockDownloads == "1" || lockDownloads == "2" || homeData.View == Theme.strings.top_categories {
                 print("Do nothing")
             } else {
                 self.didLongPressAtIndex?(indexPath.row)
@@ -143,18 +143,8 @@ extension ManageAudioCell : UICollectionViewDelegate, UICollectionViewDataSource
         if homeData.View == Theme.strings.top_categories {
             didSelectAudioAtIndex?(indexPath.row)
         } else {
-            if homeData.IsLock == "1" {
-                if arrayAudioDetails[indexPath.row].IsPlay == "1" {
-                    didSelectAudioAtIndex?(indexPath.row)
-                } else {
-                    openInactivePopup(controller: self.parentViewController)
-                }
-            } else if homeData.IsLock == "2" {
-                if arrayAudioDetails[indexPath.row].IsPlay == "1" {
-                    didSelectAudioAtIndex?(indexPath.row)
-                } else {
-                    showAlertToast(message: Theme.strings.alert_reactivate_plan)
-                }
+            if arrayAudioDetails[indexPath.row].IsPlay != "1" {
+                showAlertToast(message: Theme.strings.alert_reactivate_plan)
             } else {
                 didSelectAudioAtIndex?(indexPath.row)
             }

@@ -166,7 +166,6 @@ class ManageVC: BaseViewController {
             for data in arrayAudioHomeData {
                 if data.View == Theme.strings.my_downloads {
                     data.Details = CoreDataHelper.shared.fetchSingleAudios()
-                    lockDownloads = data.IsLock
                 }
             }
             
@@ -213,7 +212,6 @@ class ManageVC: BaseViewController {
         downloadDataModel.View = Theme.strings.my_downloads
         downloadDataModel.UserId = CoUserDataModel.currentUserId
         downloadDataModel.Details = CoreDataHelper.shared.fetchSingleAudios()
-        downloadDataModel.IsLock = shouldLockDownloads() ? "1" : "0"
         arrayAudioHomeData = [downloadDataModel]
         
         playlistIndexPath = nil

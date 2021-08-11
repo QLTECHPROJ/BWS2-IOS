@@ -80,10 +80,8 @@ class AddAudioViewAllVC: BaseViewController {
             return
         }
         
-        if audioData.IsLock == "1" {
-            openInactivePopup(controller: self)
-        } else if audioData.IsLock == "2" {
-           showAlertToast(message: Theme.strings.alert_reactivate_plan)
+        if audioData.IsPlay != "1" {
+            showAlertToast(message: Theme.strings.alert_reactivate_plan)
         } else {
             if isComeFromAddAudio {
                 callAddAudioToPlaylistAPI(audioToAdd: audioData.ID, playlistToAdd: "")
@@ -207,9 +205,7 @@ extension AddAudioViewAllVC : UITableViewDelegate, UITableViewDataSource {
                 self.navigationController?.pushViewController(aVC, animated: true)
             }
         } else {
-            if arrayAudio[indexPath.row].IsLock == "1" && arrayAudio[indexPath.row].IsPlay != "1" {
-                openInactivePopup(controller: self)
-            } else if arrayAudio[indexPath.row].IsLock == "2" && arrayAudio[indexPath.row].IsPlay != "1" {
+            if arrayAudio[indexPath.row].IsPlay != "1" {
                 showAlertToast(message: Theme.strings.alert_reactivate_plan)
             } else {
                 if DJMusicPlayer.shared.currentlyPlaying?.isDisclaimer == true {

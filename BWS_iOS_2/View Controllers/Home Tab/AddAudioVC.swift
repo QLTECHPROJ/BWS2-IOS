@@ -166,9 +166,7 @@ class AddAudioVC: BaseViewController {
             return
         }
             
-        if audioData.IsLock == "1" {
-           openInactivePopup(controller: self)
-        } else if audioData.IsLock == "2" {
+        if lockDownloads != "1" {
             showAlertToast(message: Theme.strings.alert_reactivate_plan)
         } else {
             if isComeFromAddAudio {
@@ -469,12 +467,10 @@ extension AddAudioVC : UITableViewDelegate, UITableViewDataSource {
         } else {
             cell.lblTitle.text = arraySearch[indexPath.row].Name
             
-            if arraySearch[indexPath.row].IsLock == "1" {
-                if arraySearch[indexPath.row].IsPlay == "1" {
-                    cell.imgPlay.isHidden = true
-                } else {
-                    cell.imgPlay.isHidden = false
-                }
+            if arraySearch[indexPath.row].IsPlay == "1" {
+                cell.imgPlay.isHidden = true
+            } else {
+                cell.imgPlay.isHidden = false
             }
             
             if let imgUrl = URL(string: arraySearch[indexPath.row].ImageFile.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
@@ -524,10 +520,8 @@ extension AddAudioVC : UITableViewDelegate, UITableViewDataSource {
         self.view.endEditing(true)
         
         if indexPath.section == 1 {
-            if arrayAudio[indexPath.row].IsLock == "1" && arrayAudio[indexPath.row].IsPlay != "1" {
+            if arrayAudio[indexPath.row].IsPlay != "1" {
                 openInactivePopup(controller: self)
-            } else if arrayAudio[indexPath.row].IsLock == "2" && arrayAudio[indexPath.row].IsPlay != "1" {
-                showAlertToast(message: Theme.strings.alert_reactivate_plan)
             } else {
                 if DJMusicPlayer.shared.currentlyPlaying?.isDisclaimer == true {
                     showAlertToast(message: Theme.strings.alert_disclaimer_playing)
@@ -573,9 +567,7 @@ extension AddAudioVC : UITableViewDelegate, UITableViewDataSource {
             }
         } else {
             if arraySearch[indexPath.row].Iscategory == "1" {
-                if arraySearch[indexPath.row].IsLock == "1" && arraySearch[indexPath.row].IsPlay != "1" {
-                    openInactivePopup(controller: self)
-                } else if arraySearch[indexPath.row].IsLock == "2" && arraySearch[indexPath.row].IsPlay != "1" {
+                if arraySearch[indexPath.row].IsPlay != "1" {
                     showAlertToast(message: Theme.strings.alert_reactivate_plan)
                 } else {
                     if DJMusicPlayer.shared.currentlyPlaying?.isDisclaimer == true {
@@ -610,9 +602,9 @@ extension AddAudioVC : UITableViewDelegate, UITableViewDataSource {
                     return
                 }
                 
-                if arraySearch[indexPath.row].IsLock == "1" {
+                if lockDownloads == "1" {
                     openInactivePopup(controller: self)
-                } else if arraySearch[indexPath.row].IsLock == "2" {
+                } else if lockDownloads == "2" {
                     showAlertToast(message: Theme.strings.alert_reactivate_plan)
                 } else {
                     let playlistData = PlaylistDetailsModel()

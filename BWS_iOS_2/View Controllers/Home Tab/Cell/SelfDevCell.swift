@@ -57,18 +57,14 @@ class SelfDevCell: UITableViewCell {
     // Configure Cell
     func generalConfigure(data : AudioDetailsDataModel) {
         
-        if data.IsLock == "1" || data.IsLock == "2"{
-            if data.IsPlay == "1" {
-                imgPlay.isHidden = true
-            } else {
-                imgPlay.isHidden = false
-                imgPlay.image = UIImage(named:"newLock")
-                imgPlay.backgroundColor = .clear
-                imgPlay.contentMode = .scaleToFill
-                imgView.backgroundColor = .lightGray
-            }
-        } else {
+        if data.IsPlay == "1" {
             imgPlay.isHidden = true
+        } else {
+            imgPlay.isHidden = false
+            imgPlay.image = UIImage(named:"newLock")
+            imgPlay.backgroundColor = .clear
+            imgPlay.contentMode = .scaleToFill
+            imgView.backgroundColor = .lightGray
         }
         
         self.audioDetails = data

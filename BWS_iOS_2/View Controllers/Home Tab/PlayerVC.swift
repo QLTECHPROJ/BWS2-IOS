@@ -323,7 +323,7 @@ class PlayerVC: BaseViewController {
             return
         }
         
-        if  audioDetails?.IsLock == "1" || audioDetails?.IsLock == "2" {
+        if  audioDetails?.IsPlay != "1" {
             // Nothing
         } else {
             let aVC = AppStoryBoard.manage.viewController(viewControllerClass: AudioDetailVC.self)

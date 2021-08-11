@@ -16,6 +16,7 @@ import AVKit
 func openInactivePopup(controller : UIViewController?, openWithNavigation : Bool = false) {
     // Open Popup
     // InActive popup screen was removed
+    showAlertToast(message: Theme.strings.alert_reactivate_plan)
 }
 
 // MARK:- Lock Downloads
@@ -26,12 +27,19 @@ func setDownloadsExpiryDate(expireDateString : String) {
 }
 
 func shouldLockDownloads() -> Bool {
-    let date : Date? // CoUserDataModel.currentUser?.expireDate.toDate("yyyy-MM-dd HH:mm:ss")
-    date = nil
-    guard let expiryDate = date else {
-        return false
+    guard let userData = CoUserDataModel.currentUser else {
+        return shouldEnableIAP
     }
     
+    if userData.planDetails.count == 0 {
+        return shouldEnableIAP
+    }
+    
+    guard let expiryTime = TimeInterval(userData.planDetails[0].PlanPurchaseDate) else {
+        return shouldEnableIAP
+    }
+    
+    let expiryDate = Date(timeIntervalSince1970: expiryTime)
     let currentDate = Date()
     let difference = expiryDate.differenceWith(currentDate, inUnit: NSCalendar.Unit.day)
     return difference >= 0
