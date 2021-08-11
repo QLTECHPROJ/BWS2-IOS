@@ -390,7 +390,7 @@ struct AppStrings {
     let prev_drug_use_subtitle = "Have you ever taken any illicit drugs in your life?"
     
     let do_the_assessment_subtitle_one = "We're done with the first part."
-   // let do_the_assessment_subtitle_two = "In the next step, you will have to fill an assessment form which will help us assess your mental health."
+  
     let do_the_assessment_subtitle_two = "To get your Wellness Score, please answer a few questions about how you're feeling right now. It will only take a few minutes. It will also help us curate the perfect wellness playlist for you."
     
     let wellness_score_subtitle = "The wellness score determines the intensity of your mental health challenge and based on your score we will recommend the programs to help you."

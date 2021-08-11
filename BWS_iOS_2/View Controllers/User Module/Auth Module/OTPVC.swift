@@ -130,7 +130,10 @@ class OTPVC: BaseViewController {
     
     func handleCoUserRedirection() {
         if let coUser = CoUserDataModel.currentUser {
-            if coUser.CoUserCount != "0" {
+            if coUser.IsFirst == "1" && coUser.isMainAccount == "0"{
+                let aVC = AppStoryBoard.main.viewController(viewControllerClass:EmailVerifyVC.self)
+                self.navigationController?.pushViewController(aVC, animated: true)
+            } else if coUser.CoUserCount != "0" {
                 CoUserDataModel.currentUser = nil
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass: UserListVC.self)
                 self.navigationController?.pushViewController(aVC, animated: true)
