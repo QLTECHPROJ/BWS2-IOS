@@ -278,6 +278,7 @@ extension ManagePlanListVC : TTTAttributedLabelDelegate {
             aVC.strTitle = Theme.strings.disclaimer_title
             aVC.strDesc = Theme.strings.disclaimer_description
             aVC.isOkButtonHidden = true
+            aVC.isDisclaimerBtnHide = false
             aVC.modalPresentationStyle = .overFullScreen
             self.present(aVC, animated: false, completion: nil)
         }
