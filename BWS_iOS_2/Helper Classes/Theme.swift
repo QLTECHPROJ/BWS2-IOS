@@ -373,7 +373,7 @@ struct AppStrings {
     let forgot_password_title = "Forgot your password"
     let forgot_password_subtitle = "Give us your registered email ID and we'll send you everything that you'll need to change your password"
     
-    let couser_listing_title = "Welcome to \nBrain wellness app"
+    let couser_listing_title = "Welcome to \nBrain Wellness App"
     let couser_listing_subtitle = "Simply sign-in to your account and continue your journey towards mental & emotional transformation"
     
     let couser_welcome_subtitle = "It's good to have you here..."
@@ -399,13 +399,13 @@ struct AppStrings {
     let you_are_doing_good_title = "You are Doing Good"
     let you_are_doing_good_subtitle = "We are analysing the information you have provided and devising a personalised treatment plan for just for you."
     
-    let manage_plan_list_access_audios = "Access More Than 75+ Audio Programs."
+    let manage_plan_list_access_audios = "Access 75+ Audio Programs"
     let manage_plan_list_introductory_session = "Self reported date of 2173 clients before and after the introductory session"
     let manage_plan_list_testimonials = "SEE REAL TESTIMONIALS \nFROM REAL CUSTOMERS"
     
     let enhance_program = "Enhance Program"
     
-    let thank_you_subtitle = "Congratulations on joining the Brain Wellness App Membership"
+    let thank_you_subtitle = "Congratulations on joining the Brain Wellness App Family."
     
     let recommended_category_subtitle = "You can select upto three areas of focus to further customise your journey towards mental transformation."
     
@@ -448,7 +448,7 @@ struct AppStrings {
     
     let alert_blank_pin_error = "Please enter pin"
     let alert_black_new_pin = "Please provide the latest PIN to login"
-    let alert_pin_not_match = "Please provide the latest PIN to login"
+    let alert_pin_not_match = "Please check if both the PINs are same"
     
     let alert_select_login_user = "Please select atleast one to proceed"
     
@@ -504,7 +504,7 @@ struct AppStrings {
     let alert_select_day_and_time = "Please select days and Time"
     
     //Add User
-    let add_user_subTitle = "New users can either use this device, or another one to access the app."
+    let add_user_subTitle = "New persons can either use this device, or another one to access the app."
     let same_num_title = "Invite a Friend or Family Member"
     let same_num_desc = "Happiness is sweeter when shared. That's why we're eager for you to share your subscription with someone you care for." + "\n" + "The first person invited gets the same benefits as you at no additional cost."
     //Set up pin

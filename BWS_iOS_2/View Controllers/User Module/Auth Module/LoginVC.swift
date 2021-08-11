@@ -279,7 +279,7 @@ extension LoginVC : TTTAttributedLabelDelegate {
             aVC.strDesc = Theme.strings.disclaimer_description
             aVC.isOkButtonHidden = true
             aVC.modalPresentationStyle = .overFullScreen
-            aVC.isDisclaimerBtnHide = false
+            aVC.isDisclaimerBtnHide = true
             self.present(aVC, animated: false, completion: nil)
         }
     }
