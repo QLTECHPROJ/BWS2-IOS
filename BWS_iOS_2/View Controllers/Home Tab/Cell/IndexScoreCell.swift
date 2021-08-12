@@ -11,7 +11,7 @@ import UIKit
 class IndexScoreCell: UITableViewCell {
     
     @IBOutlet weak var lblTitle: UILabel!
-    @IBOutlet weak var imgBanner: UIImageView!
+    @IBOutlet weak var viewCheckWellnessScore: UIView!
     @IBOutlet weak var viewJoinNow: UIView!
     @IBOutlet weak var viewGraph: UIView!
     
@@ -66,7 +66,7 @@ class IndexScoreCell: UITableViewCell {
         viewJoinNow.isHidden = true
         viewScrore.isHidden = false
         lblTitle.isHidden = false
-        imgBanner.isHidden = true
+        viewCheckWellnessScore.isHidden = true
     }
     
     func configureCheckIndexScoreCell() {
@@ -76,7 +76,7 @@ class IndexScoreCell: UITableViewCell {
         viewJoinNow.isHidden = true
         viewScrore.isHidden = true
         lblTitle.isHidden = false
-        imgBanner.isHidden = false
+        viewCheckWellnessScore.isHidden = false
     }
     
     func configureJoinEEPCell() {
@@ -84,7 +84,7 @@ class IndexScoreCell: UITableViewCell {
         viewJoinNow.isHidden = false
         viewScrore.isHidden = true
         lblTitle.isHidden = true
-        imgBanner.isHidden = true
+        viewCheckWellnessScore.isHidden = true
         
         viewJoinNow.layer.cornerRadius = 10
         viewJoinNow.clipsToBounds = true
@@ -97,7 +97,7 @@ class IndexScoreCell: UITableViewCell {
         viewJoinNow.isHidden = true
         viewScrore.isHidden = true
         lblTitle.isHidden = false
-        imgBanner.isHidden = true
+        viewCheckWellnessScore.isHidden = true
     }
     
 }

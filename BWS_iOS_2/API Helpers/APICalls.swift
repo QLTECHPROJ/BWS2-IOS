@@ -322,7 +322,7 @@ extension UIViewController {
                     complitionBlock?(true)
                 }
             } else {
-                CoUserDataModel.currentUser = nil
+                // CoUserDataModel.currentUser = nil
                 DispatchQueue.main.async {
                     complitionBlock?(false)
                 }
@@ -526,7 +526,13 @@ extension ManageVC {
                     for data in self.arrayAudioHomeData {
                         if data.View == Theme.strings.my_downloads {
                             data.Details = CoreDataHelper.shared.fetchSingleAudios()
-                            let _ = shouldLockDownloads()
+                        }
+                    }
+                    
+                    if lockDownloads == "1" || lockDownloads == "2" {
+                        if isAudioPlayerClosed == false {
+                            self.clearAudioPlayer()
+                            isAudioPlayerClosed = true
                         }
                     }
                     
@@ -1175,6 +1181,13 @@ extension HomeVC {
                 self.arrayPastIndexScore = response.ResponseData.PastIndexScore
                 self.arraySessionScore = response.ResponseData.SessionScore
                 self.arraySessionProgress = response.ResponseData.SessionProgress
+                
+                if lockDownloads == "1" || lockDownloads == "2" {
+                    if isAudioPlayerClosed == false {
+                        self.clearAudioPlayer()
+                        isAudioPlayerClosed = true
+                    }
+                }
                 
                 if response.ResponseData.shouldPlayDisclaimer == "1" {
                     DisclaimerAudio.shared.shouldPlayDisclaimer = true

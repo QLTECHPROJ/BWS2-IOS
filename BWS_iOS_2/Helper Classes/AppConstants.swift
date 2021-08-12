@@ -12,3 +12,4 @@ var refreshAudioData = true
 var refreshPlaylistData = true
 var canPlayFirstTime = false
 var lockDownloads = ""
+var isAudioPlayerClosed = false

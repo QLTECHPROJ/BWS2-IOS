@@ -171,6 +171,7 @@ class PlayerVC: BaseViewController {
             btnDownload.isEnabled = true
         }
         
+        btnDownload.isEnabled = enableOptions
         btnInfo.isEnabled = enableOptions
     }
     

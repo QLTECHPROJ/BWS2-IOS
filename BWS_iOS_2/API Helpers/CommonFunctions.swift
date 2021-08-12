@@ -35,14 +35,12 @@ func shouldLockDownloads() -> Bool {
         return shouldEnableIAP
     }
     
-    guard let expiryTime = TimeInterval(userData.planDetails[0].PlanPurchaseDate) else {
+    guard let expiryTime = TimeInterval(userData.planDetails[0].PlanExpireDate) else {
         return shouldEnableIAP
     }
     
-    let expiryDate = Date(timeIntervalSince1970: expiryTime)
-    let currentDate = Date()
-    let difference = expiryDate.differenceWith(currentDate, inUnit: NSCalendar.Unit.day)
-    return difference >= 0
+    let currentTime = Date().timeIntervalSince1970
+    return expiryTime < currentTime
 }
 
 /************************ Check network connection ************************/

@@ -42,15 +42,15 @@ class DownloadAudioVC: BaseViewController {
     
     override func setupData() {
         downloadedAudios = CoreDataHelper.shared.fetchSingleAudios()
-        if checkInternet() {
-            for audio in downloadedAudios {
-                audio.IsPlay = lockDownloads
-            }
-        } else {
-            for audio in downloadedAudios {
-                audio.IsPlay = shouldLockDownloads() ? "0" : "1"
-            }
-        }
+        //        if checkInternet() {
+        //            for audio in downloadedAudios {
+        //                audio.IsPlay = (lockDownloads == "1" || lockDownloads == "2") ? "0" : "1"
+        //            }
+        //        } else {
+        //            for audio in downloadedAudios {
+        //                audio.IsPlay = shouldLockDownloads() ? "0" : "1"
+        //            }
+        //        }
         
         if downloadedAudios.count > 0 {
             lblNoData.isHidden = true

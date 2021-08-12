@@ -141,6 +141,13 @@ class CoreDataHelper {
                 audioData.downloadLocation = audio.downloadLocation ?? ""
                 audioData.isSingleAudio = audio.isSingleAudio ?? ""
                 audioData.sortId = audio.sortId ?? ""
+                
+                if checkInternet() {
+                    audioData.IsPlay = (lockDownloads == "1" || lockDownloads == "2") ? "0" : "1"
+                } else {
+                    audioData.IsPlay = shouldLockDownloads() ? "0" : "1"
+                }
+                
                 arrayAudioData.append(audioData)
             }
             
