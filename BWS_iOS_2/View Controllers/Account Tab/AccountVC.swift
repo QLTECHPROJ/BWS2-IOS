@@ -61,7 +61,11 @@ class AccountVC: BaseViewController {
         // Segment Tracking
         SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.account)
         
-        setupData()
+        self.callGetCoUserDetailsAPI { (success) in
+            DispatchQueue.main.async {
+                self.setupData()
+            }
+        }
     }
     
     
@@ -88,6 +92,13 @@ class AccountVC: BaseViewController {
             
             let userName = userData.Name.trim.count > 0 ? userData.Name : "Guest"
             lblUser.text = userName
+        }
+        
+        if lockDownloads == "1" || lockDownloads == "2" {
+            if isAudioPlayerClosed == false {
+                self.clearAudioPlayer()
+                isAudioPlayerClosed = true
+            }
         }
     }
     
