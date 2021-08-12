@@ -505,7 +505,7 @@ struct AppStrings {
     let alert_select_day_and_time = "Please select days and Time"
     
     //Add User
-    let add_user_subTitle = "New persons can either use this device, or another one to access the app."
+    let add_user_subTitle = "New person can either use this device, or another one to access the app."
     let same_num_title = "Invite a Friend or Family Member"
     let same_num_desc = "Happiness is sweeter when shared. That's why we're eager for you to share your subscription with someone you care for." + "\n" + "The first person invited gets the same benefits as you at no additional cost."
     //Set up pin
@@ -522,6 +522,10 @@ struct AppStrings {
     
     //UserDetail
     let user_detail_subTitle = "Enter name and Email of a person being added . A separate profile of person will be created. Person will receive a verification mail."
+    
+    //Sleep Time Screen
+    let sleeptime_alert_title = "Change Sleep Time"
+    let sleeptime_alert_Desc = "Changing Sleep Time will make you reselect Area of Focus as well. Would you like to proceed ? "
 
 }
 

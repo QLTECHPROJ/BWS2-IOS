@@ -990,6 +990,9 @@ extension SleepTimeVC {
         APICallManager.sharedInstance.callAPI(router: APIRouter.avgsleeptime) { (response : AverageSleepTimeModel) in
             if response.ResponseCode == "200" {
                 self.arrayTimes = response.ResponseData
+                if let data = self.arrayTimes.enumerated().first(where: {$0.element.Name == CoUserDataModel.currentUser?.AvgSleepTime}) {
+                    data.element.isSelected = true
+                }
                 self.collectionViewSleepTime.reloadData()
             }
         }

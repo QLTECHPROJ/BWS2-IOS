@@ -100,6 +100,29 @@ class SuggestedPlaylistCell: UITableViewCell {
     }
     
     @IBAction func onTappedSleepTime(_ sender: UIButton) {
+        let aVC = AppStoryBoard.manage.viewController(viewControllerClass: AlertPopUpVC.self)
+        aVC.titleText = Theme.strings.sleeptime_alert_title
+        aVC.detailText = Theme.strings.sleeptime_alert_Desc
+        aVC.firstButtonTitle = Theme.strings.yes
+        aVC.secondButtonTitle = Theme.strings.no
+        aVC.firstButtonBackgroundColor = Theme.colors.gray_7E7E7E
+        aVC.modalPresentationStyle = .overFullScreen
+        aVC.delegate = self
+        self.parentViewController?.present(aVC, animated: true, completion: nil)
+    }
+    
+}
+
+// MARK:- AlertPopUpVCDelegate
+extension SuggestedPlaylistCell : AlertPopUpVCDelegate {
+    
+    func handleAction(sender: UIButton, popUpTag: Int) {
+        if sender.tag == 0 {
+            let aVC = AppStoryBoard.main.viewController(viewControllerClass: SleepTimeVC.self)
+            self.parentViewController?.navigationController?.pushViewController(aVC, animated: true)
+        } else {
+            self.parentViewController?.dismiss(animated: true, completion: nil)
+        }
     }
     
 }
