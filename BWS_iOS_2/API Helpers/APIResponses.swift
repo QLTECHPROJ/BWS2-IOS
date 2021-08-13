@@ -484,6 +484,7 @@ class UserListModel : EVObject {
 
 class UserListDataModel : EVObject {
     var Maxuseradd = ""
+    var totalUserCount = ""
     var UserList = [CoUserDataModel]()
     var errormsg = ""
 }

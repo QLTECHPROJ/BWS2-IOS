@@ -18,6 +18,7 @@ class ManageUserVC: BaseViewController {
     var arrayUsers = [CoUserDataModel]()
     var isCome:String?
     var maxUsers = 2
+    var totalUserCount = 1
     
     
     // MARK:- VIEW LIFE CYCLE
@@ -108,7 +109,7 @@ class ManageUserVC: BaseViewController {
             return
         }
         
-        if arrayUsers.count < maxUsers {
+        if totalUserCount < maxUsers {
             let aVC = AppStoryBoard.main.viewController(viewControllerClass:AddUserVC.self)
             aVC.isCome = "AddUser"
             self.navigationController?.pushViewController(aVC, animated: true)

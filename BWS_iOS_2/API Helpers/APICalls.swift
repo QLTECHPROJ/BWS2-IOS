@@ -145,6 +145,7 @@ extension UserListVC {
                 self.arrayUsers = response.ResponseData.UserList
                 self.tableView.reloadData()
                 self.maxUsers = Int(response.ResponseData.Maxuseradd) ?? 0
+                self.totalUserCount = Int(response.ResponseData.totalUserCount) ?? 0
                 self.setupData()
                 
                 // Segment Tracking
@@ -1112,6 +1113,7 @@ extension UserListPopUpVC {
                 self.arrayUsers = response.ResponseData.UserList
                 self.tableView.reloadData()
                 self.maxUsers = Int(response.ResponseData.Maxuseradd) ?? 0
+                self.totalUserCount = Int(response.ResponseData.totalUserCount) ?? 0
                 self.setupData()
                 
                 // Segment Tracking
@@ -1601,7 +1603,7 @@ extension ContactVC {
     
     func callInviteUserAPI(contact : ContactModel) {
 
-        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
+        let parameters = [APIParameters.UserId:LoginDataModel.currentUserId,
                           "Name":contact.contactName,
                           "MobileNo":contact.contactNumber.removeWhitespace()]
 
@@ -1630,6 +1632,7 @@ extension ManageUserVC {
                 self.arrayUsers = response.ResponseData.UserList
                 self.tableView.reloadData()
                 self.maxUsers = Int(response.ResponseData.Maxuseradd) ?? 0
+                self.totalUserCount = Int(response.ResponseData.totalUserCount) ?? 0
                 self.setupData()
                 
                 // Segment Tracking

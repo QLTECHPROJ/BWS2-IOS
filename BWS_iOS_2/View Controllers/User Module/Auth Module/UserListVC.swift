@@ -24,6 +24,7 @@ class UserListVC: BaseViewController {
     var tapGesture = UITapGestureRecognizer()
     var arrayUsers = [CoUserDataModel]()
     var maxUsers = 2
+    var totalUserCount = 1
     var hideBackButton = true
     
     
@@ -64,26 +65,26 @@ class UserListVC: BaseViewController {
         self.buttonEnableDisable()
         
         if let coUser = CoUserDataModel.currentUser {
-            
             if coUser.isMainAccount == "1" {
                 tableView.tableFooterView = viewFooter
             } else {
                 tableView.tableFooterView = UIView()
             }
-            
         }
         
-        if arrayUsers.count < maxUsers {
+        if totalUserCount < maxUsers {
             tableView.tableFooterView = viewFooter
         } else {
             tableView.tableFooterView = UIView()
         }
-       
+        
+        tableView.tableFooterView = UIView()
         self.tableView.reloadData()
     }
     
     @objc func viewTapped(_ sender: UITapGestureRecognizer) {
         let aVC = AppStoryBoard.main.viewController(viewControllerClass: AddUserVC.self)
+        aVC.isCome = "AddUser"
         self.navigationController?.pushViewController(aVC, animated: true)
     }
     
