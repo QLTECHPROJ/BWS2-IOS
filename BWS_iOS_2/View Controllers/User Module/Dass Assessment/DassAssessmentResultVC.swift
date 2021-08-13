@@ -107,7 +107,10 @@ class DassAssessmentResultVC: BaseViewController {
             lblScoreTitle.textColor = UIColor(hex: colorCode)
             
             lblTitle.attributedText = data.AssesmentTitle.attributedString(alignment: .center, lineSpacing: 5)
-            lblSubTitle.attributedText =  data.AssesmentContent.attributedString(alignment: .center, lineSpacing: 5)
+            // lblSubTitle.attributedText =  data.AssesmentContent.attributedString(alignment: .center, lineSpacing: 5)
+            // lblSubTitle.attributedText =  data.AssesmentContent.htmlToAttributedString()
+            lblSubTitle.attributedText =  data.AssesmentContent.htmlAttributed(family: Theme.fonts.MontserratLight, size: 14, color: Theme.colors.gray_313131)
+            lblSubTitle.textAlignment = .center
         }
         
         scoreValue = 0

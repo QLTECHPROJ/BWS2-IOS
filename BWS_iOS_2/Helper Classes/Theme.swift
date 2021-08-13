@@ -230,6 +230,10 @@ struct AppColors {
 // MARK: - Application Fonts
 struct AppFonts {
     
+    // Font Family
+    let MontserratFontFamily = "Montserrat"
+    
+    // Fonts
     let MontserratLight = "Montserrat-Light"
     let MontserratRegular = "Montserrat-Regular"
     let MontserratMedium = "Montserrat-Medium"

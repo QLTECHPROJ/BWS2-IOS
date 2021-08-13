@@ -10,6 +10,22 @@ import Foundation
 
 extension BaseViewController {
     
+    func clearAudioPlayerForSuggestedPlaylist(newPlaylist : PlaylistDetailsModel) {
+        guard let playlist = DJMusicPlayer.shared.currentPlaylist else {
+            return
+        }
+        
+        if playlist.Created == "2" || playlist.selfCreated == "2" {
+            if playlist.PlaylistID == newPlaylist.PlaylistID {
+                let oldPlaylistAudios = playlist.PlaylistSongs.map({ $0.ID })
+                let newPlaylistAudios = newPlaylist.PlaylistSongs.map({ $0.ID })
+                
+                if oldPlaylistAudios.elementsEqual(newPlaylistAudios) == false {
+                    self.clearAudioPlayer()
+                }
+            }
+        }
+    }
     
     func clearAudioPlayer() {
         // Player Related Data
@@ -18,6 +34,7 @@ extension BaseViewController {
         DJMusicPlayer.shared.currentlyPlaying = nil
         DJMusicPlayer.shared.latestPlayRequest = nil
         DJMusicPlayer.shared.nowPlayingList = [AudioDetailsDataModel]()
+        DJMusicPlayer.shared.currentPlaylist = nil
         saveNowPlayingSongs()
         
         DJMusicPlayer.shared.playerType = .audio

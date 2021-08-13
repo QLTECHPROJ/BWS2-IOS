@@ -477,7 +477,7 @@ extension CoreDataHelper {
         return false
     }
     
-    func deleteDownloadedPlaylist(playlistData : PlaylistDetailsModel) {
+    func deleteDownloadedPlaylist(playlistData : PlaylistDetailsModel, showToast : Bool = true) {
         
         let fetchRequest = PlaylistDownloads.fetchRequest() as NSFetchRequest
         fetchRequest.predicate = NSPredicate(format: "coUserID == %@ && playlistID == %@", CoUserDataModel.currentUserId, playlistData.PlaylistID)
@@ -491,12 +491,18 @@ extension CoreDataHelper {
             }
             
             try context.save()
-            showAlertToast(message: Theme.strings.alert_playlist_removed)
             NotificationCenter.default.post(name: NSNotification.Name.refreshDownloadData, object: nil)
             DJDownloadManager.shared.fetchNextDownload()
+            
+            if showToast {
+                showAlertToast(message: Theme.strings.alert_playlist_removed)
+            }
         } catch {
             print("Error :- ",error.localizedDescription)
-            showAlertToast(message: Theme.strings.alert_playlist_delete_error)
+            
+            if showToast {
+                showAlertToast(message: Theme.strings.alert_playlist_delete_error)
+            }
         }
     }
     
@@ -529,6 +535,23 @@ extension CoreDataHelper {
         } catch {
             print("Error :- ",error.localizedDescription)
             showAlertToast(message: Theme.strings.alert_playlists_delete_error)
+        }
+    }
+    
+    func deleteSuggestedPlaylist(newPlaylist : PlaylistDetailsModel) {
+        let downloadedPlaylists = fetchAllPlaylists()
+        let suggestedPlaylists = downloadedPlaylists.filter({ $0.selfCreated == "2" })
+        
+        for playlist in suggestedPlaylists {
+            if playlist.PlaylistID == newPlaylist.PlaylistID {
+                playlist.PlaylistSongs = fetchPlaylistAudios(playlistID: playlist.PlaylistID)
+                let oldPlaylistAudios = playlist.PlaylistSongs.map({ $0.ID })
+                let newPlaylistAudios = newPlaylist.PlaylistSongs.map({ $0.ID })
+                
+                if oldPlaylistAudios.elementsEqual(newPlaylistAudios) == false {
+                    deleteDownloadedPlaylist(playlistData: playlist, showToast: false)
+                }
+            }
         }
     }
     

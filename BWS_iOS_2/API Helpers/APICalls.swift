@@ -536,6 +536,14 @@ extension ManageVC {
                         }
                     }
                     
+                    if let playlistData = self.suggstedPlaylist {
+                        // Delete Suggested Playlist if updated
+                        CoreDataHelper.shared.deleteSuggestedPlaylist(newPlaylist: playlistData)
+                        
+                        // Clear Audio Player if Suggested Playlist updated
+                        self.clearAudioPlayerForSuggestedPlaylist(newPlaylist: playlistData)
+                    }
+                    
                     self.setupData()
                     
                     // Segment Tracking
@@ -1187,6 +1195,14 @@ extension HomeVC {
                         self.clearAudioPlayer()
                         isAudioPlayerClosed = true
                     }
+                }
+                
+                if let playlistData = self.suggstedPlaylist {
+                    // Delete Suggested playlist if updated
+                    CoreDataHelper.shared.deleteSuggestedPlaylist(newPlaylist: playlistData)
+                    
+                    // Clear Audio Player if Suggested Playlist updated
+                    self.clearAudioPlayerForSuggestedPlaylist(newPlaylist: playlistData)
                 }
                 
                 if response.ResponseData.shouldPlayDisclaimer == "1" {

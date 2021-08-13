@@ -301,6 +301,47 @@ extension String {
         return self.range(of: s) != nil ? true : false
     }
     
+    var htmlToString: String {
+        return htmlToAttributedString().string
+    }
+    
+    func htmlToAttributedString() -> NSMutableAttributedString {
+        guard let data = data(using: .utf8) else {
+            return NSMutableAttributedString(string: self)
+        }
+        
+        do {
+            let attributedString = try NSMutableAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding:String.Encoding.utf8.rawValue], documentAttributes: nil)
+            return attributedString
+        } catch {
+            return NSMutableAttributedString(string: self)
+        }
+    }
+    
+    func htmlAttributed(family: String?, size: CGFloat, color: UIColor) -> NSMutableAttributedString {
+            do {
+                let htmlCSSString = "<style>" +
+                    "html *" +
+                    "{" +
+                    "font-size: \(size)pt !important;" +
+                    "color: #\(color.toHex ?? "#313131") !important;" +
+                    "font-family: \(family ?? "Helvetica"), Helvetica !important;" +
+                "}</style> \(self)"
+
+                guard let data = htmlCSSString.data(using: String.Encoding.utf8) else {
+                    return NSMutableAttributedString(string: self)
+                }
+
+                return try NSMutableAttributedString(data: data,
+                                              options: [.documentType: NSAttributedString.DocumentType.html,
+                                                        .characterEncoding: String.Encoding.utf8.rawValue],
+                                              documentAttributes: nil)
+            } catch {
+                print("error: ", error)
+                return NSMutableAttributedString(string: self)
+            }
+        }
+    
     func attributedString(alignment : NSTextAlignment, lineSpacing : CGFloat) -> NSMutableAttributedString {
         let attributedString = NSMutableAttributedString(string: self)
 

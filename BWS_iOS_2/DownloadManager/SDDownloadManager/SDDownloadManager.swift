@@ -229,7 +229,7 @@ extension SDDownloadManager : URLSessionDelegate, URLSessionDownloadDelegate {
                              downloadTask: URLSessionDownloadTask,
                              didFinishDownloadingTo location: URL) {
         
-        let key = (downloadTask.originalRequest?.url?.absoluteString)!
+        let key = (downloadTask.originalRequest?.url?.absoluteString) ?? ""
         if let download = self.ongoingDownloads[key]  {
             if let response = downloadTask.response {
                 let statusCode = (response as! HTTPURLResponse).statusCode
@@ -267,7 +267,7 @@ extension SDDownloadManager : URLSessionDelegate, URLSessionDownloadDelegate {
             return;
         }
         
-        if let download = self.ongoingDownloads[(downloadTask.originalRequest?.url?.absoluteString)!],
+        if let download = self.ongoingDownloads[(downloadTask.originalRequest?.url?.absoluteString) ?? ""],
             let progressBlock = download.progressBlock {
             let progress : CGFloat = CGFloat(totalBytesWritten) / CGFloat(totalBytesExpectedToWrite)
             OperationQueue.main.addOperation({
@@ -282,7 +282,7 @@ extension SDDownloadManager : URLSessionDelegate, URLSessionDownloadDelegate {
         
         if let error = error {
             let downloadTask = task as! URLSessionDownloadTask
-            let key = (downloadTask.originalRequest?.url?.absoluteString)!
+            let key = (downloadTask.originalRequest?.url?.absoluteString) ?? ""
             if let download = self.ongoingDownloads[key] {
                 OperationQueue.main.addOperation({
                     download.completionBlock(error,nil)

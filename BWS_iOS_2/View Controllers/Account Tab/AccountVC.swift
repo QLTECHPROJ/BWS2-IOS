@@ -121,6 +121,7 @@ class AccountVC: BaseViewController {
         DJMusicPlayer.shared.playIndex = 0
         DJMusicPlayer.shared.currentlyPlaying = nil
         DJMusicPlayer.shared.latestPlayRequest = nil
+        DJMusicPlayer.shared.currentPlaylist = nil
         DJMusicPlayer.shared.nowPlayingList = [AudioDetailsDataModel]()
         
         // Segment Event - Reset
@@ -192,6 +193,7 @@ class AccountVC: BaseViewController {
         DJMusicPlayer.shared.playIndex = 0
         DJMusicPlayer.shared.currentlyPlaying = nil
         DJMusicPlayer.shared.latestPlayRequest = nil
+        DJMusicPlayer.shared.currentPlaylist = nil
         DJMusicPlayer.shared.nowPlayingList = [AudioDetailsDataModel]()
         
         // Download Related Data
