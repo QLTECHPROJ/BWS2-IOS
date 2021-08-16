@@ -19,6 +19,9 @@ let APP_APPSTORE_URL = "https://apps.apple.com/us/app/brain-wellness-spa/id15344
 let TERMS_AND_CONDITION_URL = "https://brainwellnessspa.com.au/terms-conditions"
 let PRIVACY_POLICY_URL = "https://brainwellnessspa.com.au/privacy-policy"
 
+// In App Purchase
+let MANAGE_SUBSCRIPTIONS_URL = "https://apps.apple.com/account/subscriptions"
+
 let APPDELEGATE = UIApplication.shared.delegate as! AppDelegate
 let SCREEN_SIZE = UIScreen.main.bounds.size
 

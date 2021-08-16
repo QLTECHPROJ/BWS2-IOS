@@ -16,6 +16,8 @@ class SleepTimeVC: BaseViewController {
     
     // MARK:- VARIABLES
     var arrayTimes = [AverageSleepTimeDataModel]()
+    var isFromEdit = false
+    var isForAreaOfFocus = false
     
     
     // MARK:- VIEW LIFE CYCLE
@@ -27,6 +29,14 @@ class SleepTimeVC: BaseViewController {
         
         collectionViewSleepTime.register(nibWithCellClass: SleepTimeCell.self)
         
+        if isForAreaOfFocus {
+            let aVC = AppStoryBoard.main.viewController(viewControllerClass: AreaOfFocusVC.self)
+            aVC.isFromEdit = self.isFromEdit
+            aVC.isFromEditSleepTime = self.isFromEdit
+            aVC.averageSleepTime = CoUserDataModel.currentUser?.AvgSleepTime ?? ""
+            self.navigationController?.pushViewController(aVC, animated: false)
+        }
+        
         callSleepTimetAPI()
     }
     
@@ -35,6 +45,8 @@ class SleepTimeVC: BaseViewController {
     override func goNext() {
         if let selectedSleepTime = arrayTimes.filter({ $0.isSelected == true }).first {
             let aVC = AppStoryBoard.main.viewController(viewControllerClass: AreaOfFocusVC.self)
+            aVC.isFromEdit = self.isFromEdit
+            aVC.isFromEditSleepTime = self.isFromEdit
             aVC.averageSleepTime = selectedSleepTime.Name
             self.navigationController?.pushViewController(aVC, animated: true)
         }

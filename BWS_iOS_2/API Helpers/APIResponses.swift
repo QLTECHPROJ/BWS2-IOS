@@ -232,6 +232,7 @@ class PlanDetailDataModel:EVObject {
     var TrialPeriodEnd = ""
     var PlanStatus = ""
     var PlanName = ""
+    var PlanContent = ""
     var Price = ""
     var IntervalTime = ""
     var PlanDescription = ""

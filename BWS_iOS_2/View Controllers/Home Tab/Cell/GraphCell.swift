@@ -54,13 +54,15 @@ extension GraphCell : ChartViewDelegate {
         if maxValue > 7 {
             return maxValue - 7
         }
-        
-        return maxValue
+        return 0
     }
     
     func fetchXMaxValue() -> Double {
         let months = indexScores.compactMap({ $0.Month.doubleValue })
-        let maxValue = months.max() ?? 12
+        var maxValue = months.max() ?? 12
+        if maxValue < 6 {
+            maxValue = 6
+        }
         return maxValue + 1
     }
     

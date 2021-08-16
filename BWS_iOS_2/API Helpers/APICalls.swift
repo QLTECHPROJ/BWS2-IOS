@@ -1697,6 +1697,31 @@ extension ReminderPopUpVC {
 
 extension CancelSubVC {
     
+    // Cancel Plan API Call
+    func callCancelPlanAPI() {
+        var parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
+                          "CancelId":"\(selectedOption)"]
+        if selectedOption == 4 {
+            parameters["CancelReason"] = txtView.text!
+        }
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.cancelplan(parameters)) { (response :GeneralModel) in
+            
+            if response.ResponseCode == "200" {
+                showAlertToast(message: response.ResponseMessage)
+                self.navigationController?.popViewController(animated: true)
+            }
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                if let url = URL(string: MANAGE_SUBSCRIPTIONS_URL), UIApplication.shared.canOpenURL(url) {
+                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                } else {
+                    showAlertToast(message: Theme.strings.alert_cannot_open_subscription_setting)
+                }
+            }
+        }
+    }
+    
     //delete Account API
     func callDeleteAccountAPI() {
         var parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,

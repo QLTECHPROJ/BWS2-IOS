@@ -90,6 +90,7 @@ enum APIRouter: URLRequestConvertible {
     case verifyreceipt([String:Any])
     case planpurchase([String:Any])
     case plandetails([String:Any])
+    case cancelplan([String:Any])
     
     // Audio Interruption
     case audiointerruption([String:Any])
@@ -227,6 +228,8 @@ enum APIRouter: URLRequestConvertible {
             return APIRoute(path: "planpurchase", method: .post, data: data)
         case .plandetails(let data):
             return APIRoute(path: "plandetails", method: .post, data: data)
+        case .cancelplan(let data):
+            return APIRoute(path: "cancelplan", method: .post, data: data)
             
         // Audio Interruption
         case .audiointerruption(let data):

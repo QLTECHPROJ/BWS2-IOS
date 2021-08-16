@@ -28,6 +28,7 @@ class AreaOfFocusVC: BaseViewController {
     var arrayCategoriesMain = [CategoryListModel]()
     var averageSleepTime = ""
     var isFromEdit = false
+    var isFromEditSleepTime = false
     
     
     // MARK:- VIEW LIFE CYCLE
@@ -263,7 +264,9 @@ extension AreaOfFocusVC : UITableViewDataSource, UITableViewDelegate {
         }
         
         cell.backClicked = {
-            if self.isFromEdit {
+            if self.isFromEditSleepTime {
+                self.navigationController?.popViewController(animated: true)
+            } else if self.isFromEdit {
                 self.navigationController?.dismiss(animated: true, completion: nil)
             } else {
                 self.navigationController?.popViewController(animated: true)

@@ -122,6 +122,9 @@ class PlaylistAudiosVC: BaseViewController {
         txtSearch.delegate = self
         txtSearch.addTarget(self, action: #selector(textFieldValueChanged(textField:)), for: UIControl.Event.editingChanged)
         
+        let tapGestureMoonView = UITapGestureRecognizer(target: self, action: #selector(viewTapped(_:)))
+        moonView.addGestureRecognizer(tapGestureMoonView)
+        
         if objPlaylist?.Created == "2" {
             collectionView.isHidden = false
             viewAreaOfFocus.isHidden = false
@@ -448,6 +451,32 @@ class PlaylistAudiosVC: BaseViewController {
     @objc func refreshData() {
         self.setupData()
     }
+    
+    @objc func viewTapped(_ sender: UITapGestureRecognizer) {
+        if checkInternet(showToast: true) == false {
+            return
+        }
+        
+        if lockDownloads == "1" {
+            openInactivePopup(controller: self)
+            return
+        } else if lockDownloads == "2" {
+            showAlertToast(message: Theme.strings.alert_reactivate_plan)
+            return
+        }
+        
+        let aVC = AppStoryBoard.manage.viewController(viewControllerClass: AlertPopUpVC.self)
+        aVC.titleText = Theme.strings.sleeptime_alert_title
+        aVC.detailText = Theme.strings.sleeptime_alert_Desc
+        aVC.firstButtonTitle = Theme.strings.yes
+        aVC.secondButtonTitle = Theme.strings.no
+        aVC.popUpTag = 2
+        aVC.modalPresentationStyle = .overFullScreen
+        aVC.delegate = self
+        self.present(aVC, animated: true, completion: nil)
+        return
+    }
+    
     
     // MARK:- ACTIONS
     @IBAction func onTappedBack(_ sender: UIButton) {
@@ -858,6 +887,13 @@ extension PlaylistAudiosVC : AlertPopUpVCDelegate {
                     
                     CoreDataHelper.shared.deleteDownloadedPlaylist(playlistData: playlistDetails)
                 }
+            } else if popUpTag == 2 {
+                let aVC = AppStoryBoard.main.viewController(viewControllerClass: SleepTimeVC.self)
+                aVC.isFromEdit = true
+                let navVC = UINavigationController(rootViewController: aVC)
+                navVC.navigationBar.isHidden = true
+                navVC.modalPresentationStyle = .overFullScreen
+                self.present(navVC, animated: true, completion: nil)
             } else {
                 self.callDeletePlaylistAPI(objPlaylist: playlistDetails) {
                     self.navigationController?.popViewController(animated: true)

@@ -133,8 +133,11 @@ class ManageVC: BaseViewController {
             tableHeaderView.frame = CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: 403) // safe area height - 403
             tableView.tableHeaderView = tableHeaderView
             
-            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(playlistTapped(_:)))
-            playlistMainView.addGestureRecognizer(tapGesture)
+            let tapGestureMainView = UITapGestureRecognizer(target: self, action: #selector(viewTapped(_:)))
+            playlistMainView.addGestureRecognizer(tapGestureMainView)
+            
+            let tapGestureBottomView = UITapGestureRecognizer(target: self, action: #selector(viewTapped(_:)))
+            playlistBottomView.addGestureRecognizer(tapGestureBottomView)
         } else {
             playlistMainView.isHidden = true
             tableHeaderView.frame = CGRect.zero
@@ -195,7 +198,7 @@ class ManageVC: BaseViewController {
         }
     }
     
-    @objc func playlistTapped(_ sender: UITapGestureRecognizer) {
+    @objc func viewTapped(_ sender: UITapGestureRecognizer) {
         if checkInternet(showToast: true) == false {
             return
         }
@@ -205,6 +208,18 @@ class ManageVC: BaseViewController {
             return
         } else if lockDownloads == "2" {
             showAlertToast(message: Theme.strings.alert_reactivate_plan)
+            return
+        }
+        
+        if sender.view == playlistBottomView {
+            let aVC = AppStoryBoard.manage.viewController(viewControllerClass: AlertPopUpVC.self)
+            aVC.titleText = Theme.strings.sleeptime_alert_title
+            aVC.detailText = Theme.strings.sleeptime_alert_Desc
+            aVC.firstButtonTitle = Theme.strings.yes
+            aVC.secondButtonTitle = Theme.strings.no
+            aVC.modalPresentationStyle = .overFullScreen
+            aVC.delegate = self
+            self.present(aVC, animated: true, completion: nil)
             return
         }
         
@@ -638,6 +653,22 @@ extension ManageVC : UITableViewDataSource, UITableViewDelegate {
         }
         
         return 0
+    }
+    
+}
+
+// MARK:- AlertPopUpVCDelegate
+extension ManageVC : AlertPopUpVCDelegate {
+    
+    func handleAction(sender: UIButton, popUpTag: Int) {
+        if sender.tag == 0 {
+            let aVC = AppStoryBoard.main.viewController(viewControllerClass: SleepTimeVC.self)
+            aVC.isFromEdit = true
+            let navVC = UINavigationController(rootViewController: aVC)
+            navVC.navigationBar.isHidden = true
+            navVC.modalPresentationStyle = .overFullScreen
+            self.present(navVC, animated: true, completion: nil)
+        }
     }
     
 }

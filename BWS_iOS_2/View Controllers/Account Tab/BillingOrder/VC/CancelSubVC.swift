@@ -174,10 +174,9 @@ extension CancelSubVC : AlertPopUpVCDelegate {
     func handleAction(sender: UIButton, popUpTag: Int) {
         if sender.tag == 0 {
             if isFromDelete {
-                showAlertToast(message: "Delete Account")
                 callDeleteAccountAPI()
             } else {
-                showAlertToast(message: "Cancel Plan")
+                callCancelPlanAPI()
             }
         } else {
             self.dismiss(animated: true, completion: nil)
