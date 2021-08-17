@@ -20,9 +20,10 @@ class AreaOfFocusVC: BaseViewController {
     @IBOutlet weak var HeaderCollectionview: DynamicHeightCollectionView!
     @IBOutlet var viewHeader: UIView!
     @IBOutlet var footerCollectionview: UICollectionView!
-    let collectionViewHeaderFooterReuseIdentifier = "MyHeaderFooterClass"
+    
     
     // MARK:- VARIABLES
+    let collectionViewHeaderFooterReuseIdentifier = "MyHeaderFooterClass"
     var arrayAreaOfFocus = [AreaOfFocusModel]()
     var arrayCategories = [CategoryListModel]()
     var arrayCategoriesMain = [CategoryListModel]()
@@ -43,15 +44,9 @@ class AreaOfFocusVC: BaseViewController {
         footerCollectionview.register(MyHeaderFooterClass.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: collectionViewHeaderFooterReuseIdentifier)
         footerCollectionview.register(nibWithCellClass: CategoryCollectionCell.self)
         
-        buttonEnableDisable()
         callGetRecommendedCategoryAPI()
-        
-        // DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
-        //     let aVC = AppStoryBoard.main.viewController(viewControllerClass: PreparingPlaylistVC.self)
-        //     self.navigationController?.pushViewController(aVC, animated: true)
-        // }
+        buttonEnableDisable()
         setupUI()
-        
     }
     
     
@@ -67,6 +62,7 @@ class AreaOfFocusVC: BaseViewController {
         
         tableView.tableFooterView = footerCollectionview
     }
+    
     override func setupData() {
         guard let selectedCategories = CoUserDataModel.currentUser?.AreaOfFocus else {
             return
@@ -83,6 +79,13 @@ class AreaOfFocusVC: BaseViewController {
         tableView.reloadData()
         footerCollectionview.reloadData()
         buttonEnableDisable()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.footerCollectionview.reloadData()
+            let height = self.footerCollectionview.collectionViewLayout.collectionViewContentSize.height
+            self.footerCollectionview.frame = CGRect(x: 0, y: 0, width: Int(self.footerCollectionview.frame.width), height:Int(height))
+            self.tableView.tableFooterView = self.footerCollectionview
+        }
     }
     
     func setInitialData() {
@@ -117,7 +120,6 @@ class AreaOfFocusVC: BaseViewController {
                 if let removeIndex = self.arrayAreaOfFocus.firstIndex(of: cat) {
                     self.arrayAreaOfFocus.remove(at: removeIndex)
                 }
-                
             } else {
                 if self.arrayAreaOfFocus.count < 3 {
                     /*
@@ -149,11 +151,16 @@ class AreaOfFocusVC: BaseViewController {
             self.footerCollectionview.reloadData()
             self.tableView.reloadData()
             self.buttonEnableDisable()
-            let height = self.arrayCategories.count * 180
-            self.footerCollectionview.frame = CGRect(x: 0, y: 0, width: Int(self.footerCollectionview.frame.width), height:height)
+            //            let height = self.arrayCategories.count * 180
+            //            self.footerCollectionview.frame = CGRect(x: 0, y: 0, width: Int(self.footerCollectionview.frame.width), height:height)
             
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.footerCollectionview.reloadData()
+                let height = self.footerCollectionview.collectionViewLayout.collectionViewContentSize.height
+                self.footerCollectionview.frame = CGRect(x: 0, y: 0, width: Int(self.footerCollectionview.frame.width), height:Int(height))
+                self.tableView.tableFooterView = self.footerCollectionview
+            }
         }
-       
     }
     
     func searchCategory(searchText : String) {
@@ -225,9 +232,9 @@ class AreaOfFocusVC: BaseViewController {
     @IBAction func continueClicked() {
         print("Sleep Time :- ",averageSleepTime)
         
-        if isFromEdit && DJMusicPlayer.shared.currentPlaylist?.Created == "2" {
-            self.clearAudioPlayer()
-        }
+        //        if isFromEdit && DJMusicPlayer.shared.currentPlaylist?.Created == "2" {
+        //            self.clearAudioPlayer()
+        //        }
         
         if arrayAreaOfFocus.count > 0 {
             var selectedCategories = [[String:Any]]()
@@ -248,14 +255,12 @@ class AreaOfFocusVC: BaseViewController {
 
 // MARK:- UITableViewDataSource, UITableViewDelegate
 extension AreaOfFocusVC : UITableViewDataSource, UITableViewDelegate {
-  
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
-        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withClass: RecommendedCategoryHeaderCell.self)
         cell.configureCell(data: arrayAreaOfFocus)
         
@@ -288,36 +293,28 @@ extension AreaOfFocusVC : UICollectionViewDelegate, UICollectionViewDataSource,U
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return arrayCategories.count
     }
-   
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return arrayCategories[section].Details.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         let cell = collectionView.dequeueReusableCell(withClass: CategoryCollectionCell.self, for: indexPath)
         cell.lblCategory.text = arrayCategories[indexPath.section].Details[indexPath.item].ProblemName
         cell.arrayAreaOfFocus = self.arrayAreaOfFocus
         cell.configureCell(mainCategory: arrayCategories[indexPath.section].View, data: arrayCategories[indexPath.section].Details[indexPath.item])
         return cell
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         categoryClicked(indexPath: indexPath, collectionview: collectionView)
     }
     
-    func collectionView(_ collectionView: UICollectionView,
-                        viewForSupplementaryElementOfKind kind: String,
-                        at indexPath: IndexPath) -> UICollectionReusableView {
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         switch kind {
-        
         case UICollectionView.elementKindSectionHeader:
-            
-            
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: collectionViewHeaderFooterReuseIdentifier, for: indexPath)
-            
             let label = UILabel()
             label.frame = CGRect.init(x: 0, y: 5, width: headerView.frame.width, height: headerView.frame.height-10)
             label.text = arrayCategories[indexPath.section].View
@@ -328,28 +325,24 @@ extension AreaOfFocusVC : UICollectionViewDelegate, UICollectionViewDataSource,U
             headerView.backgroundColor = UIColor.white
             return headerView
             
-            
         case UICollectionView.elementKindSectionFooter:
             let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: collectionViewHeaderFooterReuseIdentifier, for: indexPath)
-            
             footerView.backgroundColor = UIColor.green
             return footerView
             
         default:
-            assert(false, "Unexpected element kind")
+            break
         }
+        
         return UICollectionReusableView()
     }
     
-    
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        
         if arrayCategories[section].Details.count == 0 {
             return CGSize(width: 140, height: 0)
         }
         return CGSize(width: 140, height: 50)
-        
     }
+    
 }
 

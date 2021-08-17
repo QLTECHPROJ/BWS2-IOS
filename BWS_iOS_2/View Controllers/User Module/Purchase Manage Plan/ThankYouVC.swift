@@ -32,7 +32,9 @@ class ThankYouVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.callGetCoUserDetailsAPI(complitionBlock: nil)
+        self.callGetCoUserDetailsAPI { (success) in
+            self.setupData()
+        }
         
         // Segment Tracking
         SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.thankYou)
@@ -79,6 +81,10 @@ class ThankYouVC: BaseViewController {
                 imgHeight.constant = 281
                 lblTop.constant = 40
                 addUserTop.constant = 120
+                
+                if coUser.planDetails.count > 0 {
+                    lblSubTitle.text = coUser.planDetails[0].PlanContent
+                }
             }
         }
     }

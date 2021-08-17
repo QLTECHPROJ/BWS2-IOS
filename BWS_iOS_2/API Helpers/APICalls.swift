@@ -989,6 +989,11 @@ extension AreaOfFocusVC {
                 // Segment - Identify User
                 SegmentTracking.shared.identifyUser()
                 
+                // Clear Audio Player if Suggested Playlist updated
+                if self.isFromEdit && DJMusicPlayer.shared.currentPlaylist?.Created == "2" {
+                    self.clearAudioPlayer()
+                }
+                
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass: PreparingPlaylistVC.self)
                 aVC.isFromEdit = self.isFromEdit
                 self.navigationController?.pushViewController(aVC, animated: true)
