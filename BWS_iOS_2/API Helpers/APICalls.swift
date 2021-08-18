@@ -1171,6 +1171,7 @@ extension HomeVC {
                 self.arraySessionScore = response.ResponseData.SessionScore
                 self.arraySessionProgress = response.ResponseData.SessionProgress
                 self.arrayGraphActivity = response.ResponseData.GraphAnalytics
+                self.dictHome = response.ResponseData
                 
                 if response.ResponseData.shouldPlayDisclaimer == "1" {
                     DisclaimerAudio.shared.shouldPlayDisclaimer = true

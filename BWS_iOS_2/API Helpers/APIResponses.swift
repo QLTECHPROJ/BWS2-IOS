@@ -712,6 +712,15 @@ class HomeModel: EVObject {
 }
 
 class HomeDataModel: EVObject {
+    var DayRegularity = ""
+    var DayTotalTime = ""
+    var DayFrequency = ""
+    var MonthRegularity = ""
+    var MonthTotalTime = ""
+    var MonthFrequency = ""
+    var YearRegularity = ""
+    var YearTotalTime = ""
+    var YearFrequency = ""
     var IsFirst = ""
     var IndexScore = ""
     var shouldCheckIndexScore = ""

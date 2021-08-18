@@ -9,16 +9,21 @@
 import UIKit
 
 class ProgressCell: UITableViewCell {
-
+    @IBOutlet weak var lblfrequency: UILabel!
+    @IBOutlet weak var lblTime: UILabel!
+    @IBOutlet weak var lblRegularity: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    func configureProgressCell(data:HomeDataModel) {
+        
+        lblfrequency.text = data.DayFrequency
+        lblRegularity.text = data.YearRegularity
+        lblTime.text = data.MonthTotalTime
+        
     }
     
 }

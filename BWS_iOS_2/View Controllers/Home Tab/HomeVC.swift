@@ -30,6 +30,7 @@ class HomeVC: BaseViewController {
     var arraySessionProgress = [SessionProgressModel]()
     var areaOfFocus = [AreaOfFocusModel]()
     var arrayGraphActivity = [GraphAnalyticsModel]()
+    var dictHome = HomeDataModel()
     
     
     // MARK:- VIEW LIFE CYCLE
@@ -314,6 +315,7 @@ extension HomeVC : UITableViewDelegate, UITableViewDataSource {
         case 9:
             let cell = tableView.dequeueReusableCell(withClass: ProgressCell.self)
             cell.backgroundColor = .white
+            cell.configureProgressCell(data: self.dictHome)
             return cell
             
         default:
@@ -355,7 +357,7 @@ extension HomeVC : UITableViewDelegate, UITableViewDataSource {
             return  300
             
         case 9:
-            return 0 // 200
+            return  200
             
         default:
             return 0
