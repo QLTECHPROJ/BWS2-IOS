@@ -204,6 +204,7 @@ struct AppColors {
     let sky_blue_light_E4F3F3 = UIColor(hex: "E4F3F3")
     
     let red_CE5060 = UIColor(hex: "CE5060")
+    let blue_3E82BE = UIColor(hex: "3E82BE")
     
     let pink_FFDFEA = UIColor(hex: "FFDFEA")
     let magenta_C44B6C = UIColor(hex: "C44B6C")

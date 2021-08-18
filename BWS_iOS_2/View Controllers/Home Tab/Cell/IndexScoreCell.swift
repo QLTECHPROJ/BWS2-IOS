@@ -14,7 +14,7 @@ class IndexScoreCell: UITableViewCell {
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var imgBanner: UIImageView!
     @IBOutlet weak var viewJoinNow: UIView!
-    @IBOutlet weak var viewGraph: BarChartView!
+    @IBOutlet weak var chartView: BarChartView!
     
     @IBOutlet weak var viewScrore: UIView!
     @IBOutlet weak var lblIndexScore : UILabel!
@@ -23,12 +23,11 @@ class IndexScoreCell: UITableViewCell {
     @IBOutlet weak var imgViewUpDown : UIImageView!
     @IBOutlet weak var progressView : UIProgressView!
     
-    var graphValue = [GraphAnalyticsModel]()
-//    let arrayDays = ["",
-//                  "Mon", "Tue", "Wed",
-//                  "Thu", "Fri", "Sat",
-//                  "Sun",""]
-    var months: [String]!
+    let days = ["",
+                "Mon", "Tue", "Wed",
+                "Thu", "Fri", "Sat",
+                "Sun",
+                ""]
     
     weak var axisFormatDelegate: IAxisValueFormatter?
     let floatValue: [CGFloat] = [4,4]
@@ -73,7 +72,7 @@ class IndexScoreCell: UITableViewCell {
         progressView.cornerRadius = 2.5
         progressView.clipsToBounds = true
         
-        viewGraph.isHidden = true
+        chartView.isHidden = true
         viewJoinNow.isHidden = true
         viewScrore.isHidden = false
         lblTitle.isHidden = false
@@ -83,7 +82,7 @@ class IndexScoreCell: UITableViewCell {
     func configureCheckIndexScoreCell() {
         lblTitle.text = "Your Mental health check up"
         
-        viewGraph.isHidden = true
+        chartView.isHidden = true
         viewJoinNow.isHidden = true
         viewScrore.isHidden = true
         lblTitle.isHidden = false
@@ -91,7 +90,7 @@ class IndexScoreCell: UITableViewCell {
     }
     
     func configureJoinEEPCell() {
-        viewGraph.isHidden = true
+        chartView.isHidden = true
         viewJoinNow.isHidden = false
         viewScrore.isHidden = true
         lblTitle.isHidden = true
@@ -104,56 +103,40 @@ class IndexScoreCell: UITableViewCell {
     func configureMyActivityCell(data : [GraphAnalyticsModel]) {
         lblTitle.text = "My activities"
         
-        viewGraph.isHidden = false
+        chartView.isHidden = false
         viewJoinNow.isHidden = true
         viewScrore.isHidden = true
         lblTitle.isHidden = false
         imgBanner.isHidden = true
-        graphValue.removeAll()
+        
+        var graphValue = [GraphAnalyticsModel]()
         graphValue.append(contentsOf: data)
         
+        let graphModel = GraphAnalyticsModel()
+        graphModel.Day = ""
+        graphModel.Time = ""
+        graphValue.insert(graphModel, at: 0)
+        graphValue.append(graphModel)
         
-        
-        months = ["", "mon", "tue", "wed", "thu", "fri", "sat", "sun",""]
-        let unitsSold = [0.0, 4.0, 6.0, 3.0, 12.0, 16.0, 4.0, 18.0 , 0.0]
-        setChart(dataPoints: months, values:graphValue)
+        barChartUpdate(values: graphValue)
     }
     
 }
 
 extension IndexScoreCell : ChartViewDelegate {
     
-    func setChart(dataPoints: [String], values: [GraphAnalyticsModel]) {
-        viewGraph.noDataText = "You need to provide data for the chart."
+    func barChartUpdate(values: [GraphAnalyticsModel]) {
+        chartView.delegate = self
         
-        var dataEntries: [BarChartDataEntry] = []
-                
-        for i in 0..<values.count {
-            
-            let dataEntry = BarChartDataEntry(x:values[i].Time.doubleValue, y: values[i].Time.doubleValue)
-            dataEntries.append(dataEntry)
-        }
-                
-        let chartDataSet = BarChartDataSet(entries: dataEntries, label: "Last 7 days Time")
-        let chartData = BarChartData(dataSet: chartDataSet)
-        viewGraph.data = chartData
-        
-        let xAxis = viewGraph.xAxis
-        xAxis.labelPosition = .bottom
-        xAxis.granularity = 1
-        xAxis.axisMinimum = 0
-        xAxis.axisMaximum = 8
-        xAxis.valueFormatter = self
-        
-        let rightAxis = viewGraph.rightAxis
-        rightAxis.drawLabelsEnabled = false
-        rightAxis.axisMinimum = 0
-        rightAxis.axisMaximum = 0
-        viewGraph.delegate = self
-        viewGraph.backgroundColor = UIColor.white
+        chartView.isUserInteractionEnabled = false
+        // chartView.rightAxis.enabled = false
+        chartView.chartDescription?.enabled = false
+        chartView.maxVisibleCount = values.count
+        chartView.drawBarShadowEnabled = false
+        chartView.backgroundColor = Theme.colors.off_white_F9F9F9
         
         //legend
-        let legend = viewGraph.legend
+        let legend = chartView.legend
         legend.enabled = true
         legend.horizontalAlignment = .right
         legend.verticalAlignment = .top
@@ -162,15 +145,56 @@ extension IndexScoreCell : ChartViewDelegate {
         legend.yOffset = 10.0;
         legend.xOffset = 0.0;
         legend.yEntrySpace = 0.0;
-            
+        
+        let xAxis = chartView.xAxis
+        xAxis.labelPosition = .bottom
+        xAxis.granularity = 1
+        xAxis.axisMinimum = 0
+        xAxis.axisMaximum = 8
+        xAxis.valueFormatter = self
+        
+        let leftAxis = chartView.leftAxis
+        leftAxis.axisMinimum = 0
+        leftAxis.axisMaximum = 12
+        
+        let rightAxis = chartView.rightAxis
+        rightAxis.drawLabelsEnabled = false
+        rightAxis.axisMinimum = 0
+        rightAxis.axisMaximum = 12
+        
+        setChart(values: values)
     }
-   
+    
+    func setChart(values: [GraphAnalyticsModel]) {
+        chartView.noDataText = "You need to provide data for the chart."
+        
+        var dataEntries: [BarChartDataEntry] = []
+        
+        for (index,data) in values.enumerated() {
+            let dataEntry = BarChartDataEntry(x:Double(index), y: data.Time.doubleValue)
+            dataEntries.append(dataEntry)
+        }
+        
+        let set1 = BarChartDataSet(entries: dataEntries, label: "Last 7 Days Time")
+        set1.colors = [Theme.colors.blue_3E82BE]
+        set1.drawValuesEnabled = false
+        
+        let data = BarChartData(dataSet: set1)
+        data.setValueFont(Theme.fonts.montserratFont(ofSize: 14, weight: .regular))
+        chartView.data = data
+        chartView.fitBars = true
+        
+        chartView.data?.notifyDataChanged()
+        chartView.notifyDataSetChanged()
+        chartView.setNeedsDisplay()
+    }
+    
 }
 
 extension IndexScoreCell: IAxisValueFormatter {
     
     func stringForValue(_ value: Double, axis: AxisBase?) -> String {
-        return months[Int(value) % months.count]
+        return days[Int(value) % days.count]
     }
     
 }
