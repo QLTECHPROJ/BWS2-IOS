@@ -56,6 +56,7 @@ class PreparingPlaylistVC: BaseViewController {
     // MARK:- FUNCTIONS
     override func goNext() {
         NotificationCenter.default.post(name: .refreshData, object: nil)
+        NotificationCenter.default.post(name: .refreshPlaylist, object: nil)
         
         if isFromEdit {
             self.navigationController?.dismiss(animated: false, completion: nil)

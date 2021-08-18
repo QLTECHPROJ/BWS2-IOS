@@ -59,6 +59,14 @@ class AccountInfoVC: BaseViewController {
                 return
             }
             
+            if lockDownloads == "1" {
+                openInactivePopup(controller: self)
+                return
+            } else if lockDownloads == "2" {
+                showAlertToast(message: Theme.strings.alert_reactivate_plan)
+                return
+            }
+            
             showHud()
             self.callGetCoUserDetailsAPI { (success) in
                 hideHud()
