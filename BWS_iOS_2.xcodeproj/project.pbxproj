@@ -513,6 +513,10 @@
 		9A9A1C6C2682060E009CF46E /* OTPVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9A1C6B2682060E009CF46E /* OTPVC.swift */; };
 		9A9A1C6D2682060E009CF46E /* OTPVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9A1C6B2682060E009CF46E /* OTPVC.swift */; };
 		9ABB10892660C5A000A4C221 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A7505C626578C4900177738 /* StoreKit.framework */; };
+		9ABBA2A226C2870500F4F4FF /* UserActivity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABBA2A026C2870500F4F4FF /* UserActivity+CoreDataClass.swift */; };
+		9ABBA2A326C2870500F4F4FF /* UserActivity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABBA2A026C2870500F4F4FF /* UserActivity+CoreDataClass.swift */; };
+		9ABBA2A426C2870500F4F4FF /* UserActivity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABBA2A126C2870500F4F4FF /* UserActivity+CoreDataProperties.swift */; };
+		9ABBA2A526C2870500F4F4FF /* UserActivity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABBA2A126C2870500F4F4FF /* UserActivity+CoreDataProperties.swift */; };
 		9AC066FC2639178E00287A44 /* RecAudioBookVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC066EC2639178E00287A44 /* RecAudioBookVC.swift */; };
 		9AC066FD2639178E00287A44 /* RecAudioBookVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC066EC2639178E00287A44 /* RecAudioBookVC.swift */; };
 		9AC066FE2639178F00287A44 /* RecDocuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC066ED2639178E00287A44 /* RecDocuVC.swift */; };
@@ -838,6 +842,8 @@
 		9A98E42426848401004C889C /* AddUserVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserVC.swift; sourceTree = "<group>"; };
 		9A98E42726848732004C889C /* SetUpPInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetUpPInVC.swift; sourceTree = "<group>"; };
 		9A9A1C6B2682060E009CF46E /* OTPVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPVC.swift; sourceTree = "<group>"; };
+		9ABBA2A026C2870500F4F4FF /* UserActivity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserActivity+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		9ABBA2A126C2870500F4F4FF /* UserActivity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserActivity+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		9AC066EC2639178E00287A44 /* RecAudioBookVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecAudioBookVC.swift; sourceTree = "<group>"; };
 		9AC066ED2639178E00287A44 /* RecDocuVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecDocuVC.swift; sourceTree = "<group>"; };
 		9AC066EE2639178E00287A44 /* RecApps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecApps.swift; sourceTree = "<group>"; };
@@ -922,6 +928,8 @@
 		281DE30F2626FD79002CCD9D /* CoreData Models + Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				9ABBA2A026C2870500F4F4FF /* UserActivity+CoreDataClass.swift */,
+				9ABBA2A126C2870500F4F4FF /* UserActivity+CoreDataProperties.swift */,
 				281DE3112626FD79002CCD9D /* CoreDataHelper.swift */,
 				281DE3102626FD79002CCD9D /* AudioDownloads+CoreDataClass.swift */,
 				281DE3132626FD79002CCD9D /* AudioDownloads+CoreDataProperties.swift */,
@@ -2185,11 +2193,13 @@
 				2870B36725FB3AEF0014A4F6 /* Constants.swift in Sources */,
 				281DE3402626FD79002CCD9D /* DisclaimerAudio.swift in Sources */,
 				2870B3F225FB41A10014A4F6 /* UISearchBar+Extension.swift in Sources */,
+				9ABBA2A526C2870500F4F4FF /* UserActivity+CoreDataProperties.swift in Sources */,
 				28ED2F9825FB58E000E59C56 /* Font.swift in Sources */,
 				28A4A70026901E93008BA106 /* ManageUserVC.swift in Sources */,
 				2870B45C25FB44700014A4F6 /* Int+Timepiece.swift in Sources */,
 				2870B42E25FB41A10014A4F6 /* Theme.swift in Sources */,
 				28ED8EEE260E016300EC4687 /* PreparingPlaylistVC.swift in Sources */,
+				9ABBA2A326C2870500F4F4FF /* UserActivity+CoreDataClass.swift in Sources */,
 				281DE34726270085002CCD9D /* AppConstants.swift in Sources */,
 				28E8094D26134A0700CD80F7 /* ManageAudioCell.swift in Sources */,
 				2870B3E025FB41A10014A4F6 /* UIView+Extension.swift in Sources */,
@@ -2409,11 +2419,13 @@
 				281DE33F2626FD79002CCD9D /* DisclaimerAudio.swift in Sources */,
 				28F812C325FB36CF00DC6AF6 /* Constants.swift in Sources */,
 				28ED2F9725FB58E000E59C56 /* Font.swift in Sources */,
+				9ABBA2A426C2870500F4F4FF /* UserActivity+CoreDataProperties.swift in Sources */,
 				2870B3F125FB41A10014A4F6 /* UISearchBar+Extension.swift in Sources */,
 				28A4A6FF26901E93008BA106 /* ManageUserVC.swift in Sources */,
 				2870B45B25FB44700014A4F6 /* Int+Timepiece.swift in Sources */,
 				28ED8EED260E016300EC4687 /* PreparingPlaylistVC.swift in Sources */,
 				281DE34626270085002CCD9D /* AppConstants.swift in Sources */,
+				9ABBA2A226C2870500F4F4FF /* UserActivity+CoreDataClass.swift in Sources */,
 				28E8094C26134A0700CD80F7 /* ManageAudioCell.swift in Sources */,
 				2870B42D25FB41A10014A4F6 /* Theme.swift in Sources */,
 				283153C726145F41004001CE /* AudioDetailVC.swift in Sources */,

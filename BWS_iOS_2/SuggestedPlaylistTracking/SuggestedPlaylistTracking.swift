@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import EVReflection
+import CoreData
 
 class ActivityTrackDataModel:EVObject {
     var UserId = ""
@@ -24,59 +25,64 @@ class SuggestedPlaylistTracking {
     // MARK:- VARIABLES
     static var shared = SuggestedPlaylistTracking()
     var arrayActivity = [ActivityTrackDataModel]()
-    var arrayDownload = [[String:Any]]()
+    var arrayDownload = [UserActivity]()
     var startTime:String?
     var completedTime:String?
+    var isAudioCompleted = false
     
-    //Track activity offline and online with timestamp
+    // MARK:- Track activity offline and online with timestamp
     func trackActivity(activityName:String, audioData:AudioDetailsDataModel) {
         guard let playlistData = DJMusicPlayer.shared.currentPlaylist else {
             return
         }
         
+        //created = for online and selfcreated = for offline
         if  playlistData.Created != "2"  && (DJMusicPlayer.shared.playerType != .playlist || DJMusicPlayer.shared.playerType != .downloadedPlaylist) {
             return
         }
         checkTime(time: "\(Date.currentTimeStamp)")
         
         if checkInternet(showToast: false) == false {
-            storeActivityTrack(audioData:audioData,startTime:startTime,completedTime:completedTime)
+            storeAudioActivityTrack(audioData : audioData)
         } else {
-            let dataValue = UserDefaults.standard.array(forKey: "DownloadPlaylist")
-            if dataValue != nil {
-                callAudioActivityTracking(trackingData:arrayActivity,audioData:audioData, arrayDownload: dataValue ?? [])
-                UserDefaults.standard.removeObject(forKey: "downloadPlaylist")
-                UserDefaults.standard.removeObject(forKey: "DownloadPlaylist")
-                arrayActivity.removeAll()
-            } else {
-                arrayActivity.removeAll()
-                storeActivityTrack(audioData:audioData,startTime:startTime,completedTime:completedTime)
-                callAudioActivityTracking(trackingData:arrayActivity,audioData:audioData, arrayDownload: [])
-            }
+            arrayDownload.removeAll()
+            arrayActivity.removeAll()
+            fetchAudioActivityTrack(audiodata: audioData)
         }
     }
     
-    // API for userActivityTrack - suggested Playlist
-    func callAudioActivityTracking(trackingData:[ActivityTrackDataModel],audioData:AudioDetailsDataModel ,arrayDownload:[Any]) {
-        let parameters:[String:Any]
-        if arrayActivity.count > 0 {
-            parameters = ["TrackingData":trackingData.toJsonString()]
-        }else {
-            let data = convertIntoJSONString(arrayObject: arrayDownload)
-            parameters = ["TrackingData":data ?? []]
-        }
+    
+    // MARK:-  API for userActivityTrack - suggested Playlist
+    func callAudioActivityTracking(trackingData:[ActivityTrackDataModel],audioData:AudioDetailsDataModel) {
+        let data  = trackingData.removingDuplicates()
+        let parameters = ["TrackingData":data.toJsonString()]
         
         APICallManager.sharedInstance.callAPI(router: APIRouter.useraudiotracking(parameters), displayHud: false, showToast: false) { (response : GeneralModel) in
             if response.ResponseCode == "200" {
-                
+                self.arrayDownload.removeAll()
+                self.arrayActivity.removeAll()
+                let value = data.filter {$0.CompletedTime != ""}
+                if value.count > 0 {
+                    for i in 0..<value.count {
+                        if value[i].CompletedTime != "" {
+                            self.isAudioCompleted = false
+                        }
+                    }
+                    
+                }
             } else {
-                self.storeActivityTrack(audioData:audioData,startTime:self.startTime,completedTime:self.completedTime)
+                self.storeAudioActivityTrack(audioData : audioData)
+                self.arrayDownload.removeAll()
+                self.arrayActivity.removeAll()
+                
             }
         }
     }
     
-    //stored data for downloaded playing data
-    func storeActivityTrack(audioData:AudioDetailsDataModel,startTime:String?,completedTime:String?) {
+    
+    // MARK:- sending online data
+    func checkActivityTrack(audioData:AudioDetailsDataModel) {
+        checkTime(time: "\(Date.currentTimeStamp)")
         let trackData = [APIParameters.UserId:CoUserDataModel.currentUserId,
                          "AudioId":audioData.ID ,
                          "PlaylistId":audioData.PlaylistID ,
@@ -90,45 +96,119 @@ class SuggestedPlaylistTracking {
                 print(jsonString)
                 let dataActivity = ActivityTrackDataModel(data: jsonData)
                 if checkInternet(showToast: false) == false {
-                    arrayDownload.append(trackData)
-                    UserDefaults.standard.setValue(arrayDownload, forKey: "DownloadPlaylist")
+                    storeAudioActivityTrack(audioData : audioData)
+                    self.arrayDownload.removeAll()
+                    self.arrayActivity.removeAll()
                 } else {
                     arrayActivity.append(dataActivity)
+                    callAudioActivityTracking(trackingData: arrayActivity, audioData: audioData)
                 }
             }
         }
     }
     
+    
+    // MARK:- check start and complted time
     func checkTime(time:String) {
-        if DJMusicPlayer.shared.state == .loading ||  DJMusicPlayer.shared.state == .loadingFinished || DJMusicPlayer.shared.playbackState == .playing {
-            self.startTime = time
+        if isAudioCompleted == false {
+            let str = time.dropLast(3)
+            self.startTime = String(str)
+            self.completedTime = ""
         }else {
-            self.completedTime = time
+            let str = time.dropLast(3)
+            self.completedTime = String(str)
+            self.startTime = ""
         }
     }
     
-    // userdefaults
-    var downloadPlaylist : ActivityTrackDataModel? {
-        get {
-            if let downloadData = UserDefaults.standard.data(forKey: "downloadPlaylist") {
-                return ActivityTrackDataModel(data: downloadData)
-            }
-            return nil
+   
+    // MARK:- coredata - Save
+    func storeAudioActivityTrack(audioData : AudioDetailsDataModel) {
+        let managedContext =
+            APPDELEGATE.persistentContainer.viewContext
+        
+        let userAudio = UserActivity(context: managedContext)
+        userAudio.userId = CoUserDataModel.currentUserId
+        userAudio.playlistId = audioData.PlaylistID
+        userAudio.audioId = audioData.ID
+        userAudio.startTime = startTime ?? ""
+        userAudio.completedTime = completedTime ?? ""
+        userAudio.volume = "\(DJMusicPlayer.shared.audioPlayer.volume)"
+        
+        do {
+            try managedContext.save()
+            // arrayActivity.append(person)
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
         }
-        set {
-            if let newData = newValue {
-                UserDefaults.standard.setValue(newData.toJsonData(), forKey: "downloadPlaylist")
-            } else {
-                UserDefaults.standard.setValue(nil, forKey: "downloadPlaylist")
+    }
+    
+    
+    // MARK:- coredata - fetch
+    func fetchAudioActivityTrack(audiodata:AudioDetailsDataModel) {
+        checkTime(time: "\(Date.currentTimeStamp)")
+        let managedContext =
+            APPDELEGATE.persistentContainer.viewContext
+        
+        let fetchRequest = UserActivity.fetchRequest() as NSFetchRequest
+        
+        do {
+            arrayDownload = try managedContext.fetch(fetchRequest)
+            
+            for audio in arrayDownload {
+                let audioData = ActivityTrackDataModel()
+                audioData.UserId = audio.userId ?? ""
+                audioData.PlaylistId = audio.playlistId ?? ""
+                audioData.AudioId = audio.audioId ?? ""
+                audioData.StartTime = audio.startTime ?? ""
+                audioData.CompletedTime = audio.completedTime ?? ""
+                audioData.Volume = audio.volume ?? ""
+                arrayActivity.append(audioData)
             }
-            UserDefaults.standard.synchronize()
+            
+            if checkInternet(showToast: false) == false {
+                if arrayActivity.count > 0 {
+                    arrayActivity.removeDuplicates()
+                    callAudioActivityTracking(trackingData: arrayActivity, audioData: audiodata)
+                }
+            } else {
+                
+                if arrayActivity.count > 0 {
+                    callAudioActivityTracking(trackingData: arrayActivity, audioData: audiodata)
+                    deleteAllRecords()
+                    trackActivity(activityName: SegmentTracking.eventNames.Audio_Started, audioData: audiodata)
+                }else {
+                    checkTime(time:"\(Date.currentTimeStamp)")
+                    checkActivityTrack(audioData:audiodata)
+                }
+            }
+            
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+    }
+    
+    
+    // MARK:- coredata - delete
+    func deleteAllRecords() {
+        //delete all data
+        let context = APPDELEGATE.persistentContainer.viewContext
+        
+        let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "UserActivity")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)
+        
+        do {
+            try context.execute(deleteRequest)
+            try context.save()
+        } catch {
+            print ("There was an error")
         }
     }
     
 }
 
 extension Date {
-    static var currentTimeStamp: Int64{
-        return Int64(Date().timeIntervalSince1970)
+    static var currentTimeStamp:Int{
+        return Int(Date().timeIntervalSince1970 * 1000)
     }
 }

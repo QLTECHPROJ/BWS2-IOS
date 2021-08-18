@@ -29,6 +29,7 @@ class HomeVC: BaseViewController {
     var arraySessionScore = [SessionScoreModel]()
     var arraySessionProgress = [SessionProgressModel]()
     var areaOfFocus = [AreaOfFocusModel]()
+    var arrayGraphActivity = [GraphAnalyticsModel]()
     
     
     // MARK:- VIEW LIFE CYCLE
@@ -307,7 +308,7 @@ extension HomeVC : UITableViewDelegate, UITableViewDataSource {
             
         case 8:
             let cell = tableView.dequeueReusableCell(withClass: IndexScoreCell.self)
-            cell.configureMyActivityCell()
+            cell.configureMyActivityCell(data: arrayGraphActivity)
             return cell
             
         case 9:
@@ -351,7 +352,7 @@ extension HomeVC : UITableViewDelegate, UITableViewDataSource {
             return 0 // return 140
             
         case 8:
-            return 0 // 300
+            return  300
             
         case 9:
             return 0 // 200

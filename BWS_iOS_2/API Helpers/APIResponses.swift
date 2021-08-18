@@ -723,6 +723,7 @@ class HomeDataModel: EVObject {
     var PastIndexScore = [PastIndexScoreModel]()
     var SessionScore = [SessionScoreModel]()
     var SessionProgress = [SessionProgressModel]()
+    var GraphAnalytics = [GraphAnalyticsModel]()
 }
 
 class PastIndexScoreModel : EVObject {
@@ -737,6 +738,11 @@ class SessionScoreModel : EVObject {
 
 class SessionProgressModel : EVObject {
     
+}
+
+class GraphAnalyticsModel: EVObject {
+    var Day = ""
+    var Time = ""
 }
 
 // MARK:- Resource Category Model

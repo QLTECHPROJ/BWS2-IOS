@@ -351,6 +351,11 @@ open class DJMusicPlayer: NSObject {
             SegmentTracking.shared.audioPlaybackEvents(name: SegmentTracking.eventNames.Disclaimer_Completed, audioData: nil, trackingType: .track)
         } else {
             SegmentTracking.shared.audioPlaybackEvents(name: SegmentTracking.eventNames.Audio_Completed, audioData: nil, trackingType: .track)
+            if let audioData = DJMusicPlayer.shared.currentlyPlaying {
+                SuggestedPlaylistTracking.shared.isAudioCompleted = true
+                SuggestedPlaylistTracking.shared.trackActivity(activityName:SegmentTracking.eventNames.Audio_Completed, audioData:audioData)
+            }
+            
         }
         
         if self.currentlyPlaying?.isDisclaimer == true {

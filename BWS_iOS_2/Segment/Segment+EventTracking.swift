@@ -137,8 +137,6 @@ extension SegmentTracking {
         } else {
             SegmentTracking.shared.trackGeneralEvents(name: name, traits: traits)
         }
-        
-        SuggestedPlaylistTracking.shared.trackActivity(activityName: name, audioData: audioDetails)
     }
     
     func audioPlayerActions(name : String, audioData : AudioDetailsDataModel?, source : String = "", trackingType : TrackingType) {

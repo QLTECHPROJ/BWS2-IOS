@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import Charts
 
 class IndexScoreCell: UITableViewCell {
     
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var imgBanner: UIImageView!
     @IBOutlet weak var viewJoinNow: UIView!
-    @IBOutlet weak var viewGraph: UIView!
+    @IBOutlet weak var viewGraph: BarChartView!
     
     @IBOutlet weak var viewScrore: UIView!
     @IBOutlet weak var lblIndexScore : UILabel!
@@ -21,6 +22,16 @@ class IndexScoreCell: UITableViewCell {
     @IBOutlet weak var lblGrowth : UILabel!
     @IBOutlet weak var imgViewUpDown : UIImageView!
     @IBOutlet weak var progressView : UIProgressView!
+    
+    var graphValue = [GraphAnalyticsModel]()
+//    let arrayDays = ["",
+//                  "Mon", "Tue", "Wed",
+//                  "Thu", "Fri", "Sat",
+//                  "Sun",""]
+    var months: [String]!
+    
+    weak var axisFormatDelegate: IAxisValueFormatter?
+    let floatValue: [CGFloat] = [4,4]
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -90,7 +101,7 @@ class IndexScoreCell: UITableViewCell {
         viewJoinNow.clipsToBounds = true
     }
     
-    func configureMyActivityCell() {
+    func configureMyActivityCell(data : [GraphAnalyticsModel]) {
         lblTitle.text = "My activities"
         
         viewGraph.isHidden = false
@@ -98,6 +109,68 @@ class IndexScoreCell: UITableViewCell {
         viewScrore.isHidden = true
         lblTitle.isHidden = false
         imgBanner.isHidden = true
+        graphValue.removeAll()
+        graphValue.append(contentsOf: data)
+        
+        
+        
+        months = ["", "mon", "tue", "wed", "thu", "fri", "sat", "sun",""]
+        let unitsSold = [0.0, 4.0, 6.0, 3.0, 12.0, 16.0, 4.0, 18.0 , 0.0]
+        setChart(dataPoints: months, values:graphValue)
+    }
+    
+}
+
+extension IndexScoreCell : ChartViewDelegate {
+    
+    func setChart(dataPoints: [String], values: [GraphAnalyticsModel]) {
+        viewGraph.noDataText = "You need to provide data for the chart."
+        
+        var dataEntries: [BarChartDataEntry] = []
+                
+        for i in 0..<values.count {
+            
+            let dataEntry = BarChartDataEntry(x:values[i].Time.doubleValue, y: values[i].Time.doubleValue)
+            dataEntries.append(dataEntry)
+        }
+                
+        let chartDataSet = BarChartDataSet(entries: dataEntries, label: "Last 7 days Time")
+        let chartData = BarChartData(dataSet: chartDataSet)
+        viewGraph.data = chartData
+        
+        let xAxis = viewGraph.xAxis
+        xAxis.labelPosition = .bottom
+        xAxis.granularity = 1
+        xAxis.axisMinimum = 0
+        xAxis.axisMaximum = 8
+        xAxis.valueFormatter = self
+        
+        let rightAxis = viewGraph.rightAxis
+        rightAxis.drawLabelsEnabled = false
+        rightAxis.axisMinimum = 0
+        rightAxis.axisMaximum = 0
+        viewGraph.delegate = self
+        viewGraph.backgroundColor = UIColor.white
+        
+        //legend
+        let legend = viewGraph.legend
+        legend.enabled = true
+        legend.horizontalAlignment = .right
+        legend.verticalAlignment = .top
+        legend.orientation = .horizontal
+        legend.drawInside = false
+        legend.yOffset = 10.0;
+        legend.xOffset = 0.0;
+        legend.yEntrySpace = 0.0;
+            
+    }
+   
+}
+
+extension IndexScoreCell: IAxisValueFormatter {
+    
+    func stringForValue(_ value: Double, axis: AxisBase?) -> String {
+        return months[Int(value) % months.count]
     }
     
 }

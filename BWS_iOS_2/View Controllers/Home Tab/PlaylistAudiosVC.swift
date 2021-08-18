@@ -455,17 +455,9 @@ class PlaylistAudiosVC: BaseViewController {
         }
         if  playlistData.selfCreated == "2"  &&  DJMusicPlayer.shared.playerType == .downloadedPlaylist {
             if let audioData = DJMusicPlayer.shared.currentlyPlaying {
-                var startTime:String?
-                var completedTime:String?
-                if DJMusicPlayer.shared.state == .loading ||  DJMusicPlayer.shared.state == .loadingFinished || DJMusicPlayer.shared.playbackState == .playing {
-                    let timeStamp = Date.currentTimeStamp
-                    startTime = "\(timeStamp)"
-                }else {
-                    let timeStamp = Date.currentTimeStamp
-                    completedTime = "\(timeStamp)"
-                }
+                SuggestedPlaylistTracking.shared.checkTime(time: "\(Date.currentTimeStamp)")
                 if checkInternet(showToast: false) == false {
-                SuggestedPlaylistTracking.shared.storeActivityTrack(audioData:audioData,startTime:startTime,completedTime:completedTime)
+                    SuggestedPlaylistTracking.shared.storeAudioActivityTrack(audioData: audioData)
                 }else {
                     SuggestedPlaylistTracking.shared.trackActivity(activityName: SegmentTracking.eventNames.Playlist_Started, audioData: audioData)
                 }

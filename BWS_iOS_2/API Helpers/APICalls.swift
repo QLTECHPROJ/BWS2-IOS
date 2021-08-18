@@ -354,6 +354,9 @@ extension UIViewController {
             if response.ResponseCode == "200" {
                 refreshAudioData = true
                 complitionBlock?()
+                if let audioData = DJMusicPlayer.shared.currentlyPlaying {
+                    SuggestedPlaylistTracking.shared.trackActivity(activityName: SegmentTracking.eventNames.Audio_Started, audioData: audioData)
+                }
             }
         }
     }
@@ -1167,6 +1170,7 @@ extension HomeVC {
                 self.arrayPastIndexScore = response.ResponseData.PastIndexScore
                 self.arraySessionScore = response.ResponseData.SessionScore
                 self.arraySessionProgress = response.ResponseData.SessionProgress
+                self.arrayGraphActivity = response.ResponseData.GraphAnalytics
                 
                 if response.ResponseData.shouldPlayDisclaimer == "1" {
                     DisclaimerAudio.shared.shouldPlayDisclaimer = true
