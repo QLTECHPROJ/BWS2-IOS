@@ -159,6 +159,12 @@ class HomeVC: BaseViewController {
         self.navigationController?.pushViewController(aVC, animated: true)
     }
     
+    func selectTrackData(tag:Int) {
+        
+        let indexPosition = IndexPath(row: 9, section: 0)
+        tableView.reloadRows(at: [indexPosition], with: .none)
+    }
+    
     func playSuggestedPlaylist() {
         guard let playlistData = suggstedPlaylist else {
             return
@@ -314,8 +320,11 @@ extension HomeVC : UITableViewDelegate, UITableViewDataSource {
             
         case 9:
             let cell = tableView.dequeueReusableCell(withClass: ProgressCell.self)
-            cell.backgroundColor = .white
+            
             cell.configureProgressCell(data: self.dictHome)
+            cell.didSelectTrackData = { Index in
+                self.selectTrackData(tag: Index)
+            }
             return cell
             
         default:
