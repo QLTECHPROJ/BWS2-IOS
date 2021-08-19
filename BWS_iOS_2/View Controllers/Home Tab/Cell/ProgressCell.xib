@@ -39,13 +39,13 @@
                                                 <rect key="frame" x="32.5" y="0.0" width="20" height="29"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Frequency" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DFC-Io-X0O">
-                                                <rect key="frame" x="19" y="29" width="47.5" height="29"/>
+                                                <rect key="frame" x="15.5" y="29" width="54.5" height="29"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="10"/>
                                                 <color key="textColor" name="999999"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JzF-Lu-qTs">
-                                                <rect key="frame" x="38" y="58" width="9" height="29"/>
+                                                <rect key="frame" x="38" y="58" width="9.5" height="29"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="16"/>
                                                 <color key="textColor" red="0.0" green="0.35686274509803922" blue="0.66666666666666663" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -59,13 +59,13 @@
                                                 <rect key="frame" x="34.5" y="0.0" width="16" height="29"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0nU-yX-AAJ">
-                                                <rect key="frame" x="19.5" y="29" width="46" height="29"/>
+                                                <rect key="frame" x="16" y="29" width="53" height="29"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="10"/>
                                                 <color key="textColor" name="999999"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11:38:47" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nOz-En-1sI">
-                                                <rect key="frame" x="11.5" y="58" width="62.5" height="29"/>
+                                                <rect key="frame" x="13.5" y="58" width="58.5" height="29"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="16"/>
                                                 <color key="textColor" red="0.0" green="0.35686274509999999" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -79,13 +79,13 @@
                                                 <rect key="frame" x="33" y="0.0" width="19.5" height="29"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Regularity" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xQY-VI-wWB">
-                                                <rect key="frame" x="20.5" y="29" width="45" height="29"/>
+                                                <rect key="frame" x="16.5" y="29" width="52.5" height="29"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="10"/>
                                                 <color key="textColor" name="999999"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Pl-AG-5RL">
-                                                <rect key="frame" x="26" y="58" width="34" height="29"/>
+                                                <rect key="frame" x="25.5" y="58" width="34.5" height="29"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="16"/>
                                                 <color key="textColor" red="0.0" green="0.35686274509999999" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -171,13 +171,13 @@
                             <constraint firstAttribute="width" constant="100" id="FYR-rJ-jiv"/>
                         </constraints>
                         <connections>
-                            <action selector="onTappedSelection:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="dIX-GU-8bs"/>
+                            <action selector="onTappedMonth:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="vlz-VW-TNY"/>
                         </connections>
                     </button>
                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fiK-A5-xpd">
                         <rect key="frame" x="210" y="0.0" width="110" height="55"/>
                         <connections>
-                            <action selector="onTappedSelection:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="cjo-u7-bzt"/>
+                            <action selector="onTappedYear:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Syg-x1-MgM"/>
                         </connections>
                     </button>
                 </subviews>

@@ -37,7 +37,7 @@ class SuggestedPlaylistTracking {
         }
         
         //created = for online and selfcreated = for offline
-        if  playlistData.Created != "2"  && (DJMusicPlayer.shared.playerType != .playlist || DJMusicPlayer.shared.playerType != .downloadedPlaylist) {
+        if  playlistData.Created != "2"  && (DJMusicPlayer.shared.playerType != .playlist || DJMusicPlayer.shared.playerType != .downloadedPlaylist){
             return
         }
         checkTime(time: "\(Date.currentTimeStamp)")
@@ -119,6 +119,28 @@ class SuggestedPlaylistTracking {
             self.completedTime = String(str)
             self.startTime = ""
         }
+    }
+    
+    func activityTrack() {
+        guard let playlistData = DJMusicPlayer.shared.currentPlaylist else {
+            return
+        }
+        
+        if checkInternet(showToast: false) == false {
+            checkTime(time: "\(Date.currentTimeStamp)")
+            if  playlistData.selfCreated == "2"  &&  DJMusicPlayer.shared.playerType == .downloadedPlaylist {
+                if let audioData = DJMusicPlayer.shared.currentlyPlaying {
+                    storeAudioActivityTrack(audioData: audioData)
+                }
+            }
+        }else {
+            if  playlistData.Created == "2" &&  DJMusicPlayer.shared.playerType == .playlist {
+                if let audioData = DJMusicPlayer.shared.currentlyPlaying {
+                    trackActivity(activityName: SegmentTracking.eventNames.Playlist_Started, audioData: audioData)
+                }
+            }
+        }
+        
     }
     
    

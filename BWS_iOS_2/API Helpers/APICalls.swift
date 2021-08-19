@@ -354,9 +354,6 @@ extension UIViewController {
             if response.ResponseCode == "200" {
                 refreshAudioData = true
                 complitionBlock?()
-                if let audioData = DJMusicPlayer.shared.currentlyPlaying {
-                    SuggestedPlaylistTracking.shared.trackActivity(activityName: SegmentTracking.eventNames.Audio_Started, audioData: audioData)
-                }
             }
         }
     }
