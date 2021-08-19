@@ -227,6 +227,40 @@ class AreaOfFocusVC: BaseViewController {
         }
     }
     
+    func showAlertForChangeSleepTime(data : SaveCategoryDataModel) {
+        let aVC = AppStoryBoard.manage.viewController(viewControllerClass: AlertPopUpVC.self)
+        aVC.titleText = ""
+        aVC.detailText = data.popupContent
+        aVC.firstButtonTitle = Theme.strings.Edit_Sleep_Time
+        aVC.secondButtonTitle = Theme.strings.Edit_Area_of_Focus
+        aVC.secondButtonBackgroundColor = Theme.colors.green_008892
+        aVC.secondButtonTitleColor = Theme.colors.white
+        aVC.modalPresentationStyle = .overFullScreen
+        aVC.delegate = self
+        self.present(aVC, animated: true, completion: nil)
+    }
+    
+    func handleRedirection() {
+        var shouldPush = true
+        if let controllers = self.navigationController?.viewControllers {
+            for controller in controllers {
+                if controller.isKind(of: SleepTimeVC.self) {
+                    if let aVC = controller as? SleepTimeVC {
+                        aVC.isFromEdit = self.isFromEdit
+                    }
+                    shouldPush = false
+                    self.navigationController?.popToViewController(controller, animated: true)
+                    break
+                }
+            }
+        }
+        
+        if shouldPush {
+            let aVC = AppStoryBoard.main.viewController(viewControllerClass:SleepTimeVC.self)
+            aVC.isFromEdit = self.isFromEdit
+            self.navigationController?.pushViewController(aVC, animated: true)
+        }
+    }
     
     // MARK:- ACTIONS
     @IBAction func continueClicked() {
@@ -346,3 +380,13 @@ extension AreaOfFocusVC : UICollectionViewDelegate, UICollectionViewDataSource,U
     
 }
 
+// MARK:- AlertPopUpVCDelegate
+extension AreaOfFocusVC : AlertPopUpVCDelegate {
+    
+    func handleAction(sender: UIButton, popUpTag: Int) {
+        if sender.tag == 0 {
+            self.handleRedirection()
+        }
+    }
+    
+}

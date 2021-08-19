@@ -14,6 +14,7 @@ class BillingOrderVC: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var btnUpdatePlan: UIButton!
     @IBOutlet weak var btnCancel: UIButton!
+    @IBOutlet weak var lblNoData: UILabel!
     
     
     // MARK:- VARIABLES
@@ -36,9 +37,15 @@ class BillingOrderVC: BaseViewController {
         tableView.rowHeight = UITableView.automaticDimension
         
         btnUpdatePlan.isHidden = true
+        btnCancel.isHidden = true
+        lblNoData.isHidden = true
+        tableView.isHidden = true
     }
     
     override func setupData() {
+        btnCancel.isHidden = (planDetails == nil)
+        lblNoData.isHidden = (planDetails != nil)
+        tableView.isHidden = (planDetails == nil)
         tableView.reloadData()
     }
     
@@ -54,8 +61,16 @@ class BillingOrderVC: BaseViewController {
     }
     
     @IBAction func cancelClicked(_ sender: UIButton) {
-        let aVC = AppStoryBoard.account.viewController(viewControllerClass: CancelSubVC.self)
-        self.navigationController?.pushViewController(aVC, animated: true)
+        guard let planData = planDetails else {
+            return
+        }
+        
+        if planData.DeviceType == APP_TYPE {
+            let aVC = AppStoryBoard.account.viewController(viewControllerClass: CancelSubVC.self)
+            self.navigationController?.pushViewController(aVC, animated: true)
+        } else {
+            print("DeviceType not match")
+        }
     }
     
 }
@@ -65,7 +80,11 @@ class BillingOrderVC: BaseViewController {
 extension BillingOrderVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        if planDetails != nil {
+            return 1
+        }
+        
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

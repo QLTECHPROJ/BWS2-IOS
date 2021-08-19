@@ -975,7 +975,7 @@ extension AreaOfFocusVC {
                                            "AvgSleepTime":self.averageSleepTime,
                                            "CatName":areaOfFocus.toJSON() ?? ""]
         
-        APICallManager.sharedInstance.callAPI(router: APIRouter.saverecommendedcategory(parameters)) { (response :SaveCategoryModel) in
+        APICallManager.sharedInstance.callAPI(router: APIRouter.saverecommendedcategory(parameters), showToast: false) { (response :SaveCategoryModel) in
             
             if response.ResponseCode == "200" {
                 let userData = CoUserDataModel.currentUser
@@ -989,14 +989,23 @@ extension AreaOfFocusVC {
                 // Segment - Identify User
                 SegmentTracking.shared.identifyUser()
                 
-                // Clear Audio Player if Suggested Playlist updated
-                if self.isFromEdit && DJMusicPlayer.shared.currentPlaylist?.Created == "2" {
-                    self.clearAudioPlayer()
+                if let playlistData = response.ResponseData?.SuggestedPlaylist {
+                    // Delete Suggested playlist if updated
+                    CoreDataHelper.shared.deleteSuggestedPlaylist(newPlaylist: playlistData)
+                    
+                    // Clear Audio Player if Suggested Playlist updated
+                    self.clearAudioPlayerForSuggestedPlaylist(newPlaylist: playlistData)
                 }
                 
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass: PreparingPlaylistVC.self)
                 aVC.isFromEdit = self.isFromEdit
                 self.navigationController?.pushViewController(aVC, animated: true)
+            } else {
+                if let responseData = response.ResponseData, responseData.showAlert == "1" {
+                    self.showAlertForChangeSleepTime(data: responseData)
+                } else {
+                    showAlertToast(message: response.ResponseMessage)
+                }
             }
         }
     }
@@ -1511,7 +1520,7 @@ extension EditProfileVC {
                 self.callGetCoUserDetailsAPI { (success) in
                     if success {
                         self.setupData()
-                        self.navigationController?.popViewController(animated: true)
+                        // self.navigationController?.popViewController(animated: true)
                         
                         // Segment Tracking
                         if let userData = CoUserDataModel.currentUser {
@@ -1527,6 +1536,12 @@ extension EditProfileVC {
                         
                         // Segment - Identify User
                         SegmentTracking.shared.identifyUser()
+                        
+                        if response.ResponseData?.ageSlabChange == "1" {
+                            self.presentEditSleepTimeScreen()
+                        } else {
+                            self.navigationController?.popViewController(animated: true)
+                        }
                     }
                 }
             }

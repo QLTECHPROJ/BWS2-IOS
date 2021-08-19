@@ -38,6 +38,7 @@ class EditProfileVC: BaseViewController {
     
     // MARK:- VARIABLES
     var selectedDOB = Date()
+    var showDOBPopUp = true
     
     
     // MARK:- VIEW LIFE CYCLE
@@ -239,6 +240,16 @@ class EditProfileVC: BaseViewController {
         self.view.layoutIfNeeded()
     }
     
+    func showAlertForDOB() {
+        let aVC = AppStoryBoard.manage.viewController(viewControllerClass: AlertPopUpVC.self)
+        aVC.titleText = ""
+        aVC.detailText = Theme.strings.alert_dob_slab_change
+        aVC.firstButtonTitle = Theme.strings.ok
+        aVC.hideSecondButton = true
+        aVC.modalPresentationStyle = .overFullScreen
+        aVC.delegate = self
+        self.present(aVC, animated: true, completion: nil)
+    }
     
     // MARK:- ACTIONS
     @IBAction func backClicked(sender : UIButton) {
@@ -256,6 +267,15 @@ class EditProfileVC: BaseViewController {
 
 // MARK:- UITextFieldDelegate
 extension EditProfileVC : UITextFieldDelegate {
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if textField == txtFDOB && showDOBPopUp {
+            showDOBPopUp = false
+            showAlertForDOB()
+            return false
+        }
+        return true
+    }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         lblErrName.isHidden = true
@@ -313,6 +333,18 @@ extension EditProfileVC : DJPickerViewDelegate {
         self.view.layoutIfNeeded()
         
         buttonEnableDisable()
+    }
+    
+}
+
+
+// MARK:- AlertPopUpVCDelegate
+extension EditProfileVC : AlertPopUpVCDelegate {
+    
+    func handleAction(sender: UIButton, popUpTag: Int) {
+        if sender.tag == 0 {
+            
+        }
     }
     
 }

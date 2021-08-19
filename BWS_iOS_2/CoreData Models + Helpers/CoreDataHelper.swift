@@ -369,13 +369,14 @@ extension CoreDataHelper {
         downloadPlaylist.totalminute = playlistData.Totalminute
         downloadPlaylist.download = playlistData.Download
         
-        for audio in playlistData.PlaylistSongs {
-            audio.isSingleAudio = ""
-            self.saveAudio(audioData: audio, isSingleAudio: false)
-        }
-        
         do {
             try context.save()
+            
+            for audio in playlistData.PlaylistSongs {
+                audio.isSingleAudio = ""
+                self.saveAudio(audioData: audio, isSingleAudio: false)
+            }
+            
             let playlistDownloadProgress = CoreDataHelper.shared.updatePlaylistDownloadProgress(playlistID: playlistData.PlaylistID)
             if  playlistDownloadProgress < 1 {
                 showAlertToast(message: Theme.strings.alert_playlist_download_started)

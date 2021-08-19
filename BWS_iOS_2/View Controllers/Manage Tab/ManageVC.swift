@@ -212,14 +212,7 @@ class ManageVC: BaseViewController {
         }
         
         if sender.view == playlistBottomView {
-            let aVC = AppStoryBoard.manage.viewController(viewControllerClass: AlertPopUpVC.self)
-            aVC.titleText = Theme.strings.sleeptime_alert_title
-            aVC.detailText = Theme.strings.sleeptime_alert_Desc
-            aVC.firstButtonTitle = Theme.strings.yes
-            aVC.secondButtonTitle = Theme.strings.no
-            aVC.modalPresentationStyle = .overFullScreen
-            aVC.delegate = self
-            self.present(aVC, animated: true, completion: nil)
+            self.presentEditSleepTimeScreen()
             return
         }
         
@@ -653,22 +646,6 @@ extension ManageVC : UITableViewDataSource, UITableViewDelegate {
         }
         
         return 0
-    }
-    
-}
-
-// MARK:- AlertPopUpVCDelegate
-extension ManageVC : AlertPopUpVCDelegate {
-    
-    func handleAction(sender: UIButton, popUpTag: Int) {
-        if sender.tag == 0 {
-            let aVC = AppStoryBoard.main.viewController(viewControllerClass: SleepTimeVC.self)
-            aVC.isFromEdit = true
-            let navVC = UINavigationController(rootViewController: aVC)
-            navVC.navigationBar.isHidden = true
-            navVC.modalPresentationStyle = .overFullScreen
-            self.present(navVC, animated: true, completion: nil)
-        }
     }
     
 }

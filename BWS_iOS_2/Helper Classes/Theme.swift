@@ -296,6 +296,9 @@ struct AppStrings {
     let goBack = "GO BACK"
     let settings = "Settings"
     
+    let Edit_Sleep_Time = "Edit Sleep Time"
+    let Edit_Area_of_Focus = "Edit Area of Focus"
+    
     /* App Update Popup */
     let update = "UPDATE"
     let not_now = "NOT NOW"
@@ -441,6 +444,9 @@ struct AppStrings {
     let alert_blank_dob_error = "Date of Birth should not be blank"
     let alert_dob_error = "Please confirm whether you are above 1 day"
     let alert_invalid_fullname_error = "Please enter valid Name"
+    
+    // Alert Popup
+    let alert_dob_slab_change = "Changing Date of Birth may cause change in your age category and if this happens, you will be redirected to select your sleep time and area of focus again. Do you wish to continue ?"
     
     let alert_blank_email_error = "Email address is required"
     let alert_invalid_email_error = "Please provide a valid email address"

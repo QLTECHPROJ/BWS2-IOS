@@ -136,6 +136,7 @@ class LoginDataModel : EVObject {
     var CountryCode = ""
     var Name = ""
     var Email = ""
+    var ageSlabChange = ""
     var Mobile = ""
     var Image = ""
     var DOB = ""
@@ -224,6 +225,7 @@ class PlanDetailDataModel:EVObject {
     var UserId = ""
     var UserGroupId = ""
     var PlanId = ""
+    var DeviceType = ""
     var PlanPurchaseDate = ""
     var PlanExpireDate = ""
     var OriginalTransactionId = ""
@@ -378,12 +380,16 @@ class SaveCategoryDataModel : EVObject {
     var AvgSleepTime = ""
     var NoUpdation = ""
     var AreaOfFocus = [AreaOfFocusModel]()
+    var popupContent = ""
+    var showAlert = ""
+    var SuggestedPlaylist : PlaylistDetailsModel?
 }
 
 class AreaOfFocusModel : EVObject {
     var MainCat = ""
     var RecommendedCat = ""
     var CatId = ""
+    var shouldDelete = true
 }
 
 // MARK:- Add Co User API Models
@@ -402,6 +408,7 @@ class CoUserDataModel : EVObject {
     var CountryCode = ""
     var Name = ""
     var Email = ""
+    var ageSlabChange = ""
     var Mobile = ""
     var Image = ""
     var DOB = ""

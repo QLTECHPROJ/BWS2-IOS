@@ -133,4 +133,48 @@ class BaseViewController: UIViewController {
                                      "email":selectedUser.Email]
         SegmentTracking.shared.trackEvent(name: SegmentTracking.screenNames.forgotPin, traits: traits, trackingType: .screen)
     }
+    
+    func presentEditSleepTimeScreen() {
+        if checkInternet(showToast: true) == false {
+            return
+        }
+        
+        if lockDownloads == "1" {
+            openInactivePopup(controller: self)
+            return
+        } else if lockDownloads == "2" {
+            showAlertToast(message: Theme.strings.alert_reactivate_plan)
+            return
+        }
+        
+        let aVC = AppStoryBoard.main.viewController(viewControllerClass: SleepTimeVC.self)
+        aVC.isFromEdit = true
+        let navVC = UINavigationController(rootViewController: aVC)
+        navVC.navigationBar.isHidden = true
+        navVC.modalPresentationStyle = .overFullScreen
+        self.navigationController?.present(navVC, animated: true, completion: nil)
+    }
+    
+    func presentAreaOfFocusScreen() {
+        if checkInternet(showToast: true) == false {
+            return
+        }
+        
+        if lockDownloads == "1" {
+            openInactivePopup(controller: self)
+            return
+        } else if lockDownloads == "2" {
+            showAlertToast(message: Theme.strings.alert_reactivate_plan)
+            return
+        }
+        
+        let aVC = AppStoryBoard.main.viewController(viewControllerClass: AreaOfFocusVC.self)
+        aVC.averageSleepTime = CoUserDataModel.currentUser?.AvgSleepTime ?? ""
+        aVC.isFromEdit = true
+        let navVC = UINavigationController(rootViewController: aVC)
+        navVC.navigationBar.isHidden = true
+        navVC.modalPresentationStyle = .overFullScreen
+        self.navigationController?.present(navVC, animated: true, completion: nil)
+    }
+    
 }

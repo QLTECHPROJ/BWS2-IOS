@@ -224,25 +224,7 @@ class HomeVC: BaseViewController {
     }
     
     func editAreaOfFocus() {
-        if checkInternet(showToast: true) == false {
-            return
-        }
-        
-        if lockDownloads == "1" {
-            openInactivePopup(controller: self)
-            return
-        } else if lockDownloads == "2" {
-            showAlertToast(message: Theme.strings.alert_reactivate_plan)
-            return
-        }
-        
-        let aVC = AppStoryBoard.main.viewController(viewControllerClass: AreaOfFocusVC.self)
-        aVC.averageSleepTime = CoUserDataModel.currentUser?.AvgSleepTime ?? ""
-        aVC.isFromEdit = true
-        let navVC = UINavigationController(rootViewController: aVC)
-        navVC.navigationBar.isHidden = true
-        navVC.modalPresentationStyle = .overFullScreen
-        self.present(navVC, animated: true, completion: nil)
+        self.presentAreaOfFocusScreen()
     }
     
     // MARK:- ACTIONS

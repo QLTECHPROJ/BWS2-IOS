@@ -453,28 +453,7 @@ class PlaylistAudiosVC: BaseViewController {
     }
     
     @objc func viewTapped(_ sender: UITapGestureRecognizer) {
-        if checkInternet(showToast: true) == false {
-            return
-        }
-        
-        if lockDownloads == "1" {
-            openInactivePopup(controller: self)
-            return
-        } else if lockDownloads == "2" {
-            showAlertToast(message: Theme.strings.alert_reactivate_plan)
-            return
-        }
-        
-        let aVC = AppStoryBoard.manage.viewController(viewControllerClass: AlertPopUpVC.self)
-        aVC.titleText = Theme.strings.sleeptime_alert_title
-        aVC.detailText = Theme.strings.sleeptime_alert_Desc
-        aVC.firstButtonTitle = Theme.strings.yes
-        aVC.secondButtonTitle = Theme.strings.no
-        aVC.popUpTag = 2
-        aVC.modalPresentationStyle = .overFullScreen
-        aVC.delegate = self
-        self.present(aVC, animated: true, completion: nil)
-        return
+        self.presentEditSleepTimeScreen()
     }
     
     
@@ -490,17 +469,7 @@ class PlaylistAudiosVC: BaseViewController {
     }
     
     @IBAction func editClicked(_ sender: UIButton) {
-        if checkInternet(showToast: true) == false {
-            return
-        }
-        
-        let aVC = AppStoryBoard.main.viewController(viewControllerClass: AreaOfFocusVC.self)
-        aVC.averageSleepTime = CoUserDataModel.currentUser?.AvgSleepTime ?? ""
-        aVC.isFromEdit = true
-        let navVC = UINavigationController(rootViewController: aVC)
-        navVC.navigationBar.isHidden = true
-        navVC.modalPresentationStyle = .overFullScreen
-        self.present(navVC, animated: true, completion: nil)
+        self.presentAreaOfFocusScreen()
     }
     
     @IBAction func setReminderClicked(_ sender: UIButton) {
@@ -887,13 +856,6 @@ extension PlaylistAudiosVC : AlertPopUpVCDelegate {
                     
                     CoreDataHelper.shared.deleteDownloadedPlaylist(playlistData: playlistDetails)
                 }
-            } else if popUpTag == 2 {
-                let aVC = AppStoryBoard.main.viewController(viewControllerClass: SleepTimeVC.self)
-                aVC.isFromEdit = true
-                let navVC = UINavigationController(rootViewController: aVC)
-                navVC.navigationBar.isHidden = true
-                navVC.modalPresentationStyle = .overFullScreen
-                self.present(navVC, animated: true, completion: nil)
             } else {
                 self.callDeletePlaylistAPI(objPlaylist: playlistDetails) {
                     self.navigationController?.popViewController(animated: true)

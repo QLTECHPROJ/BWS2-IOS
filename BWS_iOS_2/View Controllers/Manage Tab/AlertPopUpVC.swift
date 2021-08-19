@@ -24,10 +24,15 @@ class AlertPopUpVC: BaseViewController {
     // MARK:- VARIABLES
     var titleText = Theme.strings.delete_playlist
     var detailText = "Are you sure you want to delete Self-development playlist?"
+    
     var firstButtonTitle = Theme.strings.delete
     var secondButtonTitle = Theme.strings.close
+    
     var firstButtonBackgroundColor = Theme.colors.green_008892
     var secondButtonBackgroundColor = UIColor.clear
+    
+    var firstButtonTitleColor = Theme.colors.white
+    var secondButtonTitleColor = Theme.colors.gray_313131
     
     var hideFirstButton = false
     var hideSecondButton = false
@@ -56,9 +61,11 @@ class AlertPopUpVC: BaseViewController {
         btnClose.isHidden = secondButtonTitle.count == 0
         
         btnDelete.setTitle(firstButtonTitle, for: UIControl.State.normal)
+        btnDelete.setTitleColor(firstButtonTitleColor, for: .normal)
         btnDelete.backgroundColor = firstButtonBackgroundColor
         
         btnClose.setTitle(secondButtonTitle, for: UIControl.State.normal)
+        btnClose.setTitleColor(secondButtonTitleColor, for: .normal)
         btnClose.backgroundColor = secondButtonBackgroundColor
         
         btnDelete.isHidden = hideFirstButton

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9Tl-Ar-V2m">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9Tl-Ar-V2m">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -2080,6 +2080,12 @@
                                     <constraint firstAttribute="height" constant="44" id="stb-Is-maC"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No plan available." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L0m-c7-uOg">
+                                <rect key="frame" x="30" y="391.33333333333331" width="315" height="29.333333333333314"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="25"/>
+                                <color key="textColor" name="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YAF-dP-45L">
                                 <rect key="frame" x="0.0" y="88" width="375" height="586"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -2145,13 +2151,16 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="0ie-s0-JqC" firstAttribute="trailing" secondItem="YAF-dP-45L" secondAttribute="trailing" id="6E3-tU-pUE"/>
+                            <constraint firstItem="L0m-c7-uOg" firstAttribute="leading" secondItem="0ie-s0-JqC" secondAttribute="leading" constant="30" id="COc-8S-GJM"/>
                             <constraint firstItem="YAF-dP-45L" firstAttribute="top" secondItem="NLb-nh-Fty" secondAttribute="bottom" id="G3p-De-JGD"/>
                             <constraint firstItem="0ie-s0-JqC" firstAttribute="bottom" secondItem="q8v-Oa-uod" secondAttribute="bottom" id="Gpr-DM-di6"/>
                             <constraint firstItem="q8v-Oa-uod" firstAttribute="trailing" secondItem="0ie-s0-JqC" secondAttribute="trailing" id="KGS-JP-bW5"/>
+                            <constraint firstItem="L0m-c7-uOg" firstAttribute="centerX" secondItem="eJb-HV-pBU" secondAttribute="centerX" id="TPT-2u-epp"/>
                             <constraint firstItem="NLb-nh-Fty" firstAttribute="top" secondItem="0ie-s0-JqC" secondAttribute="top" id="Xmn-XV-VK7"/>
                             <constraint firstItem="YAF-dP-45L" firstAttribute="leading" secondItem="0ie-s0-JqC" secondAttribute="leading" id="cc3-kM-RBt"/>
                             <constraint firstItem="q8v-Oa-uod" firstAttribute="top" secondItem="YAF-dP-45L" secondAttribute="bottom" id="hP3-Ys-gaj"/>
                             <constraint firstAttribute="trailing" secondItem="NLb-nh-Fty" secondAttribute="trailing" id="haT-zb-Apf"/>
+                            <constraint firstItem="L0m-c7-uOg" firstAttribute="centerY" secondItem="eJb-HV-pBU" secondAttribute="centerY" id="iYI-yZ-76F"/>
                             <constraint firstItem="q8v-Oa-uod" firstAttribute="leading" secondItem="0ie-s0-JqC" secondAttribute="leading" id="iuY-gS-zaF"/>
                             <constraint firstItem="NLb-nh-Fty" firstAttribute="leading" secondItem="eJb-HV-pBU" secondAttribute="leading" id="ob3-A4-IAk"/>
                         </constraints>
@@ -2159,6 +2168,7 @@
                     <connections>
                         <outlet property="btnCancel" destination="6pe-Rd-J0t" id="O4t-Tb-3dE"/>
                         <outlet property="btnUpdatePlan" destination="N8z-zW-zLv" id="8QB-4j-L3y"/>
+                        <outlet property="lblNoData" destination="L0m-c7-uOg" id="E4R-Wc-nhL"/>
                         <outlet property="tableView" destination="YAF-dP-45L" id="26i-E6-ljg"/>
                     </connections>
                 </viewController>
