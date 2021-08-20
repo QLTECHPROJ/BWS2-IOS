@@ -190,7 +190,7 @@ class ManagePlanListVC: BaseViewController {
             let planText = "START AT " + planAmount + " / " + arrayPlans[selectedPlanIndex].PlanTenure
             btnStart.setTitle(planText.uppercased(), for: .normal)
             btnStart.isEnabled = true
-            lblTrialText.text = arrayPlans[selectedPlanIndex].FreeTrial
+            lblTrialText.text = arrayPlans[selectedPlanIndex].FreeTrial.uppercased()
         } else {
             btnStart.isEnabled = false
         }

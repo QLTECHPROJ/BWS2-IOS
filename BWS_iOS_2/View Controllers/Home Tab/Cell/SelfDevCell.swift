@@ -115,8 +115,13 @@ class SelfDevCell: UITableViewCell {
         self.hideDownloadProgress = true
         self.generalConfigure(data: data)
         self.configureCell(backgroundColor: .white, buttonColor: UIColor.black, hideDownload: true, hideDelete: true, hideChangePosition: false)
-        
         btnChangePosition.setImage(UIImage(named: "Add"), for: UIControl.State.normal)
+        if data.isSelected == false && data.disableAudio == "0" {
+            btnChangePosition.isEnabled = true
+        }else {
+            btnChangePosition.isEnabled = false
+        }
+        
     }
     
     // Add Playlist Cell

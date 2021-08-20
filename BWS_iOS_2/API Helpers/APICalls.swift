@@ -880,7 +880,8 @@ extension AddAudioVC {
     
     //call audio list
     func callAudioAPI() {
-        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId]
+        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
+                          "playlistId":playlistID]
         APICallManager.sharedInstance.callAPI(router: APIRouter.suggestedaudio(parameters)) { (response :AudioDetailsModel) in
             
             if response.ResponseCode == "200" {
@@ -907,7 +908,8 @@ extension AddAudioVC {
     //call search
     func callSearchAPI(searchText : String) {
         let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
-                          "SuggestedName":searchText]
+                          "SuggestedName":searchText,
+                          "playlistId":playlistID ]
         
         // Segment Tracking
         let traits = ["source":isComeFromAddAudio ? "Add Audio Screen" : "Search Screen",

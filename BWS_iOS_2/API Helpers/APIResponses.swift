@@ -550,6 +550,7 @@ public class AudioDetailsDataModel: EVObject {
     var Download = ""
     var Iscategory = ""
     var Bitrate = ""
+    var disableAudio = ""
     
     // For Search Screen - Playlist Response
     var Created = ""

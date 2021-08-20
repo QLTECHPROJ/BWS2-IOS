@@ -173,6 +173,8 @@ class AddAudioVC: BaseViewController {
         } else {
             if isComeFromAddAudio {
                 callAddAudioToPlaylistAPI(audioToAdd: audioData.ID, playlistToAdd: "")
+                audioData.isSelected = true
+                tableView.reloadData()
             } else {
                 // Segment Tracking
                 let source = audioData.Iscategory == "1" ? "Search Audio" : "Suggested Audio"
@@ -468,6 +470,13 @@ extension AddAudioVC : UITableViewDelegate, UITableViewDataSource {
             }
         } else {
             cell.lblTitle.text = arraySearch[indexPath.row].Name
+            
+            cell.btnChangePosition.setImage(UIImage(named: "Add"), for: UIControl.State.normal)
+            if arraySearch[indexPath.row].disableAudio == "0" {
+                cell.btnChangePosition.isEnabled = true
+            }else  {
+                cell.btnChangePosition.isEnabled = false
+            }
             
             if arraySearch[indexPath.row].IsPlay == "1" {
                 cell.imgLock.isHidden = true
