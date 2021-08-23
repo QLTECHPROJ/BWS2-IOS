@@ -99,7 +99,9 @@ class HomeVC: BaseViewController {
             areaOfFocus = arrayCategory
         }
         
-        tableView.reloadData()
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+            self.tableView.reloadData()
+        }
     }
     
     // Pull To Refresh Screen Data

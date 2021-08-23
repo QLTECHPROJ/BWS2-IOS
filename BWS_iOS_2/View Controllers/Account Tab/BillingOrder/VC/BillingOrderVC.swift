@@ -43,6 +43,7 @@ class BillingOrderVC: BaseViewController {
     }
     
     override func setupData() {
+        btnUpdatePlan.isHidden = (planDetails == nil)
         btnCancel.isHidden = (planDetails == nil)
         lblNoData.isHidden = (planDetails != nil)
         tableView.isHidden = (planDetails == nil)
@@ -57,7 +58,10 @@ class BillingOrderVC: BaseViewController {
     
     @IBAction func updatePlanClicked(_ sender: UIButton) {
         let aVC = AppStoryBoard.account.viewController(viewControllerClass: UpgradePlanVC.self)
-        self.navigationController?.pushViewController(aVC, animated: true)
+        let navVC = UINavigationController(rootViewController: aVC)
+        navVC.navigationBar.isHidden = true
+        navVC.modalPresentationStyle = .overFullScreen
+        self.navigationController?.present(navVC, animated: true, completion: nil)
     }
     
     @IBAction func cancelClicked(_ sender: UIButton) {

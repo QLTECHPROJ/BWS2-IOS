@@ -33,6 +33,7 @@ class OrderSummaryVC: BaseViewController {
     
     // MARK:- VARIABLES
     var planData = PlanDetailsModel()
+    var isFromUpdate = false
     
     
     // MARK:- VIEW LIFE CYCLE

@@ -10,34 +10,84 @@ import UIKit
 
 class UpgradePlanVC: BaseViewController {
     
-    //MARK:- UIOutlet
-    
-    @IBOutlet weak var lblSubTitle: UILabel!
+    // MARK:- OUTLETS
     @IBOutlet weak var lblTitle: UILabel!
-    //MARK:- Variables
+    @IBOutlet weak var lblSubTitle: UILabel!
     
-    //MARK:- View Life Cycle
+    @IBOutlet weak var lblPlanName: UILabel!
+    @IBOutlet weak var lblPlanDesc: UILabel!
+    @IBOutlet weak var lblPlanPrice: UILabel!
+    
+    @IBOutlet weak var tblPlanList: UITableView!
+    @IBOutlet weak var tblPlanListHeightConst: NSLayoutConstraint!
+    @IBOutlet weak var btnUpdate: UIButton!
+    
+    
+    // MARK:- VARIABLES
+    var arrayPlans = [PlanDetailsModel]()
+    var selectedPlanIndex = 0
+    
+    
+    // MARK:- VIEW LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Do any additional setup after loading the view.
+        
         setupUI()
+        setupData()
     }
     
-    //MARK:- Functions
+    
+    // MARK:- FUNCTIONS
     override func setupUI() {
-        
         lblSubTitle.attributedText = Theme.strings.upgradePlan_subtitle.attributedString(alignment: .center, lineSpacing: 5)
-        
     }
     
     override func setupData() {
+        tblPlanListHeightConst.constant = CGFloat(arrayPlans.count * 110)
+        self.view.layoutIfNeeded()
         
+        tblPlanList.reloadData()
     }
     
-    //MARK:- IBAction Methods
-    @IBAction func onTappedUpdate(_ sender: UIButton) {
+    // MARK:- ACTIONS
+    @IBAction func closeClicked(sender : UIButton) {
+        self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func onTappedClose(_ sender: UIButton) {
-        navigationController?.popViewController(animated: true)
+    @IBAction func updateClicked(sender : UIButton) {
+        if selectedPlanIndex < arrayPlans.count {
+            let aVC = AppStoryBoard.main.viewController(viewControllerClass: OrderSummaryVC.self)
+            aVC.planData = arrayPlans[selectedPlanIndex]
+            aVC.isFromUpdate = true
+            self.navigationController?.pushViewController(aVC, animated: true)
+        }
     }
+    
+}
+
+
+// MARK:- UITableViewDataSource, UITableViewDelegate
+extension UpgradePlanVC : UITableViewDataSource, UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return arrayPlans.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withClass: PlanListCell.self)
+        let isSelected = (indexPath.row == selectedPlanIndex)
+        cell.configureCell(data: arrayPlans[indexPath.row], isSelected: isSelected)
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedPlanIndex = indexPath.row
+        tableView.reloadData()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 110
+    }
+    
 }
