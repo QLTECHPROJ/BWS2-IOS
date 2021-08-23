@@ -159,10 +159,43 @@ class HomeVC: BaseViewController {
         self.navigationController?.pushViewController(aVC, animated: true)
     }
     
-    func selectTrackData(tag:Int) {
+    func selectTrackData(tag:Int,indexpath:Int) {
         
-        let indexPosition = IndexPath(row: 9, section: 0)
-        tableView.reloadRows(at: [indexPosition], with: .none)
+        let cell : ProgressCell = tableView.cellForRow(at:IndexPath(row: indexpath, section: 0)) as! ProgressCell
+        
+        if tag == 0 {
+            cell.lblfrequency.text = dictHome.DayFrequency
+            cell.lblRegularity.text = dictHome.DayRegularity
+            cell.lblTime.text = dictHome.DayTotalTime
+            cell.lblToday.textColor = Theme.colors.black
+            cell.imgToday.isHidden = false
+            cell.lblMonth.textColor = Theme.colors.gray_999999
+            cell.imgMonth.isHidden = true
+            cell.lblYear.textColor = Theme.colors.gray_999999
+            cell.imgYear.isHidden = true
+        }else if tag == 1 {
+            cell.lblfrequency.text = dictHome.MonthFrequency
+            cell.lblRegularity.text = dictHome.MonthRegularity
+            cell.lblTime.text = dictHome.MonthTotalTime
+            cell.lblToday.textColor = Theme.colors.gray_999999
+            cell.imgToday.isHidden = true
+            cell.lblMonth.textColor = Theme.colors.black
+            cell.imgMonth.isHidden = false
+            cell.lblYear.textColor = Theme.colors.gray_999999
+            cell.imgYear.isHidden = true
+        }else {
+            cell.lblfrequency.text = dictHome.YearFrequency
+            cell.lblRegularity.text = dictHome.YearRegularity
+            cell.lblTime.text = dictHome.YearTotalTime
+            cell.lblToday.textColor = Theme.colors.gray_999999
+            cell.imgToday.isHidden = true
+            cell.lblMonth.textColor = Theme.colors.gray_999999
+            cell.imgMonth.isHidden = true
+            cell.lblYear.textColor = Theme.colors.black
+            cell.imgYear.isHidden = false
+        }
+        
+        tableView.beginUpdates()
     }
     
     func playSuggestedPlaylist() {
@@ -320,10 +353,9 @@ extension HomeVC : UITableViewDelegate, UITableViewDataSource {
             
         case 9:
             let cell = tableView.dequeueReusableCell(withClass: ProgressCell.self)
-            
-            cell.configureProgressCell(data: self.dictHome)
+            cell.configureProgressCell(data: dictHome)
             cell.didSelectTrackData = { Index in
-                self.selectTrackData(tag: Index)
+                self.selectTrackData(tag: Index, indexpath: indexPath.row)
             }
             return cell
             
