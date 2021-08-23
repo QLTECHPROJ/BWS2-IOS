@@ -22,6 +22,7 @@ class ProgressCell: UITableViewCell {
     
     @IBOutlet weak var imgYear: UIImageView!
     @IBOutlet weak var lblYear: UILabel!
+    @IBOutlet weak var btnToday: UIButton!
     
     var homeData = HomeDataModel()
     
@@ -34,6 +35,7 @@ class ProgressCell: UITableViewCell {
 
     func configureProgressCell(data:HomeDataModel) {
         homeData = data
+        
         lblfrequency.text = homeData.DayFrequency
         lblRegularity.text = homeData.DayRegularity
         lblTime.text = homeData.DayTotalTime
@@ -47,14 +49,6 @@ class ProgressCell: UITableViewCell {
     }
     
     @IBAction func onTappedSelection(_ sender: UIButton) {
-        didSelectTrackData?(sender.tag)
-    }
-    
-    @IBAction func onTappedMonth(_ sender: UIButton) {
-        didSelectTrackData?(sender.tag)
-    }
-    
-    @IBAction func onTappedYear(_ sender: UIButton) {
         didSelectTrackData?(sender.tag)
     }
 }

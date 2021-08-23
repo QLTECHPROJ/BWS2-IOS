@@ -171,13 +171,13 @@
                             <constraint firstAttribute="width" constant="100" id="FYR-rJ-jiv"/>
                         </constraints>
                         <connections>
-                            <action selector="onTappedMonth:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="vlz-VW-TNY"/>
+                            <action selector="onTappedSelection:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="lRh-sh-fdF"/>
                         </connections>
                     </button>
                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fiK-A5-xpd">
                         <rect key="frame" x="210" y="0.0" width="110" height="55"/>
                         <connections>
-                            <action selector="onTappedYear:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Syg-x1-MgM"/>
+                            <action selector="onTappedSelection:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="pFy-he-M01"/>
                         </connections>
                     </button>
                 </subviews>
@@ -205,6 +205,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
+                <outlet property="btnToday" destination="QlY-4p-0Ob" id="IsE-i2-bYP"/>
                 <outlet property="imgMonth" destination="pE2-Pt-VRH" id="5dz-hz-Wrj"/>
                 <outlet property="imgToday" destination="BXW-JY-jbI" id="AS8-pc-Owd"/>
                 <outlet property="imgYear" destination="oea-lz-vcW" id="Bxc-3N-3tD"/>

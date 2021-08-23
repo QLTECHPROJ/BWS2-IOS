@@ -194,8 +194,6 @@ class HomeVC: BaseViewController {
             cell.lblYear.textColor = Theme.colors.black
             cell.imgYear.isHidden = false
         }
-        
-        tableView.beginUpdates()
     }
     
     func playSuggestedPlaylist() {
