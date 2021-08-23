@@ -1540,7 +1540,7 @@ extension EditProfileVC {
                         SegmentTracking.shared.identifyUser()
                         
                         if response.ResponseData?.ageSlabChange == "1" {
-                            self.presentEditSleepTimeScreen()
+                            self.presentEditSleepTimeScreen(hideCloseButton: true)
                         } else {
                             self.navigationController?.popViewController(animated: true)
                         }

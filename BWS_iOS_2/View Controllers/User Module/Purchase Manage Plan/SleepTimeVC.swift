@@ -12,12 +12,14 @@ class SleepTimeVC: BaseViewController {
     
     // MARK:- OUTLETS
     @IBOutlet weak var collectionViewSleepTime : UICollectionView!
+    @IBOutlet weak var btnClose : UIButton!
     
     
     // MARK:- VARIABLES
     var arrayTimes = [AverageSleepTimeDataModel]()
     var isFromEdit = false
     var isForAreaOfFocus = false
+    var hideCloseButton = true
     
     
     // MARK:- VIEW LIFE CYCLE
@@ -28,6 +30,8 @@ class SleepTimeVC: BaseViewController {
         SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.sleepTime)
         
         collectionViewSleepTime.register(nibWithCellClass: SleepTimeCell.self)
+        
+        btnClose.isHidden = hideCloseButton
         
         if isForAreaOfFocus {
             let aVC = AppStoryBoard.main.viewController(viewControllerClass: AreaOfFocusVC.self)
@@ -50,6 +54,12 @@ class SleepTimeVC: BaseViewController {
             aVC.averageSleepTime = selectedSleepTime.Name
             self.navigationController?.pushViewController(aVC, animated: true)
         }
+    }
+    
+    
+    // MARK:- ACTIONS
+    @IBAction func backClicked(sender : UIButton) {
+        self.navigationController?.dismiss(animated: true, completion: nil)
     }
     
 }

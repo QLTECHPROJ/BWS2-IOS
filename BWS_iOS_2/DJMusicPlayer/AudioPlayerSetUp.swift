@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import MediaPlayer
 
 extension BaseViewController {
     
@@ -46,6 +47,10 @@ extension BaseViewController {
         
         // Cancel All ongoing Downloads on logout
         SDDownloadManager.shared.cancelAllDownloads()
+        
+        // Dismiss Notification Audio Player Bar
+        MPNowPlayingInfoCenter.default().nowPlayingInfo = nil
+        UIApplication.shared.endReceivingRemoteControlEvents()
     }
     
     // MARK:- Present Player for Single Audio

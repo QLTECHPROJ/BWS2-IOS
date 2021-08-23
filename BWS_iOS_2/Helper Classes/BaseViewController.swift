@@ -134,7 +134,7 @@ class BaseViewController: UIViewController {
         SegmentTracking.shared.trackEvent(name: SegmentTracking.screenNames.forgotPin, traits: traits, trackingType: .screen)
     }
     
-    func presentEditSleepTimeScreen() {
+    func presentEditSleepTimeScreen(hideCloseButton : Bool = false) {
         if checkInternet(showToast: true) == false {
             return
         }
@@ -149,6 +149,7 @@ class BaseViewController: UIViewController {
         
         let aVC = AppStoryBoard.main.viewController(viewControllerClass: SleepTimeVC.self)
         aVC.isFromEdit = true
+        aVC.hideCloseButton = hideCloseButton
         let navVC = UINavigationController(rootViewController: aVC)
         navVC.navigationBar.isHidden = true
         navVC.modalPresentationStyle = .overFullScreen

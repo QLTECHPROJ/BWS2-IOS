@@ -146,6 +146,10 @@ class AccountVC: BaseViewController {
         // Cancel All ongoing Downloads on logout
         SDDownloadManager.shared.cancelAllDownloads()
         
+        // Dismiss Notification Audio Player Bar
+        MPNowPlayingInfoCenter.default().nowPlayingInfo = nil
+        UIApplication.shared.endReceivingRemoteControlEvents()
+        
         if CoUserDataModel.currentUserId == CoUserDataModel.lastUserID {
             return
         }
