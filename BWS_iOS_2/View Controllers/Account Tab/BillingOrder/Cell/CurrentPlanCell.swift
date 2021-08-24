@@ -38,17 +38,29 @@ class CurrentPlanCell: UITableViewCell {
             return
         }
         
+        lblActiveTitle.text = Theme.strings.Last_Renewed
+        
         lblTitle.text = planDetails.PlanDescription
         lblPlanName.text = planDetails.PlanName
         lblPrice.text = "$" + planDetails.Price + " every " + planDetails.IntervalTime
         lblStatus.text = planDetails.PlanStatus
         
+        var statusText = "Renew On"
+        
+        if planDetails.PlanStatus == "Active" {
+            statusText = "Renew On"
+        } else if planDetails.PlanStatus == "Cancelled" {
+            statusText = "Expiring On"
+        } else {
+            statusText = "Expired On"
+        }
+        
         if let purchaseTime = TimeInterval(planDetails.PlanPurchaseDate) {
-            lblActive.text = Date(timeIntervalSince1970: purchaseTime).stringFromFormat(Theme.dateFormats.DOB_App + " HH:mm:ss")
+            lblActive.text = Date(timeIntervalSince1970: purchaseTime).stringFromFormat(Theme.dateFormats.Billing_Order_App + " HH:mm:ss")
         }
         
         if let expiryTime = TimeInterval(planDetails.PlanExpireDate) {
-            lblRenew.text = "(Renew on " + Date(timeIntervalSince1970: expiryTime).stringFromFormat(Theme.dateFormats.DOB_App + " HH:mm:ss") + ")"
+            lblRenew.text = "(\(statusText) " + Date(timeIntervalSince1970: expiryTime).stringFromFormat(Theme.dateFormats.Billing_Order_App + " HH:mm:ss") + ")"
         }
     }
     

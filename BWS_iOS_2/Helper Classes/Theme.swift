@@ -269,6 +269,7 @@ struct AppDateFormats {
     let comment = "MMM dd, yyyy, hh:mm a"
     let DOB_Backend = "yyyy-MM-dd"
     let DOB_App = "dd MMM, yyyy"
+    let Billing_Order_App = "dd MMMM, yyyy"
 }
 
 
@@ -335,8 +336,11 @@ struct AppStrings {
     let add_and_search_audio = "Add and search for audio"
     let search_for_audio = "Search for audio"
     
-    let alert_title_allow_notifications = "Unable to use notifications"
-    let alert_subtitle_allow_notifications = "To enable notifications, go to Settings and enable notifications for this app."
+    let alert_title_allow_notifications = "We're unable to reach out!"
+    let alert_subtitle_allow_notifications = "Please enable notifications, so we can pass on important info, as well as messages that lift you up."
+    
+    let comming_soon_title = "Coming Soon"
+    let comming_soon_subtitle = "The next steps forward in your wellness journey will be available shortly."
     
     let delete_reminder = "Delete Reminder"
     let alert_delete_remidner = "Are you sure you want to remove the reminder?"
@@ -423,6 +427,7 @@ struct AppStrings {
     let you_playlist_is_ready_subtitle = "We recommend that you listen to the audios while going to sleep to experience to get the maximum benefits from the program."
     
     //Billing order
+    let Last_Renewed = "Last Renewed"
     let upgradePlan_subtitle = "Get the most out of the Brain Wellness App. Now you can add additional accounts get your loved ones started on their journey towards mental & emotional transformation. Upgrade your subscription plan right now!!"
     
     /* Alert Strings */

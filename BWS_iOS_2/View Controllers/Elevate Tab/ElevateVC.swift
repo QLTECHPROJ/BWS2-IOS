@@ -10,10 +10,17 @@ import UIKit
 
 class ElevateVC: BaseViewController {
     
+    // MARK:- OUTLETS
+    @IBOutlet weak var lblTitle : UILabel!
+    @IBOutlet weak var lblSubTitle : UILabel!
+    
     // MARK:- VIEW LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        lblTitle.text = Theme.strings.comming_soon_title
+        lblSubTitle.attributedText = Theme.strings.comming_soon_subtitle.attributedString(alignment: .center, lineSpacing: 5)
         
         if checkInternet() == false {
             addOfflineController(parentView: self.view)
