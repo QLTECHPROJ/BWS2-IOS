@@ -14,16 +14,22 @@ class UpgradePlanVC: BaseViewController {
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblSubTitle: UILabel!
     
+    @IBOutlet weak var viewLastPlan: UIView!
+    @IBOutlet weak var lblLastActivePlan: UILabel!
     @IBOutlet weak var lblPlanName: UILabel!
     @IBOutlet weak var lblPlanDesc: UILabel!
     @IBOutlet weak var lblPlanPrice: UILabel!
     
+    @IBOutlet weak var lblMorePlan: UILabel!
     @IBOutlet weak var tblPlanList: UITableView!
     @IBOutlet weak var tblPlanListHeightConst: NSLayoutConstraint!
     @IBOutlet weak var btnUpdate: UIButton!
     
     
     // MARK:- VARIABLES
+    var strTitle = ""
+    var strSubTitle = ""
+    var currentPlanID = ""
     var arrayPlans = [PlanDetailsModel]()
     var selectedPlanIndex = 0
     
@@ -33,6 +39,8 @@ class UpgradePlanVC: BaseViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        callUserPlanListAPI()
+        
         setupUI()
         setupData()
     }
@@ -40,14 +48,39 @@ class UpgradePlanVC: BaseViewController {
     
     // MARK:- FUNCTIONS
     override func setupUI() {
+        tblPlanList.register(nibWithCellClass: PlanListCell.self)
+        
         lblSubTitle.attributedText = Theme.strings.upgradePlan_subtitle.attributedString(alignment: .center, lineSpacing: 5)
     }
     
     override func setupData() {
+        lblTitle.text = strTitle
+        lblSubTitle.attributedText = strSubTitle.attributedString(alignment: .center, lineSpacing: 5)
+        
         tblPlanListHeightConst.constant = CGFloat(arrayPlans.count * 110)
         self.view.layoutIfNeeded()
         
         tblPlanList.reloadData()
+        
+        lblMorePlan.isHidden = (arrayPlans.count == 0)
+        btnUpdate.isHidden = (arrayPlans.count == 0)
+        
+        if let currentPlan = arrayPlans.filter({ $0.IOSplanId == currentPlanID || $0.AndroidplanId == currentPlanID }).first {
+            lblPlanName.text = currentPlan.PlanInterval
+            lblPlanDesc.text = currentPlan.SubName
+            
+            if currentPlan.iapPrice.trim.count > 0 {
+                lblPlanPrice.text = currentPlan.iapPrice
+            } else {
+                lblPlanPrice.text = "$" + currentPlan.PlanAmount
+            }
+            
+            viewLastPlan.isHidden = false
+            lblLastActivePlan.isHidden = false
+        } else {
+            viewLastPlan.isHidden = true
+            lblLastActivePlan.isHidden = true
+        }
     }
     
     // MARK:- ACTIONS

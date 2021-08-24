@@ -79,7 +79,7 @@ struct ScreenNames {
     // Account Section Related Screens
     let account = "Account Screen Viewed"
     let account_info = "Account Info Screen Viewed"
-    let edit_profile = "Edit Profile Screen View"
+    let edit_profile = "Edit Profile Screen Viewed"
     let change_pin = "Change Pin Screen Viewed"
     let delete_account = "Delete Account Screen Viewed"
     let change_password = "Change Password Screen Viewed"

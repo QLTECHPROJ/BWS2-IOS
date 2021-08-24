@@ -91,9 +91,14 @@ class OrderSummaryVC: BaseViewController {
                 self.callIAPPlanPurchaseAPI()
             }
         } else {
-            let aVC = AppStoryBoard.main.viewController(viewControllerClass: ThankYouVC.self)
-            aVC.planData = self.planData
-            self.navigationController?.pushViewController(aVC, animated: true)
+            if self.isFromUpdate {
+                NotificationCenter.default.post(name: .planUpdated, object: nil)
+                self.navigationController?.dismiss(animated: false, completion: nil)
+            } else {
+                let aVC = AppStoryBoard.main.viewController(viewControllerClass: ThankYouVC.self)
+                aVC.planData = self.planData
+                self.navigationController?.pushViewController(aVC, animated: true)
+            }
         }
     }
     
