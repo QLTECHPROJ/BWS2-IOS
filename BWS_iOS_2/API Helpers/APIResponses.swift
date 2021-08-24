@@ -792,7 +792,8 @@ class SessionProgressModel : EVObject {
 }
 
 class GraphAnalyticsModel : EVObject {
-    
+    var Day = ""
+    var Time = ""
 }
 
 // MARK:- Resource Category Model

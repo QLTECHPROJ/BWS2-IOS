@@ -1207,6 +1207,8 @@ extension HomeVC {
                 self.arrayPastIndexScore = response.ResponseData.PastIndexScore
                 self.arraySessionScore = response.ResponseData.SessionScore
                 self.arraySessionProgress = response.ResponseData.SessionProgress
+                self.arrayGraphActivity = response.ResponseData.GraphAnalytics
+                self.dictHome = response.ResponseData
                 
                 if lockDownloads == "1" || lockDownloads == "2" {
                     if isAudioPlayerClosed == false {

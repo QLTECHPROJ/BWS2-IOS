@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="19F101" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20E241" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="AudioDownloads" representedClassName="AudioDownloads" syncable="YES">
         <attribute name="audioDescription" attributeType="String"/>
         <attribute name="audioDirection" attributeType="String"/>
@@ -37,8 +37,17 @@
         <attribute name="totalhour" attributeType="String"/>
         <attribute name="totalminute" attributeType="String"/>
     </entity>
+    <entity name="UserActivity" representedClassName="UserActivity" syncable="YES">
+        <attribute name="audioId" optional="YES" attributeType="String"/>
+        <attribute name="completedTime" optional="YES" attributeType="String"/>
+        <attribute name="playlistId" optional="YES" attributeType="String"/>
+        <attribute name="startTime" optional="YES" attributeType="String"/>
+        <attribute name="userId" optional="YES" attributeType="String"/>
+        <attribute name="volume" optional="YES" attributeType="String"/>
+    </entity>
     <elements>
         <element name="AudioDownloads" positionX="-63" positionY="-18" width="128" height="313"/>
         <element name="PlaylistDownloads" positionX="-54" positionY="117" width="128" height="268"/>
+        <element name="UserActivity" positionX="-45" positionY="153" width="128" height="119"/>
     </elements>
 </model>

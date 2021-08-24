@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -36,7 +36,7 @@
                         <color key="textColor" name="black"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X88-2c-ye7">
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X88-2c-ye7" customClass="BarChartView" customModule="Charts">
                         <rect key="frame" x="16" y="44" width="343" height="118"/>
                         <color key="backgroundColor" name="F9F9F9"/>
                     </view>
@@ -240,6 +240,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
+                <outlet property="chartView" destination="X88-2c-ye7" id="kse-AY-XVc"/>
                 <outlet property="imgViewUpDown" destination="oBh-kG-c2B" id="RDd-xu-PBZ"/>
                 <outlet property="lblGrowth" destination="41W-0u-yWD" id="S51-uI-hWY"/>
                 <outlet property="lblIndexScore" destination="Iym-6O-WYc" id="vJV-Ll-czH"/>
@@ -247,7 +248,6 @@
                 <outlet property="lblTitle" destination="w2g-Bt-TRS" id="vjk-O2-Xou"/>
                 <outlet property="progressView" destination="1eW-oG-Emo" id="DEq-3o-bQS"/>
                 <outlet property="viewCheckWellnessScore" destination="E5e-pt-zZf" id="KWs-sd-UJF"/>
-                <outlet property="viewGraph" destination="X88-2c-ye7" id="nvy-7p-4Zm"/>
                 <outlet property="viewJoinNow" destination="nzy-V7-ZKv" id="Fyo-KA-K3P"/>
                 <outlet property="viewScrore" destination="vHb-VB-tXn" id="G3t-HU-Y2I"/>
             </connections>

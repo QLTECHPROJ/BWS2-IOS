@@ -508,6 +508,12 @@
 		9A98E42926848732004C889C /* SetUpPInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A98E42726848732004C889C /* SetUpPInVC.swift */; };
 		9A9A1C6C2682060E009CF46E /* OTPVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9A1C6B2682060E009CF46E /* OTPVC.swift */; };
 		9A9A1C6D2682060E009CF46E /* OTPVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9A1C6B2682060E009CF46E /* OTPVC.swift */; };
+		9AA76DC426D4FEAB00CEF7EF /* UserActivity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA76DC226D4FEAB00CEF7EF /* UserActivity+CoreDataClass.swift */; };
+		9AA76DC526D4FEAB00CEF7EF /* UserActivity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA76DC226D4FEAB00CEF7EF /* UserActivity+CoreDataClass.swift */; };
+		9AA76DC626D4FEAB00CEF7EF /* UserActivity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA76DC326D4FEAB00CEF7EF /* UserActivity+CoreDataProperties.swift */; };
+		9AA76DC726D4FEAB00CEF7EF /* UserActivity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA76DC326D4FEAB00CEF7EF /* UserActivity+CoreDataProperties.swift */; };
+		9AA76DCA26D4FFA800CEF7EF /* SuggestedPlaylistTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA76DC926D4FFA800CEF7EF /* SuggestedPlaylistTracking.swift */; };
+		9AA76DCB26D4FFA800CEF7EF /* SuggestedPlaylistTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA76DC926D4FFA800CEF7EF /* SuggestedPlaylistTracking.swift */; };
 		9ABB10892660C5A000A4C221 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A7505C626578C4900177738 /* StoreKit.framework */; };
 		9AC066FC2639178E00287A44 /* RecAudioBookVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC066EC2639178E00287A44 /* RecAudioBookVC.swift */; };
 		9AC066FD2639178E00287A44 /* RecAudioBookVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC066EC2639178E00287A44 /* RecAudioBookVC.swift */; };
@@ -832,6 +838,9 @@
 		9A98E42426848401004C889C /* AddUserVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserVC.swift; sourceTree = "<group>"; };
 		9A98E42726848732004C889C /* SetUpPInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetUpPInVC.swift; sourceTree = "<group>"; };
 		9A9A1C6B2682060E009CF46E /* OTPVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPVC.swift; sourceTree = "<group>"; };
+		9AA76DC226D4FEAB00CEF7EF /* UserActivity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserActivity+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		9AA76DC326D4FEAB00CEF7EF /* UserActivity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserActivity+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		9AA76DC926D4FFA800CEF7EF /* SuggestedPlaylistTracking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestedPlaylistTracking.swift; sourceTree = "<group>"; };
 		9AC066EC2639178E00287A44 /* RecAudioBookVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecAudioBookVC.swift; sourceTree = "<group>"; };
 		9AC066ED2639178E00287A44 /* RecDocuVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecDocuVC.swift; sourceTree = "<group>"; };
 		9AC066EE2639178E00287A44 /* RecApps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecApps.swift; sourceTree = "<group>"; };
@@ -916,6 +925,8 @@
 		281DE30F2626FD79002CCD9D /* CoreData Models + Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				9AA76DC226D4FEAB00CEF7EF /* UserActivity+CoreDataClass.swift */,
+				9AA76DC326D4FEAB00CEF7EF /* UserActivity+CoreDataProperties.swift */,
 				281DE3112626FD79002CCD9D /* CoreDataHelper.swift */,
 				281DE3102626FD79002CCD9D /* AudioDownloads+CoreDataClass.swift */,
 				281DE3132626FD79002CCD9D /* AudioDownloads+CoreDataProperties.swift */,
@@ -1443,6 +1454,7 @@
 			children = (
 				28F812B925FB356000DC6AF6 /* Brain Wellness App.entitlements */,
 				28F812A225FB336F00DC6AF6 /* AppDelegate.swift */,
+				9AA76DC826D4FF5A00CEF7EF /* SuggestedPlaylistTracking */,
 				9A63D463265785D100B596D7 /* IAP */,
 				28282C6B268C5BE300D56021 /* Segment */,
 				281DE3152626FD79002CCD9D /* DJMusicPlayer */,
@@ -1560,6 +1572,14 @@
 				9A63D460265778D800B596D7 /* IAPHelper.swift */,
 			);
 			path = IAP;
+			sourceTree = "<group>";
+		};
+		9AA76DC826D4FF5A00CEF7EF /* SuggestedPlaylistTracking */ = {
+			isa = PBXGroup;
+			children = (
+				9AA76DC926D4FFA800CEF7EF /* SuggestedPlaylistTracking.swift */,
+			);
+			path = SuggestedPlaylistTracking;
 			sourceTree = "<group>";
 		};
 		9AC066E92639174B00287A44 /* Download */ = {
@@ -2010,6 +2030,7 @@
 				9A63D462265778D800B596D7 /* IAPHelper.swift in Sources */,
 				2891E29D2643CCF800658B49 /* DayVC.swift in Sources */,
 				2870B42C25FB41A10014A4F6 /* AnimationFrames.swift in Sources */,
+				9AA76DC726D4FEAB00CEF7EF /* UserActivity+CoreDataProperties.swift in Sources */,
 				2824413C2609ABA10060292E /* SignUpVC.swift in Sources */,
 				9A09A00E2698171A0025444B /* ReminderPopUpVC.swift in Sources */,
 				2870B46025FB44700014A4F6 /* String+Timepiece.swift in Sources */,
@@ -2022,6 +2043,7 @@
 				280C48F62600729900063C03 /* ManageStartVC.swift in Sources */,
 				2870B3DE25FB41A10014A4F6 /* Int+Extension.swift in Sources */,
 				283529A52609DA6F009AB2AA /* ThankYouVC.swift in Sources */,
+				9AA76DC526D4FEAB00CEF7EF /* UserActivity+CoreDataClass.swift in Sources */,
 				2870B43425FB41A10014A4F6 /* DJPageMenuConfiguration.swift in Sources */,
 				9AC067052639178F00287A44 /* PodcastCell.swift in Sources */,
 				287E807F262D510C0006A925 /* AudioPlayerSetUp.swift in Sources */,
@@ -2098,6 +2120,7 @@
 				2870B3EE25FB41A10014A4F6 /* DJValidation.swift in Sources */,
 				28ED2FC025FB931800E59C56 /* OptionsCell.swift in Sources */,
 				2870B43A25FB41A10014A4F6 /* DJPageMenuCell.swift in Sources */,
+				9AA76DCB26D4FFA800CEF7EF /* SuggestedPlaylistTracking.swift in Sources */,
 				28E012102618479600B55967 /* AddToPlaylistVC.swift in Sources */,
 				2870B36E25FB401F0014A4F6 /* APIManager.swift in Sources */,
 				28E012072618474000B55967 /* PlaylistAudiosVC.swift in Sources */,
@@ -2232,6 +2255,7 @@
 				9A63D461265778D800B596D7 /* IAPHelper.swift in Sources */,
 				2891E29C2643CCF800658B49 /* DayVC.swift in Sources */,
 				2870B45F25FB44700014A4F6 /* String+Timepiece.swift in Sources */,
+				9AA76DC626D4FEAB00CEF7EF /* UserActivity+CoreDataProperties.swift in Sources */,
 				2870B3E725FB41A10014A4F6 /* UIViewController+Extension.swift in Sources */,
 				9A09A00D2698171A0025444B /* ReminderPopUpVC.swift in Sources */,
 				280C48F52600729900063C03 /* ManageStartVC.swift in Sources */,
@@ -2244,6 +2268,7 @@
 				2870B43325FB41A10014A4F6 /* DJPageMenuConfiguration.swift in Sources */,
 				2870B3D525FB41A10014A4F6 /* UIImageView+Extension.swift in Sources */,
 				283529A32609DA5F009AB2AA /* ThankYouVC.swift in Sources */,
+				9AA76DC426D4FEAB00CEF7EF /* UserActivity+CoreDataClass.swift in Sources */,
 				2870B37925FB40710014A4F6 /* CommonFunctions.swift in Sources */,
 				9AC067042639178F00287A44 /* PodcastCell.swift in Sources */,
 				287E807E262D510C0006A925 /* AudioPlayerSetUp.swift in Sources */,
@@ -2320,6 +2345,7 @@
 				2870B3ED25FB41A10014A4F6 /* DJValidation.swift in Sources */,
 				2870B43925FB41A10014A4F6 /* DJPageMenuCell.swift in Sources */,
 				28E0120F2618479600B55967 /* AddToPlaylistVC.swift in Sources */,
+				9AA76DCA26D4FFA800CEF7EF /* SuggestedPlaylistTracking.swift in Sources */,
 				2870B36D25FB401C0014A4F6 /* APIManager.swift in Sources */,
 				28E012062618474000B55967 /* PlaylistAudiosVC.swift in Sources */,
 				283153B92614401E004001CE /* ManagePlaylistCell.swift in Sources */,
