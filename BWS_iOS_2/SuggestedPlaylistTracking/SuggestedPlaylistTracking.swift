@@ -31,24 +31,28 @@ class SuggestedPlaylistTracking {
     var isAudioCompleted = false
     
     // MARK:- Track activity offline and online with timestamp
-    func trackActivity(activityName:String, audioData:AudioDetailsDataModel) {
+    func activityTrack() {
         guard let playlistData = DJMusicPlayer.shared.currentPlaylist else {
             return
         }
         
-        //created = for online and selfcreated = for offline
-        if  playlistData.Created != "2"  && (DJMusicPlayer.shared.playerType != .playlist || DJMusicPlayer.shared.playerType != .downloadedPlaylist){
-            return
-        }
-        checkTime(time: "\(Date.currentTimeStamp)")
-        
         if checkInternet(showToast: false) == false {
-            storeAudioActivityTrack(audioData : audioData)
-        } else {
-            arrayDownload.removeAll()
-            arrayActivity.removeAll()
-            fetchAudioActivityTrack(audiodata: audioData)
+            checkTime(time: "\(Date.currentTimeStamp)")
+            if  playlistData.selfCreated == "2"  &&  DJMusicPlayer.shared.playerType == .downloadedPlaylist {
+                if let audioData = DJMusicPlayer.shared.currentlyPlaying {
+                    storeAudioActivityTrack(audioData: audioData)
+                }
+            }
+        }else {
+            if  playlistData.Created == "2" &&  DJMusicPlayer.shared.playerType == .playlist {
+                if let audioData = DJMusicPlayer.shared.currentlyPlaying {
+                    arrayDownload.removeAll()
+                    arrayActivity.removeAll()
+                    fetchAudioActivityTrack(audiodata: audioData)
+                }
+            }
         }
+        
     }
     
     
@@ -121,29 +125,6 @@ class SuggestedPlaylistTracking {
         }
     }
     
-    func activityTrack() {
-        guard let playlistData = DJMusicPlayer.shared.currentPlaylist else {
-            return
-        }
-        
-        if checkInternet(showToast: false) == false {
-            checkTime(time: "\(Date.currentTimeStamp)")
-            if  playlistData.selfCreated == "2"  &&  DJMusicPlayer.shared.playerType == .downloadedPlaylist {
-                if let audioData = DJMusicPlayer.shared.currentlyPlaying {
-                    storeAudioActivityTrack(audioData: audioData)
-                }
-            }
-        }else {
-            if  playlistData.Created == "2" &&  DJMusicPlayer.shared.playerType == .playlist {
-                if let audioData = DJMusicPlayer.shared.currentlyPlaying {
-                    trackActivity(activityName: SegmentTracking.eventNames.Playlist_Started, audioData: audioData)
-                }
-            }
-        }
-        
-    }
-    
-   
     // MARK:- coredata - Save
     func storeAudioActivityTrack(audioData : AudioDetailsDataModel) {
         let managedContext =
@@ -198,7 +179,7 @@ class SuggestedPlaylistTracking {
                 if arrayActivity.count > 0 {
                     callAudioActivityTracking(trackingData: arrayActivity, audioData: audiodata)
                     deleteAllRecords()
-                    trackActivity(activityName: SegmentTracking.eventNames.Audio_Started, audioData: audiodata)
+                    activityTrack()
                 }else {
                     checkTime(time:"\(Date.currentTimeStamp)")
                     checkActivityTrack(audioData:audiodata)
