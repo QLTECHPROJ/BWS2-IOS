@@ -12,6 +12,7 @@ import Foundation
 
 extension NSNotification.Name {
     static let pauseYouTubeVideo = NSNotification.Name.init("pauseYouTubeVideo")
+    static let planUpdated = NSNotification.Name.init("planUpdated")
     static let refreshData = NSNotification.Name.init("refreshData")
     static let refreshPlaylist = NSNotification.Name.init("refreshPlaylist")
     static let refreshDownloadData = NSNotification.Name.init("refreshDownloadData")

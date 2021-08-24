@@ -1570,8 +1570,14 @@ extension OrderSummaryVC {
 
             if response.ResponseCode == "200" {
                 showAlertToast(message: response.ResponseMessage)
-                let aVC = AppStoryBoard.main.viewController(viewControllerClass: ThankYouVC.self)
-                self.navigationController?.pushViewController(aVC, animated: true)
+                
+                if self.isFromUpdate {
+                    NotificationCenter.default.post(name: .planUpdated, object: nil)
+                    self.navigationController?.dismiss(animated: false, completion: nil)
+                } else {
+                    let aVC = AppStoryBoard.main.viewController(viewControllerClass: ThankYouVC.self)
+                    self.navigationController?.pushViewController(aVC, animated: true)
+                }
             }
         }
     }
@@ -1782,4 +1788,56 @@ extension BillingOrderVC {
             }
         }
     }
+}
+
+
+extension UpgradePlanVC {
+    
+    // Fetch Plan List & Other Data
+    func callUserPlanListAPI() {
+        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId]
+        APICallManager.sharedInstance.callAPI(router: APIRouter.userplanlist(parameters)) { (response :PlanListModel) in
+            
+            if response.ResponseCode == "200" {
+                self.strTitle = response.ResponseData.Title
+                self.strSubTitle = response.ResponseData.Desc
+                self.arrayPlans = response.ResponseData.Plan
+                self.setupData()
+                self.fetchIAPProducts()
+            }
+        }
+    }
+    
+    func fetchIAPProducts() {
+        if IAPHelper.shared.isIAPEnabled {
+            let arrayProductIDs : [String] = arrayPlans.compactMap({ $0.IOSplanId })
+            
+            // IAP Purchase Retrive Products
+            IAPHelper.shared.productRetrive(arrayProductIDs: arrayProductIDs) { (success, iapProducts) in
+                if success {
+                    guard let products = iapProducts else {
+                        self.setupData()
+                        return
+                    }
+                    
+                    print("IAP Products Fetched")
+                    for product in products {
+                        for plan in self.arrayPlans {
+                            if plan.IOSplanId == product.iapProductIdentifier {
+                                plan.iapProductIdentifier = product.iapProductIdentifier
+                                plan.iapPrice = product.iapPrice
+                                plan.iapTitle = product.iapTitle
+                                plan.iapDescription = product.iapDescription
+                                plan.iapTrialPeriod = product.iapTrialPeriod
+                                plan.iapSubscriptionPeriod = product.iapSubscriptionPeriod
+                            }
+                        }
+                    }
+                    
+                    self.setupData()
+                }
+            }
+        }
+    }
+    
 }

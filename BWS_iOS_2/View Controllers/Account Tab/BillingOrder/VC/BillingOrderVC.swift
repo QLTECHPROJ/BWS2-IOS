@@ -26,6 +26,8 @@ class BillingOrderVC: BaseViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        NotificationCenter.default.addObserver(self, selector: #selector(handlePlanUpdateNotification), name: .planUpdated, object: nil)
+        
         setupUI()
         callPlanDetailsAPI()
     }
@@ -35,6 +37,7 @@ class BillingOrderVC: BaseViewController {
     override func setupUI() {
         tableView.register(nibWithCellClass: CurrentPlanCell.self)
         tableView.rowHeight = UITableView.automaticDimension
+        tableView.refreshControl = refreshControl
         
         btnUpdatePlan.isHidden = true
         btnCancel.isHidden = true
@@ -50,6 +53,15 @@ class BillingOrderVC: BaseViewController {
         tableView.reloadData()
     }
     
+    override func handleRefresh(_ refreshControl: UIRefreshControl) {
+        self.callPlanDetailsAPI()
+        refreshControl.endRefreshing()
+    }
+    
+    @objc func handlePlanUpdateNotification() {
+        self.callPlanDetailsAPI()
+    }
+    
     
     // MARK:- ACTIONS
     @IBAction func backClicked(sender : UIButton) {
@@ -58,6 +70,7 @@ class BillingOrderVC: BaseViewController {
     
     @IBAction func updatePlanClicked(_ sender: UIButton) {
         let aVC = AppStoryBoard.account.viewController(viewControllerClass: UpgradePlanVC.self)
+        aVC.currentPlanID = planDetails?.PlanId ?? ""
         let navVC = UINavigationController(rootViewController: aVC)
         navVC.navigationBar.isHidden = true
         navVC.modalPresentationStyle = .overFullScreen
