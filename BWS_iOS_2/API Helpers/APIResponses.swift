@@ -215,12 +215,6 @@ class LoginDataModel : EVObject {
     
 }
 
-enum PlanStatus : String {
-    case inactive = "Inactive"
-    case active = "Active"
-    case cancel = "Cancel"
-}
-
 class PlanDetailDataModel:EVObject {
     var UserId = ""
     var UserGroupId = ""

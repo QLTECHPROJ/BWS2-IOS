@@ -47,9 +47,9 @@ class CurrentPlanCell: UITableViewCell {
         
         var statusText = "Renew On"
         
-        if planDetails.PlanStatus == "Active" {
+        if planDetails.PlanStatus == PlanStatus.active.rawValue {
             statusText = "Renew On"
-        } else if planDetails.PlanStatus == "Cancelled" {
+        } else if planDetails.PlanStatus == PlanStatus.cancelled.rawValue {
             statusText = "Expiring On"
         } else {
             statusText = "Expired On"
