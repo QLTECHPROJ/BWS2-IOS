@@ -1596,7 +1596,9 @@ extension SetUpPInVC {
             if response.ResponseCode == "200" {
                 showAlertToast(message: response.ResponseMessage)
                 self.handleUserRedirection()
-                self.callGetCoUserDetailsAPI(complitionBlock: nil)
+                if CoUserDataModel.currentUser != nil {
+                    self.callGetCoUserDetailsAPI(complitionBlock: nil)
+                }
             }
         }
     }

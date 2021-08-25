@@ -231,10 +231,8 @@ class AreaOfFocusVC: BaseViewController {
         let aVC = AppStoryBoard.manage.viewController(viewControllerClass: AlertPopUpVC.self)
         aVC.titleText = ""
         aVC.detailText = data.popupContent
-        aVC.firstButtonTitle = Theme.strings.Edit_Sleep_Time
-        aVC.secondButtonTitle = Theme.strings.Edit_Area_of_Focus
-        aVC.secondButtonBackgroundColor = Theme.colors.green_008892
-        aVC.secondButtonTitleColor = Theme.colors.white
+        aVC.firstButtonTitle = Theme.strings.Edit_Area_of_Focus
+        aVC.secondButtonTitle = Theme.strings.Edit_Sleep_Time
         aVC.modalPresentationStyle = .overFullScreen
         aVC.delegate = self
         self.present(aVC, animated: true, completion: nil)
@@ -384,7 +382,7 @@ extension AreaOfFocusVC : UICollectionViewDelegate, UICollectionViewDataSource,U
 extension AreaOfFocusVC : AlertPopUpVCDelegate {
     
     func handleAction(sender: UIButton, popUpTag: Int) {
-        if sender.tag == 0 {
+        if sender.tag == 1 {
             self.handleRedirection()
         }
     }

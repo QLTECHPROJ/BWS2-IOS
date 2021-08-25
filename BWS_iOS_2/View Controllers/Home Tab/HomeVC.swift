@@ -88,10 +88,10 @@ class HomeVC: BaseViewController {
             imgUser.sd_setImage(with: imgUrl, completed: nil)
         }
         
-        if CoUserDataModel.currentUser?.isMainAccount != "1" {
-            btnDown.isHidden = true
-            btnChangeUser.isHidden = true
-        }
+        //        if CoUserDataModel.currentUser?.isMainAccount != "1" {
+        //            btnDown.isHidden = true
+        //            btnChangeUser.isHidden = true
+        //        }
     }
     
     override func setupData() {

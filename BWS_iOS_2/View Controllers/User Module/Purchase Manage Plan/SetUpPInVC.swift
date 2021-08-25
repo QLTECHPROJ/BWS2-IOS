@@ -78,44 +78,43 @@ class SetUpPInVC: BaseViewController {
         let strPin2 = txtFNewloginPin.text?.trim ?? ""
         let strPin3 = txtFConfirmLoginPin.text?.trim ?? ""
         
-        if strPin2.count == 0 {
+        if strPin2.count < 4 {
             isValid = false
             lblErrNewPIn.isHidden = false
             lblErrNewPIn.text = Theme.strings.alert_black_new_pin
         }
         
-        if strPin3.count == 0 {
+        if strPin3.count < 4 {
             isValid = false
             lblErrConfirmPIn.isHidden = false
             lblErrConfirmPIn.text = Theme.strings.alert_black_new_pin
-        }
-        
-        if strPin2 != strPin3 {
+        } else if strPin2 != strPin3 {
             isValid = false
             lblErrConfirmPIn.isHidden = false
             lblErrConfirmPIn.text = Theme.strings.alert_pin_not_match
         }
+        
         return isValid
     }
     
     func handleUserRedirection() {
-            if isComeFrom == "UserList" {
-                self.navigationController?.popViewController(animated: true)
-            } else if isComeFrom == "UserListPopup" {
-                self.navigationController?.dismiss(animated: true, completion: nil)
-            } else {
-                let aVC = AppStoryBoard.main.viewController(viewControllerClass:StepVC.self)
-                aVC.strTitle = ""
-                aVC.strSubTitle = "Proceed With Adding New Person"
-                aVC.imageMain = UIImage(named: "NewUser")
-                aVC.viewTapped = {
-                    let aVC = AppStoryBoard.main.viewController(viewControllerClass: UserDetailVC.self)
-                    self.navigationController?.pushViewController(aVC, animated: false)
-                }
-                aVC.modalPresentationStyle = .overFullScreen
-                self.present(aVC, animated: false, completion: nil)
+        if isComeFrom == "UserList" {
+            self.navigationController?.popViewController(animated: true)
+        } else if isComeFrom == "UserListPopup" {
+            self.navigationController?.dismiss(animated: true, completion: nil)
+        } else {
+            let aVC = AppStoryBoard.main.viewController(viewControllerClass:StepVC.self)
+            aVC.strTitle = ""
+            aVC.strSubTitle = "Proceed With Adding New Person"
+            aVC.imageMain = UIImage(named: "NewUser")
+            aVC.viewTapped = {
+                let aVC = AppStoryBoard.main.viewController(viewControllerClass: UserDetailVC.self)
+                self.navigationController?.pushViewController(aVC, animated: false)
             }
+            aVC.modalPresentationStyle = .overFullScreen
+            self.present(aVC, animated: false, completion: nil)
         }
+    }
     
     //MARK:- IBAction Methods
     @IBAction func backButton(_ sender: Any) {

@@ -115,7 +115,7 @@ class BaseViewController: UIViewController {
     func redirectToPinSentVC(selectedUser : CoUserDataModel) {
         let aVC = AppStoryBoard.main.viewController(viewControllerClass:StepVC.self)
         aVC.strTitle = ""
-        let firstxt = "A new pin has been sent to your mail id "
+        let firstxt = "A new PIN has been sent to your mail id "
         let arr = selectedUser.Email.split {$0 == "@"}
         let sectxt = (String((arr[0])).first(char: 3)) + "*****@"
         let last = firstxt + sectxt + String((arr[1]))
