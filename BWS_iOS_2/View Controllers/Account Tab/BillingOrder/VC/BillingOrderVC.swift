@@ -51,6 +51,19 @@ class BillingOrderVC: BaseViewController {
         lblNoData.isHidden = (planDetails != nil)
         tableView.isHidden = (planDetails == nil)
         tableView.reloadData()
+        
+        if let plan = planDetails {
+            if plan.PlanStatus == PlanStatus.active.rawValue {
+                btnUpdatePlan.isHidden = true
+                btnCancel.isHidden = false
+            } else if plan.PlanStatus == PlanStatus.cancelled.rawValue {
+                btnUpdatePlan.isHidden = true
+                btnCancel.isHidden = true
+            } else {
+                btnUpdatePlan.isHidden = false
+                btnCancel.isHidden = true
+            }
+        }
     }
     
     override func handleRefresh(_ refreshControl: UIRefreshControl) {

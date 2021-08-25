@@ -10,6 +10,12 @@ import Foundation
 import StoreKit
 import SwiftyStoreKit
 
+enum PlanStatus : String {
+    case active = "Active"
+    case inactive = "Inactive"
+    case cancelled = "Cancelled"
+}
+
 class IAPHelper : UIViewController {
     
     // MARK:- VARIABLES
