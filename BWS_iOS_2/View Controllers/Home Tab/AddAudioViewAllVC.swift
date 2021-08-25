@@ -85,6 +85,8 @@ class AddAudioViewAllVC: BaseViewController {
         } else {
             if isComeFromAddAudio {
                 callAddAudioToPlaylistAPI(audioToAdd: audioData.ID, playlistToAdd: "")
+                audioData.isSelected = true
+                tableView.reloadData()
             } else {
                 // Segment Tracking
                 SegmentTracking.shared.addAudioToPlaylistEvent(audioData: audioData, source: "Suggested Audio")

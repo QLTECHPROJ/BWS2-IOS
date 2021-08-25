@@ -99,6 +99,10 @@ class DayVC: BaseViewController {
             lblDesc.text = ""
             lblDesc.numberOfLines = 0
         }
+        
+        if arrSelectDays.count == 7 {
+            allButtonSelect(isSelected:true)
+        }
     }
     
     override func buttonEnableDisable() {
@@ -156,6 +160,18 @@ class DayVC: BaseViewController {
         }
     }
     
+    func allButtonSelect(isSelected:Bool){
+        if isSelected == true {
+            btnAll.isSelected = true
+            btnAll.setTitle("        " + "UnSelect All", for: .selected)
+            btnAll.setTitleColor(.white, for: .selected)
+        }else {
+            btnAll.isSelected = false
+            btnAll.setTitle("       " + "Select All", for: .normal)
+            btnAll.setTitleColor(.white, for: .normal)
+        }
+    }
+    
     // MARK:- ACTIONS
     @IBAction func onTappedSave(_ sender: Any) {
         checkNotificationStatus { (notificationAllowed) in
@@ -174,14 +190,12 @@ class DayVC: BaseViewController {
             }
             arrSelectDays = intArray
             tableView.reloadData()
-            btnAll.setTitle("        " + "UnSelect All", for: .selected)
-            btnAll.setTitleColor(.white, for: .selected)
+            allButtonSelect(isSelected:sender.isSelected)
             buttonEnableDisable()
         } else {
             arrSelectDays = []
             tableView.reloadData()
-            btnAll.setTitle("       " + "Select All", for: .normal)
-            btnAll.setTitleColor(.white, for: .normal)
+            allButtonSelect(isSelected:sender.isSelected)
         }
     }
     
@@ -257,6 +271,9 @@ extension DayVC: UITableViewDelegate, UITableViewDataSource {
         if !arrSelectDays.contains(indexPath.row) {
             arrSelectDays.append(indexPath.row)
             isCome = ""
+            if arrSelectDays.count == 7 {
+                allButtonSelect(isSelected:true)
+            }
         } else {
             arrSelectDays.removeAll(where: { $0 == indexPath.row })
         }

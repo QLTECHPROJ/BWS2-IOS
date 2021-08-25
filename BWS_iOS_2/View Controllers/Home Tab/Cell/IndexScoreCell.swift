@@ -177,7 +177,7 @@ extension IndexScoreCell : ChartViewDelegate {
         }
         
         let set1 = BarChartDataSet(entries: dataEntries, label: "Last 7 Days Time")
-        set1.colors = [Theme.colors.blue_38667E]
+        set1.colors = [Theme.colors.blue_3E82BE]
         set1.drawValuesEnabled = false
         
         let data = BarChartData(dataSet: set1)

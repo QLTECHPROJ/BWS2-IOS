@@ -216,6 +216,7 @@ struct AppColors {
     
     let blue_B8E1F7 = UIColor(hex: "B8E1F7")
     let blue_38667E = UIColor(hex: "38667E")
+    let blue_3E82BE = UIColor(hex: "3E82BE")
     
     let orange_F89552 = UIColor(hex: "F89552")
     let orange_FE8D7D = UIColor(hex: "FE8D7D")
