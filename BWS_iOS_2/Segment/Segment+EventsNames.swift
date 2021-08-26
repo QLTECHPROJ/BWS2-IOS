@@ -87,6 +87,9 @@ struct ScreenNames {
     let my_downloads_screen = "My Download Screen Viewed"
     let manage_user = "Manage User Screen Viewed"
     let faq_screen = "FAQ Viewed"
+    
+    let Billing_Order = "Billing & Order Screen Viewed"
+    let Upgrade_Plan_Screen_Viewed = "Upgrade Plan Screen Viewed"
 }
 
 
@@ -99,11 +102,13 @@ struct EventNames {
     // Authentication Related Events
     let Send_OTP_Clicked = "Send OTP Clicked"
     let Resend_OTP_Clicked = "Resend OTP Clicked"
+    let OTP_Entered = "OTP Entered"
     let User_Sign_up = "User Sign up"
     let User_Login = "User Login"
     
     let Assessment_Form_Submitted = "Assessment Form Submitted"
     let Checkout_Proceeded = "Checkout Proceeded"
+    let Checkout_Completed = "Checkout Completed"
     
     let Couser_Added = "Couser Added"
     let contact_searched = "Contact Searched"
@@ -177,6 +182,10 @@ struct EventNames {
     let Co_User_Removed = "Co User Removed"
     
     let User_Logged_Out = "User Logged Out"
+    
+    // Billing Order
+    let User_Plan_Upgraded = "User Plan Upgraded"
+    let Subscription_Cancelled = "Subscription Cancelled"
     
     // Download Related Events
     let Audio_Download_Started = "Audio Download Started"

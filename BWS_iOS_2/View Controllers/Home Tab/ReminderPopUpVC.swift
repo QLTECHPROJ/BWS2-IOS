@@ -27,6 +27,16 @@ class ReminderPopUpVC: BaseViewController {
     
     //MARK:- IBAction Methods
     @IBAction func onTappedProceed(_ sender: UIButton) {
+        // Segment Tracking
+        if let playlistData = suggstedPlaylist {
+            let traits = ["playlistId":playlistData.PlaylistID,
+                          "playlistName":playlistData.PlaylistName,
+                          "playlistType":"Suggested"]
+            SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.Set_Reminder_Pop_Up_Clicked, traits: traits)
+        } else {
+            SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.Set_Reminder_Pop_Up_Clicked)
+        }
+        
         self.callProceedAPI()
     }
     

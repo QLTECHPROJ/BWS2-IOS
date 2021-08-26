@@ -55,6 +55,15 @@ extension OTPVC {
     func callAuthOTPAPI(otp : String) {
         var parameters = [String:String]()
         
+        let traits = ["name":strName,
+                      "mobileNo":strMobile,
+                      "email":strEmail,
+                      "countryCode":selectedCountry.Code,
+                      "countryName":selectedCountry.Name,
+                      "countryShortName":selectedCountry.ShortName,
+                      "source":signUpFlag == "1" ? "SigUp" : "Login"]
+        SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.OTP_Entered, traits: traits)
+        
         if signUpFlag == "1" {
             parameters = [
                 "OTP":otp,
@@ -225,7 +234,7 @@ extension ProfileForm6VC {
                               "genderX":ProfileFormModel.shared.genderX,
                               "dob":ProfileFormModel.shared.dob,
                               "prevDrugUse":ProfileFormModel.shared.prevDrugUse,
-                              "Medication":ProfileFormModel.shared.Medication]
+                              "medication":ProfileFormModel.shared.Medication]
                 SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.Profile_Form_Submitted, traits: traits)
                 
                 // Segment - Identify User
@@ -267,10 +276,22 @@ extension AssessmentVC {
                 userData?.ScoreLevel = response.ResponseData?.ScoreLevel ?? ""
                 CoUserDataModel.currentUser = userData
                 
-                // Segment Tracking
-                let traits = ["wellnessScore":CoUserDataModel.currentUser?.indexScore ?? "",
-                              "scoreLevel":CoUserDataModel.currentUser?.ScoreLevel ?? ""]
-                SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.Assessment_Form_Submitted, traits: traits)
+                if let assessmentData = response.ResponseData {
+                    var improvementFromPreviousSession = assessmentData.IndexScoreDiff + "%"
+                    if assessmentData.ScoreIncDec == "Increase" {
+                        improvementFromPreviousSession = "+" + assessmentData.IndexScoreDiff + "%"
+                    } else if assessmentData.ScoreIncDec == "Decrease" {
+                        improvementFromPreviousSession = "-" + assessmentData.IndexScoreDiff + "%"
+                    }
+                    
+                    // Segment Tracking
+                    let traits = ["wellnessScore":assessmentData.indexScore,
+                                  "scoreLevel":assessmentData.ScoreLevel,
+                                  "totalAssessmentsTaken":assessmentData.TotalAssesment,
+                                  "numberOfDaysFromLastassessmentstaken":assessmentData.DaysfromLastAssesment,
+                                  "improvementFromPreviousSession":improvementFromPreviousSession]
+                    SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.Assessment_Form_Submitted, traits: traits)
+                }
                 
                 // Segment - Identify User
                 SegmentTracking.shared.identifyUser()
@@ -986,7 +1007,7 @@ extension AreaOfFocusVC {
                 CoUserDataModel.currentUser = userData
                 
                 // Segment Tracking
-                self.trackScreenData()
+                self.trackAreaOfFocusSavedEvent(numberOfUpdation: response.ResponseData?.NoUpdation ?? "")
                 
                 // Segment - Identify User
                 SegmentTracking.shared.identifyUser()
@@ -1573,6 +1594,10 @@ extension OrderSummaryVC {
             if response.ResponseCode == "200" {
                 showAlertToast(message: response.ResponseMessage)
                 
+                // Segment Tracking
+                let eventname = self.isFromUpdate ? SegmentTracking.eventNames.User_Plan_Upgraded : SegmentTracking.eventNames.Checkout_Completed
+                SegmentTracking.shared.trackPlanDetails(name: eventname, planDetails: self.planData, trackingType: .track)
+                
                 if self.isFromUpdate {
                     NotificationCenter.default.post(name: .planUpdated, object: nil)
                     self.navigationController?.dismiss(animated: false, completion: nil)
@@ -1621,7 +1646,8 @@ extension UserDetailVC {
                                   "userGroupId":userDetails.MainAccountID,
                                   "name":userDetails.Name,
                                   "mobileNo":userDetails.Mobile,
-                                  "email":userDetails.Email]
+                                  "email":userDetails.Email,
+                                  "isSameMobile":"true"]
                     SegmentTracking.shared.trackEvent(name: SegmentTracking.eventNames.Couser_Added, traits: traits, trackingType: .track)
                 }
                 
@@ -1741,6 +1767,9 @@ extension CancelSubVC {
             
             if response.ResponseCode == "200" {
                 showAlertToast(message: response.ResponseMessage)
+                
+                self.trackCancelSubscriptionEvent()
+                
                 self.navigationController?.popViewController(animated: true)
             }
             
@@ -1789,6 +1818,7 @@ extension BillingOrderVC {
             if response.ResponseCode == "200" {
                 self.planDetails = response.ResponseData
                 self.setupData()
+                self.trackScreenData(planDetails: response.ResponseData)
             }
         }
     }

@@ -179,10 +179,11 @@ extension UserListPopUpVC {
 
 extension AreaOfFocusVC {
     
-    func trackScreenData() {
+    func trackAreaOfFocusSavedEvent(numberOfUpdation : String) {
         if let userDetails = CoUserDataModel.currentUser {
             var traits : [String:Any] = [
-                "avgSleepTime":userDetails.AvgSleepTime
+                "avgSleepTime":userDetails.AvgSleepTime,
+                "numberOfUpdation":numberOfUpdation
             ]
             
             var areaOfFocusArray = [[String:Any]]()
@@ -368,3 +369,96 @@ extension AddToPlaylistVC {
     
 }
 
+// MARK:- Billing Order Module
+
+extension BillingOrderVC {
+    
+    func trackScreenData(planDetails : PlanDetailDataModel?) {
+        if shouldTrackScreen == false {
+            return
+        }
+        
+        guard let planData = planDetails else {
+            return
+        }
+        
+        shouldTrackScreen = false
+        
+        var purchaseDate = planData.PlanPurchaseDate
+        var expiryDate = planData.PlanExpireDate
+        if let purchaseTime = TimeInterval(planData.PlanPurchaseDate) {
+            purchaseDate = Date(timeIntervalSince1970: purchaseTime).stringFromFormat(Theme.dateFormats.Billing_Order_App + " HH:mm:ss")
+        }
+        
+        if let expiryTime = TimeInterval(planData.PlanExpireDate) {
+            expiryDate = Date(timeIntervalSince1970: expiryTime).stringFromFormat(Theme.dateFormats.Billing_Order_App + " HH:mm:ss")
+        }
+        
+        let traits = ["plan":planData.PlanName,
+                      "planStatus":planData.PlanStatus,
+                      "planStartDt":purchaseDate,
+                      "planExpiryDt":expiryDate,
+                      "planAmount":planData.Price]
+        SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.Billing_Order, traits: traits)
+    }
+    
+}
+
+extension CancelSubVC {
+    
+    func trackScreenData() {
+        guard let planData = self.planDetails else {
+            return
+        }
+        
+        var purchaseDate = planData.PlanPurchaseDate
+        var expiryDate = planData.PlanExpireDate
+        if let purchaseTime = TimeInterval(planData.PlanPurchaseDate) {
+            purchaseDate = Date(timeIntervalSince1970: purchaseTime).stringFromFormat(Theme.dateFormats.Billing_Order_App + " HH:mm:ss")
+        }
+        
+        if let expiryTime = TimeInterval(planData.PlanExpireDate) {
+            expiryDate = Date(timeIntervalSince1970: expiryTime).stringFromFormat(Theme.dateFormats.Billing_Order_App + " HH:mm:ss")
+        }
+        
+        let traits = ["planId":planData.PlanId,
+                      "plan":planData.PlanName,
+                      "planStatus":planData.PlanStatus,
+                      "planStartDt":purchaseDate,
+                      "planExpiryDt":expiryDate,
+                      "planAmount":planData.Price]
+        SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.cancel_subscription, traits: traits)
+    }
+    
+    func trackCancelSubscriptionEvent() {
+        guard let planData = self.planDetails else {
+            return
+        }
+        
+        var purchaseDate = planData.PlanPurchaseDate
+        var expiryDate = planData.PlanExpireDate
+        if let purchaseTime = TimeInterval(planData.PlanPurchaseDate) {
+            purchaseDate = Date(timeIntervalSince1970: purchaseTime).stringFromFormat(Theme.dateFormats.Billing_Order_App + " HH:mm:ss")
+        }
+        
+        if let expiryTime = TimeInterval(planData.PlanExpireDate) {
+            expiryDate = Date(timeIntervalSince1970: expiryTime).stringFromFormat(Theme.dateFormats.Billing_Order_App + " HH:mm:ss")
+        }
+        
+        var cancelReason = ""
+        if selectedOption == 4 {
+            cancelReason = txtView.text ?? ""
+        }
+        
+        let traits = ["planId":planData.PlanId,
+                      "plan":planData.PlanName,
+                      "planStatus":planData.PlanStatus,
+                      "planStartDt":purchaseDate,
+                      "planExpiryDt":expiryDate,
+                      "planAmount":planData.Price,
+                      "cancelId":"\(selectedOption)",
+                      "cancelReason":cancelReason]
+        SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.Subscription_Cancelled, traits: traits)
+    }
+    
+}

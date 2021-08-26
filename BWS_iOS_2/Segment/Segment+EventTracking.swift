@@ -415,7 +415,11 @@ extension SegmentTracking {
                 traits["playlistType"] = "Default"
             }
             
-            SegmentTracking.shared.trackGeneralEvents(name: name, traits: traits)
+            if trackingType == .screen {
+                SegmentTracking.shared.trackGeneralScreen(name: name, traits: traits)
+            } else {
+                SegmentTracking.shared.trackGeneralEvents(name: name, traits: traits)
+            }
         }
     }
     
@@ -436,6 +440,29 @@ extension SegmentTracking {
                 traits["playlistType"] = "Default"
             }
             
+            SegmentTracking.shared.trackGeneralEvents(name: name, traits: traits)
+        }
+    }
+    
+    func trackPlanDetails(name : String, planDetails : PlanDetailsModel?, trackingType : TrackingType) {
+        guard let planData = planDetails else {
+            return
+        }
+        
+        var planPrice = "$" + planData.PlanAmount
+        if planData.iapPrice.trim.count > 0 {
+            planPrice = planData.iapPrice
+        }
+        
+        let traits = ["planId":"",
+                      "plan":planData.SubName,
+                      "planAmount":planPrice,
+                      "planInterval":planData.PlanInterval,
+                      "totalProfile":planData.ProfileCount]
+        
+        if trackingType == .screen {
+            SegmentTracking.shared.trackGeneralScreen(name: name, traits: traits)
+        } else {
             SegmentTracking.shared.trackGeneralEvents(name: name, traits: traits)
         }
     }
