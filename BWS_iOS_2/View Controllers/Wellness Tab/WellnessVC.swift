@@ -20,8 +20,8 @@ class WellnessVC: BaseViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        lblTitle.text = Theme.strings.comming_soon_title
-        lblSubTitle.attributedText = Theme.strings.comming_soon_subtitle.attributedString(alignment: .center, lineSpacing: 5)
+        lblTitle.text = Theme.strings.empower_comming_soon_title
+        lblSubTitle.attributedText = Theme.strings.empower_comming_soon_subtitle.attributedString(alignment: .center, lineSpacing: 5)
         
         if checkInternet() == false {
             addOfflineController(parentView: self.view)

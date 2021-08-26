@@ -208,6 +208,7 @@ struct AppColors {
     let pink_FFDFEA = UIColor(hex: "FFDFEA")
     let magenta_C44B6C = UIColor(hex: "C44B6C")
     
+    let black_404040 = UIColor(hex: "404040")
     let green_008892 = UIColor(hex: "008892")
     let green_A2EEC5 = UIColor(hex: "A2EEC5")
     let green_27B86A = UIColor(hex: "27B86A")
@@ -342,6 +343,9 @@ struct AppStrings {
     
     let comming_soon_title = "Coming Soon"
     let comming_soon_subtitle = "The next steps forward in your wellness journey will be available shortly."
+    
+    let empower_comming_soon_title = "Emotional Empowerment Program with 14 sessions aiming to reduce your mental & emotional suffering and destructive habits to reclaim your happiness, mental clarity and self-confidence."
+    let empower_comming_soon_subtitle = "Empower Program is going live very soon."
     
     let delete_reminder = "Delete Reminder"
     let alert_delete_remidner = "Are you sure you want to remove the reminder?"

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ken-F6-g1g">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ken-F6-g1g">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -46,20 +46,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="under_construction" translatesAutoresizingMaskIntoConstraints="NO" id="TK2-qA-7NF">
-                                <rect key="frame" x="26" y="219" width="323" height="293"/>
+                                <rect key="frame" x="26" y="159" width="323" height="293"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="TK2-qA-7NF" secondAttribute="height" multiplier="54:49" id="d0Q-fe-yHh"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The page is under construction" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="6hs-sd-Jt2">
-                                <rect key="frame" x="26" y="552" width="323" height="21"/>
-                                <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="18"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The page is under construction" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="6hs-sd-Jt2">
+                                <rect key="frame" x="26" y="492" width="323" height="16.333333333333314"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                 <color key="textColor" name="666666"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We're working on it" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rH5-hz-TNf">
-                                <rect key="frame" x="26" y="583" width="323" height="16.333333333333371"/>
-                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                                <rect key="frame" x="26" y="518.33333333333337" width="323" height="16.333333333333371"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="14"/>
                                 <color key="textColor" name="666666"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -70,7 +70,7 @@
                             <constraint firstItem="6hs-sd-Jt2" firstAttribute="trailing" secondItem="TK2-qA-7NF" secondAttribute="trailing" id="801-n6-eEC"/>
                             <constraint firstItem="rH5-hz-TNf" firstAttribute="leading" secondItem="6hs-sd-Jt2" secondAttribute="leading" id="AqO-dJ-bSL"/>
                             <constraint firstItem="rH5-hz-TNf" firstAttribute="trailing" secondItem="6hs-sd-Jt2" secondAttribute="trailing" id="Stk-XT-DH1"/>
-                            <constraint firstItem="TK2-qA-7NF" firstAttribute="centerY" secondItem="2d4-dG-jz4" secondAttribute="centerY" multiplier="0.9" id="WVC-UL-2on"/>
+                            <constraint firstItem="TK2-qA-7NF" firstAttribute="centerY" secondItem="2d4-dG-jz4" secondAttribute="centerY" multiplier="0.9" constant="-60" id="WVC-UL-2on"/>
                             <constraint firstItem="TK2-qA-7NF" firstAttribute="leading" secondItem="anw-zy-nox" secondAttribute="leading" constant="26" id="amL-mX-ZPy"/>
                             <constraint firstItem="6hs-sd-Jt2" firstAttribute="leading" secondItem="TK2-qA-7NF" secondAttribute="leading" id="b71-LH-Mjo"/>
                             <constraint firstItem="TK2-qA-7NF" firstAttribute="centerX" secondItem="2d4-dG-jz4" secondAttribute="centerX" id="cPO-b4-nN6"/>

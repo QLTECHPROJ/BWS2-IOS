@@ -133,7 +133,7 @@ class AssessmentVC: BaseViewController {
             
             //scrollview height manage with collectionview and mainView
             cvHeight.constant = CGFloat(arrNewSection[pageIndex].count * 270)
-            mainViewheight.constant = CGFloat(arrNewSection[pageIndex].count * 270 + 400)
+            mainViewheight.constant = CGFloat(arrNewSection[pageIndex].count * 270 + 200)
         }
     }
     
