@@ -74,29 +74,28 @@ class ChangePINVC: BaseViewController {
         let strPin2 = txtFNewPIN.text?.trim ?? ""
         let strPin3 = txtFConfirmPIN.text?.trim ?? ""
         
-        if strPin1.count == 0 {
+        if strPin1.count < 4 {
             isValid = false
             lblErrOldPIN.isHidden = false
             lblErrOldPIN.text = Theme.strings.alert_blank_pin_error
         }
         
-        if strPin2.count == 0 {
+        if strPin2.count < 4 {
             isValid = false
             lblErrNewPIN.isHidden = false
             lblErrNewPIN.text = Theme.strings.alert_black_new_pin
         }
         
-        if strPin3.count == 0 {
+        if strPin3.count < 4 {
             isValid = false
             lblErrConfirmPIN.isHidden = false
             lblErrConfirmPIN.text = Theme.strings.alert_black_new_pin
-        }
-        
-        if strPin2 != strPin3 {
+        } else if strPin2 != strPin3 {
             isValid = false
             lblErrConfirmPIN.isHidden = false
             lblErrConfirmPIN.text = Theme.strings.alert_pin_not_match
         }
+        
         return isValid
     }
     

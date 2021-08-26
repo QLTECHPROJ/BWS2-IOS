@@ -28,6 +28,7 @@ class CancelSubVC: BaseViewController {
     var selectedOption = 1
     var player: AVPlayer?
     var isFromDelete = false
+    var planDetails : PlanDetailDataModel?
     
     
     // MARK:- VIEW LIFE CYCLE
@@ -42,8 +43,11 @@ class CancelSubVC: BaseViewController {
         super.viewWillAppear(animated)
         
         // Segment Tracking
-        let name = isFromDelete ? SegmentTracking.screenNames.delete_account : SegmentTracking.screenNames.cancel_subscription
-        SegmentTracking.shared.trackGeneralScreen(name: name)
+        if isFromDelete {
+            SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.delete_account)
+        } else {
+            self.trackScreenData()
+        }
         
         // viewVideo.playVideo()
         DJMusicPlayer.shared.pause(pauseReason: .userAction)

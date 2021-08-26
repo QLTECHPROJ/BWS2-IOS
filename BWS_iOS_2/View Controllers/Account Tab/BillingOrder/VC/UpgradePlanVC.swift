@@ -32,6 +32,7 @@ class UpgradePlanVC: BaseViewController {
     var currentPlanID = ""
     var arrayPlans = [PlanDetailsModel]()
     var selectedPlanIndex = 0
+    var shouldTrackScreen = false
     
     
     // MARK:- VIEW LIFE CYCLE
@@ -73,6 +74,12 @@ class UpgradePlanVC: BaseViewController {
                 lblPlanPrice.text = currentPlan.iapPrice
             } else {
                 lblPlanPrice.text = "$" + currentPlan.PlanAmount
+            }
+            
+            if shouldTrackScreen {
+                shouldTrackScreen = false
+                // Segment Tracking
+                SegmentTracking.shared.trackPlanDetails(name: SegmentTracking.screenNames.Upgrade_Plan_Screen_Viewed, planDetails: currentPlan, trackingType: .screen)
             }
             
             viewLastPlan.isHidden = false

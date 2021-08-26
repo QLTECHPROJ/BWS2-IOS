@@ -292,7 +292,7 @@ struct AppStrings {
     let resend_small = "Resend"
     let yes = "YES"
     let no = "NO"
-    let logout = "Log out"
+    let logout = "Log Out"
     let delete = "DELETE"
     let close = "CLOSE"
     let confirm = "CONFIRM"
@@ -431,7 +431,7 @@ struct AppStrings {
     let you_playlist_is_ready_title = "You playlist is ready"
     let you_playlist_is_ready_subtitle = "We recommend that you listen to the audios while going to sleep to experience to get the maximum benefits from the program."
     
-    //Billing order
+    /* Billing order */
     let Last_Renewed = "Last Renewed"
     let upgradePlan_subtitle = "Get the most out of the Brain Wellness App. Now you can add additional accounts get your loved ones started on their journey towards mental & emotional transformation. Upgrade your subscription plan right now!!"
     
@@ -445,7 +445,7 @@ struct AppStrings {
     let alert_search_term_not_found = "Please try again with another search term."
     let alert_country_search = "Sorry we are not available in this country yet"
     
-    // Auth & Profile
+    /* Auth & Profile */
     let alert_blank_mobile_error = "Please enter your mobile number"
     let alert_invalid_mobile_error = "Please provide a valid mobile number"
     let alert_invalid_otp = "Please use a valid PIN to access your account"
@@ -455,7 +455,7 @@ struct AppStrings {
     let alert_dob_error = "Please confirm whether you are above 1 day"
     let alert_invalid_fullname_error = "Please enter valid Name"
     
-    // Alert Popup
+    /* Alert Popup */
     let alert_dob_slab_change = "Changing Date of Birth may cause change in your age category and if this happens, you will be redirected to select your sleep time and area of focus again. Do you wish to continue ?"
     
     let alert_blank_email_error = "Email address is required"
@@ -466,8 +466,8 @@ struct AppStrings {
     let alert_invalid_password_error = "Password should contain at least one uppercase, one lowercase, one special symbol and minimum 8 character long"
     let alert_password_not_match = "Please check if both the passwords are same"
     
-    let alert_blank_pin_error = "Please enter pin"
-    let alert_black_new_pin = "Please provide the latest PIN to login"
+    let alert_blank_pin_error = "Please provide 4 digit PIN"
+    let alert_black_new_pin = "Please provide the latest 4 digit PIN to login"
     let alert_pin_not_match = "Please check if both the PINs are same"
     
     let alert_select_login_user = "Please select atleast one to proceed"
@@ -525,26 +525,27 @@ struct AppStrings {
     
     let alert_select_day_and_time = "Please select days and Time"
     
-    //Add User
+    /* Add User */
     let add_user_subTitle = "New person can either use this device, or another one to access the app."
     let same_num_title = "Invite a Friend or Family Member"
     let same_num_desc = "Happiness is sweeter when shared. That's why we're eager for you to share your subscription with someone you care for." + "\n" + "The first person invited gets the same benefits as you at no additional cost."
-    //Set up pin
+    
+    /* Set up pin */
     let setup_pin_Desc = "Enter a 4-digit PIN. This is your secret access code."
     let setup_pin_infoTitle = "Why Set Up PIN ?"
     let setup_pin_infoDecs = "This PIN will help you log in to your personal profile ."
     
-    //Reminder Pop Up
+    /* Reminder Pop Up */
     let reminderpopup_title = "Set Reminder for Suggested Playlist"
     let reminderpopup_desc = "Ensure you never miss a chance to improve your Wellness Score. You will get a reminder notification for that."
     
-    //Reminder day
+    /* Reminder day */
     let reminder_suggestedplaylist = "Ensure you never miss a chance to improve your Wellness Score."
     
-    //UserDetail
+    /* UserDetail */
     let user_detail_subTitle = "Enter name and Email of a person being added . A separate profile of person will be created. Person will receive a verification mail."
     
-    //Sleep Time Screen
+    /* Sleep Time Screen */
     let sleeptime_alert_title = "Change Sleep Time"
     let sleeptime_alert_Desc = "Changing Sleep Time will make you reselect Area of Focus as well. Would you like to proceed ? "
 

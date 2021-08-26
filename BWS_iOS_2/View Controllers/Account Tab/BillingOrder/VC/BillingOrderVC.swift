@@ -19,6 +19,7 @@ class BillingOrderVC: BaseViewController {
     
     // MARK:- VARIABLES
     var planDetails : PlanDetailDataModel?
+    var shouldTrackScreen = false
     
     
     // MARK:- VIEW LIFE CYCLE
@@ -29,9 +30,14 @@ class BillingOrderVC: BaseViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(handlePlanUpdateNotification), name: .planUpdated, object: nil)
         
         setupUI()
-        callPlanDetailsAPI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        shouldTrackScreen = true
+        callPlanDetailsAPI()
+    }
     
     // MARK:- FUNCTIONS
     override func setupUI() {
@@ -72,6 +78,7 @@ class BillingOrderVC: BaseViewController {
     }
     
     @objc func handlePlanUpdateNotification() {
+        shouldTrackScreen = true
         self.callPlanDetailsAPI()
     }
     

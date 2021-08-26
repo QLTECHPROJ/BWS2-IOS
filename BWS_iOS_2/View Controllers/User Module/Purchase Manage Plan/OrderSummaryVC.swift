@@ -41,7 +41,7 @@ class OrderSummaryVC: BaseViewController {
         super.viewDidLoad()
         
         // Segment Tracking
-        SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.orderSummary, traits: ["plan":planData.toDictionary()])
+        SegmentTracking.shared.trackPlanDetails(name: SegmentTracking.screenNames.orderSummary, planDetails: planData, trackingType: .screen)
         
         setupData()
     }
@@ -82,7 +82,7 @@ class OrderSummaryVC: BaseViewController {
     
     @IBAction func checkoutClicked(sender: UIButton) {
         // Segment Tracking
-        SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.Checkout_Proceeded, traits: ["plan":planData.toDictionary()])
+        SegmentTracking.shared.trackPlanDetails(name: SegmentTracking.eventNames.Checkout_Proceeded, planDetails: planData, trackingType: .track)
         
         if IAPHelper.shared.isIAPEnabled {
             // IAP Purchase Subscription
