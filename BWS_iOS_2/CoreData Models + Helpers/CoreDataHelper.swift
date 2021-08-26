@@ -24,15 +24,15 @@ class CoreDataHelper {
     
     func saveAudio(audioData : AudioDetailsDataModel, isSingleAudio : Bool) {
         
-        let _ = fetchAllAudios()
-        let objects = arrayDownloadedAudios.filter {
-            $0.id == audioData.ID && $0.playlistID == audioData.PlaylistID && $0.isSingleAudio == (isSingleAudio ? "1" : "")
-        }
-        
-        if objects.count > 0 {
-            showAlertToast(message: Theme.strings.alert_audio_already_downloaded)
-            return
-        }
+        //        let _ = fetchAllAudios()
+        //        let objects = arrayDownloadedAudios.filter {
+        //            $0.id == audioData.ID && $0.playlistID == audioData.PlaylistID && $0.isSingleAudio == (isSingleAudio ? "1" : "")
+        //        }
+        //
+        //        if objects.count > 0 {
+        //            showAlertToast(message: Theme.strings.alert_audio_already_downloaded)
+        //            return
+        //        }
         
         let downloadAudio = AudioDownloads(context: context)
         downloadAudio.coUserID = CoUserDataModel.currentUserId
