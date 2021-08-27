@@ -193,6 +193,7 @@ struct EventNames {
     let Downloaded_Audio_Removed = "Downloaded Audio Removed"
     
     let Playlist_Download_Started = "Playlist Download Started"
+    let Playlist_Download_Completed = "Playlist Download Completed"
     let Downloaded_Playlist_Removed = "Downloaded Playlist Removed"
     
     // Reminder Related Events

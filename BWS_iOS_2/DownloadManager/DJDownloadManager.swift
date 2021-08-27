@@ -256,10 +256,20 @@ class DJDownloadManager {
         
         if isSingleAudio {
             showAlertToast(message: Theme.strings.alert_audio_downloaded)
+            
+            for audioData in singleAudios {
+                // Segment Tracking
+                SegmentTracking.shared.audioDetailsEvents(name: SegmentTracking.eventNames.Audio_Download_Completed, audioData: audioData, trackingType: .track)
+            }
         }
         
         if isPlaylistDownloaded == true {
             showAlertToast(message: Theme.strings.alert_playlist_downloaded)
+            
+            for playlistData in arrayDownloadedPlaylists {
+                // Segment Tracking
+                SegmentTracking.shared.playlistDetailEvents(name: SegmentTracking.eventNames.Playlist_Download_Completed, objPlaylist: playlistData, trackingType: .track)
+            }
         }
         
     }
