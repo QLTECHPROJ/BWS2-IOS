@@ -16,11 +16,16 @@ extension SegmentTracking {
     
     // Track Audio Player Events
     func callAudioInterruptionAPI(parameters : [String:Any]) {
-        var newParameters = parameters
-        newParameters[APIParameters.UserId] = CoUserDataModel.currentUserId
-        newParameters[APIParameters.MainAccountID] = LoginDataModel.currentMainAccountId
+        var newParameters : [String:Any] = [APIParameters.UserId:CoUserDataModel.currentUserId,
+                                            APIParameters.MainAccountID:LoginDataModel.currentMainAccountId]
         
-        APICallManager.sharedInstance.callAPI(router: APIRouter.audiointerruption(parameters), displayHud: false, showToast: false) { (response : GeneralModel) in
+        for (key,value) in parameters {
+            if key != "userId" || key != "userGroupId" {
+                newParameters[key] = value
+            }
+        }
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.audiointerruption(newParameters), displayHud: false, showToast: false) { (response : GeneralModel) in
             if response.ResponseCode == "200" {
                 print("API - Audio Interruption")
             }

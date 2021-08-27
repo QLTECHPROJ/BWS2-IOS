@@ -80,7 +80,9 @@ class AddAudioViewAllVC: BaseViewController {
             return
         }
         
-        if audioData.IsPlay != "1" {
+        if lockDownloads == "1" {
+            openInactivePopup(controller: self)
+        } else if lockDownloads == "2" {
             showAlertToast(message: Theme.strings.alert_reactivate_plan)
         } else {
             if isComeFromAddAudio {
