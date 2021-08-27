@@ -16,7 +16,7 @@ enum AccountMenu : String {
     case reminder = "Reminder"
     case billingAndOrder = "Billing and Order"
     case invoices = "Invoices"
-    case manageUser = "Manage User"
+    case manageUser = "Manage People"
     case faq = "FAQ"
     case logout = "Log Out"
 }
