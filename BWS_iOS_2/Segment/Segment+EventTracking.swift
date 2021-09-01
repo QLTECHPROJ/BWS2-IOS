@@ -449,7 +449,11 @@ extension SegmentTracking {
                 traits["playlistType"] = "Default"
             }
             
-            SegmentTracking.shared.trackGeneralEvents(name: name, traits: traits)
+            if trackingType == .screen {
+                SegmentTracking.shared.trackGeneralScreen(name: name, traits: traits)
+            } else {
+                SegmentTracking.shared.trackGeneralEvents(name: name, traits: traits)
+            }
         }
     }
     

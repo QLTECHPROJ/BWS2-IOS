@@ -38,7 +38,7 @@ class PreparingPlaylistVC: BaseViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 6) {
             
             // Segment Tracking
-            SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.playlist_ready)
+            SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.playlist_ready)
             
             let aVC = AppStoryBoard.main.viewController(viewControllerClass: ManageStartVC.self)
             aVC.strTitle = Theme.strings.you_playlist_is_ready_title
