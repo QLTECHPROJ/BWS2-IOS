@@ -190,6 +190,7 @@ extension ReminderListVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withClass: ReminderListCell.self)
+        cell.btnSelect.isUserInteractionEnabled = true
         cell.btnHeight.constant = 20
         cell.lblTitle.text = arrayRemList[indexPath.row].PlaylistName
         cell.lblSubTitle.text = arrayRemList[indexPath.row].ReminderDay

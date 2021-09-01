@@ -615,7 +615,7 @@ extension PlaylistCategoryVC {
                     }
                 }
                 self.tableView.reloadData()
-                
+                self.setupData()
                 // Segment Tracking
                 self.trackScreenData()
             }

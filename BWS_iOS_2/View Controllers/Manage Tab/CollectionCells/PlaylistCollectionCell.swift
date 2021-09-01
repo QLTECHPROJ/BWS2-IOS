@@ -44,6 +44,12 @@ class PlaylistCollectionCell: UICollectionViewCell {
         
         btnOptions.isHidden = true
         btnAddtoPlaylist.isHidden = true
+        
+        if lockDownloads == "2" || lockDownloads == "1"{
+            imgLock.isHidden = false
+        }else {
+            imgLock.isHidden = true
+        }
     }
     
     func configureCell(playlistData : PlaylistDetailsModel) {
