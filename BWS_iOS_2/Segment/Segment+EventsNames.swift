@@ -39,6 +39,7 @@ struct ScreenNames {
     let sleepTime = "Sleep Time Screen Viewed"
     let areaOfFocus = "Area of  Focus Screen Viewed"
     let preparingPlaylist = "Preparing Playlist Screen Viewed"
+    let playlist_ready = " Playlist Ready Screen Viewed"
     
     let home = "Home Screen Viewed"
     let userListPopup = "User List Popup Viewed"
@@ -119,7 +120,6 @@ struct EventNames {
     
     let Profile_Form_Submitted = "Profile Form Submitted"
     let Area_of_Focus_Saved = "Area of Focus Saved"
-    let playlist_ready = " Playlist Ready Screen Viewed"
     
     // Audio Related Events
     let Audio_Searched = "Audio Searched"

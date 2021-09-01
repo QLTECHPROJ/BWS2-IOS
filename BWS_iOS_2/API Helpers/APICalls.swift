@@ -107,6 +107,13 @@ extension OTPVC {
                 
                 // Segment Tracking
                 if let userDetails = response.ResponseData {
+                    // Segment - Identify User
+                    if userDetails.CoUserCount == "0" {
+                        SegmentTracking.shared.identifyUser()
+                    } else if self.signUpFlag == "1" {
+                        SegmentTracking.shared.identifyUser()
+                    }
+                    
                     let traits = ["name":userDetails.Name,
                                   "mobileNo":userDetails.Mobile,
                                   "email":userDetails.Email,
@@ -115,13 +122,6 @@ extension OTPVC {
                                   "countryShortName":self.selectedCountry.ShortName]
                     let eventname = self.signUpFlag == "1" ? SegmentTracking.eventNames.User_Sign_up : SegmentTracking.eventNames.User_Login
                     SegmentTracking.shared.trackGeneralEvents(name: eventname, traits: traits)
-                    
-                    // Segment - Identify User
-                    if userDetails.CoUserCount == "0" {
-                        SegmentTracking.shared.identifyUser()
-                    } else if self.signUpFlag == "1" {
-                        SegmentTracking.shared.identifyUser()
-                    }
                 }
                 
                 if self.signUpFlag == "1" {
