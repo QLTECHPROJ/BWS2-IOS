@@ -357,6 +357,12 @@ func refreshNowPlayingSongs(playlistID : String, arraySongs : [AudioDetailsDataM
                     DJMusicPlayer.shared.isAutoPlay = false
                 }
                 
+                /* BA1-I666 - Zoho Bug Solved
+                 - Added Below Line
+                 - Remove Line if any other error occures
+                 */
+                DJMusicPlayer.shared.isAutoPlay = false
+                
                 DJMusicPlayer.shared.requestToPlay()
             }
         }

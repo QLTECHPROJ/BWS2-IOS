@@ -151,6 +151,9 @@ class SegmentTracking {
             }
             
             SegmentTracking.shared.trackEvent(name: CoUserDataModel.currentUserId, traits: dictUserDetails, trackingType: .identify)
+            
+            // CleverTapTracking
+            CleverTapTracking.shared.identifyUser()
         }
     }
     

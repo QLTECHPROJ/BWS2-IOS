@@ -31,6 +31,10 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>CleverTapAccountID</key>
+	<string>487-6W4-WK6Z</string>
+	<key>CleverTapToken</key>
+	<string>406-ab4</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -42,6 +46,8 @@
 	<string>Allow Brain Wellness App to Take Photo for Profile Photo.</string>
 	<key>NSContactsUsageDescription</key>
 	<string>Allow Brain Wellness App to access your contacts list.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>App would like to access the location.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Allow Brain Wellness App to Choose Photo From Gallery for Profile Photo.</string>
 	<key>UIAppFonts</key>

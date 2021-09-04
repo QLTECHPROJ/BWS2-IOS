@@ -305,6 +305,8 @@
 		28A4A70626902928008BA106 /* ManageUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A4A70326902928008BA106 /* ManageUserCell.swift */; };
 		28A4A70726902928008BA106 /* ManageUserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28A4A70426902928008BA106 /* ManageUserCell.xib */; };
 		28A4A70826902928008BA106 /* ManageUserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28A4A70426902928008BA106 /* ManageUserCell.xib */; };
+		28A5834826E228C0009F9464 /* CleverTap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A5834726E228C0009F9464 /* CleverTap.swift */; };
+		28A5834926E228C0009F9464 /* CleverTap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A5834726E228C0009F9464 /* CleverTap.swift */; };
 		28B27820262EED41005794E3 /* DownloadVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B2781F262EED41005794E3 /* DownloadVC.swift */; };
 		28B27821262EED41005794E3 /* DownloadVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B2781F262EED41005794E3 /* DownloadVC.swift */; };
 		28B27823262EEECC005794E3 /* DownloadAudioVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B27822262EEECC005794E3 /* DownloadAudioVC.swift */; };
@@ -726,6 +728,7 @@
 		28A4A6FE26901E93008BA106 /* ManageUserVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageUserVC.swift; sourceTree = "<group>"; };
 		28A4A70326902928008BA106 /* ManageUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageUserCell.swift; sourceTree = "<group>"; };
 		28A4A70426902928008BA106 /* ManageUserCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ManageUserCell.xib; sourceTree = "<group>"; };
+		28A5834726E228C0009F9464 /* CleverTap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleverTap.swift; sourceTree = "<group>"; };
 		28B2781F262EED41005794E3 /* DownloadVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadVC.swift; sourceTree = "<group>"; };
 		28B27822262EEECC005794E3 /* DownloadAudioVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadAudioVC.swift; sourceTree = "<group>"; };
 		28B27824262EEEE1005794E3 /* DownloadPlaylistVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadPlaylistVC.swift; sourceTree = "<group>"; };
@@ -998,6 +1001,7 @@
 				289F1F252654F15A00E94290 /* Segment+EventsNames.swift */,
 				2865DB2E26495575009CDE7F /* Segment+ScreenTracking.swift */,
 				28D336B526A5541E0090FFFD /* Segment+EventTracking.swift */,
+				28A5834726E228C0009F9464 /* CleverTap.swift */,
 			);
 			path = Segment;
 			sourceTree = "<group>";
@@ -2156,6 +2160,7 @@
 				2891E2A32643CCF800658B49 /* ReminderListCell.swift in Sources */,
 				281DE32C2626FD79002CCD9D /* CoreDataHelper.swift in Sources */,
 				2870B35925FB3A570014A4F6 /* AppDelegate.swift in Sources */,
+				28A5834926E228C0009F9464 /* CleverTap.swift in Sources */,
 				28B53550260CC44100BD8147 /* DynamicHeightCollectionView.swift in Sources */,
 				280DFCDF260DA03E00479EE6 /* RecommendedCategoryHeaderCell.swift in Sources */,
 				2870B37125FB404B0014A4F6 /* APIRoute.swift in Sources */,
@@ -2381,6 +2386,7 @@
 				2870B3E525FB41A10014A4F6 /* ImagePicker.swift in Sources */,
 				281DE32B2626FD79002CCD9D /* CoreDataHelper.swift in Sources */,
 				2870B3F925FB41A10014A4F6 /* ExpandableLabel.swift in Sources */,
+				28A5834826E228C0009F9464 /* CleverTap.swift in Sources */,
 				28B5354F260CC44100BD8147 /* DynamicHeightCollectionView.swift in Sources */,
 				280DFCDE260DA03E00479EE6 /* RecommendedCategoryHeaderCell.swift in Sources */,
 				28F812A325FB336F00DC6AF6 /* AppDelegate.swift in Sources */,

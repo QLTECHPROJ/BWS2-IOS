@@ -6,6 +6,8 @@ PODS:
   - Charts (3.6.0):
     - Charts/Core (= 3.6.0)
   - Charts/Core (3.6.0)
+  - CleverTap-iOS-SDK (3.10.0):
+    - SDWebImage (~> 5.1)
   - EVReflection/Alamofire (5.10.1):
     - Alamofire
     - EVReflection/Core
@@ -121,6 +123,7 @@ DEPENDENCIES:
   - ANActivityIndicator
   - Analytics (~> 4.1)
   - Charts
+  - CleverTap-iOS-SDK
   - EVReflection/Alamofire (~> 5.10.1)
   - Firebase/Analytics
   - Firebase/Crashlytics
@@ -144,6 +147,7 @@ SPEC REPOS:
     - Analytics
     - AvailableHapticFeedback
     - Charts
+    - CleverTap-iOS-SDK
     - EVReflection
     - Firebase
     - FirebaseAnalytics
@@ -177,6 +181,7 @@ SPEC CHECKSUMS:
   Analytics: 4c01e3e19d4be86705bad6581a1c2aa5a15a9d22
   AvailableHapticFeedback: 9b21b9f6d3e4566015988b5de35b40abefe6c09a
   Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
+  CleverTap-iOS-SDK: 1e38a25eee5bdb3e525c5c8497504bc64b7d695d
   EVReflection: 8124de482178d34ccd56473e16cd95990f9a1113
   Firebase: d59ad4129167f9f0d2a4f6c1f0c462254b6002c8
   FirebaseAnalytics: 3b98b563d7d64c07900511198b4805cfd9f9f61c
@@ -204,6 +209,6 @@ SPEC CHECKSUMS:
   TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
   youtube-ios-player-helper: 0185c57db23c80d63d6ca11251d110abb8a4ca61
 
-PODFILE CHECKSUM: 91e153a42138e4c1b4ee6aa9dca8bd42402d172e
+PODFILE CHECKSUM: 0939de2c8a88e170feb752c1fc73d34c1b8e802f
 
 COCOAPODS: 1.10.1

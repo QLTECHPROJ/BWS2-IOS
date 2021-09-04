@@ -25,6 +25,9 @@ def shared_pods
     #  Segment
     pod 'Analytics', '~> 4.1'
     
+    # CleverTap
+    pod "CleverTap-iOS-SDK"
+    
     # In App Purchase
     pod 'SwiftyStoreKit'
     

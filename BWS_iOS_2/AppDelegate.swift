@@ -13,6 +13,8 @@ import Firebase
 import AVKit
 import StoreKit
 import SwiftyStoreKit
+import CleverTapSDK
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -34,6 +36,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Segment Configuration
         SegmentTracking.shared.configureSegment(launchOptions: launchOptions)
+        
+        CleverTap.autoIntegrate()
         
         // AudioSession Configuration
         let audioSession = AVAudioSession.sharedInstance()
@@ -177,6 +181,7 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         DEVICE_TOKEN = deviceToken.hexString
         print("DEVICE_TOKEN :- ",DEVICE_TOKEN)
         Messaging.messaging().apnsToken = deviceToken
+        CleverTap.sharedInstance()?.setPushToken(deviceToken)
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
