@@ -176,6 +176,15 @@ class DayVC: BaseViewController {
     @IBAction func onTappedSave(_ sender: Any) {
         checkNotificationStatus { (notificationAllowed) in
             DispatchQueue.main.async {
+                
+                if lockDownloads == "1" {
+                    openInactivePopup(controller: self)
+                    return
+                } else if lockDownloads == "2" {
+                    showAlertToast(message: Theme.strings.alert_reactivate_plan)
+                    return
+                }
+                
                 self.setReminder(notificationAllowed: notificationAllowed)
             }
         }
