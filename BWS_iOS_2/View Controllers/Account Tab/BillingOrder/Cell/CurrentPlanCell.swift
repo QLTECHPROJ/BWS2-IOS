@@ -16,6 +16,7 @@ class CurrentPlanCell: UITableViewCell {
     @IBOutlet weak var lblPlanTitle : UILabel!
     @IBOutlet weak var lblPlanName : UILabel!
     
+    @IBOutlet weak var viewPrice : UIView!
     @IBOutlet weak var lblPriceTitle : UILabel!
     @IBOutlet weak var lblPrice : UILabel!
     
@@ -37,6 +38,8 @@ class CurrentPlanCell: UITableViewCell {
         guard let planDetails = data else {
             return
         }
+        
+        viewPrice.isHidden = true
         
         lblActiveTitle.text = Theme.strings.Last_Renewed
         
