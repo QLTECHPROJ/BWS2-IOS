@@ -11,15 +11,9 @@ import Charts
 
 class GraphCell: UITableViewCell {
     
-    @IBOutlet weak var chartView: BarChartView!
+    @IBOutlet weak var chartView: LineChartView!
     
     var indexScores = [PastIndexScoreModel]()
-    let months = ["",
-                  "Jan", "Feb", "Mar",
-                  "Apr", "May", "Jun",
-                  "Jul", "Aug", "Sep",
-                  "Oct", "Nov", "Dec",
-                  ""]
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,8 +24,15 @@ class GraphCell: UITableViewCell {
     func configureCell(data : [PastIndexScoreModel]) {
         indexScores.removeAll()
         indexScores.append(contentsOf: data)
+        
+        let indexScore = PastIndexScoreModel()
+        indexScore.Month = "0"
+        indexScore.MonthName = ""
+        indexScore.IndexScore = "0"
+        indexScores.insert(indexScore, at: 0)
+        
         // fetchIndexScores()
-        barChartUpdate()
+        configureChart()
     }
     
     func fetchIndexScores() {
@@ -40,6 +41,7 @@ class GraphCell: UITableViewCell {
         for i in 1...4 {
             let indexScore = PastIndexScoreModel()
             indexScore.Month = "\(i)"
+            indexScore.MonthName = "Month \(i)"
             indexScore.IndexScore = "\(i * 8)"
             indexScores.append(indexScore)
         }
@@ -49,97 +51,96 @@ class GraphCell: UITableViewCell {
 
 extension GraphCell : ChartViewDelegate {
     
-    func fetchXMinValue() -> Double {
-        let maxValue = fetchXMaxValue()
-        if maxValue > 7 {
-            return maxValue - 7
-        }
-        return 0
-    }
-    
-    func fetchXMaxValue() -> Double {
-        let months = indexScores.compactMap({ $0.Month.doubleValue })
-        var maxValue = months.max() ?? 12
-        if maxValue < 6 {
-            maxValue = 6
-        }
-        return maxValue + 1
-    }
-    
-    func barChartUpdate() {
+    func configureChart() {
         chartView.delegate = self
+        chartView.noDataText = "You data to display."
         
         chartView.isUserInteractionEnabled = false
-        // chartView.rightAxis.enabled = false
         chartView.chartDescription?.enabled = false
-        chartView.maxVisibleCount = indexScores.count
-        chartView.drawBarShadowEnabled = false
-        chartView.backgroundColor = Theme.colors.off_white_F9F9F9
+        chartView.backgroundColor = UIColor.white
         
-        //legend
+        chartView.extraTopOffset = 5
+        chartView.extraLeftOffset = 0
+        chartView.extraRightOffset = 20
+        chartView.extraBottomOffset = 10
+        
+        // Legend
         let legend = chartView.legend
         legend.enabled = true
         legend.horizontalAlignment = .right
         legend.verticalAlignment = .top
         legend.orientation = .horizontal
         legend.drawInside = false
-        legend.yOffset = 10.0;
-        legend.xOffset = 0.0;
-        legend.yEntrySpace = 0.0;
+        legend.yOffset = 10.0
+        legend.xOffset = 0.0
+        legend.yEntrySpace = 0.0
+        legend.form = .line
         
+        // X Axis
         let xAxis = chartView.xAxis
         xAxis.labelPosition = .bottom
         xAxis.granularity = 1
-        xAxis.axisMinimum = 0
-        xAxis.axisMaximum = 13
+        xAxis.labelRotationAngle = 20
+        xAxis.gridLineDashLengths = [5, 5]
+        xAxis.gridLineDashPhase = 0
         xAxis.valueFormatter = self
         
-        xAxis.axisMinimum = fetchXMinValue()
-        xAxis.axisMaximum = fetchXMaxValue()
-        
-        //        let dataCount = Double(indexScores.count + 1)
-        //        if dataCount < 7 {
-        //            xAxis.axisMaximum = 7
-        //        } else if dataCount > 13 {
-        //            xAxis.axisMaximum = 13
-        //        } else {
-        //            xAxis.axisMaximum = dataCount
-        //        }
-        
+        // Left Axis
         let leftAxis = chartView.leftAxis
         leftAxis.axisMinimum = 0
         leftAxis.axisMaximum = 100
+        leftAxis.gridLineDashLengths = [5, 5]
         
+        // Right Axis
         let rightAxis = chartView.rightAxis
+        rightAxis.enabled = false
         rightAxis.drawLabelsEnabled = false
         rightAxis.axisMinimum = 0
         rightAxis.axisMaximum = 100
         
-        setChart()
+        setChartData()
     }
     
-    func setChart() {
-        var dataEntries = [BarChartDataEntry]()
+    func setChartData() {
+        var dataEntries = [ChartDataEntry]()
         
-        for data in indexScores {
-            let xValue = (data.Month as NSString).doubleValue
+        for (index, data) in indexScores.enumerated() {
             let yValue = (data.IndexScore as NSString).doubleValue
-            
-            let dataEntry = BarChartDataEntry(x: xValue, y: yValue)
-            dataEntries.append(dataEntry)
+            dataEntries.append(ChartDataEntry(x: Double(index), y: yValue))
         }
         
-        let set1 = BarChartDataSet(entries: dataEntries, label: "Past Wellness Score")
-        set1.colors = [Theme.colors.red_CE5060]
-        set1.drawValuesEnabled = false
+        let dataSet = LineChartDataSet(entries: dataEntries, label: "Past Wellness Score")
+        setupDataSet(dataSet)
         
-        let data = BarChartData(dataSet: set1)
-        data.setValueFont(Theme.fonts.montserratFont(ofSize: 10, weight: .regular))
-        chartView.data = data
-        chartView.fitBars = true
+        let gradientColors = [ChartColorTemplates.colorFromString("#00ff0000").cgColor,
+                              ChartColorTemplates.colorFromString("#ffff0000").cgColor]
+        let gradient = CGGradient(colorsSpace: nil, colors: gradientColors as CFArray, locations: nil)!
         
-        chartView.data?.notifyDataChanged()
-        chartView.notifyDataSetChanged()
+        dataSet.fillAlpha = 1
+        dataSet.fill = Fill(linearGradient: gradient, angle: 90)
+        dataSet.drawFilledEnabled = true
+        
+        let chartData = LineChartData(dataSet: dataSet)
+        chartView.data = chartData
+        
+        chartView.xAxis.setLabelCount(dataEntries.count, force: true)
+    }
+    
+    func setupDataSet(_ dataSet: LineChartDataSet) {
+        dataSet.lineDashLengths = [5, 2.5]
+        dataSet.highlightLineDashLengths = [5, 2.5]
+        dataSet.setColor(.black)
+        dataSet.setCircleColor(.black)
+        dataSet.lineWidth = 1
+        dataSet.circleRadius = 3
+        dataSet.drawCircleHoleEnabled = false
+        dataSet.valueFont = .systemFont(ofSize: 9)
+        dataSet.formLineDashLengths = [5, 2.5]
+        dataSet.formLineWidth = 1
+        dataSet.formSize = 15
+        
+        dataSet.drawValuesEnabled = true
+        
         chartView.setNeedsDisplay()
     }
     
@@ -148,7 +149,11 @@ extension GraphCell : ChartViewDelegate {
 extension GraphCell: IAxisValueFormatter {
     
     func stringForValue(_ value: Double, axis: AxisBase?) -> String {
-        return months[Int(value) % months.count]
+        if Int(value) >= 0 && Int(value) < indexScores.count {
+            return indexScores[Int(value)].MonthName
+        }
+        
+        return ""
     }
     
 }
