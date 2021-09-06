@@ -343,7 +343,7 @@ extension EditProfileVC : AlertPopUpVCDelegate {
     
     func handleAction(sender: UIButton, popUpTag: Int) {
         if sender.tag == 0 {
-            
+            txtFDOB.becomeFirstResponder()
         }
     }
     

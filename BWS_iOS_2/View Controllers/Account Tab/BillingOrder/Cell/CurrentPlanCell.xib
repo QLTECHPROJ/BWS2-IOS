@@ -246,6 +246,7 @@
                 <outlet property="lblStatus" destination="crV-M9-rt3" id="ny7-te-NVc"/>
                 <outlet property="lblStatusTitle" destination="1Yp-Ek-nIw" id="Dgb-bO-2wR"/>
                 <outlet property="lblTitle" destination="hnY-sh-i5S" id="6DE-KE-9Gf"/>
+                <outlet property="viewPrice" destination="0f8-Lj-gXs" id="Z33-x6-3Lz"/>
             </connections>
             <point key="canvasLocation" x="147.82608695652175" y="204.91071428571428"/>
         </tableViewCell>

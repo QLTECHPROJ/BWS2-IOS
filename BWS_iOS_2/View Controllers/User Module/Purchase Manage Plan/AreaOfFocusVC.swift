@@ -64,6 +64,7 @@ class AreaOfFocusVC: BaseViewController {
     }
     
     override func setupData() {
+        /*
         guard let selectedCategories = CoUserDataModel.currentUser?.AreaOfFocus else {
             return
         }
@@ -75,6 +76,7 @@ class AreaOfFocusVC: BaseViewController {
             cat.RecommendedCat = category.RecommendedCat
             arrayAreaOfFocus.append(cat)
         }
+         */
         
         tableView.reloadData()
         footerCollectionview.reloadData()
@@ -89,6 +91,7 @@ class AreaOfFocusVC: BaseViewController {
     }
     
     func setInitialData() {
+        /*
         guard let selectedCategories = CoUserDataModel.currentUser?.AreaOfFocus else {
             return
         }
@@ -102,6 +105,7 @@ class AreaOfFocusVC: BaseViewController {
                 }
             }
         }
+         */
         
         self.setupData()
     }
@@ -254,8 +258,9 @@ class AreaOfFocusVC: BaseViewController {
         }
         
         if shouldPush {
-            let aVC = AppStoryBoard.main.viewController(viewControllerClass:SleepTimeVC.self)
+            let aVC = AppStoryBoard.main.viewController(viewControllerClass: SleepTimeVC.self)
             aVC.isFromEdit = self.isFromEdit
+            aVC.hideCloseButton = false
             self.navigationController?.pushViewController(aVC, animated: true)
         }
     }
