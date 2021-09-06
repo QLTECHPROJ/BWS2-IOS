@@ -35,6 +35,7 @@ class ConnectionManager {
                 DJMusicPlayer.shared.currentlyPlaying = DJMusicPlayer.shared.currentlyPlaying
                 DJMusicPlayer.shared.isStoppedBecauseOfNetwork = false
             }
+            SuggestedPlaylistTracking.shared.activityTrack()
             break
         case .wifi:
             print("Network available via WiFi.")
@@ -44,6 +45,7 @@ class ConnectionManager {
                 DJMusicPlayer.shared.currentlyPlaying = DJMusicPlayer.shared.currentlyPlaying
                 DJMusicPlayer.shared.isStoppedBecauseOfNetwork = false
             }
+            SuggestedPlaylistTracking.shared.activityTrack()
             break
         case .none:
             print("Network is not available.")

@@ -27,7 +27,7 @@ class PlaylistCollectionCell: UICollectionViewCell {
         super.awakeFromNib()
         btnAddtoPlaylist.isHidden = true
         imageView.contentMode = .scaleAspectFill
-        imageView.applyGradient(with: [UIColor.clear,Theme.colors.green_008892.withAlphaComponent(0.5),Theme.colors.green_008892])
+        // imageView.applyGradient(with: [UIColor.clear,Theme.colors.green_008892.withAlphaComponent(0.5),Theme.colors.green_008892])
     }
     
     
@@ -63,8 +63,10 @@ class PlaylistCollectionCell: UICollectionViewCell {
             imageView.sd_setImage(with: imgUrl, completed: nil)
         }
         
-        imageView.contentMode = .scaleAspectFill
-        imageView.applyGradient(with: [UIColor.clear,UIColor.clear,Theme.colors.green_008892])
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.imageView.contentMode = .scaleAspectFill
+            self.imageView.applyGradient(with: [UIColor.clear,UIColor.clear,Theme.colors.green_008892])
+        }
         
         lblName.text = playlistData.PlaylistName
         
@@ -91,8 +93,10 @@ class PlaylistCollectionCell: UICollectionViewCell {
             imageView.sd_setImage(with: imgUrl, completed: nil)
         }
         
-        imageView.contentMode = .scaleAspectFill
-        imageView.applyGradient(with: [UIColor.clear,UIColor.clear,Theme.colors.green_008892])
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.imageView.contentMode = .scaleAspectFill
+            self.imageView.applyGradient(with: [UIColor.clear,UIColor.clear,Theme.colors.green_008892])
+        }
         
         lblName.text = playlistData.PlaylistName
         
@@ -119,8 +123,10 @@ class PlaylistCollectionCell: UICollectionViewCell {
             imageView.sd_setImage(with: imgUrl, completed: nil)
         }
         
-        imageView.contentMode = .scaleAspectFill
-        imageView.applyGradient(with: [UIColor.clear,UIColor.clear,Theme.colors.green_008892])
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.imageView.contentMode = .scaleAspectFill
+            self.imageView.applyGradient(with: [UIColor.clear,UIColor.clear,Theme.colors.green_008892])
+        }
         
         lblName.text = audioData.Name
         

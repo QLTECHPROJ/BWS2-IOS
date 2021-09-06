@@ -156,6 +156,7 @@ class LoginDataModel : EVObject {
     var CoUserCount = ""
     var IsFirst = ""
     var Islock = ""
+    var IsInCouser = ""
     
     static var profileImage : UIImage?
     
@@ -423,6 +424,7 @@ class CoUserDataModel : EVObject {
     var InviteStatus = ""
     var IsFirst = ""
     var Islock = ""
+    var IsInCouser = ""
     
     static var profileImage : UIImage?
     
