@@ -50,6 +50,18 @@ class SuggestedPlaylistTracking {
                     arrayActivity.removeAll()
                     fetchAudioActivityTrack(audiodata: audioData)
                 }
+                
+                if let audioData = DJMusicPlayer.shared.currentlyPlaying {
+                    arrayDownload.removeAll()
+                    arrayActivity.removeAll()
+                    fetchAudioActivityTrack(audiodata: audioData)
+                }else {
+                    for audioData in playlistData.PlaylistSongs {
+                        arrayDownload.removeAll()
+                        arrayActivity.removeAll()
+                        fetchAudioActivityTrack(audiodata: audioData)
+                    }
+                }
             }
         }
         
@@ -181,8 +193,10 @@ class SuggestedPlaylistTracking {
                     deleteAllRecords()
                     activityTrack()
                 }else {
-                    checkTime(time:"\(Date.currentTimeStamp)")
-                    checkActivityTrack(audioData:audiodata)
+                    if let audioData = DJMusicPlayer.shared.currentlyPlaying {
+                        checkTime(time:"\(Date.currentTimeStamp)")
+                        checkActivityTrack(audioData:audioData)
+                    }
                 }
             }
             
