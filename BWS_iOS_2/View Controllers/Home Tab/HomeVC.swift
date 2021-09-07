@@ -78,6 +78,7 @@ class HomeVC: BaseViewController {
         tableView.register(nibWithCellClass: GraphCell.self)
         tableView.register(nibWithCellClass: AreaCell.self)
         tableView.register(nibWithCellClass: IndexScoreCell.self)
+        tableView.register(nibWithCellClass: ActivityGraphCell.self)
         tableView.register(nibWithCellClass: ProgressCell.self)
         
         tableView.refreshControl = refreshControl
@@ -360,8 +361,8 @@ extension HomeVC : UITableViewDelegate, UITableViewDataSource {
             return cell
             
         case 8:
-            let cell = tableView.dequeueReusableCell(withClass: IndexScoreCell.self)
-            cell.configureMyActivityCell(data: arrayGraphActivity)
+            let cell = tableView.dequeueReusableCell(withClass: ActivityGraphCell.self)
+            cell.configureCell(data: arrayGraphActivity)
             return cell
             
         case 9:
@@ -408,7 +409,7 @@ extension HomeVC : UITableViewDelegate, UITableViewDataSource {
             return 0 // return 140
             
         case 8:
-            return 300
+            return 302
             
         case 9:
             return 200

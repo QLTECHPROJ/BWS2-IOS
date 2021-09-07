@@ -57,7 +57,7 @@ extension GraphCell : ChartViewDelegate {
         
         chartView.isUserInteractionEnabled = false
         chartView.chartDescription?.enabled = false
-        chartView.backgroundColor = UIColor.white
+        chartView.backgroundColor = Theme.colors.off_white_F9F9F9
         
         chartView.extraTopOffset = 5
         chartView.extraLeftOffset = 0

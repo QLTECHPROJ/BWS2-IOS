@@ -130,6 +130,10 @@
 		283F72F6261D999200554774 /* SubColCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 283F72F2261D999200554774 /* SubColCell.xib */; };
 		284C9B6A262E93D1008C4435 /* CryptLib.m in Sources */ = {isa = PBXBuildFile; fileRef = 284C9B68262E93D1008C4435 /* CryptLib.m */; };
 		284C9B6B262E93D1008C4435 /* CryptLib.m in Sources */ = {isa = PBXBuildFile; fileRef = 284C9B68262E93D1008C4435 /* CryptLib.m */; };
+		285405D126E73C79003B35F1 /* ActivityGraphCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285405CF26E73C79003B35F1 /* ActivityGraphCell.swift */; };
+		285405D226E73C79003B35F1 /* ActivityGraphCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285405CF26E73C79003B35F1 /* ActivityGraphCell.swift */; };
+		285405D326E73C79003B35F1 /* ActivityGraphCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 285405D026E73C79003B35F1 /* ActivityGraphCell.xib */; };
+		285405D426E73C79003B35F1 /* ActivityGraphCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 285405D026E73C79003B35F1 /* ActivityGraphCell.xib */; };
 		2865DB2C26495567009CDE7F /* Segment+Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2865DB2B26495567009CDE7F /* Segment+Functions.swift */; };
 		2865DB2D26495567009CDE7F /* Segment+Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2865DB2B26495567009CDE7F /* Segment+Functions.swift */; };
 		2865DB2F26495575009CDE7F /* Segment+ScreenTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2865DB2E26495575009CDE7F /* Segment+ScreenTracking.swift */; };
@@ -638,6 +642,8 @@
 		283F72F2261D999200554774 /* SubColCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubColCell.xib; sourceTree = "<group>"; };
 		284C9B68262E93D1008C4435 /* CryptLib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CryptLib.m; sourceTree = "<group>"; };
 		284C9B69262E93D1008C4435 /* CryptLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CryptLib.h; sourceTree = "<group>"; };
+		285405CF26E73C79003B35F1 /* ActivityGraphCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityGraphCell.swift; sourceTree = "<group>"; };
+		285405D026E73C79003B35F1 /* ActivityGraphCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityGraphCell.xib; sourceTree = "<group>"; };
 		2865DB2B26495567009CDE7F /* Segment+Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Segment+Functions.swift"; sourceTree = "<group>"; };
 		2865DB2E26495575009CDE7F /* Segment+ScreenTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Segment+ScreenTracking.swift"; sourceTree = "<group>"; };
 		2870B36325FB3A570014A4F6 /* BWS 2 Staging.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BWS 2 Staging.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1253,10 +1259,9 @@
 			path = iCarousel;
 			sourceTree = "<group>";
 		};
-		28E01211261847EA00B55967 /* Cell */ = {
+		28E01211261847EA00B55967 /* Table Cells */ = {
 			isa = PBXGroup;
 			children = (
-				28E01216261847EA00B55967 /* CVCell */,
 				28E0121B261847EA00B55967 /* GraphCell.swift */,
 				28E01214261847EA00B55967 /* GraphCell.xib */,
 				2819848B2638214E00DA5A66 /* SuggestedPlaylistCell.swift */,
@@ -1275,17 +1280,19 @@
 				28E01213261847EA00B55967 /* CreatePlayListCell.xib */,
 				28786CAE262967F7000E8598 /* ViewAllCell.swift */,
 				28786CAF262967F7000E8598 /* ViewAllCell.xib */,
+				285405CF26E73C79003B35F1 /* ActivityGraphCell.swift */,
+				285405D026E73C79003B35F1 /* ActivityGraphCell.xib */,
 			);
-			path = Cell;
+			path = "Table Cells";
 			sourceTree = "<group>";
 		};
-		28E01216261847EA00B55967 /* CVCell */ = {
+		28E01216261847EA00B55967 /* Collection Cells */ = {
 			isa = PBXGroup;
 			children = (
 				28E01218261847EA00B55967 /* tagCVCell.swift */,
 				28E01217261847EA00B55967 /* tagCVCell.xib */,
 			);
-			path = CVCell;
+			path = "Collection Cells";
 			sourceTree = "<group>";
 		};
 		28E809432613493F00CD80F7 /* Manage Tab */ = {
@@ -1308,7 +1315,8 @@
 		28E809442613494A00CD80F7 /* Home Tab */ = {
 			isa = PBXGroup;
 			children = (
-				28E01211261847EA00B55967 /* Cell */,
+				28E01216261847EA00B55967 /* Collection Cells */,
+				28E01211261847EA00B55967 /* Table Cells */,
 				28E8093426130A7A00CD80F7 /* HomeVC.swift */,
 				28D33F37265E375100733F61 /* OfflineVC.swift */,
 				28E011FF2618470100B55967 /* UserListPopUpVC.swift */,
@@ -1771,6 +1779,7 @@
 				9AD5582B2636E6C7007ED68F /* AccountCell.xib in Resources */,
 				28E8092D261308F900CD80F7 /* Wellness.storyboard in Resources */,
 				28B53538260C690600BD8147 /* SleepTimeCell.xib in Resources */,
+				285405D426E73C79003B35F1 /* ActivityGraphCell.xib in Resources */,
 				28E01232261847EA00B55967 /* ProgressCell.xib in Resources */,
 				28ED2FC225FB931800E59C56 /* OptionsCell.xib in Resources */,
 				9AC0671F2639304E00287A44 /* FeatureCell.xib in Resources */,
@@ -1838,6 +1847,7 @@
 				9AD558292636DFFA007ED68F /* AccountCell.xib in Resources */,
 				28E8092C261308F900CD80F7 /* Wellness.storyboard in Resources */,
 				28B53537260C690600BD8147 /* SleepTimeCell.xib in Resources */,
+				285405D326E73C79003B35F1 /* ActivityGraphCell.xib in Resources */,
 				28E01231261847EA00B55967 /* ProgressCell.xib in Resources */,
 				2870B45525FB44700014A4F6 /* WWCalendarTimeSelector.storyboard in Resources */,
 				9AC0671E2639304E00287A44 /* FeatureCell.xib in Resources */,
@@ -2053,6 +2063,7 @@
 				287E807F262D510C0006A925 /* AudioPlayerSetUp.swift in Sources */,
 				28E0122A261847EA00B55967 /* SelfDevCell.swift in Sources */,
 				9AC0672626394B5800287A44 /* FAQListVC.swift in Sources */,
+				285405D226E73C79003B35F1 /* ActivityGraphCell.swift in Sources */,
 				2870B3D625FB41A10014A4F6 /* UIImageView+Extension.swift in Sources */,
 				28E0122E261847EA00B55967 /* tagCVCell.swift in Sources */,
 				9A62E91E26820D3400883BBD /* EmailVerifyVC.swift in Sources */,
@@ -2279,6 +2290,7 @@
 				287E807E262D510C0006A925 /* AudioPlayerSetUp.swift in Sources */,
 				28E01229261847EA00B55967 /* SelfDevCell.swift in Sources */,
 				9AC0672526394B5800287A44 /* FAQListVC.swift in Sources */,
+				285405D126E73C79003B35F1 /* ActivityGraphCell.swift in Sources */,
 				2870B42F25FB41A10014A4F6 /* GradientView.swift in Sources */,
 				28E0122D261847EA00B55967 /* tagCVCell.swift in Sources */,
 				9A62E91D26820D3400883BBD /* EmailVerifyVC.swift in Sources */,
