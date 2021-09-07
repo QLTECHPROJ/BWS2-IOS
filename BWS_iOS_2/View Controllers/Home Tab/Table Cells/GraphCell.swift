@@ -134,11 +134,12 @@ extension GraphCell : ChartViewDelegate {
         dataSet.lineWidth = 1
         dataSet.circleRadius = 3
         dataSet.drawCircleHoleEnabled = false
-        dataSet.valueFont = .systemFont(ofSize: 9)
         dataSet.formLineDashLengths = [5, 2.5]
         dataSet.formLineWidth = 1
         dataSet.formSize = 15
         
+        dataSet.valueFont = Theme.fonts.montserratFont(ofSize: 10, weight: .bold)
+        dataSet.valueFormatter = self
         dataSet.drawValuesEnabled = true
         
         chartView.setNeedsDisplay()
@@ -154,6 +155,14 @@ extension GraphCell: IAxisValueFormatter {
         }
         
         return ""
+    }
+    
+}
+
+extension GraphCell : IValueFormatter {
+    
+    func stringForValue(_ value: Double, entry: ChartDataEntry, dataSetIndex: Int, viewPortHandler: ViewPortHandler?) -> String {
+        return "\(Int(value))"
     }
     
 }
