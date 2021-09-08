@@ -303,6 +303,10 @@ struct AppStrings {
     let Edit_Area_of_Focus = "Edit Area of Focus"
     
     /* App Update Popup */
+    let cancel_plan_alert_title = "Cancel Plan"
+    let cancel_plan_alert_description = "Your last purchase was from Android Device. So please, try canceling the plan from Google Play Store."
+    
+    /* App Update Popup */
     let update = "UPDATE"
     let not_now = "NOT NOW"
     

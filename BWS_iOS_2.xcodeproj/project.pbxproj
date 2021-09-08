@@ -1350,9 +1350,9 @@
 		28E809472613497B00CD80F7 /* Account Tab */ = {
 			isa = PBXGroup;
 			children = (
+				9AD558242636DFC0007ED68F /* Table Cells */,
 				9A55EB352668EA58006E398A /* Invoices */,
 				9A55EB1D2668B267006E398A /* BillingOrder */,
-				9AD558242636DFC0007ED68F /* Cell */,
 				9AC066EA2639176700287A44 /* AccountInfo */,
 				9AC066E92639174B00287A44 /* Download */,
 				2891E2912643CCF800658B49 /* Reminder */,
@@ -1656,7 +1656,7 @@
 			path = FAQ;
 			sourceTree = "<group>";
 		};
-		9AD558242636DFC0007ED68F /* Cell */ = {
+		9AD558242636DFC0007ED68F /* Table Cells */ = {
 			isa = PBXGroup;
 			children = (
 				9AD558262636DFFA007ED68F /* AccountCell.swift */,
@@ -1664,7 +1664,7 @@
 				28A4A70326902928008BA106 /* ManageUserCell.swift */,
 				28A4A70426902928008BA106 /* ManageUserCell.xib */,
 			);
-			path = Cell;
+			path = "Table Cells";
 			sourceTree = "<group>";
 		};
 		FFE2125D60868B17531FF520 /* Pods */ = {

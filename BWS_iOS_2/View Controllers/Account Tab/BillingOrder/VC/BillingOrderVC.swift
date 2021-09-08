@@ -102,11 +102,19 @@ class BillingOrderVC: BaseViewController {
             return
         }
         
+        planData.DeviceType = "1"
+        
         if planData.DeviceType == APP_TYPE {
             let aVC = AppStoryBoard.account.viewController(viewControllerClass: CancelSubVC.self)
             self.navigationController?.pushViewController(aVC, animated: true)
         } else {
-            print("DeviceType not match")
+            let aVC = AppStoryBoard.manage.viewController(viewControllerClass: AlertPopUpVC.self)
+            aVC.titleText = Theme.strings.cancel_plan_alert_title
+            aVC.detailText = Theme.strings.cancel_plan_alert_description
+            aVC.firstButtonTitle = Theme.strings.ok
+            aVC.hideSecondButton = true
+            aVC.modalPresentationStyle = .overFullScreen
+            self.present(aVC, animated: false, completion: nil)
         }
     }
     
