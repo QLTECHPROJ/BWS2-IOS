@@ -669,7 +669,10 @@ extension PlaylistAudiosVC : UITableViewDelegate, UITableViewDataSource {
             displayNowPlaying = true
         }
         
-        if isPlayingAudio(audioID: arraySearchSongs[indexPath.row].ID) && displayNowPlaying {
+        if isPlayingAudio(audioID: arraySearchSongs[indexPath.row].ID)
+            && displayNowPlaying
+            && DJMusicPlayer.shared.currentlyPlaying?.PSID == arraySearchSongs[indexPath.row].PSID {
+            
             cell.nowPlayingAnimationImageView.isHidden = false
             cell.backgroundColor = Theme.colors.gray_EEEEEE
             if DJMusicPlayer.shared.isPlaying {

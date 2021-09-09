@@ -304,7 +304,7 @@ struct AppStrings {
     
     /* App Update Popup */
     let cancel_plan_alert_title = "Cancel Plan"
-    let cancel_plan_alert_description = "Your last purchase was from Android Device. So please, try canceling the plan from Google Play Store."
+    let cancel_plan_alert_description = "Since you'd originally purchased the plan from an Android device, please cancel your plan from the Play Store."
     
     /* App Update Popup */
     let update = "UPDATE"
