@@ -70,7 +70,9 @@ extension BaseViewController {
     }
     
     // MARK:- Present Player for Multiple Audio
-    func presentAudioPlayer(arrayPlayerData : [AudioDetailsDataModel]?, index : Int? = nil) {
+    func presentAudioPlayer(arrayPlayerData : [AudioDetailsDataModel]?, index : Int? = nil, playlist : PlaylistDetailsModel? = nil) {
+        DJMusicPlayer.shared.currentPlaylist = playlist
+        
         let oldAudioID = DJMusicPlayer.shared.currentlyPlaying?.ID ?? ""
         
         if var audioList = arrayPlayerData, audioList.count > 0 {

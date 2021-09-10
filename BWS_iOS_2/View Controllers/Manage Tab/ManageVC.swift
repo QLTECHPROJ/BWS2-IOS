@@ -537,7 +537,7 @@ class ManageVC: BaseViewController {
         if playlistData.PlaylistSongs.count != 0 {
             DJMusicPlayer.shared.playerType = .playlist
             DJMusicPlayer.shared.currentPlaylist = playlistData
-            self.presentAudioPlayer(arrayPlayerData: playlistData.PlaylistSongs, index: 0)
+            self.presentAudioPlayer(arrayPlayerData: playlistData.PlaylistSongs, index: 0, playlist: playlistData)
             DJMusicPlayer.shared.playingFrom = playlistData.PlaylistName
         }
     }

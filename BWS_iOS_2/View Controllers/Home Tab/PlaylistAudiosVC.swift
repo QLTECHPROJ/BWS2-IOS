@@ -573,12 +573,12 @@ class PlaylistAudiosVC: BaseViewController {
         if isFromDownload {
             DJMusicPlayer.shared.playerType = .downloadedPlaylist
             DJMusicPlayer.shared.currentPlaylist = objPlaylist
-            self.presentAudioPlayer(arrayPlayerData: arraySearchSongs)
+            self.presentAudioPlayer(arrayPlayerData: arraySearchSongs, playlist: objPlaylist)
             DJMusicPlayer.shared.playingFrom = objPlaylist!.PlaylistName
         } else {
             DJMusicPlayer.shared.playerType = .playlist
             DJMusicPlayer.shared.currentPlaylist = objPlaylist
-            self.presentAudioPlayer(arrayPlayerData: arraySearchSongs, index: 0)
+            self.presentAudioPlayer(arrayPlayerData: arraySearchSongs, index: 0, playlist: objPlaylist)
             DJMusicPlayer.shared.playingFrom = objPlaylist!.PlaylistName
         }
     }
@@ -726,12 +726,12 @@ extension PlaylistAudiosVC : UITableViewDelegate, UITableViewDataSource {
         if isFromDownload {
             DJMusicPlayer.shared.playerType = .downloadedPlaylist
             DJMusicPlayer.shared.currentPlaylist = objPlaylist
-            self.presentAudioPlayer(arrayPlayerData: arraySearchSongs, index: indexPath.row)
+            self.presentAudioPlayer(arrayPlayerData: arraySearchSongs, index: indexPath.row, playlist: objPlaylist)
             DJMusicPlayer.shared.playingFrom = objPlaylist!.PlaylistName
         } else {
             DJMusicPlayer.shared.playerType = .playlist
             DJMusicPlayer.shared.currentPlaylist = objPlaylist
-            self.presentAudioPlayer(arrayPlayerData: arraySearchSongs, index: indexPath.row)
+            self.presentAudioPlayer(arrayPlayerData: arraySearchSongs, index: indexPath.row, playlist: objPlaylist)
             DJMusicPlayer.shared.playingFrom = objPlaylist!.PlaylistName
         }
     }

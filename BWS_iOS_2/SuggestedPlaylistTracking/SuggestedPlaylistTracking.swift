@@ -45,11 +45,6 @@ class SuggestedPlaylistTracking {
             }
         }else {
             if  playlistData.Created == "2" || playlistData.selfCreated == "2" &&  DJMusicPlayer.shared.playerType == .playlist || DJMusicPlayer.shared.playerType == .downloadedPlaylist{
-                if let audioData = DJMusicPlayer.shared.currentlyPlaying {
-                    arrayDownload.removeAll()
-                    arrayActivity.removeAll()
-                    fetchAudioActivityTrack(audiodata: audioData)
-                }
                 
                 if let audioData = DJMusicPlayer.shared.currentlyPlaying {
                     arrayDownload.removeAll()
