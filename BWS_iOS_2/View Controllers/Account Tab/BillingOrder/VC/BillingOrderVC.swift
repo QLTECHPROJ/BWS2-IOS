@@ -102,8 +102,6 @@ class BillingOrderVC: BaseViewController {
             return
         }
         
-        planData.DeviceType = "1"
-        
         if planData.DeviceType == APP_TYPE {
             let aVC = AppStoryBoard.account.viewController(viewControllerClass: CancelSubVC.self)
             self.navigationController?.pushViewController(aVC, animated: true)
