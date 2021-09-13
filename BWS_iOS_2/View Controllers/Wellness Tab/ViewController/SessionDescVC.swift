@@ -39,6 +39,10 @@ class SessionDescVC: BaseViewController {
         let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: SessionStartVC.self)
         self.navigationController?.pushViewController(aVC, animated: false)
     }
+    // MARK:- ACTIONS
+    @IBAction func onTappedBack(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
     
 }
 
@@ -52,6 +56,11 @@ extension SessionDescVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withClass: SelfDevCell.self)
         cell.backgroundColor = hexStringToUIColor(hex: "EEEEEE")
+        cell.cornerRadius = 8
+        cell.clipsToBounds = true
+        cell.viewCard.backgroundColor = hexStringToUIColor(hex: "EEEEEE")
+        cell.viewCard.borderColor = .clear
+        cell.viewCard.shadowColor = .clear
         return cell
     }
     

@@ -37,5 +37,9 @@ class SessionStartVC: BaseViewController {
         let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: AddressVC.self)
         self.navigationController?.pushViewController(aVC, animated: false)
     }
+    // MARK:- ACTIONS
+    @IBAction func onTappedBack(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
 }
 

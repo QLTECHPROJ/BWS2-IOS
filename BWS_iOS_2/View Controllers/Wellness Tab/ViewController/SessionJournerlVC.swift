@@ -26,5 +26,8 @@ class SessionJournerlVC: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    // MARK:- ACTIONS
+    @IBAction func onTappedBack(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
 }

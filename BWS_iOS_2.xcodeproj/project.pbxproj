@@ -487,6 +487,14 @@
 		9A29854B26A97AB70006227F /* SessionJournerlVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A29854926A97AB60006227F /* SessionJournerlVC.swift */; };
 		9A29854D26A97AF80006227F /* SessionQuetionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A29854C26A97AF80006227F /* SessionQuetionVC.swift */; };
 		9A29854E26A97AF80006227F /* SessionQuetionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A29854C26A97AF80006227F /* SessionQuetionVC.swift */; };
+		9A3BCB0126EB5CFE00827C8D /* PerceptionQueVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3BCB0026EB5CFE00827C8D /* PerceptionQueVC.swift */; };
+		9A3BCB0226EB5CFE00827C8D /* PerceptionQueVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3BCB0026EB5CFE00827C8D /* PerceptionQueVC.swift */; };
+		9A3BCB0426EB7B8D00827C8D /* PersonalHistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3BCB0326EB7B8D00827C8D /* PersonalHistoryVC.swift */; };
+		9A3BCB0526EB7B8D00827C8D /* PersonalHistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3BCB0326EB7B8D00827C8D /* PersonalHistoryVC.swift */; };
+		9A3BCB0826EBA0E600827C8D /* PersonalHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3BCB0626EBA0E600827C8D /* PersonalHistoryCell.swift */; };
+		9A3BCB0926EBA0E600827C8D /* PersonalHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3BCB0626EBA0E600827C8D /* PersonalHistoryCell.swift */; };
+		9A3BCB0A26EBA0E600827C8D /* PersonalHistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A3BCB0726EBA0E600827C8D /* PersonalHistoryCell.xib */; };
+		9A3BCB0B26EBA0E600827C8D /* PersonalHistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A3BCB0726EBA0E600827C8D /* PersonalHistoryCell.xib */; };
 		9A51DF26263820FD001364EA /* AccountInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A51DF25263820FD001364EA /* AccountInfoVC.swift */; };
 		9A51DF27263821EF001364EA /* AccountInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A51DF25263820FD001364EA /* AccountInfoVC.swift */; };
 		9A51DF2926382DFC001364EA /* EditProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A51DF2826382DFC001364EA /* EditProfileVC.swift */; };
@@ -856,6 +864,10 @@
 		9A29854626A92AAB0006227F /* SessionActivityVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionActivityVC.swift; sourceTree = "<group>"; };
 		9A29854926A97AB60006227F /* SessionJournerlVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionJournerlVC.swift; sourceTree = "<group>"; };
 		9A29854C26A97AF80006227F /* SessionQuetionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionQuetionVC.swift; sourceTree = "<group>"; };
+		9A3BCB0026EB5CFE00827C8D /* PerceptionQueVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerceptionQueVC.swift; sourceTree = "<group>"; };
+		9A3BCB0326EB7B8D00827C8D /* PersonalHistoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalHistoryVC.swift; sourceTree = "<group>"; };
+		9A3BCB0626EBA0E600827C8D /* PersonalHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalHistoryCell.swift; sourceTree = "<group>"; };
+		9A3BCB0726EBA0E600827C8D /* PersonalHistoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonalHistoryCell.xib; sourceTree = "<group>"; };
 		9A51DF25263820FD001364EA /* AccountInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountInfoVC.swift; sourceTree = "<group>"; };
 		9A51DF2826382DFC001364EA /* EditProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileVC.swift; sourceTree = "<group>"; };
 		9A51DF2B26383A4E001364EA /* ChangePINVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePINVC.swift; sourceTree = "<group>"; };
@@ -1633,6 +1645,8 @@
 				9A29854626A92AAB0006227F /* SessionActivityVC.swift */,
 				9A29854926A97AB60006227F /* SessionJournerlVC.swift */,
 				9A29854C26A97AF80006227F /* SessionQuetionVC.swift */,
+				9A3BCB0026EB5CFE00827C8D /* PerceptionQueVC.swift */,
+				9A3BCB0326EB7B8D00827C8D /* PersonalHistoryVC.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1646,6 +1660,8 @@
 				9A1A9FD726A0428500E4541F /* SessionBannerCell.xib */,
 				9A1A9FDC26A0446B00E4541F /* SessionDetailCell.swift */,
 				9A1A9FDD26A0446B00E4541F /* SessionDetailCell.xib */,
+				9A3BCB0626EBA0E600827C8D /* PersonalHistoryCell.swift */,
+				9A3BCB0726EBA0E600827C8D /* PersonalHistoryCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1878,6 +1894,7 @@
 				28E809332613091800CD80F7 /* Account.storyboard in Resources */,
 				283F72F6261D999200554774 /* SubColCell.xib in Resources */,
 				28B5354D260CC2B800BD8147 /* CategoryCollectionCell.xib in Resources */,
+				9A3BCB0B26EBA0E600827C8D /* PersonalHistoryCell.xib in Resources */,
 				283153B626143F74004001CE /* PlaylistCollectionCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1948,6 +1965,7 @@
 				28E809322613091800CD80F7 /* Account.storyboard in Resources */,
 				283F72F5261D999200554774 /* SubColCell.xib in Resources */,
 				28B5354C260CC2B800BD8147 /* CategoryCollectionCell.xib in Resources */,
+				9A3BCB0A26EBA0E600827C8D /* PersonalHistoryCell.xib in Resources */,
 				283153B526143F74004001CE /* PlaylistCollectionCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2143,12 +2161,14 @@
 				2870B3CE25FB41A10014A4F6 /* DJCheckBox.swift in Sources */,
 				2870B44025FB41A10014A4F6 /* ReorderController+SnapshotView.swift in Sources */,
 				9A25322026A7040300E93ACD /* AddressVC.swift in Sources */,
+				9A3BCB0226EB5CFE00827C8D /* PerceptionQueVC.swift in Sources */,
 				2870B46425FB44700014A4F6 /* WWCalendarTimeSelector.swift in Sources */,
 				9AD5582A2636E6C3007ED68F /* AccountCell.swift in Sources */,
 				2870B43625FB41A10014A4F6 /* DJPageMenuController.swift in Sources */,
 				9A55EB482668EA58006E398A /* InvoiceDetailVC.swift in Sources */,
 				9AC067172639178F00287A44 /* ResourceVC.swift in Sources */,
 				282441402609AC840060292E /* LoginVC.swift in Sources */,
+				9A3BCB0926EBA0E600827C8D /* PersonalHistoryCell.swift in Sources */,
 				9A51DF2A2638319E001364EA /* EditProfileVC.swift in Sources */,
 				2870B3FE25FB41A10014A4F6 /* KDCircularProgress.swift in Sources */,
 				9A29854826A92AAB0006227F /* SessionActivityVC.swift in Sources */,
@@ -2230,6 +2250,7 @@
 				9A98E42626848401004C889C /* AddUserVC.swift in Sources */,
 				9AEBD2DC2689962C0096C291 /* InviteFriendCell.swift in Sources */,
 				2870B3E625FB41A10014A4F6 /* ImagePicker.swift in Sources */,
+				9A3BCB0526EB7B8D00827C8D /* PersonalHistoryVC.swift in Sources */,
 				9AC0671D2639304E00287A44 /* FeatureCell.swift in Sources */,
 				28B5353B260C706200BD8147 /* AreaOfFocusVC.swift in Sources */,
 				9A25321D26A6F7C600E93ACD /* SessionStartVC.swift in Sources */,
@@ -2380,12 +2401,14 @@
 				2870B46325FB44700014A4F6 /* WWCalendarTimeSelector.swift in Sources */,
 				2870B43525FB41A10014A4F6 /* DJPageMenuController.swift in Sources */,
 				9A25321F26A7040300E93ACD /* AddressVC.swift in Sources */,
+				9A3BCB0126EB5CFE00827C8D /* PerceptionQueVC.swift in Sources */,
 				9AD558282636DFFA007ED68F /* AccountCell.swift in Sources */,
 				2870B3FD25FB41A10014A4F6 /* KDCircularProgress.swift in Sources */,
 				9A55EB472668EA58006E398A /* InvoiceDetailVC.swift in Sources */,
 				2870B40F25FB41A10014A4F6 /* Config.swift in Sources */,
 				9AC067162639178F00287A44 /* ResourceVC.swift in Sources */,
 				28B27823262EEECC005794E3 /* DownloadAudioVC.swift in Sources */,
+				9A3BCB0826EBA0E600827C8D /* PersonalHistoryCell.swift in Sources */,
 				9A51DF2926382DFC001364EA /* EditProfileVC.swift in Sources */,
 				2824413F2609AC820060292E /* LoginVC.swift in Sources */,
 				9A29854726A92AAB0006227F /* SessionActivityVC.swift in Sources */,
@@ -2467,6 +2490,7 @@
 				9AEBD2DB2689962C0096C291 /* InviteFriendCell.swift in Sources */,
 				283153BE2614489E004001CE /* PlaylistCategoryVC.swift in Sources */,
 				9AC0671C2639304E00287A44 /* FeatureCell.swift in Sources */,
+				9A3BCB0426EB7B8D00827C8D /* PersonalHistoryVC.swift in Sources */,
 				2870B3D125FB41A10014A4F6 /* DJTextField.swift in Sources */,
 				28B5353A260C706200BD8147 /* AreaOfFocusVC.swift in Sources */,
 				9A25321C26A6F7C600E93ACD /* SessionStartVC.swift in Sources */,

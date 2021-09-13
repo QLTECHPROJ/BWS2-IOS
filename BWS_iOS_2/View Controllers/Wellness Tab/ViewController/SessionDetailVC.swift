@@ -39,6 +39,10 @@ class SessionDetailVC: BaseViewController {
     //MARK:- IBAction Methods
     @IBAction func onTappedContinue(_ sender: UIButton) {
     }
+    // MARK:- ACTIONS
+    @IBAction func onTappedBack(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
     
 }
 

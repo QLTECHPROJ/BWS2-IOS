@@ -1,14 +1,14 @@
 //
-//  WellnessStartVC.swift
+//  PersonalHistoryVC.swift
 //  BWS_iOS_2
 //
-//  Created by Mac Mini on 14/07/21.
+//  Created by Mac Mini on 10/09/21.
 //  Copyright © 2021 Dhruvit. All rights reserved.
 //
 
 import UIKit
 
-class WellnessStartVC: BaseViewController {
+class PersonalHistoryVC: BaseViewController {
     
     //MARK:- UIOutlet
     
@@ -30,10 +30,5 @@ class WellnessStartVC: BaseViewController {
     }
     
     //MARK:- IBAction Methods
-    @IBAction func onTappedContinue(_ sender: UIButton) {
-        let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: PerceptionQueVC.self)
-        self.navigationController?.pushViewController(aVC, animated: false)
-    }
-    
-    
+  
 }
