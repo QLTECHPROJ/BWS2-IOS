@@ -57,16 +57,16 @@ class IndexScoreCell: UITableViewCell {
             lblGrowth.isHidden = false
             imgViewUpDown.isHidden = false
             
-            lblGrowth.textColor = Theme.colors.red_CE5060
-            imgViewUpDown.image = UIImage(named: "down_green")
-            imgViewUpDown.tintColor = Theme.colors.red_CE5060
+            lblGrowth.textColor = Theme.colors.green_27B86A
+            imgViewUpDown.image = UIImage(named: "up_green")
+            imgViewUpDown.tintColor = Theme.colors.green_27B86A
         } else {
             lblGrowth.isHidden = false
             imgViewUpDown.isHidden = false
             
-            lblGrowth.textColor = Theme.colors.green_27B86A
-            imgViewUpDown.image = UIImage(named: "up_green")
-            imgViewUpDown.tintColor = Theme.colors.green_27B86A
+            lblGrowth.textColor = Theme.colors.red_CE5060
+            imgViewUpDown.image = UIImage(named: "down_green")
+            imgViewUpDown.tintColor = Theme.colors.red_CE5060
         }
         
         progressView.progress = (indexScore.floatValue / 100)

@@ -82,7 +82,7 @@ class AreaOfFocusVC: BaseViewController {
         footerCollectionview.reloadData()
         buttonEnableDisable()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.footerCollectionview.reloadData()
             let height = self.footerCollectionview.collectionViewLayout.collectionViewContentSize.height
             self.footerCollectionview.frame = CGRect(x: 0, y: 0, width: Int(self.footerCollectionview.frame.width), height:Int(height))
@@ -158,7 +158,7 @@ class AreaOfFocusVC: BaseViewController {
             //            let height = self.arrayCategories.count * 180
             //            self.footerCollectionview.frame = CGRect(x: 0, y: 0, width: Int(self.footerCollectionview.frame.width), height:height)
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 self.footerCollectionview.reloadData()
                 let height = self.footerCollectionview.collectionViewLayout.collectionViewContentSize.height
                 self.footerCollectionview.frame = CGRect(x: 0, y: 0, width: Int(self.footerCollectionview.frame.width), height:Int(height))
