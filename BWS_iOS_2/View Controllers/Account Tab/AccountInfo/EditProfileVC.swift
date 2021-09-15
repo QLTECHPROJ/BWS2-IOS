@@ -49,7 +49,9 @@ class EditProfileVC: BaseViewController {
         if let userData = CoUserDataModel.currentUser {
             let userName = userData.Name.trim.count > 0 ? userData.Name : "Guest"
             let dictUserDetails = ["name":userName,
-                                   "phone":userData.Mobile,
+                                   "phone":"+" + userData.CountryCode + userData.Mobile,
+                                   "mobile":userData.Mobile,
+                                   "countryCode":userData.CountryCode,
                                    "email":userData.Email,
                                    "dob":userData.DOB]
             SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.edit_profile, traits: dictUserDetails)

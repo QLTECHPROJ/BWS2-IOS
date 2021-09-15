@@ -46,9 +46,8 @@ class IndexScoreCell: UITableViewCell {
         lblIndexScore.text = indexScore
         lblIndexScoreValue.text = CoUserDataModel.currentUser?.ScoreLevel ?? "Normal"
         
-        
         let scoreDiff = Int((IndexScoreDiff as NSString).doubleValue.rounded())
-        lblGrowth.text = "\(scoreDiff)%"
+        lblGrowth.text = "\(scoreDiff)"
         
         if ScoreIncDec.trim.count == 0 {
             lblGrowth.isHidden = true

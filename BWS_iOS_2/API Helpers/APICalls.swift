@@ -56,6 +56,7 @@ extension OTPVC {
         var parameters = [String:String]()
         
         let traits = ["name":strName,
+                      "phone":"+" + selectedCountry.Code + strMobile,
                       "mobileNo":strMobile,
                       "email":strEmail,
                       "countryCode":selectedCountry.Code,
@@ -115,6 +116,7 @@ extension OTPVC {
                     }
                     
                     let traits = ["name":userDetails.Name,
+                                  "phone":"+" + self.selectedCountry.Code + userDetails.Mobile,
                                   "mobileNo":userDetails.Mobile,
                                   "email":userDetails.Email,
                                   "countryCode":self.selectedCountry.Code,
@@ -459,11 +461,13 @@ extension UIViewController {
         let parameters = ["DeviceType":APP_TYPE,
                           "CountryCode":country.Code,
                           "MobileNo":mobileNo,
+                          "Email":email,
                           "SignupFlag":signUpFlag,
                           "key":"1"]
         
         // Segment Tracking
         let traits = ["name":username,
+                      "phone":"+" + country.Code + mobileNo,
                       "mobileNo":mobileNo,
                       "email":email,
                       "countryCode":country.Code,
@@ -1551,7 +1555,9 @@ extension EditProfileVC {
                         if let userData = CoUserDataModel.currentUser {
                             let userName = userData.Name.trim.count > 0 ? userData.Name : "Guest"
                             let dictUserDetails = ["name":userName,
-                                                   "phone":userData.Mobile,
+                                                   "phone":"+" + userData.CountryCode + userData.Mobile,
+                                                   "mobile":userData.Mobile,
+                                                   "countryCode":userData.CountryCode,
                                                    "email":userData.Email,
                                                    "dob":userData.DOB]
                             SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.Profile_Changes_Saved, traits: dictUserDetails)

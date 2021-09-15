@@ -113,6 +113,7 @@ class SendOTPModel : EVObject {
 
 class SendOTPDataModel : EVObject {
     var MobileNo = ""
+    var CountryCode = ""
     var OTP = ""
     var errormsg = ""
     var SignupFlag = ""
