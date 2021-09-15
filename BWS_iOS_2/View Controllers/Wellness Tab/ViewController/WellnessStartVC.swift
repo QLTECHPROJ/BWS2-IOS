@@ -31,9 +31,25 @@ class WellnessStartVC: BaseViewController {
     
     //MARK:- IBAction Methods
     @IBAction func onTappedContinue(_ sender: UIButton) {
-        let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: PerceptionQueVC.self)
+        let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: ExpSessionVC.self)
         self.navigationController?.pushViewController(aVC, animated: false)
     }
     
+    @IBAction func onTappedCreatePlaylist(_ sender: UIButton) {
+        
+        let aVC = AppStoryBoard.main.viewController(viewControllerClass:StepVC.self)
+        aVC.strTitle = Theme.strings.step_3_title
+        aVC.strSubTitle = Theme.strings.step_3_subtitle
+        aVC.imageMain = UIImage(named: "profileForm")
+        aVC.viewTapped = {
+            let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: PersonalDetailVC.self)
+            EmpowerProfileFormModel.shared.Step = "1"
+            EmpowerProfileFormModel.shared.UserId = CoUserDataModel.currentUser?.UserId ?? ""
+            self.navigationController?.pushViewController(aVC, animated: false)
+        }
+        aVC.modalPresentationStyle = .overFullScreen
+        self.present(aVC, animated: false, completion: nil)
+        
+    }
     
 }

@@ -35,11 +35,15 @@ class PerceptionQueVC: BaseViewController {
         
         collectionView.register(UINib(nibName:"SubColCell", bundle: nil), forCellWithReuseIdentifier:"SubColCell")
         self.collectionView.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "header")
+        
+        setupUI()
     }
     
     //MARK:- Functions
     override func setupUI() {
-        
+        //scrollview height manage with collectionview and mainView
+        cvHeight.constant = CGFloat(6 * 100)
+        mainViewheight.constant = CGFloat(6 * 100 + 250)
     }
     
     override func setupData() {
