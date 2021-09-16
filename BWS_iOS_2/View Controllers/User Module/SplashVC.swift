@@ -121,7 +121,6 @@ class SplashVC: BaseViewController {
     func verifyRecieptIAP() {
             if (LoginDataModel.currentUser != nil) {
                 if IAPHelper.shared.isIAPEnabled {
-                    showHud()
                     guard let receiptURL = Bundle.main.appStoreReceiptURL, let receiptString = try? Data(contentsOf: receiptURL, options: .alwaysMapped).base64EncodedString(options: []) else {
                         return
                     }
