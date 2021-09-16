@@ -18,6 +18,7 @@ enum AccountMenu : String {
     case invoices = "Invoices"
     case manageUser = "Manage People"
     case faq = "FAQ"
+    case support = "Support"
     case logout = "Log Out"
 }
 
@@ -38,12 +39,12 @@ class AccountVC: BaseViewController {
     
     var arrayImage : [[String]] = [
         ["UserName", "download_account", "Resources", "Reminder"],
-        ["FAQ", "Logout"]
+        ["FAQ", "support_icon", "Logout"]
     ]
     
     var arrayTitle : [[AccountMenu]] = [
         [AccountMenu.accountInfo, AccountMenu.downloads, AccountMenu.resources, AccountMenu.reminder],
-        [AccountMenu.faq, AccountMenu.logout]
+        [AccountMenu.faq, AccountMenu.support, AccountMenu.logout]
     ]
     
     
@@ -308,6 +309,12 @@ class AccountVC: BaseViewController {
             
             let aVC = AppStoryBoard.account.viewController(viewControllerClass: FAQVC.self)
             self.navigationController?.pushViewController(aVC, animated: true)
+            break
+            
+        case .support:
+            let aVC = AppStoryBoard.account.viewController(viewControllerClass: SupportPopupVC.self)
+            aVC.modalPresentationStyle = .overFullScreen
+            self.present(aVC, animated: false, completion: nil)
             break
             
         case .logout:

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2802A72126F325DE00CF9193 /* SupportPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2802A72026F325DE00CF9193 /* SupportPopupVC.swift */; };
+		2802A72226F325DE00CF9193 /* SupportPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2802A72026F325DE00CF9193 /* SupportPopupVC.swift */; };
 		280C48F22600652C00063C03 /* DassAssessmentResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280C48F12600652C00063C03 /* DassAssessmentResultVC.swift */; };
 		280C48F32600652C00063C03 /* DassAssessmentResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280C48F12600652C00063C03 /* DassAssessmentResultVC.swift */; };
 		280C48F52600729900063C03 /* ManageStartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280C48F42600729900063C03 /* ManageStartVC.swift */; };
@@ -578,6 +580,7 @@
 /* Begin PBXFileReference section */
 		0733C7EF64FFD7D079335CF3 /* Pods-BWS_iOS_2_Staging.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BWS_iOS_2_Staging.debug.xcconfig"; path = "Target Support Files/Pods-BWS_iOS_2_Staging/Pods-BWS_iOS_2_Staging.debug.xcconfig"; sourceTree = "<group>"; };
 		2297DCB35FF63C0665FDF246 /* Pods_BWS_iOS_2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BWS_iOS_2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2802A72026F325DE00CF9193 /* SupportPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportPopupVC.swift; sourceTree = "<group>"; };
 		280C48F12600652C00063C03 /* DassAssessmentResultVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DassAssessmentResultVC.swift; sourceTree = "<group>"; };
 		280C48F42600729900063C03 /* ManageStartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageStartVC.swift; sourceTree = "<group>"; };
 		280DFCDC260DA03E00479EE6 /* RecommendedCategoryHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedCategoryHeaderCell.swift; sourceTree = "<group>"; };
@@ -1360,6 +1363,7 @@
 				9AC0672026394B2000287A44 /* FAQ */,
 				28E8094026130ACE00CD80F7 /* AccountVC.swift */,
 				28A4A6FE26901E93008BA106 /* ManageUserVC.swift */,
+				2802A72026F325DE00CF9193 /* SupportPopupVC.swift */,
 			);
 			path = "Account Tab";
 			sourceTree = "<group>";
@@ -2022,6 +2026,7 @@
 				283529A42609DA6F009AB2AA /* OrderSummaryVC.swift in Sources */,
 				28B2F4AC2642C143009A4E5B /* PlanFeaturesCell.swift in Sources */,
 				28E809532613591400CD80F7 /* AudioCollectionCell.swift in Sources */,
+				2802A72226F325DE00CF9193 /* SupportPopupVC.swift in Sources */,
 				2891E2A12643CCF800658B49 /* SelectPlayListCell.swift in Sources */,
 				2870B44825FB41A10014A4F6 /* ReorderController+AutoScroll.swift in Sources */,
 				28ED2FB625FB8C6E00E59C56 /* ProfileForm4VC.swift in Sources */,
@@ -2249,6 +2254,7 @@
 				283529A12609DA1A009AB2AA /* OrderSummaryVC.swift in Sources */,
 				28B2F4AB2642C143009A4E5B /* PlanFeaturesCell.swift in Sources */,
 				28E809522613591400CD80F7 /* AudioCollectionCell.swift in Sources */,
+				2802A72126F325DE00CF9193 /* SupportPopupVC.swift in Sources */,
 				2891E2A02643CCF800658B49 /* SelectPlayListCell.swift in Sources */,
 				2870B44725FB41A10014A4F6 /* ReorderController+AutoScroll.swift in Sources */,
 				28ED2FB525FB8C6E00E59C56 /* ProfileForm4VC.swift in Sources */,

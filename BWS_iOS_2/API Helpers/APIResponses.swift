@@ -10,9 +10,41 @@ import Foundation
 import UIKit
 import EVReflection
 
+// MARK:- API Parameters
 struct APIParameters {
     static let UserId = "UserId"
     static let MainAccountID = "MainAccountID"
+}
+
+// MARK:- Dynamic Contents
+var supportTitle : String {
+    get {
+        return UserDefaults.standard.string(forKey: "supportTitle") ?? "Support"
+    }
+    set {
+        UserDefaults.standard.set(newValue, forKey: "supportTitle")
+        UserDefaults.standard.synchronize()
+    }
+}
+
+var supportText : String {
+    get {
+        return UserDefaults.standard.string(forKey: "supportText") ?? "Please contact support at "
+    }
+    set {
+        UserDefaults.standard.set(newValue, forKey: "supportText")
+        UserDefaults.standard.synchronize()
+    }
+}
+
+var supportEmail : String {
+    get {
+        return UserDefaults.standard.string(forKey: "supportEmail") ?? "support@brainwellnessapp.com.au"
+    }
+    set {
+        UserDefaults.standard.set(newValue, forKey: "supportEmail")
+        UserDefaults.standard.synchronize()
+    }
 }
 
 // MARK:- General API Models
@@ -70,6 +102,7 @@ class AppVersionDataModel : EVObject {
     var displayRegister = ""
     var IsLoginFirstTime = ""
     var segmentKey = ""
+    var supportTitle = ""
     var supportText = ""
     var supportEmail = ""
 }

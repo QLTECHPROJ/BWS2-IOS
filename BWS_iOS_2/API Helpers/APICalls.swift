@@ -25,6 +25,18 @@ extension SplashVC {
                 SegmentTracking.shared.segmentWriteKey = response.ResponseData.segmentKey
                 SegmentTracking.shared.configureSegment()
                 
+                if response.ResponseData.supportTitle.trim.count > 0 {
+                    supportTitle = response.ResponseData.supportTitle
+                }
+                
+                if response.ResponseData.supportText.trim.count > 0 {
+                    supportText = response.ResponseData.supportText
+                }
+                
+                if response.ResponseData.supportEmail.trim.count > 0 {
+                    supportEmail = response.ResponseData.supportEmail
+                }
+                
                 self.handleAppUpdatePopup()
             } else {
                 self.handleRedirection()
