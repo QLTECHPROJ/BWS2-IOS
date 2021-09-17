@@ -24,7 +24,6 @@ class EmpowerProfileForm2Model : EVObject {
 class Step2VC: BaseViewController {
     
     //MARK:- UIOutlet
-    //MARK:- UIOutlet
     @IBOutlet weak var tableview: UITableView!
     @IBOutlet var headerView: UIView!
     @IBOutlet weak var btnPrev : UIButton!
@@ -35,7 +34,7 @@ class Step2VC: BaseViewController {
     
     //MARK:- Variables STEP-2
     var arraySelection = ["YES" , "NO"]
-    var arrayQue = ["Have you received electric shock treatment? *" ,"Have you ever taken drugs other than prescription? *"]
+    var arrayQue = ["Have you received electric shock treatment? *" ,"Have you ever taken drugs other than prescription? *","1. Have you ever experienced a sense of terror in your mind and/or any traumas (psychological or physical)? If so, do you recall the exact moment when it happened? *"]
     var arrsection = [0]
     var selectedOption = 1
     var pageIndex = 0
@@ -131,25 +130,30 @@ class Step2VC: BaseViewController {
             pageIndex = 1
             if EmpowerProfileForm2Model.shared.types_of_drug != "" {
                 selectedOption = 0
+                if arrsection.count == 0 {
+                    arrsection.append(0)
+                }
             }else {
                 selectedOption = 1
+                arrsection.removeDuplicates()
             }
-            arrsection.removeDuplicates()
-            if arrsection.count == 0 {
-                arrsection.append(0)
-            }
+            //arrsection.removeDuplicates()
+            
+            lblTitle.text = arrayQue[pageIndex]
             tableview.reloadData()
             btnPrev.isEnabled = true
         }else if pageIndex == 1 {
             pageIndex = 0
             if EmpowerProfileForm2Model.shared.electric_shock_last_treatment != "" {
                 selectedOption = 0
+                arrsection.removeDuplicates()
+                arrsection.append(0)
             }else {
                 selectedOption = 1
+                arrsection.removeDuplicates()
             }
-            arrsection.removeDuplicates()
-            arrsection.append(0)
             tableview.reloadData()
+            lblTitle.text = arrayQue[pageIndex]
             btnPrev.isEnabled = true
         }else {
             self.navigationController?.popViewController(animated: true)
@@ -188,8 +192,7 @@ class Step2VC: BaseViewController {
             arrsection.removeAll()
             arrsection.insert(0, at: 0)
             arrsection.insert(0, at: 1)
-            lblTitle.text = ""
-            headerView.frame.size.height = 60.0
+            lblTitle.text = arrayQue[pageIndex]
             tableview.reloadData()
         }else {
             EmpowerProfileForm2Model.shared.sense_of_terror = strExperience ?? ""
@@ -268,11 +271,12 @@ extension Step2VC : UITableViewDelegate, UITableViewDataSource {
                     }
                    
                 }else {
-                    cell.lblQue.text = "1. Have you ever experienced a sense of terror in your mind and/or any traumas (psychological or physical)? If so, do you recall the exact moment when it happened? *"
+                    cell.lblQue.text = ""
                     cell.lblDesc.text = "For example, being terrified of the Boogeyman as a child, bullying in school, relationship breakdown, loss of a loved one."
                     cell.txtView.isHidden = false
                     cell.txtfDate.isHidden = true
                     cell.btnDate.isHidden = true
+                    cell.txtView.text = ""
                 }
             
              cell.txtfDate.delegate = self

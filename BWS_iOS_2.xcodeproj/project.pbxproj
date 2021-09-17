@@ -495,7 +495,6 @@
 		9A29854B26A97AB70006227F /* SessionJournerlVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A29854926A97AB60006227F /* SessionJournerlVC.swift */; };
 		9A29854D26A97AF80006227F /* SessionQuetionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A29854C26A97AF80006227F /* SessionQuetionVC.swift */; };
 		9A29854E26A97AF80006227F /* SessionQuetionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A29854C26A97AF80006227F /* SessionQuetionVC.swift */; };
-		9A3603C426F44B1900CF8CF9 /* Step3VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3603C326F44B1900CF8CF9 /* Step3VC.swift */; };
 		9A3603C526F44B1900CF8CF9 /* Step3VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3603C326F44B1900CF8CF9 /* Step3VC.swift */; };
 		9A3BCB0126EB5CFE00827C8D /* PerceptionQueVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3BCB0026EB5CFE00827C8D /* PerceptionQueVC.swift */; };
 		9A3BCB0226EB5CFE00827C8D /* PerceptionQueVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3BCB0026EB5CFE00827C8D /* PerceptionQueVC.swift */; };
@@ -2514,7 +2513,6 @@
 				9A55EB212668B309006E398A /* BillingOrderVC.swift in Sources */,
 				2870B45725FB44700014A4F6 /* NSDateComponents+Timepiece.swift in Sources */,
 				2870B44525FB41A10014A4F6 /* ReorderController+DestinationRow.swift in Sources */,
-				9A3603C426F44B1900CF8CF9 /* Step3VC.swift in Sources */,
 				28ED2FBF25FB931800E59C56 /* OptionsCell.swift in Sources */,
 				2870B3ED25FB41A10014A4F6 /* DJValidation.swift in Sources */,
 				2870B43925FB41A10014A4F6 /* DJPageMenuCell.swift in Sources */,
