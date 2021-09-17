@@ -461,6 +461,8 @@
 		28F812C325FB36CF00DC6AF6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F812C225FB36CF00DC6AF6 /* Constants.swift */; };
 		9A09A00D2698171A0025444B /* ReminderPopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A09A00C2698171A0025444B /* ReminderPopUpVC.swift */; };
 		9A09A00E2698171A0025444B /* ReminderPopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A09A00C2698171A0025444B /* ReminderPopUpVC.swift */; };
+		9A18A84826F3993E007D1A20 /* Step2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A18A84726F3993E007D1A20 /* Step2VC.swift */; };
+		9A18A84926F3993E007D1A20 /* Step2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A18A84726F3993E007D1A20 /* Step2VC.swift */; };
 		9A1A9FD826A0428500E4541F /* SessionBannerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1A9FD626A0428500E4541F /* SessionBannerCell.swift */; };
 		9A1A9FD926A0428500E4541F /* SessionBannerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1A9FD626A0428500E4541F /* SessionBannerCell.swift */; };
 		9A1A9FDA26A0428500E4541F /* SessionBannerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A1A9FD726A0428500E4541F /* SessionBannerCell.xib */; };
@@ -493,6 +495,8 @@
 		9A29854B26A97AB70006227F /* SessionJournerlVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A29854926A97AB60006227F /* SessionJournerlVC.swift */; };
 		9A29854D26A97AF80006227F /* SessionQuetionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A29854C26A97AF80006227F /* SessionQuetionVC.swift */; };
 		9A29854E26A97AF80006227F /* SessionQuetionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A29854C26A97AF80006227F /* SessionQuetionVC.swift */; };
+		9A3603C426F44B1900CF8CF9 /* Step3VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3603C326F44B1900CF8CF9 /* Step3VC.swift */; };
+		9A3603C526F44B1900CF8CF9 /* Step3VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3603C326F44B1900CF8CF9 /* Step3VC.swift */; };
 		9A3BCB0126EB5CFE00827C8D /* PerceptionQueVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3BCB0026EB5CFE00827C8D /* PerceptionQueVC.swift */; };
 		9A3BCB0226EB5CFE00827C8D /* PerceptionQueVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3BCB0026EB5CFE00827C8D /* PerceptionQueVC.swift */; };
 		9A3BCB0426EB7B8D00827C8D /* PersonalHistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3BCB0326EB7B8D00827C8D /* PersonalHistoryVC.swift */; };
@@ -859,6 +863,7 @@
 		8B21B18CDBF9C2C0E59EF0A9 /* Pods-BWS_iOS_2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BWS_iOS_2.debug.xcconfig"; path = "Target Support Files/Pods-BWS_iOS_2/Pods-BWS_iOS_2.debug.xcconfig"; sourceTree = "<group>"; };
 		8B77A1CEEE992185949BB28D /* Pods-BWS_iOS_2_Staging.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BWS_iOS_2_Staging.release.xcconfig"; path = "Target Support Files/Pods-BWS_iOS_2_Staging/Pods-BWS_iOS_2_Staging.release.xcconfig"; sourceTree = "<group>"; };
 		9A09A00C2698171A0025444B /* ReminderPopUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderPopUpVC.swift; sourceTree = "<group>"; };
+		9A18A84726F3993E007D1A20 /* Step2VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step2VC.swift; sourceTree = "<group>"; };
 		9A1A9FD626A0428500E4541F /* SessionBannerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionBannerCell.swift; sourceTree = "<group>"; };
 		9A1A9FD726A0428500E4541F /* SessionBannerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SessionBannerCell.xib; sourceTree = "<group>"; };
 		9A1A9FDC26A0446B00E4541F /* SessionDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailCell.swift; sourceTree = "<group>"; };
@@ -875,6 +880,7 @@
 		9A29854626A92AAB0006227F /* SessionActivityVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionActivityVC.swift; sourceTree = "<group>"; };
 		9A29854926A97AB60006227F /* SessionJournerlVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionJournerlVC.swift; sourceTree = "<group>"; };
 		9A29854C26A97AF80006227F /* SessionQuetionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionQuetionVC.swift; sourceTree = "<group>"; };
+		9A3603C326F44B1900CF8CF9 /* Step3VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step3VC.swift; sourceTree = "<group>"; };
 		9A3BCB0026EB5CFE00827C8D /* PerceptionQueVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerceptionQueVC.swift; sourceTree = "<group>"; };
 		9A3BCB0326EB7B8D00827C8D /* PersonalHistoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalHistoryVC.swift; sourceTree = "<group>"; };
 		9A3BCB0626EBA0E600827C8D /* PersonalHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalHistoryCell.swift; sourceTree = "<group>"; };
@@ -1576,6 +1582,22 @@
 			path = Live;
 			sourceTree = "<group>";
 		};
+		9A18A84526F398C0007D1A20 /* Step-2 */ = {
+			isa = PBXGroup;
+			children = (
+				9A18A84726F3993E007D1A20 /* Step2VC.swift */,
+			);
+			path = "Step-2";
+			sourceTree = "<group>";
+		};
+		9A18A84626F398D3007D1A20 /* Step-3 */ = {
+			isa = PBXGroup;
+			children = (
+				9A3603C326F44B1900CF8CF9 /* Step3VC.swift */,
+			);
+			path = "Step-3";
+			sourceTree = "<group>";
+		};
 		9A55EB1D2668B267006E398A /* BillingOrder */ = {
 			isa = PBXGroup;
 			children = (
@@ -1647,6 +1669,8 @@
 			isa = PBXGroup;
 			children = (
 				9AC4F77026EF2B0A00A07FBB /* Step-1 */,
+				9A18A84526F398C0007D1A20 /* Step-2 */,
+				9A18A84626F398D3007D1A20 /* Step-3 */,
 				9A6D04F4269ECC6A00AD4FBA /* WellnessStartVC.swift */,
 				9A6D04FD269F094600AD4FBA /* ExpSessionVC.swift */,
 				9A6D0500269F097E00AD4FBA /* SessionVC.swift */,
@@ -2244,6 +2268,7 @@
 				2870B45825FB44700014A4F6 /* NSDateComponents+Timepiece.swift in Sources */,
 				9A55EB222668B309006E398A /* BillingOrderVC.swift in Sources */,
 				2870B44625FB41A10014A4F6 /* ReorderController+DestinationRow.swift in Sources */,
+				9A3603C526F44B1900CF8CF9 /* Step3VC.swift in Sources */,
 				28B27826262EEEE1005794E3 /* DownloadPlaylistVC.swift in Sources */,
 				2870B3EE25FB41A10014A4F6 /* DJValidation.swift in Sources */,
 				28ED2FC025FB931800E59C56 /* OptionsCell.swift in Sources */,
@@ -2273,6 +2298,7 @@
 				9A55EB3E2668EA58006E398A /* InvoiceMembershipVC.swift in Sources */,
 				9A55EB342668EA34006E398A /* CancelSubVC.swift in Sources */,
 				2830F1C92617479000E46F89 /* PlaylistDetailVC.swift in Sources */,
+				9A18A84926F3993E007D1A20 /* Step2VC.swift in Sources */,
 				283153BF2614489E004001CE /* PlaylistCategoryVC.swift in Sources */,
 				9A98E42626848401004C889C /* AddUserVC.swift in Sources */,
 				9AEBD2DC2689962C0096C291 /* InviteFriendCell.swift in Sources */,
@@ -2488,6 +2514,7 @@
 				9A55EB212668B309006E398A /* BillingOrderVC.swift in Sources */,
 				2870B45725FB44700014A4F6 /* NSDateComponents+Timepiece.swift in Sources */,
 				2870B44525FB41A10014A4F6 /* ReorderController+DestinationRow.swift in Sources */,
+				9A3603C426F44B1900CF8CF9 /* Step3VC.swift in Sources */,
 				28ED2FBF25FB931800E59C56 /* OptionsCell.swift in Sources */,
 				2870B3ED25FB41A10014A4F6 /* DJValidation.swift in Sources */,
 				2870B43925FB41A10014A4F6 /* DJPageMenuCell.swift in Sources */,
@@ -2517,6 +2544,7 @@
 				9A55EB332668EA34006E398A /* CancelSubVC.swift in Sources */,
 				28E8093826130A8800CD80F7 /* ManageVC.swift in Sources */,
 				2830F1C82617479000E46F89 /* PlaylistDetailVC.swift in Sources */,
+				9A18A84826F3993E007D1A20 /* Step2VC.swift in Sources */,
 				9A98E42526848401004C889C /* AddUserVC.swift in Sources */,
 				9AEBD2DB2689962C0096C291 /* InviteFriendCell.swift in Sources */,
 				283153BE2614489E004001CE /* PlaylistCategoryVC.swift in Sources */,

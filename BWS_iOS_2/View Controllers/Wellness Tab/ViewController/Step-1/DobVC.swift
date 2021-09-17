@@ -36,12 +36,12 @@ class DobVC: BaseViewController {
         txtFDate.addTarget(self, action: #selector(textFieldValueChanged(textField:)), for: .editingChanged)
         self.view.layoutIfNeeded()
         
-        progressView.progress = 0.25
+        progressView.progress = 0.32
         btnPrev.isEnabled = true
         
         btnNext.isEnabled = false
         if EmpowerProfileFormModel.shared.dob.trim.count > 0 {
-            progressView.progress = 0.5
+            progressView.progress = 0.48
             btnNext.isEnabled = true
             viewDate.borderColor = Theme.colors.gray_DDDDDD
             txtFDate.textColor = Theme.colors.textColor
@@ -71,10 +71,10 @@ class DobVC: BaseViewController {
         txtFDate.datePicker?.maximumDate = tenYearsAgo
         txtFDate.dateFormatter.dateFormat = Theme.dateFormats.DOB_App
         
-        if ProfileFormModel.shared.age.trim.count > 0 {
+        if  EmpowerProfileFormModel.shared.dob.trim.count > 0 {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = Theme.dateFormats.DOB_App
-            tenYearsAgo = dateFormatter.date(from: ProfileFormModel.shared.age )
+            tenYearsAgo = dateFormatter.date(from:  EmpowerProfileFormModel.shared.dob )
             
         }
         
@@ -87,7 +87,7 @@ class DobVC: BaseViewController {
             txtFDate.datePicker?.date = tenYearsAgo!
             selectedDOB = tenYearsAgo!
             txtFDate.isHidden = txtFDate.text?.count == 0
-            ProfileFormModel.shared.age = txtFDate.text ?? ""
+            EmpowerProfileFormModel.shared.dob = txtFDate.text ?? ""
         }
         
         //txtDOBTopConst.constant = (txtFDOB.text?.count == 0) ? 0 : 10

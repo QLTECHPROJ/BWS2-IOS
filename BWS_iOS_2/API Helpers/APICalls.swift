@@ -501,6 +501,46 @@ extension UIViewController {
         }
     }
     
+    //MARK:- EEP Module
+    func callEEPProfileAPI(strStep:String, complitionBlock : (() -> ())?) {
+        var parameters = [String:String]()
+        if strStep == "1" {
+            
+            let profileData = EmpowerProfileFormModel.shared
+            parameters  = ["UserId":profileData.UserId,
+                           "Step":"1",
+                           "dob":profileData.dob ,
+                           "title":profileData.title ,
+                           "gender":profileData.gender ,
+                           "home_address":profileData.home_address ,
+                           "suburb":profileData.suburb ,
+                           "postcode":profileData.postcode ,
+                           "ethnicity":profileData.ethnicity ,
+                           "mental_health_challenges":profileData.mental_health_challenges ,
+                           "mental_health_treatments":profileData.mental_health_treatments ]
+            
+        }else if strStep == "2" {
+            
+            let profileData = EmpowerProfileForm2Model.shared
+            parameters  = ["UserId":profileData.UserId,
+                           "Step":"2",
+                           "electric_shock_treatment":profileData.electric_shock_treatment,
+                           "electric_shock_last_treatment":profileData.electric_shock_last_treatment,
+                           "drug_prescription":profileData.drug_prescription,
+                           "types_of_drug":profileData.types_of_drug,
+                           "sense_of_terror":profileData.sense_of_terror]
+            
+        }else {
+            
+        }
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.eepprofile(parameters)) { (response : GeneralModel) in
+            if response.ResponseCode == "200" {
+                showAlertToast(message: response.ResponseMessage)
+            }
+        }
+    }
+    
 }
 
 extension ManageVC {

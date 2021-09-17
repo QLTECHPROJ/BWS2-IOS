@@ -64,7 +64,7 @@
                         <color key="textColor" name="black"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VBZ-XC-tba">
+                    <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VBZ-XC-tba" customClass="DJPickerView" customModule="BWS_2_Staging" customModuleProvider="target">
                         <rect key="frame" x="16" y="193" width="418" height="73"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits"/>

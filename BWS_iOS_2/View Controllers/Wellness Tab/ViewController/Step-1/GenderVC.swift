@@ -27,6 +27,9 @@ class GenderVC: BaseViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+       
+    }
+    override func viewWillAppear(_ animated: Bool) {
         setupUI()
     }
     
@@ -34,26 +37,26 @@ class GenderVC: BaseViewController {
     // MARK:- FUNCTIONS
     override func setupUI() {
         tableView.register(nibWithCellClass: OptionsCell.self)
-        tableView.reloadData()
-        
+       
         tableViewHeightConst.constant = CGFloat(96 * arrayOptions.count)
         self.view.layoutIfNeeded()
         
-        progressView.progress = 0.0
+        progressView.progress = 0.48
         btnPrev.isEnabled = true
-        btnPrev.isHidden = true
         
         btnNext.isEnabled = false
         if EmpowerProfileFormModel.shared.gender.trim.count > 0 {
-            if arrayOptions.contains(ProfileFormModel.shared.gender) {
-                if ProfileFormModel.shared.gender == "Gender X" {
-                    progressView.progress = 0.0
+            if arrayOptions.contains(EmpowerProfileFormModel.shared.gender) {
+                if EmpowerProfileFormModel.shared.genderX == "Gender X" {
+                    progressView.progress = 0.48
                 } else {
-                    progressView.progress = 0.25
+                    progressView.progress = 0.64
+                    btnPrev.isHidden = false
                 }
                 btnNext.isEnabled = true
             }
         }
+        tableView.reloadData()
     }
     
     override func goNext() {
@@ -90,7 +93,7 @@ extension GenderVC : UITableViewDelegate, UITableViewDataSource {
         let optionValue = arrayOptions[indexPath.row]
         cell.buttonOption.setTitle(optionValue, for: .normal)
         
-        if optionValue == ProfileFormModel.shared.gender {
+        if optionValue == EmpowerProfileFormModel.shared.gender {
             cell.buttonOption.borderColor = Theme.colors.purple
             cell.buttonOption.setTitleColor(Theme.colors.purple, for: .normal)
         } else {
@@ -111,6 +114,7 @@ extension GenderVC : UITableViewDelegate, UITableViewDataSource {
             self.goNext()
             self.view.isUserInteractionEnabled = true
         }
+        tableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

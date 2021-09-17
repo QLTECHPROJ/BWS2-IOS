@@ -17,6 +17,7 @@ class AddressVC: BaseViewController {
     @IBOutlet weak var txtfHome: JVFloatLabeledTextField!
     @IBOutlet weak var txtfSuburb: JVFloatLabeledTextField!
     @IBOutlet weak var txtfPostcode: JVFloatLabeledTextField!
+    @IBOutlet weak var progressview: UIProgressView!
     @IBOutlet weak var txtfethincity: JVFloatLabeledTextField!
     
     @IBOutlet weak var lblErrHome: UILabel!
@@ -44,6 +45,10 @@ class AddressVC: BaseViewController {
     //MARK:- Functions
     override func setupUI() {
         
+        if EmpowerProfileFormModel.shared.home_address.trim.count > 0 {
+            progressview.progress = 0.32
+            btnNext.isEnabled = true
+        }
     }
     
     override func setupData() {

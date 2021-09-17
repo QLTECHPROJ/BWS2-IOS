@@ -39,13 +39,13 @@ class GenderXVC: BaseViewController {
         tableViewHeightConst.constant = CGFloat(96 * arrayOptions.count)
         self.view.layoutIfNeeded()
         
-        progressView.progress = 0.0
+        progressView.progress = 0.48
         btnPrev.isEnabled = true
         
         btnNext.isEnabled = false
         if EmpowerProfileFormModel.shared.genderX.trim.count > 0 {
             if arrayOptions.contains(ProfileFormModel.shared.genderX) {
-                progressView.progress = 0.25
+                progressView.progress = 0.64
                 btnNext.isEnabled = true
             }
         }

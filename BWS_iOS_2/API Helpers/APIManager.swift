@@ -91,6 +91,9 @@ enum APIRouter: URLRequestConvertible {
     // Audio Interruption
     case audiointerruption([String:Any])
     
+    //MARK:- EEP Module
+    case eepprofile([String:String])
+    
     var route: APIRoute {
         switch self {
         case .appversion(let data):
@@ -224,6 +227,10 @@ enum APIRouter: URLRequestConvertible {
         // Audio Interruption
         case .audiointerruption(let data):
             return APIRoute(path: "audiointerruption", method: .post, data: data)
+            
+       //MARK:- EEP module
+        case .eepprofile(let data):
+            return APIRoute(path: "eepprofile", method: .post, data: data)
         }
     }
     

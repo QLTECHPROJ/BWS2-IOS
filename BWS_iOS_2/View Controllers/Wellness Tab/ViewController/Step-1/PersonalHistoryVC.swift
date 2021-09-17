@@ -16,20 +16,29 @@ class PersonalHistoryVC: BaseViewController {
     @IBOutlet weak var btnPrev : UIButton!
     @IBOutlet weak var btnNext : UIButton!
     
+    @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var lblDesc: UILabel!
+    @IBOutlet weak var progressview: UIProgressView!
     //MARK:- Variables
     var arraySelection = ["YES" , "NO"]
     var arrayQue = ["Can you please provide us with a brief history of your mental health challenges?*" ,"What treatments have you undertaken to overcome the above challenges?"]
     var arrsection = [0]
     var selectedOption = 1
     var pageIndex = 0
-    var strData:String?
+    var strChallenges:String?
+    var strTreatments:String?
+    var step:String?
     
     //MARK:- View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
+        
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        setupUI()
+        setupData()
+    }
     //MARK:- Functions
     override func setupUI() {
         tableview.delegate = self
@@ -39,11 +48,16 @@ class PersonalHistoryVC: BaseViewController {
         tableview.register(nibWithCellClass: ReminderListCell.self)
         tableview.register(nibWithCellClass: PersonalHistoryCell.self)
         
+        lblTitle.text = arrayQue[pageIndex]
+        
     }
     
     override func setupData() {
+        progressview.progress = 0.64
         if EmpowerProfileFormModel.shared.mental_health_challenges.trim.count > 0 {
-            
+            progressview.progress = 0.96
+        }else if  EmpowerProfileFormModel.shared.mental_health_challenges.trim.count > 0 {
+            progressview.progress = 1.0
         }
     }
     
@@ -54,8 +68,16 @@ class PersonalHistoryVC: BaseViewController {
     @IBAction func prevClicked(sender : UIButton) {
         if pageIndex == 1 {
             pageIndex = 0
-            selectedOption = 1
-            arrsection.append(0)
+            if EmpowerProfileFormModel.shared.mental_health_challenges != "" {
+                selectedOption = 0
+            }else {
+                selectedOption = 1
+            }
+            arrsection.removeDuplicates()
+            if arrsection.count == 0 {
+                arrsection.append(0)
+            }
+            lblTitle.text = arrayQue[pageIndex]
             tableview.reloadData()
         }else {
             self.navigationController?.popViewController(animated: true)
@@ -66,14 +88,26 @@ class PersonalHistoryVC: BaseViewController {
     
     @IBAction func nextClicked(sender : UIButton) {
         if pageIndex == 0 {
-            EmpowerProfileFormModel.shared.mental_health_challenges = strData ?? ""
+            EmpowerProfileFormModel.shared.mental_health_challenges = strChallenges ?? ""
+            pageIndex = 1
+            if EmpowerProfileFormModel.shared.mental_health_treatments != "" {
+                selectedOption = 0
+                
+            }else {
+                selectedOption = 1
+            }
+            arrsection.removeLast()
+            if arrsection.count == 0 {
+                arrsection.append(0)
+            }
+            lblTitle.text = arrayQue[pageIndex]
+            tableview.reloadData()
+            
         }else {
-            EmpowerProfileFormModel.shared.mental_health_treatments = strData ?? ""
+            EmpowerProfileFormModel.shared.mental_health_treatments = strTreatments ?? ""
+            let model = EmpowerProfileFormModel.shared
+            callEEPProfileAPI(strStep: "1", complitionBlock: nil)
         }
-        pageIndex = 1
-        selectedOption = 1
-        arrsection.removeLast()
-        tableview.reloadData()
     }
 }
 
@@ -119,8 +153,19 @@ extension PersonalHistoryVC : UITableViewDelegate, UITableViewDataSource {
             
         }else {
             let cell = tableView.dequeueReusableCell(withClass: PersonalHistoryCell.self)
-            cell.lblQue.text = arrayQue[pageIndex]
+            
+            cell.lblQue.text = ""
+            cell.lblDesc.text = ""
             cell.txtView.delegate = self
+            let data = EmpowerProfileFormModel.shared.mental_health_challenges
+            let data1 = EmpowerProfileFormModel.shared.mental_health_treatments
+            if data != "" {
+                cell.txtView.text = data
+            }else if data1 != "" {
+                cell.txtView.text = data1
+            }else {
+                cell.txtView.text = ""
+            }
             return cell
         }
            
@@ -130,32 +175,16 @@ extension PersonalHistoryVC : UITableViewDelegate, UITableViewDataSource {
         
         selectedOption = indexPath.row
         
-        if selectedOption == 0 {
+        if selectedOption != 1 {
             arrsection.append(0)
-//            let cell = tableView.dequeueReusableCell(withClass: PersonalHistoryCell.self)
-//            cell.lblQue.text = arrayQue[pageIndex]
-//            cell.txtView.delegate = self
-//            tableview.tableFooterView = cell
         }else {
-            arrsection.removeLast()
-            
+            print(arrsection.count)
+            //arrsection.removeAll(where: { $0 == 1 } )
+            arrsection.removeDuplicates()
         }
         
-        tableView.reloadData()
+        tableview.reloadData()
     }
-    
-//    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-//        if selectedOption == 0 {
-//            let cell = tableView.dequeueReusableCell(withClass: PersonalHistoryCell.self)
-//            cell.lblQue.text = arrayQue[pageIndex]
-//            cell.txtView.delegate = self
-//            return cell
-//        }else {
-//            tableview.tableFooterView = nil
-//            return nil
-//        }
-//
-//    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
@@ -165,17 +194,7 @@ extension PersonalHistoryVC : UITableViewDelegate, UITableViewDataSource {
             return 40
         }
     }
-    
-   
-    
-//    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-//        if selectedOption == 0 {
-//            return 400
-//        }else {
-//            return 0
-//        }
-//
-//    }
+
 }
 
 // MARK:- UITextViewDelegate
@@ -183,7 +202,12 @@ extension PersonalHistoryVC : UITextViewDelegate {
     
     func textViewDidEndEditing(_ textView: UITextView) {
         print("Text :- ",textView.text ?? "")
-        strData = textView.text
+        if pageIndex == 0 {
+            strChallenges = textView.text
+        }else {
+           strTreatments = textView.text
+        }
+        
     }
     
 }

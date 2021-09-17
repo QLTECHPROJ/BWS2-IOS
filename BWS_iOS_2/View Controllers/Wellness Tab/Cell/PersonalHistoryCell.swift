@@ -12,7 +12,7 @@ class PersonalHistoryCell: UITableViewCell {
 
     @IBOutlet weak var btnDate: UIButton!
     @IBOutlet weak var lblDesc: UILabel!
-    @IBOutlet weak var txtfDate: UITextField!
+    @IBOutlet weak var txtfDate: DJPickerView!
     @IBOutlet weak var lblQue: UILabel!
     @IBOutlet weak var txtView: UITextView!
     

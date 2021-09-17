@@ -60,7 +60,7 @@ class PersonalDetailVC: BaseViewController {
         btnPrev.isHidden = true
         btnNext.isEnabled = false
         if EmpowerProfileFormModel.shared.title.trim.count > 0 {
-            progressView.progress = 0.5
+            progressView.progress = 0.16
             btnNext.isEnabled = true
         }
     }
@@ -151,7 +151,7 @@ extension PersonalDetailVC : UICollectionViewDelegate, UICollectionViewDelegateF
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        EmpowerProfileFormModel.shared.gender = arrayOptions[indexPath.row]
+        EmpowerProfileFormModel.shared.title = arrayOptions[indexPath.row]
         self.setupUI()
         
         self.view.isUserInteractionEnabled = false
