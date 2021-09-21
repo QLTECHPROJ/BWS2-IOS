@@ -1468,7 +1468,8 @@ extension DayVC {
                           "PlaylistId":strPlaylistID ?? "",
                           "IsSingle":"1",
                           "ReminderTime":time,
-                          "ReminderDay":strDay]
+                          "ReminderDay":strDay,
+                          "localTimezone":TimeZone.current.identifier]
         
         APICallManager.sharedInstance.callAPI(router: APIRouter.setreminder(parameters)) { (response : GeneralModel) in
 

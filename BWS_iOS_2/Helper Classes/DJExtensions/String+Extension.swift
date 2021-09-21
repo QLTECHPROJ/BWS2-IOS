@@ -376,7 +376,7 @@ extension String {
     func UTCToLocal(incomingFormat: String, outGoingFormat: String) -> String {
       let dateFormatter = DateFormatter()
       dateFormatter.dateFormat = incomingFormat
-      dateFormatter.timeZone = TimeZone(abbreviation: "GMT+08:00") // Australian TimeZone
+      // dateFormatter.timeZone = TimeZone(abbreviation: "GMT+08:00") // Australian TimeZone
 
       let dt = dateFormatter.date(from: self)
       dateFormatter.timeZone = TimeZone.current
@@ -393,7 +393,7 @@ extension String {
       dateFormatter.timeZone = TimeZone.current
 
       let dt = dateFormatter.date(from: self)
-      dateFormatter.timeZone = TimeZone(abbreviation: "GMT+08:00") // Australian TimeZone
+      // dateFormatter.timeZone = TimeZone(abbreviation: "GMT+08:00") // Australian TimeZone
       dateFormatter.dateFormat = outGoingFormat
 
       return dateFormatter.string(from: dt ?? Date())

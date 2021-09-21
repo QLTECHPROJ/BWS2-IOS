@@ -22,16 +22,16 @@ class CleverTapTracking {
                 "userId":CoUserDataModel.currentUserId,
                 "userGroupId":LoginDataModel.currentMainAccountId,
                 "isAdmin":userDetails.isAdminUser,
-                "Identity":CoUserDataModel.currentUserId,
                 "deviceId":DEVICE_UUID,
                 "deviceType":"iOS",
+                "Identity":CoUserDataModel.currentUserId,
                 "Name":userName,
                 "Email":userDetails.Email,
                 "Phone":"+" + userDetails.CountryCode + userDetails.Mobile,
-                "mobile":userDetails.Mobile,
-                "countryCode":userDetails.CountryCode,
                 "DOB":userDetails.DOB,
                 "Photo":userDetails.Image,
+                "mobile":userDetails.Mobile,
+                "countryCode":userDetails.CountryCode,
                 "isProfileCompleted":userDetails.isProfileCompleted == "1" ? true : false,
                 "isAssessmentCompleted":userDetails.isAssessmentCompleted == "1" ? true : false,
                 "wellnessScore":userDetails.indexScore,
@@ -69,6 +69,12 @@ class CleverTapTracking {
             dictUserDetails["batteryState"] = APPDELEGATE.batteryState
             dictUserDetails["fcmToken"] = FCM_TOKEN
             dictUserDetails["deviceToken"] = DEVICE_TOKEN
+            
+            // optional fields. controls whether the user will be sent email, push etc.
+            dictUserDetails["MSG-push"] = true                      // Enable push notifications
+            dictUserDetails["MSG-email"] = true                     // Enable email notifications
+            dictUserDetails["MSG-sms"] = true                       // Enable SMS notifications
+            dictUserDetails["MSG-whatsapp"] = true                  // Enable WhatsApp notifications
             
             CleverTap.sharedInstance()?.onUserLogin(dictUserDetails)
             CleverTap.sharedInstance()?.profilePush(dictUserDetails)
