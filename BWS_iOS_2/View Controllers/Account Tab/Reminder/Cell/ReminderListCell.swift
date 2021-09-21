@@ -11,6 +11,7 @@ import UIKit
 class ReminderListCell: UITableViewCell {
     
     
+    @IBOutlet weak var lblLineHeight: NSLayoutConstraint!
     
     @IBOutlet weak var btnHeight: NSLayoutConstraint!
     @IBOutlet weak var lblLine: UILabel!

@@ -561,6 +561,7 @@
 		9A98E42926848732004C889C /* SetUpPInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A98E42726848732004C889C /* SetUpPInVC.swift */; };
 		9A9A1C6C2682060E009CF46E /* OTPVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9A1C6B2682060E009CF46E /* OTPVC.swift */; };
 		9A9A1C6D2682060E009CF46E /* OTPVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9A1C6B2682060E009CF46E /* OTPVC.swift */; };
+		9A9AA98826F87B3B00CFC5B5 /* Step3VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3603C326F44B1900CF8CF9 /* Step3VC.swift */; };
 		9ABB10892660C5A000A4C221 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A7505C626578C4900177738 /* StoreKit.framework */; };
 		9AC066FC2639178E00287A44 /* RecAudioBookVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC066EC2639178E00287A44 /* RecAudioBookVC.swift */; };
 		9AC066FD2639178E00287A44 /* RecAudioBookVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC066EC2639178E00287A44 /* RecAudioBookVC.swift */; };
@@ -2513,6 +2514,7 @@
 				9A55EB212668B309006E398A /* BillingOrderVC.swift in Sources */,
 				2870B45725FB44700014A4F6 /* NSDateComponents+Timepiece.swift in Sources */,
 				2870B44525FB41A10014A4F6 /* ReorderController+DestinationRow.swift in Sources */,
+				9A9AA98826F87B3B00CFC5B5 /* Step3VC.swift in Sources */,
 				28ED2FBF25FB931800E59C56 /* OptionsCell.swift in Sources */,
 				2870B3ED25FB41A10014A4F6 /* DJValidation.swift in Sources */,
 				2870B43925FB41A10014A4F6 /* DJPageMenuCell.swift in Sources */,

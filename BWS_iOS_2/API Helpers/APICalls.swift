@@ -531,6 +531,14 @@ extension UIViewController {
                            "sense_of_terror":profileData.sense_of_terror]
             
         }else {
+            let profileData = EmpowerProfileForm3Model.shared
+            parameters  = ["UserId":profileData.UserId,
+                           "Step":"3",
+                           "trauma_history":profileData.trauma_history,
+                           "phychotic_episode":profileData.phychotic_episode,
+                           "psychotic_emotions":profileData.psychotic_emotions,
+                           "suicidal_episode":profileData.suicidal_episode,
+                           "suicidal_emotions":profileData.suicidal_emotions]
             
         }
         

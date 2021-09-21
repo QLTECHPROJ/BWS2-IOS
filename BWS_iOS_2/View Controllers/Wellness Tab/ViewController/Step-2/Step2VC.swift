@@ -65,6 +65,10 @@ class Step2VC: BaseViewController {
         tableview.register(nibWithCellClass: PersonalHistoryCell.self)
         
         lblTitle.text = arrayQue[pageIndex]
+        if pageIndex == 0 {
+            headerView.frame.size.height = 130
+        }
+        
     }
     
     override func setupData() {
@@ -127,6 +131,8 @@ class Step2VC: BaseViewController {
     //MARK:- IBAction Methods
     @IBAction func prevClicked(sender : UIButton) {
         if pageIndex == 2 {
+            progressview.progress = 0.69
+            headerView.frame.size.height = 130
             pageIndex = 1
             if EmpowerProfileForm2Model.shared.types_of_drug != "" {
                 selectedOption = 0
@@ -143,6 +149,8 @@ class Step2VC: BaseViewController {
             tableview.reloadData()
             btnPrev.isEnabled = true
         }else if pageIndex == 1 {
+            progressview.progress = 0.34
+            headerView.frame.size.height = 130
             pageIndex = 0
             if EmpowerProfileForm2Model.shared.electric_shock_last_treatment != "" {
                 selectedOption = 0
@@ -165,6 +173,12 @@ class Step2VC: BaseViewController {
     
     @IBAction func nextClicked(sender : UIButton) {
         if pageIndex == 0 {
+            progressview.progress = 0.34
+            if pageIndex == 0 {
+                headerView.frame.size.height = 130
+            }else if pageIndex == 1 {
+                headerView.frame.size.height = 150
+            }
             EmpowerProfileForm2Model.shared.electric_shock_last_treatment = strTreatmentDate ?? ""
             EmpowerProfileForm2Model.shared.electric_shock_treatment = "1"
             pageIndex = 1
@@ -178,9 +192,12 @@ class Step2VC: BaseViewController {
                 arrsection.append(0)
             }
             lblTitle.text = arrayQue[pageIndex]
+            
             tableview.reloadData()
             
         }else if pageIndex == 1{
+            progressview.progress = 0.69
+            headerView.frame.size.height = 200
             EmpowerProfileForm2Model.shared.types_of_drug = strPrescription ?? ""
             EmpowerProfileForm2Model.shared.drug_prescription = "1"
             pageIndex = 2
@@ -195,6 +212,7 @@ class Step2VC: BaseViewController {
             lblTitle.text = arrayQue[pageIndex]
             tableview.reloadData()
         }else {
+            progressview.progress = 1
             EmpowerProfileForm2Model.shared.sense_of_terror = strExperience ?? ""
             tableview.reloadData()
             let model = EmpowerProfileForm2Model.shared
@@ -272,7 +290,7 @@ extension Step2VC : UITableViewDelegate, UITableViewDataSource {
                    
                 }else {
                     cell.lblQue.text = ""
-                    cell.lblDesc.text = "For example, being terrified of the Boogeyman as a child, bullying in school, relationship breakdown, loss of a loved one."
+                    cell.lblDesc.text = "\nFor example, being terrified of the Boogeyman as a child, bullying in school, relationship breakdown, loss of a loved one."
                     cell.txtView.isHidden = false
                     cell.txtfDate.isHidden = true
                     cell.btnDate.isHidden = true
@@ -307,7 +325,12 @@ extension Step2VC : UITableViewDelegate, UITableViewDataSource {
             if pageIndex == 0 {
                 return 100
             }else {
-                return 400
+                if pageIndex == 2 {
+                    return 250
+                }else {
+                    return 400
+                }
+               
             }
            
         }else {

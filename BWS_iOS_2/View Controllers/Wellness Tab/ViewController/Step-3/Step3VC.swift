@@ -37,6 +37,7 @@ class Step3VC: BaseViewController, UITextFieldDelegate {
     var arrayQue = ["Are you aware of your parents, grandparents or great grandparents ever experiencing a trauma (psychological or physical)? This could include any of the above listed examples and/or being a survivor of the war.","Have you ever experienced psychotic episodes in the past and been hospitalised for them? *" ,"Are you suffering from suicidal thoughts and emotions? *"]
     var arrsection = [0,1]
     var selectedOption = 1
+    var strselectedOption = "Mild"
     var pageIndex = 0
     var strTrauma:String?
     var strEpisode:String?
@@ -74,11 +75,11 @@ class Step3VC: BaseViewController, UITextFieldDelegate {
     
     override func setupData() {
         progressview.progress = 0.0
-        if EmpowerProfileForm2Model.shared.electric_shock_last_treatment.trim.count > 0 {
+        if EmpowerProfileForm3Model.shared.trauma_history.trim.count > 0 {
             progressview.progress = 0.34
-        }else if  EmpowerProfileForm2Model.shared.types_of_drug.trim.count > 0 {
+        }else if  EmpowerProfileForm3Model.shared.psychotic_emotions.trim.count > 0 {
             progressview.progress = 0.69
-        }else if  EmpowerProfileForm2Model.shared.sense_of_terror.trim.count > 0 {
+        }else if  EmpowerProfileForm3Model.shared.suicidal_emotions.trim.count > 0 {
             progressview.progress = 1.0
         }
     }
@@ -86,13 +87,18 @@ class Step3VC: BaseViewController, UITextFieldDelegate {
     //MARK:- IBAction Methods
     @IBAction func prevClicked(sender : UIButton) {
         if pageIndex == 2 {
+            progressview.progress = 0.69
+            headerView.frame.size.height = 150
             pageIndex = 1
             if EmpowerProfileForm3Model.shared.psychotic_emotions != "" {
                 selectedOption = 0
                 if arrsection.count == 0 {
                     arrsection.append(0)
                 }
+               
+                EmpowerProfileForm3Model.shared.phychotic_episode = "1"
             }else {
+                EmpowerProfileForm3Model.shared.phychotic_episode = "0"
                 selectedOption = 1
                 arrsection.removeDuplicates()
             }
@@ -100,14 +106,24 @@ class Step3VC: BaseViewController, UITextFieldDelegate {
             tableview.reloadData()
             btnPrev.isEnabled = true
         }else if pageIndex == 1 {
+            progressview.progress = 0.34
             pageIndex = 0
-            if EmpowerProfileForm2Model.shared.electric_shock_last_treatment != "" {
+            if pageIndex == 0 {
+                headerView.frame.size.height = 250
+            }else if pageIndex == 1 {
+                headerView.frame.size.height = 200
+            }
+            if EmpowerProfileForm3Model.shared.suicidal_emotions != "" {
                 selectedOption = 0
                 arrsection.removeDuplicates()
                 arrsection.append(0)
+                
+                EmpowerProfileForm3Model.shared.suicidal_episode = "1"
             }else {
+                EmpowerProfileForm3Model.shared.suicidal_episode = "0"
                 selectedOption = 1
                 arrsection.removeDuplicates()
+                arrsection.append(0)
             }
             tableview.reloadData()
             lblTitle.text = arrayQue[pageIndex]
@@ -117,19 +133,19 @@ class Step3VC: BaseViewController, UITextFieldDelegate {
             btnPrev.isEnabled = false
         }
         
-        
     }
     
     @IBAction func nextClicked(sender : UIButton) {
         if pageIndex == 0 {
             EmpowerProfileForm3Model.shared.trauma_history = strTrauma ?? ""
+            progressview.progress = 0.34
             pageIndex = 1
             if pageIndex == 0 {
                 headerView.frame.size.height = 250
             }else if pageIndex == 1 {
-                headerView.frame.size.height = 200
+                headerView.frame.size.height = 150
             }
-            if EmpowerProfileForm3Model.shared.trauma_history != "" {
+            if EmpowerProfileForm3Model.shared.psychotic_emotions != "" {
                 selectedOption = 0
             }else {
                 selectedOption = 1
@@ -142,22 +158,37 @@ class Step3VC: BaseViewController, UITextFieldDelegate {
             tableview.reloadData()
             
         }else if pageIndex == 1{
+            progressview.progress = 0.69
+            headerView.frame.size.height = 130
             EmpowerProfileForm3Model.shared.psychotic_emotions = strEpisode ?? ""
-            EmpowerProfileForm3Model.shared.phychotic_episode = "1"
             pageIndex = 2
-            if EmpowerProfileForm3Model.shared.psychotic_emotions != "" {
+            if EmpowerProfileForm3Model.shared.suicidal_emotions != "" {
                 selectedOption = 0
             }else {
                 selectedOption = 1
             }
             arrsection.removeLast()
+            if arrsection.count == 0 {
+                arrsection.append(0)
+            }
             lblTitle.text = arrayQue[pageIndex]
             tableview.reloadData()
         }else {
-            EmpowerProfileForm3Model.shared.suicidal_emotions = strSuicide ?? ""
+            progressview.progress = 1
+            EmpowerProfileForm3Model.shared.suicidal_emotions = strselectedOption
+            if EmpowerProfileForm3Model.shared.suicidal_emotions != "" {
+                EmpowerProfileForm3Model.shared.suicidal_episode = "1"
+            }else {
+                EmpowerProfileForm3Model.shared.suicidal_episode = "0"
+            }
+            if EmpowerProfileForm3Model.shared.psychotic_emotions != "" {
+                EmpowerProfileForm3Model.shared.phychotic_episode = "1"
+            }else {
+                EmpowerProfileForm3Model.shared.phychotic_episode = "0"
+            }
             tableview.reloadData()
-            let model = EmpowerProfileForm2Model.shared
-            callEEPProfileAPI(strStep: "2", complitionBlock: nil)
+            let model = EmpowerProfileForm3Model.shared
+            callEEPProfileAPI(strStep: "3", complitionBlock: nil)
         }
     }
 
@@ -189,12 +220,33 @@ extension Step3VC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            
+        
         if indexPath.section == 0 {
             
             let cell = tableView.dequeueReusableCell(withClass: ReminderListCell.self)
             
-                cell.lblSubTitle.text = arraySelection[indexPath.row]
+            cell.lblSubTitle.text = arraySelection[indexPath.row]
+            cell.lblSubTitle.textColor = .black
+            cell.backgroundColor = .white
+            cell.lblTime.isHidden = true
+            cell.lblTitle.isHidden = true
+            cell.swtchReminder.isHidden = true
+            cell.lblLine.isHidden = true
+            cell.btnHeight.constant = 20
+            
+            if indexPath.row == selectedOption {
+                cell.btnSelect.setImage(UIImage(named: "GreenSelect"), for: .normal)
+            } else {
+                cell.btnSelect.setImage(UIImage(named: "GreenDeselect"), for: .normal)
+            }
+            
+            return cell
+            
+        }else {
+            if pageIndex == 2 {
+                let cell = tableView.dequeueReusableCell(withClass: ReminderListCell.self)
+                
+                cell.lblSubTitle.text = arrayEmotions[indexPath.row]
                 cell.lblSubTitle.textColor = .black
                 cell.backgroundColor = .white
                 cell.lblTime.isHidden = true
@@ -202,86 +254,79 @@ extension Step3VC : UITableViewDelegate, UITableViewDataSource {
                 cell.swtchReminder.isHidden = true
                 cell.lblLine.isHidden = true
                 cell.btnHeight.constant = 20
-                
-                if indexPath.row == selectedOption {
+                if arrayEmotions[indexPath.row].contains(string: strselectedOption) {
                     cell.btnSelect.setImage(UIImage(named: "GreenSelect"), for: .normal)
                 } else {
                     cell.btnSelect.setImage(UIImage(named: "GreenDeselect"), for: .normal)
+                    
                 }
-           
-            return cell
-            
-        }else {
-            if pageIndex == 2 {
-                let cell = tableView.dequeueReusableCell(withClass: ReminderListCell.self)
-                
-                    cell.lblSubTitle.text = arrayEmotions[indexPath.row]
-                    cell.lblSubTitle.textColor = .black
-                    cell.backgroundColor = .white
-                    cell.lblTime.isHidden = true
-                    cell.lblTitle.isHidden = true
-                    cell.swtchReminder.isHidden = true
-                    cell.lblLine.isHidden = true
-                    cell.btnHeight.constant = 20
-                    if indexPath.row == selectedOption {
-                        cell.btnSelect.setImage(UIImage(named: "GreenSelect"), for: .normal)
-                    } else {
-                        cell.btnSelect.setImage(UIImage(named: "GreenDeselect"), for: .normal)
-                    }
-               
                 return cell
             }else {
                 let cell = tableView.dequeueReusableCell(withClass: PersonalHistoryCell.self)
-               
-                    if pageIndex == 0 {
-                        cell.lblQue.text = ""
-                        cell.lblDesc.text = ""
-                        cell.txtView.isHidden = false
-                        cell.txtfDate.isHidden = true
-                        cell.btnDate.isHidden = true
-                        let data = EmpowerProfileForm3Model.shared.trauma_history
-                        if data != "" {
-                            cell.txtView.text = data
-                        }else {
-                            cell.txtView.text = ""
-                        }
-                        
-                    }else if pageIndex == 1 {
-                        cell.lblQue.text = ""
-                        cell.lblDesc.text = ""
-                        cell.txtView.isHidden = false
-                        cell.txtfDate.isHidden = true
-                        cell.btnDate.isHidden = true
-                        let data = EmpowerProfileForm3Model.shared.psychotic_emotions
-                        if data != "" {
-                            cell.txtView.text = data
-                        }else {
-                            cell.txtView.text = ""
-                        }
-                       
-                    }
                 
-                 cell.txtfDate.delegate = self
-                 cell.txtView.delegate = self
+                if pageIndex == 0 {
+                    cell.lblQue.text = ""
+                    cell.lblDesc.text = ""
+                    cell.txtView.isHidden = false
+                    cell.txtfDate.isHidden = true
+                    cell.btnDate.isHidden = true
+                    let data = EmpowerProfileForm3Model.shared.trauma_history
+                    if data != "" {
+                        cell.txtView.text = data
+                    }else {
+                        cell.txtView.text = ""
+                    }
+                    
+                }else if pageIndex == 1 {
+                    cell.lblQue.text = ""
+                    cell.lblDesc.text = ""
+                    cell.txtView.isHidden = false
+                    cell.txtfDate.isHidden = true
+                    cell.btnDate.isHidden = true
+                    let data = EmpowerProfileForm3Model.shared.psychotic_emotions
+                    if data != "" {
+                        cell.txtView.text = data
+                    }else {
+                        cell.txtView.text = ""
+                    }
+                }
+                
+                cell.txtfDate.delegate = self
+                cell.txtView.delegate = self
                 return cell
             }
-           
+            
         }
-           
+        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        selectedOption = indexPath.row
-        
-        if selectedOption != 1 {
-            arrsection.append(0)
+        if pageIndex == 2 {
+            if indexPath.section == 0 {
+                selectedOption = indexPath.row
+                if selectedOption != 1 {
+                    if arrsection.count != 2 {
+                        arrsection.append(0)
+                    }
+                    print(arrsection)
+                }else {
+                    print(arrsection.count)
+                    arrsection.removeDuplicates()
+                }
+            }else {
+                strselectedOption = arrayEmotions[indexPath.row]
+            }
+            
         }else {
-            print(arrsection.count)
-            //arrsection.removeAll(where: { $0 == 1 } )
-            arrsection.removeDuplicates()
+            selectedOption = indexPath.row
+            if selectedOption != 1 {
+                arrsection.append(0)
+            }else {
+                print(arrsection.count)
+                arrsection.removeDuplicates()
+            }
         }
-        
         tableview.reloadData()
     }
     
@@ -293,7 +338,7 @@ extension Step3VC : UITableViewDelegate, UITableViewDataSource {
             }else {
                 return 275
             }
-           
+            
         }else {
             if pageIndex == 0 {
                 return 0
@@ -302,6 +347,34 @@ extension Step3VC : UITableViewDelegate, UITableViewDataSource {
             }
             
         }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 1 {
+            if pageIndex == 2 {
+                return 40
+            }else {
+                return 0
+            }
+            
+        }else {
+            return 0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView1 = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 50))
+        
+        let label = UILabel()
+        label.frame = CGRect.init(x: 16, y: 0, width: headerView1.frame.width-5, height: headerView1.frame.height)
+        label.text = " If the answer is yes, your thoughts and emotions are "
+        label.font = UIFont(name: Theme.fonts.MontserratMedium, size: 14)
+        label.textColor = .black
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        
+        headerView1.addSubview(label)
+        return headerView1
     }
 
 }
