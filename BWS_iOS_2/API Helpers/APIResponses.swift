@@ -810,18 +810,35 @@ class SessionListDataModel : EVObject {
     var completedSession = ""
     var totalSession = ""
     var errormsg = ""
+    var completion_percentage = ""
     var data  = [SessionListDataMainModel]()
 }
 
 class SessionListDataMainModel : EVObject {
     var title = ""
-    //var description = ""
+    var desc = ""
     var status = ""
     var user_id = ""
     var session_id = ""
     var session_date = ""
     var session_time = ""
     var user_session_status = ""
-    var before_session = ""
-    var after_session = ""
+    var before_session = [BeforeSessionModel]()
+    var after_session = [AfterSessionModel]()
+    var status_img = ""
+    var pre_session_audio_title = ""
+    var pre_session_audio_status = ""
+    var booklet_title = ""
+    var booklet_status = ""
+    
+}
+
+class BeforeSessionModel : EVObject {
+    var key = ""
+    var color = ""
+}
+
+class AfterSessionModel : EVObject {
+    var key = ""
+    var color = ""
 }

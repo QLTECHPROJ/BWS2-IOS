@@ -16,12 +16,15 @@ class SessionVC: BaseViewController {
     
     //MARK:- Variables
     var arraySession = [SessionListDataMainModel]()
+    var arrayBeforeSession = [BeforeSessionModel]()
+    var arrayAfterSession = [AfterSessionModel]()
     
     //MARK:- View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         callSessionListAPI()
+        setupData()
     }
     
     //MARK:- Functions
@@ -32,7 +35,10 @@ class SessionVC: BaseViewController {
     }
     
     override func setupData() {
-        
+        for data in arraySession {
+            arrayBeforeSession = data.before_session
+            arrayAfterSession = data.after_session
+        }
     }
     
     // MARK:- ACTIONS
@@ -67,8 +73,8 @@ extension SessionVC : UITableViewDelegate, UITableViewDataSource {
         cell.lblDesc.text = ""
         cell.lblDate.text =  arraySession[indexPath.row].session_date
         cell.lblTime.text =  arraySession[indexPath.row].session_time
-        cell.lblDescBeforeSess.text = arraySession[indexPath.row].before_session
-        cell.lblDescAfterSess.text = arraySession[indexPath.row].after_session
+        //cell.lblDescBeforeSess.text = arrayBeforeSession[indexPath.row].key
+        //cell.lblDescAfterSess.text = arrayAfterSession[indexPath.row].key
         return cell
     }
     
