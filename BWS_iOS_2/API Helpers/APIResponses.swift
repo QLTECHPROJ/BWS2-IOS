@@ -842,3 +842,25 @@ class AfterSessionModel : EVObject {
     var key = ""
     var color = ""
 }
+
+
+// MARK:- Brain Feeling API Models
+class BrainFeelingListModel : EVObject {
+    var ResponseData  : BrainFeelingDataModel?
+    var ResponseCode = ""
+    var ResponseMessage = ""
+    var ResponseStatus = ""
+}
+
+class BrainFeelingDataModel : EVObject {
+    var data = [BrainFeelingModel]()
+    var errormsg = ""
+}
+
+class BrainFeelingModel : EVObject {
+    var id = ""
+    var name = ""
+    var cat_flag = ""
+    var status = ""
+    var isSelected = false
+}
