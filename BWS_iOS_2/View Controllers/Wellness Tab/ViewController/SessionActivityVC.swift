@@ -14,6 +14,7 @@ class SessionActivityVC: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     
     //MARK:- Variables
+    var arrdata = ["journel" , "session activity" , "perception" , "assessment"]
     
     //MARK:- View Life Cycle
     override func viewDidLoad() {
@@ -43,12 +44,12 @@ class SessionActivityVC: BaseViewController {
 extension SessionActivityVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 4
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withClass: ManageUserCell.self)
-        cell.lblTitle.text = "session"
+        cell.lblTitle.text = arrdata[indexPath.row]
         cell.btnCancel.isHidden = true
         cell.imgViewRequestType.isHidden = true
         return cell
@@ -62,7 +63,11 @@ extension SessionActivityVC : UITableViewDelegate, UITableViewDataSource {
         }else if indexPath.row == 1{
             let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: SessionQuetionVC.self)
             self.navigationController?.pushViewController(aVC, animated: false)
-        }else {
+        }else if indexPath.row == 2 {
+            let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: PerceptionQueVC.self)
+            self.navigationController?.pushViewController(aVC, animated: false)
+        }
+        else {
             let aVC = AppStoryBoard.main.viewController(viewControllerClass: AssessmentVC.self)
             self.navigationController?.pushViewController(aVC, animated: false)
         }

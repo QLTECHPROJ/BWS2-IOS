@@ -93,6 +93,9 @@ enum APIRouter: URLRequestConvertible {
     
     //MARK:- EEP Module
     case eepprofile([String:String])
+    case sessionlist([String:String])
+    case sessionsteplist([String:String])
+    case sessionstepstatus([String:String])
     
     var route: APIRoute {
         switch self {
@@ -231,6 +234,12 @@ enum APIRouter: URLRequestConvertible {
        //MARK:- EEP module
         case .eepprofile(let data):
             return APIRoute(path: "eepprofile", method: .post, data: data)
+        case .sessionlist(let data):
+            return APIRoute(path: "sessionlist", method: .post, data: data)
+        case .sessionsteplist(let data):
+            return APIRoute(path: "sessionsteplist", method: .post, data: data)
+        case .sessionstepstatus(let data):
+            return APIRoute(path: "sessionstepstatus", method: .post, data: data)
         }
     }
     

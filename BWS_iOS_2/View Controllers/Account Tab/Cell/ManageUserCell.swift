@@ -17,6 +17,7 @@ class ManageUserCell: UITableViewCell {
     @IBOutlet weak var imgViewRequestType: UIImageView!
     @IBOutlet weak var btnCancel : UIButton!
     @IBOutlet weak var btnSelect : UIButton!
+    @IBOutlet weak var view: UIView!
     
     
     // MARK:- VARIABLES

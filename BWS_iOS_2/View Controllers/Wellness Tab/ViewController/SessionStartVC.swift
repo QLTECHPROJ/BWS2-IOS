@@ -34,7 +34,7 @@ class SessionStartVC: BaseViewController {
     //MARK:- IBAction Methods
   
     @IBAction func onTappedStart(_ sender: UIButton) {
-        let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: AddressVC.self)
+        let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: SessionDownloadVC.self)
         self.navigationController?.pushViewController(aVC, animated: false)
     }
     // MARK:- ACTIONS

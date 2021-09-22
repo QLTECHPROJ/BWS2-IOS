@@ -50,7 +50,10 @@ class PerceptionQueVC: BaseViewController {
         
     }
     
-    //MARK:- IBAction Methods
+    // MARK:- ACTIONS
+    @IBAction func onTappedBack(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
   
 }
 

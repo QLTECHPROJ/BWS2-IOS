@@ -16,11 +16,14 @@ class SessionDetailVC: BaseViewController {
     @IBOutlet weak var tableview: UITableView!
     
     //MARK:- Variables
+    var strSessionId = ""
+    var arraySession = [SessionListDataMainModel]()
     
     //MARK:- View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        callSessionDetail()
     }
     
     //MARK:- Functions
@@ -50,7 +53,7 @@ class SessionDetailVC: BaseViewController {
 extension SessionDetailVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return arraySession.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -60,6 +63,7 @@ extension SessionDetailVC : UITableViewDelegate, UITableViewDataSource {
             return cell
         }else {
             let cell = tableView.dequeueReusableCell(withClass: SessionDetailCell.self)
+            cell.lblTitle.text = arraySession[indexPath.row].title
             return cell
         }
         

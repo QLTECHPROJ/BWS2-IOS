@@ -36,6 +36,7 @@ class SessionDownloadVC: BaseViewController {
     }
     
     @IBAction func onTappedDownloadResponse(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
     }
     // MARK:- ACTIONS
     @IBAction func onTappedBack(_ sender: UIButton) {

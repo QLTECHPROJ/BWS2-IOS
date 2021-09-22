@@ -49,12 +49,14 @@ extension SessionQuetionVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withClass: ManageUserCell.self)
         cell.lblTitle.text = "1"
-        cell.borderWidth = 1
-        cell.borderColor = Theme.colors.gray_DDDDDD
-        cell.clipsToBounds = true
+        cell.view.borderWidth = 1
+        cell.view.borderColor = Theme.colors.gray_DDDDDD
+        cell.view.clipsToBounds = true
         cell.btnCancel.isHidden = true
         cell.imgViewRequestType.isHidden = true
         cell.btnSelect.isHidden = true
+        cell.view.backgroundColor = .clear
+        
         return cell
     }
     

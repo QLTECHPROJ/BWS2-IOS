@@ -24,6 +24,8 @@ class GeneralModel : EVObject {
 }
 
 class GeneralDataModel : EVObject {
+    var completedSession = ""
+    var totalSession = ""
     var errormsg = ""
     var indexScore = ""
     var ScoreLevel = ""
@@ -793,4 +795,33 @@ class ContactModel : EVObject {
     var contactName = ""
     var contactNumber = ""
     var contactImage : UIImage?
+}
+
+
+//MARK:- EEP Module
+class SessionListModel : EVObject {
+    var ResponseData  : SessionListDataModel?
+    var ResponseCode = ""
+    var ResponseMessage = ""
+    var ResponseStatus = ""
+}
+
+class SessionListDataModel : EVObject {
+    var completedSession = ""
+    var totalSession = ""
+    var errormsg = ""
+    var data  = [SessionListDataMainModel]()
+}
+
+class SessionListDataMainModel : EVObject {
+    var title = ""
+    //var description = ""
+    var status = ""
+    var user_id = ""
+    var session_id = ""
+    var session_date = ""
+    var session_time = ""
+    var user_session_status = ""
+    var before_session = ""
+    var after_session = ""
 }

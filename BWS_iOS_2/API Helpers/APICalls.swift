@@ -1669,3 +1669,38 @@ extension CancelSubVC {
         }
     }
 }
+
+//MARK:- EEP Module
+extension SessionVC {
+    //Session List API
+    func callSessionListAPI() {
+        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId]
+
+        APICallManager.sharedInstance.callAPI(router: APIRouter.sessionlist(parameters)) { (response :SessionListModel) in
+
+            if response.ResponseCode == "200" {
+                self.arraySession = response.ResponseData!.data
+                self.tableview.reloadData()
+                showAlertToast(message: response.ResponseMessage)
+            }
+        }
+    }
+}
+
+extension SessionDetailVC {
+    //Session List API
+    func callSessionDetail() {
+        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
+                          "SessionId":strSessionId]
+
+        APICallManager.sharedInstance.callAPI(router: APIRouter.sessionsteplist(parameters)) { (response :SessionListModel) in
+
+            if response.ResponseCode == "200" {
+                self.arraySession = response.ResponseData!.data
+                self.tableview.reloadData()
+                showAlertToast(message: response.ResponseMessage)
+            }
+        }
+    }
+}
+

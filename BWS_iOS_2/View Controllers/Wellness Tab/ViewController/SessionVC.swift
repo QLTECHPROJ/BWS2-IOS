@@ -15,11 +15,13 @@ class SessionVC: BaseViewController {
     @IBOutlet weak var tableview: UITableView!
     
     //MARK:- Variables
+    var arraySession = [SessionListDataMainModel]()
     
     //MARK:- View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        callSessionListAPI()
     }
     
     //MARK:- Functions
@@ -44,7 +46,7 @@ class SessionVC: BaseViewController {
 extension SessionVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return arraySession.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -53,7 +55,7 @@ extension SessionVC : UITableViewDelegate, UITableViewDataSource {
         if indexPath.row == 0 {
             cell.topView.isHidden = true
             cell.bottomView.isHidden = false
-        }else if indexPath.row == 9 {
+        }else if indexPath.row == arraySession.count {
             cell.topView.isHidden = false
             cell.bottomView.isHidden = true
         }else {
@@ -61,11 +63,18 @@ extension SessionVC : UITableViewDelegate, UITableViewDataSource {
             cell.bottomView.isHidden = false
         }
         
+        cell.lblTitle.text = arraySession[indexPath.row].title
+        cell.lblDesc.text = ""
+        cell.lblDate.text =  arraySession[indexPath.row].session_date
+        cell.lblTime.text =  arraySession[indexPath.row].session_time
+        cell.lblDescBeforeSess.text = arraySession[indexPath.row].before_session
+        cell.lblDescAfterSess.text = arraySession[indexPath.row].after_session
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: SessionDetailVC.self)
+        aVC.strSessionId = arraySession[indexPath.row].session_id
         self.navigationController?.pushViewController(aVC, animated: false)
     }
 }

@@ -27,13 +27,13 @@
                         <rect key="frame" x="16" y="10" width="343" height="50"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rebecca Harrison" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sa6-1s-bTh">
-                                <rect key="frame" x="13" y="17" width="116.5" height="16"/>
+                                <rect key="frame" x="13" y="17" width="104.5" height="16"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="13"/>
                                 <color key="textColor" name="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xpz-cd-PQw">
-                                <rect key="frame" x="282" y="11" width="45" height="28"/>
+                                <rect key="frame" x="286" y="11" width="41" height="28"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="13"/>
                                 <state key="normal" title="Cancel">
                                     <color key="titleColor" name="orange_F1646A"/>
@@ -111,6 +111,7 @@
                 <outlet property="imgViewRequestType" destination="KKR-vO-OTx" id="LHf-w6-RZD"/>
                 <outlet property="lblRequestStatus" destination="dBV-xk-3hf" id="70e-4O-CaV"/>
                 <outlet property="lblTitle" destination="sa6-1s-bTh" id="yiS-OC-22f"/>
+                <outlet property="view" destination="VKd-8U-3LF" id="ykJ-XM-fXh"/>
                 <outlet property="viewRequestStatus" destination="6sO-2P-SWn" id="3ij-Ni-Acg"/>
             </connections>
             <point key="canvasLocation" x="138.40579710144928" y="62.946428571428569"/>
