@@ -15,6 +15,8 @@
 		280DFCDF260DA03E00479EE6 /* RecommendedCategoryHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280DFCDC260DA03E00479EE6 /* RecommendedCategoryHeaderCell.swift */; };
 		280DFCE0260DA03E00479EE6 /* RecommendedCategoryHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 280DFCDD260DA03E00479EE6 /* RecommendedCategoryHeaderCell.xib */; };
 		280DFCE1260DA03E00479EE6 /* RecommendedCategoryHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 280DFCDD260DA03E00479EE6 /* RecommendedCategoryHeaderCell.xib */; };
+		2810AE0A26FB493100C8844B /* BrainFeelingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2810AE0926FB493100C8844B /* BrainFeelingVC.swift */; };
+		2810AE0B26FB493100C8844B /* BrainFeelingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2810AE0926FB493100C8844B /* BrainFeelingVC.swift */; };
 		2819848D2638214E00DA5A66 /* SuggestedPlaylistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2819848B2638214E00DA5A66 /* SuggestedPlaylistCell.swift */; };
 		2819848E2638214E00DA5A66 /* SuggestedPlaylistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2819848B2638214E00DA5A66 /* SuggestedPlaylistCell.swift */; };
 		2819848F2638214E00DA5A66 /* SuggestedPlaylistCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2819848C2638214E00DA5A66 /* SuggestedPlaylistCell.xib */; };
@@ -626,6 +628,7 @@
 		280C48F42600729900063C03 /* ManageStartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageStartVC.swift; sourceTree = "<group>"; };
 		280DFCDC260DA03E00479EE6 /* RecommendedCategoryHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedCategoryHeaderCell.swift; sourceTree = "<group>"; };
 		280DFCDD260DA03E00479EE6 /* RecommendedCategoryHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecommendedCategoryHeaderCell.xib; sourceTree = "<group>"; };
+		2810AE0926FB493100C8844B /* BrainFeelingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrainFeelingVC.swift; sourceTree = "<group>"; };
 		2819848B2638214E00DA5A66 /* SuggestedPlaylistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestedPlaylistCell.swift; sourceTree = "<group>"; };
 		2819848C2638214E00DA5A66 /* SuggestedPlaylistCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SuggestedPlaylistCell.xib; sourceTree = "<group>"; };
 		281DE30A2626FD79002CCD9D /* SDDownloadObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDDownloadObject.swift; sourceTree = "<group>"; };
@@ -1682,6 +1685,7 @@
 				9A29854926A97AB60006227F /* SessionJournerlVC.swift */,
 				9A29854C26A97AF80006227F /* SessionQuetionVC.swift */,
 				9A3BCB0026EB5CFE00827C8D /* PerceptionQueVC.swift */,
+				2810AE0926FB493100C8844B /* BrainFeelingVC.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -2222,6 +2226,7 @@
 				9A29854826A92AAB0006227F /* SessionActivityVC.swift in Sources */,
 				2870B41025FB41A10014A4F6 /* Config.swift in Sources */,
 				28813B79263989A40015DA7A /* JSONSerializable+Helper.swift in Sources */,
+				2810AE0B26FB493100C8844B /* BrainFeelingVC.swift in Sources */,
 				2870B3DA25FB41A10014A4F6 /* UIColor+Extension.swift in Sources */,
 				9AC4F77326EF3DFF00A07FBB /* PersonalDetailVC.swift in Sources */,
 				281DE3322626FD79002CCD9D /* PlaylistDownloads+CoreDataProperties.swift in Sources */,
@@ -2468,6 +2473,7 @@
 				9A29854726A92AAB0006227F /* SessionActivityVC.swift in Sources */,
 				28813B78263989A40015DA7A /* JSONSerializable+Helper.swift in Sources */,
 				2870B3D925FB41A10014A4F6 /* UIColor+Extension.swift in Sources */,
+				2810AE0A26FB493100C8844B /* BrainFeelingVC.swift in Sources */,
 				2870B42125FB41A10014A4F6 /* NotificationName+Extention.swift in Sources */,
 				9AC4F77226EF3DFF00A07FBB /* PersonalDetailVC.swift in Sources */,
 				281DE3312626FD79002CCD9D /* PlaylistDownloads+CoreDataProperties.swift in Sources */,

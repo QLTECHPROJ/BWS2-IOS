@@ -1709,3 +1709,36 @@ extension SessionDetailVC {
     }
 }
 
+
+extension BrainFeelingVC {
+    
+    // Fetch Brain Feeling list
+    func callGetBrainFeelingAPI() {
+        APICallManager.sharedInstance.callAPI(router: APIRouter.brainfeelingcat) { (response :BrainFeelingListModel) in
+            
+            if response.ResponseCode == "200" {
+                if let categoryData = response.ResponseData?.data {
+                    self.arrayCategories = categoryData
+                }
+                self.collectionview.reloadData()
+            }
+        }
+    }
+    
+    // Save Brain Feelings
+    func callSaveBrainFeelingAPI(feelings : [String]) {
+        let parameters : [String : Any] = [APIParameters.UserId:CoUserDataModel.currentUserId,
+                                           "SessionId":"1",
+                                           "Type":"before",
+                                           "feeling_cat_id":feelings]
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.brainfeelingsavecat(parameters)) { (response :GeneralModel) in
+            
+            if response.ResponseCode == "200" {
+                showAlertToast(message: response.ResponseMessage)
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
+    }
+    
+}
