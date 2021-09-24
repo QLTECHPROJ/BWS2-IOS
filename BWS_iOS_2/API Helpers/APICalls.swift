@@ -1674,14 +1674,17 @@ extension CancelSubVC {
 extension SessionVC {
     //Session List API
     func callSessionListAPI() {
-        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId]
+        let parameters = [APIParameters.UserId:"1"]
 
-        APICallManager.sharedInstance.callAPI(router: APIRouter.sessionlist(parameters)) { (response :SessionListModel) in
+        APICallManager.sharedInstance.callAPI(router: APIRouter.sessionlist(parameters)) { [self] (response :SessionListModel) in
 
             if response.ResponseCode == "200" {
                 self.arraySession = response.ResponseData!.data
+                self.dictSession = response.ResponseData
+                self.strProgress = response.ResponseData?.completion_percentage
+                self.setupData()
+                self.configureProgressView()
                 self.tableview.reloadData()
-                showAlertToast(message: response.ResponseMessage)
             }
         }
     }
@@ -1690,13 +1693,15 @@ extension SessionVC {
 extension SessionDetailVC {
     //Session List API
     func callSessionDetail() {
-        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
+        let parameters = [APIParameters.UserId:"1",
                           "SessionId":strSessionId]
 
         APICallManager.sharedInstance.callAPI(router: APIRouter.sessionsteplist(parameters)) { (response :SessionListModel) in
 
             if response.ResponseCode == "200" {
+                self.dictSession = response.ResponseData
                 self.arraySession = response.ResponseData!.data
+                self.setupData()
                 self.tableview.reloadData()
                 showAlertToast(message: response.ResponseMessage)
             }

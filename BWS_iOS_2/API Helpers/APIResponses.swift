@@ -811,6 +811,13 @@ class SessionListDataModel : EVObject {
     var totalSession = ""
     var errormsg = ""
     var completion_percentage = ""
+    var session_img = ""
+    var session_title = ""
+    var session_short_desc = ""
+    var session_desc = ""
+    var session_status = ""
+    var session_progress = ""
+    var session_progress_text = ""
     var data  = [SessionListDataMainModel]()
 }
 
@@ -830,6 +837,8 @@ class SessionListDataMainModel : EVObject {
     var pre_session_audio_status = ""
     var booklet_title = ""
     var booklet_status = ""
+    var step_id = ""
+    var user_step_status = ""
     
 }
 

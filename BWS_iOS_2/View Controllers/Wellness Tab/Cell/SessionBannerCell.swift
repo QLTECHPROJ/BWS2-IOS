@@ -10,6 +10,13 @@ import UIKit
 
 class SessionBannerCell: UITableViewCell {
 
+    @IBOutlet weak var lblSessionTitle: UILabel!
+    @IBOutlet weak var lblSessionDesc: UILabel!
+    @IBOutlet weak var lblSession: UILabel!
+    @IBOutlet weak var lblDescProgress: UILabel!
+    @IBOutlet weak var lblProgress: UILabel!
+    @IBOutlet weak var imgProgress: UIImageView!
+    @IBOutlet weak var imgBackground: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

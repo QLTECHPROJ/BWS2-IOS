@@ -224,6 +224,10 @@ struct AppColors {
     let purple = UIColor(hex: "6C63FF")
     
     let textColor = UIColor(hex: "313131")
+    let newPurple = UIColor(hex: "9A86BB")
+    let darkPurple = UIColor(hex: "796B8F")
+    let darkRed = UIColor(hex: "C44B6C")
+    let Green = UIColor(hex: "27B86A")
 }
 
 
