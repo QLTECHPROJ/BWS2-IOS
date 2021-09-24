@@ -838,8 +838,8 @@ class SessionListDataMainModel : EVObject {
     var booklet_title = ""
     var booklet_status = ""
     var step_id = ""
+    var step_type = ""
     var user_step_status = ""
-    
 }
 
 class BeforeSessionModel : EVObject {
@@ -872,4 +872,21 @@ class BrainFeelingModel : EVObject {
     var cat_flag = ""
     var status = ""
     var isSelected = false
+}
+
+// MARK:- Step Type One API Models
+class SessionDescriptionModel : EVObject {
+    var ResponseData  : SessionDescriptionDataModel?
+    var ResponseCode = ""
+    var ResponseMessage = ""
+    var ResponseStatus = ""
+}
+
+class SessionDescriptionDataModel : EVObject {
+    var session_title = ""
+    var step_title = ""
+    var step_short_description = ""
+    var step_long_description = ""
+    var step_audio : AudioDetailsDataModel?
+    var errormsg = ""
 }

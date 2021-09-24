@@ -91,8 +91,13 @@ extension SessionDetailVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: SessionDescVC.self)
-        self.navigationController?.pushViewController(aVC, animated: false)
+        if indexPath.section == 1 {
+            if arraySession[indexPath.row].step_type == "1" {
+                let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: SessionDescVC.self)
+                aVC.sessionStepData = arraySession[indexPath.row]
+                self.navigationController?.pushViewController(aVC, animated: false)
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

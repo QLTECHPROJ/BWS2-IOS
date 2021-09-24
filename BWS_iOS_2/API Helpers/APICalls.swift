@@ -1742,3 +1742,23 @@ extension BrainFeelingVC {
     }
     
 }
+
+
+extension SessionDescVC {
+    
+    // Save Brain Feelings
+    func callSessionDescriptionAPI() {
+        let parameters : [String : Any] = [APIParameters.UserId:CoUserDataModel.currentUserId,
+                                           "SessionId":sessionStepData?.session_id ?? "",
+                                           "StepId":sessionStepData?.step_id ?? ""]
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.steptypeone(parameters)) { (response :SessionDescriptionModel) in
+            
+            if response.ResponseCode == "200" {
+                self.sessionDescriptionData = response.ResponseData
+                self.setupData()
+            }
+        }
+    }
+    
+}

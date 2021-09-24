@@ -10,20 +10,33 @@ import UIKit
 
 class SessionDescVC: BaseViewController {
     
-    //MARK:- UIOutlet
+    // MARK:- OUTLETS
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableViewHeightConst: NSLayoutConstraint!
     
-    @IBOutlet weak var lblDesc: UILabel!
-    @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var lblSessionName: UILabel!
+    @IBOutlet weak var lblStepName: UILabel!
+    @IBOutlet weak var lblStepDescription: UILabel!
+    
+    
     //MARK:- Variables
+    var sessionStepData : SessionListDataMainModel?
+    var sessionDescriptionData : SessionDescriptionDataModel?
     
-    //MARK:- View Life Cycle
+    
+    // MARK:- VIEW LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Do any additional setup after loading the view.
+        
         setupUI()
+        setupData()
+        
+        callSessionDescriptionAPI()
     }
     
-    //MARK:- Functions
+    
+    // MARK:- FUNCTIONS
     override func setupUI() {
         tableView.delegate = self
         tableView.dataSource = self
@@ -31,36 +44,48 @@ class SessionDescVC: BaseViewController {
     }
     
     override func setupData() {
+        lblSessionName.text = sessionDescriptionData?.session_title ?? ""
+        lblStepName.text = sessionDescriptionData?.step_title ?? ""
+        lblStepDescription.text = sessionDescriptionData?.step_short_description ?? ""
         
+        tableView.reloadData()
+        tableViewHeightConst.constant = 0
+        tableView.isHidden = true
+        
+        if let _ = sessionDescriptionData?.step_audio {
+            tableViewHeightConst.constant = 70
+            tableView.isHidden = false
+        }
     }
     
-    //MARK:- IBAction Methods
-    @IBAction func onTappedContinue(_ sender: UIButton) {
-        let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: SessionStartVC.self)
-        self.navigationController?.pushViewController(aVC, animated: false)
-    }
     // MARK:- ACTIONS
-    @IBAction func onTappedBack(_ sender: UIButton) {
+    @IBAction func backClicked(sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
     
+    @IBAction func continueClicked(sender: UIButton) {
+        let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: SessionStartVC.self)
+        self.navigationController?.pushViewController(aVC, animated: false)
+    }
+    
 }
+
 
 // MARK:- UITableViewDelegate, UITableViewDataSource
 extension SessionDescVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        if let _ = sessionDescriptionData?.step_audio {
+            return 1
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withClass: SelfDevCell.self)
-        cell.backgroundColor = hexStringToUIColor(hex: "EEEEEE")
-        cell.cornerRadius = 8
-        cell.clipsToBounds = true
-        cell.viewCard.backgroundColor = hexStringToUIColor(hex: "EEEEEE")
-        cell.viewCard.borderColor = .clear
-        cell.viewCard.shadowColor = .clear
+        if let sessionAudio = sessionDescriptionData?.step_audio {
+            cell.configureSessionAudioCell(data: sessionAudio)
+        }
         return cell
     }
     
@@ -71,5 +96,6 @@ extension SessionDescVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 70
     }
+    
 }
 

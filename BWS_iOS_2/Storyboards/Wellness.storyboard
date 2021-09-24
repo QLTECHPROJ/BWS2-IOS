@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ken-F6-g1g">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ken-F6-g1g">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -416,11 +416,11 @@
                                         </constraints>
                                         <state key="normal" image="BackButton"/>
                                         <connections>
-                                            <action selector="onTappedBack:" destination="FIE-65-58D" eventType="touchUpInside" id="g7p-hb-Hsx"/>
+                                            <action selector="backClickedWithSender:" destination="FIE-65-58D" eventType="touchUpInside" id="ugE-iM-npo"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Session 1" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FA5-RM-H6M">
-                                        <rect key="frame" x="154.66666666666666" y="13.333333333333337" width="65.666666666666657" height="17.666666666666671"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Session 1" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FA5-RM-H6M">
+                                        <rect key="frame" x="62" y="13.333333333333337" width="251" height="17.666666666666671"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="15"/>
                                         <color key="textColor" name="DarkBlack"/>
                                         <nil key="highlightedColor"/>
@@ -433,15 +433,16 @@
                                     <constraint firstItem="5eQ-MU-o68" firstAttribute="leading" secondItem="Yyu-UH-gsh" secondAttribute="leading" constant="16" id="WoF-bc-ARy"/>
                                     <constraint firstAttribute="height" constant="44" id="XVZ-pr-sh3"/>
                                     <constraint firstItem="FA5-RM-H6M" firstAttribute="centerX" secondItem="Yyu-UH-gsh" secondAttribute="centerX" id="gYA-N0-RrD"/>
+                                    <constraint firstItem="FA5-RM-H6M" firstAttribute="leading" secondItem="5eQ-MU-o68" secondAttribute="trailing" constant="16" id="s4A-id-d1V"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome &amp; Session Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S7n-J9-2IS">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Welcome &amp; Session Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S7n-J9-2IS">
                                 <rect key="frame" x="16" y="126" width="343" height="21"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="18"/>
                                 <color key="textColor" name="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bTw-j9-Wbf">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bTw-j9-Wbf">
                                 <rect key="frame" x="16" y="249" width="343" height="70"/>
                                 <string key="text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</string>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
@@ -449,7 +450,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bcJ-sW-xJt">
-                                <rect key="frame" x="40" y="688" width="295" height="50"/>
+                                <rect key="frame" x="37.666666666666657" y="708" width="300" height="50"/>
                                 <color key="backgroundColor" red="0.0" green="0.53333333329999999" blue="0.57254901960000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="p20-Wh-omq"/>
@@ -464,10 +465,10 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="onTappedContinue:" destination="FIE-65-58D" eventType="touchUpInside" id="Qhq-bZ-v8Z"/>
+                                    <action selector="continueClickedWithSender:" destination="FIE-65-58D" eventType="touchUpInside" id="trO-qc-HpU"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xnF-TB-z4g">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xnF-TB-z4g">
                                 <rect key="frame" x="16" y="163" width="343" height="70"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
@@ -480,14 +481,15 @@
                         <constraints>
                             <constraint firstItem="xnF-TB-z4g" firstAttribute="leading" secondItem="VpK-w5-5VK" secondAttribute="leading" constant="16" id="5Yy-nW-xGs"/>
                             <constraint firstItem="S7n-J9-2IS" firstAttribute="top" secondItem="Yyu-UH-gsh" secondAttribute="bottom" constant="38" id="6cZ-vb-ZcX"/>
+                            <constraint firstItem="bcJ-sW-xJt" firstAttribute="top" relation="greaterThanOrEqual" secondItem="bTw-j9-Wbf" secondAttribute="bottom" constant="20" id="DVp-pV-7qX"/>
                             <constraint firstItem="xnF-TB-z4g" firstAttribute="top" secondItem="S7n-J9-2IS" secondAttribute="bottom" constant="16" id="IbI-Fd-8gQ"/>
                             <constraint firstItem="S7n-J9-2IS" firstAttribute="leading" secondItem="VpK-w5-5VK" secondAttribute="leading" constant="16" id="RM6-YM-l4v"/>
-                            <constraint firstItem="VpK-w5-5VK" firstAttribute="trailing" secondItem="bcJ-sW-xJt" secondAttribute="trailing" constant="40" id="UIx-nL-EaL"/>
+                            <constraint firstItem="bcJ-sW-xJt" firstAttribute="width" secondItem="oIy-dj-9uL" secondAttribute="width" multiplier="300:375" id="Uqe-mE-8DK"/>
                             <constraint firstItem="bTw-j9-Wbf" firstAttribute="top" secondItem="xnF-TB-z4g" secondAttribute="bottom" constant="16" id="XaL-Dm-vr7"/>
+                            <constraint firstItem="bcJ-sW-xJt" firstAttribute="centerX" secondItem="oIy-dj-9uL" secondAttribute="centerX" id="ZVA-hm-R8a"/>
                             <constraint firstItem="Yyu-UH-gsh" firstAttribute="trailing" secondItem="VpK-w5-5VK" secondAttribute="trailing" id="cYu-wv-TMQ"/>
                             <constraint firstItem="Yyu-UH-gsh" firstAttribute="leading" secondItem="VpK-w5-5VK" secondAttribute="leading" id="dma-MH-qa8"/>
-                            <constraint firstItem="VpK-w5-5VK" firstAttribute="bottom" secondItem="bcJ-sW-xJt" secondAttribute="bottom" constant="40" id="eEf-BE-VHg"/>
-                            <constraint firstItem="bcJ-sW-xJt" firstAttribute="leading" secondItem="VpK-w5-5VK" secondAttribute="leading" constant="40" id="f1H-hy-qwq"/>
+                            <constraint firstItem="VpK-w5-5VK" firstAttribute="bottom" secondItem="bcJ-sW-xJt" secondAttribute="bottom" constant="20" id="eEf-BE-VHg"/>
                             <constraint firstItem="bTw-j9-Wbf" firstAttribute="leading" secondItem="VpK-w5-5VK" secondAttribute="leading" constant="16" id="jYz-6s-9uc"/>
                             <constraint firstItem="VpK-w5-5VK" firstAttribute="trailing" secondItem="S7n-J9-2IS" secondAttribute="trailing" constant="16" id="ogg-PQ-xiv"/>
                             <constraint firstItem="VpK-w5-5VK" firstAttribute="trailing" secondItem="xnF-TB-z4g" secondAttribute="trailing" constant="16" id="xxF-iS-dOZ"/>
@@ -496,9 +498,11 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="lblDesc" destination="bTw-j9-Wbf" id="F3b-AH-iIQ"/>
-                        <outlet property="lblTitle" destination="S7n-J9-2IS" id="H52-VN-LkZ"/>
+                        <outlet property="lblSessionName" destination="FA5-RM-H6M" id="6ly-NE-ezy"/>
+                        <outlet property="lblStepDescription" destination="bTw-j9-Wbf" id="WnE-og-6Hk"/>
+                        <outlet property="lblStepName" destination="S7n-J9-2IS" id="CWr-sd-0g9"/>
                         <outlet property="tableView" destination="xnF-TB-z4g" id="gf3-NT-I78"/>
+                        <outlet property="tableViewHeightConst" destination="Stm-cT-n6s" id="eOa-hR-d5B"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jUI-Su-Zrf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -3303,6 +3307,33 @@ Completed</string>
         <namedColor name="title">
             <color red="0.32899999618530273" green="0.32400000095367432" blue="0.4779999852180481" alpha="0.33000001311302185" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="darkTextColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="darkTextColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="darkTextColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="darkTextColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="darkTextColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="darkTextColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="darkTextColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="darkTextColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="darkTextColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="darkTextColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
