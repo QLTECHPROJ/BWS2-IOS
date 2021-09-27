@@ -8,5 +8,5 @@
 
 import Foundation
 
-let API_BASE_URL = "http://brainwellnessspa.com.au/bwsapi/api/staging/v2/"
+let API_BASE_URL = "http://brainwellnessapp.com.au/bwsapi/api/staging/v2/"
 let shouldEnableIAP = false
