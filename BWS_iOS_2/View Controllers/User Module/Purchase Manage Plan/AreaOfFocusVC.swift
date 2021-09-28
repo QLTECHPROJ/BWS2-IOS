@@ -82,12 +82,7 @@ class AreaOfFocusVC: BaseViewController {
         footerCollectionview.reloadData()
         buttonEnableDisable()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            self.footerCollectionview.reloadData()
-            let height = self.footerCollectionview.collectionViewLayout.collectionViewContentSize.height
-            self.footerCollectionview.frame = CGRect(x: 0, y: 0, width: Int(self.footerCollectionview.frame.width), height:Int(height))
-            self.tableView.tableFooterView = self.footerCollectionview
-        }
+        adjustCollectionViewHeight()
     }
     
     func setInitialData() {
@@ -112,59 +107,50 @@ class AreaOfFocusVC: BaseViewController {
     
     func categoryClicked(indexPath : IndexPath,collectionview:UICollectionView) {
         
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
-            let isSelected = self.arrayCategories[indexPath.section].Details[indexPath.item].isSelected
+        let isSelected = self.arrayCategories[indexPath.section].Details[indexPath.item].isSelected
+        
+        if isSelected {
+            self.arrayCategories[indexPath.section].Details[indexPath.item].isSelected = false
+            let cat = AreaOfFocusModel()
+            cat.MainCat = self.arrayCategories[indexPath.section].View
+            cat.RecommendedCat = self.arrayCategories[indexPath.section].Details[indexPath.item].ProblemName
             
-            if isSelected {
-                self.arrayCategories[indexPath.section].Details[indexPath.item].isSelected = false
+            if let removeIndex = self.arrayAreaOfFocus.firstIndex(of: cat) {
+                self.arrayAreaOfFocus.remove(at: removeIndex)
+            }
+        } else {
+            if self.arrayAreaOfFocus.count < 3 {
+                /*
+                 for subCategory in self.arrayCategories[indexPath.section].Details {
+                     subCategory.isSelected = false
+                     
+                     let cat = AreaOfFocusModel()
+                     cat.MainCat = self.arrayCategories[indexPath.section].View
+                     cat.RecommendedCat = subCategory.ProblemName
+                     
+                     if let removeIndex = self.arrayAreaOfFocus.firstIndex(of: cat) {
+                         self.arrayAreaOfFocus.remove(at: removeIndex)
+                     }
+                 }
+                 */
+                
+                self.arrayCategories[indexPath.section].Details[indexPath.item].isSelected = true
+                
                 let cat = AreaOfFocusModel()
                 cat.MainCat = self.arrayCategories[indexPath.section].View
                 cat.RecommendedCat = self.arrayCategories[indexPath.section].Details[indexPath.item].ProblemName
-                
-                if let removeIndex = self.arrayAreaOfFocus.firstIndex(of: cat) {
-                    self.arrayAreaOfFocus.remove(at: removeIndex)
-                }
+                self.arrayAreaOfFocus.append(cat)
             } else {
-                if self.arrayAreaOfFocus.count < 3 {
-                    /*
-                     for subCategory in self.arrayCategories[indexPath.section].Details {
-                         subCategory.isSelected = false
-                         
-                         let cat = AreaOfFocusModel()
-                         cat.MainCat = self.arrayCategories[indexPath.section].View
-                         cat.RecommendedCat = subCategory.ProblemName
-                         
-                         if let removeIndex = self.arrayAreaOfFocus.firstIndex(of: cat) {
-                             self.arrayAreaOfFocus.remove(at: removeIndex)
-                         }
-                     }
-                     */
-                    
-                    self.arrayCategories[indexPath.section].Details[indexPath.item].isSelected = true
-                    
-                    let cat = AreaOfFocusModel()
-                    cat.MainCat = self.arrayCategories[indexPath.section].View
-                    cat.RecommendedCat = self.arrayCategories[indexPath.section].Details[indexPath.item].ProblemName
-                    self.arrayAreaOfFocus.append(cat)
-                } else {
-                    showAlertToast(message: Theme.strings.alert_max_category)
-                }
-            }
-            
-            self.tableView.alwaysBounceVertical = false
-            self.footerCollectionview.reloadData()
-            self.tableView.reloadData()
-            self.buttonEnableDisable()
-            //            let height = self.arrayCategories.count * 180
-            //            self.footerCollectionview.frame = CGRect(x: 0, y: 0, width: Int(self.footerCollectionview.frame.width), height:height)
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                self.footerCollectionview.reloadData()
-                let height = self.footerCollectionview.collectionViewLayout.collectionViewContentSize.height
-                self.footerCollectionview.frame = CGRect(x: 0, y: 0, width: Int(self.footerCollectionview.frame.width), height:Int(height))
-                self.tableView.tableFooterView = self.footerCollectionview
+                showAlertToast(message: Theme.strings.alert_max_category)
             }
         }
+        
+        tableView.alwaysBounceVertical = false
+        footerCollectionview.reloadData()
+        tableView.reloadData()
+        buttonEnableDisable()
+        
+        adjustCollectionViewHeight()
     }
     
     func searchCategory(searchText : String) {
@@ -219,6 +205,8 @@ class AreaOfFocusVC: BaseViewController {
             tableView.scrollToTop()
             footerCollectionview.reloadData()
         }
+        
+        adjustCollectionViewHeight()
     }
     
     override func buttonEnableDisable() {
@@ -228,6 +216,15 @@ class AreaOfFocusVC: BaseViewController {
         } else {
             btnCategory.isUserInteractionEnabled = false
             btnCategory.backgroundColor = Theme.colors.gray_7E7E7E
+        }
+    }
+    
+    func adjustCollectionViewHeight() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.footerCollectionview.reloadData()
+            let height = self.footerCollectionview.collectionViewLayout.collectionViewContentSize.height
+            self.footerCollectionview.frame = CGRect(x: 0, y: 0, width: Int(self.footerCollectionview.frame.width), height:Int(height))
+            self.tableView.tableFooterView = self.footerCollectionview
         }
     }
     

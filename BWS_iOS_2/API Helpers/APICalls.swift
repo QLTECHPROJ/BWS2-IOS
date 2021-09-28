@@ -12,9 +12,14 @@ extension SplashVC {
     
     // App Version API Call
     func callAppVersionAPI() {
-        let parameters = ["Version":APP_VERSION,
+        var parameters = ["Version":APP_VERSION,
                           "AppType":APP_TYPE,
                           "DeviceID":DEVICE_UUID]
+        
+        if CoUserDataModel.currentUserId.trim.count > 0 {
+            parameters["localTimezone"] = TimeZone.current.identifier
+            parameters[APIParameters.UserId] = CoUserDataModel.currentUserId
+        }
         
         APICallManager.sharedInstance.callAPI(router: APIRouter.appversion(parameters), displayHud: false) { (response : AppVersionModel) in
             if response.ResponseCode == "200" {
@@ -1468,8 +1473,7 @@ extension DayVC {
                           "PlaylistId":strPlaylistID ?? "",
                           "IsSingle":"1",
                           "ReminderTime":time,
-                          "ReminderDay":strDay,
-                          "localTimezone":TimeZone.current.identifier]
+                          "ReminderDay":strDay]
         
         APICallManager.sharedInstance.callAPI(router: APIRouter.setreminder(parameters)) { (response : GeneralModel) in
 

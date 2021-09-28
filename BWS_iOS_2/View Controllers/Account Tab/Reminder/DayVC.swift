@@ -194,7 +194,7 @@ class DayVC: BaseViewController {
         sender.isSelected.toggle()
         if sender.isSelected{
             var intArray = [Int]()
-            for i in 0...arrayWeek.count {
+            for i in 0...arrayWeek.count - 1 {
                 intArray.append(i)
             }
             arrSelectDays = intArray
