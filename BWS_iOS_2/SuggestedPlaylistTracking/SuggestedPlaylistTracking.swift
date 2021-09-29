@@ -38,19 +38,22 @@ class SuggestedPlaylistTracking {
         
         if checkInternet(showToast: false) == false {
             checkTime(time: "\(Date.currentTimeStamp)")
-            if  playlistData.selfCreated == "2"  &&  DJMusicPlayer.shared.playerType == .downloadedPlaylist {
+            if playlistData.Created == "2" || playlistData.selfCreated == "2"
+                && DJMusicPlayer.shared.playerType == .playlist || DJMusicPlayer.shared.playerType == .downloadedPlaylist {
+                
                 if let audioData = DJMusicPlayer.shared.currentlyPlaying {
                     storeAudioActivityTrack(audioData: audioData)
                 }
             }
-        }else {
-            if  playlistData.Created == "2" || playlistData.selfCreated == "2" &&  DJMusicPlayer.shared.playerType == .playlist || DJMusicPlayer.shared.playerType == .downloadedPlaylist{
+        } else {
+            if playlistData.Created == "2" || playlistData.selfCreated == "2"
+                && DJMusicPlayer.shared.playerType == .playlist || DJMusicPlayer.shared.playerType == .downloadedPlaylist {
                 
                 if let audioData = DJMusicPlayer.shared.currentlyPlaying {
                     arrayDownload.removeAll()
                     arrayActivity.removeAll()
                     fetchAudioActivityTrack(audiodata: audioData)
-                }else {
+                } else {
                     for audioData in playlistData.PlaylistSongs {
                         arrayDownload.removeAll()
                         arrayActivity.removeAll()
@@ -125,7 +128,7 @@ class SuggestedPlaylistTracking {
             let str = time.dropLast(3)
             self.startTime = String(str)
             self.completedTime = ""
-        }else {
+        } else {
             let str = time.dropLast(3)
             self.completedTime = String(str)
             self.startTime = ""
@@ -182,12 +185,11 @@ class SuggestedPlaylistTracking {
                     callAudioActivityTracking(trackingData: arrayActivity, audioData: audiodata)
                 }
             } else {
-                
                 if arrayActivity.count > 0 {
                     callAudioActivityTracking(trackingData: arrayActivity, audioData: audiodata)
                     deleteAllRecords()
                     activityTrack()
-                }else {
+                } else {
                     if let audioData = DJMusicPlayer.shared.currentlyPlaying {
                         checkTime(time:"\(Date.currentTimeStamp)")
                         checkActivityTrack(audioData:audioData)

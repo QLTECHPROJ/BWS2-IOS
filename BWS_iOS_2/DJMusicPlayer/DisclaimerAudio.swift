@@ -49,7 +49,7 @@ class DisclaimerAudio {
         let audioData = AudioDetailsDataModel()
         audioData.ID = data.ID
         audioData.Name = "Disclaimer"
-        audioData.AudioFile = "https://brainwellnessspa.com.au/Bws-consumer-panel/html/audio_file/Brain_Wellness_Spa_Declaimer.mp3"
+        audioData.AudioFile = "https://brainwellnessapp.com.au/Bws-consumer-panel/html/audio_file/Brain_Wellness_Spa_Declaimer.mp3"
         audioData.ImageFile = ""
         audioData.AudioDuration = "00:48"
         audioData.AudioDirection = "The audio shall start playing after the disclaimer"
