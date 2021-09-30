@@ -39,6 +39,10 @@ class AddressVC: BaseViewController {
         lblErrPostCode.isHidden = true
         lblErrEthencity.isHidden = true
         
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         buttonEnableDisable()
     }
     
@@ -70,9 +74,8 @@ class AddressVC: BaseViewController {
             btnNext.isEnabled = false
             btnPrev.isEnabled = true
         } else {
-            goNext()
             btnNext.isEnabled = true
-            btnPrev.isEnabled = false
+            btnPrev.isEnabled = true
         }
     }
     
@@ -116,6 +119,7 @@ class AddressVC: BaseViewController {
     
     @IBAction func nextClicked(sender : UIButton) {
         buttonEnableDisable()
+        goNext()
     }
     
 }

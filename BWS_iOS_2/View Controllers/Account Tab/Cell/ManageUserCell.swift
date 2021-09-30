@@ -33,7 +33,7 @@ class ManageUserCell: UITableViewCell {
     // Configure Cell
     func configureCell(data : CoUserDataModel) {
         lblTitle.text = data.Name
-        
+        view.backgroundColor = Theme.colors.off_white_F9F9F9
         if data.InviteStatus == "1" {
             viewRequestStatus.isHidden = false
             btnCancel.isHidden = false

@@ -41,7 +41,7 @@ class SessionVC: BaseViewController {
     override func setupData() {
         if let data = dictSession {
             self.lblPercentage.text = data.completion_percentage + "%"
-            self.lblSessionCount.text = data.completedSession + "/" + data.totalSession
+            self.lblSessionCount.text = data.completedSession + " / " + data.totalSession
         }
     }
     

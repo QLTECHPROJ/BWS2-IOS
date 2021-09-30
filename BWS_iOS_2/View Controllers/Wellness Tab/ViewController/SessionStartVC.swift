@@ -15,11 +15,12 @@ class SessionStartVC: BaseViewController {
     @IBOutlet weak var lblDesc: UILabel!
     
     //MARK:- Variables
+    var movies: [String] = ["A movies array contains the filenames of the movies images. The frame is needed for the size of the images.","The page control needs to update its current page when the scroll view updates so first the view controller needs to conform to the UIScrollViewDelegate protocol. Change the class declaraion line in","hollywood"]
     
     //MARK:- View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        pageControl.numberOfPages = movies.count
     }
     
     //MARK:- Functions
@@ -34,7 +35,7 @@ class SessionStartVC: BaseViewController {
     //MARK:- IBAction Methods
   
     @IBAction func onTappedStart(_ sender: UIButton) {
-        let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: SessionDownloadVC.self)
+        let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: BrainFeelingVC.self)
         self.navigationController?.pushViewController(aVC, animated: false)
     }
     // MARK:- ACTIONS

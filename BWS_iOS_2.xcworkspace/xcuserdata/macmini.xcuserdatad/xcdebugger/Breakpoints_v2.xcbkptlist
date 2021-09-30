@@ -71,16 +71,48 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "02EA2C22-251F-486A-9820-0F02120145CC"
+            uuid = "FB3A0153-EEA1-49F3-A166-A24FE90070A2"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "BWS_iOS_2/View Controllers/Wellness Tab/ViewController/SessionDetailVC.swift"
+            filePath = "BWS_iOS_2/View Controllers/Wellness Tab/Cell/SessionDetailCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
-            landmarkName = "setupData()"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "configureCell(data:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F8A6FB1D-4CD9-42C9-8ABE-83E7ABD880ED"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BWS_iOS_2/View Controllers/Wellness Tab/Cell/SessionDetailCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "configureCell(data:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BEE50BC2-F978-4B99-9614-0E702370FD51"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BWS_iOS_2/View Controllers/Wellness Tab/ViewController/Step-1/PersonalDetailVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "nextClicked(sender:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

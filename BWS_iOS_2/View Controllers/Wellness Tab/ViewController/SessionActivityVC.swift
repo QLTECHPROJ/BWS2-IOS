@@ -52,6 +52,7 @@ extension SessionActivityVC : UITableViewDelegate, UITableViewDataSource {
         cell.lblTitle.text = arrdata[indexPath.row]
         cell.btnCancel.isHidden = true
         cell.imgViewRequestType.isHidden = true
+        cell.view.backgroundColor = Theme.colors.off_white_F9F9F9
         return cell
     }
     

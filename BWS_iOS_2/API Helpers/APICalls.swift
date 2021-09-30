@@ -545,6 +545,36 @@ extension UIViewController {
         APICallManager.sharedInstance.callAPI(router: APIRouter.eepprofile(parameters)) { (response : GeneralModel) in
             if response.ResponseCode == "200" {
                 showAlertToast(message: response.ResponseMessage)
+                if strStep == "1" {
+                    let aVC = AppStoryBoard.main.viewController(viewControllerClass:StepVC.self)
+                    aVC.strTitle = Theme.strings.step_3_title
+                    aVC.strSubTitle = Theme.strings.step_3_subtitle
+                    aVC.imageMain = UIImage(named: "profileForm")
+                    aVC.viewTapped = {
+                        let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: Step2VC.self)
+                        EmpowerProfileForm2Model.shared.Step = "2"
+                        EmpowerProfileForm2Model.shared.UserId = CoUserDataModel.currentUser?.UserId ?? ""
+                        self.navigationController?.pushViewController(aVC, animated: false)
+                    }
+                    aVC.modalPresentationStyle = .overFullScreen
+                    self.present(aVC, animated: false, completion: nil)
+                }else if strStep == "2" {
+                    let aVC = AppStoryBoard.main.viewController(viewControllerClass:StepVC.self)
+                    aVC.strTitle = Theme.strings.step_3_title
+                    aVC.strSubTitle = Theme.strings.step_3_subtitle
+                    aVC.imageMain = UIImage(named: "profileForm")
+                    aVC.viewTapped = {
+                        let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: Step3VC.self)
+                        EmpowerProfileForm3Model.shared.Step = "3"
+                        EmpowerProfileForm3Model.shared.UserId = CoUserDataModel.currentUser?.UserId ?? ""
+                        self.navigationController?.pushViewController(aVC, animated: false)
+                    }
+                    aVC.modalPresentationStyle = .overFullScreen
+                    self.present(aVC, animated: false, completion: nil)
+                }else {
+                    let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: SessionStartVC.self)
+                    self.navigationController?.pushViewController(aVC, animated: false)
+                }
             }
         }
     }
@@ -1736,7 +1766,9 @@ extension BrainFeelingVC {
             
             if response.ResponseCode == "200" {
                 showAlertToast(message: response.ResponseMessage)
-                self.navigationController?.popViewController(animated: true)
+              //  self.navigationController?.popViewController(animated: true)
+                let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: SessionDownloadVC.self)
+                self.navigationController?.pushViewController(aVC, animated: false)
             }
         }
     }

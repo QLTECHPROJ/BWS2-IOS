@@ -27,13 +27,13 @@
                         <rect key="frame" x="16" y="10" width="343" height="50"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rebecca Harrison" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sa6-1s-bTh">
-                                <rect key="frame" x="13" y="17" width="104.5" height="16"/>
+                                <rect key="frame" x="13" y="17" width="116.5" height="16"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="13"/>
                                 <color key="textColor" name="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xpz-cd-PQw">
-                                <rect key="frame" x="286" y="11" width="41" height="28"/>
+                                <rect key="frame" x="282" y="11" width="45" height="28"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="13"/>
                                 <state key="normal" title="Cancel">
                                     <color key="titleColor" name="orange_F1646A"/>
@@ -53,7 +53,7 @@
                                 </state>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" name="F9F9F9"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="sa6-1s-bTh" firstAttribute="centerY" secondItem="VKd-8U-3LF" secondAttribute="centerY" id="587-R2-fVJ"/>
                             <constraint firstItem="xpz-cd-PQw" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="sa6-1s-bTh" secondAttribute="trailing" constant="8" id="5jA-z4-QT8"/>
@@ -120,9 +120,6 @@
     <resources>
         <image name="select_user" width="15" height="15"/>
         <image name="tag_green" width="94" height="29"/>
-        <namedColor name="F9F9F9">
-            <color red="0.97600001096725464" green="0.97600001096725464" blue="0.97600001096725464" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="orange_F1646A">
             <color red="0.94509803921568625" green="0.39215686274509803" blue="0.41568627450980394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

@@ -70,13 +70,14 @@ class PersonalHistoryVC: BaseViewController {
             pageIndex = 0
             if EmpowerProfileFormModel.shared.mental_health_challenges != "" {
                 selectedOption = 0
+                arrsection.removeDuplicates()
+                if arrsection.count == 1 {
+                    arrsection.append(0)
+                }
             }else {
                 selectedOption = 1
             }
-            arrsection.removeDuplicates()
-            if arrsection.count == 0 {
-                arrsection.append(0)
-            }
+           
             lblTitle.text = arrayQue[pageIndex]
             tableview.reloadData()
         }else {
@@ -157,14 +158,21 @@ extension PersonalHistoryVC : UITableViewDelegate, UITableViewDataSource {
             cell.lblQue.text = ""
             cell.lblDesc.text = ""
             cell.txtView.delegate = self
-            let data = EmpowerProfileFormModel.shared.mental_health_challenges
-            let data1 = EmpowerProfileFormModel.shared.mental_health_treatments
-            if data != "" {
-                cell.txtView.text = data
-            }else if data1 != "" {
-                cell.txtView.text = data1
+           
+            if pageIndex == 1 {
+                let data = EmpowerProfileFormModel.shared.mental_health_treatments
+                if data != "" {
+                    cell.txtView.text = data
+                }else {
+                    cell.txtView.text = ""
+                }
             }else {
-                cell.txtView.text = ""
+                let data = EmpowerProfileFormModel.shared.mental_health_challenges
+                if data != "" {
+                    cell.txtView.text = data
+                }else {
+                    cell.txtView.text = ""
+                }
             }
             return cell
         }
