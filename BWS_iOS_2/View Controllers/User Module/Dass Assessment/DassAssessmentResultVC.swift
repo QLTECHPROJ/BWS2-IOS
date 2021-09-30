@@ -131,7 +131,7 @@ class DassAssessmentResultVC: BaseViewController {
     }
     
     override func goNext() {
-        if CoUserDataModel.currentUser?.planDetails.count == 0 {
+        if CoUserDataModel.currentUser?.isPlanPurchased == false {
             let aVC = AppStoryBoard.main.viewController(viewControllerClass:ManagePlanListVC.self)
             let navVC = UINavigationController(rootViewController: aVC)
             navVC.isNavigationBarHidden = true

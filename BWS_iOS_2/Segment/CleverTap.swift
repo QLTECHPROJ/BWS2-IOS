@@ -62,6 +62,23 @@ class CleverTapTracking {
                 dictUserDetails["planDetails"] = dictPlanDetails
             }
             
+            dictUserDetails["paymentType"] = userDetails.paymentType == "1" ? "In App Purchase" : "Stripe"
+            
+            if let oldPlanDetails = userDetails.oldPaymentDetails.first {
+                var dictPlanDetails = [String:Any]()
+                dictPlanDetails["Plan"] = oldPlanDetails.Plan
+                dictPlanDetails["PlanId"] = oldPlanDetails.PlanId
+                dictPlanDetails["PlanFlag"] = oldPlanDetails.PlanFlag
+                dictPlanDetails["OrderTotal"] = oldPlanDetails.OrderTotal
+                dictPlanDetails["PlanStr"] = oldPlanDetails.PlanStr
+                dictPlanDetails["PlanStatus"] = oldPlanDetails.PlanStatus
+                dictPlanDetails["purchaseDate"] = oldPlanDetails.purchaseDate
+                dictPlanDetails["expireDate"] = oldPlanDetails.expireDate
+                dictPlanDetails["CardId"] = oldPlanDetails.CardId
+                
+                dictUserDetails["oldPlanDetails"] = dictPlanDetails
+            }
+            
             dictUserDetails["deviceType"] = "iOS"
             dictUserDetails["appVersion"] = APP_VERSION
             dictUserDetails["deviceID"] = DEVICE_UUID

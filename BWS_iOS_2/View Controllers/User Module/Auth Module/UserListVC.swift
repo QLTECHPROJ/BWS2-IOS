@@ -119,7 +119,7 @@ class UserListVC: BaseViewController {
             } else if coUser.isAssessmentCompleted == "0" {
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass: DoDassAssessmentVC.self)
                 self.navigationController?.pushViewController(aVC, animated: true)
-            } else if coUser.planDetails.count == 0 && coUser.isMainAccount == "1" {
+            } else if coUser.isPlanPurchased == false && coUser.isMainAccount == "1" {
                 let aVC = AppStoryBoard.main.viewController(viewControllerClass: DassAssessmentResultVC.self)
                 self.navigationController?.pushViewController(aVC, animated: true)
             } else if coUser.isProfileCompleted == "0" {

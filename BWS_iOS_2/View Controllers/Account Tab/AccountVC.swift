@@ -77,8 +77,10 @@ class AccountVC: BaseViewController {
         tableView.tableFooterView = tableFooterView
         
         if CoUserDataModel.currentUser?.isMainAccount == "1" {
-            arrayImage[0].append("Billing")
-            arrayTitle[0].append(AccountMenu.billingAndOrder)
+            if CoUserDataModel.currentUser?.paymentType == "1" {
+                arrayImage[0].append("Billing")
+                arrayTitle[0].append(AccountMenu.billingAndOrder)
+            }
             
             arrayImage[0].append("manage_user")
             arrayTitle[0].append(AccountMenu.manageUser)

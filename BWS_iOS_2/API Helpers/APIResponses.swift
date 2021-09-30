@@ -178,7 +178,6 @@ class LoginDataModel : EVObject {
     var isProfileCompleted = ""
     var isAssessmentCompleted = ""
     var indexScore = ""
-    var planDetails = [PlanDetailDataModel]()
     var AreaOfFocus = [AreaOfFocusModel]()
     var AvgSleepTime = ""
     var ScoreLevel = ""
@@ -188,9 +187,25 @@ class LoginDataModel : EVObject {
     var isSelected = false
     var isMainAccount = ""
     var CoUserCount = ""
+    var InviteStatus = ""
     var IsFirst = ""
     var Islock = ""
     var IsInCouser = ""
+    
+    /**
+     0 - Stripe,
+     1 - IAP
+     */
+    var paymentType = ""
+    var oldPaymentDetails = [OldPlanDetailDataModel]()
+    var planDetails = [PlanDetailDataModel]()
+    
+    var isPlanPurchased : Bool {
+        if oldPaymentDetails.count > 0 || planDetails.count > 0 {
+            return true
+        }
+        return false
+    }
     
     static var profileImage : UIImage?
     
@@ -248,6 +263,18 @@ class LoginDataModel : EVObject {
         }
     }
     
+}
+
+class OldPlanDetailDataModel:EVObject {
+    var Plan = ""
+    var PlanId = ""
+    var PlanFlag = ""
+    var OrderTotal = ""
+    var PlanStr = ""
+    var PlanStatus = ""
+    var purchaseDate = ""
+    var expireDate = ""
+    var CardId = ""
 }
 
 class PlanDetailDataModel:EVObject {
@@ -387,6 +414,7 @@ class CategoryListModel : EVObject {
     var ID = ""
     var View = ""
     var Details = [CategoryDataModel]()
+    var errormsg = ""
 }
 
 class CategoryDataModel : EVObject {
@@ -445,7 +473,6 @@ class CoUserDataModel : EVObject {
     var isProfileCompleted = ""
     var isAssessmentCompleted = ""
     var indexScore = ""
-    var planDetails = [PlanDetailDataModel]()
     var AreaOfFocus = [AreaOfFocusModel]()
     var AvgSleepTime = ""
     var ScoreLevel = ""
@@ -459,6 +486,21 @@ class CoUserDataModel : EVObject {
     var IsFirst = ""
     var Islock = ""
     var IsInCouser = ""
+    
+    /**
+     0 - Stripe,
+     1 - IAP
+     */
+    var paymentType = ""
+    var oldPaymentDetails = [OldPlanDetailDataModel]()
+    var planDetails = [PlanDetailDataModel]()
+    
+    var isPlanPurchased : Bool {
+        if oldPaymentDetails.count > 0 || planDetails.count > 0 {
+            return true
+        }
+        return false
+    }
     
     static var profileImage : UIImage?
     

@@ -31,7 +31,7 @@ func shouldLockDownloads() -> Bool {
         return shouldEnableIAP
     }
     
-    if userData.planDetails.count == 0 {
+    if userData.isPlanPurchased == false {
         return shouldEnableIAP
     }
     

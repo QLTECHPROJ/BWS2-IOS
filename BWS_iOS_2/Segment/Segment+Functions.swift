@@ -152,6 +152,23 @@ class SegmentTracking {
                 dictUserDetails["planDetails"] = dictPlanDetails
             }
             
+            dictUserDetails["paymentType"] = userDetails.paymentType == "1" ? "In App Purchase" : "Stripe"
+            
+            if let oldPlanDetails = userDetails.oldPaymentDetails.first {
+                var dictPlanDetails = [String:Any]()
+                dictPlanDetails["Plan"] = oldPlanDetails.Plan
+                dictPlanDetails["PlanId"] = oldPlanDetails.PlanId
+                dictPlanDetails["PlanFlag"] = oldPlanDetails.PlanFlag
+                dictPlanDetails["OrderTotal"] = oldPlanDetails.OrderTotal
+                dictPlanDetails["PlanStr"] = oldPlanDetails.PlanStr
+                dictPlanDetails["PlanStatus"] = oldPlanDetails.PlanStatus
+                dictPlanDetails["purchaseDate"] = oldPlanDetails.purchaseDate
+                dictPlanDetails["expireDate"] = oldPlanDetails.expireDate
+                dictPlanDetails["CardId"] = oldPlanDetails.CardId
+                
+                dictUserDetails["oldPlanDetails"] = dictPlanDetails
+            }
+            
             SegmentTracking.shared.trackEvent(name: CoUserDataModel.currentUserId, traits: dictUserDetails, trackingType: .identify)
             
             // CleverTapTracking
@@ -206,6 +223,23 @@ class SegmentTracking {
                 dictPlanDetails["TrialPeriodEnd"] = planDetails.TrialPeriodEnd
                 
                 dictUserDetails["planDetails"] = dictPlanDetails
+            }
+            
+            dictUserDetails["paymentType"] = userDetails.paymentType == "1" ? "In App Purchase" : "Stripe"
+            
+            if let oldPlanDetails = userDetails.oldPaymentDetails.first {
+                var dictPlanDetails = [String:Any]()
+                dictPlanDetails["Plan"] = oldPlanDetails.Plan
+                dictPlanDetails["PlanId"] = oldPlanDetails.PlanId
+                dictPlanDetails["PlanFlag"] = oldPlanDetails.PlanFlag
+                dictPlanDetails["OrderTotal"] = oldPlanDetails.OrderTotal
+                dictPlanDetails["PlanStr"] = oldPlanDetails.PlanStr
+                dictPlanDetails["PlanStatus"] = oldPlanDetails.PlanStatus
+                dictPlanDetails["purchaseDate"] = oldPlanDetails.purchaseDate
+                dictPlanDetails["expireDate"] = oldPlanDetails.expireDate
+                dictPlanDetails["CardId"] = oldPlanDetails.CardId
+                
+                dictUserDetails["oldPlanDetails"] = dictPlanDetails
             }
             
             SegmentTracking.shared.trackEvent(name: name, traits: dictUserDetails, trackingType: trackingType)
