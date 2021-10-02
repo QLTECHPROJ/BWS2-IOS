@@ -475,6 +475,8 @@
 		9A1A9FE126A0446B00E4541F /* SessionDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A1A9FDD26A0446B00E4541F /* SessionDetailCell.xib */; };
 		9A1A9FE326A0491800E4541F /* SessionDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1A9FE226A0491800E4541F /* SessionDetailVC.swift */; };
 		9A1A9FE426A0491800E4541F /* SessionDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1A9FE226A0491800E4541F /* SessionDetailVC.swift */; };
+		9A1B12D22706FD2D00A74AB9 /* EmpowerPlanListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1B12D12706FD2D00A74AB9 /* EmpowerPlanListVC.swift */; };
+		9A1B12D32706FD2D00A74AB9 /* EmpowerPlanListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1B12D12706FD2D00A74AB9 /* EmpowerPlanListVC.swift */; };
 		9A21683826F05E9C0007814F /* DobVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A21683726F05E9C0007814F /* DobVC.swift */; };
 		9A21683926F05E9C0007814F /* DobVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A21683726F05E9C0007814F /* DobVC.swift */; };
 		9A21683B26F05EDB0007814F /* GenderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A21683A26F05EDB0007814F /* GenderVC.swift */; };
@@ -872,6 +874,7 @@
 		9A1A9FDC26A0446B00E4541F /* SessionDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailCell.swift; sourceTree = "<group>"; };
 		9A1A9FDD26A0446B00E4541F /* SessionDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SessionDetailCell.xib; sourceTree = "<group>"; };
 		9A1A9FE226A0491800E4541F /* SessionDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailVC.swift; sourceTree = "<group>"; };
+		9A1B12D12706FD2D00A74AB9 /* EmpowerPlanListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmpowerPlanListVC.swift; sourceTree = "<group>"; };
 		9A21683726F05E9C0007814F /* DobVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DobVC.swift; sourceTree = "<group>"; };
 		9A21683A26F05EDB0007814F /* GenderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderVC.swift; sourceTree = "<group>"; };
 		9A21683D26F066A80007814F /* GenderXVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderXVC.swift; sourceTree = "<group>"; };
@@ -1686,6 +1689,7 @@
 				9A29854C26A97AF80006227F /* SessionQuetionVC.swift */,
 				9A3BCB0026EB5CFE00827C8D /* PerceptionQueVC.swift */,
 				2810AE0926FB493100C8844B /* BrainFeelingVC.swift */,
+				9A1B12D12706FD2D00A74AB9 /* EmpowerPlanListVC.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -2202,6 +2206,7 @@
 				28C1E0212615F18900600041 /* ViewAllAudioVC.swift in Sources */,
 				28B53545260CC29700BD8147 /* CategoryTableCell.swift in Sources */,
 				28B53531260C635000BD8147 /* SleepTimeVC.swift in Sources */,
+				9A1B12D32706FD2D00A74AB9 /* EmpowerPlanListVC.swift in Sources */,
 				2824414C2609ACE30060292E /* CountryCell.swift in Sources */,
 				9A55EB402668EA58006E398A /* InvoiceAppointmentVC.swift in Sources */,
 				9A29854B26A97AB70006227F /* SessionJournerlVC.swift in Sources */,
@@ -2449,6 +2454,7 @@
 				28C1E0202615F18900600041 /* ViewAllAudioVC.swift in Sources */,
 				28B53544260CC29700BD8147 /* CategoryTableCell.swift in Sources */,
 				28B53530260C635000BD8147 /* SleepTimeVC.swift in Sources */,
+				9A1B12D22706FD2D00A74AB9 /* EmpowerPlanListVC.swift in Sources */,
 				2824414B2609ACE30060292E /* CountryCell.swift in Sources */,
 				9A55EB3F2668EA58006E398A /* InvoiceAppointmentVC.swift in Sources */,
 				9A29854A26A97AB60006227F /* SessionJournerlVC.swift in Sources */,
