@@ -133,9 +133,6 @@ class ReminderListVC: BaseViewController{
         if lockDownloads == "1" {
             openInactivePopup(controller: self)
             sender.isOn.toggle()
-        } else if lockDownloads == "2" {
-            showAlertToast(message: Theme.strings.alert_reactivate_plan)
-            sender.isOn.toggle()
         } else {
             if (sender.isOn == true) {
                 print("on")
@@ -236,9 +233,6 @@ extension ReminderListVC : UITableViewDelegate, UITableViewDataSource {
         
         if lockDownloads == "1" {
             openInactivePopup(controller: self)
-            return
-        } else if lockDownloads == "2" {
-            showAlertToast(message: Theme.strings.alert_reactivate_plan)
             return
         }
         

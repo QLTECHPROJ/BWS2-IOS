@@ -76,7 +76,7 @@ class ViewAllPlaylistVC: BaseViewController {
         let indexPath = self.objCollectionView.indexPathForItem(at: point)
         
         if let indexPath = indexPath {
-            if lockDownloads == "1" || lockDownloads == "2" {
+            if lockDownloads == "1" {
                 
             } else {
                 self.didLongPressAt(playlistIndex: indexPath.row)
@@ -155,8 +155,6 @@ extension ViewAllPlaylistVC : UICollectionViewDataSource, UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if lockDownloads == "1" {
             openInactivePopup(controller: self)
-        } else if lockDownloads == "2" {
-            showAlertToast(message: Theme.strings.alert_reactivate_plan)
         } else {
             if homeData.View == Theme.strings.my_downloads {
                 let aVC = AppStoryBoard.home.viewController(viewControllerClass: PlaylistAudiosVC.self)

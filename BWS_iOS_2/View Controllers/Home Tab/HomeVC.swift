@@ -164,9 +164,6 @@ class HomeVC: BaseViewController {
         if lockDownloads == "1" {
             openInactivePopup(controller: self)
             return
-        } else if lockDownloads == "2" {
-            showAlertToast(message: Theme.strings.alert_reactivate_plan)
-            return
         }
         
         // Segment Tracking
@@ -180,9 +177,6 @@ class HomeVC: BaseViewController {
     func playSuggestedPlaylist() {
         if lockDownloads == "1" {
             openInactivePopup(controller: self)
-            return
-        } else if lockDownloads == "2" {
-            showAlertToast(message: Theme.strings.alert_reactivate_plan)
             return
         }
         
@@ -432,9 +426,6 @@ extension HomeVC : UITableViewDelegate, UITableViewDataSource {
                 if lockDownloads == "1" {
                     openInactivePopup(controller: self)
                     return
-                } else if lockDownloads == "2" {
-                    showAlertToast(message: Theme.strings.alert_reactivate_plan)
-                    return
                 }
                 
                 if let objPlaylist = self.suggstedPlaylist {
@@ -454,9 +445,6 @@ extension HomeVC : UITableViewDelegate, UITableViewDataSource {
                 if self.shouldCheckIndexScore == "1" {
                     if lockDownloads == "1" {
                         openInactivePopup(controller: self)
-                        return
-                    } else if lockDownloads == "2" {
-                        showAlertToast(message: Theme.strings.alert_reactivate_plan)
                         return
                     }
                     

@@ -148,7 +148,7 @@ class PlayerVC: BaseViewController {
         
         var enableOptions = checkInternet()
         if enableOptions == true {
-            if lockDownloads == "1" || lockDownloads == "2" {
+            if lockDownloads == "1" {
                 enableOptions = false
             }
         }
@@ -396,9 +396,6 @@ class PlayerVC: BaseViewController {
         
         if lockDownloads == "1" {
             openInactivePopup(controller: self, openWithNavigation: true)
-            return
-        } else if lockDownloads == "2" {
-            showAlertToast(message: Theme.strings.alert_reactivate_plan)
             return
         }
         

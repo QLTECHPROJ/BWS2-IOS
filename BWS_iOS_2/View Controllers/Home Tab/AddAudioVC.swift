@@ -168,8 +168,6 @@ class AddAudioVC: BaseViewController {
             
         if lockDownloads == "1" {
             openInactivePopup(controller: self)
-        } else if lockDownloads == "2" {
-            showAlertToast(message: Theme.strings.alert_reactivate_plan)
         } else {
             if isComeFromAddAudio {
                 callAddAudioToPlaylistAPI(audioToAdd: audioData.ID, playlistToAdd: "")
@@ -199,8 +197,6 @@ class AddAudioVC: BaseViewController {
         
         if playlistDetails.IsLock == "1" {
             openInactivePopup(controller: self)
-        } else if playlistDetails.IsLock == "2" {
-            showAlertToast(message: Theme.strings.alert_reactivate_plan)
         } else {
             if isComeFromAddAudio {
                 callAddAudioToPlaylistAPI(audioToAdd: "", playlistToAdd: playlistID)
@@ -243,7 +239,7 @@ class AddAudioVC: BaseViewController {
         let indexPath = self.collectionView.indexPathForItem(at: point)
         
         if let indexPath = indexPath {
-            if arrayPlayList[indexPath.row].IsLock == "1" || arrayPlayList[indexPath.row].IsLock == "2" {
+            if arrayPlayList[indexPath.row].IsLock == "1" {
                 
             } else {
                 self.didLongPressAt(playlistIndex: indexPath.row)
@@ -565,8 +561,6 @@ extension AddAudioVC : UITableViewDelegate, UITableViewDataSource {
             
             if arrayPlayList[indexPath.row].IsLock == "1" {
                 openInactivePopup(controller: self)
-            } else if arrayPlayList[indexPath.row].IsLock == "2" {
-                showAlertToast(message: Theme.strings.alert_reactivate_plan)
             } else {
                 // Segment Tracking
                 //                SegmentTracking.shared.playlistEvents(name: SegmentTracking.eventNames.Suggested_Playlist_Clicked, objPlaylist: arrayPlayList[indexPath.row], trackingType: .track)
@@ -579,7 +573,7 @@ extension AddAudioVC : UITableViewDelegate, UITableViewDataSource {
         } else {
             if arraySearch[indexPath.row].Iscategory == "1" {
                 if arraySearch[indexPath.row].IsPlay != "1" {
-                    showAlertToast(message: Theme.strings.alert_reactivate_plan)
+                    openInactivePopup(controller: self)
                 } else {
                     if DJMusicPlayer.shared.currentlyPlaying?.isDisclaimer == true {
                         showAlertToast(message: Theme.strings.alert_disclaimer_playing)
@@ -615,8 +609,6 @@ extension AddAudioVC : UITableViewDelegate, UITableViewDataSource {
                 
                 if lockDownloads == "1" {
                     openInactivePopup(controller: self)
-                } else if lockDownloads == "2" {
-                    showAlertToast(message: Theme.strings.alert_reactivate_plan)
                 } else {
                     let playlistData = PlaylistDetailsModel()
                     playlistData.PlaylistID = arraySearch[indexPath.row].ID
@@ -673,9 +665,6 @@ extension AddAudioVC : UICollectionViewDelegate,UICollectionViewDataSource,UICol
         
         if arrayPlayList[indexPath.row].IsLock == "1" {
             openInactivePopup(controller: self)
-            return
-        } else if  arrayPlayList[indexPath.row].IsLock == "2" {
-            showAlertToast(message: Theme.strings.alert_reactivate_plan)
             return
         }
         

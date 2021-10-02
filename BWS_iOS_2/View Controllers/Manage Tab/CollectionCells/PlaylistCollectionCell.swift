@@ -45,15 +45,15 @@ class PlaylistCollectionCell: UICollectionViewCell {
         btnOptions.isHidden = true
         btnAddtoPlaylist.isHidden = true
         
-        if lockDownloads == "2" || lockDownloads == "1"{
+        if lockDownloads == "1"{
             imgLock.isHidden = false
-        }else {
+        } else {
             imgLock.isHidden = true
         }
     }
     
     func configureCell(playlistData : PlaylistDetailsModel) {
-        if playlistData.IsLock == "1" || playlistData.IsLock == "2" {
+        if playlistData.IsLock == "1" {
             imgLock.isHidden = false
         } else {
             imgLock.isHidden = true
@@ -72,7 +72,7 @@ class PlaylistCollectionCell: UICollectionViewCell {
         
         btnOptions.isHidden = hideOptionButton
         
-        if playlistData.IsLock == "1" || playlistData.IsLock == "2" || playlistData.isSelected == false {
+        if playlistData.IsLock == "1" || playlistData.isSelected == false {
             btnAddtoPlaylist.isHidden = true
             btnAddtoPlaylist.isUserInteractionEnabled = false
         } else {
@@ -83,7 +83,7 @@ class PlaylistCollectionCell: UICollectionViewCell {
     }
     
     func configureCell(playlistData : PlaylistDetailsModel, homeData : PlaylistHomeDataModel) {
-        if lockDownloads == "1" || lockDownloads == "2" {
+        if lockDownloads == "1" {
             imgLock.isHidden = false
         } else {
             imgLock.isHidden = true
@@ -102,7 +102,7 @@ class PlaylistCollectionCell: UICollectionViewCell {
         
         btnOptions.isHidden = hideOptionButton
         
-        if lockDownloads == "1" || lockDownloads == "2" || playlistData.isSelected == false {
+        if lockDownloads == "1" || playlistData.isSelected == false {
             btnAddtoPlaylist.isHidden = true
             btnAddtoPlaylist.isUserInteractionEnabled = false
         } else {
@@ -132,7 +132,7 @@ class PlaylistCollectionCell: UICollectionViewCell {
         
         btnOptions.isHidden = hideOptionButton
         
-        if lockDownloads == "1" || lockDownloads == "2" || homeData.View == Theme.strings.top_categories || audioData.isSelected == false {
+        if lockDownloads == "1" || homeData.View == Theme.strings.top_categories || audioData.isSelected == false {
             btnAddtoPlaylist.isHidden = true
             btnAddtoPlaylist.isUserInteractionEnabled = false
         } else {

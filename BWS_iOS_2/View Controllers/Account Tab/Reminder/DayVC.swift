@@ -180,9 +180,6 @@ class DayVC: BaseViewController {
                 if lockDownloads == "1" {
                     openInactivePopup(controller: self)
                     return
-                } else if lockDownloads == "2" {
-                    showAlertToast(message: Theme.strings.alert_reactivate_plan)
-                    return
                 }
                 
                 self.setReminder(notificationAllowed: notificationAllowed)

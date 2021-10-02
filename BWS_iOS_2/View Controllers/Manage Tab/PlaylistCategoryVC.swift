@@ -59,7 +59,7 @@ class PlaylistCategoryVC: BaseViewController {
     
     override func setupData() {
         if arrayPlaylistHomeData.count > 0 {
-            if lockDownloads == "1" || lockDownloads == "2" {
+            if lockDownloads == "1" {
                 imgLock.isHidden = false
             } else {
                 imgLock.isHidden = true
@@ -181,8 +181,6 @@ class PlaylistCategoryVC: BaseViewController {
         
         if lockDownloads == "1" {
             openInactivePopup(controller: self)
-        } else if lockDownloads == "2" {
-            showAlertToast(message: Theme.strings.alert_reactivate_plan)
         } else {
             // Segment Tracking
             SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.Create_Playlist_Clicked, traits: ["source":"Playlist Main Screen"])

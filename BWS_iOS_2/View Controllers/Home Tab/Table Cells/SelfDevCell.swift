@@ -70,7 +70,7 @@ class SelfDevCell: UITableViewCell {
     
     func generalPlaylistConfigure(data : PlaylistDetailsModel) {
         
-        imgLock.isHidden = !(data.IsLock == "1" || data.IsLock == "2")
+        imgLock.isHidden = !(data.IsLock == "1")
         
         if let imgUrl = URL(string: data.PlaylistImage.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
             imgView.sd_setImage(with: imgUrl, completed: nil)
@@ -160,7 +160,7 @@ class SelfDevCell: UITableViewCell {
         
         btnDownload.setImage(nil, for: UIControl.State.normal)
         
-        imgLock.isHidden = !(data.IsLock == "1" || data.IsLock == "2")
+        imgLock.isHidden = !(data.IsLock == "1")
         
         if let imgUrl = URL(string: data.PlaylistImage.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
             imgView.sd_setImage(with: imgUrl, completed: nil)

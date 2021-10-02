@@ -109,11 +109,7 @@ extension DownloadPlaylistVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if downloadedPlaylists[indexPath.row].IsLock == "1" {
             openInactivePopup(controller: self)
-        }
-        else if downloadedPlaylists[indexPath.row].IsLock == "2"  {
-            showAlertToast(message: Theme.strings.alert_reactivate_plan)
-        }
-        else {
+        } else {
             let aVC = AppStoryBoard.home.viewController(viewControllerClass: PlaylistAudiosVC.self)
             aVC.objPlaylist = downloadedPlaylists[indexPath.row]
             aVC.isFromDownload = true

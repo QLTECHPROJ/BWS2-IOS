@@ -84,7 +84,7 @@ class ManageVC: BaseViewController {
         if let playlistData = suggstedPlaylist {
             playlistMainView.isHidden = false
             
-            imgLock.isHidden = !(lockDownloads == "1" || lockDownloads == "2")
+            imgLock.isHidden = !(lockDownloads == "1")
             
             lblPlaylistName.text = playlistData.PlaylistName
             lblPlaylistDirection.text = playlistData.playlistDirection
@@ -206,9 +206,6 @@ class ManageVC: BaseViewController {
         if lockDownloads == "1" {
             openInactivePopup(controller: self)
             return
-        } else if lockDownloads == "2" {
-            showAlertToast(message: Theme.strings.alert_reactivate_plan)
-            return
         }
         
         if sender.view == playlistBottomView {
@@ -288,7 +285,7 @@ class ManageVC: BaseViewController {
                     DJMusicPlayer.shared.playerType = .audio
                 }
                 
-                if lockDownloads == "1" || lockDownloads == "2" {
+                if lockDownloads == "1" {
                     let arrayPlayableAudios = sectionData.Details.filter { $0.IsPlay == "1" }
                     let newAudioIndex = arrayPlayableAudios.firstIndex(of: audioData) ?? 0
                     
@@ -446,8 +443,6 @@ class ManageVC: BaseViewController {
         
         if lockDownloads == "1" {
             openInactivePopup(controller: self)
-        } else if lockDownloads == "2" {
-            showAlertToast(message: Theme.strings.alert_reactivate_plan)
         } else {
             // Segment Tracking
             SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.Create_Playlist_Clicked, traits: ["source":"Enhance Screen"])
@@ -476,9 +471,6 @@ class ManageVC: BaseViewController {
         if lockDownloads == "1" {
             openInactivePopup(controller: self)
             return
-        } else if lockDownloads == "2" {
-            showAlertToast(message: Theme.strings.alert_reactivate_plan)
-            return
         }
         
         // Segment Tracking
@@ -496,9 +488,6 @@ class ManageVC: BaseViewController {
         
         if lockDownloads == "1" {
             openInactivePopup(controller: self)
-            return
-        } else if lockDownloads == "2" {
-            showAlertToast(message: Theme.strings.alert_reactivate_plan)
             return
         }
         

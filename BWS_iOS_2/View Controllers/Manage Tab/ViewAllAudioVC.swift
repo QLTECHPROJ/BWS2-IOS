@@ -81,7 +81,7 @@ class ViewAllAudioVC: BaseViewController {
         let indexPath = self.objCollectionView.indexPathForItem(at: point)
         
         if let indexPath = indexPath {
-            if lockDownloads == "1" || lockDownloads == "2" {
+            if lockDownloads == "1" {
                 
             } else {
                 self.didLongPressAt(playlistIndex: indexPath.row)
@@ -176,7 +176,7 @@ extension ViewAllAudioVC : UICollectionViewDataSource, UICollectionViewDelegate,
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if homeData.Details[indexPath.row].IsPlay != "1" {
-            showAlertToast(message: Theme.strings.alert_reactivate_plan)
+            openInactivePopup(controller: self)
             return
         } else {
             if homeData.View == Theme.strings.top_categories {
@@ -191,7 +191,7 @@ extension ViewAllAudioVC : UICollectionViewDataSource, UICollectionViewDelegate,
                 
                 DJMusicPlayer.shared.playerType = .topCategories
                 
-                if lockDownloads == "1" || lockDownloads == "2" {
+                if lockDownloads == "1" {
                     let arrayPlayableAudios = homeData.Details.filter { $0.IsPlay == "1" }
                     let newAudioIndex = arrayPlayableAudios.firstIndex(of: homeData.Details[indexPath.row]) ?? 0
                     
@@ -252,7 +252,7 @@ extension ViewAllAudioVC : UICollectionViewDataSource, UICollectionViewDelegate,
                     DJMusicPlayer.shared.playerType = .audio
                 }
                 
-                if lockDownloads == "1" || lockDownloads == "2" {
+                if lockDownloads == "1" {
                     let arrayPlayableAudios = homeData.Details.filter { $0.IsPlay == "1" }
                     let newAudioIndex = arrayPlayableAudios.firstIndex(of: homeData.Details[indexPath.row]) ?? 0
                     

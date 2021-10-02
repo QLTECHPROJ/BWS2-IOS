@@ -44,7 +44,7 @@ class DownloadAudioVC: BaseViewController {
         downloadedAudios = CoreDataHelper.shared.fetchSingleAudios()
         //        if checkInternet() {
         //            for audio in downloadedAudios {
-        //                audio.IsPlay = (lockDownloads == "1" || lockDownloads == "2") ? "0" : "1"
+        //                audio.IsPlay = (lockDownloads == "1") ? "0" : "1"
         //            }
         //        } else {
         //            for audio in downloadedAudios {
@@ -138,7 +138,7 @@ extension DownloadAudioVC:UITableViewDelegate , UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if downloadedAudios[indexPath.row].IsPlay != "1" {
-            showAlertToast(message: Theme.strings.alert_reactivate_plan)
+            openInactivePopup(controller: self)
         } else {
             if DJMusicPlayer.shared.currentlyPlaying?.isDisclaimer == true {
                 showAlertToast(message: Theme.strings.alert_disclaimer_playing)

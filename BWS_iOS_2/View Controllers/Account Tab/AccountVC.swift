@@ -97,7 +97,7 @@ class AccountVC: BaseViewController {
             lblUser.text = userName
         }
         
-        if lockDownloads == "1" || lockDownloads == "2" {
+        if lockDownloads == "1" {
             if isAudioPlayerClosed == false {
                 self.clearAudioPlayer()
                 isAudioPlayerClosed = true

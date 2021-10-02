@@ -294,11 +294,11 @@ extension AppDelegate {
     }
     
     @objc func batteryLevelDidChange(_ notification: Notification) {
-        print(batteryLevel)
+        print("batteryLevel :-",batteryLevel)
     }
     
     @objc func batteryStateDidChange(_ notification: Notification) {
-        print(batteryState)
+        print("batteryState :-",batteryState)
     }
     
 }

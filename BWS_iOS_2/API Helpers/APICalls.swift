@@ -572,7 +572,7 @@ extension ManageVC {
                         }
                     }
                     
-                    if lockDownloads == "1" || lockDownloads == "2" {
+                    if lockDownloads == "1" {
                         if isAudioPlayerClosed == false {
                             self.clearAudioPlayer()
                             isAudioPlayerClosed = true
@@ -1252,7 +1252,7 @@ extension HomeVC {
                 self.arrayGraphActivity = response.ResponseData.GraphAnalytics
                 self.dictHome = response.ResponseData
                 
-                if lockDownloads == "1" || lockDownloads == "2" {
+                if lockDownloads == "1" {
                     if isAudioPlayerClosed == false {
                         self.clearAudioPlayer()
                         isAudioPlayerClosed = true

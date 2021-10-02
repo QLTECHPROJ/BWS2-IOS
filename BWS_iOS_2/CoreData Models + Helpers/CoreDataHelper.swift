@@ -143,7 +143,7 @@ class CoreDataHelper {
                 audioData.sortId = audio.sortId ?? ""
                 
                 if checkInternet() {
-                    audioData.IsPlay = (lockDownloads == "1" || lockDownloads == "2") ? "0" : "1"
+                    audioData.IsPlay = (lockDownloads == "1") ? "0" : "1"
                 } else {
                     audioData.IsPlay = shouldLockDownloads() ? "0" : "1"
                 }

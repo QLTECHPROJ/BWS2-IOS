@@ -45,7 +45,7 @@ class SuggestedPlaylistCell: UITableViewCell {
             return
         }
         
-        imgLock.isHidden = !(lockDownloads == "1" || lockDownloads == "2")
+        imgLock.isHidden = !(lockDownloads == "1")
         
         lblPlaylistName.text = playlistData.PlaylistName
         lblPlaylistDirection.text = playlistData.playlistDirection

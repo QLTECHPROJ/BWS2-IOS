@@ -17,6 +17,7 @@ func openInactivePopup(controller : UIViewController?, openWithNavigation : Bool
     // Open Popup
     // InActive popup screen was removed
     showAlertToast(message: Theme.strings.alert_reactivate_plan)
+    callSendPaymentLinkAPI()
 }
 
 // MARK:- Lock Downloads
@@ -46,6 +47,39 @@ func shouldLockDownloads() -> Bool {
     }
     
     return shouldEnableIAP
+}
+
+// MARK:- Send Payment Link
+var paymentLinkSentDate : Date? {
+    get {
+        return UserDefaults.standard.value(forKey: "paymentLinkSentDate") as? Date
+    }
+    set {
+        UserDefaults.standard.set(newValue, forKey: "paymentLinkSentDate")
+        UserDefaults.standard.synchronize()
+    }
+}
+
+func callSendPaymentLinkAPI() {
+    var shouldCallAPI = true
+    
+    if let lastSentDate = paymentLinkSentDate {
+        // Difference In Hours
+        let timeDifference = lastSentDate.differenceWith(Date(), inUnit: .hour)
+        
+        if timeDifference < 6 {
+            print("timeDifference < 6 hours")
+            shouldCallAPI = false
+        } else {
+            print("timeDifference >= 6 hours")
+        }
+    }
+    
+    if shouldCallAPI {
+        // Call API
+        print("callSendPaymentLinkAPI")
+        paymentLinkSentDate = Date()
+    }
 }
 
 /************************ Check network connection ************************/

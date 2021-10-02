@@ -64,7 +64,7 @@ class AudioCollectionCell: UICollectionViewCell {
             lblName.text = audioData.Name
         }
         
-        if lockDownloads == "1" || lockDownloads == "2" || homeData.View == Theme.strings.top_categories || audioData.isSelected == false {
+        if lockDownloads == "1" || homeData.View == Theme.strings.top_categories || audioData.isSelected == false {
             btnAddtoPlaylist.isHidden = true
             btnAddtoPlaylist.isUserInteractionEnabled = false
         } else {

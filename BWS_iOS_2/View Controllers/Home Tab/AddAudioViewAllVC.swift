@@ -82,8 +82,6 @@ class AddAudioViewAllVC: BaseViewController {
         
         if lockDownloads == "1" {
             openInactivePopup(controller: self)
-        } else if lockDownloads == "2" {
-            showAlertToast(message: Theme.strings.alert_reactivate_plan)
         } else {
             if isComeFromAddAudio {
                 callAddAudioToPlaylistAPI(audioToAdd: audioData.ID, playlistToAdd: "")
@@ -112,8 +110,6 @@ class AddAudioViewAllVC: BaseViewController {
         
         if playlistDetails.IsLock == "1" {
             openInactivePopup(controller: self)
-        } else if playlistDetails.IsLock == "2" {
-            showAlertToast(message: Theme.strings.alert_reactivate_plan)
         } else {
             if isComeFromAddAudio {
                 callAddAudioToPlaylistAPI(audioToAdd: "", playlistToAdd: playlistID)
@@ -197,8 +193,6 @@ extension AddAudioViewAllVC : UITableViewDelegate, UITableViewDataSource {
             
             if arrayPlayList[indexPath.row].IsLock == "1" {
                 openInactivePopup(controller: self)
-            } else if  arrayPlayList[indexPath.row].IsLock == "2" {
-                showAlertToast(message: Theme.strings.alert_reactivate_plan)
             } else {
                 // Segment Tracking
                 //                SegmentTracking.shared.playlistEvents(name: SegmentTracking.eventNames.Suggested_Playlist_Clicked, objPlaylist: arrayPlayList[indexPath.row], trackingType: .track)
@@ -210,7 +204,7 @@ extension AddAudioViewAllVC : UITableViewDelegate, UITableViewDataSource {
             }
         } else {
             if arrayAudio[indexPath.row].IsPlay != "1" {
-                showAlertToast(message: Theme.strings.alert_reactivate_plan)
+                openInactivePopup(controller: self)
             } else {
                 if DJMusicPlayer.shared.currentlyPlaying?.isDisclaimer == true {
                     showAlertToast(message: Theme.strings.alert_disclaimer_playing)
