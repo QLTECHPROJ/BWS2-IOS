@@ -85,7 +85,7 @@ class ThankYouVC: BaseViewController {
                 if coUser.planDetails.count > 0 {
                     lblSubTitle.text = coUser.planDetails[0].PlanContent
                 } else if coUser.oldPaymentDetails.count > 0 {
-                    lblSubTitle.text = coUser.oldPaymentDetails[0].Plan
+                    lblSubTitle.text = coUser.oldPaymentDetails[0].PlanContent
                 }
             }
         }

@@ -14,6 +14,8 @@ import AVKit
 import StoreKit
 import SwiftyStoreKit
 import CleverTapSDK
+import AdSupport
+import AppTrackingTransparency
 
 
 @UIApplicationMain
@@ -34,10 +36,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Battery Level & State Observation
         self.startBatteryObservation()
         
-        // Segment Configuration
-        SegmentTracking.shared.configureSegment(launchOptions: launchOptions)
-        
-        CleverTap.autoIntegrate()
+        // Request App Tracking Permission for Segment and CleverTap
+        requestAppTrackingPermission(launchOptions: launchOptions)
         
         // AudioSession Configuration
         let audioSession = AVAudioSession.sharedInstance()
@@ -304,8 +304,49 @@ extension AppDelegate {
 }
 
 extension AppDelegate {
-    //MARK:- functions
-    //userinfo data
+    
+    func requestAppTrackingPermission(launchOptions : [AnyHashable : Any]? = nil) {
+        if #available(iOS 14, *) {
+            ATTrackingManager.requestTrackingAuthorization { status in
+                switch status {
+                case .authorized:
+                    // Tracking authorization dialog was shown
+                    // and we are authorized
+                    print("Authorized")
+                    
+                    // Now that we are authorized we can get the IDFA
+                    print("advertisingIdentifier :- ",ASIdentifierManager.shared().advertisingIdentifier)
+                case .denied:
+                    // Tracking authorization dialog was
+                    // shown and permission is denied
+                    print("Denied")
+                case .notDetermined:
+                    // Tracking authorization dialog has not been shown
+                    print("Not Determined")
+                case .restricted:
+                    print("Restricted")
+                @unknown default:
+                    print("Unknown")
+                }
+                
+                self.configureSegmentAndCleverTap(launchOptions: launchOptions)
+            }
+        } else {
+            configureSegmentAndCleverTap(launchOptions: launchOptions)
+        }
+    }
+    
+    func configureSegmentAndCleverTap(launchOptions : [AnyHashable : Any]? = nil) {
+        DispatchQueue.main.async {
+            // Segment Configuration
+            SegmentTracking.shared.configureSegment(launchOptions: launchOptions)
+            
+            // CleverTap Configuration
+            CleverTap.autoIntegrate()
+        }
+    }
+    
+    // userinfo data
     func extractUserInfo(userInfo: [AnyHashable : Any]) -> (title: String, body: String) {
         var info = (title: "", body: "")
         guard let aps = userInfo["aps"] as? [String: Any] else { return info }

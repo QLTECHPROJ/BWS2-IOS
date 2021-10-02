@@ -271,6 +271,7 @@ class OldPlanDetailDataModel:EVObject {
     var PlanFlag = ""
     var OrderTotal = ""
     var PlanStr = ""
+    var PlanContent = ""
     var PlanStatus = ""
     var purchaseDate = ""
     var expireDate = ""

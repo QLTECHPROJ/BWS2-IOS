@@ -282,6 +282,15 @@ class AccountVC: BaseViewController {
                 return
             }
             
+            if CoUserDataModel.currentUser?.planDetails.count == 0 && CoUserDataModel.currentUser?.oldPaymentDetails.count == 0 {
+                let aVC = AppStoryBoard.main.viewController(viewControllerClass:ManagePlanListVC.self)
+                let navVC = UINavigationController(rootViewController: aVC)
+                navVC.isNavigationBarHidden = true
+                navVC.modalPresentationStyle = .overFullScreen
+                self.navigationController?.present(navVC, animated: false, completion: nil)
+                return
+            }
+            
             let aVC = AppStoryBoard.account.viewController(viewControllerClass: BillingOrderVC.self)
             self.navigationController?.pushViewController(aVC, animated: true)
             break
