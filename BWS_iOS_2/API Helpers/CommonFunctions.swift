@@ -17,7 +17,7 @@ func openInactivePopup(controller : UIViewController?, openWithNavigation : Bool
     // Open Popup
     // InActive popup screen was removed
     showAlertToast(message: Theme.strings.alert_reactivate_plan)
-    callSendPaymentLinkAPI()
+    sendPaymentLink()
 }
 
 // MARK:- Lock Downloads
@@ -50,6 +50,16 @@ func shouldLockDownloads() -> Bool {
 }
 
 // MARK:- Send Payment Link
+var apiCallTimeDifference : String {
+    get {
+        return UserDefaults.standard.string(forKey: "apiCallTimeDifference") ?? ""
+    }
+    set {
+        UserDefaults.standard.set(newValue, forKey: "apiCallTimeDifference")
+        UserDefaults.standard.synchronize()
+    }
+}
+
 var paymentLinkSentDate : Date? {
     get {
         return UserDefaults.standard.value(forKey: "paymentLinkSentDate") as? Date
@@ -60,25 +70,34 @@ var paymentLinkSentDate : Date? {
     }
 }
 
-func callSendPaymentLinkAPI() {
+func sendPaymentLink() {
     var shouldCallAPI = true
+    
+    if CoUserDataModel.currentUser?.paymentType == "1" {
+        print("IAP User - No need to send payment link")
+        return
+    }
     
     if let lastSentDate = paymentLinkSentDate {
         // Difference In Hours
         let timeDifference = lastSentDate.differenceWith(Date(), inUnit: .hour)
+        let hours = Int(apiCallTimeDifference) ?? 0
         
-        if timeDifference < 6 {
-            print("timeDifference < 6 hours")
+        if timeDifference < hours {
+            print("timeDifference < \(hours) hours")
             shouldCallAPI = false
         } else {
-            print("timeDifference >= 6 hours")
+            print("timeDifference >= \(hours) hours")
         }
     }
     
     if shouldCallAPI {
-        // Call API
-        print("callSendPaymentLinkAPI")
-        paymentLinkSentDate = Date()
+        print("Send Payment Link API Called")
+        UIViewController().callSendPaymentLinkAPI { (success) in
+            if success {
+                paymentLinkSentDate = Date()
+            }
+        }
     }
 }
 

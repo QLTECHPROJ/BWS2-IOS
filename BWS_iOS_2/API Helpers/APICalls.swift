@@ -30,6 +30,10 @@ extension SplashVC {
                 SegmentTracking.shared.segmentWriteKey = response.ResponseData.segmentKey
                 SegmentTracking.shared.configureSegment()
                 
+                if response.ResponseData.setTime.trim.count > 0 {
+                    apiCallTimeDifference = response.ResponseData.setTime
+                }
+                
                 if response.ResponseData.supportTitle.trim.count > 0 {
                     supportTitle = response.ResponseData.supportTitle
                 }
@@ -546,6 +550,24 @@ extension UIViewController {
                 complitionBlock?()
             } else {
                 showAlertToast(message: response.ResponseMessage)
+            }
+        }
+    }
+    
+    // Call Get Co User Details API
+    func callSendPaymentLinkAPI(complitionBlock : ((Bool) -> ())?) {
+        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
+                          APIParameters.MainAccountID:LoginDataModel.currentMainAccountId]
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.sendpaymentlink(parameters), displayHud: false, showToast: false) { (response : CoUserModel) in
+            if response.ResponseCode == "200" {
+                DispatchQueue.main.async {
+                    complitionBlock?(true)
+                }
+            } else {
+                DispatchQueue.main.async {
+                    complitionBlock?(false)
+                }
             }
         }
     }
@@ -1246,7 +1268,7 @@ extension HomeVC {
                 self.IndexScoreDiff = response.ResponseData.IndexScoreDiff
                 self.ScoreIncDec = response.ResponseData.ScoreIncDec
                 self.suggstedPlaylist = response.ResponseData.SuggestedPlaylist
-                self.arrayPastIndexScore = response.ResponseData.PastIndexScore
+                self.arrayGraphIndexScore = response.ResponseData.GraphIndexScore
                 self.arraySessionScore = response.ResponseData.SessionScore
                 self.arraySessionProgress = response.ResponseData.SessionProgress
                 self.arrayGraphActivity = response.ResponseData.GraphAnalytics

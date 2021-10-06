@@ -102,6 +102,7 @@ class AppVersionDataModel : EVObject {
     var displayRegister = ""
     var IsLoginFirstTime = ""
     var segmentKey = ""
+    var setTime = ""
     var supportTitle = ""
     var supportText = ""
     var supportEmail = ""
@@ -844,16 +845,17 @@ class HomeDataModel: EVObject {
     var shouldPlayDisclaimer = ""
     var disclaimerAudio : AudioDetailsDataModel?
     var SuggestedPlaylist : PlaylistDetailsModel?
-    var PastIndexScore = [PastIndexScoreModel]()
     var SessionScore = [SessionScoreModel]()
     var SessionProgress = [SessionProgressModel]()
     var GraphAnalytics = [GraphAnalyticsModel]()
+    var GraphIndexScore = [GraphIndexScoreModel]()
 }
 
-class PastIndexScoreModel : EVObject {
-    var Month = ""
+class GraphIndexScoreModel : EVObject {
     var MonthName = ""
+    var Year = ""
     var IndexScore = ""
+    var displayName = ""
 }
 
 class SessionScoreModel : EVObject {

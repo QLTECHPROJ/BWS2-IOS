@@ -13,7 +13,7 @@ class GraphCell: UITableViewCell {
     
     @IBOutlet weak var chartView: LineChartView!
     
-    var indexScores = [PastIndexScoreModel]()
+    var indexScores = [GraphIndexScoreModel]()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -21,15 +21,18 @@ class GraphCell: UITableViewCell {
     }
     
     // Configure Cell
-    func configureCell(data : [PastIndexScoreModel]) {
+    func configureCell(data : [GraphIndexScoreModel]) {
         indexScores.removeAll()
         indexScores.append(contentsOf: data)
         
-        let indexScore = PastIndexScoreModel()
-        indexScore.Month = "0"
+        /*
+        let indexScore = GraphIndexScoreModel()
         indexScore.MonthName = ""
+        indexScore.Year = ""
         indexScore.IndexScore = "0"
+        indexScore.displayName = ""
         indexScores.insert(indexScore, at: 0)
+         */
         
         // fetchIndexScores()
         configureChart()
@@ -39,10 +42,11 @@ class GraphCell: UITableViewCell {
         indexScores.removeAll()
         
         for i in 1...4 {
-            let indexScore = PastIndexScoreModel()
-            indexScore.Month = "\(i)"
+            let indexScore = GraphIndexScoreModel()
             indexScore.MonthName = "Month \(i)"
             indexScore.IndexScore = "\(i * 8)"
+            indexScore.Year = "\(i)"
+            indexScore.displayName = "\(i)"
             indexScores.append(indexScore)
         }
     }
@@ -151,7 +155,7 @@ extension GraphCell: IAxisValueFormatter {
     
     func stringForValue(_ value: Double, axis: AxisBase?) -> String {
         if Int(value) >= 0 && Int(value) < indexScores.count {
-            return indexScores[Int(value)].MonthName
+            return indexScores[Int(value)].displayName
         }
         
         return ""

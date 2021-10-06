@@ -99,6 +99,9 @@ enum APIRouter: URLRequestConvertible {
     //ActivityTracking
     case useraudiotracking([String:Any])
     
+    // Send Payment Link
+    case sendpaymentlink([String:Any])
+    
     var route: APIRoute {
         switch self {
         case .appversion(let data):
@@ -244,6 +247,10 @@ enum APIRouter: URLRequestConvertible {
         // ActivityTracking
         case .useraudiotracking(let data):
             return APIRoute(path: "useraudiotracking", method: .post, data: data)
+            
+        // Send Payment Link
+        case .sendpaymentlink(let data):
+            return APIRoute(path: "sendpaymentlink", method: .post, data: data)
         }
     }
     

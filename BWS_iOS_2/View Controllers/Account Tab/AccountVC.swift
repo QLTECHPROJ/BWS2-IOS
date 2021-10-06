@@ -238,6 +238,8 @@ class AccountVC: BaseViewController {
         MPNowPlayingInfoCenter.default().nowPlayingInfo = nil
         UIApplication.shared.endReceivingRemoteControlEvents()
         
+        paymentLinkSentDate = nil
+        
         // Redirect User to Login screen
         APPDELEGATE.logout()
     }

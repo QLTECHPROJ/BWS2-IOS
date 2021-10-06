@@ -26,7 +26,7 @@ class HomeVC: BaseViewController {
     var shouldCheckIndexScore = ""
     var IndexScoreDiff = ""
     var ScoreIncDec = ""
-    var arrayPastIndexScore = [PastIndexScoreModel]()
+    var arrayGraphIndexScore = [GraphIndexScoreModel]()
     var arraySessionScore = [SessionScoreModel]()
     var arraySessionProgress = [SessionProgressModel]()
     var areaOfFocus = [AreaOfFocusModel]()
@@ -338,7 +338,7 @@ extension HomeVC : UITableViewDelegate, UITableViewDataSource {
             
         case 4:
             let cell = tableView.dequeueReusableCell(withClass: GraphCell.self)
-            cell.configureCell(data: arrayPastIndexScore)
+            cell.configureCell(data: arrayGraphIndexScore)
             return cell
             
         case 5:
