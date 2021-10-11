@@ -559,7 +559,7 @@ extension UIViewController {
         let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
                           APIParameters.MainAccountID:LoginDataModel.currentMainAccountId]
         
-        APICallManager.sharedInstance.callAPI(router: APIRouter.sendpaymentlink(parameters), displayHud: false, showToast: false) { (response : CoUserModel) in
+        APICallManager.sharedInstance.callAPI(router: APIRouter.sendpaymentlink(parameters), showToast: false) { (response : CoUserModel) in
             if response.ResponseCode == "200" {
                 DispatchQueue.main.async {
                     complitionBlock?(true)
@@ -1253,7 +1253,8 @@ extension HomeVC {
     
     // Home API Call
     func callHomeAPI() {
-        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId]
+        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
+                          "localTimezone":TimeZone.current.identifier]
         
         APICallManager.sharedInstance.callAPI(router: APIRouter.homescreen(parameters)) { (response : HomeModel) in
             if response.ResponseCode == "200" {
