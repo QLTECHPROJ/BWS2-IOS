@@ -16,7 +16,7 @@ class BrainFeelingVC: BaseViewController {
     
     // MARK:- VARIABLES
     var arrayCategories = [BrainFeelingModel]()
-    
+    var strData:String?
     
     // MARK:- VIEW LIFE CYCLE
     override func viewDidLoad() {
@@ -105,7 +105,7 @@ extension BrainFeelingVC : UICollectionViewDataSource, UICollectionViewDelegate,
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withClass: CategoryCollectionCell.self, for: indexPath)
-        cell.configureCell(data: arrayCategories[indexPath.row])
+        cell.configureCell(data: arrayCategories[indexPath.row], strData: strData ?? "")
         return cell
     }
     

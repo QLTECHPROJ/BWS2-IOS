@@ -25,7 +25,7 @@ class SessionDetailCell: UITableViewCell {
 
     // Configure Cell
     func configureCell(data : SessionListDataMainModel) {
-        lblTitle.text = data.title
+        lblTitle.text = data.desc
         lblNumber.text = data.step_id
         
         if let strUrl = data.status_img.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let imgUrl = URL(string: strUrl) {

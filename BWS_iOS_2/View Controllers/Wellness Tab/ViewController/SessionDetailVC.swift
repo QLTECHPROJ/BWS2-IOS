@@ -49,9 +49,10 @@ class SessionDetailVC: BaseViewController {
     //MARK:- IBAction Methods
     @IBAction func onTappedContinue(_ sender: UIButton) {
         let aVC = AppStoryBoard.main.viewController(viewControllerClass:StepVC.self)
-        aVC.strTitle = Theme.strings.step_3_title
+        aVC.strTitle = "Step 1"
         aVC.strSubTitle = Theme.strings.step_3_subtitle
-        aVC.imageMain = UIImage(named: "profileForm")
+        aVC.imageMain = UIImage(named: "Step1")
+        aVC.color = Theme.colors.newPurple
         aVC.viewTapped = {
             let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: PersonalDetailVC.self)
             EmpowerProfileFormModel.shared.Step = "1"
@@ -107,6 +108,10 @@ extension SessionDetailVC : UITableViewDelegate, UITableViewDataSource {
             if arraySession[indexPath.row].step_type == "1" {
                 let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: SessionDescVC.self)
                 aVC.sessionStepData = arraySession[indexPath.row]
+                self.navigationController?.pushViewController(aVC, animated: false)
+            }else if arraySession[indexPath.row].desc == "Before Comparison" || arraySession[indexPath.row].desc == "After Comparison" {
+                let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: BrainFeelingVC.self)
+                aVC.strData = arraySession[indexPath.row].desc
                 self.navigationController?.pushViewController(aVC, animated: false)
             }else {
                 let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: SessionStartVC.self)

@@ -67,12 +67,12 @@ class CategoryCollectionCell: UICollectionViewCell {
         
     }
     
-    func configureCell(data : BrainFeelingModel) {
+    func configureCell(data : BrainFeelingModel,strData:String) {
         lblCategory.text = data.name
         
         DispatchQueue.main.async {
             if data.isSelected {
-                if data.cat_flag == "0" {
+                if strData == "Before Comparison" {
                     self.borderColor = Theme.colors.magenta_C44B6C
                     self.backgroundColor = Theme.colors.pink_FFDFEA
                     self.lblCategory.textColor = Theme.colors.magenta_C44B6C

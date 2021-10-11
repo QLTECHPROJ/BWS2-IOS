@@ -15,6 +15,7 @@ class StepVC: BaseViewController {
     @IBOutlet weak var lblSubTitle: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var lblTapAnywhere : UILabel!
+    @IBOutlet weak var MainView: UIView!
     
     
     // MARK:- VARIABLES
@@ -22,6 +23,7 @@ class StepVC: BaseViewController {
     var strSubTitle = Theme.strings.step_1_subtitle
     var imageMain = UIImage(named: "profileForm")
     var viewTapped : (() -> Void)?
+    var color = hexStringToUIColor(hex: "2AB6C7")
     
     var hideTitle = false
     var hideSubTitle = false
@@ -37,6 +39,7 @@ class StepVC: BaseViewController {
     }
     
     override func setupUI() {
+        MainView.backgroundColor = color
         lblTitle.text = strTitle.uppercased()
         lblSubTitle.attributedText = strSubTitle.attributedString(alignment: .center, lineSpacing: 5)
         lblTapAnywhere.text = Theme.strings.tap_anywhere_to_continue.uppercased()

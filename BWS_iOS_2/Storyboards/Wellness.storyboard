@@ -651,7 +651,7 @@
                                 <rect key="frame" x="0.0" y="144" width="375" height="634"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a3m-d0-Ypg">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="950"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="600"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="14c-yU-WMG">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="0.0"/>
@@ -698,7 +698,7 @@
                                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YgS-Sc-I6m">
                                                                 <rect key="frame" x="0.0" y="0.0" width="335" height="70"/>
                                                                 <subviews>
-                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Home Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KGm-P3-qOy" customClass="JVFloatLabeledTextField">
+                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter you home address:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KGm-P3-qOy" customClass="JVFloatLabeledTextField">
                                                                         <rect key="frame" x="8" y="10" width="319" height="50"/>
                                                                         <color key="textColor" red="0.1639643013" green="0.187463671" blue="0.26511543990000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="17"/>
@@ -750,7 +750,7 @@
                                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CHp-xD-yIC">
                                                                 <rect key="frame" x="0.0" y="0.0" width="335" height="70"/>
                                                                 <subviews>
-                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Suburb " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vB2-h8-lyI" customClass="JVFloatLabeledTextField">
+                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter you suburb" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vB2-h8-lyI" customClass="JVFloatLabeledTextField">
                                                                         <rect key="frame" x="8" y="10" width="327" height="50"/>
                                                                         <color key="textColor" red="0.1639643013" green="0.187463671" blue="0.26511543990000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="17"/>
@@ -802,7 +802,7 @@
                                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TCg-WR-zVe">
                                                                 <rect key="frame" x="0.0" y="0.0" width="335" height="70"/>
                                                                 <subviews>
-                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Postcode" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yYx-t9-odO" customClass="JVFloatLabeledTextField">
+                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter you postcode" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yYx-t9-odO" customClass="JVFloatLabeledTextField">
                                                                         <rect key="frame" x="8" y="10" width="327" height="50"/>
                                                                         <color key="textColor" red="0.1639643013" green="0.187463671" blue="0.26511543990000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="17"/>
@@ -854,7 +854,7 @@
                                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NCM-pu-YcF">
                                                                 <rect key="frame" x="0.0" y="0.0" width="335" height="70"/>
                                                                 <subviews>
-                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Ethnicity" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NFf-rx-PtU" customClass="JVFloatLabeledTextField">
+                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter you ethnicity" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NFf-rx-PtU" customClass="JVFloatLabeledTextField">
                                                                         <rect key="frame" x="8" y="10" width="327" height="50"/>
                                                                         <color key="textColor" red="0.1639643013" green="0.187463671" blue="0.26511543990000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="17"/>
@@ -902,7 +902,7 @@
                                             <constraint firstItem="14c-yU-WMG" firstAttribute="top" secondItem="a3m-d0-Ypg" secondAttribute="top" id="CXh-wd-R7X"/>
                                             <constraint firstItem="sWA-rx-sMy" firstAttribute="leading" secondItem="a3m-d0-Ypg" secondAttribute="leading" constant="20" symbolic="YES" id="D01-Im-kvi"/>
                                             <constraint firstItem="sWA-rx-sMy" firstAttribute="top" secondItem="14c-yU-WMG" secondAttribute="bottom" constant="16" id="JAL-Lf-AwM"/>
-                                            <constraint firstAttribute="height" constant="950" id="Kej-HQ-ucF"/>
+                                            <constraint firstAttribute="height" constant="600" id="Kej-HQ-ucF"/>
                                             <constraint firstAttribute="trailing" secondItem="sWA-rx-sMy" secondAttribute="trailing" constant="20" symbolic="YES" id="PIF-DV-Qwf"/>
                                             <constraint firstAttribute="trailing" secondItem="14c-yU-WMG" secondAttribute="trailing" id="fir-X7-3Ym"/>
                                             <constraint firstItem="14c-yU-WMG" firstAttribute="leading" secondItem="a3m-d0-Ypg" secondAttribute="leading" id="s4D-Cw-BNU"/>

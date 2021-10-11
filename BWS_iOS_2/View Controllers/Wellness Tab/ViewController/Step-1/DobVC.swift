@@ -38,7 +38,8 @@ class DobVC: BaseViewController {
         
         progressView.progress = 0.32
         btnPrev.isEnabled = true
-        
+        viewDate.borderColor = Theme.colors.purple
+        txtFDate.textColor = Theme.colors.purple
         btnNext.isEnabled = false
         if EmpowerProfileFormModel.shared.dob.trim.count > 0 {
             progressView.progress = 0.48
