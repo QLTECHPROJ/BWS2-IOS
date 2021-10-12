@@ -96,7 +96,10 @@ extension SessionDetailVC : UITableViewDelegate, UITableViewDataSource {
             return cell
         }else {
             let cell = tableView.dequeueReusableCell(withClass: SessionDetailCell.self)
-            cell.configureCell(data: arraySession[indexPath.row])
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                cell.configureCell(data: self.arraySession[indexPath.row])
+            }
+           
             return cell
         }
         

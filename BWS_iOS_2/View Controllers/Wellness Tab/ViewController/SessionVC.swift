@@ -92,9 +92,15 @@ extension SessionVC : UITableViewDelegate, UITableViewDataSource {
         }else if indexPath.row == arraySession.count {
             cell.topView.isHidden = false
             cell.bottomView.isHidden = true
-        }else {
-            cell.topView.isHidden = false
-            cell.bottomView.isHidden = false
+        }
+        else {
+            if indexPath.row == arraySession.count - 1 {
+                cell.topView.isHidden = false
+                cell.bottomView.isHidden = true
+            }else {
+                cell.topView.isHidden = false
+                cell.bottomView.isHidden = false
+            }
         }
         cell.configureCell(data: arraySession[indexPath.row])
         return cell

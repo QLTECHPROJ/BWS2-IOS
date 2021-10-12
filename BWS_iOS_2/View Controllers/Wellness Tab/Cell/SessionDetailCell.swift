@@ -18,10 +18,7 @@ class SessionDetailCell: UITableViewCell {
     @IBOutlet weak var viewTop: UIView!
     @IBOutlet weak var viewBottom: UIView!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
+    
 
     // Configure Cell
     func configureCell(data : SessionListDataMainModel) {
@@ -31,6 +28,8 @@ class SessionDetailCell: UITableViewCell {
         if let strUrl = data.status_img.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let imgUrl = URL(string: strUrl) {
             imgSelect.sd_setImage(with: imgUrl, completed: nil)
         }
+        
+      
         
         if data.user_step_status == "Completed" {
             viewMain.borderWidth = 0
@@ -48,7 +47,7 @@ class SessionDetailCell: UITableViewCell {
             lblNumber.textColor = Theme.colors.black
             lblTitle.textColor = Theme.colors.black
             viewTop.backgroundColor = Theme.colors.newPurple
-            viewBottom.backgroundColor = Theme.colors.off_white_F9F9F9
+            viewBottom.backgroundColor = Theme.colors.newPurple
             viewMain.backgroundColor = Theme.colors.off_white_F9F9F9
             lblNumber.backgroundColor = Theme.colors.gray_DDDDDD
         }else if data.user_step_status == "Lock"{

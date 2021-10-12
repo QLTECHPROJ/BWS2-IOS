@@ -60,9 +60,8 @@ class SessionCell: UITableViewCell {
             viewMain.layer.borderColor = UIColor.clear.cgColor
             stackviewBooklet.isHidden = true
             viewTopConst.constant = 12
-            lblBeforeSession.text = "Before Session"
-            lblAfterSession.text = "After Session"
-            
+            lblBeforeSession.text = "Before Session:"
+            lblAfterSession.text = "After Session:"
         }else if data.user_session_status == "Inprogress" {
             stackviewDate.isHidden = false
             imgCurrentSession.isHidden = false
@@ -84,8 +83,8 @@ class SessionCell: UITableViewCell {
             }else {
                 imgCheckbooklet.image = UIImage(named: "Unckeck")
             }
-            lblBeforeSession.text = "Before Session"
-            lblAfterSession.text = "After Session"
+            lblBeforeSession.text = "Before Session:"
+            lblAfterSession.text = "After Session:"
         }else {
             stackviewDate.isHidden = true
             stackviewBooklet.isHidden = true
