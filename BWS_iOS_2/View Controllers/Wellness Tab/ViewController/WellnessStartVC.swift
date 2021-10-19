@@ -11,17 +11,35 @@ import UIKit
 class WellnessStartVC: BaseViewController {
     
     //MARK:- UIOutlet
+    @IBOutlet weak var img: UIImageView!
+    @IBOutlet weak var lblSubTitle: UILabel!
+    @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var btnCreatePlaylist: UIButton!
+    @IBOutlet weak var btnContinue: UIButton!
+    @IBOutlet weak var viewHeight: NSLayoutConstraint!
+    @IBOutlet weak var viewCreateplaylist: UIView!
     
     //MARK:- Variables
+    var isButtonHide = true
+    var strTitle = "Unconscious Brain vs Conscious brain"
+    var strSubTitle = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut"
+    var imageMain = UIImage(named: "Wellness")
+    var color = hexStringToUIColor(hex: "2AB6C7")
     
     //MARK:- View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setupUI()
     }
     
     //MARK:- Functions
     override func setupUI() {
+        
+        lblTitle.text = strTitle.uppercased()
+        lblSubTitle.attributedText = strSubTitle.attributedString(alignment: .center, lineSpacing: 5)
+       
+        img.image = imageMain
+        viewCreateplaylist.isHidden = isButtonHide
         
     }
     

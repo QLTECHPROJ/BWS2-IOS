@@ -59,7 +59,7 @@ class SessionCell: UITableViewCell {
             viewMain.layer.borderWidth = 0
             viewMain.layer.borderColor = UIColor.clear.cgColor
             stackviewBooklet.isHidden = true
-            viewTopConst.constant = 12
+            viewTopConst.constant = 30
             lblBeforeSession.text = "Before Session:"
             lblAfterSession.text = "After Session:"
         }else if data.user_session_status == "Inprogress" {
@@ -72,7 +72,7 @@ class SessionCell: UITableViewCell {
             lblDescBeforeSess.text = ""
             lblAfterSession.text = ""
             lblDescAfterSess.text = ""
-            viewTopConst.constant = 12
+            viewTopConst.constant = 10
             if data.pre_session_audio_status == "1" {
                 imgCheck.image = UIImage(named: "Check")
             }else{

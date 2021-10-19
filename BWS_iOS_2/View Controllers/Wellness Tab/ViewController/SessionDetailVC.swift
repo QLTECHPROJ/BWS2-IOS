@@ -53,6 +53,7 @@ class SessionDetailVC: BaseViewController {
         aVC.strSubTitle = Theme.strings.step_3_subtitle
         aVC.imageMain = UIImage(named: "Step1")
         aVC.color = Theme.colors.newPurple
+        aVC.isImageHide = false
         aVC.viewTapped = {
             let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: PersonalDetailVC.self)
             EmpowerProfileFormModel.shared.Step = "1"
@@ -98,6 +99,18 @@ extension SessionDetailVC : UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withClass: SessionDetailCell.self)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 cell.configureCell(data: self.arraySession[indexPath.row])
+                if indexPath.row == self.arraySession.count - 1 {
+                    cell.viewBottom.isHidden = true
+                }else {
+                    cell.viewBottom.isHidden = false
+                }
+                let index = SessionVC.shared.find(value: "Lock", in: self.arraySession)
+                print(index)
+                
+                if indexPath.row == index {
+                    cell.viewTop.backgroundColor = Theme.colors.newPurple
+                }
+               
             }
            
             return cell

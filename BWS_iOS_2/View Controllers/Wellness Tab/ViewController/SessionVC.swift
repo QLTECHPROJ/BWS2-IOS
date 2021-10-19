@@ -23,6 +23,9 @@ class SessionVC: BaseViewController {
     var arrayAfterSession = [AfterSessionModel]()
     var dictSession:SessionListDataModel?
     var strProgress:String?
+    let searchValue = "Lock"
+    var currentIndex = 0
+    static var shared = SessionVC()
     
     //MARK:- View Life Cycle
     override func viewDidLoad() {
@@ -70,6 +73,20 @@ class SessionVC: BaseViewController {
         label.attributedText = attributedString
     }
     
+     func find(value searchValue: String, in array: [SessionListDataMainModel]) -> Int?
+    {
+        for (index, value) in array.enumerated()
+        {
+            if value.user_session_status == searchValue {
+                return index
+            }else if value.user_step_status == searchValue {
+                return index
+            }
+        }
+
+        return nil
+    }
+    
     // MARK:- ACTIONS
     @IBAction func onTappedBack(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
@@ -102,7 +119,15 @@ extension SessionVC : UITableViewDelegate, UITableViewDataSource {
                 cell.bottomView.isHidden = false
             }
         }
+        
         cell.configureCell(data: arraySession[indexPath.row])
+        
+        let index = find(value: "Lock", in: arraySession)
+        print(index)
+        
+        if indexPath.row == index {
+            cell.topView.backgroundColor = Theme.colors.newPurple
+        }
         return cell
     }
     

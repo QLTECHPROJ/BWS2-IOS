@@ -16,6 +16,7 @@ class StepVC: BaseViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var lblTapAnywhere : UILabel!
     @IBOutlet weak var MainView: UIView!
+    @IBOutlet weak var imgBackground: UIImageView!
     
     
     // MARK:- VARIABLES
@@ -29,6 +30,7 @@ class StepVC: BaseViewController {
     var hideSubTitle = false
     var hideImage = false
     var hideTapAnywhere = false
+    var isImageHide = true
     
     
     // MARK:- VIEW LIFE CYCLE
@@ -49,6 +51,7 @@ class StepVC: BaseViewController {
         lblSubTitle.isHidden = hideSubTitle
         lblTapAnywhere.isHidden = hideTapAnywhere
         imageView.isHidden = hideImage
+        imgBackground.isHidden = isImageHide
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapGestureAction(gesturerecognizer:)))
         self.view.addGestureRecognizer(tapGesture)
