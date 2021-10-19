@@ -36,14 +36,18 @@ func shouldLockDownloads() -> Bool {
         return shouldEnableIAP
     }
     
-    if let expiryTime = TimeInterval(userData.planDetails[0].PlanExpireDate) {
-        let currentTime = Date().timeIntervalSince1970
-        return expiryTime < currentTime
+    if userData.planDetails.count > 0 {
+        if let expiryTime = TimeInterval(userData.planDetails[0].PlanExpireDate) {
+            let currentTime = Date().timeIntervalSince1970
+            return expiryTime < currentTime
+        }
     }
     
-    if let expiryTime = TimeInterval(userData.oldPaymentDetails[0].expireDate) {
-        let currentTime = Date().timeIntervalSince1970
-        return expiryTime < currentTime
+    if userData.oldPaymentDetails.count > 0 {
+        if let expiryTime = TimeInterval(userData.oldPaymentDetails[0].expireDate) {
+            let currentTime = Date().timeIntervalSince1970
+            return expiryTime < currentTime
+        }
     }
     
     return shouldEnableIAP

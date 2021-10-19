@@ -23,9 +23,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     var navigationController: UINavigationController?
+    var applaunchOptions : [UIApplication.LaunchOptionsKey: Any]?
+    
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        applaunchOptions = launchOptions
         
         if IAPHelper.shared.isIAPEnabled {
             completeTransactions()
@@ -35,9 +39,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Battery Level & State Observation
         self.startBatteryObservation()
-        
-        // Request App Tracking Permission for Segment and CleverTap
-        requestAppTrackingPermission(launchOptions: launchOptions)
         
         // AudioSession Configuration
         let audioSession = AVAudioSession.sharedInstance()
@@ -55,7 +56,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         SDDownloadManager.shared.cancelAllDownloads()
         
         // User Notification Configuration
-        self.registerForPushNotification()
+        self.registerForPushNotification {
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                // Request App Tracking Permission for Segment and CleverTap
+                self.requestAppTrackingPermission(launchOptions: launchOptions)
+            }
+        }
         
         // Firebase Configurations
         FirebaseApp.configure()
@@ -76,6 +83,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        print("applicationDidBecomeActive")
+        
+        // Request App Tracking Permission for Segment and CleverTap
+        self.requestAppTrackingPermission(launchOptions: applaunchOptions)
+    }
+    
     func logout() {
         let aVC = AppStoryBoard.main.viewController(viewControllerClass: LoginVC.self)
         let navVC = UINavigationController(rootViewController: aVC)
@@ -83,7 +97,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = navVC
     }
     
-    func registerForPushNotification() {
+    func registerForPushNotification(completion: @escaping () -> Void) {
         if #available(iOS 10.0, *) {
             let center  = UNUserNotificationCenter.current()
             center.delegate = self
@@ -93,9 +107,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         UIApplication.shared.registerForRemoteNotifications()
                     }
                 }
+                
+                completion()
             }
-        }
-        else {
+        } else {
             let settings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
             UIApplication.shared.registerUserNotificationSettings(settings)
             UIApplication.shared.registerForRemoteNotifications()
@@ -310,23 +325,25 @@ extension AppDelegate {
             ATTrackingManager.requestTrackingAuthorization { status in
                 switch status {
                 case .authorized:
-                    // Tracking authorization dialog was shown
-                    // and we are authorized
-                    print("Authorized")
+                    // Tracking authorization dialog was shown and we are authorized
+                    print("AppTracking authorized")
                     
                     // Now that we are authorized we can get the IDFA
                     print("advertisingIdentifier :- ",ASIdentifierManager.shared().advertisingIdentifier)
+                    
                 case .denied:
-                    // Tracking authorization dialog was
-                    // shown and permission is denied
-                    print("Denied")
+                    // Tracking authorization dialog was shown and permission is denied
+                    print("AppTracking denied")
+                    
                 case .notDetermined:
                     // Tracking authorization dialog has not been shown
-                    print("Not Determined")
+                    print("AppTracking permission haven't been asked yet")
+                    
                 case .restricted:
-                    print("Restricted")
+                    print("AppTracking restricted")
+                    
                 @unknown default:
-                    print("Unknown")
+                    print("AppTracking status unknown")
                 }
                 
                 self.configureSegmentAndCleverTap(launchOptions: launchOptions)
