@@ -61,7 +61,7 @@ class SegmentTracking {
                 configuration.launchOptions = launchOptions
             }
             Analytics.setup(with: configuration)
-            Analytics.debug(true)
+            // Analytics.debug(true)
         }
     }
     
