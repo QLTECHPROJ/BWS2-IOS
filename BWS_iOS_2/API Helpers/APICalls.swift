@@ -549,7 +549,9 @@ extension UIViewController {
                     let aVC = AppStoryBoard.main.viewController(viewControllerClass:StepVC.self)
                     aVC.strTitle = Theme.strings.step_3_title
                     aVC.strSubTitle = Theme.strings.step_3_subtitle
-                    aVC.imageMain = UIImage(named: "profileForm")
+                    aVC.imageMain = UIImage(named: "Step1")
+                    aVC.color = Theme.colors.newPurple
+                    aVC.isImageHide = false
                     aVC.viewTapped = {
                         let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: Step2VC.self)
                         EmpowerProfileForm2Model.shared.Step = "2"
@@ -562,7 +564,9 @@ extension UIViewController {
                     let aVC = AppStoryBoard.main.viewController(viewControllerClass:StepVC.self)
                     aVC.strTitle = Theme.strings.step_3_title
                     aVC.strSubTitle = Theme.strings.step_3_subtitle
-                    aVC.imageMain = UIImage(named: "profileForm")
+                    aVC.imageMain = UIImage(named: "Step1")
+                    aVC.color = Theme.colors.newPurple
+                    aVC.isImageHide = false
                     aVC.viewTapped = {
                         let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: Step3VC.self)
                         EmpowerProfileForm3Model.shared.Step = "3"

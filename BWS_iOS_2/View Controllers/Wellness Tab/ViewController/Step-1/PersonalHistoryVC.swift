@@ -90,24 +90,35 @@ class PersonalHistoryVC: BaseViewController {
     @IBAction func nextClicked(sender : UIButton) {
         if pageIndex == 0 {
             EmpowerProfileFormModel.shared.mental_health_challenges = strChallenges ?? ""
-            pageIndex = 1
-            if EmpowerProfileFormModel.shared.mental_health_treatments != "" {
-                selectedOption = 0
-                
+            
+            if EmpowerProfileFormModel.shared.mental_health_challenges == "" && arrsection.count == 2{
+                showAlertToast(message: "Please enter your input")
             }else {
-                selectedOption = 1
+                pageIndex = 1
+                if EmpowerProfileFormModel.shared.mental_health_treatments != "" {
+                    selectedOption = 0
+                    
+                }else {
+                    selectedOption = 1
+                }
+                arrsection.removeLast()
+                if arrsection.count == 0 {
+                    arrsection.append(0)
+                }
+                lblTitle.text = arrayQue[pageIndex]
+                tableview.reloadData()
             }
-            arrsection.removeLast()
-            if arrsection.count == 0 {
-                arrsection.append(0)
-            }
-            lblTitle.text = arrayQue[pageIndex]
-            tableview.reloadData()
+           
             
         }else {
             EmpowerProfileFormModel.shared.mental_health_treatments = strTreatments ?? ""
-            let model = EmpowerProfileFormModel.shared
-            callEEPProfileAPI(strStep: "1", complitionBlock: nil)
+            if EmpowerProfileFormModel.shared.mental_health_treatments == "" && arrsection.count == 2{
+                showAlertToast(message: "Please enter your input")
+            }else {
+                let model = EmpowerProfileFormModel.shared
+                callEEPProfileAPI(strStep: "1", complitionBlock: nil)
+            }
+            
         }
     }
 }
@@ -185,10 +196,11 @@ extension PersonalHistoryVC : UITableViewDelegate, UITableViewDataSource {
         
         if selectedOption != 1 {
             arrsection.append(0)
-        }else {
             print(arrsection.count)
+        }else {
             //arrsection.removeAll(where: { $0 == 1 } )
             arrsection.removeDuplicates()
+            print(arrsection.count)
         }
         
         tableview.reloadData()
@@ -217,5 +229,9 @@ extension PersonalHistoryVC : UITextViewDelegate {
         }
         
     }
-    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
+        let numberOfChars = newText.count
+        return numberOfChars < 250
+    }
 }

@@ -62,6 +62,7 @@ class SessionDetailVC: BaseViewController {
         }
         aVC.modalPresentationStyle = .overFullScreen
         self.present(aVC, animated: false, completion: nil)
+       
     }
     // MARK:- ACTIONS
     @IBAction func onTappedBack(_ sender: UIButton) {

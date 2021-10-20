@@ -181,35 +181,49 @@ class Step2VC: BaseViewController {
             }
             EmpowerProfileForm2Model.shared.electric_shock_last_treatment = strTreatmentDate ?? ""
             EmpowerProfileForm2Model.shared.electric_shock_treatment = "1"
-            pageIndex = 1
-            if EmpowerProfileForm2Model.shared.electric_shock_last_treatment != "" {
-                selectedOption = 0
-            }else {
-                selectedOption = 1
-            }
-            arrsection.removeLast()
-            if arrsection.count == 0 {
-                arrsection.append(0)
-            }
-            lblTitle.text = arrayQue[pageIndex]
             
-            tableview.reloadData()
+            if EmpowerProfileForm2Model.shared.electric_shock_last_treatment == "" && arrsection.count == 2{
+                showAlertToast(message: "Please enter your input")
+            }else {
+                pageIndex = 1
+                if EmpowerProfileForm2Model.shared.electric_shock_last_treatment != "" {
+                    selectedOption = 0
+                }else {
+                    selectedOption = 1
+                }
+                arrsection.removeLast()
+                if arrsection.count == 0 {
+                    arrsection.append(0)
+                }
+                lblTitle.text = arrayQue[pageIndex]
+                
+                tableview.reloadData()
+            }
             
         }else if pageIndex == 1{
             progressview.progress = 0.69
-            headerView.frame.size.height = 200
             EmpowerProfileForm2Model.shared.types_of_drug = strPrescription ?? ""
             EmpowerProfileForm2Model.shared.drug_prescription = "1"
-            pageIndex = 2
-            if EmpowerProfileForm2Model.shared.types_of_drug != "" {
-                selectedOption = 0
+            if EmpowerProfileForm2Model.shared.types_of_drug == "" && arrsection.count == 2{
+                showAlertToast(message: "Please enter your input")
             }else {
-                selectedOption = 1
+                pageIndex = 2
+                if EmpowerProfileForm2Model.shared.types_of_drug != "" {
+                    selectedOption = 0
+                }else {
+                    selectedOption = 1
+                }
+                arrsection.removeAll()
+                arrsection.insert(0, at: 0)
+                arrsection.insert(0, at: 1)
+                lblTitle.text = arrayQue[pageIndex]
+              
             }
-            arrsection.removeAll()
-            arrsection.insert(0, at: 0)
-            arrsection.insert(0, at: 1)
-            lblTitle.text = arrayQue[pageIndex]
+            if pageIndex == 1 {
+                headerView.frame.size.height = 130
+            }else if pageIndex == 2 {
+                headerView.frame.size.height = 200
+            }
             tableview.reloadData()
         }else {
             progressview.progress = 1
@@ -310,10 +324,10 @@ extension Step2VC : UITableViewDelegate, UITableViewDataSource {
         
         if selectedOption != 1 {
             arrsection.append(0)
-        }else {
             print(arrsection.count)
-            //arrsection.removeAll(where: { $0 == 1 } )
+        }else {
             arrsection.removeDuplicates()
+            print(arrsection.count)
         }
         
         tableview.reloadData()
@@ -357,7 +371,11 @@ extension Step2VC : UITextViewDelegate {
         }
         
     }
-    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
+        let numberOfChars = newText.count
+        return numberOfChars < 250
+    }
 }
 
 // MARK:- DJPickerViewDelegate

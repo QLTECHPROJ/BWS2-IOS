@@ -159,20 +159,30 @@ class Step3VC: BaseViewController, UITextFieldDelegate {
             
         }else if pageIndex == 1{
             progressview.progress = 0.69
-            headerView.frame.size.height = 130
+           // headerView.frame.size.height = 130
             EmpowerProfileForm3Model.shared.psychotic_emotions = strEpisode ?? ""
-            pageIndex = 2
-            if EmpowerProfileForm3Model.shared.suicidal_emotions != "" {
-                selectedOption = 0
+            if EmpowerProfileForm3Model.shared.psychotic_emotions == "" && arrsection.count == 2{
+                showAlertToast(message: "Please enter your input")
             }else {
-                selectedOption = 1
+                pageIndex = 2
+                if EmpowerProfileForm3Model.shared.suicidal_emotions != "" {
+                    selectedOption = 0
+                }else {
+                    selectedOption = 1
+                }
+                arrsection.removeLast()
+                if arrsection.count == 0 {
+                    arrsection.append(0)
+                }
+                lblTitle.text = arrayQue[pageIndex]
+                tableview.reloadData()
             }
-            arrsection.removeLast()
-            if arrsection.count == 0 {
-                arrsection.append(0)
+            if pageIndex == 0 {
+                headerView.frame.size.height = 250
+            }else if pageIndex == 2 {
+                headerView.frame.size.height = 130
             }
-            lblTitle.text = arrayQue[pageIndex]
-            tableview.reloadData()
+           
         }else {
             progressview.progress = 1
             EmpowerProfileForm3Model.shared.suicidal_emotions = strselectedOption
@@ -392,4 +402,9 @@ extension Step3VC : UITextViewDelegate {
         
     }
     
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
+        let numberOfChars = newText.count
+        return numberOfChars < 250
+    }
 }
