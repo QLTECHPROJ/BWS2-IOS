@@ -31,14 +31,11 @@ class SessionCell: UITableViewCell {
     @IBOutlet weak var lblDescAfterSess: UILabel!
     @IBOutlet weak var viewMain: UIView!
     
-    var arrAfter = [String]()
-    var arrBefore = [String]()
-    var arrColor = [String]()
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     // Configure Cell
     func configureCell(data : SessionListDataMainModel) {
         
@@ -62,7 +59,7 @@ class SessionCell: UITableViewCell {
             viewTopConst.constant = 30
             lblBeforeSession.text = "Before Session:"
             lblAfterSession.text = "After Session:"
-        }else if data.user_session_status == "Inprogress" {
+        } else if data.user_session_status == "Inprogress" {
             stackviewDate.isHidden = false
             imgCurrentSession.isHidden = false
             viewMain.layer.borderWidth = 2
@@ -73,19 +70,22 @@ class SessionCell: UITableViewCell {
             lblAfterSession.text = ""
             lblDescAfterSess.text = ""
             viewTopConst.constant = 10
+            
             if data.pre_session_audio_status == "1" {
                 imgCheck.image = UIImage(named: "Check")
-            }else{
+            } else {
                 imgCheck.image = UIImage(named: "Unckeck")
             }
-            if data.booklet_status == "1"{
+            
+            if data.booklet_status == "1" {
                 imgCheckbooklet.image = UIImage(named: "Check")
-            }else {
+            } else {
                 imgCheckbooklet.image = UIImage(named: "Unckeck")
             }
+            
             lblBeforeSession.text = "Before Session:"
             lblAfterSession.text = "After Session:"
-        }else {
+        } else {
             stackviewDate.isHidden = true
             stackviewBooklet.isHidden = true
             imgCurrentSession.isHidden = true
@@ -100,21 +100,36 @@ class SessionCell: UITableViewCell {
             viewTopConst.constant = 50
         }
         
-        for i in data.before_session {
-            arrBefore.append(i.key)
-            let myAttribute = [ NSAttributedString.Key.foregroundColor:Theme.colors.darkRed,NSAttributedString.Key.font:UIFont(name: Theme.fonts.MontserratMedium, size: 10)]
-            let myAttrString = NSAttributedString(string: arrBefore.joined(separator: ","), attributes: myAttribute as [NSAttributedString.Key : Any])
+        var arrayAfterFeelings = [NSAttributedString]()
+        var arrayBeforeFeelings = [NSAttributedString]()
+        
+        for (index,feeling) in data.before_session.enumerated() {
+            var strFeeling = feeling.key
+            if index < (data.before_session.count - 1) {
+                strFeeling = feeling.key + ", "
+            }
             
-            lblDescBeforeSess.attributedText = myAttrString
+            let hexColor = UIColor(hex: "\(feeling.color.replacingOccurrences(of: "#", with: ""))")
+            let myAttribute = [ NSAttributedString.Key.foregroundColor:hexColor,NSAttributedString.Key.font:UIFont(name: Theme.fonts.MontserratMedium, size: 10)]
+            let myAttrString = NSAttributedString(string: strFeeling, attributes: myAttribute as [NSAttributedString.Key : Any])
+            arrayBeforeFeelings.append(myAttrString)
         }
         
-        for i in data.after_session {
-            arrAfter.append(i.key)
-            let myAttribute = [ NSAttributedString.Key.foregroundColor:Theme.colors.Green,NSAttributedString.Key.font:UIFont(name: Theme.fonts.MontserratMedium, size: 10)]
-            let myAttrString = NSAttributedString(string: arrAfter.joined(separator: ","), attributes: myAttribute as [NSAttributedString.Key : Any])
+        lblDescBeforeSess.attributedText = arrayBeforeFeelings.joined()
+        
+        for (index,feeling) in data.after_session.enumerated() {
+            var strFeeling = feeling.key
+            if index < (data.after_session.count - 1) {
+                strFeeling = feeling.key + ", "
+            }
             
-            lblDescAfterSess.attributedText = myAttrString
+            let hexColor = UIColor(hex: "\(feeling.color.replacingOccurrences(of: "#", with: ""))")
+            let myAttribute = [ NSAttributedString.Key.foregroundColor:hexColor,NSAttributedString.Key.font:UIFont(name: Theme.fonts.MontserratMedium, size: 10)]
+            let myAttrString = NSAttributedString(string: strFeeling, attributes: myAttribute as [NSAttributedString.Key : Any])
+            arrayAfterFeelings.append(myAttrString)
         }
+        
+        lblDescAfterSess.attributedText = arrayAfterFeelings.joined()
     }
 }
 
