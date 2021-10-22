@@ -102,8 +102,13 @@ extension SessionDetailVC : UITableViewDelegate, UITableViewDataSource {
                 cell.configureCell(data: self.arraySession[indexPath.row])
                 if indexPath.row == self.arraySession.count - 1 {
                     cell.viewBottom.isHidden = true
-                }else {
+                    cell.viewTop.isHidden = false
+                } else if indexPath.row == 0 {
+                    cell.viewTop.isHidden = true
                     cell.viewBottom.isHidden = false
+                } else {
+                    cell.viewBottom.isHidden = false
+                    cell.viewTop.isHidden = false
                 }
                 let index = SessionVC.shared.find(value: "Lock", in: self.arraySession)
                 print(index)
