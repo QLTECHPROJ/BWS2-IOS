@@ -33,22 +33,27 @@ class FAQCell: UITableViewCell {
         lblQuestion.text = data.Title
         lblAnswer.text = data.Desc
         
-        viewBack.dropShadow(color: Theme.colors.black, opacity: 0.1, offSet: CGSize(width: 0, height: 0), radius: 5)
-        
-        viewAnswer.roundCorners([.bottomLeft,.bottomRight], radius: 5)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.viewBack.dropShadow(color: Theme.colors.black, opacity: 0.1, offSet: CGSize(width: 0, height: 0), radius: 5)
+            self.viewAnswer.roundCorners([.bottomLeft,.bottomRight], radius: 5)
+        }
         
         if data.isSelected {
             viewQuestion.backgroundColor = Theme.colors.gray_EEEEEE
             viewAnswer.isHidden = false
             btnArrow.setImage(UIImage(named: "arrowDownFAQ"), for: .normal)
             
-            viewQuestion.roundCorners([.topLeft,.topRight], radius: 5)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.viewQuestion.roundCorners([.topLeft,.topRight], radius: 5)
+            }
         } else {
             viewQuestion.backgroundColor = Theme.colors.white
             viewAnswer.isHidden = true
             btnArrow.setImage(UIImage(named: "arrowRightFAQ"), for: .normal)
             
-            viewQuestion.roundCorners([.allCorners], radius: 5)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.viewQuestion.roundCorners([.allCorners], radius: 5)
+            }
         }
     }
     

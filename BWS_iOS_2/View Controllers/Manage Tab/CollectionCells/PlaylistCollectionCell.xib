@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -35,6 +35,15 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </imageView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="create_playlist" translatesAutoresizingMaskIntoConstraints="NO" id="5Jo-4g-gyl">
+                        <rect key="frame" x="63" y="63" width="54" height="54"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lock" translatesAutoresizingMaskIntoConstraints="NO" id="gLD-TJ-kd7">
                         <rect key="frame" x="8" y="8" width="30" height="30"/>
                         <constraints>
@@ -59,7 +68,7 @@ Bundle</string>
                         </constraints>
                         <state key="normal" image="threeDot_Vertical"/>
                     </button>
-                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c1G-4b-5NL">
+                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c1G-4b-5NL">
                         <rect key="frame" x="0.0" y="145" width="180" height="35"/>
                         <color key="backgroundColor" name="transparent_313131_80"/>
                         <constraints>
@@ -72,6 +81,7 @@ Bundle</string>
                     </button>
                 </subviews>
             </view>
+            <viewLayoutGuide key="safeArea" id="82P-Rz-03B"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="m3Z-Bv-v0d" secondAttribute="bottom" id="1kl-qv-LH2"/>
@@ -87,9 +97,10 @@ Bundle</string>
                 <constraint firstAttribute="bottom" secondItem="DbW-dw-31I" secondAttribute="bottom" constant="10" id="aev-gB-ceD"/>
                 <constraint firstItem="m3Z-Bv-v0d" firstAttribute="top" secondItem="06w-5n-Oh8" secondAttribute="top" id="dES-S5-qvO"/>
                 <constraint firstAttribute="bottom" secondItem="c1G-4b-5NL" secondAttribute="bottom" id="jYD-Re-Jqc"/>
+                <constraint firstItem="5Jo-4g-gyl" firstAttribute="centerX" secondItem="06w-5n-Oh8" secondAttribute="centerX" id="kXy-4L-P3d"/>
                 <constraint firstItem="m3Z-Bv-v0d" firstAttribute="leading" secondItem="06w-5n-Oh8" secondAttribute="leading" id="luw-kT-y7K"/>
+                <constraint firstItem="5Jo-4g-gyl" firstAttribute="centerY" secondItem="06w-5n-Oh8" secondAttribute="centerY" id="pHb-Cr-5A2"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="82P-Rz-03B"/>
             <size key="customSize" width="179" height="211"/>
             <userDefinedRuntimeAttributes>
                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -100,6 +111,7 @@ Bundle</string>
                 <outlet property="btnAddtoPlaylist" destination="c1G-4b-5NL" id="drg-5A-9eB"/>
                 <outlet property="btnOptions" destination="1GT-ZW-p5f" id="rQy-mR-A9a"/>
                 <outlet property="imageView" destination="m3Z-Bv-v0d" id="Zfr-Z2-Kxe"/>
+                <outlet property="imageViewCreate" destination="5Jo-4g-gyl" id="eRM-8S-4OE"/>
                 <outlet property="imgLock" destination="gLD-TJ-kd7" id="B1z-iQ-FIt"/>
                 <outlet property="lblName" destination="DbW-dw-31I" id="HRh-lm-Ppa"/>
             </connections>
@@ -108,6 +120,7 @@ Bundle</string>
     </objects>
     <resources>
         <image name="audioPlaceHolder" width="114.5" height="114.5"/>
+        <image name="create_playlist" width="53.5" height="53.5"/>
         <image name="lock" width="30" height="30"/>
         <image name="threeDot_Vertical" width="4" height="16"/>
         <namedColor name="transparent_313131_80">

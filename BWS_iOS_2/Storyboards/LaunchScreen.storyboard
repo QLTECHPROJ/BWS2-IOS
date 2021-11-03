@@ -17,14 +17,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bws_icon" translatesAutoresizingMaskIntoConstraints="NO" id="dy5-iX-14J">
-                                <rect key="frame" x="95" y="342.66666666666669" width="185" height="127"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash_icon" translatesAutoresizingMaskIntoConstraints="NO" id="dy5-iX-14J">
+                                <rect key="frame" x="65.666666666666686" y="327.66666666666669" width="244" height="157"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="dy5-iX-14J" secondAttribute="height" multiplier="244:157" id="YDH-JJ-rBA"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
                         <color key="backgroundColor" name="Green"/>
                         <constraints>
-                            <constraint firstItem="dy5-iX-14J" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="185:375" id="MHe-HP-qpv"/>
+                            <constraint firstItem="dy5-iX-14J" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="244:375" id="FKF-pk-xYi"/>
                             <constraint firstItem="dy5-iX-14J" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="fQc-Lx-fxF"/>
                             <constraint firstItem="dy5-iX-14J" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="gsx-91-qWP"/>
                         </constraints>
@@ -36,7 +39,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bws_icon" width="185.33332824707031" height="126.66666412353516"/>
+        <image name="splash_icon" width="243.33332824707031" height="156.33332824707031"/>
         <namedColor name="Green">
             <color red="0.0" green="0.53333333333333333" blue="0.5725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

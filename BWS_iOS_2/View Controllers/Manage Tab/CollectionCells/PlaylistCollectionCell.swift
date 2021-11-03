@@ -12,6 +12,7 @@ class PlaylistCollectionCell: UICollectionViewCell {
     
     // MARK:- OUTLETS
     @IBOutlet weak var imageView : UIImageView!
+    @IBOutlet weak var imageViewCreate : UIImageView!
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var imgLock: UIImageView!
     @IBOutlet weak var btnAddtoPlaylist: UIButton!
@@ -26,7 +27,6 @@ class PlaylistCollectionCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         btnAddtoPlaylist.isHidden = true
-        imageView.contentMode = .scaleAspectFill
         // imageView.applyGradient(with: [UIColor.clear,Theme.colors.green_008892.withAlphaComponent(0.5),Theme.colors.green_008892])
     }
     
@@ -35,10 +35,12 @@ class PlaylistCollectionCell: UICollectionViewCell {
     func configureCreateCell() {
         imgLock.isHidden = true
         
-        imageView.image = UIImage(named: "create_playlist")
-        imageView.contentMode = .center
-        imageView.backgroundColor = Theme.colors.green_008892
-        imageView.applyGradient(with: [UIColor.clear])
+        self.backgroundColor = Theme.colors.green_008892
+        
+        imageView.isHidden = true
+        imageViewCreate.isHidden = false
+        
+        imageViewCreate.image = UIImage(named: "create_playlist")
         
         lblName.text = "Create \nNew Playlist"
         
@@ -59,12 +61,14 @@ class PlaylistCollectionCell: UICollectionViewCell {
             imgLock.isHidden = true
         }
         
+        imageView.isHidden = false
+        imageViewCreate.isHidden = true
+        
         if let imgUrl = URL(string: playlistData.PlaylistImage.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
             imageView.sd_setImage(with: imgUrl, completed: nil)
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            self.imageView.contentMode = .scaleAspectFill
             self.imageView.applyGradient(with: [UIColor.clear,UIColor.clear,Theme.colors.green_008892])
         }
         
@@ -89,12 +93,14 @@ class PlaylistCollectionCell: UICollectionViewCell {
             imgLock.isHidden = true
         }
         
+        imageView.isHidden = false
+        imageViewCreate.isHidden = true
+        
         if let imgUrl = URL(string: playlistData.PlaylistImage.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
             imageView.sd_setImage(with: imgUrl, completed: nil)
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            self.imageView.contentMode = .scaleAspectFill
             self.imageView.applyGradient(with: [UIColor.clear,UIColor.clear,Theme.colors.green_008892])
         }
         
@@ -119,12 +125,14 @@ class PlaylistCollectionCell: UICollectionViewCell {
             imgLock.isHidden = false
         }
         
+        imageView.isHidden = false
+        imageViewCreate.isHidden = true
+        
         if let imgUrl = URL(string: audioData.ImageFile.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
             imageView.sd_setImage(with: imgUrl, completed: nil)
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            self.imageView.contentMode = .scaleAspectFill
             self.imageView.applyGradient(with: [UIColor.clear,UIColor.clear,Theme.colors.green_008892])
         }
         
