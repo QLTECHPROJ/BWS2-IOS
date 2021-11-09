@@ -152,6 +152,7 @@ class SendOTPDataModel : EVObject {
     var errormsg = ""
     var SignupFlag = ""
     var IsRegistered = ""
+    var signup = ""
 }
 
 

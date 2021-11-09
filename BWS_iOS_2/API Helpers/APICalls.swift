@@ -512,7 +512,15 @@ extension UIViewController {
                 }
                 
                 complitionBlock?(response)
-            } else {
+            }else if response.ResponseCode == "401" {
+                if response.ResponseData?.signup == "1" {
+                    let aVC = AppStoryBoard.main.viewController(viewControllerClass:SignUpVC.self)
+                    aVC.selectedCountry = country
+                    aVC.strMobile = mobileNo
+                    self.navigationController?.pushViewController(aVC, animated: true)
+                }
+                
+            }else {
                 complitionBlock?(response)
             }
         }

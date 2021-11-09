@@ -39,6 +39,7 @@ class SignUpVC: BaseViewController {
     var isFromOTP = false
     var isCountrySelected = false
     var selectedCountry = CountrylistDataModel(id: "0", name: "Australia", shortName: "AU", code: "61")
+    var strMobile:String?
     
     
     // MARK:- VIEW LIFE CYCLE
@@ -48,6 +49,15 @@ class SignUpVC: BaseViewController {
         setupUI()
         setupPrivacyLabel()
         setupData()
+        
+        if strMobile != "" {
+            txtFMobileNo.isEnabled = false
+            btnCountryCode.isEnabled = false
+            txtFMobileNo.text = strMobile
+            let countryText = selectedCountry.ShortName.uppercased() + " +" + selectedCountry.Code
+            btnCountryCode.setTitle(countryText, for: .normal)
+            
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
