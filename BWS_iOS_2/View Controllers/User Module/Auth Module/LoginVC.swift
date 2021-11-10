@@ -52,6 +52,12 @@ class LoginVC: BaseViewController {
         
         if isFromOTP {
             txtFMobileNo.becomeFirstResponder()
+        }else {
+            txtFMobileNo.text = ""
+            selectedCountry = CountrylistDataModel(id: "0", name: "Australia", shortName: "AU", code: "61")
+            let countryText = selectedCountry.ShortName.uppercased() + " +" + selectedCountry.Code
+            btnCountryCode.setTitle(countryText, for: .normal)
+            self.btnCountryCode.setTitleColor(Theme.colors.black_40_opacity, for: .normal)
         }
     }
     
@@ -79,10 +85,12 @@ class LoginVC: BaseViewController {
         let countryText = selectedCountry.ShortName.uppercased() + " +" + selectedCountry.Code
         btnCountryCode.setTitle(countryText, for: .normal)
         
-        if isCountrySelected {
-            btnCountryCode.setTitleColor(Theme.colors.textColor, for: .normal)
-        } else {
-            btnCountryCode.setTitleColor(Theme.colors.black_40_opacity, for: .normal)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            if self.isCountrySelected {
+                self.btnCountryCode.setTitleColor(Theme.colors.textColor, for: .normal)
+            } else {
+                self.btnCountryCode.setTitleColor(Theme.colors.black_40_opacity, for: .normal)
+            }
         }
         
         buttonEnableDisable()

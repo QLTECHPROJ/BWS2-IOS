@@ -513,11 +513,15 @@ extension UIViewController {
                 
                 complitionBlock?(response)
             }else if response.ResponseCode == "401" {
+                showAlertToast(message: response.ResponseMessage)
                 if response.ResponseData?.signup == "1" {
-                    let aVC = AppStoryBoard.main.viewController(viewControllerClass:SignUpVC.self)
-                    aVC.selectedCountry = country
-                    aVC.strMobile = mobileNo
-                    self.navigationController?.pushViewController(aVC, animated: true)
+                    if response.ResponseMessage != "Please enter a valid mobile number" {
+                        let aVC = AppStoryBoard.main.viewController(viewControllerClass:SignUpVC.self)
+                        aVC.selectedCountry = country
+                        aVC.strMobile = mobileNo
+                        aVC.isCountrySelected = true
+                        self.navigationController?.pushViewController(aVC, animated: true)
+                    }
                 }
                 
             }else {

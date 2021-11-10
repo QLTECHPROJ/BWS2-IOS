@@ -50,14 +50,6 @@ class SignUpVC: BaseViewController {
         setupPrivacyLabel()
         setupData()
         
-        if strMobile != "" {
-            txtFMobileNo.isEnabled = false
-            btnCountryCode.isEnabled = false
-            txtFMobileNo.text = strMobile
-            let countryText = selectedCountry.ShortName.uppercased() + " +" + selectedCountry.Code
-            btnCountryCode.setTitle(countryText, for: .normal)
-            
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -95,15 +87,21 @@ class SignUpVC: BaseViewController {
     }
     
     override func setupData() {
+        
         let countryText = selectedCountry.ShortName.uppercased() + " +" + selectedCountry.Code
         btnCountryCode.setTitle(countryText, for: .normal)
         
-        if isCountrySelected {
-            btnCountryCode.setTitleColor(Theme.colors.textColor, for: .normal)
-        } else {
-            btnCountryCode.setTitleColor(Theme.colors.black_40_opacity, for: .normal)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            if self.isCountrySelected {
+                self.btnCountryCode.setTitleColor(Theme.colors.textColor, for: .normal)
+            } else {
+                self.btnCountryCode.setTitleColor(Theme.colors.black_40_opacity, for: .normal)
+            }
         }
-        
+       
+        if strMobile != "" {
+            txtFMobileNo.text = strMobile
+        }
         buttonEnableDisable()
     }
     
@@ -289,7 +287,18 @@ class SignUpVC: BaseViewController {
     }
     
     @IBAction func onTappedBack(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
+        if let controllers = self.navigationController?.viewControllers {
+            for controller in controllers {
+                if controller.isKind(of: LoginVC.self) {
+                    if let aVC = controller as? LoginVC {
+                           aVC.isFromOTP = false
+                    }
+                   
+                    self.navigationController?.popToViewController(controller, animated: true)
+                    break
+                }
+            }
+        }
     }
     
 }
