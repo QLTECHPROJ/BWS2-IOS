@@ -49,6 +49,10 @@ class SignUpVC: BaseViewController {
         setupUI()
         setupPrivacyLabel()
         setupData()
+        if strMobile != "" {
+            txtFMobileNo.text = strMobile
+        }
+
         
     }
     
@@ -99,9 +103,6 @@ class SignUpVC: BaseViewController {
             }
         }
        
-        if strMobile != "" {
-            txtFMobileNo.text = strMobile
-        }
         buttonEnableDisable()
     }
     
