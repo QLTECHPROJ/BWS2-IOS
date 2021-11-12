@@ -29,6 +29,7 @@ class CancelSubVC: BaseViewController {
     var player: AVPlayer?
     var isFromDelete = false
     var planDetails : PlanDetailDataModel?
+    var oldPlanDetails : StripePlanDetailModel?
     
     
     // MARK:- VIEW LIFE CYCLE
@@ -180,7 +181,13 @@ extension CancelSubVC : AlertPopUpVCDelegate {
             if isFromDelete {
                 callDeleteAccountAPI()
             } else {
-                callCancelPlanAPI()
+                if CoUserDataModel.currentUser?.paymentType == "1" {
+                    // Cancel IAP Plan
+                    callCancelPlanAPI()
+                } else {
+                    // Cancel Stripe Plan
+                    callCancelStripePlanAPI()
+                }
             }
         } else {
             self.dismiss(animated: true, completion: nil)

@@ -72,7 +72,7 @@ extension CountryListVC {
 
 extension OTPVC {
     
-    // App OTP API Call
+    // Auth (Verify) OTP API Call
     func callAuthOTPAPI(otp : String) {
         var parameters = [String:String]()
         
@@ -286,7 +286,7 @@ extension AssessmentVC {
         }
     }
     
-    // Fetch Dass Assessment answer save API Call
+    // Save Dass Assessment Answers API Call
     func callSaveAnsAssessmentAPI(arrAns:String) {
         let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
                           "ans":arrAns]
@@ -331,7 +331,7 @@ extension AssessmentVC {
 
 extension DassAssessmentResultVC {
     
-    //delete Account API
+    // Get Assessment Details API Call
     func callAssesmentGetDetailsAPI() {
         let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId]
         
@@ -348,7 +348,7 @@ extension DassAssessmentResultVC {
 
 extension UIViewController {
     
-    // Call Get Co User Details API
+    // Get Co User Details API Call
     func callGetCoUserDetailsAPI(complitionBlock : ((Bool) -> ())?) {
         let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId]
         
@@ -375,7 +375,7 @@ extension UIViewController {
         }
     }
     
-    // Call Log Out API
+    // Log Out API Call
     func callLogoutAPI(complitionBlock : (() -> ())?) {
         let parameters = [APIParameters.UserId:LoginDataModel.currentUserId,
                           "Token":FCM_TOKEN,
@@ -392,7 +392,7 @@ extension UIViewController {
         }
     }
     
-    // Audio Recently Played API Call
+    // Add Audio to Recently Played API Call
     func callRecentlyPlayedAPI(audioID : String, complitionBlock : (() -> ())?) {
         if audioID.trim.count == 0 || DJMusicPlayer.shared.currentlyPlaying?.isDisclaimer == true {
             return
@@ -477,7 +477,7 @@ extension UIViewController {
         }
     }
     
-    // App SIGNUP API Call
+    // Login / SignUp API Call
     func callLoginAPI(signUpFlag:String, country:CountrylistDataModel, mobileNo:String, username:String, email:String, resendOTP : String, complitionBlock : ((SendOTPModel) -> ())?) {
         let parameters = ["DeviceType":APP_TYPE,
                           "CountryCode":country.Code,
@@ -530,7 +530,7 @@ extension UIViewController {
         }
     }
     
-    //App Verify Reciept
+    // IAP Verify Reciept API Call
     func callVerifyRecieptAPI(strreceiptData : String, complitionBlock : (() -> ())?) {
             let parameters = ["receiptData":strreceiptData]
             
@@ -566,7 +566,7 @@ extension UIViewController {
         }
     }
     
-    // Call Get Co User Details API
+    // Get Co User Details API Call
     func callSendPaymentLinkAPI(complitionBlock : ((Bool) -> ())?) {
         let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
                           APIParameters.MainAccountID:LoginDataModel.currentMainAccountId]
@@ -805,7 +805,7 @@ extension PlaylistAudiosVC {
         }
     }
     
-    // Playlist Sprting API Call
+    // Playlist Audio Sorting API Call
     func callSortingPlaylistAudioAPI(audioIds : String) {
         let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
                           "PlaylistId":objPlaylist!.PlaylistID,
@@ -862,6 +862,7 @@ extension AddToPlaylistVC {
         }
     }
     
+    // Add Audio to Playlist API Call
     func callAddAudioToPlaylistAPI(playlistID : String) {
         self.view.endEditing(true)
         
@@ -954,7 +955,7 @@ extension AudioDetailVC {
 
 extension AddAudioVC {
     
-    //call audio list
+    // Audio List API Call
     func callAudioAPI() {
         let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
                           "playlistId":playlistID]
@@ -969,7 +970,7 @@ extension AddAudioVC {
         }
     }
     
-    //call playlist
+    // Playlist List API Call
     func callPlaylistAPI() {
         let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId]
         APICallManager.sharedInstance.callAPI(router: APIRouter.suggestedplaylist(parameters)) { (response :PlaylistListingModel) in
@@ -981,7 +982,7 @@ extension AddAudioVC {
         }
     }
     
-    //call search
+    // Search Audio / Playlist API Call
     func callSearchAPI(searchText : String) {
         let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
                           "SuggestedName":searchText,
@@ -1010,6 +1011,7 @@ extension AddAudioVC {
         }
     }
     
+    // Add Audio to Playlist API Call
     func callAddAudioToPlaylistAPI(audioToAdd : String = "" , playlistToAdd : String = "") {
         self.view.endEditing(true)
         
@@ -1047,7 +1049,7 @@ extension AreaOfFocusVC {
         }
     }
     
-    // Save Category & Sleep Time
+    // Save Category & Sleep Time API Call
     func callSaveCategoryAPI(areaOfFocus : [[String:Any]]) {
         let parameters : [String : Any] = [APIParameters.UserId:CoUserDataModel.currentUserId,
                                            "AvgSleepTime":self.averageSleepTime,
@@ -1092,7 +1094,7 @@ extension AreaOfFocusVC {
 
 extension SleepTimeVC {
     
-    // Fetch Sleep Time
+    // Fetch Sleep Time API Call
     func callSleepTimetAPI() {
         APICallManager.sharedInstance.callAPI(router: APIRouter.avgsleeptime) { (response : AverageSleepTimeModel) in
             if response.ResponseCode == "200" {
@@ -1108,7 +1110,7 @@ extension SleepTimeVC {
 
 extension ManagePlanListVC {
     
-    // Fetch Plan List & Other Data
+    // Fetch Plan List & Other Data API Call
     func callManagePlanListAPI() {
         let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId]
         APICallManager.sharedInstance.callAPI(router: APIRouter.planlist(parameters)) { (response :PlanListModel) in
@@ -1157,7 +1159,7 @@ extension ManagePlanListVC {
 
 extension AddAudioViewAllVC {
     
-    //call playlist
+    // Playlist List API Call
     func callPlaylistAPI() {
         let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId]
         APICallManager.sharedInstance.callAPI(router: APIRouter.suggestedplaylist(parameters)) { (response :PlaylistListingModel) in
@@ -1172,6 +1174,7 @@ extension AddAudioViewAllVC {
         }
     }
     
+    // Add Audio to Playlist API Call
     func callAddAudioToPlaylistAPI(audioToAdd : String = "" , playlistToAdd : String = "") {
         self.view.endEditing(true)
         
@@ -1239,6 +1242,7 @@ extension NotificatonVC {
 
 extension ResourceVC {
     
+    // Resource Category List API Call
     func callResourceCategoryListAPI() {
         let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId]
         
@@ -1376,7 +1380,7 @@ extension AccountVC {
 
 extension ChangePINVC {
     
-    //call change pin
+    // Change PIN API Call
     func callChangePinAPI() {
         let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
                           "OldPin":txtFOldPIN.text ?? "",
@@ -1396,7 +1400,7 @@ extension ChangePINVC {
 
 extension ChangePassWordVC {
     
-    //call change pin
+    // Change Password API Call
     func callChangePasswordAPI() {
         let parameters = [APIParameters.MainAccountID:LoginDataModel.currentMainAccountId,
                           APIParameters.UserId:CoUserDataModel.currentUserId,
@@ -1417,8 +1421,8 @@ extension ChangePassWordVC {
 
 extension FAQVC {
     
-    // Country List API Call
-    func callFAQtAPI() {
+    // FAQ List API Call
+    func callFAQListAPI() {
         APICallManager.sharedInstance.callAPI(router: APIRouter.faqlist) { (response : FAQListModel) in
             if response.ResponseCode == "200" {
                 self.arrayFAQ = response.ResponseData
@@ -1439,6 +1443,7 @@ extension FAQVC {
 
 extension ReminderListVC {
     
+    // Reminders List API Call
     func callRemListAPI() {
         let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId]
         
@@ -1464,6 +1469,8 @@ extension ReminderListVC {
             }
         }
     }
+    
+    // Update Reminder Status API Call
     func callRemSatusAPI(status:String) {
         
         let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
@@ -1481,6 +1488,7 @@ extension ReminderListVC {
         }
     }
     
+    // Delete Reminder API Call
     func callRemDeleteAPI(remID:String) {
 
         let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
@@ -1500,6 +1508,7 @@ extension ReminderListVC {
 
 extension DayVC {
     
+    // Set Reminder API Call
     func callSetRemAPI() {
         let strDay =  (arrSelectDays.map{String($0)}).joined(separator: ",")
         let time = lblTime.text?.localToUTC(incomingFormat: "h:mm a", outGoingFormat: "h:mm a") ?? ""
@@ -1578,7 +1587,7 @@ extension UIImageView {
 
 extension EditProfileVC {
     
-    //Update Profile Detail API
+    // Update Profile Detail API Call
     func callUpdateProfileDetailAPI() {
         var DOB = selectedDOB.stringFromFormat(Theme.dateFormats.DOB_Backend)
         
@@ -1633,7 +1642,8 @@ extension EditProfileVC {
 }
 
 extension OrderSummaryVC {
-    //user plan Purchase
+    
+    // IAP Plan Purchase API Call
     func callIAPPlanPurchaseAPI() {
         
         guard let receiptURL = Bundle.main.appStoreReceiptURL, let receiptString = try? Data(contentsOf: receiptURL, options: .alwaysMapped).base64EncodedString(options: []) else {
@@ -1670,6 +1680,7 @@ extension OrderSummaryVC {
 
 extension SetUpPInVC {
     
+    // Set Login PIN API Call
     func callSetUpPinAPI() {
         let parameters = [APIParameters.UserId:selectedUser?.UserId ?? "",
                           "Pin":txtFConfirmLoginPin.text ?? ""]
@@ -1689,6 +1700,7 @@ extension SetUpPInVC {
 
 extension UserDetailVC {
     
+    // Add User (with Same Number) API Call
     func callAddUserDetailAPI() {
         let parameters = [APIParameters.MainAccountID:LoginDataModel.currentMainAccountId,
                           "Name":txtFName.text ?? "",
@@ -1717,6 +1729,7 @@ extension UserDetailVC {
 
 extension ContactVC {
     
+    // Invite User API Call
     func callInviteUserAPI(contact : ContactModel) {
 
         let parameters = [APIParameters.UserId:LoginDataModel.currentUserId,
@@ -1760,6 +1773,7 @@ extension ManageUserVC {
         }
     }
     
+    // Cancel Invite API Call
     func callCancelInviteAPI(user : CoUserDataModel) {
         let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
                           "MobileNo":user.Mobile]
@@ -1773,6 +1787,7 @@ extension ManageUserVC {
         }
     }
     
+    // Remove User API Call
     func callRemoveUserAPI(userId : String) {
         let parameters = [APIParameters.MainAccountID:LoginDataModel.currentMainAccountId,
                           APIParameters.UserId:userId]
@@ -1796,7 +1811,7 @@ extension ManageUserVC {
 //Reminder pop Up
 extension ReminderPopUpVC {
     
-    //set reminder for suggested playlist
+    // Suggested Playlist Reminder PopUp - Proceed API Call
     func callProceedAPI() {
         let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId]
 
@@ -1841,7 +1856,27 @@ extension CancelSubVC {
         }
     }
     
-    //delete Account API
+    // Cancel Stripe Plan API Call
+    func callCancelStripePlanAPI() {
+        var parameters = ["UserID":CoUserDataModel.currentUserId,
+                          "CancelId":"\(selectedOption)"]
+        if selectedOption == 4 {
+            parameters["CancelReason"] = txtView.text!
+        }
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.cancelplanstripe(parameters)) { (response :GeneralModel) in
+            
+            if response.ResponseCode == "200" {
+                showAlertToast(message: response.ResponseMessage)
+                
+                self.trackCancelSubscriptionEvent()
+                
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
+    }
+    
+    // Delete Account API
     func callDeleteAccountAPI() {
         var parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
                           "CancelId":"\(selectedOption)"]
@@ -1867,7 +1902,7 @@ extension CancelSubVC {
 
 extension BillingOrderVC {
     
-    //delete Account API
+    // IAP Plan Details API
     func callPlanDetailsAPI() {
         let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId]
         
@@ -1875,6 +1910,24 @@ extension BillingOrderVC {
             
             if response.ResponseCode == "200" {
                 self.planDetails = response.ResponseData
+                self.setupData()
+                self.trackScreenData(planDetails: response.ResponseData)
+            }
+        }
+    }
+}
+
+
+extension BillingOrderStripeVC {
+    
+    // Stripe Plan Details API
+    func callStripePlanDetailsAPI() {
+        let parameters = ["UserID":CoUserDataModel.currentUserId]
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.billingorder(parameters)) { (response :StripePlanDataModel) in
+            
+            if response.ResponseCode == "200" {
+                self.oldPlanDetails = response.ResponseData
                 self.setupData()
                 self.trackScreenData(planDetails: response.ResponseData)
             }

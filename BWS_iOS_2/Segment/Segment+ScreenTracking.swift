@@ -404,6 +404,29 @@ extension BillingOrderVC {
     
 }
 
+extension BillingOrderStripeVC {
+    
+    func trackScreenData(planDetails : StripePlanDetailModel?) {
+        if shouldTrackScreen == false {
+            return
+        }
+        
+        guard let planData = planDetails else {
+            return
+        }
+        
+        shouldTrackScreen = false
+        
+        let traits = ["plan":planData.Plan,
+                      "planStatus":planData.Status,
+                      "planStartDt":planData.Activate,
+                      "planExpiryDt":planData.expireDate,
+                      "planAmount":planData.OrderTotal]
+        SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.Billing_Order, traits: traits)
+    }
+    
+}
+
 extension CancelSubVC {
     
     func trackScreenData() {

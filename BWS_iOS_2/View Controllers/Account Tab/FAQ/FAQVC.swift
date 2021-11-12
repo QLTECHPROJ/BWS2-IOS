@@ -10,16 +10,17 @@ import UIKit
 
 class FAQVC: BaseViewController {
     
-    //MARK:- UIOutlet
+    // MARK:- OUTLETS
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet var headerView: UIView!
     
-    //MARK:- Variables
+    
+    // MARK:- VARIABLES
     var arrTitle = ["Audio","Playlist","General"]
     var arrayFAQ = [FAQDataModel]()
     
     
-    //MARK:- View Life Cycle
+    // MARK:- VIEW LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,27 +31,24 @@ class FAQVC: BaseViewController {
         setupUI()
     }
     
-    //MARK:- Functions
+    // MARK:- FUNCTIONS
     override func setupUI() {
-        callFAQtAPI()
+        callFAQListAPI()
         tableView.register(nibWithCellClass:AccountCell.self)
         tableView.tableFooterView = headerView
     }
     
-    override func setupData() {
-        
-        
-        
-    }
     
-    //MARK:- IBAction Methods
+    // MARK:- ACTIONS
     @IBAction func backClicked(sender : UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
     
 }
 
-extension FAQVC:UITableViewDelegate,UITableViewDataSource {
+
+// MARK:- UITableViewDelegate, UITableViewDataSource
+extension FAQVC : UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 3
@@ -67,7 +65,7 @@ extension FAQVC:UITableViewDelegate,UITableViewDataSource {
         cell.viewBack.backgroundColor = Theme.colors.off_white_F9F9F9
         if arrTitle[indexPath.section] == "General" {
             cell.lblTitle.text = "Help"
-        }else {
+        } else {
             cell.lblTitle.text = arrTitle[indexPath.section]
         }
         cell.lblLine.isHidden = true
@@ -94,4 +92,5 @@ extension FAQVC:UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
     }
+    
 }

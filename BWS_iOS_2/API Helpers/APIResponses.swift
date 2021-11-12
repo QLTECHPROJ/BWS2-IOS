@@ -990,3 +990,29 @@ class PlanDataModel : EVObject {
     var ResponseStatus = ""
     var ResponseData : PlanDetailDataModel?
 }
+
+
+// MARK:- Stripe Plan Details API Models
+class StripePlanDataModel : EVObject {
+    var ResponseCode = ""
+    var ResponseMessage = ""
+    var ResponseStatus = ""
+    var ResponseData : StripePlanDetailModel?
+}
+
+class StripePlanDetailModel:EVObject {
+    var Plan = ""
+    var PlanId = ""
+    var PlanFlag = ""
+    var OrderTotal = ""
+    var PlanStr = ""
+    var Activate = ""
+    var Status = ""
+    var Subtitle = ""
+    var CardDigit = ""
+    var CardId = ""
+    var invoicePayId = ""
+    var Reattempt = ""
+    var Feature = [PlanFeatureModel]()
+    var expireDate = ""
+}

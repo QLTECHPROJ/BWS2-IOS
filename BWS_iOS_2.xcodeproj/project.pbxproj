@@ -130,6 +130,16 @@
 		283F72F4261D999200554774 /* SubColCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283F72F1261D999100554774 /* SubColCell.swift */; };
 		283F72F5261D999200554774 /* SubColCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 283F72F2261D999200554774 /* SubColCell.xib */; };
 		283F72F6261D999200554774 /* SubColCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 283F72F2261D999200554774 /* SubColCell.xib */; };
+		28477B12273CDC4700A3FE3B /* BillingOrderStripeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28477B11273CDC4700A3FE3B /* BillingOrderStripeVC.swift */; };
+		28477B13273CDC4700A3FE3B /* BillingOrderStripeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28477B11273CDC4700A3FE3B /* BillingOrderStripeVC.swift */; };
+		28477B82273CFD5300A3FE3B /* StripePlanDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28477B80273CFD5300A3FE3B /* StripePlanDetailsCell.swift */; };
+		28477B83273CFD5300A3FE3B /* StripePlanDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28477B80273CFD5300A3FE3B /* StripePlanDetailsCell.swift */; };
+		28477B84273CFD5300A3FE3B /* StripePlanDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28477B81273CFD5300A3FE3B /* StripePlanDetailsCell.xib */; };
+		28477B85273CFD5300A3FE3B /* StripePlanDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28477B81273CFD5300A3FE3B /* StripePlanDetailsCell.xib */; };
+		28477BAE273CFF3900A3FE3B /* PlanFeatureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28477BAC273CFF3900A3FE3B /* PlanFeatureCell.swift */; };
+		28477BAF273CFF3900A3FE3B /* PlanFeatureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28477BAC273CFF3900A3FE3B /* PlanFeatureCell.swift */; };
+		28477BB0273CFF3900A3FE3B /* PlanFeatureCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28477BAD273CFF3900A3FE3B /* PlanFeatureCell.xib */; };
+		28477BB1273CFF3900A3FE3B /* PlanFeatureCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28477BAD273CFF3900A3FE3B /* PlanFeatureCell.xib */; };
 		284C9B6A262E93D1008C4435 /* CryptLib.m in Sources */ = {isa = PBXBuildFile; fileRef = 284C9B68262E93D1008C4435 /* CryptLib.m */; };
 		284C9B6B262E93D1008C4435 /* CryptLib.m in Sources */ = {isa = PBXBuildFile; fileRef = 284C9B68262E93D1008C4435 /* CryptLib.m */; };
 		285405D126E73C79003B35F1 /* ActivityGraphCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285405CF26E73C79003B35F1 /* ActivityGraphCell.swift */; };
@@ -645,6 +655,11 @@
 		283F72EE261D994900554774 /* AssessmentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssessmentVC.swift; sourceTree = "<group>"; };
 		283F72F1261D999100554774 /* SubColCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubColCell.swift; sourceTree = "<group>"; };
 		283F72F2261D999200554774 /* SubColCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubColCell.xib; sourceTree = "<group>"; };
+		28477B11273CDC4700A3FE3B /* BillingOrderStripeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillingOrderStripeVC.swift; sourceTree = "<group>"; };
+		28477B80273CFD5300A3FE3B /* StripePlanDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripePlanDetailsCell.swift; sourceTree = "<group>"; };
+		28477B81273CFD5300A3FE3B /* StripePlanDetailsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StripePlanDetailsCell.xib; sourceTree = "<group>"; };
+		28477BAC273CFF3900A3FE3B /* PlanFeatureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanFeatureCell.swift; sourceTree = "<group>"; };
+		28477BAD273CFF3900A3FE3B /* PlanFeatureCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlanFeatureCell.xib; sourceTree = "<group>"; };
 		284C9B68262E93D1008C4435 /* CryptLib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CryptLib.m; sourceTree = "<group>"; };
 		284C9B69262E93D1008C4435 /* CryptLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CryptLib.h; sourceTree = "<group>"; };
 		285405CF26E73C79003B35F1 /* ActivityGraphCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityGraphCell.swift; sourceTree = "<group>"; };
@@ -1542,6 +1557,10 @@
 			children = (
 				9A55EB232668BE97006E398A /* CurrentPlanCell.swift */,
 				9A55EB242668BE97006E398A /* CurrentPlanCell.xib */,
+				28477B80273CFD5300A3FE3B /* StripePlanDetailsCell.swift */,
+				28477B81273CFD5300A3FE3B /* StripePlanDetailsCell.xib */,
+				28477BAC273CFF3900A3FE3B /* PlanFeatureCell.swift */,
+				28477BAD273CFF3900A3FE3B /* PlanFeatureCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1550,6 +1569,7 @@
 			isa = PBXGroup;
 			children = (
 				9A55EB202668B309006E398A /* BillingOrderVC.swift */,
+				28477B11273CDC4700A3FE3B /* BillingOrderStripeVC.swift */,
 				9A55EB2C2668E90B006E398A /* UpgradePlanVC.swift */,
 				9A55EB2F2668EA29006E398A /* BillingAddressVC.swift */,
 				9A55EB322668EA33006E398A /* CancelSubVC.swift */,
@@ -1781,6 +1801,7 @@
 				28346E25260B5A5900DD41BE /* FAQCell.xib in Resources */,
 				2891E2A52643CCF800658B49 /* ReminderListCell.xib in Resources */,
 				28ED2F9625FB58E000E59C56 /* Montserrat-Italic.ttf in Resources */,
+				28477BB1273CFF3900A3FE3B /* PlanFeatureCell.xib in Resources */,
 				28E01224261847EA00B55967 /* IndexScoreCell.xib in Resources */,
 				9AC067072639178F00287A44 /* PodcastCell.xib in Resources */,
 				2891E2A72643CCF800658B49 /* SelectPlayListCell.xib in Resources */,
@@ -1788,6 +1809,7 @@
 				28E8092D261308F900CD80F7 /* Wellness.storyboard in Resources */,
 				28B53538260C690600BD8147 /* SleepTimeCell.xib in Resources */,
 				285405D426E73C79003B35F1 /* ActivityGraphCell.xib in Resources */,
+				28477B85273CFD5300A3FE3B /* StripePlanDetailsCell.xib in Resources */,
 				28E01232261847EA00B55967 /* ProgressCell.xib in Resources */,
 				28ED2FC225FB931800E59C56 /* OptionsCell.xib in Resources */,
 				9AC0671F2639304E00287A44 /* FeatureCell.xib in Resources */,
@@ -1849,6 +1871,7 @@
 				28346E24260B5A5900DD41BE /* FAQCell.xib in Resources */,
 				2891E2A42643CCF800658B49 /* ReminderListCell.xib in Resources */,
 				28ED2FC125FB931800E59C56 /* OptionsCell.xib in Resources */,
+				28477BB0273CFF3900A3FE3B /* PlanFeatureCell.xib in Resources */,
 				28E01223261847EA00B55967 /* IndexScoreCell.xib in Resources */,
 				9AC067062639178F00287A44 /* PodcastCell.xib in Resources */,
 				2891E2A62643CCF800658B49 /* SelectPlayListCell.xib in Resources */,
@@ -1856,6 +1879,7 @@
 				28E8092C261308F900CD80F7 /* Wellness.storyboard in Resources */,
 				28B53537260C690600BD8147 /* SleepTimeCell.xib in Resources */,
 				285405D326E73C79003B35F1 /* ActivityGraphCell.xib in Resources */,
+				28477B84273CFD5300A3FE3B /* StripePlanDetailsCell.xib in Resources */,
 				28E01231261847EA00B55967 /* ProgressCell.xib in Resources */,
 				2870B45525FB44700014A4F6 /* WWCalendarTimeSelector.storyboard in Resources */,
 				9AC0671E2639304E00287A44 /* FeatureCell.xib in Resources */,
@@ -2029,6 +2053,7 @@
 				28786CB1262967F7000E8598 /* ViewAllCell.swift in Sources */,
 				283529A42609DA6F009AB2AA /* OrderSummaryVC.swift in Sources */,
 				28B2F4AC2642C143009A4E5B /* PlanFeaturesCell.swift in Sources */,
+				28477B13273CDC4700A3FE3B /* BillingOrderStripeVC.swift in Sources */,
 				28E809532613591400CD80F7 /* AudioCollectionCell.swift in Sources */,
 				2802A72226F325DE00CF9193 /* SupportPopupVC.swift in Sources */,
 				2891E2A12643CCF800658B49 /* SelectPlayListCell.swift in Sources */,
@@ -2183,6 +2208,7 @@
 				2870B35925FB3A570014A4F6 /* AppDelegate.swift in Sources */,
 				28A5834926E228C0009F9464 /* CleverTap.swift in Sources */,
 				28B53550260CC44100BD8147 /* DynamicHeightCollectionView.swift in Sources */,
+				28477B83273CFD5300A3FE3B /* StripePlanDetailsCell.swift in Sources */,
 				280DFCDF260DA03E00479EE6 /* RecommendedCategoryHeaderCell.swift in Sources */,
 				2870B37125FB404B0014A4F6 /* APIRoute.swift in Sources */,
 				2870B44425FB41A10014A4F6 /* ReorderController+GestureRecognizer.swift in Sources */,
@@ -2197,6 +2223,7 @@
 				281DE3262626FD79002CCD9D /* DJDownloadManager+Helper.swift in Sources */,
 				28252FA525FF357C00C2EB50 /* DoDassAssessmentVC.swift in Sources */,
 				28B27827262EEF5F005794E3 /* DownloadAudioVC.swift in Sources */,
+				28477BAF273CFF3900A3FE3B /* PlanFeatureCell.swift in Sources */,
 				2870B3D025FB41A10014A4F6 /* DJTextView.swift in Sources */,
 				281DE3442626FD79002CCD9D /* DJMusicPlayer+Functionalities.swift in Sources */,
 				28B5353F260C781400BD8147 /* AreaOfFocusCell.swift in Sources */,
@@ -2258,6 +2285,7 @@
 				28786CB0262967F7000E8598 /* ViewAllCell.swift in Sources */,
 				283529A12609DA1A009AB2AA /* OrderSummaryVC.swift in Sources */,
 				28B2F4AB2642C143009A4E5B /* PlanFeaturesCell.swift in Sources */,
+				28477B12273CDC4700A3FE3B /* BillingOrderStripeVC.swift in Sources */,
 				28E809522613591400CD80F7 /* AudioCollectionCell.swift in Sources */,
 				2802A72126F325DE00CF9193 /* SupportPopupVC.swift in Sources */,
 				2891E2A02643CCF800658B49 /* SelectPlayListCell.swift in Sources */,
@@ -2412,6 +2440,7 @@
 				2870B3F925FB41A10014A4F6 /* ExpandableLabel.swift in Sources */,
 				28A5834826E228C0009F9464 /* CleverTap.swift in Sources */,
 				28B5354F260CC44100BD8147 /* DynamicHeightCollectionView.swift in Sources */,
+				28477B82273CFD5300A3FE3B /* StripePlanDetailsCell.swift in Sources */,
 				280DFCDE260DA03E00479EE6 /* RecommendedCategoryHeaderCell.swift in Sources */,
 				28F812A325FB336F00DC6AF6 /* AppDelegate.swift in Sources */,
 				9AC0672226394B3900287A44 /* FAQVC.swift in Sources */,
@@ -2426,6 +2455,7 @@
 				281DE3252626FD79002CCD9D /* DJDownloadManager+Helper.swift in Sources */,
 				28252FA225FF355900C2EB50 /* DoDassAssessmentVC.swift in Sources */,
 				2870B44925FB41A10014A4F6 /* TabBarController.swift in Sources */,
+				28477BAE273CFF3900A3FE3B /* PlanFeatureCell.swift in Sources */,
 				281DE3432626FD79002CCD9D /* DJMusicPlayer+Functionalities.swift in Sources */,
 				28B5353E260C781400BD8147 /* AreaOfFocusCell.swift in Sources */,
 				9A98E42826848732004C889C /* SetUpPInVC.swift in Sources */,
