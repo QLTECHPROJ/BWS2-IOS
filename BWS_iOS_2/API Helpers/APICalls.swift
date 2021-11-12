@@ -1828,7 +1828,7 @@ extension ReminderPopUpVC {
 
 extension CancelSubVC {
     
-    // Cancel Plan API Call
+    // Cancel IAP Plan API Call
     func callCancelPlanAPI() {
         var parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
                           "CancelId":"\(selectedOption)"]
@@ -1841,7 +1841,9 @@ extension CancelSubVC {
             if response.ResponseCode == "200" {
                 showAlertToast(message: response.ResponseMessage)
                 
-                self.trackCancelSubscriptionEvent()
+                if let planData = self.planDetails {
+                    self.trackIAPCancelSubscriptionEvent(planData: planData)
+                }
                 
                 self.navigationController?.popViewController(animated: true)
             }
@@ -1869,7 +1871,9 @@ extension CancelSubVC {
             if response.ResponseCode == "200" {
                 showAlertToast(message: response.ResponseMessage)
                 
-                self.trackCancelSubscriptionEvent()
+                if let planData = self.oldPlanDetails {
+                    self.trackStripeCancelSubscriptionEvent(planData: planData)
+                }
                 
                 self.navigationController?.popViewController(animated: true)
             }

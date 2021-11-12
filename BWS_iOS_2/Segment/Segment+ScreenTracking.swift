@@ -394,7 +394,9 @@ extension BillingOrderVC {
             expiryDate = Date(timeIntervalSince1970: expiryTime).stringFromFormat(Theme.dateFormats.Billing_Order_App + " HH:mm:ss")
         }
         
-        let traits = ["plan":planData.PlanName,
+        let traits = ["paymentType":"In App Purchase",
+                      "planId":planData.PlanId,
+                      "plan":planData.PlanName,
                       "planStatus":planData.PlanStatus,
                       "planStartDt":purchaseDate,
                       "planExpiryDt":expiryDate,
@@ -417,7 +419,9 @@ extension BillingOrderStripeVC {
         
         shouldTrackScreen = false
         
-        let traits = ["plan":planData.Plan,
+        let traits = ["paymentType":"Stripe",
+                      "planId":planData.PlanId,
+                      "plan":planData.Plan,
                       "planStatus":planData.Status,
                       "planStartDt":planData.Activate,
                       "planExpiryDt":planData.expireDate,
@@ -429,11 +433,7 @@ extension BillingOrderStripeVC {
 
 extension CancelSubVC {
     
-    func trackScreenData() {
-        guard let planData = self.planDetails else {
-            return
-        }
-        
+    func trackIAPScreenData(planData : PlanDetailDataModel) {
         var purchaseDate = planData.PlanPurchaseDate
         var expiryDate = planData.PlanExpireDate
         if let purchaseTime = TimeInterval(planData.PlanPurchaseDate) {
@@ -444,7 +444,8 @@ extension CancelSubVC {
             expiryDate = Date(timeIntervalSince1970: expiryTime).stringFromFormat(Theme.dateFormats.Billing_Order_App + " HH:mm:ss")
         }
         
-        let traits = ["planId":planData.PlanId,
+        let traits = ["paymentType":"In App Purchase",
+                      "planId":planData.PlanId,
                       "plan":planData.PlanName,
                       "planStatus":planData.PlanStatus,
                       "planStartDt":purchaseDate,
@@ -453,11 +454,18 @@ extension CancelSubVC {
         SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.cancel_subscription, traits: traits)
     }
     
-    func trackCancelSubscriptionEvent() {
-        guard let planData = self.planDetails else {
-            return
-        }
-        
+    func trackStripeScreenData(planData : StripePlanDetailModel) {
+        let traits = ["paymentType":"Stripe",
+                      "planId":planData.PlanId,
+                      "plan":planData.Plan,
+                      "planStatus":planData.Status,
+                      "planStartDt":planData.Activate,
+                      "planExpiryDt":planData.expireDate,
+                      "planAmount":planData.OrderTotal]
+        SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.cancel_subscription, traits: traits)
+    }
+    
+    func trackIAPCancelSubscriptionEvent(planData : PlanDetailDataModel) {
         var purchaseDate = planData.PlanPurchaseDate
         var expiryDate = planData.PlanExpireDate
         if let purchaseTime = TimeInterval(planData.PlanPurchaseDate) {
@@ -473,12 +481,31 @@ extension CancelSubVC {
             cancelReason = txtView.text ?? ""
         }
         
-        let traits = ["planId":planData.PlanId,
+        let traits = ["paymentType":"In App Purchase",
+                      "planId":planData.PlanId,
                       "plan":planData.PlanName,
                       "planStatus":planData.PlanStatus,
                       "planStartDt":purchaseDate,
                       "planExpiryDt":expiryDate,
                       "planAmount":planData.Price,
+                      "cancelId":"\(selectedOption)",
+                      "cancelReason":cancelReason]
+        SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.Subscription_Cancelled, traits: traits)
+    }
+    
+    func trackStripeCancelSubscriptionEvent(planData : StripePlanDetailModel) {
+        var cancelReason = ""
+        if selectedOption == 4 {
+            cancelReason = txtView.text ?? ""
+        }
+        
+        let traits = ["paymentType":"Stripe",
+                      "planId":planData.PlanId,
+                      "plan":planData.Plan,
+                      "planStatus":planData.Status,
+                      "planStartDt":planData.Activate,
+                      "planExpiryDt":planData.expireDate,
+                      "planAmount":planData.OrderTotal,
                       "cancelId":"\(selectedOption)",
                       "cancelReason":cancelReason]
         SegmentTracking.shared.trackGeneralEvents(name: SegmentTracking.eventNames.Subscription_Cancelled, traits: traits)

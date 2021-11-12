@@ -47,7 +47,11 @@ class CancelSubVC: BaseViewController {
         if isFromDelete {
             SegmentTracking.shared.trackGeneralScreen(name: SegmentTracking.screenNames.delete_account)
         } else {
-            self.trackScreenData()
+            if let planData = planDetails {
+                self.trackIAPScreenData(planData: planData)
+            } else if let planData = oldPlanDetails {
+                self.trackStripeScreenData(planData: planData)
+            }
         }
         
         // viewVideo.playVideo()

@@ -94,9 +94,9 @@ class BillingOrderStripeVC: BaseViewController {
             return
         }
         
-        //        let aVC = AppStoryBoard.account.viewController(viewControllerClass: CancelSubVC.self)
-        //        aVC.planDetails = planData
-        //        self.navigationController?.pushViewController(aVC, animated: true)
+        let aVC = AppStoryBoard.account.viewController(viewControllerClass: CancelSubVC.self)
+        aVC.oldPlanDetails = planData
+        self.navigationController?.pushViewController(aVC, animated: true)
     }
     
 }
