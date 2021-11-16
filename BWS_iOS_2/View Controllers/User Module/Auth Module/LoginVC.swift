@@ -21,7 +21,10 @@ class LoginVC: BaseViewController {
     
     @IBOutlet weak var btnCountryCode: UIButton!
     @IBOutlet weak var btnGetSMSCode: UIButton!
+    
     @IBOutlet weak var btnSignUp: UIButton!
+    @IBOutlet weak var btnSignUpTopConst: NSLayoutConstraint!
+    @IBOutlet weak var btnSignUpHeightConst: NSLayoutConstraint!
     
     @IBOutlet weak var txtFMobileNo: JVFloatLabeledTextField!
     @IBOutlet weak var stackView: UIStackView!
@@ -52,13 +55,15 @@ class LoginVC: BaseViewController {
         
         if isFromOTP {
             txtFMobileNo.becomeFirstResponder()
-        }else {
+        } else {
             txtFMobileNo.text = ""
             selectedCountry = CountrylistDataModel(id: "0", name: "Australia", shortName: "AU", code: "61")
             let countryText = selectedCountry.ShortName.uppercased() + " +" + selectedCountry.Code
             btnCountryCode.setTitle(countryText, for: .normal)
             self.btnCountryCode.setTitleColor(Theme.colors.black_40_opacity, for: .normal)
         }
+        
+        buttonEnableDisable()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -69,6 +74,11 @@ class LoginVC: BaseViewController {
     
     // MARK:- FUNCTIONS
     override func setupUI() {
+        btnSignUp.isHidden = true
+        
+        btnSignUpTopConst.constant = btnSignUp.isHidden ? 0 : 20
+        btnSignUpHeightConst.constant = btnSignUp.isHidden ? 0 : 30
+        
         txtFMobileNo.delegate = self
         //lblTitle.text = Theme.strings.login_title
         lblSubTitle.attributedText = Theme.strings.login_subtitle.attributedString(alignment: .center, lineSpacing: 5)
