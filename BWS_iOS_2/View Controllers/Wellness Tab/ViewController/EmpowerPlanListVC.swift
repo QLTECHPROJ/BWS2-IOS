@@ -197,16 +197,16 @@ extension EmpowerPlanListVC : UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableView == tblPlanFeatures {
             let cell = tableView.dequeueReusableCell(withClass: PlanFeaturesCell.self)
-            cell.configureCell(data: PlanFeatures[indexPath.row])
+            //cell.configureCell(data: PlanFeatures[indexPath.row])
             return cell
         } else if tableView == tblFAQ {
             let cell = tableView.dequeueReusableCell(withClass: FAQCell.self)
-            cell.configureCell(data: arrayQuestions[indexPath.row])
+            //cell.configureCell(data: arrayQuestions[indexPath.row])
             return cell
         } else if tableView == tblPlanList {
             let cell = tableView.dequeueReusableCell(withClass: PlanListCell.self)
-            let isSelected = (indexPath.row == selectedPlanIndex)
-            cell.configureCell(data: arrayPlans[indexPath.row], isSelected: isSelected)
+            //let isSelected = (indexPath.row == selectedPlanIndex)
+            //cell.configureCell(data: arrayPlans[indexPath.row], isSelected: isSelected)
             return cell
         }
         
@@ -262,12 +262,13 @@ extension EmpowerPlanListVC : UITableViewDataSource, UITableViewDelegate {
 extension EmpowerPlanListVC : UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return arrayAudios.count
+        //return arrayAudios.count
+        return 10
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withClass: AudioCollectionCell.self, for: indexPath)
-        cell.configureCell(audioData: arrayAudios[indexPath.row])
+        //cell.configureCell(audioData: arrayAudios[indexPath.row])
         return cell
     }
     
@@ -283,7 +284,8 @@ extension EmpowerPlanListVC : UICollectionViewDelegate, UICollectionViewDelegate
 extension EmpowerPlanListVC : iCarouselDelegate, iCarouselDataSource {
     
     func numberOfItems(in carousel: iCarousel) -> Int {
-        return arrayVideos.count
+        //return arrayVideos.count
+        return 10
     }
     
     func carousel(_ carousel: iCarousel, viewForItemAt index: Int, reusing view: UIView?) -> UIView {
@@ -295,7 +297,7 @@ extension EmpowerPlanListVC : iCarouselDelegate, iCarouselDataSource {
             return UIView()
         }
         
-        cell.configureCell(data: arrayVideos[index])
+        //cell.configureCell(data: arrayVideos[index])
         cell.frame = frame
         return cell
     }

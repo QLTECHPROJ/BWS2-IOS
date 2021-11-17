@@ -1761,10 +1761,11 @@ extension BrainFeelingVC {
     
     // Save Brain Feelings
     func callSaveBrainFeelingAPI(feelings : [String]) {
-        let parameters : [String : Any] = [APIParameters.UserId:CoUserDataModel.currentUserId,
+        let intArray = feelings.map { Int($0)!}
+        let parameters : [String : Any] = [APIParameters.UserId:"1",
                                            "SessionId":"1",
                                            "Type":"before",
-                                           "feeling_cat_id":feelings]
+                                           "feeling_cat_id":intArray]
         
         APICallManager.sharedInstance.callAPI(router: APIRouter.brainfeelingsavecat(parameters)) { (response :GeneralModel) in
             
@@ -1782,7 +1783,7 @@ extension BrainFeelingVC {
 
 extension SessionDescVC {
     
-    // Save Brain Feelings
+    // step type one
     func callSessionDescriptionAPI() {
         let parameters : [String : Any] = [APIParameters.UserId:CoUserDataModel.currentUserId,
                                            "SessionId":sessionStepData?.session_id ?? "",
@@ -1793,6 +1794,20 @@ extension SessionDescVC {
             if response.ResponseCode == "200" {
                 self.sessionDescriptionData = response.ResponseData
                 self.setupData()
+            }
+        }
+    }
+    
+    // step type two
+    func callStepTypeTwoAPI() {
+        let parameters : [String : Any] = [APIParameters.UserId:CoUserDataModel.currentUserId,
+                                           "SessionId":sessionStepData?.session_id ?? "",
+                                           "StepId":sessionStepData?.step_id ?? ""]
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.steptypetwo(parameters)) { (response :SessionDescriptionModel) in
+            
+            if response.ResponseCode == "200" {
+               
             }
         }
     }

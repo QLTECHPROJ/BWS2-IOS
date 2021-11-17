@@ -99,6 +99,7 @@ enum APIRouter: URLRequestConvertible {
     case brainfeelingcat
     case brainfeelingsavecat([String:Any])
     case steptypeone([String:Any])
+    case steptypetwo([String:Any])
     
     var route: APIRoute {
         switch self {
@@ -249,6 +250,8 @@ enum APIRouter: URLRequestConvertible {
             return APIRoute(path: "brainfeelingsavecat", method: .post, data: data)
         case .steptypeone(let data):
             return APIRoute(path: "steptypeone", method: .post, data: data)
+        case .steptypetwo(let data):
+            return APIRoute(path: "steptypetwo", method: .post, data: data)
         }
     }
     
