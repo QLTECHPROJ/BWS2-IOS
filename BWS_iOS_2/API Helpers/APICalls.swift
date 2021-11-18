@@ -1741,6 +1741,19 @@ extension SessionDetailVC {
             }
         }
     }
+    
+    // step type two
+    func callProgressReport(data : SessionListDataMainModel) {
+        let parameters : [String : Any] = ["SessionId":data.session_id,
+                                           "StepId":data.step_id ]
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.sessionprogressreport(parameters)) { (response :SessionDescriptionModel) in
+            
+            if response.ResponseCode == "200" {
+                showAlertToast(message: response.ResponseMessage)
+            }
+        }
+    }
 }
 
 
@@ -1761,11 +1774,11 @@ extension BrainFeelingVC {
     
     // Save Brain Feelings
     func callSaveBrainFeelingAPI(feelings : [String]) {
-        let intArray = feelings.map { Int($0)!}
+        
         let parameters : [String : Any] = [APIParameters.UserId:"1",
                                            "SessionId":"1",
                                            "Type":"before",
-                                           "feeling_cat_id":intArray]
+                                           "feeling_cat_id":feelings.toJSON() ?? ""]
         
         APICallManager.sharedInstance.callAPI(router: APIRouter.brainfeelingsavecat(parameters)) { (response :GeneralModel) in
             
@@ -1789,25 +1802,11 @@ extension SessionDescVC {
                                            "SessionId":sessionStepData?.session_id ?? "",
                                            "StepId":sessionStepData?.step_id ?? ""]
         
-        APICallManager.sharedInstance.callAPI(router: APIRouter.steptypeone(parameters)) { (response :SessionDescriptionModel) in
+        APICallManager.sharedInstance.callAPI(router: APIRouter.sessionaudioswithdescription(parameters)) { (response :SessionDescriptionModel) in
             
             if response.ResponseCode == "200" {
                 self.sessionDescriptionData = response.ResponseData
                 self.setupData()
-            }
-        }
-    }
-    
-    // step type two
-    func callStepTypeTwoAPI() {
-        let parameters : [String : Any] = [APIParameters.UserId:CoUserDataModel.currentUserId,
-                                           "SessionId":sessionStepData?.session_id ?? "",
-                                           "StepId":sessionStepData?.step_id ?? ""]
-        
-        APICallManager.sharedInstance.callAPI(router: APIRouter.steptypetwo(parameters)) { (response :SessionDescriptionModel) in
-            
-            if response.ResponseCode == "200" {
-               
             }
         }
     }

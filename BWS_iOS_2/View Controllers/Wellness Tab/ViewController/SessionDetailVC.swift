@@ -127,7 +127,7 @@ extension SessionDetailVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 1 {
-            if arraySession[indexPath.row].step_type == "1" {
+            if arraySession[indexPath.row].step_type == "1"{
                 let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: SessionDescVC.self)
                 aVC.sessionStepData = arraySession[indexPath.row]
                 self.navigationController?.pushViewController(aVC, animated: false)
@@ -135,8 +135,10 @@ extension SessionDetailVC : UITableViewDelegate, UITableViewDataSource {
                 let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: BrainFeelingVC.self)
                 aVC.strData = arraySession[indexPath.row].desc
                 self.navigationController?.pushViewController(aVC, animated: false)
-            }else {
-                let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: SessionStartVC.self)
+            }else if arraySession[indexPath.row].step_type == "2" {
+                callProgressReport(data: arraySession[indexPath.row])
+            }else if arraySession[indexPath.row].step_type == "3" {
+                let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: SessionActivityVC.self)
                 self.navigationController?.pushViewController(aVC, animated: false)
             }
         }

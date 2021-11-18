@@ -13,6 +13,7 @@ class SessionStartVC: BaseViewController {
     //MARK:- UIOutlet
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var lblDesc: UILabel!
+    var sessionDescriptionData : SessionDescriptionDataModel?
     
     //MARK:- Variables
     var movies: [String] = ["A movies array contains the filenames of the movies images. The frame is needed for the size of the images.","The page control needs to update its current page when the scroll view updates so first the view controller needs to conform to the UIScrollViewDelegate protocol. Change the class declaraion line in","hollywood"]
@@ -35,8 +36,10 @@ class SessionStartVC: BaseViewController {
     //MARK:- IBAction Methods
   
     @IBAction func onTappedStart(_ sender: UIButton) {
-        let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: BrainFeelingVC.self)
-        self.navigationController?.pushViewController(aVC, animated: false)
+        let aVC = AppStoryBoard.home.viewController(viewControllerClass: PlayerVC.self)
+        aVC.audioDetails =  sessionDescriptionData?.step_audio
+        aVC.modalPresentationStyle = .overFullScreen
+        self.present(aVC, animated: true, completion: nil)
     }
     // MARK:- ACTIONS
     @IBAction func onTappedBack(_ sender: UIButton) {

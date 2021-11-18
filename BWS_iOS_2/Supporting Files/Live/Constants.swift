@@ -8,4 +8,4 @@
 
 import Foundation
 
-let API_BASE_URL = "http://brainwellnessapp.com.au/bwsapi/api/live/v2/"
+let API_BASE_URL = "http://brainwellnessapp.com.au/bwsapi/api/live/v2_1/"
