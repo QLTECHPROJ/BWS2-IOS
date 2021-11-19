@@ -10,32 +10,45 @@ import UIKit
 
 class SessionDetailVC: BaseViewController {
     
-    //MARK:- UIOutlet
+    // MARK:- OUTLETS
     @IBOutlet var footerView: UIView!
     @IBOutlet var headerView: UIView!
     @IBOutlet weak var tableview: UITableView!
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var lblTitle: UILabel!
-    //MARK:- Variables
+    
+    
+    // MARK:- VARIABLES
     var strSessionId = ""
     var arraySession = [SessionListDataMainModel]()
     var dictSession:SessionListDataModel?
     
-    //MARK:- View Life Cycle
+    
+    // MARK:- VIEW LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if checkInternet() == false {
+            tableview.isHidden = true
+        }
+        
         setupUI()
-        callSessionDetail()
         setupData()
     }
     
-    //MARK:- Functions
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        refreshData()
+    }
+    
+    
+    // MARK:- FUNCTIONS
     override func setupUI() {
         tableview.tableHeaderView = headerView
         tableview.tableFooterView = footerView
         tableview.register(nibWithCellClass: SessionBannerCell.self)
         tableview.register(nibWithCellClass: SessionDetailCell.self)
-        
     }
     
     override func setupData() {
@@ -46,13 +59,35 @@ class SessionDetailVC: BaseViewController {
         lblTitle.text = dictSession?.session_title
     }
     
-    //MARK:- IBAction Methods
+    // Refresh Data
+    @objc func refreshData() {
+        if checkInternet() {
+            tableview.isHidden = false
+            tableview.refreshControl = refreshControl
+            callSessionDetail()
+        } else {
+            tableview.refreshControl = nil
+        }
+    }
+    
+    // Pull To Refresh Screen Data
+    override func handleRefresh(_ refreshControl: UIRefreshControl) {
+        refreshData()
+        refreshControl.endRefreshing()
+    }
+    
+    
+    // MARK:- ACTIONS
+    @IBAction func onTappedBack(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     @IBAction func onTappedContinue(_ sender: UIButton) {
         let aVC = AppStoryBoard.main.viewController(viewControllerClass:StepVC.self)
         aVC.strTitle = "Step 1"
         aVC.strSubTitle = Theme.strings.step_3_subtitle
         aVC.imageMain = UIImage(named: "Step1")
-        aVC.color = Theme.colors.newPurple
+        aVC.color = Theme.colors.purple_9A86BB
         aVC.isImageHide = false
         aVC.viewTapped = {
             let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: PersonalDetailVC.self)
@@ -62,14 +97,10 @@ class SessionDetailVC: BaseViewController {
         }
         aVC.modalPresentationStyle = .overFullScreen
         self.present(aVC, animated: false, completion: nil)
-       
-    }
-    // MARK:- ACTIONS
-    @IBAction func onTappedBack(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
     }
     
 }
+
 
 // MARK:- UITableViewDelegate, UITableViewDataSource
 extension SessionDetailVC : UITableViewDelegate, UITableViewDataSource {
@@ -81,13 +112,12 @@ extension SessionDetailVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return 1
-        }else {
+        } else {
             return arraySession.count
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withClass: SessionBannerCell.self)
             cell.lblSession.text = dictSession?.session_title
@@ -96,33 +126,23 @@ extension SessionDetailVC : UITableViewDelegate, UITableViewDataSource {
             cell.lblSessionTitle.text = dictSession?.session_short_desc
             cell.lblSessionDesc.text = dictSession?.session_desc
             return cell
-        }else {
+        } else {
             let cell = tableView.dequeueReusableCell(withClass: SessionDetailCell.self)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                cell.configureCell(data: self.arraySession[indexPath.row])
-                if indexPath.row == self.arraySession.count - 1 {
-                    cell.viewBottom.isHidden = true
-                    cell.viewTop.isHidden = false
-                } else if indexPath.row == 0 {
-                    cell.viewTop.isHidden = true
-                    cell.viewBottom.isHidden = false
-                } else {
-                    cell.viewBottom.isHidden = false
-                    cell.viewTop.isHidden = false
-                }
-                let index = SessionVC.shared.find(value: "Lock", in: self.arraySession)
-                print(index)
-                
-                if indexPath.row == index {
-                    cell.viewTop.backgroundColor = Theme.colors.newPurple
-                }
-               
+            cell.configureCell(data: self.arraySession[indexPath.row])
+            
+            if indexPath.row == 0 {
+                cell.viewTop.isHidden = true
+                cell.viewBottom.isHidden = false
+            } else if indexPath.row == self.arraySession.count - 1 {
+                cell.viewBottom.isHidden = true
+                cell.viewTop.isHidden = false
+            } else {
+                cell.viewBottom.isHidden = false
+                cell.viewTop.isHidden = false
             }
-           
+            
             return cell
         }
-        
-       
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -131,13 +151,13 @@ extension SessionDetailVC : UITableViewDelegate, UITableViewDataSource {
                 let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: SessionDescVC.self)
                 aVC.sessionStepData = arraySession[indexPath.row]
                 self.navigationController?.pushViewController(aVC, animated: false)
-            }else if arraySession[indexPath.row].desc == "Before Comparison" || arraySession[indexPath.row].desc == "After Comparison" {
+            } else if arraySession[indexPath.row].desc == "Before Comparison" || arraySession[indexPath.row].desc == "After Comparison" {
                 let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: BrainFeelingVC.self)
                 aVC.strData = arraySession[indexPath.row].desc
                 self.navigationController?.pushViewController(aVC, animated: false)
-            }else if arraySession[indexPath.row].step_type == "2" {
+            } else if arraySession[indexPath.row].step_type == "2" {
                 callProgressReport(data: arraySession[indexPath.row])
-            }else if arraySession[indexPath.row].step_type == "3" {
+            } else if arraySession[indexPath.row].step_type == "3" {
                 let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: SessionActivityVC.self)
                 self.navigationController?.pushViewController(aVC, animated: false)
             }
@@ -147,8 +167,9 @@ extension SessionDetailVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
             return UITableView.automaticDimension
-        }else {
+        } else {
             return 100
         }
     }
+    
 }

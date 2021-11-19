@@ -550,7 +550,7 @@ extension UIViewController {
                     aVC.strTitle = Theme.strings.step_3_title
                     aVC.strSubTitle = Theme.strings.step_3_subtitle
                     aVC.imageMain = UIImage(named: "Step1")
-                    aVC.color = Theme.colors.newPurple
+                    aVC.color = Theme.colors.purple_9A86BB
                     aVC.isImageHide = false
                     aVC.viewTapped = {
                         let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: Step2VC.self)
@@ -565,7 +565,7 @@ extension UIViewController {
                     aVC.strTitle = Theme.strings.step_3_title
                     aVC.strSubTitle = Theme.strings.step_3_subtitle
                     aVC.imageMain = UIImage(named: "Step1")
-                    aVC.color = Theme.colors.newPurple
+                    aVC.color = Theme.colors.purple_9A86BB
                     aVC.isImageHide = false
                     aVC.viewTapped = {
                         let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: Step3VC.self)
@@ -1725,7 +1725,8 @@ extension SessionVC {
 }
 
 extension SessionDetailVC {
-    //Session List API
+    
+    // Session Step List API Call
     func callSessionDetail() {
         let parameters = [APIParameters.UserId:"1",
                           "SessionId":strSessionId]
@@ -1737,12 +1738,11 @@ extension SessionDetailVC {
                 self.arraySession = response.ResponseData!.data
                 self.setupData()
                 self.tableview.reloadData()
-                showAlertToast(message: response.ResponseMessage)
             }
         }
     }
     
-    // step type two
+    // Progress Report API Call
     func callProgressReport(data : SessionListDataMainModel) {
         let parameters : [String : Any] = ["SessionId":data.session_id,
                                            "StepId":data.step_id ]
@@ -1754,6 +1754,7 @@ extension SessionDetailVC {
             }
         }
     }
+    
 }
 
 
