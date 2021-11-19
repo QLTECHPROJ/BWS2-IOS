@@ -86,17 +86,17 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v0z-Pq-mbc">
-                        <rect key="frame" x="185.5" y="0.0" width="4" height="10"/>
+                        <rect key="frame" x="185" y="0.0" width="5" height="10"/>
                         <color key="backgroundColor" name="Purple#9A86BB"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="4" id="fnA-n1-9SK"/>
+                            <constraint firstAttribute="width" constant="5" id="fnA-n1-9SK"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yEh-jl-2gC">
-                        <rect key="frame" x="185.5" y="70" width="4" height="10"/>
+                        <rect key="frame" x="185" y="70" width="5" height="10"/>
                         <color key="backgroundColor" name="Purple#9A86BB"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="4" id="w2r-um-zbX"/>
+                            <constraint firstAttribute="width" constant="5" id="w2r-um-zbX"/>
                         </constraints>
                     </view>
                 </subviews>

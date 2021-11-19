@@ -16,6 +16,7 @@ class SessionStartVC: BaseViewController {
     
     
     // MARK:- VARIABLES
+    var sessionStepData : SessionListDataMainModel?
     var sessionDescriptionData : SessionDescriptionDataModel?
     
     
@@ -46,7 +47,7 @@ class SessionStartVC: BaseViewController {
                 return
             }
             
-            if isPlayingSingleAudio() && isPlayingAudio(audioID: audioData.ID) {
+            if isPlayingAudioFrom(playerType: .sessionAudio) && isPlayingAudio(audioID: audioData.ID) {
                 if DJMusicPlayer.shared.isPlaying == false {
                     DJMusicPlayer.shared.play(isResume: true)
                 }
@@ -59,7 +60,7 @@ class SessionStartVC: BaseViewController {
             }
             
             self.presentAudioPlayer(playerData: audioData)
-            DJMusicPlayer.shared.playerType = .audio
+            DJMusicPlayer.shared.playerType = .sessionAudio
             DJMusicPlayer.shared.playingFrom = "Session Audio"
         }
     }
@@ -72,6 +73,8 @@ class SessionStartVC: BaseViewController {
     
     @IBAction func onTappedStart(_ sender: UIButton) {
         if let audioData = sessionDescriptionData?.step_audio {
+            audioData.sessionId = self.sessionStepData?.session_id ?? ""
+            audioData.sessionStepId = self.sessionStepData?.step_id ?? ""
             playAudio(audioData: audioData)
         }
     }

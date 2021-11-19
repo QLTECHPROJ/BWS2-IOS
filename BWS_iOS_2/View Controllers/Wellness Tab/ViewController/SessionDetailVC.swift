@@ -147,6 +147,10 @@ extension SessionDetailVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 1 {
+            if arraySession[indexPath.row].user_step_status == "Lock" {
+                return
+            }
+            
             if arraySession[indexPath.row].step_type == "1"{
                 let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: SessionDescVC.self)
                 aVC.sessionStepData = arraySession[indexPath.row]
@@ -168,7 +172,7 @@ extension SessionDetailVC : UITableViewDelegate, UITableViewDataSource {
         if indexPath.section == 0 {
             return UITableView.automaticDimension
         } else {
-            return 100
+            return 80
         }
     }
     

@@ -137,6 +137,10 @@ extension SessionVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if arraySession[indexPath.row].user_session_status == "Lock" {
+            return
+        }
+        
         let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: SessionDetailVC.self)
         aVC.strSessionId = arraySession[indexPath.row].session_id
         self.navigationController?.pushViewController(aVC, animated: false)

@@ -508,6 +508,9 @@ public class AudioDetailsDataModel: EVObject {
     
     // For Add to Playlist button
     var isSelected = false
+    
+    var sessionId = ""
+    var sessionStepId = ""
 }
 
 class AudioDetailsModel: EVObject {
