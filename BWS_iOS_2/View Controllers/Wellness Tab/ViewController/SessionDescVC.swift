@@ -65,6 +65,7 @@ class SessionDescVC: BaseViewController {
     
     @IBAction func continueClicked(sender: UIButton) {
         let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: SessionStartVC.self)
+        aVC.sessionStepData = self.sessionStepData
         aVC.sessionDescriptionData = sessionDescriptionData
         self.navigationController?.pushViewController(aVC, animated: false)
     }

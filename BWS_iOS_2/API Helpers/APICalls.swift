@@ -550,7 +550,7 @@ extension UIViewController {
                     aVC.strTitle = Theme.strings.step_3_title
                     aVC.strSubTitle = Theme.strings.step_3_subtitle
                     aVC.imageMain = UIImage(named: "Step1")
-                    aVC.color = Theme.colors.newPurple
+                    aVC.color = Theme.colors.purple_9A86BB
                     aVC.isImageHide = false
                     aVC.viewTapped = {
                         let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: Step2VC.self)
@@ -565,7 +565,7 @@ extension UIViewController {
                     aVC.strTitle = Theme.strings.step_3_title
                     aVC.strSubTitle = Theme.strings.step_3_subtitle
                     aVC.imageMain = UIImage(named: "Step1")
-                    aVC.color = Theme.colors.newPurple
+                    aVC.color = Theme.colors.purple_9A86BB
                     aVC.isImageHide = false
                     aVC.viewTapped = {
                         let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: Step3VC.self)
@@ -1708,8 +1708,8 @@ extension CancelSubVC {
 extension SessionVC {
     //Session List API
     func callSessionListAPI() {
-        let parameters = [APIParameters.UserId:"1"]
-
+        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId]
+        
         APICallManager.sharedInstance.callAPI(router: APIRouter.sessionlist(parameters)) { [self] (response :SessionListModel) in
 
             if response.ResponseCode == "200" {
@@ -1725,11 +1725,12 @@ extension SessionVC {
 }
 
 extension SessionDetailVC {
-    //Session List API
+    
+    // Session Step List API Call
     func callSessionDetail() {
-        let parameters = [APIParameters.UserId:"1",
+        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
                           "SessionId":strSessionId]
-
+        
         APICallManager.sharedInstance.callAPI(router: APIRouter.sessionsteplist(parameters)) { (response :SessionListModel) in
 
             if response.ResponseCode == "200" {
@@ -1737,12 +1738,11 @@ extension SessionDetailVC {
                 self.arraySession = response.ResponseData!.data
                 self.setupData()
                 self.tableview.reloadData()
-                showAlertToast(message: response.ResponseMessage)
             }
         }
     }
     
-    // step type two
+    // Progress Report API Call
     func callProgressReport(data : SessionListDataMainModel) {
         let parameters : [String : Any] = ["SessionId":data.session_id,
                                            "StepId":data.step_id ]
@@ -1754,6 +1754,7 @@ extension SessionDetailVC {
             }
         }
     }
+    
 }
 
 
@@ -1775,7 +1776,7 @@ extension BrainFeelingVC {
     // Save Brain Feelings
     func callSaveBrainFeelingAPI(feelings : [String]) {
         
-        let parameters : [String : Any] = [APIParameters.UserId:"1",
+        let parameters : [String : Any] = [APIParameters.UserId:CoUserDataModel.currentUserId,
                                            "SessionId":"1",
                                            "Type":"before",
                                            "feeling_cat_id":feelings.toJSON() ?? ""]
@@ -1811,4 +1812,29 @@ extension SessionDescVC {
         }
     }
     
+}
+
+
+// MARK:- General APIs
+
+// Session Step Status Update API Call
+func callSessionStepStatusUpdateAPI() {
+    guard let audioData = DJMusicPlayer.shared.currentlyPlaying else {
+        return
+    }
+    
+    if audioData.sessionId.trim.count == 0 || audioData.sessionStepId.trim.count == 0 {
+        return
+    }
+    
+    let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
+                      "SessionId":audioData.sessionId,
+                      "StepId":audioData.sessionStepId]
+    
+    APICallManager.sharedInstance.callAPI(router: APIRouter.sessionstepstatus(parameters), displayHud: false, showToast: false) { (response : GeneralModel) in
+        
+        if response.ResponseCode == "200" {
+            print("sessionstepstatus :- ",response.ResponseMessage)
+        }
+    }
 }

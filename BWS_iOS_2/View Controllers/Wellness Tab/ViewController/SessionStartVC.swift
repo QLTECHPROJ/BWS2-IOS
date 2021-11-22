@@ -10,40 +10,74 @@ import UIKit
 
 class SessionStartVC: BaseViewController {
     
-    //MARK:- UIOutlet
+    // MARK:- OUTLETS
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var lblDesc: UILabel!
+    
+    
+    // MARK:- VARIABLES
+    var sessionStepData : SessionListDataMainModel?
     var sessionDescriptionData : SessionDescriptionDataModel?
     
-    //MARK:- Variables
-    var movies: [String] = ["A movies array contains the filenames of the movies images. The frame is needed for the size of the images.","The page control needs to update its current page when the scroll view updates so first the view controller needs to conform to the UIScrollViewDelegate protocol. Change the class declaraion line in","hollywood"]
     
-    //MARK:- View Life Cycle
+    // MARK:- VIEW LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
-        pageControl.numberOfPages = movies.count
+        pageControl.numberOfPages = 1
+        
+        setupUI()
+        setupData()
     }
     
-    //MARK:- Functions
+    
+    // MARK:- FUNCTIONS
     override func setupUI() {
         
     }
     
     override func setupData() {
-        
+        lblDesc.text = sessionDescriptionData?.step_long_description ?? ""
     }
     
-    //MARK:- IBAction Methods
-  
-    @IBAction func onTappedStart(_ sender: UIButton) {
-        let aVC = AppStoryBoard.home.viewController(viewControllerClass: PlayerVC.self)
-        aVC.audioDetails =  sessionDescriptionData?.step_audio
-        aVC.modalPresentationStyle = .overFullScreen
-        self.present(aVC, animated: true, completion: nil)
+    // Play Audio
+    func playAudio(audioData : AudioDetailsDataModel) {
+        if audioData.AudioFile.trim.count > 0 {
+            if DJMusicPlayer.shared.currentlyPlaying?.isDisclaimer == true {
+                showAlertToast(message: Theme.strings.alert_disclaimer_playing)
+                return
+            }
+            
+            if isPlayingAudioFrom(playerType: .sessionAudio) && isPlayingAudio(audioID: audioData.ID) {
+                if DJMusicPlayer.shared.isPlaying == false {
+                    DJMusicPlayer.shared.play(isResume: true)
+                }
+                
+                let aVC = AppStoryBoard.home.viewController(viewControllerClass: PlayerVC.self)
+                aVC.audioDetails = audioData
+                aVC.modalPresentationStyle = .overFullScreen
+                self.present(aVC, animated: true, completion: nil)
+                return
+            }
+            
+            self.presentAudioPlayer(playerData: audioData)
+            DJMusicPlayer.shared.playerType = .sessionAudio
+            DJMusicPlayer.shared.playingFrom = "Session Audio"
+        }
     }
+    
+    
     // MARK:- ACTIONS
     @IBAction func onTappedBack(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
+    
+    @IBAction func onTappedStart(_ sender: UIButton) {
+        if let audioData = sessionDescriptionData?.step_audio {
+            audioData.sessionId = self.sessionStepData?.session_id ?? ""
+            audioData.sessionStepId = self.sessionStepData?.step_id ?? ""
+            playAudio(audioData: audioData)
+        }
+    }
+    
 }
 

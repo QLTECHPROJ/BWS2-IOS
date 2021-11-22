@@ -49,6 +49,7 @@ enum PlayerType: Int {
     case getInspired
     case popular
     case searchAudio
+    case sessionAudio
 }
 
 // MARK:- PlayerPauseReason
