@@ -508,6 +508,8 @@
 		9A3BCB0926EBA0E600827C8D /* PersonalHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3BCB0626EBA0E600827C8D /* PersonalHistoryCell.swift */; };
 		9A3BCB0A26EBA0E600827C8D /* PersonalHistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A3BCB0726EBA0E600827C8D /* PersonalHistoryCell.xib */; };
 		9A3BCB0B26EBA0E600827C8D /* PersonalHistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A3BCB0726EBA0E600827C8D /* PersonalHistoryCell.xib */; };
+		9A47A7C22746367F00ECF490 /* BeforeAfterQuestionerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A47A7C12746367F00ECF490 /* BeforeAfterQuestionerVC.swift */; };
+		9A47A7C32746367F00ECF490 /* BeforeAfterQuestionerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A47A7C12746367F00ECF490 /* BeforeAfterQuestionerVC.swift */; };
 		9A51DF26263820FD001364EA /* AccountInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A51DF25263820FD001364EA /* AccountInfoVC.swift */; };
 		9A51DF27263821EF001364EA /* AccountInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A51DF25263820FD001364EA /* AccountInfoVC.swift */; };
 		9A51DF2926382DFC001364EA /* EditProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A51DF2826382DFC001364EA /* EditProfileVC.swift */; };
@@ -891,6 +893,7 @@
 		9A3BCB0326EB7B8D00827C8D /* PersonalHistoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalHistoryVC.swift; sourceTree = "<group>"; };
 		9A3BCB0626EBA0E600827C8D /* PersonalHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalHistoryCell.swift; sourceTree = "<group>"; };
 		9A3BCB0726EBA0E600827C8D /* PersonalHistoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonalHistoryCell.xib; sourceTree = "<group>"; };
+		9A47A7C12746367F00ECF490 /* BeforeAfterQuestionerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeforeAfterQuestionerVC.swift; sourceTree = "<group>"; };
 		9A51DF25263820FD001364EA /* AccountInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountInfoVC.swift; sourceTree = "<group>"; };
 		9A51DF2826382DFC001364EA /* EditProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileVC.swift; sourceTree = "<group>"; };
 		9A51DF2B26383A4E001364EA /* ChangePINVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePINVC.swift; sourceTree = "<group>"; };
@@ -1604,6 +1607,61 @@
 			path = "Step-3";
 			sourceTree = "<group>";
 		};
+		9A47A7BB2746333600ECF490 /* SessionList */ = {
+			isa = PBXGroup;
+			children = (
+				9A6D0500269F097E00AD4FBA /* SessionVC.swift */,
+			);
+			path = SessionList;
+			sourceTree = "<group>";
+		};
+		9A47A7BC2746336100ECF490 /* StepList */ = {
+			isa = PBXGroup;
+			children = (
+				9A47A7BD274633A400ECF490 /* SessionDesc */,
+				9A47A7BE2746352B00ECF490 /* ProgressReport */,
+				9A47A7C02746355B00ECF490 /* BeforeAfterSession */,
+				9A47A7BF2746354800ECF490 /* SessionActivity */,
+				9A1A9FE226A0491800E4541F /* SessionDetailVC.swift */,
+			);
+			path = StepList;
+			sourceTree = "<group>";
+		};
+		9A47A7BD274633A400ECF490 /* SessionDesc */ = {
+			isa = PBXGroup;
+			children = (
+				9A25321B26A6F7C600E93ACD /* SessionStartVC.swift */,
+				9A6059D426A67EF2005D43A5 /* SessionDescVC.swift */,
+			);
+			path = SessionDesc;
+			sourceTree = "<group>";
+		};
+		9A47A7BE2746352B00ECF490 /* ProgressReport */ = {
+			isa = PBXGroup;
+			children = (
+				9A3BCB0026EB5CFE00827C8D /* PerceptionQueVC.swift */,
+			);
+			path = ProgressReport;
+			sourceTree = "<group>";
+		};
+		9A47A7BF2746354800ECF490 /* SessionActivity */ = {
+			isa = PBXGroup;
+			children = (
+				9A29854626A92AAB0006227F /* SessionActivityVC.swift */,
+				9A29854926A97AB60006227F /* SessionJournerlVC.swift */,
+				9A29854C26A97AF80006227F /* SessionQuetionVC.swift */,
+			);
+			path = SessionActivity;
+			sourceTree = "<group>";
+		};
+		9A47A7C02746355B00ECF490 /* BeforeAfterSession */ = {
+			isa = PBXGroup;
+			children = (
+				2810AE0926FB493100C8844B /* BrainFeelingVC.swift */,
+			);
+			path = BeforeAfterSession;
+			sourceTree = "<group>";
+		};
 		9A55EB1D2668B267006E398A /* BillingOrder */ = {
 			isa = PBXGroup;
 			children = (
@@ -1677,18 +1735,12 @@
 				9AC4F77026EF2B0A00A07FBB /* Step-1 */,
 				9A18A84526F398C0007D1A20 /* Step-2 */,
 				9A18A84626F398D3007D1A20 /* Step-3 */,
+				9A47A7BB2746333600ECF490 /* SessionList */,
+				9A47A7BC2746336100ECF490 /* StepList */,
+				9A47A7C12746367F00ECF490 /* BeforeAfterQuestionerVC.swift */,
 				9A6D04F4269ECC6A00AD4FBA /* WellnessStartVC.swift */,
 				9A6D04FD269F094600AD4FBA /* ExpSessionVC.swift */,
-				9A6D0500269F097E00AD4FBA /* SessionVC.swift */,
-				9A1A9FE226A0491800E4541F /* SessionDetailVC.swift */,
-				9A6059D426A67EF2005D43A5 /* SessionDescVC.swift */,
-				9A25321B26A6F7C600E93ACD /* SessionStartVC.swift */,
 				9A29854326A92A7D0006227F /* SessionDownloadVC.swift */,
-				9A29854626A92AAB0006227F /* SessionActivityVC.swift */,
-				9A29854926A97AB60006227F /* SessionJournerlVC.swift */,
-				9A29854C26A97AF80006227F /* SessionQuetionVC.swift */,
-				9A3BCB0026EB5CFE00827C8D /* PerceptionQueVC.swift */,
-				2810AE0926FB493100C8844B /* BrainFeelingVC.swift */,
 				9A1B12D12706FD2D00A74AB9 /* EmpowerPlanListVC.swift */,
 			);
 			path = ViewController;
@@ -2195,6 +2247,7 @@
 				283529A52609DA6F009AB2AA /* ThankYouVC.swift in Sources */,
 				2870B43425FB41A10014A4F6 /* DJPageMenuConfiguration.swift in Sources */,
 				9AC067052639178F00287A44 /* PodcastCell.swift in Sources */,
+				9A47A7C32746367F00ECF490 /* BeforeAfterQuestionerVC.swift in Sources */,
 				287E807F262D510C0006A925 /* AudioPlayerSetUp.swift in Sources */,
 				28E0122A261847EA00B55967 /* SelfDevCell.swift in Sources */,
 				9A6D0502269F097E00AD4FBA /* SessionVC.swift in Sources */,
@@ -2443,6 +2496,7 @@
 				283529A32609DA5F009AB2AA /* ThankYouVC.swift in Sources */,
 				2870B37925FB40710014A4F6 /* CommonFunctions.swift in Sources */,
 				9AC067042639178F00287A44 /* PodcastCell.swift in Sources */,
+				9A47A7C22746367F00ECF490 /* BeforeAfterQuestionerVC.swift in Sources */,
 				287E807E262D510C0006A925 /* AudioPlayerSetUp.swift in Sources */,
 				28E01229261847EA00B55967 /* SelfDevCell.swift in Sources */,
 				9A6D0501269F097E00AD4FBA /* SessionVC.swift in Sources */,
