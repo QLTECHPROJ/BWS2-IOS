@@ -30,14 +30,15 @@ class BeforeAfterQuestionerVC: BaseViewController {
     
     //MARK:- Variables
     var arraySelection = ["YES" , "NO"]
-    var arrayQue = ["Are you aware of your parents, grandparents or great grandparents ever experiencing a trauma (psychological or physical)? This could include any of the above listed examples and/or being a survivor of the war.","Have you ever experienced psychotic episodes in the past and been hospitalised for them? *" ,"Are you suffering from suicidal thoughts and emotions? *"]
+    var arrayQue = ["Do you feel stressed?"]
     var selectedOption = 1
     var pageIndex = 0
     
     //MARK:- View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setupUI()
+        setupData()
     }
     
     //MARK:- Functions
@@ -55,21 +56,12 @@ class BeforeAfterQuestionerVC: BaseViewController {
         lblTitle.text = arrayQue[pageIndex]
         
         if pageIndex == 0 {
-            headerView.frame.size.height = 250
-        }else if pageIndex == 1 {
-            headerView.frame.size.height = 200
+            headerView.frame.size.height = 110
         }
     }
     
     override func setupData() {
         progressview.progress = 0.0
-        if EmpowerProfileForm3Model.shared.trauma_history.trim.count > 0 {
-            progressview.progress = 0.34
-        }else if  EmpowerProfileForm3Model.shared.psychotic_emotions.trim.count > 0 {
-            progressview.progress = 0.69
-        }else if  EmpowerProfileForm3Model.shared.suicidal_emotions.trim.count > 0 {
-            progressview.progress = 1.0
-        }
     }
     
     //MARK:- IBAction Methods
