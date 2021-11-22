@@ -141,8 +141,8 @@ extension SessionVC : UITableViewDelegate, UITableViewDataSource {
             return
         }
         
-        let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: BeforeAfterQuestionerVC.self)
-        //aVC.strSessionId = arraySession[indexPath.row].session_id
+        let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: SessionDetailVC.self)
+        aVC.strSessionId = arraySession[indexPath.row].session_id
         self.navigationController?.pushViewController(aVC, animated: false)
     }
     
