@@ -189,6 +189,59 @@ extension AppDelegate {
 }
 
 
+// MARK:- Receive & Handle Dynamic Links
+extension AppDelegate {
+    
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+        if let incomingUrl = userActivity.webpageURL {
+            let linkHandled = DynamicLinks.dynamicLinks().handleUniversalLink(incomingUrl) { (dynamicLink, error) in
+                guard error == nil else {
+                    print("Found an error! \(error!.localizedDescription)")
+                    return
+                }
+                
+                if let dynamicLink = dynamicLink {
+                    self.handleIncomingDynamicLink(dynamicLink: dynamicLink)
+                }
+            }
+            
+            return linkHandled
+        }
+        
+        return false
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        print("I have received a URL through custom scheme! :-  \(url.absoluteString)")
+        if  let dynamicLink = DynamicLinks.dynamicLinks().dynamicLink(fromCustomSchemeURL: url) {
+            self.handleIncomingDynamicLink(dynamicLink: dynamicLink)
+            return true
+        } else {
+            // Maybe handle Google or Facebook signoin here
+            return false
+        }
+    }
+    
+    func handleIncomingDynamicLink(dynamicLink : DynamicLink) {
+        guard let url = dynamicLink.url else {
+            print("Dynamic Link object has no URL")
+            return
+        }
+        
+        print("Your incoming link parameter is :- \(url.absoluteString)")
+        
+        guard let components = URLComponents(url: url, resolvingAgainstBaseURL: false),
+              let queryItems = components.queryItems else {
+            return
+        }
+        
+        for queryItem in queryItems {
+            print("Parameter :- \(queryItem.name), Value :- \(queryItem.value ?? "")")
+        }
+    }
+    
+}
+
 // MARK:- UNUserNotificationCenterDelegate
 extension AppDelegate : UNUserNotificationCenterDelegate {
     

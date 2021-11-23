@@ -21,6 +21,7 @@ def shared_pods
     pod 'Firebase/Analytics'
     pod 'Firebase/Crashlytics'
     pod 'Firebase/Messaging'
+    pod 'Firebase/DynamicLinks'
     
     #  Segment
     pod 'Analytics', '~> 4.1'

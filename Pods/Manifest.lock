@@ -22,6 +22,9 @@ PODS:
   - Firebase/Crashlytics (7.8.1):
     - Firebase/CoreOnly
     - FirebaseCrashlytics (~> 7.8.0)
+  - Firebase/DynamicLinks (7.8.1):
+    - Firebase/CoreOnly
+    - FirebaseDynamicLinks (~> 7.8.0)
   - Firebase/Messaging (7.8.1):
     - Firebase/CoreOnly
     - FirebaseMessaging (~> 7.8.0)
@@ -49,6 +52,8 @@ PODS:
     - GoogleDataTransport (~> 8.0)
     - nanopb (~> 2.30907.0)
     - PromisesObjC (~> 1.2)
+  - FirebaseDynamicLinks (7.8.0):
+    - FirebaseCore (~> 7.0)
   - FirebaseInstallations (7.8.0):
     - FirebaseCore (~> 7.0)
     - GoogleUtilities/Environment (~> 7.0)
@@ -127,6 +132,7 @@ DEPENDENCIES:
   - EVReflection/Alamofire (~> 5.10.1)
   - Firebase/Analytics
   - Firebase/Crashlytics
+  - Firebase/DynamicLinks
   - Firebase/Messaging
   - IQKeyboardManagerSwift (= 6.3.0)
   - JVFloatLabeledTextField
@@ -154,6 +160,7 @@ SPEC REPOS:
     - FirebaseCore
     - FirebaseCoreDiagnostics
     - FirebaseCrashlytics
+    - FirebaseDynamicLinks
     - FirebaseInstallations
     - FirebaseInstanceID
     - FirebaseMessaging
@@ -188,6 +195,7 @@ SPEC CHECKSUMS:
   FirebaseCore: 049029df3096e5c118917029be7da75ee16f3b1b
   FirebaseCoreDiagnostics: 066f996579cf097bdad3d7dc9a918d6b9e129c50
   FirebaseCrashlytics: d07e61d85aabc7d38a68f94ff99995f8557ea8d0
+  FirebaseDynamicLinks: 4075f93bb208f2f726ce539d85f4fdc4b1c0e583
   FirebaseInstallations: 7f7ed0e7e27fb51f57291e1876e2ddb1524126c1
   FirebaseInstanceID: aaecc93b4528bbcafea12c477e26827719ca1183
   FirebaseMessaging: 1d5cac3728c042d3d4700ecb56bbac893660a963
@@ -209,6 +217,6 @@ SPEC CHECKSUMS:
   TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
   youtube-ios-player-helper: 0185c57db23c80d63d6ca11251d110abb8a4ca61
 
-PODFILE CHECKSUM: 0939de2c8a88e170feb752c1fc73d34c1b8e802f
+PODFILE CHECKSUM: 6ecfae38f46c7732747dab963285c6b2f5c240c8
 
 COCOAPODS: 1.10.1
