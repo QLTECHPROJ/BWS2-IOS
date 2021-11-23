@@ -76,6 +76,19 @@ class SessionDetailVC: BaseViewController {
         refreshControl.endRefreshing()
     }
     
+    func handleSessionComparisonStatus(data : SessionListDataMainModel, comparisonData : ComparisonStatusDataModel) {
+        if comparisonData.question_status == "0" {
+            let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: BeforeAfterQuestionerVC.self)
+            self.navigationController?.pushViewController(aVC, animated: false)
+        } else if comparisonData.feeling_status == "0" {
+            let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: BrainFeelingVC.self)
+            aVC.sessionId = data.session_id
+            aVC.stepId = data.step_id
+            self.navigationController?.pushViewController(aVC, animated: false)
+        } else if data.user_step_status == "Inprogress" {
+            callSessionStepStatusUpdateAPI(sessionId: data.session_id, stepId: data.step_id)
+        }
+    }
     
     // MARK:- ACTIONS
     @IBAction func onTappedBack(_ sender: UIButton) {
@@ -155,10 +168,8 @@ extension SessionDetailVC : UITableViewDelegate, UITableViewDataSource {
                 let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: SessionDescVC.self)
                 aVC.sessionStepData = arraySession[indexPath.row]
                 self.navigationController?.pushViewController(aVC, animated: false)
-            } else if arraySession[indexPath.row].desc == "Before Comparison" || arraySession[indexPath.row].desc == "After Comparison" {
-                let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: BrainFeelingVC.self)
-                aVC.strData = arraySession[indexPath.row].desc
-                self.navigationController?.pushViewController(aVC, animated: false)
+            } else if arraySession[indexPath.row].step_type == "4" {
+                callCheckComparisonStatus(data: arraySession[indexPath.row])
             } else if arraySession[indexPath.row].step_type == "2" {
                 callProgressReport(data: arraySession[indexPath.row])
             } else if arraySession[indexPath.row].step_type == "3" {

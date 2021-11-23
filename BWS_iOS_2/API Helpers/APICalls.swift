@@ -1755,6 +1755,20 @@ extension SessionDetailVC {
         }
     }
     
+    // Progress Report API Call
+    func callCheckComparisonStatus(data : SessionListDataMainModel) {
+        let parameters : [String : Any] = [APIParameters.UserId:CoUserDataModel.currentUserId,
+                                           "SessionId":data.session_id,
+                                           "StepId":data.step_id ]
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.checkbeforeafterfeelingstatus(parameters)) { (response :ComparisonStatusModel) in
+            
+            if response.ResponseCode == "200" {
+                
+            }
+        }
+    }
+    
 }
 
 
@@ -1777,8 +1791,8 @@ extension BrainFeelingVC {
     func callSaveBrainFeelingAPI(feelings : [String]) {
         
         let parameters : [String : Any] = [APIParameters.UserId:CoUserDataModel.currentUserId,
-                                           "SessionId":"1",
-                                           "Type":"before",
+                                           "SessionId":sessionId,
+                                           "StepId":stepId,
                                            "feeling_cat_id":feelings.toJSON() ?? ""]
         
         APICallManager.sharedInstance.callAPI(router: APIRouter.brainfeelingsavecat(parameters)) { (response :GeneralModel) in
@@ -1830,6 +1844,19 @@ func callSessionStepStatusUpdateAPI() {
     let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
                       "SessionId":audioData.sessionId,
                       "StepId":audioData.sessionStepId]
+    
+    APICallManager.sharedInstance.callAPI(router: APIRouter.sessionstepstatus(parameters), displayHud: false, showToast: false) { (response : GeneralModel) in
+        
+        if response.ResponseCode == "200" {
+            print("sessionstepstatus :- ",response.ResponseMessage)
+        }
+    }
+}
+
+func callSessionStepStatusUpdateAPI(sessionId : String, stepId : String) {
+    let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
+                      "SessionId":sessionId,
+                      "StepId":stepId]
     
     APICallManager.sharedInstance.callAPI(router: APIRouter.sessionstepstatus(parameters), displayHud: false, showToast: false) { (response : GeneralModel) in
         

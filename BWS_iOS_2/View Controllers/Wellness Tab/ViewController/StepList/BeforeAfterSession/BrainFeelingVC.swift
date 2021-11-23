@@ -14,9 +14,12 @@ class BrainFeelingVC: BaseViewController {
     @IBOutlet weak var collectionview : UICollectionView!
     @IBOutlet weak var btnContinue : UIButton!
     
+    
     // MARK:- VARIABLES
     var arrayCategories = [BrainFeelingModel]()
-    var strData:String?
+    var sessionId = ""
+    var stepId = ""
+    
     
     // MARK:- VIEW LIFE CYCLE
     override func viewDidLoad() {
@@ -69,18 +72,6 @@ class BrainFeelingVC: BaseViewController {
         }
     }
     
-    func fetchDummyData() {
-        for i in 1...30 {
-            let category = BrainFeelingModel()
-            category.id = "\(i)"
-            category.name = (i % 2 == 0) ? "ProblemName \(i)" : "Cat \(i * 2)"
-            
-            arrayCategories.append(category)
-        }
-        
-        collectionview.reloadData()
-    }
-    
     
     // MARK:- ACTIONS
     @IBAction func continueClicked(sender : UIButton) {
@@ -97,6 +88,7 @@ class BrainFeelingVC: BaseViewController {
 }
 
 
+// MARK:- UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout
 extension BrainFeelingVC : UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -105,7 +97,7 @@ extension BrainFeelingVC : UICollectionViewDataSource, UICollectionViewDelegate,
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withClass: CategoryCollectionCell.self, for: indexPath)
-        cell.configureCell(data: arrayCategories[indexPath.row], strData: strData ?? "")
+        cell.configureCell(data: arrayCategories[indexPath.row])
         return cell
     }
     

@@ -893,3 +893,18 @@ class SessionDescriptionDataModel : EVObject {
     var step_audio : AudioDetailsDataModel?
     var errormsg = ""
 }
+
+
+// MARK:- Comparison Status API Models
+class ComparisonStatusModel : EVObject {
+    var ResponseData  : ComparisonStatusDataModel?
+    var ResponseCode = ""
+    var ResponseMessage = ""
+    var ResponseStatus = ""
+}
+
+class ComparisonStatusDataModel : EVObject {
+    var question_status = ""
+    var feeling_status = ""
+    var errormsg = ""
+}
