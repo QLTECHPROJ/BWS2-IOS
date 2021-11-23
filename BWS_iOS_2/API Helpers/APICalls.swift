@@ -1764,7 +1764,9 @@ extension SessionDetailVC {
         APICallManager.sharedInstance.callAPI(router: APIRouter.checkbeforeafterfeelingstatus(parameters)) { (response :ComparisonStatusModel) in
             
             if response.ResponseCode == "200" {
-                
+                if let comparisonData = response.ResponseData {
+                    self.handleSessionComparisonStatus(data: data, comparisonData: comparisonData)
+                }
             }
         }
     }

@@ -164,17 +164,17 @@ extension SessionDetailVC : UITableViewDelegate, UITableViewDataSource {
                 return
             }
             
-            if arraySession[indexPath.row].step_type == "1"{
+            if arraySession[indexPath.row].step_type == "1" {
                 let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: SessionDescVC.self)
                 aVC.sessionStepData = arraySession[indexPath.row]
                 self.navigationController?.pushViewController(aVC, animated: false)
-            } else if arraySession[indexPath.row].step_type == "4" {
-                callCheckComparisonStatus(data: arraySession[indexPath.row])
             } else if arraySession[indexPath.row].step_type == "2" {
                 callProgressReport(data: arraySession[indexPath.row])
             } else if arraySession[indexPath.row].step_type == "3" {
                 let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: SessionActivityVC.self)
                 self.navigationController?.pushViewController(aVC, animated: false)
+            } else if arraySession[indexPath.row].step_type == "4" {
+                callCheckComparisonStatus(data: arraySession[indexPath.row])
             }
         }
     }
