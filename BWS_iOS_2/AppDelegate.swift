@@ -235,9 +235,12 @@ extension AppDelegate {
             return
         }
         
+        var parameters = [String:String]()
         for queryItem in queryItems {
-            print("Parameter :- \(queryItem.name), Value :- \(queryItem.value ?? "")")
+            parameters[queryItem.name] = queryItem.value ?? ""
         }
+        
+        print("parameters :- \(parameters)")
     }
     
 }
