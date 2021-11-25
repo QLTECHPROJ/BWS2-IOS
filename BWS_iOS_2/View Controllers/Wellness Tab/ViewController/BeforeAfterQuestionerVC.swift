@@ -9,13 +9,30 @@
 import UIKit
  import EVReflection
  
- class BeforeAfterDataModel : EVObject {
-     var Step = ""
-     var UserId = ""
-     var questions = ""
-     
-     static var shared = BeforeAfterDataModel()
+ class BeforeAfterModel:EVObject {
+     var ResponseData : BeforeAfterMainModel?
+     var ResponseCode = ""
+     var ResponseMessage = ""
+     var ResponseStatus = ""
  }
+ 
+ class BeforeAfterMainModel : EVObject {
+    var questions = [BeforeAfterDataModel]()
+ }
+ 
+ class BeforeAfterDataModel : EVObject {
+    
+    var option_type = ""
+    var session_title = ""
+    var step_title = ""
+    var question = ""
+    var step_short_description = ""
+    var step_long_description = ""
+    var question_options = [Any]()
+    var selectedAns = "NO"
+ }
+ 
+ 
 
 class BeforeAfterQuestionerVC: BaseViewController {
     
@@ -33,12 +50,15 @@ class BeforeAfterQuestionerVC: BaseViewController {
     var arrayQue = ["Do you feel stressed?"]
     var selectedOption = 1
     var pageIndex = 0
+    var strStepID = ""
+    var strSessionID = ""
+    var arrayQuetions = [BeforeAfterDataModel]()
     
     //MARK:- View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        setupData()
+        callBeforeAfterQueList(sessionId: strSessionID, stepId: strStepID)
     }
     
     //MARK:- Functions
@@ -53,7 +73,7 @@ class BeforeAfterQuestionerVC: BaseViewController {
         tableview.register(nibWithCellClass: ReminderListCell.self)
         tableview.register(nibWithCellClass: PersonalHistoryCell.self)
         
-        lblTitle.text = arrayQue[pageIndex]
+       
         
         if pageIndex == 0 {
             headerView.frame.size.height = 110
@@ -62,27 +82,61 @@ class BeforeAfterQuestionerVC: BaseViewController {
     
     override func setupData() {
         progressview.progress = 0.0
+        if arrayQuetions.count > 0 {
+
+            lblTitle.text = arrayQuetions[pageIndex].question
+        }
+        tableview.reloadData()
+        
     }
     
     //MARK:- IBAction Methods
     @IBAction func prevClicked(sender : UIButton) {
+        pageIndex = pageIndex - 1
+        setupData()
     }
     
     @IBAction func nextClicked(sender : UIButton) {
+       
+        
+        if pageIndex < (arrayQuetions.count - 1) {
+            pageIndex = pageIndex + 1
+            setupData()
+        }else {
+            
+            if arrayQuetions.count > 0 {
+                var selectedAns = [[String:Any]]()
+                for ans in arrayQuetions {
+                    let data = ["question_id":"\(pageIndex)",
+                                   "answer":ans.selectedAns]
+                    selectedAns.append(data)
+                }
+                
+                callBeforeAfterSave(sessionId: strSessionID, stepId: strStepID, queAns: selectedAns)
+            } else {
+                showAlertToast(message: Theme.strings.alert_select_category)
+            }
+            
+        }
+        
     }
     
 }
  extension BeforeAfterQuestionerVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arraySelection.count
         
+        if arrayQuetions.count > 0 {
+            return arrayQuetions[section].question_options.count
+        }
+        return 0
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withClass: ReminderListCell.self)
         
-        cell.lblSubTitle.text = arraySelection[indexPath.row]
+        cell.lblSubTitle.text = arrayQuetions[pageIndex].question_options[indexPath.row] as? String
+        
         cell.lblSubTitle.textColor = .black
         cell.backgroundColor = .white
         cell.lblTime.isHidden = true
@@ -103,7 +157,7 @@ class BeforeAfterQuestionerVC: BaseViewController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         selectedOption = indexPath.row
-       
+        print("Page:",pageIndex , "Option:",selectedOption)
         tableView.reloadData()
     }
      

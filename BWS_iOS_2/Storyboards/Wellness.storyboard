@@ -3844,8 +3844,7 @@ agree to our T&amp;Cs, Privacy Policy &amp; Disclaimer</string>
                                     <color key="titleColor" systemColor="darkTextColor"/>
                                 </state>
                                 <connections>
-                                    <action selector="prevClickedWithSender:" destination="bOz-Sa-JXn" eventType="touchUpInside" id="QyI-Ms-vNT"/>
-                                    <action selector="prevClickedWithSender:" destination="6pS-Ib-EKv" eventType="touchDragExit" id="gc8-M9-uev"/>
+                                    <action selector="prevClickedWithSender:" destination="6pS-Ib-EKv" eventType="touchUpInside" id="Xle-ta-ThL"/>
                                 </connections>
                             </button>
                         </subviews>

@@ -1867,3 +1867,34 @@ func callSessionStepStatusUpdateAPI(sessionId : String, stepId : String) {
         }
     }
 }
+
+extension BeforeAfterQuestionerVC {
+    func callBeforeAfterQueList(sessionId : String, stepId : String) {
+        let parameters = ["SessionId":sessionId,
+                          "StepId":stepId]
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.beforeafterquestionlisting(parameters), displayHud: false, showToast: false) { (response : BeforeAfterModel) in
+            
+            if response.ResponseCode == "200" {
+                self.arrayQuetions = response.ResponseData!.questions
+                self.setupData()
+                self.tableview.reloadData()
+            }
+            
+        }
+    }
+    
+    func callBeforeAfterSave(sessionId : String, stepId : String,queAns:[[String:Any]]) {
+        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
+                          "SessionId":sessionId,
+                          "StepId":stepId,
+                          "question_answers":queAns.toJSON()]
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.beforeandafteranswersave(parameters as [String : Any]), displayHud: false, showToast: false) { (response : GeneralModel) in
+            
+            if response.ResponseCode == "200" {
+                showAlertToast(message: response.ResponseMessage)
+            }
+        }
+    }
+}

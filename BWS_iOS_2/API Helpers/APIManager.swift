@@ -101,6 +101,8 @@ enum APIRouter: URLRequestConvertible {
     case sessionaudioswithdescription([String:Any])
     case sessionprogressreport([String:Any])
     case checkbeforeafterfeelingstatus([String:Any])
+    case beforeafterquestionlisting([String:Any])
+    case beforeandafteranswersave([String:Any])
     
     var route: APIRoute {
         switch self {
@@ -255,6 +257,11 @@ enum APIRouter: URLRequestConvertible {
             return APIRoute(path: "sessionprogressreport", method: .post, data: data)
         case .checkbeforeafterfeelingstatus(let data):
             return APIRoute(path: "checkbeforeafterfeelingstatus", method: .post, data: data)
+        case .beforeafterquestionlisting(let data):
+            return APIRoute(path: "beforeafterquestionlisting", method: .post, data: data)
+        case .beforeandafteranswersave(let data):
+            return APIRoute(path: "beforeandafteranswersave", method: .post, data: data)
+       
         }
     }
     

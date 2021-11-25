@@ -79,6 +79,8 @@ class SessionDetailVC: BaseViewController {
     func handleSessionComparisonStatus(data : SessionListDataMainModel, comparisonData : ComparisonStatusDataModel) {
         if comparisonData.question_status == "0" {
             let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: BeforeAfterQuestionerVC.self)
+            aVC.strStepID = data.step_id
+            aVC.strSessionID = data.session_id
             self.navigationController?.pushViewController(aVC, animated: false)
         } else if comparisonData.feeling_status == "0" {
             let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: BrainFeelingVC.self)
