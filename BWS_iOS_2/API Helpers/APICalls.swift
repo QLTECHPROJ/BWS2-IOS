@@ -1894,6 +1894,10 @@ extension BeforeAfterQuestionerVC {
             
             if response.ResponseCode == "200" {
                 showAlertToast(message: response.ResponseMessage)
+                let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: BrainFeelingVC.self)
+                aVC.sessionId = sessionId
+                aVC.stepId = stepId
+                self.navigationController?.pushViewController(aVC, animated: false)
             }
         }
     }
