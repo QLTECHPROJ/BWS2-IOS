@@ -8,6 +8,13 @@
 
 import UIKit
 
+enum OptionTypes : String {
+    case textfield = "textfield"
+    case twooptions = "twooptions"
+    case fiveoptions = "fiveoptions"
+    case tenoptions = "tenoptions"
+}
+
 class FiveOptionVC: BaseViewController {
     
     // MARK:- OUTLETS
@@ -17,11 +24,17 @@ class FiveOptionVC: BaseViewController {
     @IBOutlet weak var lblTitle : UILabel!
     @IBOutlet weak var lblSubTitle : UILabel!
     
+    
+    // MARK:- VARIABLES
+    let optionType : OptionTypes = .fiveoptions
+    
+    
     // MARK:- VIEW LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        tableView.register(nibWithCellClass: TwoOptionTableViewCell.self)
         tableView.register(nibWithCellClass: FiveOptionTableViewCell.self)
     }
     
@@ -45,11 +58,20 @@ class FiveOptionVC: BaseViewController {
 extension FiveOptionVC : UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        if optionType == .fiveoptions {
+            return 5
+        }
+        
+        return 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withClass: FiveOptionTableViewCell.self)
+        if optionType == .fiveoptions {
+            let cell = tableView.dequeueReusableCell(withClass: FiveOptionTableViewCell.self)
+            return cell
+        }
+        
+        let cell = tableView.dequeueReusableCell(withClass: TwoOptionTableViewCell.self)
         return cell
     }
     
@@ -58,7 +80,11 @@ extension FiveOptionVC : UITableViewDataSource {
 extension FiveOptionVC : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 150
+        if optionType == .fiveoptions {
+            return 150
+        }
+        
+        return UITableView.automaticDimension
     }
     
 }

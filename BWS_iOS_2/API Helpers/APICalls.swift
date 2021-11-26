@@ -1717,8 +1717,6 @@ extension SessionVC {
                 self.dictSession = response.ResponseData
                 self.strProgress = response.ResponseData?.completion_percentage
                 self.setupData()
-                self.configureProgressView()
-                self.tableview.reloadData()
             }
         }
     }
@@ -1737,7 +1735,6 @@ extension SessionDetailVC {
                 self.dictSession = response.ResponseData
                 self.arraySession = response.ResponseData!.data
                 self.setupData()
-                self.tableview.reloadData()
             }
         }
     }

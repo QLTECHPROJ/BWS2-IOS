@@ -13,6 +13,8 @@ class FiveOptionTableViewCell: UITableViewCell {
     @IBOutlet weak var lblQuestion : UILabel!
     @IBOutlet weak var objCollectionView : UICollectionView!
     
+    var dataCount = 3
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -32,7 +34,7 @@ class FiveOptionTableViewCell: UITableViewCell {
 extension FiveOptionTableViewCell : UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return dataCount
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -55,7 +57,7 @@ extension FiveOptionTableViewCell : UICollectionViewDelegate {
 extension FiveOptionTableViewCell : UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = collectionView.frame.size.width / 4
+        let width = collectionView.frame.size.width / CGFloat(dataCount)
         return CGSize(width: width, height: collectionView.frame.size.height)
     }
     

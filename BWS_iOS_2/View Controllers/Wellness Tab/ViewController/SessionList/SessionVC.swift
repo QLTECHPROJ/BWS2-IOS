@@ -54,6 +54,12 @@ class SessionVC: BaseViewController {
             self.lblPercentage.text = data.completion_percentage + "%"
             self.lblSessionCount.text = data.completedSession + " / " + data.totalSession
         }
+        
+        configureProgressView()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.tableview.reloadData()
+        }
     }
     
     // Refresh Data
