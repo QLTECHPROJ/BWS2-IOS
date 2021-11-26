@@ -1657,6 +1657,7 @@
 		9A47A7C02746355B00ECF490 /* BeforeAfterSession */ = {
 			isa = PBXGroup;
 			children = (
+				9A47A7C12746367F00ECF490 /* BeforeAfterQuestionerVC.swift */,
 				2810AE0926FB493100C8844B /* BrainFeelingVC.swift */,
 			);
 			path = BeforeAfterSession;
@@ -1737,7 +1738,6 @@
 				9A18A84626F398D3007D1A20 /* Step-3 */,
 				9A47A7BB2746333600ECF490 /* SessionList */,
 				9A47A7BC2746336100ECF490 /* StepList */,
-				9A47A7C12746367F00ECF490 /* BeforeAfterQuestionerVC.swift */,
 				9A6D04F4269ECC6A00AD4FBA /* WellnessStartVC.swift */,
 				9A6D04FD269F094600AD4FBA /* ExpSessionVC.swift */,
 				9A29854326A92A7D0006227F /* SessionDownloadVC.swift */,

@@ -1802,8 +1802,8 @@ extension BrainFeelingVC {
             if response.ResponseCode == "200" {
                 showAlertToast(message: response.ResponseMessage)
               //  self.navigationController?.popViewController(animated: true)
-                let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: SessionDownloadVC.self)
-                self.navigationController?.pushViewController(aVC, animated: false)
+                callSessionStepStatusUpdateAPI(sessionId: self.sessionId, stepId: self.stepId, isFrom: "BrainFeeling")
+               
             }
         }
     }
@@ -1855,7 +1855,7 @@ func callSessionStepStatusUpdateAPI() {
     }
 }
 
-func callSessionStepStatusUpdateAPI(sessionId : String, stepId : String) {
+func callSessionStepStatusUpdateAPI(sessionId : String, stepId : String,isFrom:String) {
     let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
                       "SessionId":sessionId,
                       "StepId":stepId]
@@ -1864,6 +1864,10 @@ func callSessionStepStatusUpdateAPI(sessionId : String, stepId : String) {
         
         if response.ResponseCode == "200" {
             print("sessionstepstatus :- ",response.ResponseMessage)
+            
+            if isFrom == "BrainFeeling" {
+                
+            }
         }
     }
 }

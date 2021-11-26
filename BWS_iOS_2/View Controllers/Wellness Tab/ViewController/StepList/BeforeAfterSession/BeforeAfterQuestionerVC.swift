@@ -53,10 +53,13 @@ class BeforeAfterQuestionerVC: BaseViewController {
     var strStepID = ""
     var strSessionID = ""
     var arrayQuetions = [BeforeAfterDataModel]()
+    var arrPage = [Int]()
     
     //MARK:- View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        lblTitle.text = ""
+        lblDesc.text = ""
         setupUI()
         callBeforeAfterQueList(sessionId: strSessionID, stepId: strStepID)
     }
@@ -81,6 +84,17 @@ class BeforeAfterQuestionerVC: BaseViewController {
     }
     
     override func setupData() {
+        
+        //jump into last index of assessmeny
+        let page = UserDefaults.standard.array(forKey: "ArrayPage") as? [Int]
+        if page == nil {
+            pageIndex = 0
+            arrPage.append(pageIndex)
+        } else {
+            let max = page?.max()
+            pageIndex = max!
+        }
+        
         progressview.progress = 0.0
         if arrayQuetions.count > 0 {
 
@@ -167,7 +181,22 @@ class BeforeAfterQuestionerVC: BaseViewController {
         }else {
             arrayQuetions[indexPath.row].selectedAns = "No"
         }
-        print("data:",arrayQuetions , "Option:",selectedOption)
+        
+        //userdefault for page index
+        if arrPage.contains(pageIndex) {
+            print(arrPage)
+        } else {
+            let page = UserDefaults.standard.array(forKey: "ArrayPage") as? [Int]
+            if (page?.contains(pageIndex))! {
+                arrPage = page ?? []
+                print(arrPage)
+            } else {
+                arrPage.append(pageIndex)
+            }
+        }
+        
+        UserDefaults.standard.set(arrPage, forKey: "ArrayPage")
+        
         tableView.reloadData()
     }
      
