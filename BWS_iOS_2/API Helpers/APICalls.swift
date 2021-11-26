@@ -1868,6 +1868,20 @@ func callSessionStepStatusUpdateAPI(sessionId : String, stepId : String) {
     }
 }
 
+// Progress Report Status API Call
+func callProgressReportStatus(data : SessionListDataMainModel, complitionBlock : ((GeneralDataModel?) -> ())?) {
+    let parameters : [String : Any] = [APIParameters.UserId:CoUserDataModel.currentUserId,
+                                       "SessionId":data.session_id,
+                                       "StepId":data.step_id ]
+    
+    APICallManager.sharedInstance.callAPI(router: APIRouter.checkprogressreportstatus(parameters)) { (response :GeneralModel) in
+        
+        if response.ResponseCode == "200" {
+            complitionBlock?(response.ResponseData)
+        }
+    }
+}
+
 extension BeforeAfterQuestionerVC {
     func callBeforeAfterQueList(sessionId : String, stepId : String) {
         let parameters = ["SessionId":sessionId,

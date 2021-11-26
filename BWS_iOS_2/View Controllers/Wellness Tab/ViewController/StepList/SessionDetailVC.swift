@@ -76,6 +76,17 @@ class SessionDetailVC: BaseViewController {
         refreshControl.endRefreshing()
     }
     
+    func handleProgressReportStatus(data : SessionListDataMainModel, next_form : String) {
+        print("next_form :- \(next_form)")
+        
+        if next_form.trim.count > 0 {
+            let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: FiveOptionVC.self)
+            self.navigationController?.pushViewController(aVC, animated: false)
+        } else {
+            callSessionStepStatusUpdateAPI(sessionId: data.session_id, stepId: data.step_id)
+        }
+    }
+    
     func handleSessionComparisonStatus(data : SessionListDataMainModel, comparisonData : ComparisonStatusDataModel) {
         if comparisonData.question_status == "0" {
             let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: BeforeAfterQuestionerVC.self)
@@ -171,7 +182,9 @@ extension SessionDetailVC : UITableViewDelegate, UITableViewDataSource {
                 aVC.sessionStepData = arraySession[indexPath.row]
                 self.navigationController?.pushViewController(aVC, animated: false)
             } else if arraySession[indexPath.row].step_type == "2" {
-                callProgressReport(data: arraySession[indexPath.row])
+                callProgressReportStatus(data: arraySession[indexPath.row]) { (resposeData) in
+                    self.handleProgressReportStatus(data: self.arraySession[indexPath.row], next_form: resposeData?.next_form ?? "")
+                }
             } else if arraySession[indexPath.row].step_type == "3" {
                 let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: SessionActivityVC.self)
                 self.navigationController?.pushViewController(aVC, animated: false)
