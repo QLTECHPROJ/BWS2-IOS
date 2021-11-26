@@ -27,9 +27,9 @@ class SessionDetailCell: UITableViewCell {
     }
     
     // Configure Cell
-    func configureCell(data : SessionListDataMainModel) {
+    func configureCell(index : Int, data : SessionListDataMainModel) {
         lblTitle.text = data.desc
-        lblNumber.text = data.step_id
+        lblNumber.text = "\(index + 1)"
         
         btnDownload.isHidden = true
         

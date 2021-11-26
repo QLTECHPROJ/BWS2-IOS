@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		280AED6C274FA6A400617A53 /* FiveOptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280AED6A274FA6A400617A53 /* FiveOptionTableViewCell.swift */; };
+		280AED6D274FA6A400617A53 /* FiveOptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280AED6A274FA6A400617A53 /* FiveOptionTableViewCell.swift */; };
+		280AED6E274FA6A400617A53 /* FiveOptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 280AED6B274FA6A400617A53 /* FiveOptionTableViewCell.xib */; };
+		280AED6F274FA6A400617A53 /* FiveOptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 280AED6B274FA6A400617A53 /* FiveOptionTableViewCell.xib */; };
+		280AED79274FA70500617A53 /* FiveOptionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280AED77274FA70500617A53 /* FiveOptionCollectionViewCell.swift */; };
+		280AED7A274FA70500617A53 /* FiveOptionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280AED77274FA70500617A53 /* FiveOptionCollectionViewCell.swift */; };
+		280AED7B274FA70500617A53 /* FiveOptionCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 280AED78274FA70500617A53 /* FiveOptionCollectionViewCell.xib */; };
+		280AED7C274FA70500617A53 /* FiveOptionCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 280AED78274FA70500617A53 /* FiveOptionCollectionViewCell.xib */; };
 		280C48F22600652C00063C03 /* DassAssessmentResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280C48F12600652C00063C03 /* DassAssessmentResultVC.swift */; };
 		280C48F32600652C00063C03 /* DassAssessmentResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280C48F12600652C00063C03 /* DassAssessmentResultVC.swift */; };
 		280C48F52600729900063C03 /* ManageStartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280C48F42600729900063C03 /* ManageStartVC.swift */; };
@@ -17,6 +25,8 @@
 		280DFCE1260DA03E00479EE6 /* RecommendedCategoryHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 280DFCDD260DA03E00479EE6 /* RecommendedCategoryHeaderCell.xib */; };
 		2810AE0A26FB493100C8844B /* BrainFeelingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2810AE0926FB493100C8844B /* BrainFeelingVC.swift */; };
 		2810AE0B26FB493100C8844B /* BrainFeelingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2810AE0926FB493100C8844B /* BrainFeelingVC.swift */; };
+		28187015274FB1BD00E44F70 /* FiveOptionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28187014274FB1BD00E44F70 /* FiveOptionVC.swift */; };
+		28187016274FB1BD00E44F70 /* FiveOptionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28187014274FB1BD00E44F70 /* FiveOptionVC.swift */; };
 		2819848D2638214E00DA5A66 /* SuggestedPlaylistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2819848B2638214E00DA5A66 /* SuggestedPlaylistCell.swift */; };
 		2819848E2638214E00DA5A66 /* SuggestedPlaylistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2819848B2638214E00DA5A66 /* SuggestedPlaylistCell.swift */; };
 		2819848F2638214E00DA5A66 /* SuggestedPlaylistCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2819848C2638214E00DA5A66 /* SuggestedPlaylistCell.xib */; };
@@ -60,6 +70,14 @@
 		281DE34626270085002CCD9D /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281DE34526270085002CCD9D /* AppConstants.swift */; };
 		281DE34726270085002CCD9D /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281DE34526270085002CCD9D /* AppConstants.swift */; };
 		281F882626030CAB0078110E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 281F882526030CAA0078110E /* GoogleService-Info.plist */; };
+		2822760F2750FB8E00403C64 /* TwoOptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2822760D2750FB8E00403C64 /* TwoOptionTableViewCell.swift */; };
+		282276102750FB8E00403C64 /* TwoOptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2822760D2750FB8E00403C64 /* TwoOptionTableViewCell.swift */; };
+		282276112750FB8E00403C64 /* TwoOptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2822760E2750FB8E00403C64 /* TwoOptionTableViewCell.xib */; };
+		282276122750FB8E00403C64 /* TwoOptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2822760E2750FB8E00403C64 /* TwoOptionTableViewCell.xib */; };
+		2822761D2750FD4600403C64 /* TwoOptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2822761B2750FD4600403C64 /* TwoOptionCell.swift */; };
+		2822761E2750FD4600403C64 /* TwoOptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2822761B2750FD4600403C64 /* TwoOptionCell.swift */; };
+		2822761F2750FD4600403C64 /* TwoOptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2822761C2750FD4600403C64 /* TwoOptionCell.xib */; };
+		282276202750FD4600403C64 /* TwoOptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2822761C2750FD4600403C64 /* TwoOptionCell.xib */; };
 		282441382609AB6E0060292E /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282441372609AB6E0060292E /* SignUpVC.swift */; };
 		2824413A2609AB9A0060292E /* CountryListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282441392609AB9A0060292E /* CountryListVC.swift */; };
 		2824413B2609AB9C0060292E /* CountryListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282441392609AB9A0060292E /* CountryListVC.swift */; };
@@ -628,11 +646,16 @@
 /* Begin PBXFileReference section */
 		0733C7EF64FFD7D079335CF3 /* Pods-BWS_iOS_2_Staging.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BWS_iOS_2_Staging.debug.xcconfig"; path = "Target Support Files/Pods-BWS_iOS_2_Staging/Pods-BWS_iOS_2_Staging.debug.xcconfig"; sourceTree = "<group>"; };
 		2297DCB35FF63C0665FDF246 /* Pods_BWS_iOS_2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BWS_iOS_2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		280AED6A274FA6A400617A53 /* FiveOptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveOptionTableViewCell.swift; sourceTree = "<group>"; };
+		280AED6B274FA6A400617A53 /* FiveOptionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FiveOptionTableViewCell.xib; sourceTree = "<group>"; };
+		280AED77274FA70500617A53 /* FiveOptionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveOptionCollectionViewCell.swift; sourceTree = "<group>"; };
+		280AED78274FA70500617A53 /* FiveOptionCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FiveOptionCollectionViewCell.xib; sourceTree = "<group>"; };
 		280C48F12600652C00063C03 /* DassAssessmentResultVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DassAssessmentResultVC.swift; sourceTree = "<group>"; };
 		280C48F42600729900063C03 /* ManageStartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageStartVC.swift; sourceTree = "<group>"; };
 		280DFCDC260DA03E00479EE6 /* RecommendedCategoryHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedCategoryHeaderCell.swift; sourceTree = "<group>"; };
 		280DFCDD260DA03E00479EE6 /* RecommendedCategoryHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecommendedCategoryHeaderCell.xib; sourceTree = "<group>"; };
 		2810AE0926FB493100C8844B /* BrainFeelingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrainFeelingVC.swift; sourceTree = "<group>"; };
+		28187014274FB1BD00E44F70 /* FiveOptionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveOptionVC.swift; sourceTree = "<group>"; };
 		2819848B2638214E00DA5A66 /* SuggestedPlaylistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestedPlaylistCell.swift; sourceTree = "<group>"; };
 		2819848C2638214E00DA5A66 /* SuggestedPlaylistCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SuggestedPlaylistCell.xib; sourceTree = "<group>"; };
 		281DE30A2626FD79002CCD9D /* SDDownloadObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDDownloadObject.swift; sourceTree = "<group>"; };
@@ -655,6 +678,10 @@
 		281DE31E2626FD79002CCD9D /* DJMusicPlayer+Functionalities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DJMusicPlayer+Functionalities.swift"; sourceTree = "<group>"; };
 		281DE34526270085002CCD9D /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		281F882526030CAA0078110E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2822760D2750FB8E00403C64 /* TwoOptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoOptionTableViewCell.swift; sourceTree = "<group>"; };
+		2822760E2750FB8E00403C64 /* TwoOptionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TwoOptionTableViewCell.xib; sourceTree = "<group>"; };
+		2822761B2750FD4600403C64 /* TwoOptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoOptionCell.swift; sourceTree = "<group>"; };
+		2822761C2750FD4600403C64 /* TwoOptionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TwoOptionCell.xib; sourceTree = "<group>"; };
 		282441372609AB6E0060292E /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		282441392609AB9A0060292E /* CountryListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListVC.swift; sourceTree = "<group>"; };
 		2824413E2609AC820060292E /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -986,6 +1013,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		280AED81274FA71400617A53 /* FiveOptionCell */ = {
+			isa = PBXGroup;
+			children = (
+				280AED6A274FA6A400617A53 /* FiveOptionTableViewCell.swift */,
+				280AED6B274FA6A400617A53 /* FiveOptionTableViewCell.xib */,
+				280AED77274FA70500617A53 /* FiveOptionCollectionViewCell.swift */,
+				280AED78274FA70500617A53 /* FiveOptionCollectionViewCell.xib */,
+			);
+			path = FiveOptionCell;
+			sourceTree = "<group>";
+		};
 		281DE3082626FD79002CCD9D /* DownloadManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -1032,6 +1070,17 @@
 				281DE3192626FD79002CCD9D /* ConnectionManager.swift */,
 			);
 			path = DJMusicPlayer;
+			sourceTree = "<group>";
+		};
+		2822760C2750FB4B00403C64 /* TwoOptionCell */ = {
+			isa = PBXGroup;
+			children = (
+				2822760D2750FB8E00403C64 /* TwoOptionTableViewCell.swift */,
+				2822760E2750FB8E00403C64 /* TwoOptionTableViewCell.xib */,
+				2822761B2750FD4600403C64 /* TwoOptionCell.swift */,
+				2822761C2750FD4600403C64 /* TwoOptionCell.xib */,
+			);
+			path = TwoOptionCell;
 			sourceTree = "<group>";
 		};
 		2824413D2609AC490060292E /* Auth Module */ = {
@@ -1639,7 +1688,10 @@
 		9A47A7BE2746352B00ECF490 /* ProgressReport */ = {
 			isa = PBXGroup;
 			children = (
+				2822760C2750FB4B00403C64 /* TwoOptionCell */,
+				280AED81274FA71400617A53 /* FiveOptionCell */,
 				9A3BCB0026EB5CFE00827C8D /* PerceptionQueVC.swift */,
+				28187014274FB1BD00E44F70 /* FiveOptionVC.swift */,
 			);
 			path = ProgressReport;
 			sourceTree = "<group>";
@@ -1945,6 +1997,7 @@
 				281F882626030CAB0078110E /* GoogleService-Info.plist in Resources */,
 				28E8092A261308ED00CD80F7 /* Manage.storyboard in Resources */,
 				280DFCE1260DA03E00479EE6 /* RecommendedCategoryHeaderCell.xib in Resources */,
+				282276122750FB8E00403C64 /* TwoOptionTableViewCell.xib in Resources */,
 				28B53541260C781400BD8147 /* AreaOfFocusCell.xib in Resources */,
 				9A1A9FE126A0446B00E4541F /* SessionDetailCell.xib in Resources */,
 				28ED2F8E25FB58E000E59C56 /* Montserrat-Light.ttf in Resources */,
@@ -1959,6 +2012,7 @@
 				9A6D04FC269EF7EB00AD4FBA /* SessionCell.xib in Resources */,
 				9A1A9FDB26A0428500E4541F /* SessionBannerCell.xib in Resources */,
 				2891E2A72643CCF800658B49 /* SelectPlayListCell.xib in Resources */,
+				280AED6F274FA6A400617A53 /* FiveOptionTableViewCell.xib in Resources */,
 				9AD5582B2636E6C7007ED68F /* AccountCell.xib in Resources */,
 				28E8092D261308F900CD80F7 /* Wellness.storyboard in Resources */,
 				28B53538260C690600BD8147 /* SleepTimeCell.xib in Resources */,
@@ -1967,6 +2021,7 @@
 				9AC0671F2639304E00287A44 /* FeatureCell.xib in Resources */,
 				28E8094F26134A0700CD80F7 /* ManageAudioCell.xib in Resources */,
 				28786CB3262967F7000E8598 /* ViewAllCell.xib in Resources */,
+				282276202750FD4600403C64 /* TwoOptionCell.xib in Resources */,
 				2870B45625FB44700014A4F6 /* WWCalendarTimeSelector.storyboard in Resources */,
 				2870B35D25FB3A570014A4F6 /* Main.storyboard in Resources */,
 				28E01226261847EA00B55967 /* CreatePlayListCell.xib in Resources */,
@@ -1991,6 +2046,7 @@
 				9AC0670D2639178F00287A44 /* DocumentryCell.xib in Resources */,
 				283E1241262879A80007B280 /* Declaimer.jpeg in Resources */,
 				9A55EB462668EA58006E398A /* InvoiceCell.xib in Resources */,
+				280AED7C274FA70500617A53 /* FiveOptionCollectionViewCell.xib in Resources */,
 				28E01228261847EA00B55967 /* GraphCell.xib in Resources */,
 				28ED2F8C25FB58DF00E59C56 /* Montserrat-Medium.ttf in Resources */,
 				28ED2F9425FB58E000E59C56 /* Montserrat-Regular.ttf in Resources */,
@@ -2016,6 +2072,7 @@
 				2870B43725FB41A10014A4F6 /* DJPageMenuCell.xib in Resources */,
 				28E80929261308ED00CD80F7 /* Manage.storyboard in Resources */,
 				280DFCE0260DA03E00479EE6 /* RecommendedCategoryHeaderCell.xib in Resources */,
+				282276112750FB8E00403C64 /* TwoOptionTableViewCell.xib in Resources */,
 				28B53540260C781400BD8147 /* AreaOfFocusCell.xib in Resources */,
 				9A1A9FE026A0446B00E4541F /* SessionDetailCell.xib in Resources */,
 				282441632609CB4E0060292E /* GoogleService-Info.plist in Resources */,
@@ -2030,6 +2087,7 @@
 				9A6D04FB269EF7EB00AD4FBA /* SessionCell.xib in Resources */,
 				9A1A9FDA26A0428500E4541F /* SessionBannerCell.xib in Resources */,
 				2891E2A62643CCF800658B49 /* SelectPlayListCell.xib in Resources */,
+				280AED6E274FA6A400617A53 /* FiveOptionTableViewCell.xib in Resources */,
 				9AD558292636DFFA007ED68F /* AccountCell.xib in Resources */,
 				28E8092C261308F900CD80F7 /* Wellness.storyboard in Resources */,
 				28B53537260C690600BD8147 /* SleepTimeCell.xib in Resources */,
@@ -2038,6 +2096,7 @@
 				9AC0671E2639304E00287A44 /* FeatureCell.xib in Resources */,
 				28E8094E26134A0700CD80F7 /* ManageAudioCell.xib in Resources */,
 				28786CB2262967F7000E8598 /* ViewAllCell.xib in Resources */,
+				2822761F2750FD4600403C64 /* TwoOptionCell.xib in Resources */,
 				28F812BE25FB367A00DC6AF6 /* Main.storyboard in Resources */,
 				282441492609ACE30060292E /* CountryCell.xib in Resources */,
 				28E01225261847EA00B55967 /* CreatePlayListCell.xib in Resources */,
@@ -2062,6 +2121,7 @@
 				9AC0670C2639178F00287A44 /* DocumentryCell.xib in Resources */,
 				283E1240262879A80007B280 /* Declaimer.jpeg in Resources */,
 				9A55EB452668EA58006E398A /* InvoiceCell.xib in Resources */,
+				280AED7B274FA70500617A53 /* FiveOptionCollectionViewCell.xib in Resources */,
 				28E01227261847EA00B55967 /* GraphCell.xib in Resources */,
 				28ED2F8B25FB58DF00E59C56 /* Montserrat-Medium.ttf in Resources */,
 				28ED2F9325FB58E000E59C56 /* Montserrat-Regular.ttf in Resources */,
@@ -2291,6 +2351,7 @@
 				2870B42225FB41A10014A4F6 /* NotificationName+Extention.swift in Sources */,
 				2870B37725FB40660014A4F6 /* APIResponses.swift in Sources */,
 				28ED2F8225FB511800E59C56 /* SplashVC.swift in Sources */,
+				280AED7A274FA70500617A53 /* FiveOptionCollectionViewCell.swift in Sources */,
 				9AEBD2D8268995240096C291 /* ContactVC.swift in Sources */,
 				2870B3EA25FB41A10014A4F6 /* String+Extension.swift in Sources */,
 				28D33F39265E375100733F61 /* OfflineVC.swift in Sources */,
@@ -2327,6 +2388,8 @@
 				281DE32E2626FD79002CCD9D /* PlaylistDownloads+CoreDataClass.swift in Sources */,
 				2870B3D425FB41A10014A4F6 /* DJPickerView.swift in Sources */,
 				2870B3F825FB41A10014A4F6 /* BaseViewController.swift in Sources */,
+				28187016274FB1BD00E44F70 /* FiveOptionVC.swift in Sources */,
+				280AED6D274FA6A400617A53 /* FiveOptionTableViewCell.swift in Sources */,
 				281DE3202626FD79002CCD9D /* SDDownloadObject.swift in Sources */,
 				2870B45825FB44700014A4F6 /* NSDateComponents+Timepiece.swift in Sources */,
 				9A55EB222668B309006E398A /* BillingOrderVC.swift in Sources */,
@@ -2342,6 +2405,7 @@
 				283153BA2614401E004001CE /* ManagePlaylistCell.swift in Sources */,
 				283153C2261448C9004001CE /* CreatePlaylistVC.swift in Sources */,
 				28E8093F26130AA500CD80F7 /* ElevateVC.swift in Sources */,
+				282276102750FB8E00403C64 /* TwoOptionTableViewCell.swift in Sources */,
 				2870B3EC25FB41A10014A4F6 /* UINavigationBar+Extension.swift in Sources */,
 				9AC067192639178F00287A44 /* RecWebSite.swift in Sources */,
 				28E8094226130ACE00CD80F7 /* AccountVC.swift in Sources */,
@@ -2353,6 +2417,7 @@
 				28E0123C261847EA00B55967 /* NotificationCell.swift in Sources */,
 				28E0123E261847EA00B55967 /* AreaCell.swift in Sources */,
 				2870B44225FB41A10014A4F6 /* ReorderController.swift in Sources */,
+				2822761E2750FD4600403C64 /* TwoOptionCell.swift in Sources */,
 				28B27821262EED41005794E3 /* DownloadVC.swift in Sources */,
 				2865DB2D26495567009CDE7F /* Segment+Functions.swift in Sources */,
 				2870B3D825FB41A10014A4F6 /* NSAttributedString+Extension.swift in Sources */,
@@ -2540,6 +2605,7 @@
 				28ED2F7D25FB494600E59C56 /* SplashVC.swift in Sources */,
 				2870B37625FB40660014A4F6 /* APIResponses.swift in Sources */,
 				9AEBD2D7268995240096C291 /* ContactVC.swift in Sources */,
+				280AED79274FA70500617A53 /* FiveOptionCollectionViewCell.swift in Sources */,
 				2870B3E925FB41A10014A4F6 /* String+Extension.swift in Sources */,
 				28D33F38265E375100733F61 /* OfflineVC.swift in Sources */,
 				2870B41325FB41A10014A4F6 /* UIViewExtension.swift in Sources */,
@@ -2576,6 +2642,8 @@
 				281DE32D2626FD79002CCD9D /* PlaylistDownloads+CoreDataClass.swift in Sources */,
 				2824413A2609AB9A0060292E /* CountryListVC.swift in Sources */,
 				2870B3F725FB41A10014A4F6 /* BaseViewController.swift in Sources */,
+				28187015274FB1BD00E44F70 /* FiveOptionVC.swift in Sources */,
+				280AED6C274FA6A400617A53 /* FiveOptionTableViewCell.swift in Sources */,
 				281DE31F2626FD79002CCD9D /* SDDownloadObject.swift in Sources */,
 				9A55EB212668B309006E398A /* BillingOrderVC.swift in Sources */,
 				2870B45725FB44700014A4F6 /* NSDateComponents+Timepiece.swift in Sources */,
@@ -2591,6 +2659,7 @@
 				283153C1261448C9004001CE /* CreatePlaylistVC.swift in Sources */,
 				28E8093E26130AA500CD80F7 /* ElevateVC.swift in Sources */,
 				282441382609AB6E0060292E /* SignUpVC.swift in Sources */,
+				2822760F2750FB8E00403C64 /* TwoOptionTableViewCell.swift in Sources */,
 				9AC067182639178F00287A44 /* RecWebSite.swift in Sources */,
 				28E8094126130ACE00CD80F7 /* AccountVC.swift in Sources */,
 				2870B3EB25FB41A10014A4F6 /* UINavigationBar+Extension.swift in Sources */,
@@ -2602,6 +2671,7 @@
 				28E0123B261847EA00B55967 /* NotificationCell.swift in Sources */,
 				28E0123D261847EA00B55967 /* AreaCell.swift in Sources */,
 				2870B45925FB44700014A4F6 /* NSCalendar+Timepiece.swift in Sources */,
+				2822761D2750FD4600403C64 /* TwoOptionCell.swift in Sources */,
 				2865DB2C26495567009CDE7F /* Segment+Functions.swift in Sources */,
 				28B27820262EED41005794E3 /* DownloadVC.swift in Sources */,
 				2870B44125FB41A10014A4F6 /* ReorderController.swift in Sources */,

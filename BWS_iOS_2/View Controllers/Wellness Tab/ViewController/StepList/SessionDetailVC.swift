@@ -57,6 +57,10 @@ class SessionDetailVC: BaseViewController {
         }
         
         lblTitle.text = dictSession?.session_title
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.tableview.reloadData()
+        }
     }
     
     // Refresh Data
@@ -74,6 +78,17 @@ class SessionDetailVC: BaseViewController {
     override func handleRefresh(_ refreshControl: UIRefreshControl) {
         refreshData()
         refreshControl.endRefreshing()
+    }
+    
+    func handleProgressReportStatus(data : SessionListDataMainModel, next_form : String) {
+        print("next_form :- \(next_form)")
+        
+        if next_form.trim.count > 0 {
+            let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: FiveOptionVC.self)
+            self.navigationController?.pushViewController(aVC, animated: false)
+        } else {
+            callSessionStepStatusUpdateAPI(sessionId: data.session_id, stepId: data.step_id)
+        }
     }
     
     func handleSessionComparisonStatus(data : SessionListDataMainModel, comparisonData : ComparisonStatusDataModel) {
@@ -143,7 +158,7 @@ extension SessionDetailVC : UITableViewDelegate, UITableViewDataSource {
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withClass: SessionDetailCell.self)
-            cell.configureCell(data: self.arraySession[indexPath.row])
+            cell.configureCell(index: indexPath.row, data: self.arraySession[indexPath.row])
             
             if indexPath.row == 0 {
                 cell.viewTop.isHidden = true
@@ -170,12 +185,14 @@ extension SessionDetailVC : UITableViewDelegate, UITableViewDataSource {
                 let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: SessionDescVC.self)
                 aVC.sessionStepData = arraySession[indexPath.row]
                 self.navigationController?.pushViewController(aVC, animated: false)
-            } else if arraySession[indexPath.row].step_type == "2" {
-                callProgressReport(data: arraySession[indexPath.row])
-            } else if arraySession[indexPath.row].step_type == "3" {
+            } else if arraySession[indexPath.row].step_type == "2" && arraySession[indexPath.row].user_step_status == "Inprogress" {
+                callProgressReportStatus(data: arraySession[indexPath.row]) { (resposeData) in
+                    self.handleProgressReportStatus(data: self.arraySession[indexPath.row], next_form: resposeData?.next_form ?? "")
+                }
+            } else if arraySession[indexPath.row].step_type == "3" && arraySession[indexPath.row].user_step_status == "Inprogress" {
                 let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: SessionActivityVC.self)
                 self.navigationController?.pushViewController(aVC, animated: false)
-            } else if arraySession[indexPath.row].step_type == "4" {
+            } else if arraySession[indexPath.row].step_type == "4" && arraySession[indexPath.row].user_step_status == "Inprogress" {
                 callCheckComparisonStatus(data: arraySession[indexPath.row])
             }
         }

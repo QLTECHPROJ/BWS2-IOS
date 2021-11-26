@@ -24,6 +24,7 @@ class GeneralModel : EVObject {
 }
 
 class GeneralDataModel : EVObject {
+    var next_form = ""
     var completedSession = ""
     var totalSession = ""
     var errormsg = ""

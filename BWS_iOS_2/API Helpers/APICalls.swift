@@ -1717,8 +1717,6 @@ extension SessionVC {
                 self.dictSession = response.ResponseData
                 self.strProgress = response.ResponseData?.completion_percentage
                 self.setupData()
-                self.configureProgressView()
-                self.tableview.reloadData()
             }
         }
     }
@@ -1737,7 +1735,6 @@ extension SessionDetailVC {
                 self.dictSession = response.ResponseData
                 self.arraySession = response.ResponseData!.data
                 self.setupData()
-                self.tableview.reloadData()
             }
         }
     }
@@ -1868,6 +1865,20 @@ func callSessionStepStatusUpdateAPI(sessionId : String, stepId : String,isFrom:S
             if isFrom == "BrainFeeling" {
                 
             }
+        }
+    }
+}
+
+// Progress Report Status API Call
+func callProgressReportStatus(data : SessionListDataMainModel, complitionBlock : ((GeneralDataModel?) -> ())?) {
+    let parameters : [String : Any] = [APIParameters.UserId:CoUserDataModel.currentUserId,
+                                       "SessionId":data.session_id,
+                                       "StepId":data.step_id ]
+    
+    APICallManager.sharedInstance.callAPI(router: APIRouter.checkprogressreportstatus(parameters)) { (response :GeneralModel) in
+        
+        if response.ResponseCode == "200" {
+            complitionBlock?(response.ResponseData)
         }
     }
 }

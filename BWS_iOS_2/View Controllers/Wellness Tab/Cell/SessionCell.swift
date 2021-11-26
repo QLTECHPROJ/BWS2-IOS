@@ -84,6 +84,8 @@ class SessionCell: UITableViewCell {
             topView.backgroundColor = Theme.colors.purple_9A86BB
             bottomView.backgroundColor = Theme.colors.gray_999999
             
+            imgCurrentSession.isHidden = false
+            
             if data.pre_session_audio_status == "1" {
                 imgCheckAudio.image = UIImage(named: "Check")
             } else {
