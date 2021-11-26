@@ -29,7 +29,7 @@ import UIKit
     var step_short_description = ""
     var step_long_description = ""
     var question_options = [Any]()
-    var selectedAns = "NO"
+    var selectedAns = "No"
  }
  
  
@@ -92,15 +92,20 @@ class BeforeAfterQuestionerVC: BaseViewController {
     
     //MARK:- IBAction Methods
     @IBAction func prevClicked(sender : UIButton) {
-        pageIndex = pageIndex - 1
-        setupData()
+        if pageIndex > 0 {
+            pageIndex = pageIndex - 1
+            setupData()
+        }else {
+            navigationController?.popViewController(animated: true)
+        }
+        
     }
     
     @IBAction func nextClicked(sender : UIButton) {
-       
         
         if pageIndex < (arrayQuetions.count - 1) {
             pageIndex = pageIndex + 1
+            selectedOption = 1
             setupData()
         }else {
             
@@ -108,7 +113,7 @@ class BeforeAfterQuestionerVC: BaseViewController {
                 var selectedAns = [[String:Any]]()
                 for ans in arrayQuetions {
                     let data = ["question_id":"\(pageIndex)",
-                                   "answer":ans.selectedAns]
+                                "answer":ans.selectedAns]
                     selectedAns.append(data)
                 }
                 
@@ -127,7 +132,7 @@ class BeforeAfterQuestionerVC: BaseViewController {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if arrayQuetions.count > 0 {
-            return arrayQuetions[section].question_options.count
+            return arrayQuetions[pageIndex].question_options.count
         }
         return 0
     }
@@ -157,7 +162,12 @@ class BeforeAfterQuestionerVC: BaseViewController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         selectedOption = indexPath.row
-        print("Page:",pageIndex , "Option:",selectedOption)
+        if indexPath.row == 0 {
+            arrayQuetions[pageIndex].selectedAns = "Yes"
+        }else {
+            arrayQuetions[indexPath.row].selectedAns = "No"
+        }
+        print("data:",arrayQuetions , "Option:",selectedOption)
         tableView.reloadData()
     }
      
