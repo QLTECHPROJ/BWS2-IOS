@@ -103,7 +103,7 @@ class SessionDetailVC: BaseViewController {
             aVC.stepId = data.step_id
             self.navigationController?.pushViewController(aVC, animated: false)
         } else if data.user_step_status == "Inprogress" {
-            callSessionStepStatusUpdateAPI(sessionId: data.session_id, stepId: data.step_id)
+            callSessionStepStatusUpdateAPI(sessionId: data.session_id, stepId: data.step_id, isFrom: "")
         }
     }
     
