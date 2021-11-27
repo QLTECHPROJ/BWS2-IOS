@@ -26,7 +26,7 @@ class FiveOptionVC: BaseViewController {
     
     
     // MARK:- VARIABLES
-    let optionType : OptionTypes = .fiveoptions
+    let optionType : OptionTypes = .tenoptions
     
     
     // MARK:- VIEW LIFE CYCLE
@@ -36,6 +36,7 @@ class FiveOptionVC: BaseViewController {
         
         tableView.register(nibWithCellClass: TwoOptionTableViewCell.self)
         tableView.register(nibWithCellClass: FiveOptionTableViewCell.self)
+        tableView.register(nibWithCellClass: TenOptionTableViewCell.self)
     }
     
     // MARK:- FUNCTIONS
@@ -68,6 +69,9 @@ extension FiveOptionVC : UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if optionType == .fiveoptions {
             let cell = tableView.dequeueReusableCell(withClass: FiveOptionTableViewCell.self)
+            return cell
+        } else if optionType == .tenoptions {
+            let cell = tableView.dequeueReusableCell(withClass: TenOptionTableViewCell.self)
             return cell
         }
         
