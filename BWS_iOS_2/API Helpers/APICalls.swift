@@ -1852,7 +1852,7 @@ func callSessionStepStatusUpdateAPI() {
     }
 }
 
-func callSessionStepStatusUpdateAPI(sessionId : String, stepId : String,isFrom:String) {
+func callSessionStepStatusUpdateAPI(sessionId: String, stepId: String, isFrom: String = "") {
     let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
                       "SessionId":sessionId,
                       "StepId":stepId]
