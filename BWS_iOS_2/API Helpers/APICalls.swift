@@ -1740,19 +1740,6 @@ extension SessionDetailVC {
     }
     
     // Progress Report API Call
-    func callProgressReport(data : SessionListDataMainModel) {
-        let parameters : [String : Any] = ["SessionId":data.session_id,
-                                           "StepId":data.step_id ]
-        
-        APICallManager.sharedInstance.callAPI(router: APIRouter.sessionprogressreport(parameters)) { (response :SessionDescriptionModel) in
-            
-            if response.ResponseCode == "200" {
-                showAlertToast(message: response.ResponseMessage)
-            }
-        }
-    }
-    
-    // Progress Report API Call
     func callCheckComparisonStatus(data : SessionListDataMainModel) {
         let parameters : [String : Any] = [APIParameters.UserId:CoUserDataModel.currentUserId,
                                            "SessionId":data.session_id,
@@ -1876,6 +1863,21 @@ func callProgressReportStatus(data : SessionListDataMainModel, complitionBlock :
                                        "StepId":data.step_id ]
     
     APICallManager.sharedInstance.callAPI(router: APIRouter.checkprogressreportstatus(parameters)) { (response :GeneralModel) in
+        
+        if response.ResponseCode == "200" {
+            complitionBlock?(response.ResponseData)
+        }
+    }
+}
+
+
+// Session Progress Report API Call
+func callSessionProgressReportAPI(data : SessionListDataMainModel, formType : String, complitionBlock : ((ProgressReportDataModel?) -> ())?) {
+    let parameters : [String : Any] = ["SessionId":data.session_id,
+                                       "StepId":data.step_id,
+                                       "FormType":formType]
+    
+    APICallManager.sharedInstance.callAPI(router: APIRouter.sessionprogressreport(parameters)) { (response :ProgressReportModel) in
         
         if response.ResponseCode == "200" {
             complitionBlock?(response.ResponseData)

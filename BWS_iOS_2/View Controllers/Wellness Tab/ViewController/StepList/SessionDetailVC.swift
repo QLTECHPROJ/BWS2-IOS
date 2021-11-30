@@ -80,10 +80,14 @@ class SessionDetailVC: BaseViewController {
         refreshControl.endRefreshing()
     }
     
-    func handleProgressReportStatus(data : SessionListDataMainModel, next_form : String) {
-        print("next_form :- \(next_form)")
+    func handleProgressReportStatus(data : SessionListDataMainModel, questionData : ProgressReportDataModel?) {
+        guard let questionData = questionData else {
+            return
+        }
         
-        if next_form.trim.count > 0 {
+        print("option_type :- \(questionData.option_type)")
+        
+        if questionData.option_type.trim.count > 0 {
             let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: FiveOptionVC.self)
             self.navigationController?.pushViewController(aVC, animated: false)
         } else {
@@ -187,7 +191,9 @@ extension SessionDetailVC : UITableViewDelegate, UITableViewDataSource {
                 self.navigationController?.pushViewController(aVC, animated: false)
             } else if arraySession[indexPath.row].step_type == "2" && arraySession[indexPath.row].user_step_status == "Inprogress" {
                 callProgressReportStatus(data: arraySession[indexPath.row]) { (resposeData) in
-                    self.handleProgressReportStatus(data: self.arraySession[indexPath.row], next_form: resposeData?.next_form ?? "")
+                    callSessionProgressReportAPI(data: self.arraySession[indexPath.row], formType: resposeData?.next_form ?? "") { (questionData) in
+                        self.handleProgressReportStatus(data: self.arraySession[indexPath.row], questionData: questionData)
+                    }
                 }
             } else if arraySession[indexPath.row].step_type == "3" && arraySession[indexPath.row].user_step_status == "Inprogress" {
                 let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: SessionActivityVC.self)
