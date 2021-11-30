@@ -104,6 +104,7 @@ enum APIRouter: URLRequestConvertible {
     case beforeafterquestionlisting([String:Any])
     case beforeandafteranswersave([String:Any])
     case checkprogressreportstatus([String:Any])
+    case progressreportanswersave([String:Any])
     
     var route: APIRoute {
         switch self {
@@ -264,6 +265,8 @@ enum APIRouter: URLRequestConvertible {
             return APIRoute(path: "beforeandafteranswersave", method: .post, data: data)
         case .checkprogressreportstatus(let data):
             return APIRoute(path: "checkprogressreportstatus", method: .post, data: data)
+        case .progressreportanswersave(let data):
+            return APIRoute(path: "progressreportanswersave", method: .post, data: data)
        
         }
     }

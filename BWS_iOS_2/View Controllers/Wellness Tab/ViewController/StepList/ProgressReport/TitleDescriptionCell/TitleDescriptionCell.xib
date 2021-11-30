@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Bold.ttf">
+            <string>Montserrat-Bold</string>
+        </array>
+        <array key="Montserrat-Regular.ttf">
+            <string>Montserrat-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TitleDescriptionCell" id="KGk-i7-Jjw" customClass="TitleDescriptionCell" customModule="BWS_2_Staging" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="1 Are you experiencing any of the following? *" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aUT-0H-oFn">
+                        <rect key="frame" x="16" y="16" width="343" height="44"/>
+                        <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="18"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AKc-Cu-YJI">
+                        <rect key="frame" x="16" y="76" width="343" height="108"/>
+                        <string key="text">The rating scale is as follows: 0 - Not Experiencing 1 - (Mild) Experience it some of the time 5 - (Moderate) Experience it most of the time 10 - (Severe) Experience it all of the time</string>
+                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="10"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="AKc-Cu-YJI" secondAttribute="trailing" constant="16" id="4e5-x1-MVY"/>
+                    <constraint firstAttribute="trailing" secondItem="aUT-0H-oFn" secondAttribute="trailing" constant="16" id="O39-ZA-boe"/>
+                    <constraint firstAttribute="bottom" secondItem="AKc-Cu-YJI" secondAttribute="bottom" constant="16" id="Re7-Vq-nTf"/>
+                    <constraint firstItem="AKc-Cu-YJI" firstAttribute="top" secondItem="aUT-0H-oFn" secondAttribute="bottom" constant="16" id="ZxY-Us-2X9"/>
+                    <constraint firstItem="AKc-Cu-YJI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="aFV-9W-Kuh"/>
+                    <constraint firstItem="aUT-0H-oFn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="l2l-pg-u4g"/>
+                    <constraint firstItem="aUT-0H-oFn" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="ze9-hv-Iqy"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="lblDescription" destination="AKc-Cu-YJI" id="hGT-cV-aog"/>
+                <outlet property="lblTitle" destination="aUT-0H-oFn" id="RlS-t4-vq0"/>
+            </connections>
+            <point key="canvasLocation" x="138.40579710144928" y="79.6875"/>
+        </tableViewCell>
+    </objects>
+</document>

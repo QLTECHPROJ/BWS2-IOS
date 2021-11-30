@@ -22,6 +22,19 @@ extension UIViewController {
         return false
     }
     
+    func popViewController(viewController : AnyClass) {
+        guard let controllers = self.navigationController?.viewControllers else {
+            return
+        }
+        
+        for controller in controllers {
+            if controller.isKind(of: viewController.self) {
+                self.navigationController?.popToViewController(controller, animated: true)
+                break
+            }
+        }
+    }
+    
     func openUrl(urlString : String) {
         if let url = URL(string: urlString) {
             if UIApplication.shared.canOpenURL(url) {
