@@ -1893,6 +1893,7 @@ extension BeforeAfterQuestionerVC {
             if response.ResponseCode == "200" {
                 self.arrayQuetions = response.ResponseData!.questions
                 self.setupData()
+                self.buttonEnableDisable()
                 self.tableview.reloadData()
             }
             

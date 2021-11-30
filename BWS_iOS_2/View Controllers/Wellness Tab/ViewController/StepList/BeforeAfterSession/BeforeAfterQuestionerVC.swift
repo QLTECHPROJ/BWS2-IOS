@@ -29,7 +29,7 @@ import UIKit
     var step_short_description = ""
     var step_long_description = ""
     var question_options = [Any]()
-    var selectedAns = "No"
+    var selectedAns = ""
  }
  
  
@@ -48,7 +48,7 @@ class BeforeAfterQuestionerVC: BaseViewController {
     //MARK:- Variables
     var arraySelection = ["YES" , "NO"]
     var arrayQue = ["Do you feel stressed?"]
-    var selectedOption = 1
+    var selectedOption = -1
     var pageIndex = 0
     var strStepID = ""
     var strSessionID = ""
@@ -62,6 +62,7 @@ class BeforeAfterQuestionerVC: BaseViewController {
         lblDesc.text = ""
         setupUI()
         callBeforeAfterQueList(sessionId: strSessionID, stepId: strStepID)
+       
     }
     
     //MARK:- Functions
@@ -76,10 +77,16 @@ class BeforeAfterQuestionerVC: BaseViewController {
         tableview.register(nibWithCellClass: ReminderListCell.self)
         tableview.register(nibWithCellClass: PersonalHistoryCell.self)
         
-       
-        
         if pageIndex == 0 {
             headerView.frame.size.height = 110
+        }
+        
+        if arrayQuetions.count > 0 {
+            if btnNext.isEnabled {
+                progressview.progress = Float(pageIndex + 1) / Float(arrayQuetions.count)
+            } else {
+                progressview.progress = Float(pageIndex) / Float(arrayQuetions.count)
+            }
         }
     }
     
@@ -104,11 +111,30 @@ class BeforeAfterQuestionerVC: BaseViewController {
         
     }
     
+    override func buttonEnableDisable() {
+        btnPrev.isHidden = pageIndex == 0
+        
+        if arrayQuetions.count > 0 {
+            let arrData = arrayQuetions[pageIndex]
+            if arrData.selectedAns == ""{
+                btnNext.isEnabled = false
+            } else {
+                btnNext.isEnabled = true
+            }
+        }
+    }
+    
     //MARK:- IBAction Methods
     @IBAction func prevClicked(sender : UIButton) {
         if pageIndex > 0 {
+            
             pageIndex = pageIndex - 1
-            setupData()
+            
+            if arrayQuetions.count > 0 {
+
+                lblTitle.text = arrayQuetions[pageIndex].question
+            }
+            tableview.reloadData()
         }else {
             navigationController?.popViewController(animated: true)
         }
@@ -119,8 +145,20 @@ class BeforeAfterQuestionerVC: BaseViewController {
         
         if pageIndex < (arrayQuetions.count - 1) {
             pageIndex = pageIndex + 1
-            selectedOption = 1
-            setupData()
+            
+            if arrayQuetions[pageIndex].selectedAns == "Yes" {
+                selectedOption = 0
+            }else if arrayQuetions[pageIndex].selectedAns == "No" {
+                selectedOption = 1
+            }else {
+                selectedOption = -1
+                arrayQuetions[pageIndex].selectedAns = ""
+            }
+            if arrayQuetions.count > 0 {
+
+                lblTitle.text = arrayQuetions[pageIndex].question
+            }
+            tableview.reloadData()
         }else {
             
             if arrayQuetions.count > 0 {
@@ -164,10 +202,19 @@ class BeforeAfterQuestionerVC: BaseViewController {
         cell.lblLine.isHidden = true
         cell.btnHeight.constant = 20
         
+        if arrayQuetions[pageIndex].selectedAns == "Yes" {
+            selectedOption = 0
+        }else if arrayQuetions[pageIndex].selectedAns == "No" {
+            selectedOption = 1
+        }else {
+            cell.btnSelect.setImage(UIImage(named: "GreenDeselect"), for: .normal)
+        }
+        
         if indexPath.row == selectedOption {
             cell.btnSelect.setImage(UIImage(named: "GreenSelect"), for: .normal)
         } else {
             cell.btnSelect.setImage(UIImage(named: "GreenDeselect"), for: .normal)
+            
         }
         
         return cell
@@ -179,16 +226,16 @@ class BeforeAfterQuestionerVC: BaseViewController {
         if indexPath.row == 0 {
             arrayQuetions[pageIndex].selectedAns = "Yes"
         }else {
-            arrayQuetions[indexPath.row].selectedAns = "No"
+            arrayQuetions[pageIndex].selectedAns = "No"
         }
         
-        //userdefault for page index
         if arrPage.contains(pageIndex) {
             print(arrPage)
         } else {
             let page = UserDefaults.standard.array(forKey: "ArrayPage") as? [Int]
             if (page?.contains(pageIndex))! {
                 arrPage = page ?? []
+                arrPage.append(pageIndex)
                 print(arrPage)
             } else {
                 arrPage.append(pageIndex)
@@ -197,6 +244,7 @@ class BeforeAfterQuestionerVC: BaseViewController {
         
         UserDefaults.standard.set(arrPage, forKey: "ArrayPage")
         
+        buttonEnableDisable()
         tableView.reloadData()
     }
      
