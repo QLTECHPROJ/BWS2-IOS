@@ -348,6 +348,7 @@ open class DJMusicPlayer: NSObject {
         
         // Session Step Status Update
         callSessionStepStatusUpdateAPI()
+        NotificationCenter.default.post(name: .audioDidFinishPlaying, object: nil)
         
         // Segment Tracking
         if currentlyPlaying?.isDisclaimer == true {

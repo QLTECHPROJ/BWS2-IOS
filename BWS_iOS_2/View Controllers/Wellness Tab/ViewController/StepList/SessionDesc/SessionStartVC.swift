@@ -27,6 +27,7 @@ class SessionStartVC: BaseViewController {
         
         setupUI()
         setupData()
+        registerForPlayerNotifications()
     }
     
     
@@ -37,6 +38,15 @@ class SessionStartVC: BaseViewController {
     
     override func setupData() {
         lblDesc.text = sessionDescriptionData?.step_long_description ?? ""
+    }
+    
+    override func handleDJMusicPlayerNotifications(notification: Notification) {
+        switch notification.name {
+        case .audioDidFinishPlaying:
+            self.handleNavigationForSession()
+        default:
+            break
+        }
     }
     
     // Play Audio
@@ -65,6 +75,30 @@ class SessionStartVC: BaseViewController {
         }
     }
     
+    func handleNavigationForSession() {
+        guard let audioData = DJMusicPlayer.shared.currentlyPlaying else {
+            return
+        }
+        
+        if audioData.sessionId != sessionStepData?.session_id && audioData.sessionStepId != sessionStepData?.step_id {
+            return
+        }
+        
+        if self.navigationController?.presentedViewController == nil {
+            return
+        }
+        
+        guard let controllers = self.navigationController?.viewControllers else {
+            return
+        }
+        
+        for controller in controllers {
+            if controller.isKind(of: SessionDetailVC.self) {
+                self.navigationController?.popToViewController(controller, animated: true)
+                break
+            }
+        }
+    }
     
     // MARK:- ACTIONS
     @IBAction func onTappedBack(_ sender: UIButton) {

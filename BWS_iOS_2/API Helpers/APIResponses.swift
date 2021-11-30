@@ -909,3 +909,30 @@ class ComparisonStatusDataModel : EVObject {
     var feeling_status = ""
     var errormsg = ""
 }
+
+
+// MARK:- Session Progress Report API Models
+class ProgressReportModel : EVObject {
+    var ResponseData  : ProgressReportDataModel?
+    var ResponseCode = ""
+    var ResponseMessage = ""
+    var ResponseStatus = ""
+}
+
+class ProgressReportDataModel : EVObject {
+    var section_title = ""
+    var section_image = ""
+    var section_subtitle = ""
+    var section_description = ""
+    var question_title = ""
+    var question_description = ""
+    var option_type = ""
+    var chunk_size = ""
+    var errormsg = ""
+    var questions = [ProgressReportQuestionModel]()
+}
+
+class ProgressReportQuestionModel : EVObject {
+    var question = ""
+    var question_options = [String]()
+}
