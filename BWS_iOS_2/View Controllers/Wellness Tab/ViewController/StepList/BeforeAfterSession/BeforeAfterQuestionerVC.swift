@@ -30,6 +30,7 @@ import UIKit
     var step_long_description = ""
     var question_options = [Any]()
     var selectedAns = ""
+    var id = ""
  }
  
  
@@ -158,13 +159,15 @@ class BeforeAfterQuestionerVC: BaseViewController {
 
                 lblTitle.text = arrayQuetions[pageIndex].question
             }
+            
+            buttonEnableDisable()
             tableview.reloadData()
         }else {
             
             if arrayQuetions.count > 0 {
                 var selectedAns = [[String:Any]]()
                 for ans in arrayQuetions {
-                    let data = ["question_id":"\(pageIndex)",
+                    let data = ["question_id":ans.id,
                                 "answer":ans.selectedAns]
                     selectedAns.append(data)
                 }

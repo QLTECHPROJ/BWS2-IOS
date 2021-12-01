@@ -1785,9 +1785,27 @@ extension BrainFeelingVC {
             
             if response.ResponseCode == "200" {
                 showAlertToast(message: response.ResponseMessage)
-              //  self.navigationController?.popViewController(animated: true)
+                removeUserDefault(KeyObj :"ArrayPage")
+                
                 callSessionStepStatusUpdateAPI(sessionId: self.sessionId, stepId: self.stepId, isFrom: "BrainFeeling")
-               
+                
+                guard let controllers = self.navigationController?.viewControllers else {
+                    return
+                }
+                
+                var isPopSuccess = false
+                for controller in controllers {
+                    if controller.isKind(of: SessionDetailVC.self) {
+                        isPopSuccess = true
+                        self.navigationController?.popToViewController(controller, animated: true)
+                        return
+                    }
+                }
+                
+                if isPopSuccess == false {
+                    APPDELEGATE.window?.rootViewController = AppStoryBoard.main.viewController(viewControllerClass: NavigationClass.self)
+                }
+                
             }
         }
     }
