@@ -1875,10 +1875,14 @@ func callSessionStepStatusUpdateAPI(sessionId: String, stepId: String, isFrom: S
 }
 
 // Progress Report Status API Call
-func callProgressReportStatus(data : SessionListDataMainModel, complitionBlock : ((GeneralDataModel?) -> ())?) {
+func callProgressReportStatus(data : SessionListDataMainModel?, complitionBlock : ((GeneralDataModel?) -> ())?) {
+    guard let sessionStepData = data else {
+        return
+    }
+    
     let parameters : [String : Any] = [APIParameters.UserId:CoUserDataModel.currentUserId,
-                                       "SessionId":data.session_id,
-                                       "StepId":data.step_id ]
+                                       "SessionId":sessionStepData.session_id,
+                                       "StepId":sessionStepData.step_id ]
     
     APICallManager.sharedInstance.callAPI(router: APIRouter.checkprogressreportstatus(parameters)) { (response :GeneralModel) in
         
@@ -1890,12 +1894,36 @@ func callProgressReportStatus(data : SessionListDataMainModel, complitionBlock :
 
 
 // Session Progress Report API Call
-func callSessionProgressReportAPI(data : SessionListDataMainModel, formType : String, complitionBlock : ((ProgressReportDataModel?) -> ())?) {
-    let parameters : [String : Any] = ["SessionId":data.session_id,
-                                       "StepId":data.step_id,
+func callSessionProgressReportAPI(data : SessionListDataMainModel?, formType : String, complitionBlock : ((ProgressReportDataModel?) -> ())?) {
+    guard let sessionStepData = data else {
+        return
+    }
+    
+    let parameters : [String : Any] = ["SessionId":sessionStepData.session_id,
+                                       "StepId":sessionStepData.step_id,
                                        "FormType":formType]
     
     APICallManager.sharedInstance.callAPI(router: APIRouter.sessionprogressreport(parameters)) { (response :ProgressReportModel) in
+        
+        if response.ResponseCode == "200" {
+            complitionBlock?(response.ResponseData)
+        }
+    }
+}
+
+// Save Progress Report API Call
+func callSaveProgressReportAPI(arrayAnswers : [[String:Any]], data : SessionListDataMainModel?, formType : String, complitionBlock : ((GeneralDataModel?) -> ())?) {
+    guard let sessionStepData = data else {
+        return
+    }
+    
+    let parameters : [String : Any] = [APIParameters.UserId:CoUserDataModel.currentUserId,
+                                       "SessionId":sessionStepData.session_id,
+                                       "StepId":sessionStepData.step_id,
+                                       "Form_Type":formType,
+                                       "question_answers":arrayAnswers.toJSON() ?? ""]
+    
+    APICallManager.sharedInstance.callAPI(router: APIRouter.progressreportanswersave(parameters)) { (response :GeneralModel) in
         
         if response.ResponseCode == "200" {
             complitionBlock?(response.ResponseData)

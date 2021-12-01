@@ -923,7 +923,10 @@ class ProgressReportDataModel : EVObject {
     var section_title = ""
     var section_image = ""
     var section_subtitle = ""
+    var current_section = ""
     var section_description = ""
+    var total_section = ""
+    var formType = ""
     var question_title = ""
     var question_description = ""
     var option_type = ""
@@ -933,6 +936,8 @@ class ProgressReportDataModel : EVObject {
 }
 
 class ProgressReportQuestionModel : EVObject {
+    var question_id = ""
     var question = ""
     var question_options = [String]()
+    var selectedAnswer = ""
 }

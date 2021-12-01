@@ -13,6 +13,13 @@ class TenOptionTableViewCell: UITableViewCell {
     @IBOutlet weak var lblQuestion : UILabel!
     @IBOutlet weak var objCollectionView : UICollectionView!
     
+    var question = ""
+    var question_options = [String]()
+    var selectedAnswer = ""
+    
+    var didSelectOption : ((String) -> Void)?
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -22,7 +29,12 @@ class TenOptionTableViewCell: UITableViewCell {
     }
     
     // Configure Cell
-    func configureCell(data : GeneralModel) {
+    func configureCell(data : ProgressReportQuestionModel) {
+        question = data.question
+        question_options = data.question_options
+        selectedAnswer = data.selectedAnswer
+        
+        lblQuestion.text = question
         objCollectionView.reloadData()
     }
     
@@ -32,12 +44,19 @@ class TenOptionTableViewCell: UITableViewCell {
 extension TenOptionTableViewCell : UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 11
+        return question_options.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withClass: TenOptionCollectionViewCell.self, for: indexPath)
-        cell.lblOption.text = "\(indexPath.row)"
+        cell.lblOption.text = question_options[indexPath.row]
+        
+        if selectedAnswer == question_options[indexPath.row] {
+            cell.imgOption.image = UIImage(named: "radio1")
+        } else {
+            cell.imgOption.image = UIImage(named: "radio")
+        }
+        
         return cell
     }
     
@@ -46,7 +65,7 @@ extension TenOptionTableViewCell : UICollectionViewDataSource {
 extension TenOptionTableViewCell : UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("index :- ",indexPath.row)
+        didSelectOption?(question_options[indexPath.row])
     }
     
 }

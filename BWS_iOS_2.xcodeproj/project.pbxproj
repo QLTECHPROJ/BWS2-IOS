@@ -25,6 +25,8 @@
 		280DFCE1260DA03E00479EE6 /* RecommendedCategoryHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 280DFCDD260DA03E00479EE6 /* RecommendedCategoryHeaderCell.xib */; };
 		2810AE0A26FB493100C8844B /* BrainFeelingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2810AE0926FB493100C8844B /* BrainFeelingVC.swift */; };
 		2810AE0B26FB493100C8844B /* BrainFeelingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2810AE0926FB493100C8844B /* BrainFeelingVC.swift */; };
+		2817022F2756069400A5B179 /* EmpowerStepVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2817022E2756069400A5B179 /* EmpowerStepVC.swift */; };
+		281702302756069400A5B179 /* EmpowerStepVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2817022E2756069400A5B179 /* EmpowerStepVC.swift */; };
 		28187015274FB1BD00E44F70 /* FiveOptionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28187014274FB1BD00E44F70 /* FiveOptionVC.swift */; };
 		28187016274FB1BD00E44F70 /* FiveOptionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28187014274FB1BD00E44F70 /* FiveOptionVC.swift */; };
 		2819848D2638214E00DA5A66 /* SuggestedPlaylistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2819848B2638214E00DA5A66 /* SuggestedPlaylistCell.swift */; };
@@ -423,6 +425,10 @@
 		28E01240261847EA00B55967 /* IndexScoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E01221261847EA00B55967 /* IndexScoreCell.swift */; };
 		28E01241261847EA00B55967 /* AreaCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28E01222261847EA00B55967 /* AreaCell.xib */; };
 		28E01242261847EA00B55967 /* AreaCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28E01222261847EA00B55967 /* AreaCell.xib */; };
+		28E6A2CD2756479E0092102E /* TitleDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E6A2CB2756479E0092102E /* TitleDescriptionCell.swift */; };
+		28E6A2CE2756479E0092102E /* TitleDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E6A2CB2756479E0092102E /* TitleDescriptionCell.swift */; };
+		28E6A2CF2756479E0092102E /* TitleDescriptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28E6A2CC2756479E0092102E /* TitleDescriptionCell.xib */; };
+		28E6A2D02756479E0092102E /* TitleDescriptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28E6A2CC2756479E0092102E /* TitleDescriptionCell.xib */; };
 		28E80926261308E300CD80F7 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28E80925261308E300CD80F7 /* Home.storyboard */; };
 		28E80927261308E300CD80F7 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28E80925261308E300CD80F7 /* Home.storyboard */; };
 		28E80929261308ED00CD80F7 /* Manage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28E80928261308ED00CD80F7 /* Manage.storyboard */; };
@@ -663,6 +669,7 @@
 		280DFCDC260DA03E00479EE6 /* RecommendedCategoryHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedCategoryHeaderCell.swift; sourceTree = "<group>"; };
 		280DFCDD260DA03E00479EE6 /* RecommendedCategoryHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecommendedCategoryHeaderCell.xib; sourceTree = "<group>"; };
 		2810AE0926FB493100C8844B /* BrainFeelingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrainFeelingVC.swift; sourceTree = "<group>"; };
+		2817022E2756069400A5B179 /* EmpowerStepVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmpowerStepVC.swift; sourceTree = "<group>"; };
 		28187014274FB1BD00E44F70 /* FiveOptionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveOptionVC.swift; sourceTree = "<group>"; };
 		2819848B2638214E00DA5A66 /* SuggestedPlaylistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestedPlaylistCell.swift; sourceTree = "<group>"; };
 		2819848C2638214E00DA5A66 /* SuggestedPlaylistCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SuggestedPlaylistCell.xib; sourceTree = "<group>"; };
@@ -868,6 +875,8 @@
 		28E01220261847EA00B55967 /* AreaCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AreaCell.swift; sourceTree = "<group>"; };
 		28E01221261847EA00B55967 /* IndexScoreCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexScoreCell.swift; sourceTree = "<group>"; };
 		28E01222261847EA00B55967 /* AreaCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AreaCell.xib; sourceTree = "<group>"; };
+		28E6A2CB2756479E0092102E /* TitleDescriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleDescriptionCell.swift; sourceTree = "<group>"; };
+		28E6A2CC2756479E0092102E /* TitleDescriptionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleDescriptionCell.xib; sourceTree = "<group>"; };
 		28E80925261308E300CD80F7 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		28E80928261308ED00CD80F7 /* Manage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Manage.storyboard; sourceTree = "<group>"; };
 		28E8092B261308F900CD80F7 /* Wellness.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Wellness.storyboard; sourceTree = "<group>"; };
@@ -1438,6 +1447,15 @@
 			path = CVCell;
 			sourceTree = "<group>";
 		};
+		28E6A2D1275647A60092102E /* TitleDescriptionCell */ = {
+			isa = PBXGroup;
+			children = (
+				28E6A2CB2756479E0092102E /* TitleDescriptionCell.swift */,
+				28E6A2CC2756479E0092102E /* TitleDescriptionCell.xib */,
+			);
+			path = TitleDescriptionCell;
+			sourceTree = "<group>";
+		};
 		28E809432613493F00CD80F7 /* Manage Tab */ = {
 			isa = PBXGroup;
 			children = (
@@ -1711,6 +1729,7 @@
 		9A47A7BE2746352B00ECF490 /* ProgressReport */ = {
 			isa = PBXGroup;
 			children = (
+				28E6A2D1275647A60092102E /* TitleDescriptionCell */,
 				2887EEA6275112FE00D5251D /* TenOptionCell */,
 				2822760C2750FB4B00403C64 /* TwoOptionCell */,
 				280AED81274FA71400617A53 /* FiveOptionCell */,
@@ -1818,6 +1837,7 @@
 				9A6D04FD269F094600AD4FBA /* ExpSessionVC.swift */,
 				9A29854326A92A7D0006227F /* SessionDownloadVC.swift */,
 				9A1B12D12706FD2D00A74AB9 /* EmpowerPlanListVC.swift */,
+				2817022E2756069400A5B179 /* EmpowerStepVC.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -2061,6 +2081,7 @@
 				282441482609ACE30060292E /* UserListCell.xib in Resources */,
 				9AEBD2DE2689962C0096C291 /* InviteFriendCell.xib in Resources */,
 				2870B35E25FB3A570014A4F6 /* LaunchScreen.storyboard in Resources */,
+				28E6A2D02756479E0092102E /* TitleDescriptionCell.xib in Resources */,
 				28D755702618A33F00EA63FE /* PlayVideoCell.xib in Resources */,
 				28ED2F9225FB58E000E59C56 /* Montserrat-SemiBold.ttf in Resources */,
 				2887EEB22751132400D5251D /* TenOptionCollectionViewCell.xib in Resources */,
@@ -2138,6 +2159,7 @@
 				28F812BC25FB364900DC6AF6 /* LaunchScreen.storyboard in Resources */,
 				9AEBD2DD2689962C0096C291 /* InviteFriendCell.xib in Resources */,
 				28ED2F9125FB58E000E59C56 /* Montserrat-SemiBold.ttf in Resources */,
+				28E6A2CF2756479E0092102E /* TitleDescriptionCell.xib in Resources */,
 				28D7556F2618A33F00EA63FE /* PlayVideoCell.xib in Resources */,
 				282441472609ACE30060292E /* UserListCell.xib in Resources */,
 				2887EEB12751132400D5251D /* TenOptionCollectionViewCell.xib in Resources */,
@@ -2475,6 +2497,7 @@
 				9A6D04FF269F094600AD4FBA /* ExpSessionVC.swift in Sources */,
 				9AC0672326394B3900287A44 /* FAQVC.swift in Sources */,
 				2870B3E225FB41A10014A4F6 /* UIImage+Extension.swift in Sources */,
+				28E6A2CE2756479E0092102E /* TitleDescriptionCell.swift in Sources */,
 				2870B42A25FB41A10014A4F6 /* BackspaceTextField.swift in Sources */,
 				2870B44A25FB41A10014A4F6 /* TabBarController.swift in Sources */,
 				289F1F272654F15A00E94290 /* Segment+EventsNames.swift in Sources */,
@@ -2490,6 +2513,7 @@
 				28B5353F260C781400BD8147 /* AreaOfFocusCell.swift in Sources */,
 				9A98E42926848732004C889C /* SetUpPInVC.swift in Sources */,
 				2870B3E425FB41A10014A4F6 /* DJContants.swift in Sources */,
+				281702302756069400A5B179 /* EmpowerStepVC.swift in Sources */,
 				280C48F32600652C00063C03 /* DassAssessmentResultVC.swift in Sources */,
 				28D755692618999F00EA63FE /* iCarousel.m in Sources */,
 				9AC067032639178F00287A44 /* RecPodCastsVC.swift in Sources */,
@@ -2731,6 +2755,7 @@
 				9A6D04FE269F094600AD4FBA /* ExpSessionVC.swift in Sources */,
 				2870B37025FB404B0014A4F6 /* APIRoute.swift in Sources */,
 				2870B44325FB41A10014A4F6 /* ReorderController+GestureRecognizer.swift in Sources */,
+				28E6A2CD2756479E0092102E /* TitleDescriptionCell.swift in Sources */,
 				2870B3E125FB41A10014A4F6 /* UIImage+Extension.swift in Sources */,
 				289F1F262654F15A00E94290 /* Segment+EventsNames.swift in Sources */,
 				2870B42925FB41A10014A4F6 /* BackspaceTextField.swift in Sources */,
@@ -2746,6 +2771,7 @@
 				9A98E42826848732004C889C /* SetUpPInVC.swift in Sources */,
 				2870B3CF25FB41A10014A4F6 /* DJTextView.swift in Sources */,
 				280C48F22600652C00063C03 /* DassAssessmentResultVC.swift in Sources */,
+				2817022F2756069400A5B179 /* EmpowerStepVC.swift in Sources */,
 				28D755682618999F00EA63FE /* iCarousel.m in Sources */,
 				9AC067022639178F00287A44 /* RecPodCastsVC.swift in Sources */,
 				28E01233261847EA00B55967 /* GraphCell.swift in Sources */,

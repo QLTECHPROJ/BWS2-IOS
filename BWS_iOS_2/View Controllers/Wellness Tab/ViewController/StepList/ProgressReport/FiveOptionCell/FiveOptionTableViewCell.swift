@@ -13,7 +13,12 @@ class FiveOptionTableViewCell: UITableViewCell {
     @IBOutlet weak var lblQuestion : UILabel!
     @IBOutlet weak var objCollectionView : UICollectionView!
     
-    var dataCount = 3
+    var question = ""
+    var question_options = [String]()
+    var selectedAnswer = ""
+    
+    var didSelectOption : ((String) -> Void)?
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,7 +29,12 @@ class FiveOptionTableViewCell: UITableViewCell {
     }
     
     // Configure Cell
-    func configureCell(data : GeneralModel) {
+    func configureCell(data : ProgressReportQuestionModel) {
+        question = data.question
+        question_options = data.question_options
+        selectedAnswer = data.selectedAnswer
+        
+        lblQuestion.text = question
         objCollectionView.reloadData()
     }
     
@@ -34,12 +44,19 @@ class FiveOptionTableViewCell: UITableViewCell {
 extension FiveOptionTableViewCell : UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataCount
+        return question_options.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withClass: FiveOptionCollectionViewCell.self, for: indexPath)
-        cell.lblOption.text = "\(indexPath.row)"
+        cell.lblOption.text = question_options[indexPath.row]
+        
+        if selectedAnswer == question_options[indexPath.row] {
+            cell.imgOption.image = UIImage(named: "radio1")
+        } else {
+            cell.imgOption.image = UIImage(named: "radio")
+        }
+        
         return cell
     }
     
@@ -48,7 +65,7 @@ extension FiveOptionTableViewCell : UICollectionViewDataSource {
 extension FiveOptionTableViewCell : UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("index :- ",indexPath.row)
+        didSelectOption?(question_options[indexPath.row])
     }
     
 }
@@ -57,7 +74,7 @@ extension FiveOptionTableViewCell : UICollectionViewDelegate {
 extension FiveOptionTableViewCell : UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = collectionView.frame.size.width / CGFloat(dataCount)
+        let width = collectionView.frame.size.width / CGFloat(question_options.count)
         return CGSize(width: width, height: collectionView.frame.size.height)
     }
     

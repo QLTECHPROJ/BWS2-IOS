@@ -14,7 +14,12 @@ class TwoOptionTableViewCell: UITableViewCell {
     @IBOutlet weak var tableView : UITableView!
     @IBOutlet weak var tableViewHeightConst : NSLayoutConstraint!
     
-    var dataCount = 5
+    var question = ""
+    var question_options = [String]()
+    var selectedAnswer = ""
+    
+    var didSelectOption : ((String) -> Void)?
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,9 +27,21 @@ class TwoOptionTableViewCell: UITableViewCell {
         
         tableView.register(nibWithCellClass: TwoOptionCell.self)
         tableView.reloadData()
-        
-        tableViewHeightConst.constant = 52 * CGFloat(dataCount)
+        tableViewHeightConst.constant = 0
         self.layoutIfNeeded()
+    }
+    
+    // Configure Cell
+    func configureCell(data : ProgressReportQuestionModel) {
+        question = data.question
+        question_options = data.question_options
+        selectedAnswer = data.selectedAnswer
+                
+        tableViewHeightConst.constant = 52 * CGFloat(question_options.count)
+        self.layoutIfNeeded()
+        
+        lblQuestion.text = question
+        tableView.reloadData()
     }
     
 }
@@ -33,12 +50,19 @@ class TwoOptionTableViewCell: UITableViewCell {
 extension TwoOptionTableViewCell : UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataCount
+        return question_options.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withClass: TwoOptionCell.self)
-        cell.lblOption.text = "Option \(indexPath.row)"
+        cell.lblOption.text = question_options[indexPath.row]
+        
+        if selectedAnswer == question_options[indexPath.row] {
+            cell.imgOption.image = UIImage(named: "radio1")
+        } else {
+            cell.imgOption.image = UIImage(named: "radio")
+        }
+        
         return cell
     }
     
@@ -48,7 +72,7 @@ extension TwoOptionTableViewCell : UITableViewDataSource {
 extension TwoOptionTableViewCell : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        didSelectOption?(question_options[indexPath.row])
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

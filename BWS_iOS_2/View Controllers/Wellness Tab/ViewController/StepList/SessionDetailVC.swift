@@ -16,6 +16,7 @@ class SessionDetailVC: BaseViewController {
     @IBOutlet weak var tableview: UITableView!
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var btnContinue: UIButton!
     
     
     // MARK:- VARIABLES
@@ -39,6 +40,7 @@ class SessionDetailVC: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        setupData()
         refreshData()
     }
     
@@ -61,6 +63,15 @@ class SessionDetailVC: BaseViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.tableview.reloadData()
         }
+        
+        let completedSteps = arraySession.filter { $0.user_step_status == "Completed" }
+        if arraySession.count == completedSteps.count && completedSteps.count > 0 {
+            btnContinue.isEnabled = true
+            btnContinue.backgroundColor = Theme.colors.green_008892
+        } else {
+            btnContinue.isEnabled = false
+            btnContinue.backgroundColor = Theme.colors.gray_7E7E7E
+        }
     }
     
     // Refresh Data
@@ -80,7 +91,11 @@ class SessionDetailVC: BaseViewController {
         refreshControl.endRefreshing()
     }
     
-    func handleProgressReportStatus(data : SessionListDataMainModel, questionData : ProgressReportDataModel?) {
+    func handleProgressReportStatus(sessionStepData : SessionListDataMainModel?, questionData : ProgressReportDataModel?) {
+        guard let sessionStepData = sessionStepData else {
+            return
+        }
+        
         guard let questionData = questionData else {
             return
         }
@@ -88,10 +103,26 @@ class SessionDetailVC: BaseViewController {
         print("option_type :- \(questionData.option_type)")
         
         if questionData.option_type.trim.count > 0 {
-            let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: FiveOptionVC.self)
-            self.navigationController?.pushViewController(aVC, animated: false)
+            let aVC = AppStoryBoard.wellness.viewController(viewControllerClass:EmpowerStepVC.self)
+            aVC.strSectionTitle = questionData.section_title
+            aVC.strSubTitle = questionData.section_subtitle
+            aVC.strDescription = questionData.section_description
+            aVC.imageUrl = questionData.section_image
+            aVC.color = Theme.colors.purple_9A86BB
+            aVC.viewTapped = {
+                if questionData.option_type == OptionTypes.textfield.rawValue {
+                    
+                } else {
+                    let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: FiveOptionVC.self)
+                    aVC.sessionStepData = sessionStepData
+                    aVC.questionData = questionData
+                    self.navigationController?.pushViewController(aVC, animated: false)
+                }
+            }
+            aVC.modalPresentationStyle = .overFullScreen
+            self.present(aVC, animated: false, completion: nil)
         } else {
-            callSessionStepStatusUpdateAPI(sessionId: data.session_id, stepId: data.step_id)
+            self.popViewController(viewController: SessionDetailVC.self)
         }
     }
     
@@ -107,7 +138,7 @@ class SessionDetailVC: BaseViewController {
             aVC.stepId = data.step_id
             self.navigationController?.pushViewController(aVC, animated: false)
         } else if data.user_step_status == "Inprogress" {
-            callSessionStepStatusUpdateAPI(sessionId: data.session_id, stepId: data.step_id)
+            self.popViewController(viewController: SessionDetailVC.self)
         }
     }
     
@@ -117,6 +148,10 @@ class SessionDetailVC: BaseViewController {
     }
     
     @IBAction func onTappedContinue(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+        return
+        
+        /*
         let aVC = AppStoryBoard.main.viewController(viewControllerClass:StepVC.self)
         aVC.strTitle = "Step 1"
         aVC.strSubTitle = Theme.strings.step_3_subtitle
@@ -131,6 +166,7 @@ class SessionDetailVC: BaseViewController {
         }
         aVC.modalPresentationStyle = .overFullScreen
         self.present(aVC, animated: false, completion: nil)
+         */
     }
     
 }
@@ -191,8 +227,13 @@ extension SessionDetailVC : UITableViewDelegate, UITableViewDataSource {
                 self.navigationController?.pushViewController(aVC, animated: false)
             } else if arraySession[indexPath.row].step_type == "2" && arraySession[indexPath.row].user_step_status == "Inprogress" {
                 callProgressReportStatus(data: arraySession[indexPath.row]) { (resposeData) in
-                    callSessionProgressReportAPI(data: self.arraySession[indexPath.row], formType: resposeData?.next_form ?? "") { (questionData) in
-                        self.handleProgressReportStatus(data: self.arraySession[indexPath.row], questionData: questionData)
+                    if let nextForm = resposeData?.next_form, nextForm.trim.count > 0 {
+                        callSessionProgressReportAPI(data: self.arraySession[indexPath.row], formType: nextForm) { (questionData) in
+                            self.handleProgressReportStatus(sessionStepData: self.arraySession[indexPath.row], questionData: questionData)
+                        }
+                    } else {
+                        callSessionStepStatusUpdateAPI(sessionId: self.arraySession[indexPath.row].session_id, stepId: self.arraySession[indexPath.row].step_id)
+                        self.popViewController(viewController: SessionDetailVC.self)
                     }
                 }
             } else if arraySession[indexPath.row].step_type == "3" && arraySession[indexPath.row].user_step_status == "Inprogress" {
