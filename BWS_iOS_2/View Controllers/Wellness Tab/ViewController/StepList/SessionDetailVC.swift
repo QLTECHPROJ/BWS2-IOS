@@ -111,7 +111,10 @@ class SessionDetailVC: BaseViewController {
             aVC.color = Theme.colors.purple_9A86BB
             aVC.viewTapped = {
                 if questionData.option_type == OptionTypes.textfield.rawValue {
-                    
+                    let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: TextQuestionVC.self)
+                    aVC.sessionStepData = sessionStepData
+                    aVC.questionData = questionData
+                    self.navigationController?.pushViewController(aVC, animated: false)
                 } else {
                     let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: FiveOptionVC.self)
                     aVC.sessionStepData = sessionStepData

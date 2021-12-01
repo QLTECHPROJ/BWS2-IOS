@@ -1,38 +1,35 @@
 //
-//  FiveOptionVC.swift
+//  TextQuestionVC.swift
 //  BWS_iOS_2
 //
-//  Created by Dhruvit on 25/11/21.
+//  Created by Dhruvit on 01/12/21.
 //  Copyright © 2021 Dhruvit. All rights reserved.
 //
 
 import UIKit
 
-enum OptionTypes : String {
-    case textfield = "textfield"
-    case twooptions = "twooptions"
-    case fiveoptions = "fiveoptions"
-    case tenoptions = "tenoptions"
-}
-
-class FiveOptionVC: BaseViewController {
+class TextQuestionVC: BaseViewController {
     
     // MARK:- OUTLETS
     @IBOutlet weak var lblTitle : UILabel!
     @IBOutlet weak var lblSectionCount : UILabel!
     @IBOutlet weak var progressView: UIProgressView!
-    @IBOutlet weak var tableView : UITableView!
+    
+    @IBOutlet weak var lblQuestion : UILabel!
+    @IBOutlet weak var lblDescription : UILabel!
+    @IBOutlet weak var lblPlaceholder : UILabel!
+    @IBOutlet weak var textView : UITextView!
+    
     @IBOutlet weak var btnNext: UIButton!
     @IBOutlet weak var btnPre: UIButton!
     
     
     // MARK:- VARIABLES
-    var optionType : OptionTypes = .twooptions
+    var optionType : OptionTypes = .textfield
     var pageIndex = 0
     var sessionStepData : SessionListDataMainModel?
     var questionData : ProgressReportDataModel?
     var arrayQuestions = [ProgressReportQuestionModel]()
-    var arrayNewQuestions = [[ProgressReportQuestionModel]]()
     
     
     // MARK:- VIEW LIFE CYCLE
@@ -42,11 +39,6 @@ class FiveOptionVC: BaseViewController {
         
         progressView.progress = 0
         
-        tableView.register(nibWithCellClass: TitleDescriptionCell.self)
-        tableView.register(nibWithCellClass: TwoOptionTableViewCell.self)
-        tableView.register(nibWithCellClass: FiveOptionTableViewCell.self)
-        tableView.register(nibWithCellClass: TenOptionTableViewCell.self)
-        
         setupData()
     }
     
@@ -55,27 +47,26 @@ class FiveOptionVC: BaseViewController {
         lblTitle.text = questionData?.section_subtitle
         lblSectionCount.text = "Section \(questionData?.current_section ?? "") / \(questionData?.total_section ?? "")"
         
-        optionType = OptionTypes(rawValue: questionData?.option_type ?? "") ?? .twooptions
-        
-        let chunkSize = Int(questionData?.chunk_size ?? "1") ?? 1
-        
         arrayQuestions = questionData?.questions ?? []
-        arrayNewQuestions = arrayQuestions.chunked(into: chunkSize)
-        
-        tableView.reloadData()
         
         setupUI()
     }
     
     override func setupUI() {
-        tableView.reloadData()
+        lblQuestion.text = arrayQuestions[pageIndex].question
+        
+        lblDescription.text = ""
+        lblDescription.isHidden = true
+        
+        textView.text = arrayQuestions[pageIndex].selectedAnswer
+        
         buttonEnableDisable()
         
-        if arrayNewQuestions.count > 0 {
+        if arrayQuestions.count > 0 {
             if btnNext.isEnabled {
-                progressView.progress = Float(pageIndex + 1) / Float(arrayNewQuestions.count)
+                progressView.progress = Float(pageIndex + 1) / Float(arrayQuestions.count)
             } else {
-                progressView.progress = Float(pageIndex) / Float(arrayNewQuestions.count)
+                progressView.progress = Float(pageIndex) / Float(arrayQuestions.count)
             }
         }
     }
@@ -85,9 +76,8 @@ class FiveOptionVC: BaseViewController {
         
         btnNext.isEnabled = false
         
-        if arrayNewQuestions.count > pageIndex {
-            let arraySelectedData = arrayNewQuestions[pageIndex].filter({ $0.selectedAnswer.trim.count > 0 })
-            if arraySelectedData.count == arrayNewQuestions[pageIndex].count && arraySelectedData.count > 0 {
+        if arrayQuestions.count > pageIndex {
+            if arrayQuestions[pageIndex].selectedAnswer.trim.count > 0 {
                 btnNext.isEnabled = true
             }
         }
@@ -147,10 +137,12 @@ class FiveOptionVC: BaseViewController {
     
     // MARK:- ACTIONS
     @IBAction func nextClicked(sender: UIButton) {
-        if pageIndex < (arrayNewQuestions.count - 1) {
+        self.view.endEditing(true)
+        arrayQuestions[pageIndex].selectedAnswer = textView.text ?? ""
+        
+        if pageIndex < (arrayQuestions.count - 1) {
             pageIndex = pageIndex + 1
             print(pageIndex)
-            tableView.reloadData()
         } else {
             let arrayOldQuetion = questionData?.questions ?? []
             var arrayAnswers = [[String:Any]]()
@@ -169,10 +161,12 @@ class FiveOptionVC: BaseViewController {
     }
     
     @IBAction func prevClicked(sender: UIButton) {
+        self.view.endEditing(true)
+        arrayQuestions[pageIndex].selectedAnswer = textView.text ?? ""
+        
         if pageIndex > 0 {
             pageIndex = pageIndex - 1
             print(pageIndex)
-            tableView.reloadData()
         }
         
         setupUI()
@@ -181,86 +175,18 @@ class FiveOptionVC: BaseViewController {
 }
 
 
-extension FiveOptionVC : UITableViewDataSource {
+// MARK:- UITextViewDelegate
+extension TextQuestionVC : UITextViewDelegate {
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return 1
-        }
-        if arrayNewQuestions.count > 0 {
-            return arrayNewQuestions[pageIndex].count
-        }
-        return 0
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withClass: TitleDescriptionCell.self)
-            cell.lblTitle.text = questionData?.question_title ?? ""
-            cell.lblDescription.text = questionData?.question_description ?? ""
-            
-            cell.lblTitle.isHidden = (cell.lblTitle.text?.trim.count ?? 0) == 0
-            cell.lblDescription.isHidden = (cell.lblDescription.text?.trim.count ?? 0) == 0
-            
-            return cell
-        }
+    func textViewDidChange(_ textView: UITextView) {
+        print("Text :- ",textView.text!)
+        lblPlaceholder.isHidden = (textView.text.trim.count != 0)
         
-        if optionType == .fiveoptions {
-            let cell = tableView.dequeueReusableCell(withClass: FiveOptionTableViewCell.self)
-            cell.configureCell(data: arrayNewQuestions[pageIndex][indexPath.row])
-            cell.didSelectOption = { selectedOption in
-                self.setSelectedOption(row: indexPath.row, selectedOption: selectedOption)
-            }
-            return cell
-        } else if optionType == .tenoptions {
-            let cell = tableView.dequeueReusableCell(withClass: TenOptionTableViewCell.self)
-            cell.configureCell(data: arrayNewQuestions[pageIndex][indexPath.row])
-            cell.didSelectOption = { selectedOption in
-                self.setSelectedOption(row: indexPath.row, selectedOption: selectedOption)
-            }
-            return cell
+        if textView.text.trim.count > 0 {
+            btnNext.isEnabled = true
+        } else {
+            btnNext.isEnabled = false
         }
-        
-        let cell = tableView.dequeueReusableCell(withClass: TwoOptionTableViewCell.self)
-        cell.configureCell(data: arrayNewQuestions[pageIndex][indexPath.row])
-        cell.didSelectOption = { selectedOption in
-            self.setSelectedOption(row: indexPath.row, selectedOption: selectedOption)
-        }
-        return cell
-    }
-    
-    func setSelectedOption(row : Int, selectedOption : String) {
-        arrayNewQuestions[pageIndex][row].selectedAnswer = selectedOption
-        tableView.reloadData()
-        
-        let question = arrayNewQuestions[pageIndex][row].question
-        let selectedAnswer = arrayNewQuestions[pageIndex][row].selectedAnswer
-        
-        for newQuestion in arrayQuestions {
-            if newQuestion.question == question {
-                newQuestion.selectedAnswer = selectedAnswer
-            }
-        }
-        
-        questionData?.questions = arrayQuestions
-        
-        setupUI()
-    }
-    
-}
-
-extension FiveOptionVC : UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if optionType == .fiveoptions && indexPath.section == 1 {
-            return 150
-        }
-        
-        return UITableView.automaticDimension
     }
     
 }

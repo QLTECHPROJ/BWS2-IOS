@@ -152,6 +152,8 @@
 		283F72F4261D999200554774 /* SubColCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283F72F1261D999100554774 /* SubColCell.swift */; };
 		283F72F5261D999200554774 /* SubColCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 283F72F2261D999200554774 /* SubColCell.xib */; };
 		283F72F6261D999200554774 /* SubColCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 283F72F2261D999200554774 /* SubColCell.xib */; };
+		28477CC72757611C00F942C2 /* TextQuestionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28477CC62757611C00F942C2 /* TextQuestionVC.swift */; };
+		28477CC82757611D00F942C2 /* TextQuestionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28477CC62757611C00F942C2 /* TextQuestionVC.swift */; };
 		284C9B6A262E93D1008C4435 /* CryptLib.m in Sources */ = {isa = PBXBuildFile; fileRef = 284C9B68262E93D1008C4435 /* CryptLib.m */; };
 		284C9B6B262E93D1008C4435 /* CryptLib.m in Sources */ = {isa = PBXBuildFile; fileRef = 284C9B68262E93D1008C4435 /* CryptLib.m */; };
 		2865DB2C26495567009CDE7F /* Segment+Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2865DB2B26495567009CDE7F /* Segment+Functions.swift */; };
@@ -734,6 +736,7 @@
 		283F72EE261D994900554774 /* AssessmentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssessmentVC.swift; sourceTree = "<group>"; };
 		283F72F1261D999100554774 /* SubColCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubColCell.swift; sourceTree = "<group>"; };
 		283F72F2261D999200554774 /* SubColCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubColCell.xib; sourceTree = "<group>"; };
+		28477CC62757611C00F942C2 /* TextQuestionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextQuestionVC.swift; sourceTree = "<group>"; };
 		284C9B68262E93D1008C4435 /* CryptLib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CryptLib.m; sourceTree = "<group>"; };
 		284C9B69262E93D1008C4435 /* CryptLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CryptLib.h; sourceTree = "<group>"; };
 		2865DB2B26495567009CDE7F /* Segment+Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Segment+Functions.swift"; sourceTree = "<group>"; };
@@ -1735,6 +1738,7 @@
 				280AED81274FA71400617A53 /* FiveOptionCell */,
 				9A3BCB0026EB5CFE00827C8D /* PerceptionQueVC.swift */,
 				28187014274FB1BD00E44F70 /* FiveOptionVC.swift */,
+				28477CC62757611C00F942C2 /* TextQuestionVC.swift */,
 			);
 			path = ProgressReport;
 			sourceTree = "<group>";
@@ -2383,6 +2387,7 @@
 				9A25322026A7040300E93ACD /* AddressVC.swift in Sources */,
 				9A3BCB0226EB5CFE00827C8D /* PerceptionQueVC.swift in Sources */,
 				2870B46425FB44700014A4F6 /* WWCalendarTimeSelector.swift in Sources */,
+				28477CC82757611D00F942C2 /* TextQuestionVC.swift in Sources */,
 				9AD5582A2636E6C3007ED68F /* AccountCell.swift in Sources */,
 				2870B43625FB41A10014A4F6 /* DJPageMenuController.swift in Sources */,
 				9A55EB482668EA58006E398A /* InvoiceDetailVC.swift in Sources */,
@@ -2641,6 +2646,7 @@
 				9A25321F26A7040300E93ACD /* AddressVC.swift in Sources */,
 				9A3BCB0126EB5CFE00827C8D /* PerceptionQueVC.swift in Sources */,
 				9AD558282636DFFA007ED68F /* AccountCell.swift in Sources */,
+				28477CC72757611C00F942C2 /* TextQuestionVC.swift in Sources */,
 				2870B3FD25FB41A10014A4F6 /* KDCircularProgress.swift in Sources */,
 				9A55EB472668EA58006E398A /* InvoiceDetailVC.swift in Sources */,
 				2870B40F25FB41A10014A4F6 /* Config.swift in Sources */,
