@@ -11,6 +11,8 @@ import UIKit
 class PlayerVC: BaseViewController {
     
     // MARK:- OUTLETS
+    @IBOutlet weak var imageViewBack: UIImageView!
+    
     @IBOutlet weak var btnClose: UIButton!
     @IBOutlet weak var btnDownload: UIButton!
     @IBOutlet weak var btnInfo: UIButton!
@@ -56,6 +58,7 @@ class PlayerVC: BaseViewController {
             self.playbackSlider.value = DJMusicPlayer.shared.progress
         }
         playbackSlider.tintColor = Theme.colors.white
+        playbackSlider.maximumTrackTintColor = UIColor.white.withAlphaComponent(0.5)
         playbackSlider.maximumValue = 1.0
         playbackSlider.isContinuous = true
         playbackSlider.addTarget(self, action: #selector(playbackSliderValueChanged(playbackSlider:event:)), for: .valueChanged)
@@ -153,6 +156,11 @@ class PlayerVC: BaseViewController {
             }
         }
         
+        var isSessionAudio = DJMusicPlayer.shared.playerType == .sessionAudio
+        if (audioDetails?.sessionId.trim.count ?? 0) > 0 || (audioDetails?.sessionStepId.trim.count ?? 0) > 0 {
+            isSessionAudio = true
+        }
+        
         if audioDetails?.isDisclaimer == true {
             enableOptions = false
             
@@ -162,6 +170,14 @@ class PlayerVC: BaseViewController {
             btnBackword.isEnabled = false
             
             btnDownload.isEnabled = false
+            
+            imageViewBack.image = UIImage(named: "PlayerWall")
+        } else if isSessionAudio {
+            enableOptions = false
+            btnInfo.isHidden = true
+            btnDownload.isHidden = true
+            
+            imageViewBack.image = UIImage(named: "StepBackground")
         } else {
             playbackSlider.isUserInteractionEnabled = true
             
@@ -169,9 +185,10 @@ class PlayerVC: BaseViewController {
             btnBackword.isEnabled = true
             
             btnDownload.isEnabled = true
+            
+            imageViewBack.image = UIImage(named: "PlayerWall")
         }
         
-        btnDownload.isEnabled = enableOptions
         btnInfo.isEnabled = enableOptions
     }
     

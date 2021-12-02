@@ -10,18 +10,10 @@ import UIKit
 
 class WellnessVC: BaseViewController {
     
-    // MARK:- OUTLETS
-    @IBOutlet weak var lblTitle : UILabel!
-    @IBOutlet weak var lblSubTitle : UILabel!
-    
-    
     // MARK:- VIEW LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
-        lblTitle.attributedText = Theme.strings.empower_comming_soon_title.attributedString(alignment: .center, lineSpacing: 5)
-        lblSubTitle.text = Theme.strings.empower_comming_soon_subtitle
         
         if checkInternet() == false {
             addOfflineController(parentView: self.view)
