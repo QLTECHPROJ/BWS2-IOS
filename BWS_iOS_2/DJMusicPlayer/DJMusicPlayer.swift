@@ -348,6 +348,10 @@ open class DJMusicPlayer: NSObject {
     @objc func playerDidFinishPlaying(_ notification: Notification) {
         NotificationCenter.default.removeObserver(self)
         
+        // Session Step Status Update
+        callSessionStepStatusUpdateAPI()
+        NotificationCenter.default.post(name: .audioDidFinishPlaying, object: nil)
+        
         // Segment Tracking
         if currentlyPlaying?.isDisclaimer == true {
             SegmentTracking.shared.audioPlaybackEvents(name: SegmentTracking.eventNames.Disclaimer_Completed, audioData: nil, trackingType: .track)

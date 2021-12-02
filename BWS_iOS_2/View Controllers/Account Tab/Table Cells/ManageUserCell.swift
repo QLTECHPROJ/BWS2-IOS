@@ -17,6 +17,7 @@ class ManageUserCell: UITableViewCell {
     @IBOutlet weak var imgViewRequestType: UIImageView!
     @IBOutlet weak var btnCancel : UIButton!
     @IBOutlet weak var btnSelect : UIButton!
+    @IBOutlet weak var viewBack: UIView!
     
     
     // MARK:- VARIABLES
@@ -32,6 +33,7 @@ class ManageUserCell: UITableViewCell {
     // Configure Cell
     func configureCell(data : CoUserDataModel) {
         lblTitle.text = data.Name
+        viewBack.backgroundColor = Theme.colors.off_white_F9F9F9
         
         if data.InviteStatus == "1" {
             viewRequestStatus.isHidden = false

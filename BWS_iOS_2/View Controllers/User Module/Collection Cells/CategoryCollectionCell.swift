@@ -67,4 +67,26 @@ class CategoryCollectionCell: UICollectionViewCell {
         
     }
     
+    func configureCell(data : BrainFeelingModel) {
+        lblCategory.text = data.name
+        
+        DispatchQueue.main.async {
+            if data.isSelected {
+                if data.cat_flag == "0" {
+                    self.borderColor = Theme.colors.magenta_C44B6C
+                    self.backgroundColor = Theme.colors.pink_FFDFEA
+                    self.lblCategory.textColor = Theme.colors.magenta_C44B6C
+                } else {
+                    self.borderColor = Theme.colors.green_27B86A
+                    self.backgroundColor = Theme.colors.green_A2EEC5
+                    self.lblCategory.textColor = Theme.colors.green_27B86A
+                }
+            } else {
+                self.borderColor = UIColor.clear
+                self.backgroundColor = Theme.colors.off_white_F9F9F9
+                self.lblCategory.textColor = Theme.colors.textColor
+            }
+        }
+    }
+    
 }

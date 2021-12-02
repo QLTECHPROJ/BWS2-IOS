@@ -49,6 +49,7 @@ enum PlayerType: Int {
     case getInspired
     case popular
     case searchAudio
+    case sessionAudio
 }
 
 // MARK:- PlayerPauseReason
@@ -135,6 +136,8 @@ extension Notification.Name {
     static let playbackProgressDidChange = Notification.Name("playbackProgressDidChange")
     static let playerItemDidChange = Notification.Name("playerItemDidChange")
     static let metadataDidChange = Notification.Name("metadataDidChange")
+    
+    static let audioDidFinishPlaying = Notification.Name("audioDidFinishPlaying")
 }
 
 
@@ -152,6 +155,8 @@ extension BaseViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(handleDJMusicPlayerNotifications(notification:)), name: NSNotification.Name.playerItemDidChange, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(handleDJMusicPlayerNotifications(notification:)), name: NSNotification.Name.metadataDidChange, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(handleDJMusicPlayerNotifications(notification:)), name: NSNotification.Name.audioDidFinishPlaying, object: nil)
     }
     
 }

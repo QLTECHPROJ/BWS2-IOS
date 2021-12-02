@@ -308,6 +308,10 @@ class PlayerVC: BaseViewController {
             self.updatePlayerData()
         case .playerQueueDidUpdate, .playbackStateDidChange, .playerStateDidChange:
             self.updatePlayerData()
+        case .audioDidFinishPlaying:
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.dismiss(animated: true, completion: nil)
+            }
         default:
             break
         }

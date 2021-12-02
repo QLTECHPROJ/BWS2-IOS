@@ -56,6 +56,9 @@ class GeneralModel : EVObject {
 }
 
 class GeneralDataModel : EVObject {
+    var next_form = ""
+    var completedSession = ""
+    var totalSession = ""
     var errormsg = ""
     var indexScore = ""
     var ScoreLevel = ""
@@ -651,6 +654,9 @@ public class AudioDetailsDataModel: EVObject {
     
     // For Add to Playlist button
     var isSelected = false
+    
+    var sessionId = ""
+    var sessionStepId = ""
 }
 
 class AudioDetailsModel: EVObject {
@@ -1015,4 +1021,145 @@ class StripePlanDetailModel:EVObject {
     var Reattempt = ""
     var Feature = [PlanFeatureModel]()
     var expireDate = ""
+}
+
+
+// MARK:- EEP Module
+class SessionListModel : EVObject {
+    var ResponseData  : SessionListDataModel?
+    var ResponseCode = ""
+    var ResponseMessage = ""
+    var ResponseStatus = ""
+}
+
+class SessionListDataModel : EVObject {
+    var completedSession = ""
+    var totalSession = ""
+    var errormsg = ""
+    var completion_percentage = ""
+    var session_img = ""
+    var session_title = ""
+    var session_short_desc = ""
+    var session_desc = ""
+    var session_status = ""
+    var session_progress = ""
+    var session_progress_text = ""
+    var data  = [SessionListDataMainModel]()
+}
+
+class SessionListDataMainModel : EVObject {
+    var title = ""
+    var desc = ""
+    var status = ""
+    var user_id = ""
+    var session_id = ""
+    var session_date = ""
+    var session_time = ""
+    var user_session_status = ""
+    var before_session = [BeforeSessionModel]()
+    var after_session = [AfterSessionModel]()
+    var status_img = ""
+    var pre_session_audio_title = ""
+    var pre_session_audio_status = ""
+    var booklet_title = ""
+    var booklet_status = ""
+    var step_id = ""
+    var step_type = ""
+    var user_step_status = ""
+}
+
+class BeforeSessionModel : EVObject {
+    var key = ""
+    var color = ""
+}
+
+class AfterSessionModel : EVObject {
+    var key = ""
+    var color = ""
+}
+
+
+// MARK:- Brain Feeling API Models
+class BrainFeelingListModel : EVObject {
+    var ResponseData  : BrainFeelingDataModel?
+    var ResponseCode = ""
+    var ResponseMessage = ""
+    var ResponseStatus = ""
+}
+
+class BrainFeelingDataModel : EVObject {
+    var data = [BrainFeelingModel]()
+    var errormsg = ""
+}
+
+class BrainFeelingModel : EVObject {
+    var id = ""
+    var name = ""
+    var cat_flag = ""
+    var status = ""
+    var isSelected = false
+}
+
+// MARK:- Step Type One API Models
+class SessionDescriptionModel : EVObject {
+    var ResponseData  : SessionDescriptionDataModel?
+    var ResponseCode = ""
+    var ResponseMessage = ""
+    var ResponseStatus = ""
+}
+
+class SessionDescriptionDataModel : EVObject {
+    var session_title = ""
+    var step_title = ""
+    var step_short_description = ""
+    var step_long_description = ""
+    var step_audio : AudioDetailsDataModel?
+    var errormsg = ""
+}
+
+
+// MARK:- Comparison Status API Models
+class ComparisonStatusModel : EVObject {
+    var ResponseData  : ComparisonStatusDataModel?
+    var ResponseCode = ""
+    var ResponseMessage = ""
+    var ResponseStatus = ""
+}
+
+class ComparisonStatusDataModel : EVObject {
+    var question_status = ""
+    var feeling_status = ""
+    var errormsg = ""
+}
+
+
+// MARK:- Session Progress Report API Models
+class ProgressReportModel : EVObject {
+    var ResponseData  : ProgressReportDataModel?
+    var ResponseCode = ""
+    var ResponseMessage = ""
+    var ResponseStatus = ""
+}
+
+class ProgressReportDataModel : EVObject {
+    var section_title = ""
+    var section_image = ""
+    var section_subtitle = ""
+    var current_section = ""
+    var section_description = ""
+    var total_section = ""
+    var formType = ""
+    var question_title = ""
+    var question_description = ""
+    var option_type = ""
+    var chunk_size = ""
+    var errormsg = ""
+    var questions = [ProgressReportQuestionModel]()
+}
+
+class ProgressReportQuestionModel : EVObject {
+    var question_id = ""
+    var question = ""
+    var question_options = [String]()
+    var selectedAnswer = ""
 }

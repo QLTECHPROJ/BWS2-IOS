@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Bold.ttf">
+            <string>Montserrat-Bold</string>
+        </array>
+        <array key="Montserrat-Regular.ttf">
+            <string>Montserrat-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PersonalHistoryCell" rowHeight="274" id="KGk-i7-Jjw" customClass="PersonalHistoryCell" customModule="BWS_2_Staging" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="450" height="274"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="450" height="274"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="gAo-Bq-f4r">
+                        <rect key="frame" x="16" y="121" width="418" height="23.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fV6-UP-IQL">
+                                <rect key="frame" x="0.0" y="0.0" width="418" height="23.5"/>
+                                <string key="text">Please indicate how often each statement applies to you.Please indicate how often each statement applies to you.Please indicate how often each statement applies to you.</string>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="10"/>
+                                <color key="textColor" name="DarkBlack"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n5F-Wv-i9P">
+                                <rect key="frame" x="0.0" y="23.5" width="418" height="0.0"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="10"/>
+                                <color key="textColor" name="DarkBlack"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VGi-ec-XvG">
+                                <rect key="frame" x="0.0" y="23.5" width="418" height="0.0"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="10"/>
+                                <color key="textColor" name="DarkBlack"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FQq-dW-wKP">
+                                <rect key="frame" x="0.0" y="23.5" width="418" height="0.0"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="10"/>
+                                <color key="textColor" name="DarkBlack"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lly-yW-aAb">
+                        <rect key="frame" x="16" y="8" width="418" height="105"/>
+                        <string key="text">2. Are you aware of your parents, grandparents or great grandparents ever experiencing a trauma (psychological or physical)? This could include any of the above listed examples and/or being a survivor of the war. *</string>
+                        <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="18"/>
+                        <color key="textColor" name="black"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VBZ-XC-tba" customClass="DJPickerView" customModule="BWS_2_Staging" customModuleProvider="target">
+                        <rect key="frame" x="16" y="152.5" width="418" height="113.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dAw-Pz-4mz">
+                        <rect key="frame" x="399" y="152.5" width="19" height="113.5"/>
+                        <state key="normal" image="Date"/>
+                    </button>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="CnV-MS-FBs">
+                        <rect key="frame" x="16" y="152.5" width="418" height="113.5"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="textColor" systemColor="labelColor"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" name="DDDDDD"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="8"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </textView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="CnV-MS-FBs" firstAttribute="top" secondItem="gAo-Bq-f4r" secondAttribute="bottom" constant="8" id="0ut-kr-mYT"/>
+                    <constraint firstItem="Lly-yW-aAb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="86Q-Tv-Cut"/>
+                    <constraint firstItem="Lly-yW-aAb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="9iZ-mW-JFM"/>
+                    <constraint firstAttribute="trailing" secondItem="gAo-Bq-f4r" secondAttribute="trailing" constant="16" id="B7g-l6-Ncz"/>
+                    <constraint firstItem="gAo-Bq-f4r" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Bbh-fs-xWj"/>
+                    <constraint firstAttribute="bottom" secondItem="VBZ-XC-tba" secondAttribute="bottom" constant="8" id="DT5-QM-S1U"/>
+                    <constraint firstAttribute="trailing" secondItem="CnV-MS-FBs" secondAttribute="trailing" constant="16" id="LYE-RP-uP9"/>
+                    <constraint firstItem="VBZ-XC-tba" firstAttribute="top" secondItem="gAo-Bq-f4r" secondAttribute="bottom" constant="8" id="NE8-CE-gpG"/>
+                    <constraint firstItem="dAw-Pz-4mz" firstAttribute="top" secondItem="gAo-Bq-f4r" secondAttribute="bottom" constant="8" id="OEe-1m-Pbq"/>
+                    <constraint firstAttribute="bottom" secondItem="dAw-Pz-4mz" secondAttribute="bottom" constant="8" id="Pbz-9X-v6a"/>
+                    <constraint firstAttribute="trailing" secondItem="dAw-Pz-4mz" secondAttribute="trailing" constant="32" id="UEq-ry-sV7"/>
+                    <constraint firstItem="VBZ-XC-tba" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="WIL-WA-1cx"/>
+                    <constraint firstItem="gAo-Bq-f4r" firstAttribute="top" secondItem="Lly-yW-aAb" secondAttribute="bottom" constant="8" id="eyO-Ww-7hT"/>
+                    <constraint firstAttribute="trailing" secondItem="Lly-yW-aAb" secondAttribute="trailing" constant="16" id="jL6-n9-GN9"/>
+                    <constraint firstAttribute="trailing" secondItem="VBZ-XC-tba" secondAttribute="trailing" constant="16" id="kmp-u8-oCh"/>
+                    <constraint firstItem="CnV-MS-FBs" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="mcy-o1-V5G"/>
+                    <constraint firstAttribute="bottom" secondItem="CnV-MS-FBs" secondAttribute="bottom" constant="8" id="xak-N7-A6f"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="btnDate" destination="dAw-Pz-4mz" id="c1h-BU-b5Q"/>
+                <outlet property="lblDesc" destination="fV6-UP-IQL" id="B1z-8j-bi8"/>
+                <outlet property="lblQue" destination="Lly-yW-aAb" id="Dt8-C6-Kh3"/>
+                <outlet property="txtView" destination="CnV-MS-FBs" id="CXh-Y5-DTJ"/>
+                <outlet property="txtfDate" destination="VBZ-XC-tba" id="1es-TI-FBL"/>
+            </connections>
+            <point key="canvasLocation" x="134.78260869565219" y="63.616071428571423"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="Date" width="19" height="20"/>
+        <namedColor name="DDDDDD">
+            <color red="0.86699998378753662" green="0.86699998378753662" blue="0.86699998378753662" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="DarkBlack">
+            <color red="0.19215686274509805" green="0.19215686274509805" blue="0.19215686274509805" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="black">
+            <color red="0.16470588235294117" green="0.18823529411764706" blue="0.25882352941176473" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

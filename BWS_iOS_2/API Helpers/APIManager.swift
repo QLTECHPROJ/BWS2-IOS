@@ -106,6 +106,22 @@ enum APIRouter: URLRequestConvertible {
     // Send Payment Link
     case sendpaymentlink([String:Any])
     
+    // EEP Module
+    case eepprofile([String:String])
+    case sessionlist([String:String])
+    case sessionsteplist([String:String])
+    case sessionstepstatus([String:String])
+    case brainfeelingcat
+    case brainfeelingsavecat([String:Any])
+    case sessionaudioswithdescription([String:Any])
+    case sessionprogressreport([String:Any])
+    case checkbeforeafterfeelingstatus([String:Any])
+    case beforeafterquestionlisting([String:Any])
+    case beforeandafteranswersave([String:Any])
+    case checkprogressreportstatus([String:Any])
+    case progressreportanswersave([String:Any])
+    
+    
     var route: APIRoute {
         switch self {
         case .appversion(let data):
@@ -261,6 +277,34 @@ enum APIRouter: URLRequestConvertible {
         // Send Payment Link
         case .sendpaymentlink(let data):
             return APIRoute(path: "sendpaymentlink", method: .post, data: data)
+            
+        // EEP module
+        case .eepprofile(let data):
+            return APIRoute(path: "eepprofile", method: .post, data: data)
+        case .sessionlist(let data):
+            return APIRoute(path: "sessionlist", method: .post, data: data)
+        case .sessionsteplist(let data):
+            return APIRoute(path: "sessionsteplist", method: .post, data: data)
+        case .sessionstepstatus(let data):
+            return APIRoute(path: "sessionstepstatus", method: .post, data: data)
+        case .brainfeelingcat:
+            return APIRoute(path: "brainfeelingcat", method: .get)
+        case .brainfeelingsavecat(let data):
+            return APIRoute(path: "brainfeelingsavecat", method: .post, data: data)
+        case .sessionaudioswithdescription(let data):
+            return APIRoute(path: "sessionaudioswithdescription", method: .post, data: data)
+        case .sessionprogressreport(let data):
+            return APIRoute(path: "sessionprogressreport", method: .post, data: data)
+        case .checkbeforeafterfeelingstatus(let data):
+            return APIRoute(path: "checkbeforeafterfeelingstatus", method: .post, data: data)
+        case .beforeafterquestionlisting(let data):
+            return APIRoute(path: "beforeafterquestionlisting", method: .post, data: data)
+        case .beforeandafteranswersave(let data):
+            return APIRoute(path: "beforeandafteranswersave", method: .post, data: data)
+        case .checkprogressreportstatus(let data):
+            return APIRoute(path: "checkprogressreportstatus", method: .post, data: data)
+        case .progressreportanswersave(let data):
+            return APIRoute(path: "progressreportanswersave", method: .post, data: data)
         }
     }
     

@@ -170,6 +170,18 @@ class SelfDevCell: UITableViewCell {
         lblDuration.text = "\(data.TotalAudio) Audios | \(data.Totalhour)h \(data.Totalminute)m"
     }
     
+    // Session Audio Cell
+    func configureSessionAudioCell(data : AudioDetailsDataModel) {
+        self.hideDownloadProgress = true
+        self.generalConfigure(data: data)
+        self.configureCell(backgroundColor: Theme.colors.gray_EEEEEE, buttonColor: .black, hideDownload: true, hideDelete: true, hideChangePosition: false)
+        
+        btnChangePosition.setImage(UIImage(named: "play_session_audio"), for: UIControl.State.normal)
+        
+        self.cornerRadius = 5
+        self.clipsToBounds = true
+    }
+    
     // MARK:- UI Related Configurations
     func configureCell(backgroundColor: UIColor = UIColor.white ,buttonColor : UIColor = UIColor.black, hideDownload : Bool = true, hideDelete : Bool = false, hideChangePosition : Bool = true) {
         self.backgroundColor = backgroundColor

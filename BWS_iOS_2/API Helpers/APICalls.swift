@@ -584,6 +584,88 @@ extension UIViewController {
         }
     }
     
+    // EEP Profile API Call
+    func callEEPProfileAPI(strStep:String, complitionBlock : (() -> ())?) {
+        var parameters = [String:String]()
+        if strStep == "1" {
+            
+            let profileData = EmpowerProfileFormModel.shared
+            parameters  = ["UserId":profileData.UserId,
+                           "Step":"1",
+                           "dob":profileData.dob ,
+                           "title":profileData.title ,
+                           "gender":profileData.gender ,
+                           "home_address":profileData.home_address ,
+                           "suburb":profileData.suburb ,
+                           "postcode":profileData.postcode ,
+                           "ethnicity":profileData.ethnicity ,
+                           "mental_health_challenges":profileData.mental_health_challenges ,
+                           "mental_health_treatments":profileData.mental_health_treatments ]
+            
+        }else if strStep == "2" {
+            
+            let profileData = EmpowerProfileForm2Model.shared
+            parameters  = ["UserId":profileData.UserId,
+                           "Step":"2",
+                           "electric_shock_treatment":profileData.electric_shock_treatment,
+                           "electric_shock_last_treatment":profileData.electric_shock_last_treatment,
+                           "drug_prescription":profileData.drug_prescription,
+                           "types_of_drug":profileData.types_of_drug,
+                           "sense_of_terror":profileData.sense_of_terror]
+            
+        }else {
+            let profileData = EmpowerProfileForm3Model.shared
+            parameters  = ["UserId":profileData.UserId,
+                           "Step":"3",
+                           "trauma_history":profileData.trauma_history,
+                           "phychotic_episode":profileData.phychotic_episode,
+                           "psychotic_emotions":profileData.psychotic_emotions,
+                           "suicidal_episode":profileData.suicidal_episode,
+                           "suicidal_emotions":profileData.suicidal_emotions]
+            
+        }
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.eepprofile(parameters)) { (response : GeneralModel) in
+            if response.ResponseCode == "200" {
+                showAlertToast(message: response.ResponseMessage)
+                if strStep == "1" {
+                    let aVC = AppStoryBoard.main.viewController(viewControllerClass:StepVC.self)
+                    aVC.strTitle = Theme.strings.step_3_title
+                    aVC.strSubTitle = Theme.strings.step_3_subtitle
+                    aVC.imageMain = UIImage(named: "Step1")
+                    aVC.color = Theme.colors.purple_9A86BB
+                    aVC.isImageHide = false
+                    aVC.viewTapped = {
+                        let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: Step2VC.self)
+                        EmpowerProfileForm2Model.shared.Step = "2"
+                        EmpowerProfileForm2Model.shared.UserId = CoUserDataModel.currentUser?.UserId ?? ""
+                        self.navigationController?.pushViewController(aVC, animated: false)
+                    }
+                    aVC.modalPresentationStyle = .overFullScreen
+                    self.present(aVC, animated: false, completion: nil)
+                }else if strStep == "2" {
+                    let aVC = AppStoryBoard.main.viewController(viewControllerClass:StepVC.self)
+                    aVC.strTitle = Theme.strings.step_3_title
+                    aVC.strSubTitle = Theme.strings.step_3_subtitle
+                    aVC.imageMain = UIImage(named: "Step1")
+                    aVC.color = Theme.colors.purple_9A86BB
+                    aVC.isImageHide = false
+                    aVC.viewTapped = {
+                        let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: Step3VC.self)
+                        EmpowerProfileForm3Model.shared.Step = "3"
+                        EmpowerProfileForm3Model.shared.UserId = CoUserDataModel.currentUser?.UserId ?? ""
+                        self.navigationController?.pushViewController(aVC, animated: false)
+                    }
+                    aVC.modalPresentationStyle = .overFullScreen
+                    self.present(aVC, animated: false, completion: nil)
+                }else {
+                    let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: SessionStartVC.self)
+                    self.navigationController?.pushViewController(aVC, animated: false)
+                }
+            }
+        }
+    }
+    
 }
 
 extension ManageVC {
@@ -1989,4 +2071,267 @@ extension UpgradePlanVC {
         }
     }
     
+}
+
+
+//MARK:- EEP Module
+extension SessionVC {
+    //Session List API
+    func callSessionListAPI() {
+        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId]
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.sessionlist(parameters)) { [self] (response :SessionListModel) in
+
+            if response.ResponseCode == "200" {
+                self.arraySession = response.ResponseData!.data
+                self.dictSession = response.ResponseData
+                self.strProgress = response.ResponseData?.completion_percentage
+                self.setupData()
+            }
+        }
+    }
+}
+
+extension SessionDetailVC {
+    
+    // Session Step List API Call
+    func callSessionDetail() {
+        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
+                          "SessionId":strSessionId]
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.sessionsteplist(parameters)) { (response :SessionListModel) in
+
+            if response.ResponseCode == "200" {
+                self.dictSession = response.ResponseData
+                self.arraySession = response.ResponseData!.data
+                self.setupData()
+            }
+        }
+    }
+    
+    // Progress Report API Call
+    func callCheckComparisonStatus(data : SessionListDataMainModel) {
+        let parameters : [String : Any] = [APIParameters.UserId:CoUserDataModel.currentUserId,
+                                           "SessionId":data.session_id,
+                                           "StepId":data.step_id ]
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.checkbeforeafterfeelingstatus(parameters)) { (response :ComparisonStatusModel) in
+            
+            if response.ResponseCode == "200" {
+                if let comparisonData = response.ResponseData {
+                    self.handleSessionComparisonStatus(data: data, comparisonData: comparisonData)
+                }
+            }
+        }
+    }
+    
+}
+
+
+extension BrainFeelingVC {
+    
+    // Fetch Brain Feeling list
+    func callGetBrainFeelingAPI() {
+        APICallManager.sharedInstance.callAPI(router: APIRouter.brainfeelingcat) { (response :BrainFeelingListModel) in
+            
+            if response.ResponseCode == "200" {
+                if let categoryData = response.ResponseData?.data {
+                    self.arrayCategories = categoryData
+                }
+                self.collectionview.reloadData()
+            }
+        }
+    }
+    
+    // Save Brain Feelings
+    func callSaveBrainFeelingAPI(feelings : [String]) {
+        
+        let parameters : [String : Any] = [APIParameters.UserId:CoUserDataModel.currentUserId,
+                                           "SessionId":sessionId,
+                                           "StepId":stepId,
+                                           "feeling_cat_id":feelings.toJSON() ?? ""]
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.brainfeelingsavecat(parameters)) { (response :GeneralModel) in
+            
+            if response.ResponseCode == "200" {
+                showAlertToast(message: response.ResponseMessage)
+                removeUserDefault(KeyObj :"ArrayPage")
+                
+                callSessionStepStatusUpdateAPI(sessionId: self.sessionId, stepId: self.stepId, isFrom: "BrainFeeling")
+                
+                guard let controllers = self.navigationController?.viewControllers else {
+                    return
+                }
+                
+                var isPopSuccess = false
+                for controller in controllers {
+                    if controller.isKind(of: SessionDetailVC.self) {
+                        isPopSuccess = true
+                        self.navigationController?.popToViewController(controller, animated: true)
+                        return
+                    }
+                }
+                
+                if isPopSuccess == false {
+                    APPDELEGATE.window?.rootViewController = AppStoryBoard.main.viewController(viewControllerClass: NavigationClass.self)
+                }
+                
+            }
+        }
+    }
+    
+}
+
+
+extension SessionDescVC {
+    
+    // step type one
+    func callSessionDescriptionAPI() {
+        let parameters : [String : Any] = [APIParameters.UserId:CoUserDataModel.currentUserId,
+                                           "SessionId":sessionStepData?.session_id ?? "",
+                                           "StepId":sessionStepData?.step_id ?? ""]
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.sessionaudioswithdescription(parameters)) { (response :SessionDescriptionModel) in
+            
+            if response.ResponseCode == "200" {
+                self.sessionDescriptionData = response.ResponseData
+                self.setupData()
+            }
+        }
+    }
+    
+}
+
+// MARK:- General APIs
+
+// Session Step Status Update API Call
+func callSessionStepStatusUpdateAPI() {
+    guard let audioData = DJMusicPlayer.shared.currentlyPlaying else {
+        return
+    }
+    
+    if audioData.sessionId.trim.count == 0 || audioData.sessionStepId.trim.count == 0 {
+        return
+    }
+    
+    let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
+                      "SessionId":audioData.sessionId,
+                      "StepId":audioData.sessionStepId]
+    
+    APICallManager.sharedInstance.callAPI(router: APIRouter.sessionstepstatus(parameters), displayHud: false, showToast: false) { (response : GeneralModel) in
+        
+        if response.ResponseCode == "200" {
+            print("sessionstepstatus :- ",response.ResponseMessage)
+        }
+    }
+}
+
+func callSessionStepStatusUpdateAPI(sessionId: String, stepId: String, isFrom: String = "") {
+    let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
+                      "SessionId":sessionId,
+                      "StepId":stepId]
+    
+    APICallManager.sharedInstance.callAPI(router: APIRouter.sessionstepstatus(parameters), displayHud: false, showToast: false) { (response : GeneralModel) in
+        
+        if response.ResponseCode == "200" {
+            print("sessionstepstatus :- ",response.ResponseMessage)
+            
+            if isFrom == "BrainFeeling" {
+                
+            }
+        }
+    }
+}
+
+// Progress Report Status API Call
+func callProgressReportStatus(data : SessionListDataMainModel?, complitionBlock : ((GeneralDataModel?) -> ())?) {
+    guard let sessionStepData = data else {
+        return
+    }
+    
+    let parameters : [String : Any] = [APIParameters.UserId:CoUserDataModel.currentUserId,
+                                       "SessionId":sessionStepData.session_id,
+                                       "StepId":sessionStepData.step_id ]
+    
+    APICallManager.sharedInstance.callAPI(router: APIRouter.checkprogressreportstatus(parameters)) { (response :GeneralModel) in
+        
+        if response.ResponseCode == "200" {
+            complitionBlock?(response.ResponseData)
+        }
+    }
+}
+
+
+// Session Progress Report API Call
+func callSessionProgressReportAPI(data : SessionListDataMainModel?, formType : String, complitionBlock : ((ProgressReportDataModel?) -> ())?) {
+    guard let sessionStepData = data else {
+        return
+    }
+    
+    let parameters : [String : Any] = ["SessionId":sessionStepData.session_id,
+                                       "StepId":sessionStepData.step_id,
+                                       "FormType":formType]
+    
+    APICallManager.sharedInstance.callAPI(router: APIRouter.sessionprogressreport(parameters)) { (response :ProgressReportModel) in
+        
+        if response.ResponseCode == "200" {
+            complitionBlock?(response.ResponseData)
+        }
+    }
+}
+
+// Save Progress Report API Call
+func callSaveProgressReportAPI(arrayAnswers : [[String:Any]], data : SessionListDataMainModel?, formType : String, complitionBlock : ((GeneralDataModel?) -> ())?) {
+    guard let sessionStepData = data else {
+        return
+    }
+    
+    let parameters : [String : Any] = [APIParameters.UserId:CoUserDataModel.currentUserId,
+                                       "SessionId":sessionStepData.session_id,
+                                       "StepId":sessionStepData.step_id,
+                                       "Form_Type":formType,
+                                       "question_answers":arrayAnswers.toJSON() ?? ""]
+    
+    APICallManager.sharedInstance.callAPI(router: APIRouter.progressreportanswersave(parameters)) { (response :GeneralModel) in
+        
+        if response.ResponseCode == "200" {
+            complitionBlock?(response.ResponseData)
+        }
+    }
+}
+
+extension BeforeAfterQuestionerVC {
+    func callBeforeAfterQueList(sessionId : String, stepId : String) {
+        let parameters = ["SessionId":sessionId,
+                          "StepId":stepId]
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.beforeafterquestionlisting(parameters), displayHud: false, showToast: false) { (response : BeforeAfterModel) in
+            
+            if response.ResponseCode == "200" {
+                self.arrayQuetions = response.ResponseData!.questions
+                self.setupData()
+                self.buttonEnableDisable()
+                self.tableview.reloadData()
+            }
+            
+        }
+    }
+    
+    func callBeforeAfterSave(sessionId : String, stepId : String,queAns:[[String:Any]]) {
+        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
+                          "SessionId":sessionId,
+                          "StepId":stepId,
+                          "question_answers":queAns.toJSON()]
+        
+        APICallManager.sharedInstance.callAPI(router: APIRouter.beforeandafteranswersave(parameters as [String : Any]), displayHud: false, showToast: false) { (response : GeneralModel) in
+            
+            if response.ResponseCode == "200" {
+                showAlertToast(message: response.ResponseMessage)
+                let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: BrainFeelingVC.self)
+                aVC.sessionId = sessionId
+                aVC.stepId = stepId
+                self.navigationController?.pushViewController(aVC, animated: false)
+            }
+        }
+    }
 }

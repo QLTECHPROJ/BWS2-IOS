@@ -15,6 +15,8 @@ class StepVC: BaseViewController {
     @IBOutlet weak var lblSubTitle: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var lblTapAnywhere : UILabel!
+    @IBOutlet weak var viewMain: UIView!
+    @IBOutlet weak var imgBackground: UIImageView!
     
     
     // MARK:- VARIABLES
@@ -22,11 +24,13 @@ class StepVC: BaseViewController {
     var strSubTitle = Theme.strings.step_1_subtitle
     var imageMain = UIImage(named: "profileForm")
     var viewTapped : (() -> Void)?
+    var color = hexStringToUIColor(hex: "2AB6C7")
     
     var hideTitle = false
     var hideSubTitle = false
     var hideImage = false
     var hideTapAnywhere = false
+    var isImageHide = true
     
     
     // MARK:- VIEW LIFE CYCLE
@@ -37,6 +41,8 @@ class StepVC: BaseViewController {
     }
     
     override func setupUI() {
+        viewMain.backgroundColor = color
+        
         lblTitle.text = strTitle.uppercased()
         lblSubTitle.attributedText = strSubTitle.attributedString(alignment: .center, lineSpacing: 5)
         lblTapAnywhere.text = Theme.strings.tap_anywhere_to_continue.uppercased()
@@ -46,6 +52,7 @@ class StepVC: BaseViewController {
         lblSubTitle.isHidden = hideSubTitle
         lblTapAnywhere.isHidden = hideTapAnywhere
         imageView.isHidden = hideImage
+        imgBackground.isHidden = isImageHide
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapGestureAction(gesturerecognizer:)))
         self.view.addGestureRecognizer(tapGesture)
