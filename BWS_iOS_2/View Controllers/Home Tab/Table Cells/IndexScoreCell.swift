@@ -23,6 +23,7 @@ class IndexScoreCell: UITableViewCell {
     @IBOutlet weak var lblGrowth : UILabel!
     @IBOutlet weak var imgViewUpDown : UIImageView!
     @IBOutlet weak var progressView : UIProgressView!
+    @IBOutlet weak var lblIndexScoreDescription : UILabel!
     
     let days = ["",
                 "Mon", "Tue", "Wed",

@@ -388,16 +388,22 @@ extension AccountVC:UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withClass: AccountCell.self)
-            
+        
         cell.lblTitle.text = arrayTitle[indexPath.section][indexPath.row].rawValue
         cell.img.image = UIImage(named: arrayImage[indexPath.section][indexPath.row])
-
-        cell.backgroundColor = .white
-        cell.lblLine.isHidden = true
-        tableView.separatorStyle = .singleLine
-        tableView.separatorColor = .gray
-        tableView.separatorInset.right = 16
-        tableView.separatorInset.left = 16
+        
+        DispatchQueue.main.async {
+            if indexPath.row == 0 {
+                cell.viewBack.roundCorners(corners: [.topLeft, .topRight], radius: 5)
+            }
+            
+            if indexPath.row == self.arrayTitle[indexPath.section].count - 1 {
+                cell.lblLine.isHidden = true
+                cell.viewBack.roundCorners(corners: [.bottomLeft, .bottomRight], radius: 5)
+            } else {
+                cell.lblLine.isHidden = false
+            }
+        }
         
         return cell
     }

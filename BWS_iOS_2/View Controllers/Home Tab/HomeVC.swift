@@ -26,6 +26,7 @@ class HomeVC: BaseViewController {
     var shouldCheckIndexScore = ""
     var IndexScoreDiff = ""
     var ScoreIncDec = ""
+    var indexScoreDescription = ""
     var arrayGraphIndexScore = [GraphIndexScoreModel]()
     var arraySessionScore = [SessionScoreModel]()
     var arraySessionProgress = [SessionProgressModel]()
@@ -334,6 +335,7 @@ extension HomeVC : UITableViewDelegate, UITableViewDataSource {
         case 3:
             let cell = tableView.dequeueReusableCell(withClass: IndexScoreCell.self)
             cell.configureIndexScoreCell(IndexScoreDiff: IndexScoreDiff, ScoreIncDec: ScoreIncDec)
+            cell.lblIndexScoreDescription.text = self.indexScoreDescription
             return cell
             
         case 4:

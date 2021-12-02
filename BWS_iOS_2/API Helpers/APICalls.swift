@@ -1366,6 +1366,7 @@ extension HomeVC {
                 self.shouldCheckIndexScore = response.ResponseData.shouldCheckIndexScore
                 self.IndexScoreDiff = response.ResponseData.IndexScoreDiff
                 self.ScoreIncDec = response.ResponseData.ScoreIncDec
+                self.indexScoreDescription = response.ResponseData.indexScoreDescription
                 self.suggstedPlaylist = response.ResponseData.SuggestedPlaylist
                 self.arrayGraphIndexScore = response.ResponseData.GraphIndexScore
                 self.arraySessionScore = response.ResponseData.SessionScore

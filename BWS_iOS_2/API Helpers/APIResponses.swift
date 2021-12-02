@@ -856,6 +856,7 @@ class HomeDataModel: EVObject {
     var SessionProgress = [SessionProgressModel]()
     var GraphAnalytics = [GraphAnalyticsModel]()
     var GraphIndexScore = [GraphIndexScoreModel]()
+    var indexScoreDescription = ""
 }
 
 class GraphIndexScoreModel : EVObject {
