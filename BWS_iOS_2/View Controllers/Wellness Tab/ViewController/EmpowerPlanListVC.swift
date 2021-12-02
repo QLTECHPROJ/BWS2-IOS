@@ -8,11 +8,12 @@
 
 import UIKit
 import TTTAttributedLabel
-import MultiSlider
+import youtube_ios_player_helper
 
 class EmpowerPlanListVC: BaseViewController {
     
     // MARK:- OUTLETS
+    @IBOutlet weak var viewVideo: YTPlayerView!
     @IBOutlet weak var lblPrivacy: TTTAttributedLabel!
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblSubTitle: UILabel!
@@ -21,8 +22,6 @@ class EmpowerPlanListVC: BaseViewController {
     @IBOutlet weak var lblFeedbackTitle: UILabel!
     @IBOutlet weak var tblPlanFeatures: UITableView!
     @IBOutlet weak var tblPlanFeaturesHeightConst: NSLayoutConstraint!
-    @IBOutlet weak var lblProfiles: UILabel!
-    @IBOutlet weak var sliderProfiles: MultiSlider!
     @IBOutlet weak var tblPlanList: UITableView!
     @IBOutlet weak var tblPlanListHeightConst: NSLayoutConstraint!
     @IBOutlet weak var btnStart: UIButton!
@@ -61,13 +60,14 @@ class EmpowerPlanListVC: BaseViewController {
         
         // fetchPlans()
         
-        //callManagePlanListAPI()
+        callEmpowerPlanListAPI()
+        
+        viewVideo.playVideo()
     }
     
     // MARK:- FUNCTIONS
     override func setupUI() {
-        
-        setupSlider()
+        viewVideo.load(withVideoId: "y1rfRW6WX08")
         setStartButtonTitle()
        // setupPrivacyLabel()
         
@@ -94,8 +94,9 @@ class EmpowerPlanListVC: BaseViewController {
     override func setupData() {
         
         PlanFeatures = dataModel.PlanFeatures
-        arrayPlans = dataModel.Plan.filter { $0.ProfileCount == "\(profileCount)" }
-        arrayAudios = dataModel.AudioFiles
+       // arrayPlans = dataModel.Plan.filter { $0.ProfileCount == "\(profileCount)" }
+        arrayPlans = dataModel.Plan
+       // arrayAudios = dataModel.AudioFiles
         arrayVideos = dataModel.TestminialVideo
         arrayQuestions = dataModel.FAQs
         
@@ -103,7 +104,7 @@ class EmpowerPlanListVC: BaseViewController {
         
         lblSubTitle.attributedText = dataModel.Desc.attributedString(alignment: .center, lineSpacing: 5)
         
-        lblAccessAudioTitle.attributedText = Theme.strings.manage_plan_list_access_audios.attributedString(alignment: .center, lineSpacing: 5)
+       // lblAccessAudioTitle.attributedText = Theme.strings.manage_plan_list_access_audios.attributedString(alignment: .center, lineSpacing: 5)
         
         lblIntroductorySubTitle.attributedText = Theme.strings.manage_plan_list_introductory_session.attributedString(alignment: .center, lineSpacing: 5)
         
@@ -136,39 +137,9 @@ class EmpowerPlanListVC: BaseViewController {
         }
     }
     
-    func setupSlider() {
-        sliderProfiles.addTarget(self, action: #selector(sliderChanged), for: .valueChanged)
-        
-        sliderProfiles.isContinuous = true
-        sliderProfiles.minimumValue = CGFloat(1)
-        sliderProfiles.maximumValue = CGFloat(4)
-        sliderProfiles.snapStepSize = CGFloat(1)
-        sliderProfiles.distanceBetweenThumbs = CGFloat(1)
-        sliderProfiles.keepsDistanceBetweenThumbs = true
-        sliderProfiles.value = [2]
-    }
-    
-    @objc func sliderChanged(_ slider: MultiSlider) {
-        print("thumb \(slider.draggedThumbIndex) moved")
-        print("now thumbs are at \(slider.value)") // e.g., [1.0, 4.5, 5.0]
-        
-        if slider.value[0] < 2 {
-            slider.value = [2]
-        }
-        
-        // let roundedStepValue = round(sender.value / 1) * 1
-        // sender.value = roundedStepValue
-        // lblProfiles.text = "\(Int(roundedStepValue))"
-        // print("Slider Value :- ",sender.value)
-        
-        lblProfiles.text = "\(Int(slider.value[0]))"
-        profileCount = Int(slider.value[0])
-        setupData()
-    }
-    
     func setStartButtonTitle() {
         if selectedPlanIndex < arrayPlans.count {
-            let planText = "START AT " + "$" + arrayPlans[selectedPlanIndex].PlanAmount + " / " + arrayPlans[selectedPlanIndex].PlanTenure
+            let planText = "COMPLETE YOUR PAYMENT "
             btnStart.setTitle(planText.uppercased(), for: .normal)
             btnStart.isEnabled = true
             lblTrialText.text = arrayPlans[selectedPlanIndex].FreeTrial
@@ -197,16 +168,16 @@ extension EmpowerPlanListVC : UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableView == tblPlanFeatures {
             let cell = tableView.dequeueReusableCell(withClass: PlanFeaturesCell.self)
-            //cell.configureCell(data: PlanFeatures[indexPath.row])
+            cell.configureCell(data: PlanFeatures[indexPath.row])
             return cell
         } else if tableView == tblFAQ {
             let cell = tableView.dequeueReusableCell(withClass: FAQCell.self)
-            //cell.configureCell(data: arrayQuestions[indexPath.row])
+            cell.configureCell(data: arrayQuestions[indexPath.row])
             return cell
         } else if tableView == tblPlanList {
             let cell = tableView.dequeueReusableCell(withClass: PlanListCell.self)
-            //let isSelected = (indexPath.row == selectedPlanIndex)
-            //cell.configureCell(data: arrayPlans[indexPath.row], isSelected: isSelected)
+            let isSelected = (indexPath.row == selectedPlanIndex)
+            cell.configureCell(data: arrayPlans[indexPath.row], isSelected: isSelected)
             return cell
         }
         
@@ -263,7 +234,7 @@ extension EmpowerPlanListVC : UICollectionViewDelegate, UICollectionViewDelegate
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //return arrayAudios.count
-        return 10
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -284,8 +255,8 @@ extension EmpowerPlanListVC : UICollectionViewDelegate, UICollectionViewDelegate
 extension EmpowerPlanListVC : iCarouselDelegate, iCarouselDataSource {
     
     func numberOfItems(in carousel: iCarousel) -> Int {
-        //return arrayVideos.count
-        return 10
+        return arrayVideos.count
+        
     }
     
     func carousel(_ carousel: iCarousel, viewForItemAt index: Int, reusing view: UIView?) -> UIView {
@@ -297,7 +268,7 @@ extension EmpowerPlanListVC : iCarouselDelegate, iCarouselDataSource {
             return UIView()
         }
         
-        //cell.configureCell(data: arrayVideos[index])
+        cell.configureCell(data: arrayVideos[index])
         cell.frame = frame
         return cell
     }
@@ -315,6 +286,14 @@ extension EmpowerPlanListVC : iCarouselDelegate, iCarouselDataSource {
     
     func carouselCurrentItemIndexDidChange(_ carousel: iCarousel) {
         NotificationCenter.default.post(name: .pauseYouTubeVideo, object: nil)
+    }
+    
+}
+// MARK:- YTPlayerViewDelegate
+extension EmpowerPlanListVC : YTPlayerViewDelegate {
+    
+    func playerViewDidBecomeReady(_ playerView: YTPlayerView) {
+        viewVideo.playVideo()
     }
     
 }

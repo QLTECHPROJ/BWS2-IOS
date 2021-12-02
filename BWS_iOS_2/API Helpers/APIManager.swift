@@ -105,6 +105,7 @@ enum APIRouter: URLRequestConvertible {
     case beforeandafteranswersave([String:Any])
     case checkprogressreportstatus([String:Any])
     case progressreportanswersave([String:Any])
+    case eepplanlist([String:Any])
     
     var route: APIRoute {
         switch self {
@@ -267,6 +268,8 @@ enum APIRouter: URLRequestConvertible {
             return APIRoute(path: "checkprogressreportstatus", method: .post, data: data)
         case .progressreportanswersave(let data):
             return APIRoute(path: "progressreportanswersave", method: .post, data: data)
+        case .eepplanlist(let data):
+            return APIRoute(path: "eepplanlist", method: .post, data: data)
        
         }
     }
