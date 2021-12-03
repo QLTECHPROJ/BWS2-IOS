@@ -2336,3 +2336,17 @@ extension BeforeAfterQuestionerVC {
         }
     }
 }
+
+extension EmpowerPlanListVC {
+    
+    func callEmpowerPlanListAPI() {
+        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId]
+        APICallManager.sharedInstance.callAPI(router: APIRouter.eepplanlist(parameters)) { (response :PlanListModel) in
+            
+            if response.ResponseCode == "200" {
+                self.dataModel = response.ResponseData
+                self.setupData()
+            }
+        }
+    }
+}
