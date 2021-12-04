@@ -35,6 +35,13 @@ class SessionBannerCell: UITableViewCell {
         lblSessionTitle.text = data.session_short_desc
         lblSessionDesc.text = data.session_desc
         
+        lblProgress.isHidden = data.session_progress.trim.count == 0
+        lblDescProgress.isHidden = data.session_progress_text.trim.count == 0
+        
+        if data.session_progress.trim.count == 0 && data.session_progress_text.trim.count == 0 {
+            viewProgress.isHidden = true
+        }
+        
         let hexColor = data.session_progress_color.replacingOccurrences(of: "#", with: "")
         viewProgress.backgroundColor = UIColor(hex: hexColor)
         
