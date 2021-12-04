@@ -843,6 +843,7 @@ class HomeDataModel: EVObject {
     var shouldCheckIndexScore = ""
     var IndexScoreDiff = ""
     var ScoreIncDec = ""
+    var indexScoreDescription = ""
     var shouldPlayDisclaimer = ""
     var disclaimerAudio : AudioDetailsDataModel?
     var SuggestedPlaylist : PlaylistDetailsModel?

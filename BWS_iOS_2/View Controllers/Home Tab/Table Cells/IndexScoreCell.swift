@@ -20,6 +20,8 @@ class IndexScoreCell: UITableViewCell {
     @IBOutlet weak var viewScrore: UIView!
     @IBOutlet weak var lblIndexScore : UILabel!
     @IBOutlet weak var lblIndexScoreValue : UILabel!
+    @IBOutlet weak var lblIndexScoreDescription : UILabel!
+    
     @IBOutlet weak var lblGrowth : UILabel!
     @IBOutlet weak var imgViewUpDown : UIImageView!
     @IBOutlet weak var progressView : UIProgressView!
