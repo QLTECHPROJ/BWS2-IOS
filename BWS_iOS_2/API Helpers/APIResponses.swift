@@ -1048,6 +1048,8 @@ class SessionListDataModel : EVObject {
     var session_progress_text = ""
     var session_progress_img = ""
     var session_progress_color = ""
+    var shouldFillProfileFormTwo = ""
+    var shouldFillProfileFormThree = ""
     var data  = [SessionListDataMainModel]()
 }
 
