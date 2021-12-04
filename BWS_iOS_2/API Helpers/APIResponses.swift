@@ -975,6 +975,7 @@ class AssessmentModel : EVObject {
 }
 
 class AssessmentDataModel : EVObject {
+    var suggested_membership = ""
     var indexScore = ""
     var ScoreLevel = ""
     var TotalAssesment = ""
@@ -1045,6 +1046,8 @@ class SessionListDataModel : EVObject {
     var session_status = ""
     var session_progress = ""
     var session_progress_text = ""
+    var session_progress_img = ""
+    var session_progress_color = ""
     var data  = [SessionListDataMainModel]()
 }
 
@@ -1163,4 +1166,18 @@ class ProgressReportQuestionModel : EVObject {
     var question = ""
     var question_options = [String]()
     var selectedAnswer = ""
+}
+
+// MARK:- Intro Session Content
+class IntroSessionContentModel : EVObject {
+    var ResponseData  : IntroSessionContentDataModel?
+    var ResponseCode = ""
+    var ResponseMessage = ""
+    var ResponseStatus = ""
+}
+
+class IntroSessionContentDataModel : EVObject {
+    var freeSessionImg = ""
+    var freeSessionTitle = ""
+    var freeSessionContent = ""
 }

@@ -193,11 +193,7 @@ extension SessionDetailVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withClass: SessionBannerCell.self)
-            cell.lblSession.text = dictSession?.session_title
-            cell.lblDescProgress.text = dictSession?.session_progress_text
-            cell.lblProgress.text = dictSession?.session_progress
-            cell.lblSessionTitle.text = dictSession?.session_short_desc
-            cell.lblSessionDesc.text = dictSession?.session_desc
+            cell.configureCell(data: dictSession)
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withClass: SessionDetailCell.self)

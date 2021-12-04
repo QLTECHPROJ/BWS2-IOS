@@ -256,10 +256,6 @@ extension FiveOptionVC : UITableViewDataSource {
 extension FiveOptionVC : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if optionType == .fiveoptions && indexPath.section == 1 {
-            return 150
-        }
-        
         return UITableView.automaticDimension
     }
     

@@ -20,7 +20,9 @@ class ManageStartVC: BaseViewController {
     var strTitle = Theme.strings.you_are_doing_good_title
     var strSubTitle = Theme.strings.you_are_doing_good_subtitle
     var imageMain = UIImage(named: "manageStartWave")
+    var imageUrl = ""
     var continueClicked : (() -> Void)?
+    var isForIntroContent = false
     
     
     // MARK:- VIEW LIFE CYCLE
@@ -28,9 +30,25 @@ class ManageStartVC: BaseViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        setupData()
+        
+        if isForIntroContent {
+            callIntroSessionContentAPI()
+        }
+    }
+    
+    
+    // MARK:- FUNCTIONS
+    override func setupData() {
         lblTitle.text = strTitle
         lblSubTitle.attributedText = strSubTitle.attributedString(alignment: .center, lineSpacing: 5)
         imageView.image = self.imageMain
+        
+        if imageUrl.trim.count > 0 {
+            if let imgUrl = URL(string: imageUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+                imageView.sd_setImage(with: imgUrl, completed: nil)
+            }
+        }
     }
     
     
