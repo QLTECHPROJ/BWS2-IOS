@@ -240,9 +240,9 @@ extension SessionDetailVC : UITableViewDelegate, UITableViewDataSource {
                 return
             }
             
-            if self.shouldFillProfileForm() {
-                return
-            }
+            // if self.shouldFillProfileForm() {
+            //     return
+            // }
             
             if arraySession[indexPath.row].step_type == "1" {
                 let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: SessionDescVC.self)

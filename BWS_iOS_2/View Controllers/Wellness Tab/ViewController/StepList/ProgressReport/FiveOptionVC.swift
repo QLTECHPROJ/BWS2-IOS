@@ -146,6 +146,10 @@ class FiveOptionVC: BaseViewController {
     
     
     // MARK:- ACTIONS
+    @IBAction func backClicked(sender: UIButton) {
+        self.popViewController(viewController: SessionDetailVC.self)
+    }
+    
     @IBAction func nextClicked(sender: UIButton) {
         if pageIndex < (arrayNewQuestions.count - 1) {
             pageIndex = pageIndex + 1

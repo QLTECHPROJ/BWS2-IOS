@@ -137,6 +137,10 @@ class TextQuestionVC: BaseViewController {
     
     
     // MARK:- ACTIONS
+    @IBAction func backClicked(sender: UIButton) {
+        self.popViewController(viewController: SessionDetailVC.self)
+    }
+    
     @IBAction func nextClicked(sender: UIButton) {
         self.view.endEditing(true)
         arrayQuestions[pageIndex].selectedAnswer = textView.text ?? ""

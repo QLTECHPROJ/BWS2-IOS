@@ -21,6 +21,12 @@ class SessionBannerCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        lblSession.text = ""
+        lblSessionTitle.text = ""
+        lblSessionDesc.text = ""
+        
+        viewProgress.isHidden = true
     }
     
     // Configure Cell
@@ -40,6 +46,8 @@ class SessionBannerCell: UITableViewCell {
         
         if data.session_progress.trim.count == 0 && data.session_progress_text.trim.count == 0 {
             viewProgress.isHidden = true
+        } else {
+            viewProgress.isHidden = false
         }
         
         let hexColor = data.session_progress_color.replacingOccurrences(of: "#", with: "")

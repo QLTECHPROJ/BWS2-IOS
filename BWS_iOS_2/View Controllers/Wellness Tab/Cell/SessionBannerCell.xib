@@ -27,7 +27,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="Hjr-OU-Hvu">
-                        <rect key="frame" x="16" y="32" width="343" height="286"/>
+                        <rect key="frame" x="16" y="32" width="343" height="300"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LTu-MC-548">
                                 <rect key="frame" x="0.0" y="0.0" width="343" height="100"/>
@@ -74,7 +74,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ZaF-zi-mhB">
-                                <rect key="frame" x="0.0" y="132" width="343" height="154"/>
+                                <rect key="frame" x="0.0" y="132" width="343" height="168"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="wEf-ar-TGs">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="65"/>
@@ -94,7 +94,7 @@
                                         </subviews>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="We begin your journey towards emotional empowerment by helping you to strengthen your foundations...Red More" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UdJ-Hf-DMu">
-                                        <rect key="frame" x="0.0" y="85" width="343" height="69"/>
+                                        <rect key="frame" x="0.0" y="85" width="343" height="83"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -106,7 +106,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="Hjr-OU-Hvu" secondAttribute="trailing" constant="16" id="NKU-vk-VAx"/>
-                    <constraint firstAttribute="bottom" secondItem="Hjr-OU-Hvu" secondAttribute="bottom" constant="30" id="Pcj-Fe-AEs"/>
+                    <constraint firstAttribute="bottom" secondItem="Hjr-OU-Hvu" secondAttribute="bottom" constant="16" id="Pcj-Fe-AEs"/>
                     <constraint firstItem="Hjr-OU-Hvu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="32" id="aSk-dj-Ygy"/>
                     <constraint firstItem="Hjr-OU-Hvu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="kRc-mP-11O"/>
                 </constraints>
