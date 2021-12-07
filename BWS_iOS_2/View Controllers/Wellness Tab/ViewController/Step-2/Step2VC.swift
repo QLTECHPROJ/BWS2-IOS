@@ -51,12 +51,10 @@ class Step2VC: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         setupUI()
         setupData()
-        initDOBPickerView()
     }
     
     //MARK:- Functions
     override func setupUI() {
-        
         tableview.delegate = self
         tableview.dataSource = self
         
@@ -81,59 +79,15 @@ class Step2VC: BaseViewController {
             progressview.progress = 1.0
         }
     }
-    private func initDOBPickerView() {
-        let nextDay = Calendar.current.date(byAdding: .day, value: -1, to: Date())
-        let date = nextDay
-        let calendar = Calendar.current
-        let components = calendar.dateComponents([.year, .month, .day], from: date!)
-        let currentDate = calendar.date(from: components)!
-        
-        let dateComponents = DateComponents()
-        //        dateComponents.year = -4
-        
-        var tenYearsAgo = Calendar.current.date(byAdding: dateComponents, to: currentDate)
-        if selectedOption == 0 {
-            let cell : PersonalHistoryCell = tableview.cellForRow(at:IndexPath(row: 0, section: 1)) as! PersonalHistoryCell
-       
-        cell.txtfDate.type = .date
-        cell.txtfDate.pickerDelegate = self
-        cell.txtfDate.datePicker?.datePickerMode = .date
-        cell.txtfDate.datePicker?.maximumDate = tenYearsAgo
-        cell.txtfDate.dateFormatter.dateFormat = Theme.dateFormats.DOB_App
-        
-        if  EmpowerProfileForm2Model.shared.electric_shock_last_treatment.trim.count > 0 {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = Theme.dateFormats.DOB_App
-            tenYearsAgo = dateFormatter.date(from: EmpowerProfileForm2Model.shared.electric_shock_last_treatment )
-            
-        }
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = Theme.dateFormats.DOB_App
-        dateFormatter.timeZone = TimeZone.current
-       
-        if tenYearsAgo != nil {
-            cell.txtfDate.text = dateFormatter.string(from: tenYearsAgo!)
-            cell.txtfDate.datePicker?.date = tenYearsAgo!
-            selectedDOB = tenYearsAgo!
-            cell.txtfDate.isHidden = cell.txtfDate.text?.count == 0
-            EmpowerProfileForm2Model.shared.electric_shock_last_treatment = cell.txtfDate.text ?? ""
-        }
-        }
-        //txtDOBTopConst.constant = (txtFDOB.text?.count == 0) ? 0 : 10
-    }
-    
-    @objc func textFieldValueChanged(textField : UITextField ) {
-        //lblDOB.text = (txtFDOB.text?.count == 0) ? "" : Theme.strings.date_of_birth
-        self.view.layoutIfNeeded()
-    }
     
     //MARK:- IBAction Methods
     @IBAction func prevClicked(sender : UIButton) {
         if pageIndex == 2 {
+            
             progressview.progress = 0.69
             headerView.frame.size.height = 130
             pageIndex = 1
+            
             if EmpowerProfileForm2Model.shared.types_of_drug != "" {
                 selectedOption = 0
                 if arrsection.count == 0 {
@@ -143,15 +97,16 @@ class Step2VC: BaseViewController {
                 selectedOption = 1
                 arrsection.removeDuplicates()
             }
-            //arrsection.removeDuplicates()
             
             lblTitle.text = arrayQue[pageIndex]
             tableview.reloadData()
             btnPrev.isEnabled = true
         }else if pageIndex == 1 {
+            
             progressview.progress = 0.34
             headerView.frame.size.height = 130
             pageIndex = 0
+            
             if EmpowerProfileForm2Model.shared.electric_shock_last_treatment != "" {
                 selectedOption = 0
                 arrsection.removeDuplicates()
@@ -160,6 +115,7 @@ class Step2VC: BaseViewController {
                 selectedOption = 1
                 arrsection.removeDuplicates()
             }
+            
             tableview.reloadData()
             lblTitle.text = arrayQue[pageIndex]
             btnPrev.isEnabled = true
@@ -173,30 +129,29 @@ class Step2VC: BaseViewController {
     
     @IBAction func nextClicked(sender : UIButton) {
         if pageIndex == 0 {
+            
             progressview.progress = 0.34
+            
             if pageIndex == 0 {
                 headerView.frame.size.height = 130
             }else if pageIndex == 1 {
                 headerView.frame.size.height = 150
             }
-            EmpowerProfileForm2Model.shared.electric_shock_last_treatment = strTreatmentDate ?? ""
+            
+            strTreatmentDate = EmpowerProfileForm2Model.shared.electric_shock_last_treatment
+            
             EmpowerProfileForm2Model.shared.electric_shock_treatment = "1"
             
             if EmpowerProfileForm2Model.shared.electric_shock_last_treatment == "" && arrsection.count == 2{
                 showAlertToast(message: "Please enter your input")
             }else {
                 pageIndex = 1
-                if EmpowerProfileForm2Model.shared.electric_shock_last_treatment != "" {
-                    selectedOption = 0
-                }else {
-                    selectedOption = 1
-                }
+                selectedOption = 1
                 arrsection.removeLast()
                 if arrsection.count == 0 {
                     arrsection.append(0)
                 }
                 lblTitle.text = arrayQue[pageIndex]
-                
                 tableview.reloadData()
             }
             
@@ -204,6 +159,7 @@ class Step2VC: BaseViewController {
             progressview.progress = 0.69
             EmpowerProfileForm2Model.shared.types_of_drug = strPrescription ?? ""
             EmpowerProfileForm2Model.shared.drug_prescription = "1"
+            
             if EmpowerProfileForm2Model.shared.types_of_drug == "" && arrsection.count == 2{
                 showAlertToast(message: "Please enter your input")
             }else {
@@ -217,15 +173,17 @@ class Step2VC: BaseViewController {
                 arrsection.insert(0, at: 0)
                 arrsection.insert(0, at: 1)
                 lblTitle.text = arrayQue[pageIndex]
-              
             }
+            
             if pageIndex == 1 {
                 headerView.frame.size.height = 130
             }else if pageIndex == 2 {
                 headerView.frame.size.height = 200
             }
+            
             tableview.reloadData()
         }else {
+            
             progressview.progress = 1
             EmpowerProfileForm2Model.shared.sense_of_terror = strExperience ?? ""
             tableview.reloadData()
@@ -253,7 +211,6 @@ extension Step2VC : UITableViewDelegate, UITableViewDataSource {
         }else {
             return 1
         }
-        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -288,7 +245,7 @@ extension Step2VC : UITableViewDelegate, UITableViewDataSource {
                     cell.txtView.isHidden = true
                     cell.txtfDate.isHidden = false
                     cell.btnDate.isHidden = false
-                    cell.txtfDate.addTarget(self, action: #selector(textFieldValueChanged(textField:)), for: .editingChanged)
+                    
                 }else if pageIndex == 1 {
                     cell.lblQue.text = "If the answer is yes then can you list the types of drugs (including alcohol), and when was the last time they were taken.We also need to know the age (illicit substances were consumed), how regular the use was or is e.g., daily, weekly, monthly, and the period of time it the drug was taken e.g., one month, five years etc."
                     cell.lblDesc.text = ""
@@ -311,7 +268,6 @@ extension Step2VC : UITableViewDelegate, UITableViewDataSource {
                     cell.txtView.text = ""
                 }
             
-             cell.txtfDate.delegate = self
              cell.txtView.delegate = self
             return cell
         }
@@ -375,40 +331,5 @@ extension Step2VC : UITextViewDelegate {
         let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
         let numberOfChars = newText.count
         return numberOfChars < 250
-    }
-}
-
-// MARK:- DJPickerViewDelegate
-extension Step2VC : DJPickerViewDelegate {
-    
-    func textPickerView(_ textPickerView: DJPickerView, didSelectDate date: Date) {
-        print("Date :- ",date)
-        let cell : PersonalHistoryCell = tableview.cellForRow(at:IndexPath(row: 0, section: 1)) as! PersonalHistoryCell
-        selectedDOB = date
-        EmpowerProfileForm2Model.shared.electric_shock_last_treatment = cell.txtfDate.text ?? ""
-      
-        self.view.isUserInteractionEnabled = false
-        cell.txtfDate.borderColor = Theme.colors.purple
-        cell.txtfDate.textColor = Theme.colors.purple
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            self.goNext()
-            self.view.isUserInteractionEnabled = true
-        }
-        self.view.layoutIfNeeded()
-    }
-    
-}
-
-extension Step2VC : UITextFieldDelegate {
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        return textField.resignFirstResponder()
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        let cell : PersonalHistoryCell = tableview.cellForRow(at:IndexPath(row: 0, section: 1)) as! PersonalHistoryCell
-        cell.txtfDate.borderColor = Theme.colors.purple
-        cell.txtfDate.textColor = Theme.colors.purple
-        textField.resignFirstResponder()
     }
 }

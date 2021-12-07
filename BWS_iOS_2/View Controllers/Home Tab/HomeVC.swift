@@ -33,6 +33,7 @@ class HomeVC: BaseViewController {
     var areaOfFocus = [AreaOfFocusModel]()
     var arrayGraphActivity = [GraphAnalyticsModel]()
     var dictHome = HomeDataModel()
+    var dictSessionData:EEPSessionData?
     
     // MARK:- VIEW LIFE CYCLE
     override func viewDidLoad() {
@@ -296,12 +297,23 @@ class HomeVC: BaseViewController {
 extension HomeVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return 11
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
         case 0:
+            let cell = tableView.dequeueReusableCell(withClass: ActivityGraphCell.self)
+            if dictSessionData?.title != "" {
+                cell.lblTitle.text = "Sessions"
+                cell.lblSessionTitle.text = dictSessionData?.title
+                cell.lblSessionDesc.text = dictSessionData?.desc
+                cell.chartView.isHidden = true
+                cell.viewSession.isHidden = false
+            }
+            
+            return cell
+        case 1:
             let cell = tableView.dequeueReusableCell(withClass: SuggestedPlaylistCell.self)
             cell.configureCell(data: self.suggstedPlaylist)
             
@@ -315,7 +327,7 @@ extension HomeVC : UITableViewDelegate, UITableViewDataSource {
             
             return cell
             
-        case 1:
+        case 2:
             let cell = tableView.dequeueReusableCell(withClass: AreaCell.self)
             cell.configureCell(data: areaOfFocus)
             
@@ -325,26 +337,22 @@ extension HomeVC : UITableViewDelegate, UITableViewDataSource {
             
             return cell
             
-        case 2:
+        case 3:
             if self.shouldCheckIndexScore == "1" {
                 let cell = tableView.dequeueReusableCell(withClass: IndexScoreCell.self)
                 cell.configureCheckIndexScoreCell()
                 return cell
             }
             
-        case 3:
+        case 4:
             let cell = tableView.dequeueReusableCell(withClass: IndexScoreCell.self)
             cell.configureIndexScoreCell(IndexScoreDiff: IndexScoreDiff, ScoreIncDec: ScoreIncDec)
             cell.lblIndexScoreDescription.text = self.indexScoreDescription
             return cell
             
-        case 4:
-            let cell = tableView.dequeueReusableCell(withClass: GraphCell.self)
-            cell.configureCell(data: arrayGraphIndexScore)
-            return cell
-            
         case 5:
             let cell = tableView.dequeueReusableCell(withClass: GraphCell.self)
+            cell.configureCell(data: arrayGraphIndexScore)
             return cell
             
         case 6:
@@ -352,16 +360,22 @@ extension HomeVC : UITableViewDelegate, UITableViewDataSource {
             return cell
             
         case 7:
+            let cell = tableView.dequeueReusableCell(withClass: GraphCell.self)
+            return cell
+            
+        case 8:
             let cell = tableView.dequeueReusableCell(withClass: IndexScoreCell.self)
             cell.configureJoinEEPCell()
             return cell
             
-        case 8:
+        case 9:
             let cell = tableView.dequeueReusableCell(withClass: ActivityGraphCell.self)
             cell.configureCell(data: arrayGraphActivity)
+            cell.chartView.isHidden = false
+            cell.viewSession.isHidden = true
             return cell
             
-        case 9:
+        case 10:
             let cell = tableView.dequeueReusableCell(withClass: ProgressCell.self)
             cell.configureProgressCell(data: dictHome)
             cell.didSelectTrackData = { Index in
@@ -380,36 +394,54 @@ extension HomeVC : UITableViewDelegate, UITableViewDataSource {
         
         switch indexPath.row {
         case 0:
-            if suggstedPlaylist != nil {
-                return 390
+            if dictSessionData?.title != "" {
+                return 400
+            }else {
+                return 0
             }
-            
         case 1:
-            return UITableView.automaticDimension
-            
+            if dictSessionData?.title == "" {
+                if suggstedPlaylist != nil {
+                    return 390
+                }
+            }else {
+                return 0
+            }
         case 2:
+            if dictSessionData?.title == "" {
+                return UITableView.automaticDimension
+            }else {
+                return 0
+            }
+        case 3:
             if self.shouldCheckIndexScore == "1" {
                 return 155
             }
             
-        case 3:
+        case 4:
             return 168
             
-        case 4:
+        case 5,6:
             return 273
             
-        case 5,6:
+        case 7:
             return 0
             
-        case 7:
+        case 8:
             return 0 // return 140
             
-        case 8:
-            return 302
-            
         case 9:
-            return 200
-            
+            if dictSessionData?.title == "" {
+                return 302
+            }else {
+                return 0
+            }
+        case 10:
+            if dictSessionData?.title == "" {
+                return 200
+            }else {
+                return 0
+            }
         default:
             return 0
         }
@@ -420,6 +452,11 @@ extension HomeVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
+            let aVC = AppStoryBoard.main.viewController(viewControllerClass: TabBarController.self)
+            aVC.selectedIndex = 2
+            self.navigationController?.pushViewController(aVC, animated: true)
+               
+        case 1:
             DispatchQueue.main.async {
                 if checkInternet(showToast: true) == false {
                     return

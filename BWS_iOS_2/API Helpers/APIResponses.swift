@@ -857,6 +857,7 @@ class HomeDataModel: EVObject {
     var GraphAnalytics = [GraphAnalyticsModel]()
     var GraphIndexScore = [GraphIndexScoreModel]()
     var indexScoreDescription = ""
+    var eepSessiondata : EEPSessionData?
 }
 
 class GraphIndexScoreModel : EVObject {
@@ -878,6 +879,15 @@ class GraphAnalyticsModel : EVObject {
     var Day = ""
     var Time = ""
     var Days = ""
+}
+
+class EEPSessionData : EVObject {
+    var Day = ""
+    var title = ""
+    var desc = ""
+    var color = ""
+    var image = ""
+    var sessionkey = ""
 }
 
 // MARK:- Resource Category Model

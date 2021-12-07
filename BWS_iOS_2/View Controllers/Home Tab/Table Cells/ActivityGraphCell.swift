@@ -12,7 +12,12 @@ import Charts
 class ActivityGraphCell: UITableViewCell {
     
     @IBOutlet weak var chartView: BarChartView!
-    
+    @IBOutlet weak var lblSessionDesc: UILabel!
+    @IBOutlet weak var lblSessionSubTitle: UILabel!
+    @IBOutlet weak var lblSessionTitle: UILabel!
+    @IBOutlet weak var imageSession: UIImageView!
+    @IBOutlet weak var viewSession: UIView!
+    @IBOutlet weak var lblTitle: UILabel!
     var activityData = [GraphAnalyticsModel]()
     
     override func awakeFromNib() {
