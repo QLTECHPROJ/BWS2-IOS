@@ -59,6 +59,7 @@ class TextQuestionVC: BaseViewController {
         lblDescription.isHidden = true
         
         textView.text = arrayQuestions[pageIndex].selectedAnswer
+        lblPlaceholder.isHidden = (textView.text.trim.count != 0)
         
         buttonEnableDisable()
         
@@ -136,6 +137,10 @@ class TextQuestionVC: BaseViewController {
     
     
     // MARK:- ACTIONS
+    @IBAction func backClicked(sender: UIButton) {
+        self.popViewController(viewController: SessionDetailVC.self)
+    }
+    
     @IBAction func nextClicked(sender: UIButton) {
         self.view.endEditing(true)
         arrayQuestions[pageIndex].selectedAnswer = textView.text ?? ""
@@ -181,12 +186,11 @@ extension TextQuestionVC : UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         print("Text :- ",textView.text!)
         lblPlaceholder.isHidden = (textView.text.trim.count != 0)
-        
-        if textView.text.trim.count > 0 {
-            btnNext.isEnabled = true
-        } else {
-            btnNext.isEnabled = false
-        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        arrayQuestions[pageIndex].selectedAnswer = textView.text ?? ""
+        setupUI()
     }
     
 }

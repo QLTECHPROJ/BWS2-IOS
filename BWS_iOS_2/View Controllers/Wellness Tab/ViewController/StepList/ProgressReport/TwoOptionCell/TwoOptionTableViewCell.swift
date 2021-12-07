@@ -58,7 +58,7 @@ extension TwoOptionTableViewCell : UITableViewDataSource {
         cell.lblOption.text = question_options[indexPath.row]
         
         if selectedAnswer == question_options[indexPath.row] {
-            cell.imgOption.image = UIImage(named: "radio1")
+            cell.imgOption.image = UIImage(named: "radio_on_empower")
         } else {
             cell.imgOption.image = UIImage(named: "radio")
         }

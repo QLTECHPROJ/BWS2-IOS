@@ -145,6 +145,44 @@ class SessionDetailVC: BaseViewController {
         }
     }
     
+    func shouldFillProfileForm() -> Bool {
+        if dictSession?.shouldFillProfileFormTwo == "1" {
+            let aVC = AppStoryBoard.main.viewController(viewControllerClass:StepVC.self)
+            aVC.strTitle = Theme.strings.step_3_title
+            aVC.strSubTitle = Theme.strings.step_3_subtitle
+            aVC.imageMain = UIImage(named: "Step1")
+            aVC.color = Theme.colors.purple_9A86BB
+            aVC.isImageHide = false
+            aVC.viewTapped = {
+                let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: Step2VC.self)
+                EmpowerProfileForm2Model.shared.Step = "2"
+                EmpowerProfileForm2Model.shared.UserId = CoUserDataModel.currentUser?.UserId ?? ""
+                self.navigationController?.pushViewController(aVC, animated: false)
+            }
+            aVC.modalPresentationStyle = .overFullScreen
+            self.present(aVC, animated: false, completion: nil)
+            return true
+        } else if dictSession?.shouldFillProfileFormThree == "1" {
+            let aVC = AppStoryBoard.main.viewController(viewControllerClass:StepVC.self)
+            aVC.strTitle = Theme.strings.step_3_title
+            aVC.strSubTitle = Theme.strings.step_3_subtitle
+            aVC.imageMain = UIImage(named: "Step1")
+            aVC.color = Theme.colors.purple_9A86BB
+            aVC.isImageHide = false
+            aVC.viewTapped = {
+                let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: Step3VC.self)
+                EmpowerProfileForm3Model.shared.Step = "3"
+                EmpowerProfileForm3Model.shared.UserId = CoUserDataModel.currentUser?.UserId ?? ""
+                self.navigationController?.pushViewController(aVC, animated: false)
+            }
+            aVC.modalPresentationStyle = .overFullScreen
+            self.present(aVC, animated: false, completion: nil)
+            return true
+        }
+        
+        return false
+    }
+    
     // MARK:- ACTIONS
     @IBAction func onTappedBack(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
@@ -152,24 +190,6 @@ class SessionDetailVC: BaseViewController {
     
     @IBAction func onTappedContinue(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
-        return
-        
-        /*
-        let aVC = AppStoryBoard.main.viewController(viewControllerClass:StepVC.self)
-        aVC.strTitle = "Step 1"
-        aVC.strSubTitle = Theme.strings.step_3_subtitle
-        aVC.imageMain = UIImage(named: "Step1")
-        aVC.color = Theme.colors.purple_9A86BB
-        aVC.isImageHide = false
-        aVC.viewTapped = {
-            let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: PersonalDetailVC.self)
-            EmpowerProfileFormModel.shared.Step = "1"
-            EmpowerProfileFormModel.shared.UserId = CoUserDataModel.currentUser?.UserId ?? ""
-            self.navigationController?.pushViewController(aVC, animated: false)
-        }
-        aVC.modalPresentationStyle = .overFullScreen
-        self.present(aVC, animated: false, completion: nil)
-         */
     }
     
 }
@@ -193,11 +213,7 @@ extension SessionDetailVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withClass: SessionBannerCell.self)
-            cell.lblSession.text = dictSession?.session_title
-            cell.lblDescProgress.text = dictSession?.session_progress_text
-            cell.lblProgress.text = dictSession?.session_progress
-            cell.lblSessionTitle.text = dictSession?.session_short_desc
-            cell.lblSessionDesc.text = dictSession?.session_desc
+            cell.configureCell(data: dictSession)
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withClass: SessionDetailCell.self)
@@ -223,6 +239,10 @@ extension SessionDetailVC : UITableViewDelegate, UITableViewDataSource {
             if arraySession[indexPath.row].user_step_status == "Lock" {
                 return
             }
+            
+            // if self.shouldFillProfileForm() {
+            //     return
+            // }
             
             if arraySession[indexPath.row].step_type == "1" {
                 let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: SessionDescVC.self)

@@ -146,6 +146,10 @@ class FiveOptionVC: BaseViewController {
     
     
     // MARK:- ACTIONS
+    @IBAction func backClicked(sender: UIButton) {
+        self.popViewController(viewController: SessionDetailVC.self)
+    }
+    
     @IBAction func nextClicked(sender: UIButton) {
         if pageIndex < (arrayNewQuestions.count - 1) {
             pageIndex = pageIndex + 1
@@ -256,10 +260,6 @@ extension FiveOptionVC : UITableViewDataSource {
 extension FiveOptionVC : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if optionType == .fiveoptions && indexPath.section == 1 {
-            return 150
-        }
-        
         return UITableView.automaticDimension
     }
     

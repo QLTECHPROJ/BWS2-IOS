@@ -56,6 +56,20 @@ class EmpowerStepVC: BaseViewController {
             imageView.sd_setImage(with: imgUrl, completed: nil)
         }
         
+        if lblDescription.calculateMaxLines() > 2 {
+            // Add "Read More" text at trailing in UILabel
+            DispatchQueue.main.async {
+                self.lblDescription.addTrailing(with: " ", moreText: "...Read More", moreTextFont: Theme.fonts.montserratFont(ofSize: 14, weight: .bold), moreTextColor: .white)
+            }
+            
+            // Add Tap Gesture for checking Tap event on "Read More" text
+            lblDescription.isUserInteractionEnabled = true
+            lblDescription.lineBreakMode = .byWordWrapping
+            let tapGesture = UITapGestureRecognizer.init(target: self, action: #selector(tappedOnLabel(_:)))
+            tapGesture.numberOfTouchesRequired = 1
+            lblDescription.addGestureRecognizer(tapGesture)
+        }
+        
         lblSectionTitle.isHidden = hideSectionTitle
         lblSubTitle.isHidden = hideSubTitle
         lblDescription.isHidden = hideDescription
@@ -65,6 +79,23 @@ class EmpowerStepVC: BaseViewController {
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapGestureAction(gesturerecognizer:)))
         self.view.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func tappedOnLabel(_ gesture: UITapGestureRecognizer) {
+        guard let text = lblDescription.text else { return }
+        let readMoreRange = (text as NSString).range(of: "...Read More")
+        if gesture.didTapAttributedTextInLabel(label: self.lblDescription, inRange: readMoreRange) {
+            print("Read More Tapped")
+            
+            if strDescription.trim.count > 0 {
+                let aVC = AppStoryBoard.main.viewController(viewControllerClass: DescriptionPopupVC.self)
+                aVC.strDesc = strDescription
+                aVC.strTitle = strSubTitle
+                aVC.isOkButtonHidden = true
+                aVC.modalPresentationStyle = .overFullScreen
+                self.present(aVC, animated: false, completion: nil)
+            }
+        }
     }
     
     // MARK:- ACTIONS

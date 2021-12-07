@@ -32,6 +32,7 @@ class EmpowerPlanListVC: BaseViewController {
     @IBOutlet weak var tblFAQ: UITableView!
     @IBOutlet weak var tblFAQHeightConst: NSLayoutConstraint!
     
+    
     // MARK:- VARIABLES
     var dataModel = PlanListDataModel()
     var PlanFeatures = [PlanFeatureModel]()
@@ -43,7 +44,10 @@ class EmpowerPlanListVC: BaseViewController {
     var arrayQuestions = [FAQDataModel]()
     var arrayAudios = [AudioDetailsDataModel]()
     var arrayVideos = [TestminialVideoDataModel]()
+    var closeClicked : (() -> Void)?
     
+    
+    // MARK:- VIEW LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
         lblTitle.text = ""
@@ -65,11 +69,12 @@ class EmpowerPlanListVC: BaseViewController {
         viewVideo.playVideo()
     }
     
+    
     // MARK:- FUNCTIONS
     override func setupUI() {
         viewVideo.load(withVideoId: "y1rfRW6WX08")
         setStartButtonTitle()
-       // setupPrivacyLabel()
+        // setupPrivacyLabel()
         
         viewSessionHeightConst.constant = 0
         self.view.layoutIfNeeded()
@@ -94,9 +99,9 @@ class EmpowerPlanListVC: BaseViewController {
     override func setupData() {
         
         PlanFeatures = dataModel.PlanFeatures
-       // arrayPlans = dataModel.Plan.filter { $0.ProfileCount == "\(profileCount)" }
+        // arrayPlans = dataModel.Plan.filter { $0.ProfileCount == "\(profileCount)" }
         arrayPlans = dataModel.Plan
-       // arrayAudios = dataModel.AudioFiles
+        // arrayAudios = dataModel.AudioFiles
         arrayVideos = dataModel.TestminialVideo
         arrayQuestions = dataModel.FAQs
         
@@ -104,7 +109,7 @@ class EmpowerPlanListVC: BaseViewController {
         
         lblSubTitle.attributedText = dataModel.Desc.attributedString(alignment: .center, lineSpacing: 5)
         
-       // lblAccessAudioTitle.attributedText = Theme.strings.manage_plan_list_access_audios.attributedString(alignment: .center, lineSpacing: 5)
+        // lblAccessAudioTitle.attributedText = Theme.strings.manage_plan_list_access_audios.attributedString(alignment: .center, lineSpacing: 5)
         
         lblIntroductorySubTitle.attributedText = Theme.strings.manage_plan_list_introductory_session.attributedString(alignment: .center, lineSpacing: 5)
         
@@ -148,15 +153,28 @@ class EmpowerPlanListVC: BaseViewController {
         }
     }
     
-    //MARK:- IBAction
+    
+    // MARK:- ACTIONS
     @IBAction func onTappedClose(_ sender: UIButton) {
-        navigationController?.popViewController(animated: true)
+        closeClicked?()
+        self.navigationController?.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func onTappedStart(_ sender: UIButton) {
+        let aVC = AppStoryBoard.main.viewController(viewControllerClass: ManageStartVC.self)
+        aVC.isForIntroContent = true
+        aVC.strTitle = Theme.strings.intro_session_title
+        aVC.strSubTitle = Theme.strings.intro_session_subtitle
+        aVC.continueClicked = {
+            self.goNext()
+        }
+        aVC.modalPresentationStyle = .overFullScreen
+        self.present(aVC, animated: false, completion: nil)
+        return
     }
     
 }
+
 
 // MARK:- UITableViewDataSource, UITableViewDelegate
 extension EmpowerPlanListVC : UITableViewDataSource, UITableViewDelegate {
@@ -260,11 +278,11 @@ extension EmpowerPlanListVC : UICollectionViewDelegate, UICollectionViewDelegate
 }
 
 
+// MARK:- iCarouselDelegate, iCarouselDataSource
 extension EmpowerPlanListVC : iCarouselDelegate, iCarouselDataSource {
     
     func numberOfItems(in carousel: iCarousel) -> Int {
         return arrayVideos.count
-        
     }
     
     func carousel(_ carousel: iCarousel, viewForItemAt index: Int, reusing view: UIView?) -> UIView {
@@ -297,6 +315,8 @@ extension EmpowerPlanListVC : iCarouselDelegate, iCarouselDataSource {
     }
     
 }
+
+
 // MARK:- YTPlayerViewDelegate
 extension EmpowerPlanListVC : YTPlayerViewDelegate {
     

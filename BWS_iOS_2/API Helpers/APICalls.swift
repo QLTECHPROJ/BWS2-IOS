@@ -2350,3 +2350,21 @@ extension EmpowerPlanListVC {
         }
     }
 }
+
+
+extension ManageStartVC {
+    
+    // Session Step List API Call
+    func callIntroSessionContentAPI() {
+        APICallManager.sharedInstance.callAPI(router: APIRouter.introsessioncontent) { (response :IntroSessionContentModel) in
+
+            if response.ResponseCode == "200" {
+                self.strTitle = response.ResponseData?.freeSessionTitle ?? ""
+                self.strSubTitle = response.ResponseData?.freeSessionContent ?? ""
+                self.imageUrl = response.ResponseData?.freeSessionImg ?? ""
+                self.setupData()
+            }
+        }
+    }
+    
+}
