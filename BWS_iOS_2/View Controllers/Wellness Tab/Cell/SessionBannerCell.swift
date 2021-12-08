@@ -18,6 +18,8 @@ class SessionBannerCell: UITableViewCell {
     @IBOutlet weak var lblProgress: UILabel!
     @IBOutlet weak var imgProgress: UIImageView!
     
+    var sessionData : SessionListDataModel?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -27,6 +29,7 @@ class SessionBannerCell: UITableViewCell {
         lblSessionDesc.text = ""
         
         viewProgress.isHidden = true
+        lblSessionDesc.numberOfLines = 3
     }
     
     // Configure Cell
@@ -34,6 +37,8 @@ class SessionBannerCell: UITableViewCell {
         guard let data = data else {
             return
         }
+        
+        self.sessionData = data
         
         lblSession.text = data.session_title
         lblDescProgress.text = data.session_progress_text
@@ -55,6 +60,37 @@ class SessionBannerCell: UITableViewCell {
         
         if let imgUrl = URL(string: data.session_progress_img.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
             imgProgress.sd_setImage(with: imgUrl, completed: nil)
+        }
+        
+        if lblSessionDesc.calculateMaxLines() > 3 {
+            // Add "Read More" text at trailing in UILabel
+            DispatchQueue.main.async {
+                self.lblSessionDesc.addTrailing(with: " ", moreText: "...Read More", moreTextFont: Theme.fonts.montserratFont(ofSize: 15, weight: .bold), moreTextColor: Theme.colors.textColor)
+            }
+            
+            // Add Tap Gesture for checking Tap event on "Read More" text
+            lblSessionDesc.isUserInteractionEnabled = true
+            lblSessionDesc.lineBreakMode = .byWordWrapping
+            let tapGesture = UITapGestureRecognizer.init(target: self, action: #selector(tappedOnLabel(_:)))
+            tapGesture.numberOfTouchesRequired = 1
+            lblSessionDesc.addGestureRecognizer(tapGesture)
+        }
+    }
+    
+    @objc func tappedOnLabel(_ gesture: UITapGestureRecognizer) {
+        guard let text = lblSessionDesc.text else { return }
+        let readMoreRange = (text as NSString).range(of: "...Read More")
+        if gesture.didTapAttributedTextInLabel(label: self.lblSessionDesc, inRange: readMoreRange) {
+            print("Read More Tapped")
+            
+            if (sessionData?.session_desc ?? "").trim.count > 0 {
+                let aVC = AppStoryBoard.main.viewController(viewControllerClass: DescriptionPopupVC.self)
+                aVC.strDesc = sessionData?.session_desc ?? ""
+                aVC.strTitle = sessionData?.session_title ?? ""
+                aVC.isOkButtonHidden = true
+                aVC.modalPresentationStyle = .overFullScreen
+                self.parentViewController?.present(aVC, animated: true, completion: nil)
+            }
         }
     }
     
