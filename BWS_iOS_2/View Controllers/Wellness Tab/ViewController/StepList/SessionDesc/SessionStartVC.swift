@@ -37,7 +37,7 @@ class SessionStartVC: BaseViewController {
     }
     
     override func setupData() {
-        lblDesc.text = sessionDescriptionData?.step_long_description ?? ""
+        lblDesc.text = sessionDescriptionData?.step_long_description.htmlToString
     }
     
     override func handleDJMusicPlayerNotifications(notification: Notification) {
