@@ -1373,6 +1373,7 @@ extension HomeVC {
                 self.arraySessionProgress = response.ResponseData.SessionProgress
                 self.arrayGraphActivity = response.ResponseData.GraphAnalytics
                 self.dictHome = response.ResponseData
+                self.dictSessionData = response.ResponseData.eepSessiondata
                 
                 if lockDownloads == "1" {
                     if isAudioPlayerClosed == false {
