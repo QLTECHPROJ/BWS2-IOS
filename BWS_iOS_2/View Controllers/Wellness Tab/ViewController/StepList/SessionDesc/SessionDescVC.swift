@@ -46,7 +46,7 @@ class SessionDescVC: BaseViewController {
     override func setupData() {
         lblSessionName.text = sessionDescriptionData?.session_title ?? ""
         lblStepName.text = sessionDescriptionData?.step_title ?? ""
-        lblStepDescription.text = sessionDescriptionData?.step_short_description ?? ""
+        lblStepDescription.text = sessionDescriptionData?.step_short_description.htmlToString
         
         tableView.reloadData()
         tableViewHeightConst.constant = 0

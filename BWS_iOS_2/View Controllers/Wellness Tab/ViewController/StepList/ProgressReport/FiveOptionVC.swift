@@ -62,13 +62,22 @@ class FiveOptionVC: BaseViewController {
         arrayQuestions = questionData?.questions ?? []
         arrayNewQuestions = arrayQuestions.chunked(into: chunkSize)
         
-        tableView.reloadData()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
         
         setupUI()
     }
     
     override func setupUI() {
-        tableView.reloadData()
+        
+        // Solution ( TableView strange animation while reloading data )
+        UIView.performWithoutAnimation {
+            for i in 0..<self.tableView.numberOfSections {
+                self.tableView.reloadSections(NSIndexSet(index: i) as IndexSet, with: .none)
+            }
+        }
+        
         buttonEnableDisable()
         
         if arrayNewQuestions.count > 0 {
@@ -239,7 +248,6 @@ extension FiveOptionVC : UITableViewDataSource {
     
     func setSelectedOption(row : Int, selectedOption : String) {
         arrayNewQuestions[pageIndex][row].selectedAnswer = selectedOption
-        tableView.reloadData()
         
         let question = arrayNewQuestions[pageIndex][row].question
         let selectedAnswer = arrayNewQuestions[pageIndex][row].selectedAnswer
