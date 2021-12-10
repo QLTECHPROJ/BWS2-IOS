@@ -161,16 +161,12 @@ class EmpowerPlanListVC: BaseViewController {
     }
     
     @IBAction func onTappedStart(_ sender: UIButton) {
-        let aVC = AppStoryBoard.main.viewController(viewControllerClass: ManageStartVC.self)
-        aVC.isForIntroContent = true
-        aVC.strTitle = Theme.strings.intro_session_title
-        aVC.strSubTitle = Theme.strings.intro_session_subtitle
-        aVC.continueClicked = {
-            self.goNext()
+        if selectedPlanIndex < arrayPlans.count {
+            let aVC = AppStoryBoard.main.viewController(viewControllerClass: OrderSummaryVC.self)
+            aVC.planData = arrayPlans[selectedPlanIndex]
+            aVC.isFromEEP = true
+            self.navigationController?.pushViewController(aVC, animated: true)
         }
-        aVC.modalPresentationStyle = .overFullScreen
-        self.present(aVC, animated: false, completion: nil)
-        return
     }
     
 }

@@ -8,6 +8,11 @@
 
 import UIKit
 
+enum MembershipType : String {
+    case enhance = "enhance"
+    case empower = "empower"
+}
+
 class DassAssessmentResultVC: BaseViewController {
     
     // MARK:- OUTLETS
@@ -176,10 +181,8 @@ class DassAssessmentResultVC: BaseViewController {
             let aVC = AppStoryBoard.main.viewController(viewControllerClass: ThankYouVC.self)
             aVC.isCome = "UserDetail"
             self.navigationController?.pushViewController(aVC, animated: false)
-        }else {
-            
+        } else {
             self.goNext()
-        
         }
     }
     
