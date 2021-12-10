@@ -196,6 +196,7 @@ class LoginDataModel : EVObject {
     var IsFirst = ""
     var Islock = ""
     var IsInCouser = ""
+    var Plantype = ""
     
     /**
      0 - Stripe,
@@ -492,6 +493,7 @@ class CoUserDataModel : EVObject {
     var IsFirst = ""
     var Islock = ""
     var IsInCouser = ""
+    var Plantype = "3"
     
     /**
      0 - Stripe,

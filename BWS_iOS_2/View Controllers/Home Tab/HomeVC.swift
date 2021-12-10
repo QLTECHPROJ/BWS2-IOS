@@ -34,6 +34,8 @@ class HomeVC: BaseViewController {
     var arrayGraphActivity = [GraphAnalyticsModel]()
     var dictHome = HomeDataModel()
     var dictSessionData:EEPSessionData?
+    var window: UIWindow?
+    
     
     // MARK:- VIEW LIFE CYCLE
     override func viewDidLoad() {
@@ -371,6 +373,7 @@ extension HomeVC : UITableViewDelegate, UITableViewDataSource {
         case 9:
             let cell = tableView.dequeueReusableCell(withClass: ActivityGraphCell.self)
             cell.configureCell(data: arrayGraphActivity)
+            cell.lblTitle.text = "My Activity"
             cell.chartView.isHidden = false
             cell.viewSession.isHidden = true
             return cell
@@ -394,22 +397,28 @@ extension HomeVC : UITableViewDelegate, UITableViewDataSource {
         
         switch indexPath.row {
         case 0:
-            if dictSessionData?.title != "" {
+            if CoUserDataModel.currentUser?.Plantype == "1" {
+                return 0
+            }else if CoUserDataModel.currentUser?.Plantype == "2" || CoUserDataModel.currentUser?.Plantype == "3"{
                 return 400
             }else {
                 return 0
             }
         case 1:
-            if dictSessionData?.title == "" {
+            if CoUserDataModel.currentUser?.Plantype == "1" || CoUserDataModel.currentUser?.Plantype == "3"{
                 if suggstedPlaylist != nil {
                     return 390
                 }
+            }else if CoUserDataModel.currentUser?.Plantype == "2" {
+                return 0
             }else {
                 return 0
             }
         case 2:
-            if dictSessionData?.title == "" {
+            if CoUserDataModel.currentUser?.Plantype == "1" || CoUserDataModel.currentUser?.Plantype == "3"{
                 return UITableView.automaticDimension
+            }else if CoUserDataModel.currentUser?.Plantype == "2" {
+                return 0
             }else {
                 return 0
             }
@@ -431,14 +440,18 @@ extension HomeVC : UITableViewDelegate, UITableViewDataSource {
             return 0 // return 140
             
         case 9:
-            if dictSessionData?.title == "" {
+            if CoUserDataModel.currentUser?.Plantype == "1" || CoUserDataModel.currentUser?.Plantype == "3"{
                 return 302
+            }else if CoUserDataModel.currentUser?.Plantype == "2" {
+                return 0
             }else {
                 return 0
             }
         case 10:
-            if dictSessionData?.title == "" {
+            if CoUserDataModel.currentUser?.Plantype == "1" || CoUserDataModel.currentUser?.Plantype == "3"{
                 return 200
+            }else if CoUserDataModel.currentUser?.Plantype == "2" {
+                return 0
             }else {
                 return 0
             }
@@ -452,10 +465,16 @@ extension HomeVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
-            let aVC = AppStoryBoard.main.viewController(viewControllerClass: TabBarController.self)
-            aVC.selectedIndex = 2
-            self.navigationController?.pushViewController(aVC, animated: true)
-               
+            if CoUserDataModel.currentUser?.Plantype == "2" || CoUserDataModel.currentUser?.Plantype == "3"{
+                DispatchQueue.main.async {
+                    let aVC = AppStoryBoard.main.viewController(viewControllerClass: TabBarController.self)
+                    aVC.selectedIndex = 2
+                    aVC.modalPresentationStyle = .overFullScreen
+                    self.window?.makeKeyAndVisible()
+                    self.navigationController?.present(aVC, animated: true, completion: nil)
+                    
+                }
+            }
         case 1:
             DispatchQueue.main.async {
                 if checkInternet(showToast: true) == false {
