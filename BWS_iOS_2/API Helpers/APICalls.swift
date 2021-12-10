@@ -1703,8 +1703,8 @@ extension EditProfileVC {
 
 extension OrderSummaryVC {
     
-    // IAP Plan Purchase API Call
-    func callIAPPlanPurchaseAPI() {
+    // Enhance - IAP Plan Purchase API Call
+    func callEnhancePlanPurchaseAPI() {
         
         guard let receiptURL = Bundle.main.appStoreReceiptURL, let receiptString = try? Data(contentsOf: receiptURL, options: .alwaysMapped).base64EncodedString(options: []) else {
             return
@@ -1736,6 +1736,41 @@ extension OrderSummaryVC {
             }
         }
     }
+    
+    // EEP - IAP Plan Purchase API Call
+    func callEEPPlanPurchaseAPI() {
+        
+        guard let receiptURL = Bundle.main.appStoreReceiptURL, let receiptString = try? Data(contentsOf: receiptURL, options: .alwaysMapped).base64EncodedString(options: []) else {
+            return
+        }
+        
+        let parameters = [APIParameters.UserId:CoUserDataModel.currentUserId,
+                          APIParameters.MainAccountID:LoginDataModel.currentMainAccountId,
+                          "TransactionID":IAPHelper.shared.originalTransactionID ?? "",
+                          "PlanId":IAPHelper.shared.planID ?? "",
+                          "AppType":APP_TYPE,
+                          "ReceiptData":receiptString]
+
+        APICallManager.sharedInstance.callAPI(router: APIRouter.eepplanpurchase(parameters)) { (response :GeneralModel) in
+
+            if response.ResponseCode == "200" {
+                showAlertToast(message: response.ResponseMessage)
+                
+                // Segment Tracking
+                let eventname = self.isFromUpdate ? SegmentTracking.eventNames.User_Plan_Upgraded : SegmentTracking.eventNames.Checkout_Completed
+                SegmentTracking.shared.trackPlanDetails(name: eventname, planDetails: self.planData, trackingType: .track)
+                
+                if self.isFromUpdate {
+                    NotificationCenter.default.post(name: .planUpdated, object: nil)
+                    self.navigationController?.dismiss(animated: false, completion: nil)
+                } else {
+                    let aVC = AppStoryBoard.main.viewController(viewControllerClass: ThankYouVC.self)
+                    self.navigationController?.pushViewController(aVC, animated: true)
+                }
+            }
+        }
+    }
+    
 }
 
 extension SetUpPInVC {
@@ -2323,9 +2358,43 @@ extension EmpowerPlanListVC {
             if response.ResponseCode == "200" {
                 self.dataModel = response.ResponseData
                 self.setupData()
+                self.fetchIAPProducts()
             }
         }
     }
+    
+    func fetchIAPProducts() {
+        if IAPHelper.shared.isIAPEnabled {
+            let arrayProductIDs : [String] = dataModel.Plan.compactMap({ $0.IOSplanId })
+            
+            // IAP Purchase Retrive Products
+            IAPHelper.shared.productRetrive(arrayProductIDs: arrayProductIDs) { (success, iapProducts) in
+                if success {
+                    guard let products = iapProducts else {
+                        self.setupData()
+                        return
+                    }
+                    
+                    print("IAP Products Fetched")
+                    for product in products {
+                        for plan in self.dataModel.Plan {
+                            if plan.IOSplanId == product.iapProductIdentifier {
+                                plan.iapProductIdentifier = product.iapProductIdentifier
+                                plan.iapPrice = product.iapPrice
+                                plan.iapTitle = product.iapTitle
+                                plan.iapDescription = product.iapDescription
+                                plan.iapTrialPeriod = product.iapTrialPeriod
+                                plan.iapSubscriptionPeriod = product.iapSubscriptionPeriod
+                            }
+                        }
+                    }
+                    
+                    self.setupData()
+                }
+            }
+        }
+    }
+    
 }
 
 

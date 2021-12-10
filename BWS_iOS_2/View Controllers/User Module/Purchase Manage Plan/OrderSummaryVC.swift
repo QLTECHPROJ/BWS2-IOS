@@ -34,6 +34,7 @@ class OrderSummaryVC: BaseViewController {
     // MARK:- VARIABLES
     var planData = PlanDetailsModel()
     var isFromUpdate = false
+    var isFromEEP = false
     
     
     // MARK:- VIEW LIFE CYCLE
@@ -88,7 +89,13 @@ class OrderSummaryVC: BaseViewController {
             // IAP Purchase Subscription
             IAPHelper.shared.purchaseSubscriptions(productIdentifier: planData.IOSplanId, atomically: true)
             IAPHelper.shared.successPurchase = {
-                self.callIAPPlanPurchaseAPI()
+                
+                if self.isFromEEP {
+                    self.callEEPPlanPurchaseAPI()
+                } else {
+                    self.callEnhancePlanPurchaseAPI()
+                }
+                
             }
         } else {
             if self.isFromUpdate {

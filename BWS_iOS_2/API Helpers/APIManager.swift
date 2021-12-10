@@ -93,6 +93,9 @@ enum APIRouter: URLRequestConvertible {
     case userplanlist([String:Any])
     case cancelplan([String:Any])
     
+    // Empower IAP
+    case eepplanpurchase([String:Any])
+    
     // Stripe
     case billingorder([String:Any])
     case cancelplanstripe([String:Any])
@@ -261,6 +264,10 @@ enum APIRouter: URLRequestConvertible {
             return APIRoute(path: "userplanlist", method: .post, data: data)
         case .cancelplan(let data):
             return APIRoute(path: "cancelplan", method: .post, data: data)
+            
+        // Empower IAP
+        case .eepplanpurchase(let data):
+            return APIRoute(path: "eepplanpurchase", method: .post, data: data)
             
         // Stripe
         case .billingorder(let data):
