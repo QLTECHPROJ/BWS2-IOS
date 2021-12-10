@@ -157,15 +157,15 @@ class DassAssessmentResultVC: BaseViewController {
     }
     
     func handleNavigation() {
-        let aVC = AppStoryBoard.main.viewController(viewControllerClass: ManageStartVC.self)
-        aVC.strTitle = Theme.strings.you_are_doing_good_title
-        aVC.strSubTitle = Theme.strings.you_are_doing_good_subtitle
-        aVC.imageMain = UIImage(named: "manageStartWave")
-        aVC.continueClicked = {
+        let aVC = AppStoryBoard.wellness.viewController(viewControllerClass:EmpowerPlanListVC.self)
+        aVC.closeClicked = {
             self.goNext()
         }
-        aVC.modalPresentationStyle = .overFullScreen
-        self.present(aVC, animated: false, completion: nil)
+        
+        let navVC = UINavigationController(rootViewController: aVC)
+        navVC.isNavigationBarHidden = true
+        navVC.modalPresentationStyle = .overFullScreen
+        self.navigationController?.present(navVC, animated: false, completion: nil)
     }
     
     
@@ -182,7 +182,11 @@ class DassAssessmentResultVC: BaseViewController {
             aVC.isCome = "UserDetail"
             self.navigationController?.pushViewController(aVC, animated: false)
         } else {
-            self.goNext()
+            if assessmentData?.suggested_membership == MembershipType.empower.rawValue {
+                self.handleNavigation()
+            } else {
+                self.goNext()
+            }
         }
     }
     
