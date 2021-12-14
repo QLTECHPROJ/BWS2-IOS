@@ -146,7 +146,21 @@ class SessionDetailVC: BaseViewController {
     }
     
     func shouldFillProfileForm() -> Bool {
-        if dictSession?.shouldFillProfileFormTwo == "1" {
+        if dictSession?.shouldFillProfileFormOne == "1" {
+            let aVC = AppStoryBoard.main.viewController(viewControllerClass:StepVC.self)
+            aVC.strTitle = Theme.strings.step_3_title
+            aVC.strSubTitle = Theme.strings.step_3_subtitle
+            aVC.imageMain = UIImage(named: "profileForm")
+            aVC.viewTapped = {
+                let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: PersonalDetailVC.self)
+                EmpowerProfileFormModel.shared.Step = "1"
+                EmpowerProfileFormModel.shared.UserId = CoUserDataModel.currentUser?.UserId ?? ""
+                self.navigationController?.pushViewController(aVC, animated: false)
+            }
+            aVC.modalPresentationStyle = .overFullScreen
+            self.present(aVC, animated: false, completion: nil)
+            return true
+        } else if dictSession?.shouldFillProfileFormTwo == "1" {
             let aVC = AppStoryBoard.main.viewController(viewControllerClass:StepVC.self)
             aVC.strTitle = Theme.strings.step_3_title
             aVC.strSubTitle = Theme.strings.step_3_subtitle

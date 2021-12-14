@@ -629,8 +629,8 @@ extension UIViewController {
             if response.ResponseCode == "200" {
                 showAlertToast(message: response.ResponseMessage)
                 if strStep == "1" {
-                    // Redirect to Home Screen
-                    APPDELEGATE.window?.rootViewController = AppStoryBoard.main.viewController(viewControllerClass: NavigationClass.self)
+                    // Redirect to Sesion Step Listing Screen
+                    self.popViewController(viewController: SessionDetailVC.self)
                 } else if strStep == "2" {
                     // Redirect to Sesion Step Listing Screen
                     self.popViewController(viewController: SessionDetailVC.self)
@@ -1764,7 +1764,7 @@ extension OrderSummaryVC {
                     NotificationCenter.default.post(name: .planUpdated, object: nil)
                     self.navigationController?.dismiss(animated: false, completion: nil)
                 } else {
-                    let aVC = AppStoryBoard.main.viewController(viewControllerClass: ThankYouVC.self)
+                    let aVC = AppStoryBoard.main.viewController(viewControllerClass: WellnessStartVC.self)
                     self.navigationController?.pushViewController(aVC, animated: true)
                 }
             }

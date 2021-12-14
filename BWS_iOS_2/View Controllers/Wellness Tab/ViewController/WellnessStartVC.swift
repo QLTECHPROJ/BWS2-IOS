@@ -49,8 +49,7 @@ class WellnessStartVC: BaseViewController {
     
     //MARK:- IBAction Methods
     @IBAction func onTappedContinue(_ sender: UIButton) {
-        let aVC = AppStoryBoard.wellness.viewController(viewControllerClass: SessionVC.self)
-        self.navigationController?.pushViewController(aVC, animated: false)
+        APPDELEGATE.window?.rootViewController = AppStoryBoard.main.viewController(viewControllerClass: NavigationClass.self)
 
     }
     
