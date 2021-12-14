@@ -1726,13 +1726,7 @@ extension OrderSummaryVC {
                 let eventname = self.isFromUpdate ? SegmentTracking.eventNames.User_Plan_Upgraded : SegmentTracking.eventNames.Checkout_Completed
                 SegmentTracking.shared.trackPlanDetails(name: eventname, planDetails: self.planData, trackingType: .track)
                 
-                if self.isFromUpdate {
-                    NotificationCenter.default.post(name: .planUpdated, object: nil)
-                    self.navigationController?.dismiss(animated: false, completion: nil)
-                } else {
-                    let aVC = AppStoryBoard.main.viewController(viewControllerClass: ThankYouVC.self)
-                    self.navigationController?.pushViewController(aVC, animated: true)
-                }
+                self.handleEnhanceFlow()
             }
         }
     }
@@ -1760,13 +1754,7 @@ extension OrderSummaryVC {
                 let eventname = self.isFromUpdate ? SegmentTracking.eventNames.User_Plan_Upgraded : SegmentTracking.eventNames.Checkout_Completed
                 SegmentTracking.shared.trackPlanDetails(name: eventname, planDetails: self.planData, trackingType: .track)
                 
-                if self.isFromUpdate {
-                    NotificationCenter.default.post(name: .planUpdated, object: nil)
-                    self.navigationController?.dismiss(animated: false, completion: nil)
-                } else {
-                    let aVC = AppStoryBoard.main.viewController(viewControllerClass: WellnessStartVC.self)
-                    self.navigationController?.pushViewController(aVC, animated: true)
-                }
+                self.handleEEPFlow()
             }
         }
     }
