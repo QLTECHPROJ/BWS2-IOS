@@ -483,6 +483,8 @@ class CoUserDataModel : EVObject {
     var AreaOfFocus = [AreaOfFocusModel]()
     var AvgSleepTime = ""
     var ScoreLevel = ""
+    var isEnhancePurchased = ""
+    var isEEPPurchased = ""
     var errormsg = ""
     var error = ""
     var EmailSend = ""
@@ -847,6 +849,8 @@ class HomeDataModel: EVObject {
     var YearFrequency = ""
     var IndexScore = ""
     var IsFirst = ""
+    var isEnhancePurchased = ""
+    var isEEPPurchased = ""
     var Islock = ""
     var shouldCheckIndexScore = ""
     var IndexScoreDiff = ""

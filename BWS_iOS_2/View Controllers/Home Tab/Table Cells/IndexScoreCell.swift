@@ -37,7 +37,6 @@ class IndexScoreCell: UITableViewCell {
     
     weak var axisFormatDelegate: IAxisValueFormatter?
     let floatValue: [CGFloat] = [4,4]
-    var dictJoinNowBannerData : JoinNowBannerData?
     var clickJoinNow : ( () -> Void )?
     
     override func awakeFromNib() {
@@ -97,7 +96,10 @@ class IndexScoreCell: UITableViewCell {
     }
     
     func configureJoinEEPCell(data:JoinNowBannerData?) {
-        dictJoinNowBannerData = data
+        guard let data = data else {
+            return
+        }
+        
         chartView.isHidden = true
         viewJoinNow.isHidden = false
         viewScrore.isHidden = true
@@ -107,15 +109,13 @@ class IndexScoreCell: UITableViewCell {
         viewJoinNow.layer.cornerRadius = 10
         viewJoinNow.clipsToBounds = true
         
-        lblJoinNowTitle.text = dictJoinNowBannerData?.title
-        lblJoinNowSubTitle.text = dictJoinNowBannerData?.subtitle
-        //btnJoinNow.backgroundColor = hexStringToUIColor(hex: dictJoinNowBannerData!.buttonColor)
-        //viewJoinNow.backgroundColor = hexStringToUIColor(hex: dictJoinNowBannerData!.backgroundColor)
-        if let strUrl = dictJoinNowBannerData?.image.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let imgUrl = URL(string: strUrl) {
+        lblJoinNowTitle.text = data.title
+        lblJoinNowSubTitle.text = data.subtitle
+        btnJoinNow.backgroundColor = hexStringToUIColor(hex: data.buttonColor.replacingOccurrences(of: "#", with: ""))
+        viewJoinNow.backgroundColor = hexStringToUIColor(hex: data.backgroundColor.replacingOccurrences(of: "#", with: ""))
+        if let strUrl = data.image.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let imgUrl = URL(string: strUrl) {
             imgJoinNow.sd_setImage(with: imgUrl, completed: nil)
         }
-        
-        
     }
     
     func configureMyActivityCell(data : [GraphAnalyticsModel]) {

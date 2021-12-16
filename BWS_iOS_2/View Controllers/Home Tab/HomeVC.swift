@@ -35,7 +35,6 @@ class HomeVC: BaseViewController {
     var dictHome = HomeDataModel()
     var dictSessionData:EEPSessionData?
     var dictJoinNowBannerData:JoinNowBannerData?
-    var window: UIWindow?
     
     
     // MARK:- VIEW LIFE CYCLE
@@ -322,16 +321,16 @@ extension HomeVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
         case 0:
-            let cell = tableView.dequeueReusableCell(withClass: ActivityGraphCell.self)
             if dictSessionData?.title != "" {
+                let cell = tableView.dequeueReusableCell(withClass: ActivityGraphCell.self)
                 cell.lblTitle.text = "Sessions"
                 cell.lblSessionTitle.text = dictSessionData?.title
                 cell.lblSessionDesc.text = dictSessionData?.desc
                 cell.chartView.isHidden = true
                 cell.viewSession.isHidden = false
+                return cell
             }
             
-            return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withClass: SuggestedPlaylistCell.self)
             cell.configureCell(data: self.suggstedPlaylist)
@@ -417,50 +416,40 @@ extension HomeVC : UITableViewDelegate, UITableViewDataSource {
         
         switch indexPath.row {
         case 0:
-            if dictSessionData?.title != "" {
-                return 390
-            }
-            return 0
+            return dictSessionData?.title != "" ? 390 : 0
+            
         case 1:
-            if suggstedPlaylist != nil {
-                return 390
-            }
-            return 0
+            return suggstedPlaylist != nil ? 390 : 0
+            
         case 2:
-            if areaOfFocus.count > 0 {
-                return UITableView.automaticDimension
-            }
-            return 0
+            return areaOfFocus.count > 0 ? UITableView.automaticDimension : 0
+            
         case 3:
-            if self.shouldCheckIndexScore == "1" {
-                return 155
-            }
+            return shouldCheckIndexScore == "1" ? 155 : 0
             
         case 4:
             return 168
             
-        case 5,6:
+        case 5:
             return 273
+            
+        case 6:
+            return 0
             
         case 7:
             return 0
             
         case 8:
-            //return 0 // return 140
             if dictJoinNowBannerData?.title != "" {
                 return 155
             }
-            return 0
+            
         case 9:
-            if arrayGraphActivity.count > 0 {
-                return 302
-            }
-            return 0
+            return arrayGraphActivity.count > 0 ? 302 : 0
+            
         case 10:
-            if suggstedPlaylist != nil {
-                return 200
-            }
-            return 0
+            return suggstedPlaylist != nil ? 200 : 0
+            
         default:
             return 0
         }
@@ -471,14 +460,9 @@ extension HomeVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
-            if dictSessionData?.title != "" || dictSessionData?.title != nil{
+            if dictSessionData?.title != "" || dictSessionData?.title != nil {
                 DispatchQueue.main.async {
-                    let aVC = AppStoryBoard.main.viewController(viewControllerClass: TabBarController.self)
-                    aVC.selectedIndex = 2
-                    aVC.modalPresentationStyle = .overFullScreen
-                    self.window?.makeKeyAndVisible()
-                    self.navigationController?.present(aVC, animated: true, completion: nil)
-                    
+                    self.tabBarController?.selectedIndex = 2
                 }
             }
         case 1:
@@ -506,12 +490,12 @@ extension HomeVC : UITableViewDelegate, UITableViewDataSource {
                     return
                 }
                 
+                if lockDownloads == "1" {
+                    openInactivePopup(controller: self)
+                    return
+                }
+                
                 if self.shouldCheckIndexScore == "1" {
-                    if lockDownloads == "1" {
-                        openInactivePopup(controller: self)
-                        return
-                    }
-                    
                     let aVC = AppStoryBoard.main.viewController(viewControllerClass: DoDassAssessmentVC.self)
                     aVC.isFromEdit = true
                     let navVC = UINavigationController(rootViewController: aVC)
