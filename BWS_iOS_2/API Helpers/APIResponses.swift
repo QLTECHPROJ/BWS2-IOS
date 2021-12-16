@@ -860,6 +860,7 @@ class HomeDataModel: EVObject {
     var GraphIndexScore = [GraphIndexScoreModel]()
     var indexScoreDescription = ""
     var eepSessiondata : EEPSessionData?
+    var joinNowBanner : JoinNowBannerData?
 }
 
 class GraphIndexScoreModel : EVObject {
@@ -890,6 +891,15 @@ class EEPSessionData : EVObject {
     var color = ""
     var image = ""
     var sessionkey = ""
+}
+
+class JoinNowBannerData : EVObject {
+    var title = ""
+    var subtitle = ""
+    var image = ""
+    var buttonColor = ""
+    var backgroundColor = ""
+    var bannerType = ""
 }
 
 // MARK:- Resource Category Model

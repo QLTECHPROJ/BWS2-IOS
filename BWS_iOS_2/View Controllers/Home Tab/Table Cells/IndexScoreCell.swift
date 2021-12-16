@@ -24,6 +24,10 @@ class IndexScoreCell: UITableViewCell {
     @IBOutlet weak var imgViewUpDown : UIImageView!
     @IBOutlet weak var progressView : UIProgressView!
     @IBOutlet weak var lblIndexScoreDescription : UILabel!
+    @IBOutlet weak var lblJoinNowTitle: UILabel!
+    @IBOutlet weak var imgJoinNow: UIImageView!
+    @IBOutlet weak var lblJoinNowSubTitle: UILabel!
+    @IBOutlet weak var btnJoinNow: UIButton!
     
     let days = ["",
                 "Mon", "Tue", "Wed",
@@ -33,6 +37,8 @@ class IndexScoreCell: UITableViewCell {
     
     weak var axisFormatDelegate: IAxisValueFormatter?
     let floatValue: [CGFloat] = [4,4]
+    var dictJoinNowBannerData : JoinNowBannerData?
+    var clickJoinNow : ( () -> Void )?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -90,7 +96,8 @@ class IndexScoreCell: UITableViewCell {
         viewCheckWellnessScore.isHidden = false
     }
     
-    func configureJoinEEPCell() {
+    func configureJoinEEPCell(data:JoinNowBannerData?) {
+        dictJoinNowBannerData = data
         chartView.isHidden = true
         viewJoinNow.isHidden = false
         viewScrore.isHidden = true
@@ -99,6 +106,16 @@ class IndexScoreCell: UITableViewCell {
         
         viewJoinNow.layer.cornerRadius = 10
         viewJoinNow.clipsToBounds = true
+        
+        lblJoinNowTitle.text = dictJoinNowBannerData?.title
+        lblJoinNowSubTitle.text = dictJoinNowBannerData?.subtitle
+        //btnJoinNow.backgroundColor = hexStringToUIColor(hex: dictJoinNowBannerData!.buttonColor)
+        //viewJoinNow.backgroundColor = hexStringToUIColor(hex: dictJoinNowBannerData!.backgroundColor)
+        if let strUrl = dictJoinNowBannerData?.image.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let imgUrl = URL(string: strUrl) {
+            imgJoinNow.sd_setImage(with: imgUrl, completed: nil)
+        }
+        
+        
     }
     
     func configureMyActivityCell(data : [GraphAnalyticsModel]) {
@@ -122,6 +139,9 @@ class IndexScoreCell: UITableViewCell {
         barChartUpdate(values: graphValue)
     }
     
+    @IBAction func onTappedJoinNow(_ sender: UIButton) {
+        clickJoinNow?()
+    }
 }
 
 extension IndexScoreCell : ChartViewDelegate {

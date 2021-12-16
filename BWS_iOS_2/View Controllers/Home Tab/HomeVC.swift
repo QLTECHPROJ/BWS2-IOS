@@ -34,6 +34,7 @@ class HomeVC: BaseViewController {
     var arrayGraphActivity = [GraphAnalyticsModel]()
     var dictHome = HomeDataModel()
     var dictSessionData:EEPSessionData?
+    var dictJoinNowBannerData:JoinNowBannerData?
     var window: UIWindow?
     
     
@@ -269,6 +270,22 @@ class HomeVC: BaseViewController {
         }
     }
     
+    func joinNow() {
+        if dictJoinNowBannerData?.bannerType == "empower" {
+            let aVC = AppStoryBoard.wellness.viewController(viewControllerClass:EmpowerPlanListVC.self)
+            let navVC = UINavigationController(rootViewController: aVC)
+            navVC.isNavigationBarHidden = true
+            navVC.modalPresentationStyle = .overFullScreen
+            self.navigationController?.present(navVC, animated: false, completion: nil)
+        } else if dictJoinNowBannerData?.bannerType == "enhance" {
+            let aVC = AppStoryBoard.main.viewController(viewControllerClass:ManagePlanListVC.self)
+            let navVC = UINavigationController(rootViewController: aVC)
+            navVC.isNavigationBarHidden = true
+            navVC.modalPresentationStyle = .overFullScreen
+            self.navigationController?.present(navVC, animated: false, completion: nil)
+        }
+    }
+    
     // MARK:- ACTIONS
     
     @IBAction func onTappedChangeUser(_ sender: UIButton) {
@@ -367,7 +384,10 @@ extension HomeVC : UITableViewDelegate, UITableViewDataSource {
             
         case 8:
             let cell = tableView.dequeueReusableCell(withClass: IndexScoreCell.self)
-            cell.configureJoinEEPCell()
+            cell.configureJoinEEPCell(data: self.dictJoinNowBannerData)
+            cell.clickJoinNow = {
+                self.joinNow()
+            }
             return cell
             
         case 9:
@@ -397,31 +417,20 @@ extension HomeVC : UITableViewDelegate, UITableViewDataSource {
         
         switch indexPath.row {
         case 0:
-            if CoUserDataModel.currentUser?.Plantype == "1" {
-                return 0
-            }else if CoUserDataModel.currentUser?.Plantype == "2" || CoUserDataModel.currentUser?.Plantype == "3"{
-                return 400
-            }else {
-                return 0
+            if dictSessionData?.title != "" {
+                return 390
             }
+            return 0
         case 1:
-            if CoUserDataModel.currentUser?.Plantype == "1" || CoUserDataModel.currentUser?.Plantype == "3"{
-                if suggstedPlaylist != nil {
-                    return 390
-                }
-            }else if CoUserDataModel.currentUser?.Plantype == "2" {
-                return 0
-            }else {
-                return 0
+            if suggstedPlaylist != nil {
+                return 390
             }
+            return 0
         case 2:
-            if CoUserDataModel.currentUser?.Plantype == "1" || CoUserDataModel.currentUser?.Plantype == "3"{
+            if areaOfFocus.count > 0 {
                 return UITableView.automaticDimension
-            }else if CoUserDataModel.currentUser?.Plantype == "2" {
-                return 0
-            }else {
-                return 0
             }
+            return 0
         case 3:
             if self.shouldCheckIndexScore == "1" {
                 return 155
@@ -437,24 +446,21 @@ extension HomeVC : UITableViewDelegate, UITableViewDataSource {
             return 0
             
         case 8:
-            return 0 // return 140
-            
+            //return 0 // return 140
+            if dictJoinNowBannerData?.title != "" {
+                return 155
+            }
+            return 0
         case 9:
-            if CoUserDataModel.currentUser?.Plantype == "1" || CoUserDataModel.currentUser?.Plantype == "3"{
+            if arrayGraphActivity.count > 0 {
                 return 302
-            }else if CoUserDataModel.currentUser?.Plantype == "2" {
-                return 0
-            }else {
-                return 0
             }
+            return 0
         case 10:
-            if CoUserDataModel.currentUser?.Plantype == "1" || CoUserDataModel.currentUser?.Plantype == "3"{
+            if suggstedPlaylist != nil {
                 return 200
-            }else if CoUserDataModel.currentUser?.Plantype == "2" {
-                return 0
-            }else {
-                return 0
             }
+            return 0
         default:
             return 0
         }
@@ -465,7 +471,7 @@ extension HomeVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
-            if CoUserDataModel.currentUser?.Plantype == "2" || CoUserDataModel.currentUser?.Plantype == "3"{
+            if dictSessionData?.title != "" || dictSessionData?.title != nil{
                 DispatchQueue.main.async {
                     let aVC = AppStoryBoard.main.viewController(viewControllerClass: TabBarController.self)
                     aVC.selectedIndex = 2
