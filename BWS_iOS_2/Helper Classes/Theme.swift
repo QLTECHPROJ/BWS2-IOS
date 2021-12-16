@@ -559,7 +559,7 @@ struct AppStrings {
     
     /* Intro Session */
     let intro_session_title = "Experience a free Brain Wellness Spa Session"
-    let intro_session_subtitle = "This free Brain Wellness Spa session is a one off and its effects may last between 24 and 48 hours. How long they last depend on your environmental stresses and triggers\\n\\n\\n Download the audio to discover how may help you with your mental health challenges."
+    let intro_session_subtitle = "This free Brain Wellness Spa session is a one off and its effects may last between 24 and 48 hours. How long they last depend on your environmental stresses and triggers\n\n Download the audio to discover how may help you with your mental health challenges."
     
 }
 

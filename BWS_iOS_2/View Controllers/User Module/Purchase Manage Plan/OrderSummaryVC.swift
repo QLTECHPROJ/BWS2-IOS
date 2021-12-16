@@ -75,6 +75,34 @@ class OrderSummaryVC: BaseViewController {
         }
     }
     
+    func handleEnhanceFlow() {
+        if self.isFromUpdate {
+            NotificationCenter.default.post(name: .planUpdated, object: nil)
+            self.navigationController?.dismiss(animated: false, completion: nil)
+        } else {
+            let aVC = AppStoryBoard.main.viewController(viewControllerClass: ThankYouVC.self)
+            self.navigationController?.pushViewController(aVC, animated: true)
+        }
+    }
+    
+    func handleEEPFlow() {
+        if self.isFromUpdate {
+            NotificationCenter.default.post(name: .planUpdated, object: nil)
+            self.navigationController?.dismiss(animated: false, completion: nil)
+        } else {
+            let aVC = AppStoryBoard.main.viewController(viewControllerClass: ManageStartVC.self)
+            aVC.strTitle = Theme.strings.intro_session_title
+            aVC.strSubTitle = Theme.strings.intro_session_subtitle
+            aVC.imageMain = UIImage(named: "Wellness")
+            aVC.isForIntroContent = true
+            aVC.continueClicked = {
+                APPDELEGATE.window?.rootViewController = AppStoryBoard.main.viewController(viewControllerClass: NavigationClass.self)
+            }
+            aVC.modalPresentationStyle = .overFullScreen
+            self.present(aVC, animated: false, completion: nil)
+        }
+    }
+    
     
     // MARK:- ACTIONS
     @IBAction func backClicked(sender : UIButton) {
@@ -98,13 +126,10 @@ class OrderSummaryVC: BaseViewController {
                 
             }
         } else {
-            if self.isFromUpdate {
-                NotificationCenter.default.post(name: .planUpdated, object: nil)
-                self.navigationController?.dismiss(animated: false, completion: nil)
+            if isFromEEP {
+                handleEEPFlow()
             } else {
-                let aVC = AppStoryBoard.main.viewController(viewControllerClass: ThankYouVC.self)
-                aVC.planData = self.planData
-                self.navigationController?.pushViewController(aVC, animated: true)
+                handleEnhanceFlow()
             }
         }
     }

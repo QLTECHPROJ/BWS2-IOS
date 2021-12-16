@@ -156,8 +156,9 @@ class EmpowerPlanListVC: BaseViewController {
     
     // MARK:- ACTIONS
     @IBAction func onTappedClose(_ sender: UIButton) {
-        closeClicked?()
-        self.navigationController?.dismiss(animated: true, completion: nil)
+        self.navigationController?.dismiss(animated: true, completion: {
+            self.closeClicked?()
+        })
     }
     
     @IBAction func onTappedStart(_ sender: UIButton) {
