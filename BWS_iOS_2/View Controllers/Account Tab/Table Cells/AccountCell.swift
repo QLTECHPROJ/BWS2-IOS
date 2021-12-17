@@ -9,7 +9,7 @@
 import UIKit
 
 class AccountCell: UITableViewCell {
-
+    
     @IBOutlet weak var imgHeight: NSLayoutConstraint!
     @IBOutlet weak var imgLeading: NSLayoutConstraint!
     @IBOutlet weak var lblLine: UILabel!
@@ -17,15 +17,10 @@ class AccountCell: UITableViewCell {
     @IBOutlet weak var img: UIImageView!
     @IBOutlet weak var imgArrow: UIImageView!
     @IBOutlet weak var viewBack: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
 }
