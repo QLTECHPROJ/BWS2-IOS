@@ -148,11 +148,11 @@ class EditProfileVC: BaseViewController {
             isValid = false
             lblErrMobileNo.isHidden = false
             lblErrMobileNo.text = Theme.strings.alert_invalid_mobile_error
-        } else if strMobile.count < 8 || strMobile.count > 10 {
+        } else if strMobile.count < 4 || strMobile.count > 15 {
             isValid = false
             lblErrMobileNo.isHidden = false
             lblErrMobileNo.text = Theme.strings.alert_invalid_mobile_error
-        } else if strMobile.isPhoneNumber == false {
+        } else if strMobile.isNumber == false {
             isValid = false
             lblErrMobileNo.isHidden = false
             lblErrMobileNo.text = Theme.strings.alert_invalid_mobile_error
@@ -180,9 +180,9 @@ class EditProfileVC: BaseViewController {
     func isMobileNumberValid(strMobile : String) -> Bool {
         if strMobile.count == 0 {
             return false
-        } else if strMobile.count < 8 || strMobile.count > 10 {
+        } else if strMobile.count < 4 || strMobile.count > 15 {
             return false
-        } else if strMobile.isPhoneNumber == false {
+        } else if strMobile.isNumber == false {
             return false
         }
         
@@ -300,7 +300,7 @@ extension EditProfileVC : UITextFieldDelegate {
         
         if textField == txtFName && updatedText.count > 16 {
             return false
-        } else if textField == txtFMobileNo && updatedText.count > 10 {
+        } else if textField == txtFMobileNo && updatedText.count > 15 {
             return false
         }
         

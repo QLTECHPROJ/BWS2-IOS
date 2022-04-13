@@ -174,11 +174,11 @@ class LoginVC: BaseViewController {
             isValid = false
             self.lblErrMobileNo.isHidden = false
             self.lblErrMobileNo.text = Theme.strings.alert_invalid_mobile_error
-        } else if strMobile.count < 8 || strMobile.count > 10 {
+        } else if strMobile.count < 4 || strMobile.count > 15 {
             isValid = false
             self.lblErrMobileNo.isHidden = false
             self.lblErrMobileNo.text = Theme.strings.alert_invalid_mobile_error
-        } else if strMobile.isPhoneNumber == false {
+        } else if strMobile.isNumber == false {
             isValid = false
             lblErrMobileNo.isHidden = false
             lblErrMobileNo.text = Theme.strings.alert_invalid_mobile_error
@@ -266,7 +266,7 @@ extension LoginVC : UITextFieldDelegate {
         if let text = textField.text,
            let textRange = Range(range, in: text) {
             let updatedText = text.replacingCharacters(in: textRange, with: string).trim
-            if !updatedText.isNumber || updatedText.count > 10 {
+            if !updatedText.isNumber || updatedText.count > 15 {
                 return false
             }
         }

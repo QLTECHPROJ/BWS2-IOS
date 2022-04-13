@@ -2696,7 +2696,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.brainwellnessspa;
 				PRODUCT_NAME = "Brain Wellness App";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/BWS_iOS_2/Supporting Files/BWS-Bridging-Header.h";
@@ -2722,7 +2722,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.brainwellnessspa;
 				PRODUCT_NAME = "Brain Wellness App";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/BWS_iOS_2/Supporting Files/BWS-Bridging-Header.h";
